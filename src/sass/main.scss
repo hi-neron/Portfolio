@@ -1,3 +1,14 @@
+// Reset Library
+@import "libs/reset";
+
+// Main styles
+@import "libs/fonts";
+@import "libs/colors";
+
+
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  color: rgb(9, 9, 17);
+  background-color: $body;
 }

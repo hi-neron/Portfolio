@@ -2,14 +2,14 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,700");
+$color_black: #1C1C1C;
+
+
 html {
-  font-family: sans-serif;
-  /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */ }
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -30,46 +30,63 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  backface-visibility: hidden; }
-
+  backface-visibility: hidden;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block; }
-
+  display: block;
+}
 body {
-  line-height: 1; }
-
+  line-height: 1;
+}
 ol, ul {
-  list-style: none; }
-
+  list-style: none;
+}
 blockquote, q {
-  quotes: none; }
-
+  quotes: none;
+}
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
-  content: none; }
+  content: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 input {
   background-color: transparent;
   border-radius: 0px;
   box-shadow: none;
-  border-style: hidden; }
+  border-style: hidden;
+}
 
-input[type=text]:focus, input[type=date]:focus, input[type=file]:focus, p[contenteditable=true]:focus,
-input[type=submit]:focus {
-  outline: transparent; }
+input[type=text], input[type=date], input[type=file], p[contenteditable=true],
+input[type=submit] {
+  &:focus {
+    outline: transparent;
+  }
+}
 
-svg:focus {
-  outline: transparent; }
+// textarea, button {
+//   resize: vertical;
+//   &:focus {
+//     outline: transparent;
+//     &:before {
+//       content: '◆';
+//       position: absolute;
+//       left: 0;
+//       top: 5px;
+//     }
+//   }
+// }
 
-body {
-  font-family: 'Fira Sans';
-  font-weight: 400;
-  color: #090911;
-  background-color: #fafafa; }
+svg {
+  &:focus {
+    outline: transparent;
+  }
+}
+
