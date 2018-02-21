@@ -3,7 +3,7 @@
 const gulp = require('gulp')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
-const webpackConf = require('./webpack-config')
+const webpackConf = require('./webpack.config')
 
 const browserSync = require('browser-sync').create()
 
@@ -19,12 +19,19 @@ gulp.task('browserSync', function () {
   gulp.watch('src/sass/*.scss', ['sass'])
   gulp.watch('src/**/**/*.js', ['js'])
   gulp.watch('src/img/*', ['images'])
+  gulp.watch('src/models/*', ['models'])
 })
 
 gulp.task('js', () => {
   gulp.src('./src/js/index.js')
     .pipe(webpackStream(webpackConf), webpack)
     .pipe(gulp.dest('./public/js'))
+    .pipe(browserSync.stream())
+})
+
+gulp.task('models', () => {
+  gulp.src('./src/models/*.json')
+    .pipe(gulp.dest('./public/models'))
     .pipe(browserSync.stream())
 })
 
@@ -47,6 +54,7 @@ gulp.task(
   ['browserSync',
     'html',
     'js',
-    'sass'
+    'sass',
+    'models'
   ]
 )

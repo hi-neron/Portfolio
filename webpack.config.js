@@ -1,4 +1,7 @@
 module.exports = {
+  entry : {
+    async : ['babel-polyfill', './src/js']
+  },
   module: {
     loaders: [{
       loader: 'babel-loader',
@@ -10,10 +13,5 @@ module.exports = {
   },
   output: {
     filename: 'app.js'
-  },
-  resolve: {
-    alias: {
-      'vue': 'vue/dist/vue.common.js' // 'vue/dist/vue.common.js' for webpack 1
-    }
   }
 }
