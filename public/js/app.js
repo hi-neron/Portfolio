@@ -56367,25 +56367,108 @@ var scene = void 0,
     renderer = void 0,
     camera = void 0,
     stats = void 0,
+    control = void 0,
     deb = void 0,
-    gui = void 0;
+    gui = void 0,
+    teaBody = void 0,
+    teaCap = void 0,
+    material = void 0,
+    directionalLight = void 0,
+    ambientLight = void 0,
+    teaPotWrapper = void 0;
+
+var teaColorS = 0xd2b900;
+var teaEmissiveS = 0x3b4811;
+var ambientLightS = 0xbe9021;
+var directionalLightS = 0xf6ff66;
 
 function world(debbug, models) {
   renderer = new THREE.WebGLRenderer();
   deb = debbug;
+  conf(function () {
+    // controls
+    control = new function () {
+      this.color = teaColorS;
+      this.emissive = teaEmissiveS;
+      this.ambientLight = ambientLightS;
+      this.directionalLight = directionalLightS;
+      this.capY = -0.4;
+    }();
 
-  // controls
-  var control = new function () {
-    this.none = false;
-  }();
+    var shader = THREE.FresnelShader;
 
-  if (debbug) {
-    stats = createStats();
-    addControls(control);
-  }
+    console.log(models);
 
-  conf();
-  render();
+    material = new THREE.MeshLambertMaterial({
+      color: 0xff9500,
+      emissive: 0x8c5d1a
+    });
+
+    teaCap = new THREE.Mesh(models.cap, material);
+    teaBody = new THREE.Mesh(models.body, material);
+
+    teaCap.position.y = -0.4;
+    teaCap.receiveShadow = true;
+    teaCap.castShadow = true;
+    teaBody.castShadow = true;
+    teaBody.receiveShadow = true;
+
+    var teaPotWrapper = new THREE.Group();
+
+    teaPotWrapper.add(teaCap);
+    teaPotWrapper.add(teaBody);
+    teaPotWrapper.add(directionalLight);
+
+    // scene.add(teaCap)
+    // scene.add(teaBody)
+    teaPotWrapper.position.y = 10;
+    scene.add(teaPotWrapper);
+
+    camera.lookAt(teaCap.position);
+
+    if (debbug) {
+      stats = createStats();
+      addControls(control);
+    }
+
+    render();
+  });
+}
+
+function conf(cb) {
+  scene = new THREE.Scene();
+  renderer.setClearColor(0xeaeaea, 1.0);
+
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var x = 30;
+  renderer.setSize(width, height);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFBasicShadowMap;
+  camera = new THREE.OrthographicCamera(width / -x, width / x, height / x, height / -x, 1, 1000);
+  camera.position.x = 15;
+  camera.position.y = 0;
+  camera.position.z = 13;
+  camera.lookAt(scene.position);
+
+  // lights
+  ambientLight = new THREE.AmbientLight(0xf1f1f1, 1); // soft white light scene.add( light );
+  directionalLight = new THREE.DirectionalLight(0xffffff, 1.3); // soft white light scene.add( light );
+  // directionalLight.position.x = -1
+  // directionalLight.position.z = 1
+  // directionalLight.position.y = 4
+
+  directionalLight.position.x = -3;
+  directionalLight.position.z = 3;
+  directionalLight.position.y = 6;
+
+  directionalLight.castShadow = true;
+
+  scene.add(ambientLight);
+  scene.add(directionalLight);
+
+  document.body.appendChild(renderer.domElement);
+  cb();
 }
 
 function render() {
@@ -56393,28 +56476,32 @@ function render() {
   if (deb) {
     stats.update();
   }
+  teaBody.rotation.y += 0.01;
+  teaCap.rotation.y += 0.01;
+  // let myColor = control.color
+  var myColor = new THREE.Color(control.color);
+  var myEmissive = new THREE.Color(control.emissive);
+  var myAmbient = new THREE.Color(control.ambientLight);
+  var myDirectional = new THREE.Color(control.directionalLight);
+
+  teaBody.material.emissive = myEmissive;
+  teaBody.material.color = myColor;
+
+  ambientLight.color = myAmbient;
+  directionalLight.color = myDirectional;
+
+  // Lights
+  teaCap.position.y = control.capY;
   requestAnimationFrame(render);
-}
-
-function conf() {
-  scene = new THREE.Scene();
-  renderer.setClearColor(0xfafafa, 1.0);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFBasicShadowMap;
-
-  camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.x = 15;
-  camera.position.y = 16;
-  camera.position.z = 13;
-  camera.lookAt(scene.position);
-
-  document.body.appendChild(renderer.domElement);
 }
 
 function addControls(controlObject) {
   gui = new dat.GUI();
-  gui.add(controlObject, 'none', -0.1, 40);
+  gui.add(controlObject, 'capY', -0.4, 0);
+  gui.addColor(controlObject, 'color', 0xff9500);
+  gui.addColor(controlObject, 'emissive', 0xf1bc1c);
+  gui.addColor(controlObject, 'ambientLight', 0xf1bc1c);
+  gui.addColor(controlObject, 'directionalLight', 0xf1bc1c);
 }
 
 function createStats() {
@@ -58970,13 +59057,15 @@ var index = {
 
 
 var THREE = __webpack_require__(126);
-var loader = new THREE.ObjectLoader();
+var loader = new THREE.JSONLoader();
 var body = void 0,
     cap = void 0;
 
 module.exports = function (cb) {
-  loader.load('/models/teapot.json', function (ob) {
-    cb(ob);
+  loader.load('/models/body.json', function (body) {
+    loader.load('/models/cap.json', function (cap) {
+      cb({ body: body, cap: cap });
+    });
   });
 };
 

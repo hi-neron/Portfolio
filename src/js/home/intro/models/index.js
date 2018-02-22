@@ -1,10 +1,12 @@
 'use strict'
 const THREE = require('three')
-const loader = new THREE.ObjectLoader()
+const loader = new THREE.JSONLoader()
 let body, cap
 
 module.exports = function (cb){
-  loader.load('/models/teapot.json', (ob) => {
-    cb(ob)
+  loader.load('/models/body.json', (body) => {
+    loader.load('/models/cap.json', (cap) => {
+      cb({body, cap})
+    })
   })
 }
