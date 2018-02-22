@@ -17,6 +17,7 @@ gulp.task('browserSync', function () {
   })
   gulp.watch('src/*.html', ['html'])
   gulp.watch('src/sass/*.scss', ['sass'])
+  gulp.watch('src/sass/**/*.scss', ['sass'])
   gulp.watch('src/**/**/*.js', ['js'])
   gulp.watch('src/img/*', ['images'])
   gulp.watch('src/models/*', ['models'])

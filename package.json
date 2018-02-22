@@ -12,7 +12,9 @@
     "empty": "^0.10.1",
     "lodash": "^4.17.5",
     "page": "^1.8.3",
+    "postprocessing": "^4.3.0",
     "three": "^0.90.0",
+    "three.proton.js": "^0.1.5",
     "yo-yo": "^1.4.1"
   },
   "devDependencies": {

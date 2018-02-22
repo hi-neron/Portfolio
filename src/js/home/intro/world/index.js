@@ -2,14 +2,18 @@
 const Stats = require('stats.js')
 const dat = require('dat.gui').default
 const THREE = require('three')
+require('postprocessing')
+
 let scene, renderer, camera, stats, control,
     deb, gui, teaBody, teaCap, material, directionalLight,
-    ambientLight, teaPotWrapper
+    ambientLight, teaPotWrapper, sky
 
 let teaColorS = 0xd2b900
 let teaEmissiveS = 0x3b4811
 let ambientLightS = 0xbe9021
 let directionalLightS = 0xf6ff66
+
+let frustumSize = 100
 
 function world (debbug, models) {
   renderer = new THREE.WebGLRenderer()
@@ -21,8 +25,10 @@ function world (debbug, models) {
       this.emissive = teaEmissiveS
       this.ambientLight = ambientLightS
       this.directionalLight = directionalLightS
-      this.capY = -0.4
+      this.capY = -0.5
     }
+
+
 
     let shader = THREE.FresnelShader
 
@@ -34,10 +40,14 @@ function world (debbug, models) {
       emissive: 0x8c5d1a
     })
     
+    sky = createSky(0xffffff)
+
+
+
     teaCap = new THREE.Mesh(models.cap, material)
     teaBody = new THREE.Mesh(models.body, material)
 
-    teaCap.position.y = -0.4
+    teaCap.position.y = -0.6
     teaCap.receiveShadow = true
     teaCap.castShadow = true
     teaBody.castShadow = true
@@ -52,19 +62,36 @@ function world (debbug, models) {
     // scene.add(teaCap)
     // scene.add(teaBody)
     teaPotWrapper.position.y = 10
-    scene.add(teaPotWrapper)
 
-    camera.lookAt(teaCap.position)
+    // adds
+    scene.add(teaPotWrapper)
+    scene.add(sky)
+
+    // camera.lookAt(teaCap.position)
 
     if (debbug) {
       stats = createStats()
       addControls(control)
     }
 
+    window.addEventListener( 'resize', onWindowResize, false )
+
     render ()
   })
 }
 
+function onWindowResize () {
+  let SCREEN_WIDTH = window.innerWidth;
+  let  SCREEN_HEIGHT = window.innerHeight;
+  let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+
+  camera.left =  aspect * 50 / - 2
+  camera.right = aspect * 50 / 2
+  camera.bottom =   50 / - 2
+  camera.top = 50 / 2
+  camera.updateProjectionMatrix();
+}
 
 function conf (cb) {
   scene = new THREE.Scene()
@@ -126,9 +153,19 @@ function render () {
   requestAnimationFrame(render)
 }
 
+function createSky (color) {
+  let skyGeometry = new THREE.PlaneGeometry(800, 100, 100, 100)
+  let skyMaterial = new THREE.MeshBasicMaterial({
+    color: color
+  })
+
+  let skyMesh = new THREE.Mesh(skyGeometry, skyMaterial)
+  return skyMesh
+}
+
 function addControls (controlObject) {
   gui = new dat.GUI();
-  gui.add(controlObject, 'capY', -0.4, 0)
+  gui.add(controlObject, 'capY', -0.5, 0)
   gui.addColor(controlObject, 'color', 0xff9500)
   gui.addColor(controlObject, 'emissive', 0xf1bc1c)
   gui.addColor(controlObject, 'ambientLight', 0xf1bc1c)
