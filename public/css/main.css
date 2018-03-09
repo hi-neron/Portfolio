@@ -68,6 +68,28 @@ input[type=submit]:focus {
 svg:focus {
   outline: transparent; }
 
+@font-face {
+  font-family: 'Beauty';
+  src: url("/fonts/Beauty.otf"); }
+
+@font-face {
+  font-family: 'Oldy';
+  src: url("/fonts/Arkhip.ttf"); }
+
+#main_title {
+  position: absolute;
+  font-family: 'Oldy';
+  width: 250px;
+  color: white;
+  font-size: 2rem;
+  transform: translate(-149px, -168px);
+  font-weight: 100;
+  letter-spacing: .1rem; }
+  #main_title path {
+    fill: transparent; }
+  #main_title text {
+    fill: #fff; }
+
 body {
   font-family: 'Fira Sans';
   font-weight: 400;

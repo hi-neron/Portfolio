@@ -2,11 +2,11 @@
 const world = require('./world')
 let scene, renderer, stats, camera, control
 
-let getModels = require('./models')
+let getAssets = require('./loader')
 
 function init() {
-  getModels((models) => {
-    let myWorld = world(true, models)
+  getAssets((e, assets) => {
+    world(true, assets)
   })
 }
 
