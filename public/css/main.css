@@ -76,22 +76,34 @@ svg:focus {
   font-family: 'Oldy';
   src: url("/fonts/Arkhip.ttf"); }
 
+.container {
+  width: 101.6%;
+  overflow-y: scroll;
+  background-color: red; }
+
 #main_title {
   position: absolute;
   font-family: 'Oldy';
   width: 250px;
   color: white;
   font-size: 2rem;
-  transform: translate(-149px, -168px);
+  transform: translate(-149px, -188px);
   font-weight: 100;
   letter-spacing: .1rem; }
   #main_title path {
     fill: transparent; }
   #main_title text {
     fill: #fff; }
+  #main_title .h2_com {
+    position: absolute;
+    font-size: 0.7rem;
+    top: 108px;
+    left: 50%;
+    transform: translateX(3px); }
 
 body {
   font-family: 'Fira Sans';
   font-weight: 400;
   color: #090911;
-  background-color: #eaeaea; }
+  background-color: #eaeaea;
+  overflow: hidden; }

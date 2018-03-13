@@ -1,10 +1,10 @@
 'use strict'
 
 const page = require('page')
-global.computer = true
+document.computer = true
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  computer = false
+  document.computer = false
 }
 
 page.base('/#!')

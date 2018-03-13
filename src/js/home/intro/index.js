@@ -4,10 +4,12 @@ let scene, renderer, stats, camera, control
 
 let getAssets = require('./loader')
 
-function init() {
+let init = function (container) {
   getAssets((e, assets) => {
-    world(true, assets)
+    world(false, assets, container)
   })
 }
 
-module.exports = init()
+module.exports = {
+  init
+}
