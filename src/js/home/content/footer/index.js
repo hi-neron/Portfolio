@@ -1,3 +1,4 @@
+'use strict'
 const yo = require('yo-yo')
 
 module.exports = new Promise(function (resolve, reject){

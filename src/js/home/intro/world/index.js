@@ -1,16 +1,29 @@
 'use strict'
+
+const THREE = require('three')
+const TWEEN = require('tween.js')
+
 const Stats = require('stats.js')
 const dat = require('dat.gui').default
-const THREE = require('three')
 const yo = require('yo-yo')
 require('postprocessing')
 
-let SCREEN_WIDTH, HALF_SCREEN
+let SCREEN_WIDTH, SCREEN_HEIGHT, HALF_SCREEN_W, HALF_SCREEN_H
 
 let scene, renderer, camera, stats, control,
     deb, gui, teaBody, teaCap, directionalLight,
     ambientLight, teaPotWrapper, sky, name, mixer,
-    prevTime, clock, helloMove, delta, pose
+    prevTime, clock, helloMove, delta, pose, direction, a, sum
+
+var time = 0.0
+var position1 = 0
+var position2 = 0
+var position3 = 0
+var oldPosition = 0
+var c = 0
+var maxA = 500
+var factor = 0
+var active = false
 
 let messageH1 = 'Jose Sánchez'
 let messageH2 = 'dev et designer'
@@ -32,7 +45,7 @@ const titleH1 = yo`
 `
 const mainContainer = document.createElement('div')
 
-mainContainer.setAttribute('id', 'intro')
+mainContainer.setAttribute('class', 'intro-wrapper')
 mainContainer.classList.add('container')
 
 document.mainContainer = mainContainer
@@ -41,19 +54,20 @@ document.mainContainer = mainContainer
 let initBackColor = 0xf3f3f6
 
 // tea COLOR
-let teaColorS = 0xff2525
-let teaEmissiveS = 0x1b0075
-let ambientLightS = 0xbe9021
-let directionalLightS = 0xf6ff66
+let teaColorS = 0x1b1b1b
+let teaEmissiveS = 0x616161
+let ambientLightS = 0x000000
+let directionalLightS = 0xffffff
 
 // sky
-let upperColor = 0x37be
+let upperColor = 0x1b1b1b
 let size = 5
 let magnitude = 3
 
 let sinProf
 
-let x = 32
+let x = document.computer ? 40 : 28
+
 let mousePosition = {
   x: 0,
   y: 0
@@ -62,9 +76,9 @@ let mousePosition = {
 window.onmousemove = mousePos
 
 function world (debbug, assets, appContainer) {
-  renderer = new THREE.WebGLRenderer()
+  renderer = new THREE.WebGLRenderer({alpha: true})
   deb = debbug
-  clock = new THREE.Clock()
+  clock = new THREE.Clock(true)
 
   // getting assets
   let models = assets.geometries
@@ -82,13 +96,13 @@ function world (debbug, assets, appContainer) {
       this.capY = -0.53
       this.teaMakerRotation = 0.7
       this.posX = 0
-      this.posY = -0.35
+      this.posY = -6.9
       this.posZ = 0
-      this.rotY = 0.19
-      this.rotX = -0.2
-      this.rotZ = 0.32
-      this.translateX = -3.6
-      this.translateY = 1.2
+      this.rotY = 0.166
+      this.rotX = -0.29
+      this.rotZ = 0.27
+      this.translateX = -4.7
+      this.translateY = -2.3
       this.translateZ = 9
       this.rotateY = 0.25
       this.rotateX = 0.04
@@ -110,7 +124,7 @@ function world (debbug, assets, appContainer) {
     // geometry
     let nameGeometry = new THREE.TextGeometry(`Jose                    Sánchez`, {
       font: square,
-      size: 2.3,
+      size: 2.5,
       height: 0,
       curveSegments: 2
     })
@@ -153,8 +167,6 @@ function world (debbug, assets, appContainer) {
     teaCap = new THREE.Mesh(models.cap, materialCap)
     teaBody = new THREE.Mesh(models.body, materialBody)
 
-
-    teaCap.position.y = -0.65
     teaCap.receiveShadow = true
     teaCap.castShadow = true
     teaBody.castShadow = true
@@ -163,12 +175,15 @@ function world (debbug, assets, appContainer) {
     teaPotWrapper = new THREE.Group()
     teaBody.position.x = -0.25
     teaBody.position.z = -0.3
+    teaBody.position.y = -5
+
     teaCap.position.x = -0.25
+    teaCap.position.y = -5
     teaCap.position.z = -0.3
-    teaPotWrapper.rotation.y = -0.4 * Math.PI
+    // teaPotWrapper.rotation.y = -0.4 * Math.PI
 
     
-    me.position.y = 8.4
+    me.position.y = 3.8
     me.position.x = 1.9
     me.scale.y = 0.85
     me.rotation.y = 0.7 * Math.PI
@@ -196,9 +211,6 @@ function world (debbug, assets, appContainer) {
 
     window.addEventListener( 'resize', onWindowResize, false )
 
-    // add h2
-    setPosTitleH1()
-
     render ()
     helloMove.play()
 
@@ -207,9 +219,11 @@ function world (debbug, assets, appContainer) {
 
 function conf (appContainer, cb) {
   scene = new THREE.Scene()
-  renderer.setClearColor(initBackColor, 1.0)
+  renderer.setClearColor(initBackColor, 0)
   SCREEN_WIDTH = window.innerWidth
-  HALF_SCREEN = SCREEN_WIDTH / 2
+  SCREEN_HEIGHT = window.innerHeight
+  HALF_SCREEN_W = SCREEN_WIDTH / 2
+  HALF_SCREEN_H = SCREEN_HEIGHT / 2
 
   let width = window.innerWidth
   let height = window.innerHeight
@@ -221,7 +235,6 @@ function conf (appContainer, cb) {
   camera.position.x = 15
   camera.position.y = -3
   camera.position.z = 13
-  // camera.lookAt(scene.position)
 
   // lights
   ambientLight = new THREE.AmbientLight( 0xf1f1f1, 1 ) // soft white light scene.add( light );
@@ -256,7 +269,6 @@ function toScreenXY(position, camera, domElement){
   let pos = position.clone();
   let projScreenMat = new THREE.Matrix4();
   projScreenMat.multiplyMatrices( camera.projectionMatrix, camera.matrixWorldInverse );
-
   pos.applyMatrix4(projScreenMat)
 
   let offset = findOffset(domElement)
@@ -278,7 +290,7 @@ function findOffset(element) {
   return pos;
 }
 function createSky (color) {
-  let skyGeometry = new THREE.PlaneGeometry(400, 20, 200, 20)
+  let skyGeometry = new THREE.PlaneGeometry(400, 23, 200, 23)
 
   let skyMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -361,8 +373,8 @@ function render (ts) {
     stats.update()
   }
 
-  let middle = (SCREEN_WIDTH - HALF_SCREEN) - mousePosition.x
-  let rad = (middle * 1.6) / HALF_SCREEN
+  // add h2
+  setPosTitleH1()
 
   // let myColor = control.color
   let myColor = new THREE.Color(control.color)
@@ -376,8 +388,6 @@ function render (ts) {
   ambientLight.color = myAmbient
   directionalLight.color = myDirectional
 
-  // Lights
-  teaCap.position.y = control.capY
   let skyColor = new THREE.Color(control.upperColor)
 
   sky.material.color = skyColor
@@ -410,9 +420,26 @@ function render (ts) {
 
   sky.geometry.verticesNeedUpdate = true;
 
-  let delta = clock.getDelta()
+  // rotate the teapot
+  let middleX = (SCREEN_WIDTH - HALF_SCREEN_W) - mousePosition.x
+  let middleY = (SCREEN_HEIGHT - HALF_SCREEN_H) - mousePosition.y
+  let cameraY = (middleY * 3) / HALF_SCREEN_H
 
-  teaPotWrapper.rotation.y = (rad * Math.PI) * -1
+  let delta = clock.getDelta()
+  
+  
+  
+  if (document.computer) {
+    let rad = (middleX * (Math.PI)) / HALF_SCREEN_W
+    rad = (rad - 2.31)
+    teaPotWrapper.rotation.y = rad * -1
+    camera.position.y = cameraY * -1
+  } else {
+    teaPotWrapper.rotation.y += 0.01
+    camera.position.y = -3
+  }
+
+  camera.lookAt(teaPotWrapper.position)
   mixer.update(delta)
   renderer.render(scene, camera)
   requestAnimationFrame(render)

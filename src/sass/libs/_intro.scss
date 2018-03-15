@@ -1,6 +1,5 @@
-.container {
-  width: 101.6%;
-  overflow-y: scroll;
+#intro {
+  width: 100%;
   background-color: red;
 }
 
@@ -10,19 +9,22 @@
   width: 250px;
   color: white;
   font-size: 2rem;
-  transform: translate(-149px, -188px);
+  transform: translate(-149px, -84px);
   font-weight: 100;
   letter-spacing: .1rem;
+
   path {
     fill: transparent
   }
+
   text {
     fill: #fff
   }
+
   .h2_com {
     position: absolute;
     font-size: 0.7rem;
-    top: 108px;
+    top: 106px;
     left: 50%;
     transform: translateX(3px);
   }

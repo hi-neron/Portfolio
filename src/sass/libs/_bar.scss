@@ -1,0 +1,31 @@
+#main-bar {
+  position: fixed;
+  height: 30px;
+  top: 20px;
+  left:  25px;
+  text-align: right;
+  // transform: translateX(-50%);
+
+  .bar-wrapper {
+    #bar-trigger {
+      color: $secondaryColor;
+      font-size: 1.1rem;
+      font-family: 'Josefin Sans';
+    }
+    .bar-list {
+      .bar-item {
+        // display: inline-block;
+        margin-bottom: 3px;
+
+        a {
+          text-decoration: none;
+          font-size: 1.1rem;
+          color: $mainColor;
+          &:visited {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+  }
+}

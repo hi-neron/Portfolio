@@ -1,4 +1,5 @@
 'use strict'
+
 const THREE = require('three')
 const loader = new THREE.JSONLoader()
 const fontLoader = new THREE.FontLoader()

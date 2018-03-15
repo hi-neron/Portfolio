@@ -16,6 +16,7 @@
     "postprocessing": "^4.3.0",
     "three": "^0.90.0",
     "three.proton.js": "^0.1.5",
+    "tween.js": "^16.6.0",
     "yo-yo": "^1.4.1"
   },
   "devDependencies": {

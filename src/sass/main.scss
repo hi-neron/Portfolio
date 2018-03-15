@@ -4,13 +4,28 @@
 // Main styles
 @import "libs/fonts";
 @import "libs/colors";
+
+// Second Styles
+@import "libs/bar";
 @import "libs/intro";
+@import "libs/articles";
+@import "libs/bioPhrase";
 
 
 body {
   font-family: 'Fira Sans';
   font-weight: 400;
   color: rgb(9, 9, 17);
-  background-color: $body;
-  overflow: hidden;
+  background-color: $myWhite;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: $mainColor;
+  }
+}
+
+#app {
 }
