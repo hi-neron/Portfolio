@@ -54,8 +54,8 @@ document.mainContainer = mainContainer
 let initBackColor = 0xf3f3f6
 
 // tea COLOR
-let teaColorS = 0x1b1b1b
-let teaEmissiveS = 0x616161
+let teaColorS = 0x343434
+let teaEmissiveS = 0x7a7a7a
 let ambientLightS = 0x000000
 let directionalLightS = 0xffffff
 
@@ -95,14 +95,14 @@ function world (debbug, assets, appContainer) {
       this.directionalLight = directionalLightS
       this.capY = -0.53
       this.teaMakerRotation = 0.7
-      this.posX = 0
-      this.posY = -6.9
+      this.posX = 2
+      this.posY = -5.8
       this.posZ = 0
-      this.rotY = 0.166
+      this.rotY = 0.17
       this.rotX = -0.29
       this.rotZ = 0.27
-      this.translateX = -4.7
-      this.translateY = -2.3
+      this.translateX = -4.1
+      this.translateY = -2.5
       this.translateZ = 9
       this.rotateY = 0.25
       this.rotateX = 0.04
@@ -122,7 +122,7 @@ function world (debbug, assets, appContainer) {
     let square = fonts.square
 
     // geometry
-    let nameGeometry = new THREE.TextGeometry(`Jose                    Sánchez`, {
+    let nameGeometry = new THREE.TextGeometry(`Jose                   Sánchez`, {
       font: square,
       size: 2.5,
       height: 0,

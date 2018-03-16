@@ -18,7 +18,6 @@ function miniTemplateCreator(item) {
   </span>`
 
   container.onclick = phraseClick
-
   return container
 }
 
@@ -28,9 +27,24 @@ function itemCreator(items) {
 
   let me = yo`<div class="phrase-thats-me">that's me.</div>`
 
+  let bulletsClass = ['icon-certificate', 'icon-flash', 'icon-headphones']
+  let bullets = []
+
+  for (let i = 0; i < 3; i++) {
+    let tBullet = yo`<span class="${bulletsClass[i]}"></span>`
+    bullets.push(tBullet)
+  }
+
+  console.log(bullets)
+  let counter = 0
+
   for ( let i = 0; i < items.length; i++) {
     let myItem = miniTemplateCreator(items[i])
     template.appendChild(myItem)
+    if ( i % 2 === 0) {
+      template.appendChild(bullets[counter])
+      counter += 1
+    }
   }
 
   template.appendChild(me)

@@ -57599,8 +57599,8 @@ document.mainContainer = mainContainer;
 var initBackColor = 0xf3f3f6;
 
 // tea COLOR
-var teaColorS = 0x1b1b1b;
-var teaEmissiveS = 0x616161;
+var teaColorS = 0x343434;
+var teaEmissiveS = 0x7a7a7a;
 var ambientLightS = 0x000000;
 var directionalLightS = 0xffffff;
 
@@ -57640,14 +57640,14 @@ function world(debbug, assets, appContainer) {
       this.directionalLight = directionalLightS;
       this.capY = -0.53;
       this.teaMakerRotation = 0.7;
-      this.posX = 0;
-      this.posY = -6.9;
+      this.posX = 2;
+      this.posY = -5.8;
       this.posZ = 0;
-      this.rotY = 0.166;
+      this.rotY = 0.17;
       this.rotX = -0.29;
       this.rotZ = 0.27;
-      this.translateX = -4.7;
-      this.translateY = -2.3;
+      this.translateX = -4.1;
+      this.translateY = -2.5;
       this.translateZ = 9;
       this.rotateY = 0.25;
       this.rotateX = 0.04;
@@ -57666,7 +57666,7 @@ function world(debbug, assets, appContainer) {
     var square = fonts.square;
 
     // geometry
-    var nameGeometry = new THREE.TextGeometry('Jose                    S\xE1nchez', {
+    var nameGeometry = new THREE.TextGeometry('Jose                   S\xE1nchez', {
       font: square,
       size: 2.5,
       height: 0,
@@ -76346,7 +76346,8 @@ module.exports = [{
 var _templateObject = _taggedTemplateLiteral(['\n    <span class="phrase-link" title="', '">', '</span>\n  '], ['\n    <span class="phrase-link" title="', '">', '</span>\n  ']),
     _templateObject2 = _taggedTemplateLiteral(['\n  <span class="phrase-word">\n    ', '\n  </span>'], ['\n  <span class="phrase-word">\n    ', '\n  </span>']),
     _templateObject3 = _taggedTemplateLiteral(['<div class="phrase-thats-me">that\'s me.</div>'], ['<div class="phrase-thats-me">that\'s me.</div>']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  '], ['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  ']);
+    _templateObject4 = _taggedTemplateLiteral(['<span class="', '"></span>'], ['<span class="', '"></span>']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  '], ['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -76363,7 +76364,6 @@ function miniTemplateCreator(item) {
   var container = yo(_templateObject2, i);
 
   container.onclick = phraseClick;
-
   return container;
 }
 
@@ -76373,9 +76373,24 @@ function itemCreator(items) {
 
   var me = yo(_templateObject3);
 
-  for (var i = 0; i < items.length; i++) {
-    var myItem = miniTemplateCreator(items[i]);
+  var bulletsClass = ['icon-certificate', 'icon-flash', 'icon-headphones'];
+  var bullets = [];
+
+  for (var i = 0; i < 3; i++) {
+    var tBullet = yo(_templateObject4, bulletsClass[i]);
+    bullets.push(tBullet);
+  }
+
+  console.log(bullets);
+  var counter = 0;
+
+  for (var _i = 0; _i < items.length; _i++) {
+    var myItem = miniTemplateCreator(items[_i]);
     template.appendChild(myItem);
+    if (_i % 2 === 0) {
+      template.appendChild(bullets[counter]);
+      counter += 1;
+    }
   }
 
   template.appendChild(me);
@@ -76386,7 +76401,7 @@ function itemCreator(items) {
 function createTemplate(phrase) {
   var items = itemCreator(phrase);
 
-  var template = yo(_templateObject4, items);
+  var template = yo(_templateObject5, items);
   return template;
 }
 
