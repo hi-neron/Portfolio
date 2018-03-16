@@ -12,6 +12,7 @@ function miniTemplateCreator(item) {
   let i = yo`
     <span class="phrase-link" title="${item}">${item}</span>
   `
+
   let container = yo`
   <span class="phrase-word">
     ${i}
@@ -25,26 +26,39 @@ function itemCreator(items) {
   let template = document.createElement('div')
   template.setAttribute('class', 'phrase-links-container')
 
-  let me = yo`<div class="phrase-thats-me">that's me.</div>`
+  let me = yo`<div class="phrase-couple" title="thats-me">that's me.</div>`
 
   let bulletsClass = ['icon-certificate', 'icon-flash', 'icon-headphones']
   let bullets = []
+  let containers = []
 
   for (let i = 0; i < 3; i++) {
     let tBullet = yo`<span class="${bulletsClass[i]}"></span>`
+    let tContainers = yo`<div class="phrase-couple" title="num${i}"></div>`
     bullets.push(tBullet)
+    containers.push(tContainers)
   }
 
-  console.log(bullets)
   let counter = 0
+  let counterContainer = 0
 
-  for ( let i = 0; i < items.length; i++) {
-    let myItem = miniTemplateCreator(items[i])
-    template.appendChild(myItem)
-    if ( i % 2 === 0) {
-      template.appendChild(bullets[counter])
-      counter += 1
+  for ( let x = 0; x < 3; x++) {
+    // let c = containers[counterContainer - 1]
+    // c.appendChild(myItem)
+    let myContainer = containers[x]
+    
+    for (let i = 1; i < 3; i++) {
+      let myItem = miniTemplateCreator(items[counter])
+      myContainer.appendChild(myItem)
+        if ( i === 1) {
+            myContainer.appendChild(bullets[x])
+          }
+        
+        console.log(i, x, myContainer)
+        counter++
     }
+
+    template.appendChild(myContainer)
   }
 
   template.appendChild(me)

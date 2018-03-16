@@ -290,7 +290,7 @@ function findOffset(element) {
   return pos;
 }
 function createSky (color) {
-  let skyGeometry = new THREE.PlaneGeometry(400, 23, 200, 23)
+  let skyGeometry = new THREE.PlaneGeometry(400, 21, 200, 21)
 
   let skyMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -349,7 +349,7 @@ function onWindowResize () {
   SCREEN_WIDTH = window.innerWidth;
   let  SCREEN_HEIGHT = window.innerHeight;
   let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-  let f = 58
+  let f = 44
   renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
 
   camera.left =  aspect * f / - 2

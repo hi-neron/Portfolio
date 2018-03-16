@@ -1,27 +1,85 @@
 .phrase-container {
   width: 100%;
-  height: 650px;
+  height: 250px;
   position: relative;
 
   .phrase-wrapper {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 90%;
+    width: 80%;
     min-width: 350px;
     max-width: 950px;
-    transform: translate(-50%, -50%);
-    text-align: left;
+    transform: translate(-50%, -170%);
+    text-align: center;
 
     .phrase-content {
-      color: $mainColor;
-      font-size: 3.8rem;
-      -webkit-font-smoothing: antialiased !important;
-      letter-spacing: 0.3rem;
-      line-height: 4rem;
-      font-family: 'MySans';
-      cursor: pointer;
+      .phrase-links-container {
+        font-size: 8vw;
+        max-font-size: 9vw;
+        .phrase-couple {
+          color: $mainColor;
+          -webkit-font-smoothing: antialiased !important;
+          letter-spacing: 0.2rem;
+          font-family: 'MySans';
+
+          .phrase-word {
+            .phrase-link {
+              cursor: pointer;
+              &:hover {
+                color: $secondaryColor;
+              }
+            }
+          }
+        }
+
+        .phrase-couple[title='num0']{
+          font-size: 100%;
+          line-height: 1.1em;
+        }
+
+        .phrase-couple[title='num1'] {
+          font-size: 60%;
+          line-height: 1.1em;
+        }
+
+        .phrase-couple[title='num2'] {
+          font-size: 45%;
+          line-height: 1.2em;
+        }
+
+        .phrase-couple[title='thats-me'] {
+          font-size: 35%;
+          line-height: 1.2em;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 460px) {
+  .phrase-container {
+    height: 450px;
+    .phrase-wrapper {
+      transform: translate(-50%, -140%);
 
     }
+  }
+}
+@media all and (min-width: 960px) {
+  .phrase-container {
+    height: 450px;
+    .phrase-wrapper {
+      transform: translate(-50%, -50%);
+    }
+  }
+  .phrase-links-container {
+    font-size: 5.4rem !important;
+  }
+}
+
+@media all and (min-width: 1240px) {
+  .phrase-links-container {
+    font-size: 6rem !important;
   }
 }
