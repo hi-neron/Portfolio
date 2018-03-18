@@ -57596,13 +57596,16 @@ mainContainer.classList.add('container');
 document.mainContainer = mainContainer;
 
 // background-color
-var initBackColor = 0xf3f3f6;
+var initBackColor = 0xffffff;
 
 // tea COLOR
 var teaColorS = 0x343434;
 var teaEmissiveS = 0x7a7a7a;
 var ambientLightS = 0x000000;
 var directionalLightS = 0xffffff;
+
+// me color
+var meColor = 0xdbfffc;
 
 // sky
 var upperColor = 0x1b1b1b;
@@ -57680,7 +57683,7 @@ function world(debbug, assets, appContainer) {
 
     // ME
     var meMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
+      color: meColor,
       skinning: true
     });
 
@@ -57703,8 +57706,8 @@ function world(debbug, assets, appContainer) {
     });
 
     var materialCap = new THREE.MeshLambertMaterial({
-      color: 0xFFFFFF,
-      emissive: 0xFFFFFF,
+      color: initBackColor,
+      emissive: initBackColor,
       flatShading: true
     });
 
@@ -57830,6 +57833,7 @@ function findOffset(element) {
   }
   return pos;
 }
+
 function createSky(color) {
   var skyGeometry = new THREE.PlaneGeometry(400, 21, 200, 21);
 
@@ -76213,8 +76217,10 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var drawMainTemplate = __webpack_require__(409);
 var footer = __webpack_require__(410);
-var yo = __webpack_require__(50);
+
 var items = __webpack_require__(411);
+
+var yo = __webpack_require__(50);
 
 function getFooter() {
   var body = yo(_templateObject, footer);
@@ -76225,6 +76231,7 @@ function getMainContent(tag, cb) {
   if (tag) {
     console.log('tag');
   }
+
   drawMainTemplate(items, function (e, r) {
     if (e) return new Error({ message: 'Error creating template of main contents' });
     cb(null, r);
@@ -76334,6 +76341,26 @@ module.exports = [{
       comment: 'another image footer'
     }]
   }
+}, {
+  title: 'Officia voluptate aute pariatur sint pariatur tempor cupidatat.',
+  type: 'blog',
+  content: 'Nisi veniam sint voluptate excepteur cillum. Aute est proident tempor culpa. Fugiat sint sint dolor excepteur proident ad ea aute nostrud aliquip ea cupidatat. Tempor nisi pariatur eu do reprehenderit non est anim esse. Tempor commodo in laboris cillum tempor id incididunt nisi mollit esse deserunt officia proident ea. Veniam est commodo eu Lorem do cupidatat ipsum in do dolor tempor et.\n              Enim deserunt officia Lorem ea nostrud ullamco. Nisi mollit consequat laborum proident aliquip cupidatat exercitation et aliquip tempor ea voluptate ex eiusmod. Deserunt et est reprehenderit amet voluptate exercitation elit ex. Tempor non aliqua culpa commodo ut quis minim elit deserunt ipsum laborum do. Elit nostrud elit occaecat nostrud.',
+  pictures: {
+    main: {
+      name: 'hello World',
+      url: '/hw.jpg',
+      comment: 'first coment main image'
+    },
+    others: [{
+      name: 'hello World',
+      url: '/hw.jpg',
+      comment: 'this is a comment'
+    }, {
+      name: 'pedrito paramo',
+      url: '/pp.jpg',
+      comment: 'another image footer'
+    }]
+  }
 }];
 
 /***/ }),
@@ -76362,7 +76389,6 @@ function phraseClick(e) {
 
 function miniTemplateCreator(item) {
   var i = yo(_templateObject, item, item);
-
   var container = yo(_templateObject2, i);
 
   container.onclick = phraseClick;
@@ -76400,8 +76426,6 @@ function itemCreator(items) {
       if (_i === 1) {
         myContainer.appendChild(bullets[x]);
       }
-
-      console.log(_i, x, myContainer);
       counter++;
     }
 

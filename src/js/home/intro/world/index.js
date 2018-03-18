@@ -51,13 +51,16 @@ mainContainer.classList.add('container')
 document.mainContainer = mainContainer
 
 // background-color
-let initBackColor = 0xf3f3f6
+let initBackColor = 0xffffff
 
 // tea COLOR
 let teaColorS = 0x343434
 let teaEmissiveS = 0x7a7a7a
 let ambientLightS = 0x000000
 let directionalLightS = 0xffffff
+
+// me color
+let meColor = 0xdbfffc
 
 // sky
 let upperColor = 0x1b1b1b
@@ -136,7 +139,7 @@ function world (debbug, assets, appContainer) {
 
     // ME
     let meMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
+      color: meColor,
       skinning: true
     })
 
@@ -159,8 +162,8 @@ function world (debbug, assets, appContainer) {
     })
 
     let materialCap = new THREE.MeshLambertMaterial({
-      color: 0xFFFFFF,
-      emissive: 0xFFFFFF,
+      color: initBackColor,
+      emissive: initBackColor,
       flatShading: true
     })
 
@@ -289,6 +292,7 @@ function findOffset(element) {
   }
   return pos;
 }
+
 function createSky (color) {
   let skyGeometry = new THREE.PlaneGeometry(400, 21, 200, 21)
 

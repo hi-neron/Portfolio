@@ -138,11 +138,9 @@ svg:focus {
 
 /* '' */
 #main-bar {
-  position: fixed;
   height: 30px;
-  top: 20px;
-  left: 25px;
-  text-align: right; }
+  width: 100px;
+  float: left; }
   #main-bar .bar-wrapper #bar-trigger {
     color: #ff2b70;
     font-size: 1.1rem;
@@ -197,8 +195,7 @@ svg:focus {
     transform: translate(-50%, -170%);
     text-align: center; }
     .phrase-container .phrase-wrapper .phrase-content .phrase-links-container {
-      font-size: 8vw;
-      max-font-size: 9vw; }
+      font-size: 8vw; }
       .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple {
         color: #313131;
         -webkit-font-smoothing: antialiased !important;
@@ -238,6 +235,16 @@ svg:focus {
 @media all and (min-width: 1240px) {
   .phrase-links-container {
     font-size: 6rem !important; } }
+
+body {
+  background: whitesmoke;
+  background: -moz-linear-gradient(top, whitesmoke 0%, whitesmoke 46%, #dbfffc 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, whitesmoke), color-stop(46%, whitesmoke), color-stop(100%, #dbfffc));
+  background: -webkit-linear-gradient(top, whitesmoke 0%, whitesmoke 46%, #dbfffc 100%);
+  background: -o-linear-gradient(top, whitesmoke 0%, whitesmoke 46%, #dbfffc 100%);
+  background: -ms-linear-gradient(top, whitesmoke 0%, whitesmoke 46%, #dbfffc 100%);
+  background: linear-gradient(to bottom, whitesmoke 0%, whitesmoke 46%, #dbfffc 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#dbfffc', GradientType=0 ); }
 
 body {
   font-family: 'Fira Sans';

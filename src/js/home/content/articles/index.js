@@ -49,5 +49,30 @@ module.exports = [
         }
       ]
     },
+  },
+  {
+    title: 'Officia voluptate aute pariatur sint pariatur tempor cupidatat.',
+    type: 'blog',
+    content: `Nisi veniam sint voluptate excepteur cillum. Aute est proident tempor culpa. Fugiat sint sint dolor excepteur proident ad ea aute nostrud aliquip ea cupidatat. Tempor nisi pariatur eu do reprehenderit non est anim esse. Tempor commodo in laboris cillum tempor id incididunt nisi mollit esse deserunt officia proident ea. Veniam est commodo eu Lorem do cupidatat ipsum in do dolor tempor et.
+              Enim deserunt officia Lorem ea nostrud ullamco. Nisi mollit consequat laborum proident aliquip cupidatat exercitation et aliquip tempor ea voluptate ex eiusmod. Deserunt et est reprehenderit amet voluptate exercitation elit ex. Tempor non aliqua culpa commodo ut quis minim elit deserunt ipsum laborum do. Elit nostrud elit occaecat nostrud.`,
+    pictures: {
+      main: {
+        name: 'hello World',
+        url: '/hw.jpg',
+        comment: 'first coment main image',
+      },
+      others: [
+        {
+          name: 'hello World',
+          url: '/hw.jpg',
+          comment: 'this is a comment',
+        },
+        {
+          name: 'pedrito paramo',
+          url: '/pp.jpg',
+          comment: 'another image footer',
+        }
+      ]
+    },
   }
 ]

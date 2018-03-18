@@ -1,6 +1,7 @@
 'use strict'
 
 const gulp = require('gulp')
+const newer = require('gulp-newer')
 const webpack = require('webpack')
 const webpackStream = require('webpack-stream')
 const webpackConf = require('./webpack.config')
@@ -19,7 +20,7 @@ gulp.task('browserSync', function () {
   gulp.watch('src/sass/*.scss', ['sass'])
   gulp.watch('src/sass/**/*.scss', ['sass'])
   gulp.watch('src/**/**/*.js', ['js'])
-  gulp.watch('src/img/*', ['images'])
+  gulp.watch('src/img/**/*', ['images'])
   gulp.watch('src/models/*', ['models'])
 })
 
@@ -49,10 +50,17 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream())
 })
 
+gulp.task('images', function () {
+  return gulp.src('./src/img/*.*')
+    .pipe(newer('./public/img'))
+    .pipe(gulp.dest('./public/img'))
+    .pipe(browserSync.stream())
+})
 
 gulp.task(
   'default',
   ['browserSync',
+    'images',
     'html',
     'js',
     'sass',

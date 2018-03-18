@@ -1,5 +1,4 @@
 'use strict'
-
 const yo = require('yo-yo')
 
 function phraseClick(e) {
@@ -12,7 +11,6 @@ function miniTemplateCreator(item) {
   let i = yo`
     <span class="phrase-link" title="${item}">${item}</span>
   `
-
   let container = yo`
   <span class="phrase-word">
     ${i}
@@ -53,8 +51,6 @@ function itemCreator(items) {
         if ( i === 1) {
             myContainer.appendChild(bullets[x])
           }
-        
-        console.log(i, x, myContainer)
         counter++
     }
 
