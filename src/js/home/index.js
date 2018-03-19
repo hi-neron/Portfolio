@@ -6,24 +6,34 @@ const page = require('page')
 const intro = require('./intro')
 const content = require('./content')
 const phraseC = require('./phrase')
+const Masonry = require('masonry-layout')
+const create = require('./utils/create')
+const empty = require('empty-element')
+
+const Lazy = require('vanilla-lazyload')
 
 // phrase intro
 let bioTags = ['DESIGNER', 'DEV', 'ILLUSTRATOR', 'RESILIENT', 'COFFEE', 'SEA LOVER']
 
 // bar
 const bar = require('./bar')
-let app, mainContent, footer, introContainer, phrase
+let app, mainContent, footer, introContainer, phrase, msnry
 
-page('/', create, bar, (ctx, next) => {
+page('/:tag?', create, bar, (ctx, next) => {
+  // vars
+  let app = ctx.app
+  let introContainer = ctx.introContainer
+  let phrase = ctx.phrase
+  let tag = ctx.params.tag
+
+  mainContent = ctx.mainContent
+  drawArticles(tag, mainContent)
+
   // get intro
   document.onload = intro.init(introContainer)
 
+  phrase.appendChild(phraseC(bioTags))
   app.appendChild(ctx.bar)
-  
-  content.getMainContent(null, (e, r) => {
-    if (e) return new Error({message: 'An Error has ocurred'})
-    mainContent.appendChild(r)
-  })
 
   content.getFooter((e, r) => {
     if (e) return new Error({message: 'An Error has ocurred'})
@@ -34,33 +44,25 @@ page('/', create, bar, (ctx, next) => {
   next()
 })
 
-function create(ctx, next) {
-  app = document.createElement('div')
-  app.setAttribute('id', 'app')
-  ctx.app = app
-
-  phrase = document.createElement('section')
-  phrase.setAttribute('class', 'first-phrase')
-  ctx.phrase = phrase
-
-  phrase = phraseC(bioTags)
-
-  mainContent = document.createElement('section')
-  mainContent.setAttribute('id', 'main-content')
-  ctx.mainContent = mainContent
+function drawArticles (tag, container) {
+  content.getMainContent(tag || null, (e, r) => {
+    if (e) return new Error({message: 'An Error has ocurred'})
+    let main = r.main
   
-  footer = document.createElement('footer')
-  footer.setAttribute('id', 'footer')
-  ctx.footer = footer
-
-  introContainer = document.createElement('intro')
-  introContainer.setAttribute('id', 'intro')
-  ctx.introContainer = introContainer
-
-  app.appendChild(introContainer)
-  app.appendChild(phrase)
-  app.appendChild(mainContent)
-  app.appendChild(footer)
-  next()
+    empty(container).appendChild(main)
+  
+    msnry = new Masonry(main, {
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
+      gutter: 12
+    })
+  
+    new Lazy({
+      container: main,
+      callback_load: (e) => {
+        msnry.layout()
+      }
+    })
+  })
 }
-

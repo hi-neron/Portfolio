@@ -11,12 +11,15 @@
   "dependencies": {
     "async": "^2.6.0",
     "empty": "^0.10.1",
+    "empty-element": "^1.0.0",
     "lodash": "^4.17.5",
+    "masonry-layout": "^4.2.1",
     "page": "^1.8.3",
     "postprocessing": "^4.3.0",
     "three": "^0.90.0",
     "three.proton.js": "^0.1.5",
     "tween.js": "^16.6.0",
+    "vanilla-lazyload": "^10.4.2",
     "yo-yo": "^1.4.1"
   },
   "devDependencies": {

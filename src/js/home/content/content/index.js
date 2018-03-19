@@ -4,17 +4,19 @@ const yo = require('yo-yo')
 
 function articleGen(data) {
   let template = yo`
-    <article class="article-container" title="${data.title}">
-      <img src="${data.pictures.main.url}" alt="${data.pictures.main.comment}">
-    </article>
+    <div class="grid-item ${data.important? 'grid-item-widthx2': ''}" title="${data.title}">
+      <img data-src="${data.pictures.main.url}" alt="${data.pictures.main.comment}">
+    </div>
   `
   return template
 }
 
 function createTemplate (items, cb) {
   let articleTemplate
+
   let main = yo`
     <div class="main-content-wrapper">
+      <div class="grid-sizer"></div>
     </div>
   `
 
@@ -23,7 +25,11 @@ function createTemplate (items, cb) {
     main.appendChild(articleTemplate)
   }
 
-  cb(null, main)
+  let response = {
+    main
+  }
+
+  cb(null, response)
 }
 
 module.exports = createTemplate

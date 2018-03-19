@@ -1,5 +1,68 @@
+$width: 33.3%;
+
 #main-content {
+  width: 90%;
+  text-align: center;
+  display: inline-block;
+  margin-left: 5%;
+
   .main-content-wrapper {
-    min-height: 800px;
+    .grid-item-widthx2 {
+      width: 66.6%;
+    }
+
+    .grid-item{
+      width: $width;
+      overflow: hidden;
+      margin-bottom: 8px;
+      // border: 1px solid rgba(#000, .2);
+
+      &:hover {
+        cursor: pointer;
+        transition: all 0.5s;
+        
+        img {
+          -webkit-filter: grayscale(40%);
+          filter: grayscale(40%);
+          transition: all 0.3s ease-out;
+        }
+      }
+
+      img {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        width: 100%;
+      }
+
+      .title {}
+    }
   }
+}
+
+.grid-sizer {
+  width: $width;
+}
+
+@media all and (max-width: 3000px) {
+  .grid-sizer {width: 24.1% !important}
+  .grid-item {width: 24.1% !important}
+  .grid-item-widthx2 {width: 49.2% !important}
+}
+
+@media all and (max-width: 1400px) {
+  .grid-sizer {width: 32.4% !important}
+  .grid-item {width: 32.4% !important}
+  .grid-item-widthx2 {width: 65% !important}
+}
+
+@media all and (max-width: 900px) {
+  .grid-sizer {width: 49% !important}
+  .grid-item {width: 49% !important}
+  .grid-item-widthx2 {width: 100% !important}
+}
+
+@media all and (max-width: 460px) {
+  .grid-sizer {width: 100% !important}
+  .grid-item {width: 100% !important}
+  .grid-item-widthx2 {width: 100% !important}
 }
