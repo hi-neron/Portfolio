@@ -6,6 +6,7 @@ function articleGen(data) {
   let template = yo`
     <div class="grid-item ${data.important? 'grid-item-widthx2': ''}" title="${data.title}">
       <img data-src="${data.pictures.main.url}" alt="${data.pictures.main.comment}">
+      <h4 class="article-label">${data.title}</h4>
     </div>
   `
   return template

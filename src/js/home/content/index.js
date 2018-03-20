@@ -4,13 +4,11 @@ const _ = require('lodash')
 
 const yo = require('yo-yo')
 
-function getFooter () {
-  let body = yo`
-    <footer class="footer">
-      ${footer}
-    </footer>
-  `
-  return body
+function getFooter (cb) {
+  footer((e, r) => {
+    if (e) return new Error({message: 'an error has ocurred'})
+    cb(null, r)
+  })
 }
 
 function getMainContent (tag, cb) {

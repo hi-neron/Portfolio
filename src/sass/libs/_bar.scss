@@ -2,7 +2,7 @@
   height: 30px;
   width: 30px;
   position: fixed;
-  top: 23px;
+  top: 50%;
   left:  18px;
 
   &:hover {
@@ -11,19 +11,19 @@
 
   .bar-wrapper {
     #bar-trigger {
-      color: #888888;
-      font-family: 'Inknut Antiqua';
+      color: rgba($mainColor, .7);
+      font-family: 'rame';
       
       .icon {
         font-size: 1.1rem;
       }
       
       .tag-info {
-        font-size: 0.9rem;
-        width: 280px;
+        font-size: 1rem;
+        width: 380px;
         height: 30px;
         text-align: right;
-        transform: rotateZ(-90deg) translate(-140px, -125px);
+        transform: rotateZ(-90deg) translate(-190px, -174px);
         letter-spacing: 0.02rem;
 
         .message {
@@ -31,7 +31,8 @@
         }
 
         .tag {
-          font-weight: 700;
+          font-family: 'raexbo';
+          text-transform: lowercase;
         }
       }
     }

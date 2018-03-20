@@ -17,17 +17,18 @@ let bioTags = ['DESIGNER', 'DEV', 'ILLUSTRATOR', 'RESILIENT', 'COFFEE', 'SEA LOV
 
 // bar
 const bar = require('./bar')
-let app, mainContent, footer, introContainer, phrase, msnry
+let app, mainContent, introContainer, phrase, msnry
 
 page('/:tag?', create, bar, (ctx, next) => {
   // vars
   let app = ctx.app
   let introContainer = ctx.introContainer
   let phrase = ctx.phrase
+  let footer = ctx.footer
   let tag = ctx.params.tag
 
   mainContent = ctx.mainContent
-  drawArticles(tag, mainContent)
+  drawArticles(tag)
 
   // get intro
   document.onload = intro.init(introContainer)
@@ -36,7 +37,8 @@ page('/:tag?', create, bar, (ctx, next) => {
   app.appendChild(ctx.bar)
 
   content.getFooter((e, r) => {
-    if (e) return new Error({message: 'An Error has ocurred'})
+    if (e) return console.log(new Error({message: 'An Error has ocurred'}))
+    console.log(r)
     footer.appendChild(r)
   })
 
@@ -44,18 +46,23 @@ page('/:tag?', create, bar, (ctx, next) => {
   next()
 })
 
-function drawArticles (tag, container) {
-  content.getMainContent(tag || null, (e, r) => {
+function drawArticles (tag) {
+  tag = tag ? tag.toLowerCase(): ''
+  let overW = document.createElement('div')
+  overW.setAttribute('class', 'main-over-wrapper')
+  ChangeUrl('san', `/#!/${tag}`)
+
+  content.getMainContent(tag, (e, r) => {
     if (e) return new Error({message: 'An Error has ocurred'})
     let main = r.main
-  
-    empty(container).appendChild(main)
-  
+
+    empty(overW).appendChild(main)
+    empty(mainContent).appendChild(overW)
+
     msnry = new Masonry(main, {
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
-      percentPosition: true,
-      gutter: 12
+      percentPosition: true
     })
   
     new Lazy({
@@ -66,3 +73,13 @@ function drawArticles (tag, container) {
     })
   })
 }
+
+function ChangeUrl(title, url) {
+  if (typeof (history.pushState) != "undefined") {
+      var obj = { Title: title, Url: url }
+      history.pushState(obj, obj.Title, obj.Url)
+  } else {
+      alert("Browser does not support HTML5.")
+  }
+}
+module.exports = drawArticles

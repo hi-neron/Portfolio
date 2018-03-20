@@ -57,7 +57,7 @@ let initBackColor = 0xffffff
 let teaColorS = 0x343434
 let teaEmissiveS = 0x7a7a7a
 let ambientLightS = 0x000000
-let directionalLightS = 0xffffff
+let directionalLightS = 0xffffe6
 
 // me color
 let meColor = 0xdbfffc

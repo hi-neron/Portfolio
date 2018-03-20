@@ -2,9 +2,11 @@
 const yo = require('yo-yo')
 
 function phraseClick(e) {
+  const drawArticles = require('../index.js')
   e.preventDefault()
-  let src = e.srcElement.title
-  console.log(src)
+  let tag = e.srcElement.title
+  tag = tag === 'thats-me' ? '': tag
+  drawArticles(tag)
 }
 
 function miniTemplateCreator(item) {
@@ -24,8 +26,9 @@ function itemCreator(items) {
   let template = document.createElement('div')
   template.setAttribute('class', 'phrase-links-container')
 
-  let me = yo`<div class="phrase-couple" title="thats-me">that's me.</div>`
-
+  let me = yo`<div class="phrase-couple" title="thats-me">that's me</div>`
+  me.onclick = phraseClick
+  
   let bulletsClass = ['icon-certificate', 'icon-flash', 'icon-headphones']
   let bullets = []
   let containers = []
