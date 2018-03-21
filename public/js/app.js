@@ -57924,7 +57924,7 @@ var getAssets = __webpack_require__(407);
 
 var init = function init(container) {
   getAssets(function (e, assets) {
-    world(false, assets, container);
+    world(true, assets, container);
   });
 };
 
@@ -57938,10 +57938,6 @@ module.exports = {
 
 "use strict";
 
-
-var _templateObject = _taggedTemplateLiteral(['\n  <div id="main_title">\n    <svg viewBox="0 0 500 500">\n      <path id="curve" d="m117,217.5c0,-1 150,-54 333,-1" />\n        <text x="25">\n          <textPath xlink:href="#curve">\n            ', '\n          </textPath>\n        </text>\n    </svg>\n    <div class="h2_com">\n      .com\n    </div>\n  </div>\n'], ['\n  <div id="main_title">\n    <svg viewBox="0 0 500 500">\n      <path id="curve" d="m117,217.5c0,-1 150,-54 333,-1" />\n        <text x="25">\n          <textPath xlink:href="#curve">\n            ', '\n          </textPath>\n        </text>\n    </svg>\n    <div class="h2_com">\n      .com\n    </div>\n  </div>\n']);
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var THREE = __webpack_require__(2);
 var TWEEN = __webpack_require__(351);
@@ -57978,7 +57974,8 @@ var scene = void 0,
     pose = void 0,
     direction = void 0,
     a = void 0,
-    sum = void 0;
+    sum = void 0,
+    me = void 0;
 
 var time = 0.0;
 var position1 = 0;
@@ -57993,7 +57990,6 @@ var active = false;
 var messageH1 = 'Jose Sánchez';
 var messageH2 = 'dev et designer';
 
-var titleH1 = yo(_templateObject, messageH2);
 var mainContainer = document.createElement('div');
 
 mainContainer.setAttribute('class', 'intro-wrapper');
@@ -58002,25 +57998,29 @@ mainContainer.classList.add('container');
 document.mainContainer = mainContainer;
 
 // background-color
-var initBackColor = 0xffffff;
+var initBackColor = 0xf3f3f6;
 
 // tea COLOR
-var teaColorS = 0x343434;
-var teaEmissiveS = 0x7a7a7a;
-var ambientLightS = 0x000000;
-var directionalLightS = 0xffffe6;
+var teaColorS = 0xb37c74;
+var teaEmissiveS = 0xaa0808;
+var ambientLightS = 0xc3a2a2;
+var directionalLightS = 0x4b8c96;
 
 // me color
-var meColor = 0xdbfffc;
+var meColor = 0xffff93;
+
+//name Color
+var nameColor = 0x2f304b;
 
 // sky
-var upperColor = 0x1b1b1b;
+var upperColor = 0xc4dde3;
+
 var size = 5;
 var magnitude = 3;
 
 var sinProf = void 0;
 
-var x = document.computer ? 40 : 28;
+var x = document.computer ? 46 : 28;
 
 var mousePosition = {
   x: 0,
@@ -58030,7 +58030,8 @@ var mousePosition = {
 window.onmousemove = mousePos;
 
 function world(debbug, assets, appContainer) {
-  renderer = new THREE.WebGLRenderer({ alpha: true });
+  renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
   deb = debbug;
   clock = new THREE.Clock(true);
 
@@ -58055,12 +58056,13 @@ function world(debbug, assets, appContainer) {
       this.rotY = 0.17;
       this.rotX = -0.29;
       this.rotZ = 0.27;
-      this.translateX = -4.1;
-      this.translateY = -2.5;
+      this.translateX = -3.9;
+      this.translateY = -3.6;
       this.translateZ = 9;
       this.rotateY = 0.25;
       this.rotateX = 0.04;
       this.rotateZ = 0.00;
+      this.meColor = meColor;
     }();
 
     // assets
@@ -58068,7 +58070,7 @@ function world(debbug, assets, appContainer) {
     // NAME
     // Material
     var nameMaterial = new THREE.MeshBasicMaterial({
-      color: initBackColor
+      color: nameColor
     });
 
     // font
@@ -58095,7 +58097,7 @@ function world(debbug, assets, appContainer) {
 
     var meGeometry = models.me;
 
-    var me = new THREE.SkinnedMesh(meGeometry, meMaterial);
+    me = new THREE.SkinnedMesh(meGeometry, meMaterial);
 
     mixer = new THREE.AnimationMixer(me);
     helloMove = mixer.clipAction('hello');
@@ -58205,43 +58207,13 @@ function conf(appContainer, cb) {
   scene.add(directionalLight);
 
   mainContainer.appendChild(renderer.domElement);
-  mainContainer.appendChild(titleH1);
   appContainer.appendChild(mainContainer);
 
   cb(renderer);
 }
 
-function setPosTitleH1() {
-  var pos = toScreenXY(teaPotWrapper.position, camera, renderer.domElement);
-  titleH1.style.top = pos.y + 'px';
-  titleH1.style.left = pos.x + 'px';
-}
-
-function toScreenXY(position, camera, domElement) {
-  var pos = position.clone();
-  var projScreenMat = new THREE.Matrix4();
-  projScreenMat.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
-  pos.applyMatrix4(projScreenMat);
-
-  var offset = findOffset(domElement);
-  return { x: (pos.x + 1) * domElement.width / 2 + offset.left,
-    y: (-pos.y + 1) * domElement.height / 2 + offset.top };
-}
-
-function findOffset(element) {
-  var pos = new Object();
-  pos.left = pos.top = 0;
-  if (element.offsetParent) {
-    do {
-      pos.left += element.offsetLeft;
-      pos.top += element.offsetTop;
-    } while (element = element.offsetParent);
-  }
-  return pos;
-}
-
 function createSky(color) {
-  var skyGeometry = new THREE.PlaneGeometry(400, 21, 200, 21);
+  var skyGeometry = new THREE.PlaneGeometry(400, 19, 200, 19);
 
   var skyMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -58268,9 +58240,10 @@ function addControls(controlObject) {
   gui.addColor(controlObject, 'directionalLight', 0xf1bc1c);
   gui.addColor(controlObject, 'upperColor', upperColor);
   gui.add(controlObject, 'teaMakerRotation', -1.5, 1.5);
+  // Me color
+  gui.addColor(controlObject, 'meColor', meColor);
   // sky
   gui.add(controlObject, 'capY', -0.5, 0);
-
   gui.add(controlObject, 'posX', -50, 50);
   gui.add(controlObject, 'posY', -50, 50);
   gui.add(controlObject, 'posZ', -50, 50);
@@ -58308,8 +58281,6 @@ function onWindowResize() {
   camera.bottom = f / -2;
   camera.top = f / 2;
   camera.updateProjectionMatrix();
-
-  setPosTitleH1();
 }
 
 function mousePos(e) {
@@ -58325,16 +58296,20 @@ function render(ts) {
   }
 
   // add h2
-  setPosTitleH1();
 
   // let myColor = control.color
   var myColor = new THREE.Color(control.color);
   var myEmissive = new THREE.Color(control.emissive);
   var myAmbient = new THREE.Color(control.ambientLight);
   var myDirectional = new THREE.Color(control.directionalLight);
+  var personColor = new THREE.Color(control.meColor);
 
   teaBody.material.emissive = myEmissive;
   teaBody.material.color = myColor;
+
+  me.material.color = personColor;
+
+  directionalLight.color = myDirectional;
 
   ambientLight.color = myAmbient;
   directionalLight.color = myDirectional;

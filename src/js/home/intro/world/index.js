@@ -13,7 +13,7 @@ let SCREEN_WIDTH, SCREEN_HEIGHT, HALF_SCREEN_W, HALF_SCREEN_H
 let scene, renderer, camera, stats, control,
     deb, gui, teaBody, teaCap, directionalLight,
     ambientLight, teaPotWrapper, sky, name, mixer,
-    prevTime, clock, helloMove, delta, pose, direction, a, sum
+    prevTime, clock, helloMove, delta, pose, direction, a, sum, me
 
 var time = 0.0
 var position1 = 0
@@ -28,21 +28,6 @@ var active = false
 let messageH1 = 'Jose Sánchez'
 let messageH2 = 'dev et designer'
 
-const titleH1 = yo`
-  <div id="main_title">
-    <svg viewBox="0 0 500 500">
-      <path id="curve" d="m117,217.5c0,-1 150,-54 333,-1" />
-        <text x="25">
-          <textPath xlink:href="#curve">
-            ${messageH2}
-          </textPath>
-        </text>
-    </svg>
-    <div class="h2_com">
-      .com
-    </div>
-  </div>
-`
 const mainContainer = document.createElement('div')
 
 mainContainer.setAttribute('class', 'intro-wrapper')
@@ -51,25 +36,29 @@ mainContainer.classList.add('container')
 document.mainContainer = mainContainer
 
 // background-color
-let initBackColor = 0xffffff
+let initBackColor = 0xf3f3f6
 
 // tea COLOR
-let teaColorS = 0x343434
-let teaEmissiveS = 0x7a7a7a
-let ambientLightS = 0x000000
-let directionalLightS = 0xffffe6
+let teaColorS = 0xb37c74
+let teaEmissiveS = 0xaa0808
+let ambientLightS = 0xc3a2a2
+let directionalLightS = 0x4b8c96
 
 // me color
-let meColor = 0xdbfffc
+let meColor = 0xffff93
+
+//name Color
+let nameColor = 0x2f304b
 
 // sky
-let upperColor = 0x1b1b1b
+let upperColor = 0xc4dde3
+
 let size = 5
 let magnitude = 3
 
 let sinProf
 
-let x = document.computer ? 40 : 28
+let x = document.computer ? 46 : 28
 
 let mousePosition = {
   x: 0,
@@ -79,7 +68,8 @@ let mousePosition = {
 window.onmousemove = mousePos
 
 function world (debbug, assets, appContainer) {
-  renderer = new THREE.WebGLRenderer({alpha: true})
+  renderer = new THREE.WebGLRenderer({alpha: true, antialias:true})
+  renderer.setPixelRatio( window.devicePixelRatio )
   deb = debbug
   clock = new THREE.Clock(true)
 
@@ -104,12 +94,13 @@ function world (debbug, assets, appContainer) {
       this.rotY = 0.17
       this.rotX = -0.29
       this.rotZ = 0.27
-      this.translateX = -4.1
-      this.translateY = -2.5
+      this.translateX = -3.9
+      this.translateY = -3.6
       this.translateZ = 9
       this.rotateY = 0.25
       this.rotateX = 0.04
       this.rotateZ = 0.00
+      this.meColor = meColor
     }
 
 
@@ -118,7 +109,7 @@ function world (debbug, assets, appContainer) {
     // NAME
     // Material
     let nameMaterial = new THREE.MeshBasicMaterial({
-      color: initBackColor
+      color: nameColor
     })
 
     // font
@@ -145,7 +136,7 @@ function world (debbug, assets, appContainer) {
 
     let meGeometry = models.me
 
-    let me = new THREE.SkinnedMesh(meGeometry, meMaterial)
+    me = new THREE.SkinnedMesh(meGeometry, meMaterial)
 
     mixer = new THREE.AnimationMixer(me)
     helloMove = mixer.clipAction('hello')
@@ -256,45 +247,14 @@ function conf (appContainer, cb) {
   scene.add(directionalLight)
 
   mainContainer.appendChild(renderer.domElement)
-  mainContainer.appendChild(titleH1)
   appContainer.appendChild(mainContainer)
 
   cb(renderer)
 }
 
-function setPosTitleH1() {
-  let pos = toScreenXY(teaPotWrapper.position, camera, renderer.domElement)
-  titleH1.style.top = `${pos.y}px`
-  titleH1.style.left = `${pos.x}px`
-}
-
-function toScreenXY(position, camera, domElement){
-  let pos = position.clone();
-  let projScreenMat = new THREE.Matrix4();
-  projScreenMat.multiplyMatrices( camera.projectionMatrix, camera.matrixWorldInverse );
-  pos.applyMatrix4(projScreenMat)
-
-  let offset = findOffset(domElement)
-  return { x: ( pos.x + 1 ) * domElement.width / 2 + offset.left,
-    y: ( - pos.y + 1) * domElement.height / 2 + offset.top };
-}
-
-function findOffset(element) {
-  var pos = new Object();
-  pos.left = pos.top = 0;
-  if (element.offsetParent)
-  {
-    do
-    {
-      pos.left += element.offsetLeft;
-      pos.top += element.offsetTop;
-    } while (element = element.offsetParent);
-  }
-  return pos;
-}
 
 function createSky (color) {
-  let skyGeometry = new THREE.PlaneGeometry(400, 21, 200, 21)
+  let skyGeometry = new THREE.PlaneGeometry(400, 19, 200, 19)
 
   let skyMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -321,9 +281,10 @@ function addControls (controlObject) {
   gui.addColor(controlObject, 'directionalLight', 0xf1bc1c)
   gui.addColor(controlObject, 'upperColor', upperColor)
   gui.add(controlObject, 'teaMakerRotation', -1.5, 1.5)
+  // Me color
+  gui.addColor(controlObject, 'meColor', meColor)
   // sky
   gui.add(controlObject, 'capY', -0.5, 0)
-
   gui.add(controlObject, 'posX', -50, 50)
   gui.add(controlObject, 'posY', -50, 50)
   gui.add(controlObject, 'posZ', -50, 50)
@@ -361,8 +322,6 @@ function onWindowResize () {
   camera.bottom =   f / - 2
   camera.top = f / 2
   camera.updateProjectionMatrix();
-
-  setPosTitleH1()
 }
 
 function mousePos (e) {
@@ -378,16 +337,20 @@ function render (ts) {
   }
 
   // add h2
-  setPosTitleH1()
 
   // let myColor = control.color
   let myColor = new THREE.Color(control.color)
   let myEmissive = new THREE.Color(control.emissive)
   let myAmbient = new THREE.Color(control.ambientLight)
   let myDirectional = new THREE.Color(control.directionalLight)
+  let personColor = new THREE.Color(control.meColor)
 
   teaBody.material.emissive = myEmissive
   teaBody.material.color = myColor
+
+  me.material.color = personColor
+
+  directionalLight.color = myDirectional
 
   ambientLight.color = myAmbient
   directionalLight.color = myDirectional

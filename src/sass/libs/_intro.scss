@@ -6,12 +6,13 @@
 #main_title {
   position: absolute;
   font-family: 'Oldy';
-  width: 250px;
+  width: 280px;
   color: white;
-  font-size: 2rem;
-  transform: translate(-149px, -84px);
-  font-weight: 100;
-  letter-spacing: .1rem;
+  font-size: 2.2rem;
+  left: 50%;
+  top: 50%;
+  // transform: translate(-164px, -100px);
+  // letter-spacing: .1rem;
 
   path {
     fill: transparent
@@ -23,9 +24,9 @@
 
   .h2_com {
     position: absolute;
-    font-size: 0.7rem;
-    top: 106px;
+    font-size: 0.9rem;
+    top: 120px;
     left: 50%;
-    transform: translateX(3px);
+    transform: translateX(0px);
   }
 }

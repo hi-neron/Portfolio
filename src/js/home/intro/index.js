@@ -6,7 +6,7 @@ let getAssets = require('./loader')
 
 let init = function (container) {
   getAssets((e, assets) => {
-    world(false, assets, container)
+    world(true, assets, container)
   })
 }
 
