@@ -51692,6 +51692,8 @@ function drawArticles(tag) {
       percentPosition: true
     });
 
+    msnry.layout();
+
     new Lazy({
       container: main,
       callback_load: function callback_load(e) {
@@ -57977,16 +57979,17 @@ var scene = void 0,
     sum = void 0,
     me = void 0;
 
-var time = 0.0;
-var position1 = 0;
-var position2 = 0;
-var position3 = 0;
-var oldPosition = 0;
-var c = 0;
-var maxA = 500;
-var factor = 0;
-var active = false;
+// var time = 0.0
+// var position1 = 0
+// var position2 = 0
+// var position3 = 0
+// var oldPosition = 0
+// var c = 0
+// var maxA = 500
+// var factor = 0
+// var active = false
 
+var fontSizeName = 2.8;
 var messageH1 = 'Jose Sánchez';
 var messageH2 = 'dev et designer';
 
@@ -58056,9 +58059,9 @@ function world(debbug, assets, appContainer) {
       this.rotY = 0.17;
       this.rotX = -0.29;
       this.rotZ = 0.27;
-      this.translateX = -3.9;
-      this.translateY = -3.6;
-      this.translateZ = 9;
+      this.translateX = -4.9;
+      this.translateY = -4;
+      this.translateZ = 9.8;
       this.rotateY = 0.25;
       this.rotateX = 0.04;
       this.rotateZ = 0.00;
@@ -58079,7 +58082,7 @@ function world(debbug, assets, appContainer) {
     // geometry
     var nameGeometry = new THREE.TextGeometry('Jose                   S\xE1nchez', {
       font: square,
-      size: 2.5,
+      size: fontSizeName,
       height: 0,
       curveSegments: 2
     });
@@ -76605,7 +76608,8 @@ function getItems(tag, cb) {
     items = result;
     ev.message = 'Keyword: ';
   } else {
-    ev.message = tag ? 'Keyword not found: ' : 'All';
+    ev.message = tag ? 'Keyword not found: ' : "Everything here,";
+    ev.tag = ev.message === 'Everything here,' ? " that's me." : tag;
     items = items;
   }
 

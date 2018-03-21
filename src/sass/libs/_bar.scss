@@ -11,7 +11,7 @@
 
   .bar-wrapper {
     #bar-trigger {
-      color: rgba($mainColor, .7);
+      color: rgba($mainColor, .9);
       font-family: 'rame';
       
       .icon {
@@ -29,8 +29,10 @@
         .message {
           font-weight: 300;
         }
-
+        
         .tag {
+          // text-decoration: underline;
+          // text-decoration-color: $secondaryColor;
           font-family: 'raexbo';
           text-transform: lowercase;
         }
