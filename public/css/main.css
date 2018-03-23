@@ -162,7 +162,7 @@ svg:focus {
   #main-bar:hover {
     cursor: pointer; }
   #main-bar .bar-wrapper #bar-trigger {
-    color: rgba(47, 48, 75, 0.7);
+    color: rgba(47, 48, 75, 0.9);
     font-family: 'rame'; }
     #main-bar .bar-wrapper #bar-trigger .icon {
       font-size: 1.1rem; }

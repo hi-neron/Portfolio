@@ -64,6 +64,8 @@ function drawArticles (tag) {
       columnWidth: '.grid-sizer',
       percentPosition: true
     })
+
+    msnry.layout()
   
     new Lazy({
       container: main,
