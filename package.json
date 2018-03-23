@@ -12,6 +12,7 @@
     "async": "^2.6.0",
     "empty": "^0.10.1",
     "empty-element": "^1.0.0",
+    "g": "^2.0.1",
     "lodash": "^4.17.5",
     "masonry-layout": "^4.2.1",
     "page": "^1.8.3",

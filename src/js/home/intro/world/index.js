@@ -13,7 +13,8 @@ let SCREEN_WIDTH, SCREEN_HEIGHT, HALF_SCREEN_W, HALF_SCREEN_H
 let scene, renderer, camera, stats, control,
     deb, gui, teaBody, teaCap, directionalLight,
     ambientLight, teaPotWrapper, sky, name, mixer,
-    prevTime, clock, helloMove, delta, pose, direction, a, sum, me
+    prevTime, clock, helloMove, delta, pose, direction, 
+    a, sum, me, lettersDD
 
 var time = 0.0
 var position1 = 0
@@ -45,13 +46,16 @@ let ambientLightS = 0xc3a2a2
 let directionalLightS = 0x4b8c96
 
 // me color
-let meColor = 0xffff93
+let meColor = 0x2f304b
 
 //name Color
 let nameColor = 0x2f304b
 
 // sky
-let upperColor = 0xc4dde3
+let upperColor = 0xb9dcd9
+
+//
+let devDeColor = 0xaa0808
 
 let size = 5
 let magnitude = 3
@@ -86,10 +90,12 @@ function world (debbug, assets, appContainer) {
       this.emissive = teaEmissiveS
       this.ambientLight = ambientLightS
       this.directionalLight = directionalLightS
+      this.devDeColor = 0x78ffbf
+      this.devDeColorEmission = 0xffcbbb
       this.capY = -0.53
       this.teaMakerRotation = 0.7
       this.posX = 2
-      this.posY = -5.8
+      this.posY = -6.2
       this.posZ = 0
       this.rotY = 0.17
       this.rotX = -0.29
@@ -103,9 +109,20 @@ function world (debbug, assets, appContainer) {
       this.meColor = meColor
     }
 
+    // DEV Y DESIGNER
+    let lettersMaterial = new THREE.MeshPhongMaterial({
+      color: upperColor,
+      emissive: 0xaa5858,
+      emissiveIntensity: 0.6,
+      flatShading: true
+    })
 
+    lettersDD = new THREE.Mesh(models.letters, lettersMaterial)
+    lettersDD.castShadow = true
+    lettersDD.receiveShadow = true
     // assets
 
+    
     // NAME
     // Material
     let nameMaterial = new THREE.MeshBasicMaterial({
@@ -174,18 +191,24 @@ function world (debbug, assets, appContainer) {
     teaCap.position.x = -0.25
     teaCap.position.y = -5
     teaCap.position.z = -0.3
-    // teaPotWrapper.rotation.y = -0.4 * Math.PI
 
+    lettersDD.position.x = -0.25
+    lettersDD.position.y = -5
+    lettersDD.position.z = -0.3
+    // teaPotWrapper.rotation.y = -0.4 * Math.PI
     
-    me.position.y = 3.8
+    me.position.y = 4
     me.position.x = 1.9
-    me.scale.y = 0.85
+    me.scale.y = 0.78
+    me.scale.x = 0.78
     me.rotation.y = 0.7 * Math.PI
+
     
     scene.add(name)
     teaPotWrapper.add(me)
     teaPotWrapper.add(teaCap)
     teaPotWrapper.add(teaBody)
+    teaPotWrapper.add(lettersDD)
 
     // teaPotWrapper.rotation.x = 0.04 * Math.PI
     teaPotWrapper.position.y = -5
@@ -254,7 +277,7 @@ function conf (appContainer, cb) {
 
 
 function createSky (color) {
-  let skyGeometry = new THREE.PlaneGeometry(400, 19, 200, 19)
+let skyGeometry = new THREE.PlaneGeometry(400, 13, 200, 13)
 
   let skyMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -281,6 +304,9 @@ function addControls (controlObject) {
   gui.addColor(controlObject, 'directionalLight', 0xf1bc1c)
   gui.addColor(controlObject, 'upperColor', upperColor)
   gui.add(controlObject, 'teaMakerRotation', -1.5, 1.5)
+  //devde
+  gui.addColor(controlObject, 'devDeColor', 0x000000)
+  gui.addColor(controlObject, 'devDeColorEmission', 0x000000)
   // Me color
   gui.addColor(controlObject, 'meColor', meColor)
   // sky
@@ -345,6 +371,9 @@ function render (ts) {
   let myDirectional = new THREE.Color(control.directionalLight)
   let personColor = new THREE.Color(control.meColor)
 
+  let myDevDeColor = new THREE.Color(control.devDeColor)
+  let myDevDeColorEmission = new THREE.Color(control.devDeColorEmission)
+
   teaBody.material.emissive = myEmissive
   teaBody.material.color = myColor
 
@@ -354,6 +383,9 @@ function render (ts) {
 
   ambientLight.color = myAmbient
   directionalLight.color = myDirectional
+
+  lettersDD.material.color = myDevDeColor
+  lettersDD.material.emissive = myDevDeColorEmission
 
   let skyColor = new THREE.Color(control.upperColor)
 

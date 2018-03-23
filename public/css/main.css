@@ -74,10 +74,6 @@ svg:focus {
   src: url("/fonts/Beauty.otf"); }
 
 @font-face {
-  font-family: 'Oldy';
-  src: url("/fonts/Arkhip.ttf"); }
-
-@font-face {
   font-family: 'MySans';
   src: url("/fonts/onesans.otf"); }
 

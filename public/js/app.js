@@ -57975,7 +57975,8 @@ var scene = void 0,
     direction = void 0,
     a = void 0,
     sum = void 0,
-    me = void 0;
+    me = void 0,
+    lettersDD = void 0;
 
 var time = 0.0;
 var position1 = 0;
@@ -58007,13 +58008,16 @@ var ambientLightS = 0xc3a2a2;
 var directionalLightS = 0x4b8c96;
 
 // me color
-var meColor = 0xffff93;
+var meColor = 0x2f304b;
 
 //name Color
 var nameColor = 0x2f304b;
 
 // sky
-var upperColor = 0xc4dde3;
+var upperColor = 0xb9dcd9;
+
+//
+var devDeColor = 0xaa0808;
 
 var size = 5;
 var magnitude = 3;
@@ -58048,10 +58052,12 @@ function world(debbug, assets, appContainer) {
       this.emissive = teaEmissiveS;
       this.ambientLight = ambientLightS;
       this.directionalLight = directionalLightS;
+      this.devDeColor = 0x78ffbf;
+      this.devDeColorEmission = 0xffcbbb;
       this.capY = -0.53;
       this.teaMakerRotation = 0.7;
       this.posX = 2;
-      this.posY = -5.8;
+      this.posY = -6.2;
       this.posZ = 0;
       this.rotY = 0.17;
       this.rotX = -0.29;
@@ -58065,7 +58071,19 @@ function world(debbug, assets, appContainer) {
       this.meColor = meColor;
     }();
 
+    // DEV Y DESIGNER
+    var lettersMaterial = new THREE.MeshPhongMaterial({
+      color: upperColor,
+      emissive: 0xaa5858,
+      emissiveIntensity: 0.6,
+      flatShading: true
+    });
+
+    lettersDD = new THREE.Mesh(models.letters, lettersMaterial);
+    lettersDD.castShadow = true;
+    lettersDD.receiveShadow = true;
     // assets
+
 
     // NAME
     // Material
@@ -58135,18 +58153,23 @@ function world(debbug, assets, appContainer) {
     teaCap.position.x = -0.25;
     teaCap.position.y = -5;
     teaCap.position.z = -0.3;
+
+    lettersDD.position.x = -0.25;
+    lettersDD.position.y = -5;
+    lettersDD.position.z = -0.3;
     // teaPotWrapper.rotation.y = -0.4 * Math.PI
 
-
-    me.position.y = 3.8;
+    me.position.y = 4;
     me.position.x = 1.9;
-    me.scale.y = 0.85;
+    me.scale.y = 0.78;
+    me.scale.x = 0.78;
     me.rotation.y = 0.7 * Math.PI;
 
     scene.add(name);
     teaPotWrapper.add(me);
     teaPotWrapper.add(teaCap);
     teaPotWrapper.add(teaBody);
+    teaPotWrapper.add(lettersDD);
 
     // teaPotWrapper.rotation.x = 0.04 * Math.PI
     teaPotWrapper.position.y = -5;
@@ -58213,7 +58236,7 @@ function conf(appContainer, cb) {
 }
 
 function createSky(color) {
-  var skyGeometry = new THREE.PlaneGeometry(400, 19, 200, 19);
+  var skyGeometry = new THREE.PlaneGeometry(400, 13, 200, 13);
 
   var skyMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -58240,6 +58263,9 @@ function addControls(controlObject) {
   gui.addColor(controlObject, 'directionalLight', 0xf1bc1c);
   gui.addColor(controlObject, 'upperColor', upperColor);
   gui.add(controlObject, 'teaMakerRotation', -1.5, 1.5);
+  //devde
+  gui.addColor(controlObject, 'devDeColor', 0x000000);
+  gui.addColor(controlObject, 'devDeColorEmission', 0x000000);
   // Me color
   gui.addColor(controlObject, 'meColor', meColor);
   // sky
@@ -58304,6 +58330,9 @@ function render(ts) {
   var myDirectional = new THREE.Color(control.directionalLight);
   var personColor = new THREE.Color(control.meColor);
 
+  var myDevDeColor = new THREE.Color(control.devDeColor);
+  var myDevDeColorEmission = new THREE.Color(control.devDeColorEmission);
+
   teaBody.material.emissive = myEmissive;
   teaBody.material.color = myColor;
 
@@ -58313,6 +58342,9 @@ function render(ts) {
 
   ambientLight.color = myAmbient;
   directionalLight.color = myDirectional;
+
+  lettersDD.material.color = myDevDeColor;
+  lettersDD.material.emissive = myDevDeColorEmission;
 
   var skyColor = new THREE.Color(control.upperColor);
 
@@ -70649,7 +70681,7 @@ module.exports = function (cb) {
         };
         cb(null, geometries);
       } else {
-        cb(new Error('not found geometry'));
+        cb(new Error('not found body'));
       }
     });
   }, function (geometries, cb) {
@@ -70658,7 +70690,16 @@ module.exports = function (cb) {
         geometries.cap = geometry;
         cb(null, geometries);
       } else {
-        cb(new Error('not found geometry'));
+        cb(new Error('not found cap'));
+      }
+    });
+  }, function (geometries, cb) {
+    loader.load('/models/letters.json', function (geometry) {
+      if (geometry) {
+        geometries.letters = geometry;
+        cb(null, geometries);
+      } else {
+        cb(new Error('not found letters'));
       }
     });
   }, function (geometries, cb) {

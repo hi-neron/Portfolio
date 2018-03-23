@@ -17,7 +17,7 @@ module.exports = function (cb){
           }
           cb(null, geometries)
         } else {
-          cb(new Error('not found geometry'))
+          cb(new Error('not found body'))
         }
       })
     },
@@ -27,7 +27,17 @@ module.exports = function (cb){
           geometries.cap = geometry
           cb(null, geometries)
         } else {
-          cb(new Error('not found geometry'))
+          cb(new Error('not found cap'))
+        }
+      })
+    },
+    function(geometries, cb){
+      loader.load('/models/letters.json', (geometry) => {
+        if (geometry) {
+          geometries.letters = geometry
+          cb(null, geometries)
+        } else {
+          cb(new Error('not found letters'))
         }
       })
     },
@@ -42,6 +52,7 @@ module.exports = function (cb){
         }
       })
     },
+
     function(geometries, cb){
       fontLoader.load('/fonts/square.json', (font) => {
         if (font) {
