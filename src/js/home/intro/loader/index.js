@@ -52,7 +52,6 @@ module.exports = function (cb){
         }
       })
     },
-
     function(geometries, cb){
       fontLoader.load('/fonts/square.json', (font) => {
         if (font) {

@@ -4,7 +4,7 @@ $width: 33.3%;
   width: 90%;
   text-align: center;
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 52px;
   height: auto;
   min-height: 700px;
 
@@ -17,9 +17,8 @@ $width: 33.3%;
       .grid-item{
         width: $width;
         overflow: hidden;
-        border-bottom: 1px solid rgba($mainColor, .2);
         transition: all 0.5s;
-  
+        
         &:hover {
           cursor: pointer;
           img {
@@ -32,7 +31,7 @@ $width: 33.3%;
           // filter: grayscale(100%);
           width: 100%;
         }
-  
+        
         .article-label {
           text-align: left;
           font-family: 'rame';
@@ -43,11 +42,13 @@ $width: 33.3%;
           font-weight: 300;
           padding: 20px;
           letter-spacing: 0.02rem;
-          padding-bottom: 35px;
+          padding-bottom: 55px;
+          border-bottom: 1px dotted rgba($mainColor, 0.2);
+
   
           &:after {
             content: ' ●';
-            color: rgba($mainColor, 0.8);
+            color: rgba($mainColor, 0.5);
             vertical-align: bottom;
             font-size: 0.8rem;
           }

@@ -58055,8 +58055,8 @@ function world(debbug, assets, appContainer) {
       this.emissive = teaEmissiveS;
       this.ambientLight = ambientLightS;
       this.directionalLight = directionalLightS;
-      this.devDeColor = 0x78ffbf;
-      this.devDeColorEmission = 0xffcbbb;
+      this.devDeColor = 0x829492;
+      this.devDeColorEmission = 0xfbc8b8;
       this.capY = -0.53;
       this.teaMakerRotation = 0.7;
       this.posX = 2;
@@ -58239,7 +58239,7 @@ function conf(appContainer, cb) {
 }
 
 function createSky(color) {
-  var skyGeometry = new THREE.PlaneGeometry(400, 13, 200, 13);
+  var skyGeometry = new THREE.PlaneGeometry(400, 15, 200, 15);
 
   var skyMaterial = new THREE.MeshBasicMaterial({
     color: color,

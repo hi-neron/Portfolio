@@ -30,11 +30,13 @@
         }
 
         .phrase-couple[title='num0']{
-          font-size: 100%;
+          font-size: 110%;
           line-height: 1.1em;
+          font-family: 'rali';
         }
-
+        
         .phrase-couple[title='num1'] {
+          font-family: 'rame';
           font-size: 60%;
           line-height: 1.1em;
         }
@@ -42,14 +44,14 @@
         .phrase-couple[title='num2'] {
           font-size: 45%;
           line-height: 1.6em;
-          font-family: 'raexbo';
+          font-family: 'rali';
 
         }
 
         .phrase-couple[title='thats-me'] {
           font-size: 28%;
           line-height: 1em;
-          font-family: 'raexbo';
+          font-family: 'rali';
           font-weight: 900;
           letter-spacing: 0.5em;
           text-transform: uppercase;

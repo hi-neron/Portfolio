@@ -214,7 +214,7 @@ svg:focus {
   width: 90%;
   text-align: center;
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 52px;
   height: auto;
   min-height: 700px; }
   #main-content .main-over-wrapper .main-content-wrapper .grid-item-widthx2 {
@@ -222,7 +222,6 @@ svg:focus {
   #main-content .main-over-wrapper .main-content-wrapper .grid-item {
     width: 33.3%;
     overflow: hidden;
-    border-bottom: 1px solid rgba(47, 48, 75, 0.2);
     transition: all 0.5s; }
     #main-content .main-over-wrapper .main-content-wrapper .grid-item:hover {
       cursor: pointer; }
@@ -239,10 +238,11 @@ svg:focus {
       font-weight: 300;
       padding: 20px;
       letter-spacing: 0.02rem;
-      padding-bottom: 35px; }
+      padding-bottom: 55px;
+      border-bottom: 1px dotted rgba(47, 48, 75, 0.2); }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-label:after {
         content: ' ●';
-        color: rgba(47, 48, 75, 0.8);
+        color: rgba(47, 48, 75, 0.5);
         vertical-align: bottom;
         font-size: 0.8rem; }
 
@@ -301,19 +301,21 @@ svg:focus {
           .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple .phrase-word .phrase-link:hover {
             color: #ff684d; }
       .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='num0'] {
-        font-size: 100%;
-        line-height: 1.1em; }
+        font-size: 110%;
+        line-height: 1.1em;
+        font-family: 'rali'; }
       .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='num1'] {
+        font-family: 'rame';
         font-size: 60%;
         line-height: 1.1em; }
       .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='num2'] {
         font-size: 45%;
         line-height: 1.6em;
-        font-family: 'raexbo'; }
+        font-family: 'rali'; }
       .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='thats-me'] {
         font-size: 28%;
         line-height: 1em;
-        font-family: 'raexbo';
+        font-family: 'rali';
         font-weight: 900;
         letter-spacing: 0.5em;
         text-transform: uppercase;
