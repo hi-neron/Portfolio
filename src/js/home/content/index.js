@@ -39,7 +39,15 @@ function getItems(tag, cb) {
     items = result
     ev.message = 'Keyword: '
   } else {
-    ev.message = tag ? `Keyword not found: ` : "Everything here,"
+
+    if (tag) {
+      ev.message = 'Keyword '
+      ev.alert = 'not found:'
+
+    } else {
+      ev.message = "Everything here,"
+    }
+
     ev.tag = ev.message === 'Everything here,' ? " that's me." : tag
     items = items
   }

@@ -10,7 +10,7 @@
 
     .phrase-content {
       .phrase-links-container {
-        font-size: 8vw;
+        font-size: 7vw;
 
         .phrase-couple {
           color: $mainColor;
@@ -56,6 +56,18 @@
           letter-spacing: 0.5em;
           text-transform: uppercase;
           cursor: pointer;
+          position: relative;
+
+          &:before {
+            content: '';
+            position: absolute;
+            width: 9em;
+            transform: rotateZ(2deg);
+            border-top: 1px solid white;
+            top: .3em;
+            height: 1px;
+            background-color: $mainColor;
+          }
         }
       }
     }
@@ -82,7 +94,7 @@
     }
   }
   .phrase-links-container {
-    font-size: 5.4rem !important;
+    font-size: 3.4rem !important;
   }
 }
 

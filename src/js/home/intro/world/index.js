@@ -16,15 +16,6 @@ let scene, renderer, camera, stats, control,
     prevTime, clock, helloMove, delta, pose, direction, 
     a, sum, me, lettersDD
 
-// var time = 0.0
-// var position1 = 0
-// var position2 = 0
-// var position3 = 0
-// var oldPosition = 0
-// var c = 0
-// var maxA = 500
-// var factor = 0
-// var active = false
 
 let fontSizeName = 2.8
 let messageH1 = 'Jose Sánchez'
@@ -52,7 +43,7 @@ let meColor = 0x2f304b
 //name Color
 let nameColor = 0x2f304b
 
-// sky
+// sky Color
 let upperColor = 0xb9dcd9
 
 //
@@ -278,7 +269,7 @@ function conf (appContainer, cb) {
 
 
 function createSky (color) {
-let skyGeometry = new THREE.PlaneGeometry(400, 15, 200, 15)
+  let skyGeometry = new THREE.PlaneGeometry(400, 15, 200, 15)
 
   let skyMaterial = new THREE.MeshBasicMaterial({
     color: color,

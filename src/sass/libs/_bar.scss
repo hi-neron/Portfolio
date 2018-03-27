@@ -1,18 +1,64 @@
+.view {
+  opacity: 1 !important;
+}
+
+.alert {
+  color: $secondaryColor !important;
+}
+
+%back2 {
+  $first: rgba($secondaryColor, 0.9);
+  $second: rgba($secondaryColor, 0.5);
+
+  background: $first;
+  background: -moz-linear-gradient(top, $first 0%, $first 16%, $second 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, $first), color-stop(16%, $first), color-stop(100%, $second)) url('/img/noise.png');
+  background: -webkit-linear-gradient(top, $first 0%, $first 16%, $second 100%) url('/img/noise.png');
+  background: -o-linear-gradient(top, $first 0%, $first 16%, $second 100%);
+  background: -ms-linear-gradient(top, $first 0%, $first 16%, $second 100%);
+  background: linear-gradient(to bottom, $first 0%, $first 16%, $second 100%), url('/img/noise.png');
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#dbfffc', GradientType=0 );
+}
+
 #main-bar {
-  height: 30px;
+  // vars
+  $background-bar-color: rgba($secondaryColor2, 1);
+  $trigger-color: rgba($mainColor, 1);
+  $items-colors: $myWhite;
+  $items-colors-over: $mainColor;
+  // ---->
+
+  transition: 0.25s all ease-in-out;
+  height: 100%;
   width: 30px;
   position: fixed;
-  top: 50%;
-  left:  18px;
+  top: 0px;
+  transform: translateX(-245px);
+  z-index: 10;
 
-  &:hover {
-    cursor: pointer;
+  .bar-fix {
+    position: fixed;
+    top: 0;
   }
 
   .bar-wrapper {
+    width: 300px;
+    height: 100%;
+
+
     #bar-trigger {
-      color: rgba($mainColor, .9);
-      font-family: 'rame';
+      color: $trigger-color;
+      font-family: 'rali';
+      width: 26px;
+      height: 60px;
+      margin-left: 16px;
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.15s ease-in;
+
+      &:hover {
+        cursor: pointer;
+      }
       
       .icon {
         font-size: 1.1rem;
@@ -24,7 +70,7 @@
         height: 30px;
         text-align: right;
         transform: rotateZ(-90deg) translate(-190px, -174px);
-        letter-spacing: 0.02rem;
+        letter-spacing: 0.08rem;
 
         .message {
           font-weight: 300;
@@ -38,20 +84,64 @@
         }
       }
     }
-    .bar-list {
-      .bar-item {
-        // display: inline-block;
-        margin-bottom: 3px;
 
-        a {
-          text-decoration: none;
-          font-size: 1.1rem;
-          color: $mainColor;
-          &:visited {
-            color: $mainColor;
+    #bar-menu {
+      width: 170px;
+      display: inline-block;
+      padding: 36px;
+      // background-color: $background-bar-color;
+      height: 100%;
+      @extend %back2;
+
+      .labels {
+        font-family: 'mySansM';
+        line-height: 8rem;
+        color: $items-colors
+      }
+
+      .item-bar-link {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .main-bar-list {
+        margin-bottom: 40px;
+        .bar-main-item {
+          margin-bottom: 18px;
+  
+          span {
+            font-family: 'rali';
+            text-decoration: none;
+            font-size: 1.8rem;
+            color: $items-colors;
+            
+            &:visited {
+              color: $items-colors-over;
+            }
+          }
+        }
+      }
+
+      .secondary-bar-list {
+        .bar-secondary-item {
+          display: inline-block;
+  
+          span {
+            line-height: 1.4em;
+            margin-right: 8px;
+            font-family: 'raexbo';
+            text-decoration: none;
+            font-size: 0.9em;
+            color: $items-colors;
+            
+            &:visited {
+              color: $items-colors-over;
+            }
           }
         }
       }
     }
   }
 }
+

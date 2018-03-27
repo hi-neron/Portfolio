@@ -16,25 +16,33 @@ const Lazy = require('vanilla-lazyload')
 let bioTags = ['DESIGNER', 'DEV', 'ILLUSTRATOR', 'RESILIENT', 'COFFEE', 'SEA LOVER']
 
 // bar
-const bar = require('./bar')
+const barCreator = require('./bar')
 let app, mainContent, introContainer, phrase, msnry
 
-page('/:tag?', create, bar, (ctx, next) => {
+page('/:tag?', create, (ctx, next) => {
   // vars
   let app = ctx.app
   let introContainer = ctx.introContainer
   let phrase = ctx.phrase
   let footer = ctx.footer
+  let bar = ctx.bar
   let tag = ctx.params.tag
 
   mainContent = ctx.mainContent
   drawArticles(tag)
-
+  
   // get intro
   document.onload = intro.init(introContainer)
-
-  phrase.appendChild(phraseC(bioTags))
-  app.appendChild(ctx.bar)
+  
+  // Bar
+  barCreator((t) => {
+    bar.appendChild(t)
+  })
+  
+  // Bio
+  phraseC(bioTags, (template) => {
+    phrase.appendChild(template)  
+  })
 
   content.getFooter((e, r) => {
     if (e) return console.log(new Error({message: 'An Error has ocurred'}))
@@ -43,6 +51,9 @@ page('/:tag?', create, bar, (ctx, next) => {
   })
 
   document.body.appendChild(app)
+  setTimeout(() => {
+    msnry.layout()
+  }, 500); 
   next()
 })
 
@@ -62,7 +73,10 @@ function drawArticles (tag) {
     msnry = new Masonry(main, {
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
-      percentPosition: true
+      percentPosition: true,
+      initLayout: false,
+      transitionDuration: 0
+
     })
 
     msnry.layout()
@@ -84,4 +98,5 @@ function ChangeUrl(title, url) {
       alert("Browser does not support HTML5.")
   }
 }
+
 module.exports = drawArticles

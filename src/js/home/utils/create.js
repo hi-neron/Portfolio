@@ -9,6 +9,10 @@ function create(ctx, next) {
   phrase.setAttribute('class', 'first-phrase')
   ctx.phrase = phrase
 
+  let bar = document.createElement('nav')
+  bar.setAttribute('id', 'main-bar')
+  ctx.bar = bar
+
   let mainContent = document.createElement('section')
   mainContent.setAttribute('id', 'main-content')
   ctx.mainContent = mainContent
@@ -23,6 +27,7 @@ function create(ctx, next) {
 
   app.appendChild(introContainer)
   app.appendChild(phrase)
+  document.body.appendChild(bar)
   app.appendChild(mainContent)
   app.appendChild(footer)
   next()

@@ -6,7 +6,7 @@ module.exports = [
     content:  `Cillum voluptate tempor Lorem fugiat Lorem non. Et nulla ullamco consequat incididunt. Irure commodo velit ad incididunt duis officia ut labore sunt. Labore in ipsum voluptate ipsum duis amet.
               Reprehenderit eu consectetur consectetur do magna laborum nulla. Quis cupidatat cupidatat voluptate quis anim veniam enim incididunt proident cillum proident ex irure proident. Commodo deserunt deserunt qui laborum laborum ut laboris. Ut duis occaecat magna et aliquip et. Ex nisi commodo anim eu. Aute non elit eiusmod dolore velit aute dolore nulla irure pariatur minim dolor.
               Aute qui et reprehenderit anim pariatur sint est est. Proident et ut aute excepteur et anim nulla officia ex ipsum esse laboris. Anim sunt cillum nostrud quis esse duis ex deserunt. Labore nulla duis duis commodo Lorem sunt commodo. Sit veniam pariatur sint pariatur nulla ut proident et ad proident velit exercitation nostrud. Ea quis veniam dolor laborum proident.`,
-    keywords: ['illustrator', 'designer', 'dev'],
+    keywords: ['illustrator', 'designer', 'dev', 'design'],
     pictures: {
       main: {
         name: 'hello World',

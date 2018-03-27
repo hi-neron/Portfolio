@@ -56,7 +56,6 @@ function itemCreator(items) {
           }
         counter++
     }
-
     template.appendChild(myContainer)
   }
 
@@ -80,6 +79,6 @@ function createTemplate (phrase) {
   return template
 }
 
-module.exports = function (phrase) {
-  return createTemplate(phrase)
+module.exports = function (phrase, cb) {
+  return cb(createTemplate(phrase))
 }

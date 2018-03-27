@@ -41,5 +41,22 @@ a {
   }
 }
 
+#main-bar {
+  position: fixed;
+}
+
 #app {
+  position: absolute;
+  transition: 0.25s all ease-in-out;
+  transform: translateX(0px);
+}
+
+.main-bar-open-app {
+  transform: translateX(300px) !important;
+  // left: 300px !important;
+}
+
+.main-bar-open-bar {
+  transform: translateX(0px) !important;
+  // left: 300px !important;
 }
