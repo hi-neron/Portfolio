@@ -4,6 +4,8 @@
    License: none (public domain)
 */
 @import url("https://fonts.googleapis.com/css?family=Inknut+Antiqua:300,500,700,800,900|Vollkorn:400,400i,700,700i,900,900i");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Alegreya+SC:400,500,700|Averia+Libre:300,400,700|Averia+Sans+Libre:400,700|Averia+Serif+Libre:300i,400,700|Old+Standard+TT:400,400i,700");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -74,12 +76,20 @@ svg:focus {
   src: url("/fonts/Beauty.otf"); }
 
 @font-face {
-  font-family: 'MySans';
-  src: url("/fonts/onesans.otf"); }
+  font-family: 'cons';
+  src: url("/fonts/cons.ttf"); }
 
 @font-face {
-  font-family: 'MySansM';
-  src: url("/fonts/onesansme.otf"); }
+  font-family: 'Sax';
+  src: url("/fonts/Sax.otf"); }
+
+@font-face {
+  font-family: 'Saxi';
+  src: url("/fonts/Saxi.otf"); }
+
+@font-face {
+  font-family: 'Saxbo';
+  src: url("/fonts/Saxbo.ttf"); }
 
 @font-face {
   font-family: 'rabo';
@@ -159,29 +169,26 @@ svg:focus {
 .alert {
   color: #ff4d4d !important; }
 
-#main-bar .bar-wrapper #bar-menu {
-  background: rgba(255, 77, 77, 0.9);
-  background: -moz-linear-gradient(top, rgba(255, 77, 77, 0.9) 0%, rgba(255, 77, 77, 0.9) 16%, rgba(255, 77, 77, 0.5) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 77, 77, 0.9)), color-stop(16%, rgba(255, 77, 77, 0.9)), color-stop(100%, rgba(255, 77, 77, 0.5))) url("/img/noise.png");
-  background: -webkit-linear-gradient(top, rgba(255, 77, 77, 0.9) 0%, rgba(255, 77, 77, 0.9) 16%, rgba(255, 77, 77, 0.5) 100%) url("/img/noise.png");
-  background: -o-linear-gradient(top, rgba(255, 77, 77, 0.9) 0%, rgba(255, 77, 77, 0.9) 16%, rgba(255, 77, 77, 0.5) 100%);
-  background: -ms-linear-gradient(top, rgba(255, 77, 77, 0.9) 0%, rgba(255, 77, 77, 0.9) 16%, rgba(255, 77, 77, 0.5) 100%);
-  background: linear-gradient(to bottom, rgba(255, 77, 77, 0.9) 0%, rgba(255, 77, 77, 0.9) 16%, rgba(255, 77, 77, 0.5) 100%), url("/img/noise.png");
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#dbfffc', GradientType=0 ); }
+.rotate-icon {
+  transform: rotateZ(-180deg) !important; }
 
 #main-bar {
-  transition: 0.25s all ease-in-out;
+  -webkit-transition: all 0.4s cubic-bezier(0.765, 0.005, 0.365, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.765, 0.005, 0.365, 1);
+  -o-transition: all 0.4s cubic-bezier(0.765, 0.005, 0.365, 1);
+  transition: all 0.4s cubic-bezier(0.765, 0.005, 0.365, 1);
+  /* custom */
   height: 100%;
   width: 30px;
   position: fixed;
   top: 0px;
-  transform: translateX(-245px);
+  transform: translateX(-363px);
   z-index: 10; }
   #main-bar .bar-fix {
     position: fixed;
     top: 0; }
   #main-bar .bar-wrapper {
-    width: 300px;
+    width: 410px;
     height: 100%; }
     #main-bar .bar-wrapper #bar-trigger {
       color: #2f304b;
@@ -189,13 +196,19 @@ svg:focus {
       width: 26px;
       height: 60px;
       margin-left: 16px;
-      display: inline-block;
+      float: right;
+      margin-top: 50px;
       opacity: 0;
-      transition: opacity 0.15s ease-in; }
+      transition: all 0.25s ease-in; }
       #main-bar .bar-wrapper #bar-trigger:hover {
         cursor: pointer; }
+        #main-bar .bar-wrapper #bar-trigger:hover .icon {
+          color: #ff4d4d; }
       #main-bar .bar-wrapper #bar-trigger .icon {
-        font-size: 1.1rem; }
+        transition: all 0.25s ease-in;
+        font-size: 1rem;
+        transform: rotateZ(0deg) translate(3px, 6px);
+        transform-origin: 8px; }
       #main-bar .bar-wrapper #bar-trigger .tag-info {
         font-size: 1rem;
         width: 380px;
@@ -209,38 +222,58 @@ svg:focus {
           font-family: 'raexbo';
           text-transform: lowercase; }
     #main-bar .bar-wrapper #bar-menu {
-      width: 170px;
+      width: 360px;
       display: inline-block;
-      padding: 36px;
-      height: 100%; }
+      background-color: #161720;
+      height: 100%;
+      padding-top: 80px; }
       #main-bar .bar-wrapper #bar-menu .labels {
-        font-family: 'mySansM';
-        line-height: 8rem;
-        color: #f3f3f6; }
+        padding-left: 20px;
+        font-family: 'Josefin Sans';
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: rgba(255, 77, 77, 0.7);
+        margin-bottom: 15px; }
       #main-bar .bar-wrapper #bar-menu .item-bar-link:hover {
         cursor: pointer; }
       #main-bar .bar-wrapper #bar-menu .main-bar-list {
-        margin-bottom: 40px; }
+        margin-bottom: 35px;
+        padding: 20px; }
         #main-bar .bar-wrapper #bar-menu .main-bar-list .bar-main-item {
-          margin-bottom: 18px; }
+          margin-bottom: 1.1rem; }
           #main-bar .bar-wrapper #bar-menu .main-bar-list .bar-main-item span {
-            font-family: 'rali';
+            text-transform: uppercase;
+            font-family: 'Old Standard TT';
+            -webkit-font-smoothing: antialiased;
+            font-weight: 300;
             text-decoration: none;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #f3f3f6; }
-            #main-bar .bar-wrapper #bar-menu .main-bar-list .bar-main-item span:visited {
-              color: #2f304b; }
-      #main-bar .bar-wrapper #bar-menu .secondary-bar-list .bar-secondary-item {
-        display: inline-block; }
-        #main-bar .bar-wrapper #bar-menu .secondary-bar-list .bar-secondary-item span {
-          line-height: 1.4em;
-          margin-right: 8px;
-          font-family: 'raexbo';
+            #main-bar .bar-wrapper #bar-menu .main-bar-list .bar-main-item span:hover {
+              color: #b9dcd9; }
+      #main-bar .bar-wrapper #bar-menu .secondary-bar-list {
+        padding-left: 20px;
+        margin-bottom: 110px; }
+        #main-bar .bar-wrapper #bar-menu .secondary-bar-list li {
+          display: inline-block;
+          color: #f3f3f6;
+          font-family: 'Inknut Antiqua';
+          -webkit-font-smoothing: antialiased;
           text-decoration: none;
-          font-size: 0.9em;
-          color: #f3f3f6; }
-          #main-bar .bar-wrapper #bar-menu .secondary-bar-list .bar-secondary-item span:visited {
-            color: #2f304b; }
+          line-height: 1.6rem;
+          margin-right: 8px;
+          font-size: 0.9em; }
+          #main-bar .bar-wrapper #bar-menu .secondary-bar-list li:after {
+            content: ','; }
+          #main-bar .bar-wrapper #bar-menu .secondary-bar-list li:last-child:after {
+            content: '.'; }
+          #main-bar .bar-wrapper #bar-menu .secondary-bar-list li:hover {
+            cursor: pointer;
+            color: #aefff8; }
+      #main-bar .bar-wrapper #bar-menu .bar-bottom {
+        width: 100%;
+        height: 100%;
+        position: relative; }
 
 #intro {
   width: 100%;
@@ -295,21 +328,20 @@ svg:focus {
         width: 100%; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-label {
         text-align: left;
-        font-family: 'rame';
+        font-family: 'sax';
         color: #2f304b;
-        line-height: 1.58rem;
-        font-size: 1.2rem;
+        line-height: 1.68rem;
+        font-size: 1.25rem;
         margin-top: -6px;
         font-weight: 300;
         padding: 24px;
         letter-spacing: 0.02rem;
-        padding-bottom: 65px;
-        border-bottom: 1px dotted rgba(47, 48, 75, 0.2); }
+        padding-bottom: 65px; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-label:after {
-          content: ' ●';
+          content: '  ⚓️';
           color: rgba(47, 48, 75, 0.5);
           vertical-align: bottom;
-          font-size: 0.8em; }
+          font-size: 0.6em; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item:hover .article-label::after {
         color: #ff4d4d; }
 
@@ -348,55 +380,83 @@ svg:focus {
   .grid-item-widthx2 {
     width: 100% !important; } }
 
+@keyframes rotateTimon {
+  0% {
+    transform: rotateZ(25deg); }
+  100% {
+    transform: rotateZ(-25deg); } }
+
 .phrase-container {
   width: 100%;
-  margin-bottom: 150px; }
+  margin-bottom: 190px; }
   .phrase-container .phrase-wrapper {
     width: 100%;
     text-align: center;
     display: inline-block; }
-    .phrase-container .phrase-wrapper .phrase-content .phrase-links-container {
-      font-size: 7vw; }
-      .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple {
-        color: #2f304b;
-        -webkit-font-smoothing: antialiased !important;
-        letter-spacing: 0.3rem;
-        font-family: 'MySans'; }
-        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple .phrase-word .phrase-link {
+    .phrase-container .phrase-wrapper .phrase-content {
+      transform: rotate3d(0, 0, 0, 45deg); }
+      .phrase-container .phrase-wrapper .phrase-content .phrase-links-container {
+        font-size: 7vw; }
+        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple {
+          color: #2f304b;
+          -webkit-font-smoothing: antialiased !important;
+          letter-spacing: 0.3rem;
+          font-family: 'MySans'; }
+          .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple .phrase-word .phrase-link {
+            cursor: pointer;
+            transition: all .1s ease-in; }
+            .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple .phrase-word .phrase-link:hover {
+              color: #ff4d4d; }
+        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='designer'] {
+          font-size: 140%;
+          font-family: 'Sax';
+          margin-left: -0.25em;
+          letter-spacing: .07em; }
+        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='dev'] {
+          margin-left: 0.9em;
+          font-family: 'Sax';
+          font-size: 190%;
+          letter-spacing: 1.16em;
+          position: relative; }
+          .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='dev'] span:before {
+            font-family: 'Josefin Sans';
+            content: '<';
+            position: absolute;
+            left: 50%;
+            margin-left: -2.7em;
+            font-size: 0.6em;
+            font-weight: 100;
+            top: .2em; }
+          .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='dev'] span:after {
+            top: .2em;
+            font-family: 'Josefin Sans';
+            margin-left: .21em;
+            font-size: 0.6em;
+            font-weight: 100;
+            content: '>';
+            left: 50%;
+            position: absolute; }
+        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='sea lover'] {
+          margin-bottom: 0.5em;
+          font-size: 120%;
+          font-family: 'Sax';
+          letter-spacing: 0.11em;
+          margin-left: -0.25em; }
+        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='timon'] {
+          display: inline-block;
+          width: 1.2em;
+          margin-bottom: 0.7em; }
+          .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='timon'] .move {
+            transform-origin: 50%;
+            animation: 4s infinite alternate rotateTimon;
+            animation-timing-function: ease-in-out; }
+        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='thats-me'] {
+          margin-left: 0.4em;
+          font-size: 74%;
+          font-family: 'Saxbo';
+          letter-spacing: 0.87em;
           cursor: pointer;
-          transition: all .1s ease-in; }
-          .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple .phrase-word .phrase-link:hover {
-            color: #ff4d4d; }
-      .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='num0'] {
-        font-size: 110%;
-        line-height: 1.1em;
-        font-family: 'rali'; }
-      .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='num1'] {
-        font-family: 'rame';
-        font-size: 60%;
-        line-height: 1.1em; }
-      .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='num2'] {
-        font-size: 45%;
-        line-height: 1.6em;
-        font-family: 'rali'; }
-      .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='thats-me'] {
-        font-size: 28%;
-        line-height: 1em;
-        font-family: 'rali';
-        font-weight: 900;
-        letter-spacing: 0.5em;
-        text-transform: uppercase;
-        cursor: pointer;
-        position: relative; }
-        .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='thats-me']:before {
-          content: '';
-          position: absolute;
-          width: 9em;
-          transform: rotateZ(2deg);
-          border-top: 1px solid white;
-          top: .3em;
-          height: 1px;
-          background-color: #2f304b; }
+          position: relative; }
 
 @media all and (min-width: 1240px) {
   .phrase-container .phrase-wrapper {
@@ -405,12 +465,12 @@ svg:focus {
   .phrase-links-container {
     font-size: 6rem !important; } }
 
-@media all and (min-width: 960px) {
+@media all and (min-width: 670px) {
   .phrase-container .phrase-wrapper {
     margin-bottom: 40px !important;
     margin-top: 100px !important; }
   .phrase-links-container {
-    font-size: 3.4rem !important; } }
+    font-size: 3rem !important; } }
 
 @media all and (min-width: 460px) {
   .phrase-container .phrase-wrapper {
@@ -443,11 +503,15 @@ a {
 
 #app {
   position: absolute;
-  transition: 0.25s all ease-in-out;
+  -webkit-transition: all 0.25s cubic-bezier(0.765, 0.005, 0.365, 1);
+  -moz-transition: all 0.25s cubic-bezier(0.765, 0.005, 0.365, 1);
+  -o-transition: all 0.25s cubic-bezier(0.765, 0.005, 0.365, 1);
+  transition: all 0.25s cubic-bezier(0.765, 0.005, 0.365, 1);
+  /* custom */
   transform: translateX(0px); }
 
 .main-bar-open-app {
-  transform: translateX(300px) !important; }
+  transform: translateX(350px) !important; }
 
 .main-bar-open-bar {
   transform: translateX(0px) !important; }

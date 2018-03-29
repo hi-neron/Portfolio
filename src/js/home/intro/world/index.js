@@ -14,7 +14,7 @@ let scene, renderer, camera, stats, control,
     deb, gui, teaBody, teaCap, directionalLight,
     ambientLight, teaPotWrapper, sky, name, mixer,
     prevTime, clock, helloMove, delta, pose, direction, 
-    a, sum, me, lettersDD
+    a, sum, me, lettersDD, animation
 
 
 let fontSizeName = 2.8
@@ -63,7 +63,7 @@ let mousePosition = {
 
 window.onmousemove = mousePos
 
-function world (debbug, assets, appContainer) {
+function world (debbug, assets, appContainer, ctx) {
   renderer = new THREE.WebGLRenderer({alpha: true, antialias:true})
   renderer.setPixelRatio( window.devicePixelRatio )
   deb = debbug
@@ -72,6 +72,7 @@ function world (debbug, assets, appContainer) {
   // getting assets
   let models = assets.geometries
   let fonts = assets.fonts
+  ctx.animation = animation
 
   conf (appContainer, (renderer) => {
 
@@ -433,7 +434,7 @@ function render (ts) {
   camera.lookAt(teaPotWrapper.position)
   mixer.update(delta)
   renderer.render(scene, camera)
-  requestAnimationFrame(render)
+  animation = requestAnimationFrame(render)
 }
 
 module.exports = world

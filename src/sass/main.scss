@@ -47,12 +47,15 @@ a {
 
 #app {
   position: absolute;
-  transition: 0.25s all ease-in-out;
+  -webkit-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+  -moz-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+    -o-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+       transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); /* custom */
   transform: translateX(0px);
 }
 
 .main-bar-open-app {
-  transform: translateX(300px) !important;
+  transform: translateX(350px) !important;
   // left: 300px !important;
 }
 

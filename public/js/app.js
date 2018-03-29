@@ -49507,7 +49507,7 @@ var empty = __webpack_require__(142);
 var Lazy = __webpack_require__(423);
 
 // phrase intro
-var bioTags = ['DESIGNER', 'DEV', 'ILLUSTRATOR', 'RESILIENT', 'COFFEE', 'SEA LOVER'];
+var bioTags = ['DESIGNER', 'DEV', 'SEA LOVER'];
 
 // bar
 var barCreator = __webpack_require__(424);
@@ -49530,7 +49530,7 @@ page('/:tag?', create, function (ctx, next) {
   drawArticles(tag);
 
   // get intro
-  document.onload = intro.init(introContainer);
+  document.onload = intro.init(introContainer, ctx);
 
   // Bar
   barCreator(function (t) {
@@ -49538,7 +49538,7 @@ page('/:tag?', create, function (ctx, next) {
   });
 
   // Bio
-  phraseC(bioTags, function (template) {
+  phraseC(function (template) {
     phrase.appendChild(template);
   });
 
@@ -57939,9 +57939,9 @@ var scene = void 0,
 
 var getAssets = __webpack_require__(407);
 
-var init = function init(container) {
+var init = function init(container, ctx) {
   getAssets(function (e, assets) {
-    world(false, assets, container);
+    world(false, assets, container, ctx);
   });
 };
 
@@ -57993,7 +57993,8 @@ var scene = void 0,
     a = void 0,
     sum = void 0,
     me = void 0,
-    lettersDD = void 0;
+    lettersDD = void 0,
+    animation = void 0;
 
 var fontSizeName = 2.8;
 var messageH1 = 'Jose Sánchez';
@@ -58041,7 +58042,7 @@ var mousePosition = {
 
 window.onmousemove = mousePos;
 
-function world(debbug, assets, appContainer) {
+function world(debbug, assets, appContainer, ctx) {
   renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   deb = debbug;
@@ -58050,6 +58051,7 @@ function world(debbug, assets, appContainer) {
   // getting assets
   var models = assets.geometries;
   var fonts = assets.fonts;
+  ctx.animation = animation;
 
   conf(appContainer, function (renderer) {
 
@@ -58406,7 +58408,7 @@ function render(ts) {
   camera.lookAt(teaPotWrapper.position);
   mixer.update(delta);
   renderer.render(scene, camera);
-  requestAnimationFrame(render);
+  animation = requestAnimationFrame(render);
 }
 
 module.exports = world;
@@ -93932,17 +93934,21 @@ module.exports = [{
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(['\n    <span class="phrase-link" title="', '">', '</span>\n  '], ['\n    <span class="phrase-link" title="', '">', '</span>\n  ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  <span class="phrase-word">\n    ', '\n  </span>'], ['\n  <span class="phrase-word">\n    ', '\n  </span>']),
-    _templateObject3 = _taggedTemplateLiteral(['<div class="phrase-couple" title="thats-me">that\'s me</div>'], ['<div class="phrase-couple" title="thats-me">that\'s me</div>']),
-    _templateObject4 = _taggedTemplateLiteral(['<span class="', '"></span>'], ['<span class="', '"></span>']),
-    _templateObject5 = _taggedTemplateLiteral(['<div class="phrase-couple" title="num', '"></div>'], ['<div class="phrase-couple" title="num', '"></div>']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  '], ['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  ']);
+var _templateObject = _taggedTemplateLiteral(['\n  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42 46.48">\n    <defs>\n      <style>\n        .cls-1, .cls-5 {\n          fill: #ff4d4d;\n        }\n        \n        .cls-6 {\n          fill: #2f304b;\n        }\n\n        .cls-2 {\n          fill: none;\n          stroke: #ff4d4d;\n          stroke-miterlimit: 10;\n          stroke-width: 4px;\n        }\n\n        .cls-3 {\n          fill: #f8f8f8;\n        }\n\n        .cls-4 {\n          fill: #fff;\n        }\n\n        .cls-5 {\n          opacity: 0.25;\n        }\n      </style>\n      <symbol id="Nuevo_s\xEDmbolo_1" data-name="Nuevo s\xEDmbolo 1" viewBox="0 0 2.58 23.28">\n        <path class="cls-1" d="M1.42,0a1.34,1.34,0,0,1,.4.73c.1.24-.18.48-.2.73a1.68,1.68,0,0,0,.29.72A.72.72,0,0,1,2,2.55c0,.12-.15.24-.17.36s.3.49.29.73l0,.73c0,.48-.06,1-.12,1.45a47.44,47.44,0,0,0-.41,5.82c0,1,0,1.94.07,2.91a22,22,0,0,0,.25,2.91,10.4,10.4,0,0,1,.18,1.46,5.42,5.42,0,0,0,0,1.45,24.68,24.68,0,0,0,.52,2.91H0a24.68,24.68,0,0,0,.52-2.91,5.42,5.42,0,0,0,0-1.45,8.09,8.09,0,0,1,.18-1.46A22,22,0,0,0,1,14.55c.05-1,.08-1.94.08-2.91A47.46,47.46,0,0,0,.61,5.82c0-.48-.09-1-.12-1.45l0-.73c0-.24.33-.49.29-.73S.61,2.67.59,2.55a.71.71,0,0,1,.08-.37A1.68,1.68,0,0,0,1,1.46c0-.25-.3-.49-.2-.73A1.36,1.36,0,0,1,1.17,0Z"/>\n      </symbol>\n    </defs>\n    <title>timon_1</title>\n    <g>\n      <g class="move">\n        <use width="2.58" height="23.28" transform="matrix(0.92, 0.38, -0.38, 0.92, 27.81, 1.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-5" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(34.88 5.19) rotate(44.82)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(39.86 11.68) rotate(67.23)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-10" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(41.99 19.57) rotate(89.64)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(40.95 27.68) rotate(112.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(36.89 34.78) rotate(134.45)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(-0.92, 0.39, -0.39, -0.92, 30.44, 39.8)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(22.56 41.98) rotate(179.27)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(14.44 40.99) rotate(-158.32)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(7.32 36.98) rotate(-135.91)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(2.26 30.56) rotate(-113.5)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(0.03 22.69) rotate(-91.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(0.36, -0.93, 0.93, 0.36, 0.97, 14.57)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(4.93 7.41) rotate(-46.28)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(11.32 2.31) rotate(-23.87)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-35" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="matrix(1, -0.03, 0.03, 1, 19.17, 0.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n      </g>\n      <g class="move">\n        <path id="shadow" class="cls-5" d="M-241-58.78a1.35,1.35,0,0,0-.73-.39c-.25-.1-.49.18-.73.2a1.72,1.72,0,0,1-.73-.29.68.68,0,0,0-.36-.08c-.12,0-.24.15-.37.17s-.48-.3-.72-.29a17.38,17.38,0,0,0-1-5c.23-.09.32-.49.56-.55s.27,0,.4,0a.64.64,0,0,0,.3-.22c.18-.21.33-.46.56-.55s.56.09.75-.1a1.34,1.34,0,0,0,.51-.65l-.1-.23a1.35,1.35,0,0,0-.82-.09c-.27,0-.38.35-.6.46a1.57,1.57,0,0,1-.78,0,.65.65,0,0,0-.37.06c-.1.07-.17.23-.27.29s-.56-.08-.78,0a17.59,17.59,0,0,0-2.87-4.24h0c.17-.16.11-.57.3-.72s.27-.07.38-.14a.69.69,0,0,0,.19-.32,1.75,1.75,0,0,1,.31-.72c.18-.16.55-.13.65-.37a1.38,1.38,0,0,0,.23-.8l-.18-.18a1.36,1.36,0,0,0-.8.23c-.24.1-.21.47-.37.66a1.69,1.69,0,0,1-.72.31.67.67,0,0,0-.31.2c-.07.1-.07.27-.15.37s-.55.14-.71.31h0a17,17,0,0,0-4.25-2.84c.09-.22-.12-.57,0-.78s.21-.18.28-.28a.56.56,0,0,0,.06-.37,1.57,1.57,0,0,1,0-.78c.1-.22.46-.33.46-.6a1.37,1.37,0,0,0-.1-.82l-.23-.1a1.35,1.35,0,0,0-.65.52c-.19.19,0,.52-.1.75s-.34.38-.54.56a.64.64,0,0,0-.22.3c0,.13,0,.28,0,.4s-.45.34-.54.56a17.38,17.38,0,0,0-5.46-1c0-.24-.34-.47-.31-.71s.13-.25.15-.37a.69.69,0,0,0-.09-.36,1.73,1.73,0,0,1-.31-.72c0-.25.29-.5.18-.74a1.3,1.3,0,0,0-.42-.71h-.25a1.38,1.38,0,0,0-.39.74c-.09.25.2.48.22.72a1.59,1.59,0,0,1-.27.74.68.68,0,0,0-.08.36c0,.12.16.24.18.36s-.28.49-.27.74a17,17,0,0,0-5,1.12c-.09-.23-.49-.31-.55-.55s0-.28,0-.4A.66.66,0,0,0-269-76c-.21-.17-.47-.32-.56-.54s.08-.57-.11-.75a1.35,1.35,0,0,0-.66-.5l-.23.1a1.3,1.3,0,0,0-.08.83c0,.26.36.37.48.58a1.72,1.72,0,0,1,0,.79.62.62,0,0,0,.07.36c.07.1.23.17.29.27s-.07.56,0,.78A17.8,17.8,0,0,0-274-71.12h0c-.17-.17-.58-.1-.73-.29s-.08-.27-.15-.37a.69.69,0,0,0-.32-.19,1.66,1.66,0,0,1-.73-.3c-.16-.18-.14-.55-.39-.64a1.29,1.29,0,0,0-.8-.21l-.17.18a1.37,1.37,0,0,0,.24.79c.11.24.48.21.66.36a1.61,1.61,0,0,1,.33.71.6.6,0,0,0,.21.32c.1.06.27.06.37.13s.15.55.33.71h0a17,17,0,0,0-2.76,4.31c-.23-.09-.57.13-.78,0s-.17-.21-.28-.28a.63.63,0,0,0-.37-.05,1.71,1.71,0,0,1-.78,0c-.22-.1-.34-.45-.6-.45a1.4,1.4,0,0,0-.83.11l-.09.24a1.33,1.33,0,0,0,.53.64c.19.18.52,0,.75.08s.39.33.57.53a.69.69,0,0,0,.31.21c.12,0,.28-.05.4,0s.34.44.56.53a17.54,17.54,0,0,0-.89,5c-.24,0-.48.34-.72.31s-.24-.13-.37-.16a.69.69,0,0,0-.36.09,1.59,1.59,0,0,1-.72.3c-.24,0-.49-.28-.73-.18a1.36,1.36,0,0,0-.72.42V-58a1.38,1.38,0,0,0,.74.39c.24.1.48-.19.72-.21a1.59,1.59,0,0,1,.74.27.68.68,0,0,0,.36.08c.12,0,.24-.15.36-.17s.49.28.73.28a17.37,17.37,0,0,0,1.09,5c-.22.09-.31.49-.55.55s-.27,0-.4,0a.66.66,0,0,0-.29.22c-.18.21-.33.47-.56.55s-.56-.08-.74.11a1.36,1.36,0,0,0-.51.66l.1.23a1.3,1.3,0,0,0,.83.08c.26,0,.37-.36.59-.47a1.57,1.57,0,0,1,.78,0,.67.67,0,0,0,.37-.07c.1-.07.16-.23.27-.29s.56.07.78,0a17,17,0,0,0,2.91,4.2h0c-.17.18-.1.58-.3.73s-.26.08-.37.15a.64.64,0,0,0-.19.32,1.62,1.62,0,0,1-.3.72c-.18.16-.55.14-.65.39a1.29,1.29,0,0,0-.21.8l.18.17a1.26,1.26,0,0,0,.79-.24c.25-.1.21-.47.37-.66a1.66,1.66,0,0,1,.71-.32.7.7,0,0,0,.32-.2c.06-.11.06-.28.13-.38s.55-.14.72-.32h0a17.49,17.49,0,0,0,4.29,2.79c-.09.22.13.56,0,.77s-.21.18-.28.28a.66.66,0,0,0-.06.37,1.58,1.58,0,0,1,0,.78c-.11.22-.46.34-.45.61a1.37,1.37,0,0,0,.1.82l.24.09a1.37,1.37,0,0,0,.64-.52c.18-.19,0-.52.09-.75s.33-.39.53-.57a.66.66,0,0,0,.22-.31c0-.12,0-.28,0-.4s.44-.34.53-.56a17.17,17.17,0,0,0,5,.93c0,.24.33.48.3.72s-.14.24-.16.36a.62.62,0,0,0,.09.37,1.85,1.85,0,0,1,.3.72c0,.24-.3.49-.19.73a1.34,1.34,0,0,0,.41.72h.25a1.45,1.45,0,0,0,.4-.73c.09-.25-.19-.49-.21-.73a1.62,1.62,0,0,1,.28-.73.68.68,0,0,0,.08-.36c0-.12-.15-.24-.17-.37s.29-.48.28-.72a17.41,17.41,0,0,0,5-1.06c.09.22.49.31.55.55s0,.28,0,.4a.71.71,0,0,0,.22.3c.21.18.47.33.55.56s-.08.56.11.74a1.32,1.32,0,0,0,.66.51l.23-.09a1.38,1.38,0,0,0,.08-.83c0-.27-.36-.38-.47-.59a1.89,1.89,0,0,1,0-.79.7.7,0,0,0-.06-.36c-.07-.11-.23-.17-.29-.28s.07-.55,0-.78a17.27,17.27,0,0,0,4.22-2.89h0c.17.17.58.1.72.3s.08.27.15.37a.58.58,0,0,0,.32.19,1.75,1.75,0,0,1,.72.31c.16.18.13.55.38.65a1.36,1.36,0,0,0,.8.22l.18-.18a1.43,1.43,0,0,0-.24-.8c-.1-.24-.47-.21-.66-.37a1.66,1.66,0,0,1-.32-.71.63.63,0,0,0-.2-.32c-.1-.06-.27-.06-.37-.14s-.14-.55-.31-.71h0a17.22,17.22,0,0,0,2.81-4.28c.23.09.57-.12.78,0s.18.21.28.28a.65.65,0,0,0,.37.06,1.57,1.57,0,0,1,.78,0c.22.1.34.46.6.45a1.32,1.32,0,0,0,.83-.1l.09-.23a1.35,1.35,0,0,0-.52-.65c-.19-.18-.52,0-.75-.09s-.39-.33-.57-.54a.61.61,0,0,0-.3-.21c-.13,0-.28,0-.4,0s-.34-.45-.56-.54a17.73,17.73,0,0,0,1-5c.24,0,.48-.34.72-.3s.24.13.37.16a.61.61,0,0,0,.36-.09,1.67,1.67,0,0,1,.73-.29c.24,0,.48.3.72.19a1.27,1.27,0,0,0,.73-.41Zm-11.11,9.28a34.69,34.69,0,0,1-3-2.65c-.7-.68-1.37-1.38-2-2.09s-1.09-1.18-1.59-1.83a3.64,3.64,0,0,0,.3-.46c.78.2,1.53.5,2.3.75s1.83.65,2.72,1A35.68,35.68,0,0,1-249.78-53,13.41,13.41,0,0,1-252.11-49.5Zm-4.18,3.1A33.64,33.64,0,0,1-258.08-50c-.39-.89-.74-1.8-1.08-2.71s-.57-1.5-.79-2.28a4.73,4.73,0,0,0,.46-.32c.65.49,1.24,1,1.86,1.56s1.43,1.3,2.12,2a34.82,34.82,0,0,1,2.72,3A13.61,13.61,0,0,1-256.29-46.4Zm-5,1.26a33.94,33.94,0,0,1-.28-4c0-1,0-1.94,0-2.91,0-.81,0-1.61.14-2.42a2.8,2.8,0,0,0,.56-.12c.41.7.73,1.44,1.1,2.16.43.87.84,1.75,1.21,2.64A34.34,34.34,0,0,1-257.19-46,13.36,13.36,0,0,1-261.34-45.14Zm-5.15-.76a35.67,35.67,0,0,1,1.28-3.82c.35-.9.74-1.8,1.14-2.68.35-.72.65-1.47,1.05-2.18a3.45,3.45,0,0,0,.56.1c.12.81.14,1.61.2,2.42.06,1,.1,1.94.11,2.91a33.79,33.79,0,0,1-.17,4A13.12,13.12,0,0,1-266.49-45.9ZM-271-48.57a34.85,34.85,0,0,1,2.64-3q1-1.05,2.07-2c.6-.54,1.17-1.11,1.8-1.61l.49.31c-.2.78-.49,1.53-.74,2.3s-.64,1.83-1,2.73a34.66,34.66,0,0,1-1.69,3.66A13.37,13.37,0,0,1-271-48.57Zm-3.12-4.16a36.71,36.71,0,0,1,3.6-1.81c.89-.39,1.79-.75,2.7-1.1.76-.26,1.5-.58,2.28-.8a5,5,0,0,0,.33.47c-.49.65-1,1.23-1.56,1.85s-1.3,1.45-2,2.14a33.23,33.23,0,0,1-3,2.73A13.4,13.4,0,0,1-274.08-52.73ZM-272-67.41a34.77,34.77,0,0,1,3.05,2.62c.71.66,1.39,1.35,2.05,2.06s1.12,1.16,1.63,1.79a4.8,4.8,0,0,0-.3.48c-.79-.19-1.55-.48-2.32-.71-.92-.31-1.83-.64-2.73-1a33.76,33.76,0,0,1-3.68-1.67A13.55,13.55,0,0,1-272-67.41Zm4.14-3.14A35.49,35.49,0,0,1-266-67c.4.89.76,1.79,1.11,2.69s.6,1.5.82,2.28a3.83,3.83,0,0,0-.46.33c-.66-.48-1.25-1-1.87-1.55s-1.45-1.28-2.15-2a33.31,33.31,0,0,1-2.75-2.94A13.46,13.46,0,0,1-267.86-70.55Zm5-1.33a36.13,36.13,0,0,1,.33,4q0,1.45,0,2.91c0,.81,0,1.62-.11,2.42a5.07,5.07,0,0,0-.56.13c-.42-.69-.75-1.43-1.13-2.14-.44-.87-.86-1.74-1.25-2.63A37.91,37.91,0,0,1-267-70.95,13.29,13.29,0,0,1-262.83-71.88Zm5.48.81a35.58,35.58,0,0,1-1.33,3.8c-.36.9-.76,1.78-1.17,2.66s-.68,1.47-1.08,2.17a4.94,4.94,0,0,0-.67-.12c-.13-.8-.15-1.61-.23-2.41-.07-1-.12-1.94-.14-2.91a31.92,31.92,0,0,1,.12-4A13.46,13.46,0,0,1-257.35-71.07Zm4.43,2.72a36.54,36.54,0,0,1-2.67,3c-.68.69-1.39,1.36-2.1,2s-1.2,1.09-1.84,1.58A4.53,4.53,0,0,0-260-62c.2-.79.5-1.53.76-2.3.32-.92.67-1.82,1-2.72a36.56,36.56,0,0,1,1.74-3.63A13.34,13.34,0,0,1-252.92-68.35Zm3.07,4.2a36.66,36.66,0,0,1-3.62,1.77c-.9.38-1.8.73-2.72,1.06-.76.26-1.5.56-2.29.77a3.37,3.37,0,0,0-.31-.46c.49-.64,1.05-1.23,1.57-1.84s1.32-1.43,2-2.12a36.3,36.3,0,0,1,3-2.69A13.59,13.59,0,0,1-249.85-64.15Zm1.22,5.06a35.82,35.82,0,0,1-4,.25c-1,0-1.94,0-2.91,0-.81-.06-1.62-.06-2.42-.16a3.48,3.48,0,0,0-.12-.56c.7-.41,1.45-.73,2.17-1.09s1.75-.82,2.65-1.19a36.38,36.38,0,0,1,3.79-1.36A13.12,13.12,0,0,1-248.63-59.09Zm-22.19-2.58c.91.35,1.8.73,2.69,1.12.73.35,1.47.65,2.18,1a5,5,0,0,0-.09.56c-.81.13-1.61.15-2.42.22-1,.07-1.93.11-2.9.13a36.1,36.1,0,0,1-4-.15,13.5,13.5,0,0,1,.74-4.18A35.74,35.74,0,0,1-270.82-61.67Zm-4.55,3.9a36.24,36.24,0,0,1,4-.3c1,0,1.94,0,2.91,0,.8.05,1.61,0,2.41.13a3.78,3.78,0,0,0,.13.56c-.7.42-1.43.74-2.15,1.12s-1.75.84-2.64,1.22a35.63,35.63,0,0,1-3.78,1.4A13.26,13.26,0,0,1-275.37-57.77Zm22.14,2.52c-.9-.36-1.79-.75-2.67-1.16-.72-.35-1.46-.66-2.17-1.06A3.45,3.45,0,0,0-258-58c.81-.12,1.61-.13,2.42-.19q1.45-.09,2.91-.09a33.82,33.82,0,0,1,4,.2,13,13,0,0,1-.8,4.16A34.2,34.2,0,0,1-253.23-55.25Z" transform="translate(283 84)"/>\n      </g>\n      <g class="nomove">\n        <circle class="cls-2" cx="21" cy="21" r="15.4"/>\n        <circle class="cls-1" cx="21" cy="21" r="4.08"/>\n        <path class="cls-3" d="M-262-63.6a.87.87,0,0,1,.85.74.7.7,0,0,0,0-.14.88.88,0,0,0-.88-.89.89.89,0,0,0-.89.89.7.7,0,0,0,0,.14A.88.88,0,0,1-262-63.6Z" transform="translate(283 84)"/>\n        <path class="cls-3" d="M-262-65a2.52,2.52,0,0,1,2.5,2.25,1.43,1.43,0,0,0,0-.29A2.54,2.54,0,0,0-262-65.54,2.54,2.54,0,0,0-264.51-63a2.85,2.85,0,0,0,0,.29A2.54,2.54,0,0,1-262-65Z" transform="translate(283 84)"/>\n        <g>\n          <path class="cls-4" d="M-271.07-51.26a18,18,0,0,0,4.21,2,16.19,16.19,0,0,0,4.52.74,16.28,16.28,0,0,0,4.55-.53,18,18,0,0,0,4.29-1.78,12.78,12.78,0,0,1-4.13,2.34,13.33,13.33,0,0,1-4.73.72,13.27,13.27,0,0,1-4.7-1A12.6,12.6,0,0,1-271.07-51.26Z" transform="translate(283 84)"/>\n          <path class="cls-4" d="M-249.07-72.5a16.53,16.53,0,0,0-5.87-4.71,16.51,16.51,0,0,0-7.27-1.63,16.46,16.46,0,0,0-7.26,1.63,16.65,16.65,0,0,0-5.88,4.71,14.49,14.49,0,0,1,5.62-5.22,16.23,16.23,0,0,1,7.52-1.87,16.3,16.3,0,0,1,7.53,1.87A14.53,14.53,0,0,1-249.07-72.5Z" transform="translate(283 84)"/>\n        </g>\n      </g>\n    </g>\n  </svg>\n'], ['\n  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42 46.48">\n    <defs>\n      <style>\n        .cls-1, .cls-5 {\n          fill: #ff4d4d;\n        }\n        \n        .cls-6 {\n          fill: #2f304b;\n        }\n\n        .cls-2 {\n          fill: none;\n          stroke: #ff4d4d;\n          stroke-miterlimit: 10;\n          stroke-width: 4px;\n        }\n\n        .cls-3 {\n          fill: #f8f8f8;\n        }\n\n        .cls-4 {\n          fill: #fff;\n        }\n\n        .cls-5 {\n          opacity: 0.25;\n        }\n      </style>\n      <symbol id="Nuevo_s\xEDmbolo_1" data-name="Nuevo s\xEDmbolo 1" viewBox="0 0 2.58 23.28">\n        <path class="cls-1" d="M1.42,0a1.34,1.34,0,0,1,.4.73c.1.24-.18.48-.2.73a1.68,1.68,0,0,0,.29.72A.72.72,0,0,1,2,2.55c0,.12-.15.24-.17.36s.3.49.29.73l0,.73c0,.48-.06,1-.12,1.45a47.44,47.44,0,0,0-.41,5.82c0,1,0,1.94.07,2.91a22,22,0,0,0,.25,2.91,10.4,10.4,0,0,1,.18,1.46,5.42,5.42,0,0,0,0,1.45,24.68,24.68,0,0,0,.52,2.91H0a24.68,24.68,0,0,0,.52-2.91,5.42,5.42,0,0,0,0-1.45,8.09,8.09,0,0,1,.18-1.46A22,22,0,0,0,1,14.55c.05-1,.08-1.94.08-2.91A47.46,47.46,0,0,0,.61,5.82c0-.48-.09-1-.12-1.45l0-.73c0-.24.33-.49.29-.73S.61,2.67.59,2.55a.71.71,0,0,1,.08-.37A1.68,1.68,0,0,0,1,1.46c0-.25-.3-.49-.2-.73A1.36,1.36,0,0,1,1.17,0Z"/>\n      </symbol>\n    </defs>\n    <title>timon_1</title>\n    <g>\n      <g class="move">\n        <use width="2.58" height="23.28" transform="matrix(0.92, 0.38, -0.38, 0.92, 27.81, 1.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-5" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(34.88 5.19) rotate(44.82)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(39.86 11.68) rotate(67.23)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-10" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(41.99 19.57) rotate(89.64)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(40.95 27.68) rotate(112.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(36.89 34.78) rotate(134.45)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(-0.92, 0.39, -0.39, -0.92, 30.44, 39.8)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(22.56 41.98) rotate(179.27)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(14.44 40.99) rotate(-158.32)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(7.32 36.98) rotate(-135.91)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(2.26 30.56) rotate(-113.5)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(0.03 22.69) rotate(-91.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(0.36, -0.93, 0.93, 0.36, 0.97, 14.57)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(4.93 7.41) rotate(-46.28)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(11.32 2.31) rotate(-23.87)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-35" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="matrix(1, -0.03, 0.03, 1, 19.17, 0.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n      </g>\n      <g class="move">\n        <path id="shadow" class="cls-5" d="M-241-58.78a1.35,1.35,0,0,0-.73-.39c-.25-.1-.49.18-.73.2a1.72,1.72,0,0,1-.73-.29.68.68,0,0,0-.36-.08c-.12,0-.24.15-.37.17s-.48-.3-.72-.29a17.38,17.38,0,0,0-1-5c.23-.09.32-.49.56-.55s.27,0,.4,0a.64.64,0,0,0,.3-.22c.18-.21.33-.46.56-.55s.56.09.75-.1a1.34,1.34,0,0,0,.51-.65l-.1-.23a1.35,1.35,0,0,0-.82-.09c-.27,0-.38.35-.6.46a1.57,1.57,0,0,1-.78,0,.65.65,0,0,0-.37.06c-.1.07-.17.23-.27.29s-.56-.08-.78,0a17.59,17.59,0,0,0-2.87-4.24h0c.17-.16.11-.57.3-.72s.27-.07.38-.14a.69.69,0,0,0,.19-.32,1.75,1.75,0,0,1,.31-.72c.18-.16.55-.13.65-.37a1.38,1.38,0,0,0,.23-.8l-.18-.18a1.36,1.36,0,0,0-.8.23c-.24.1-.21.47-.37.66a1.69,1.69,0,0,1-.72.31.67.67,0,0,0-.31.2c-.07.1-.07.27-.15.37s-.55.14-.71.31h0a17,17,0,0,0-4.25-2.84c.09-.22-.12-.57,0-.78s.21-.18.28-.28a.56.56,0,0,0,.06-.37,1.57,1.57,0,0,1,0-.78c.1-.22.46-.33.46-.6a1.37,1.37,0,0,0-.1-.82l-.23-.1a1.35,1.35,0,0,0-.65.52c-.19.19,0,.52-.1.75s-.34.38-.54.56a.64.64,0,0,0-.22.3c0,.13,0,.28,0,.4s-.45.34-.54.56a17.38,17.38,0,0,0-5.46-1c0-.24-.34-.47-.31-.71s.13-.25.15-.37a.69.69,0,0,0-.09-.36,1.73,1.73,0,0,1-.31-.72c0-.25.29-.5.18-.74a1.3,1.3,0,0,0-.42-.71h-.25a1.38,1.38,0,0,0-.39.74c-.09.25.2.48.22.72a1.59,1.59,0,0,1-.27.74.68.68,0,0,0-.08.36c0,.12.16.24.18.36s-.28.49-.27.74a17,17,0,0,0-5,1.12c-.09-.23-.49-.31-.55-.55s0-.28,0-.4A.66.66,0,0,0-269-76c-.21-.17-.47-.32-.56-.54s.08-.57-.11-.75a1.35,1.35,0,0,0-.66-.5l-.23.1a1.3,1.3,0,0,0-.08.83c0,.26.36.37.48.58a1.72,1.72,0,0,1,0,.79.62.62,0,0,0,.07.36c.07.1.23.17.29.27s-.07.56,0,.78A17.8,17.8,0,0,0-274-71.12h0c-.17-.17-.58-.1-.73-.29s-.08-.27-.15-.37a.69.69,0,0,0-.32-.19,1.66,1.66,0,0,1-.73-.3c-.16-.18-.14-.55-.39-.64a1.29,1.29,0,0,0-.8-.21l-.17.18a1.37,1.37,0,0,0,.24.79c.11.24.48.21.66.36a1.61,1.61,0,0,1,.33.71.6.6,0,0,0,.21.32c.1.06.27.06.37.13s.15.55.33.71h0a17,17,0,0,0-2.76,4.31c-.23-.09-.57.13-.78,0s-.17-.21-.28-.28a.63.63,0,0,0-.37-.05,1.71,1.71,0,0,1-.78,0c-.22-.1-.34-.45-.6-.45a1.4,1.4,0,0,0-.83.11l-.09.24a1.33,1.33,0,0,0,.53.64c.19.18.52,0,.75.08s.39.33.57.53a.69.69,0,0,0,.31.21c.12,0,.28-.05.4,0s.34.44.56.53a17.54,17.54,0,0,0-.89,5c-.24,0-.48.34-.72.31s-.24-.13-.37-.16a.69.69,0,0,0-.36.09,1.59,1.59,0,0,1-.72.3c-.24,0-.49-.28-.73-.18a1.36,1.36,0,0,0-.72.42V-58a1.38,1.38,0,0,0,.74.39c.24.1.48-.19.72-.21a1.59,1.59,0,0,1,.74.27.68.68,0,0,0,.36.08c.12,0,.24-.15.36-.17s.49.28.73.28a17.37,17.37,0,0,0,1.09,5c-.22.09-.31.49-.55.55s-.27,0-.4,0a.66.66,0,0,0-.29.22c-.18.21-.33.47-.56.55s-.56-.08-.74.11a1.36,1.36,0,0,0-.51.66l.1.23a1.3,1.3,0,0,0,.83.08c.26,0,.37-.36.59-.47a1.57,1.57,0,0,1,.78,0,.67.67,0,0,0,.37-.07c.1-.07.16-.23.27-.29s.56.07.78,0a17,17,0,0,0,2.91,4.2h0c-.17.18-.1.58-.3.73s-.26.08-.37.15a.64.64,0,0,0-.19.32,1.62,1.62,0,0,1-.3.72c-.18.16-.55.14-.65.39a1.29,1.29,0,0,0-.21.8l.18.17a1.26,1.26,0,0,0,.79-.24c.25-.1.21-.47.37-.66a1.66,1.66,0,0,1,.71-.32.7.7,0,0,0,.32-.2c.06-.11.06-.28.13-.38s.55-.14.72-.32h0a17.49,17.49,0,0,0,4.29,2.79c-.09.22.13.56,0,.77s-.21.18-.28.28a.66.66,0,0,0-.06.37,1.58,1.58,0,0,1,0,.78c-.11.22-.46.34-.45.61a1.37,1.37,0,0,0,.1.82l.24.09a1.37,1.37,0,0,0,.64-.52c.18-.19,0-.52.09-.75s.33-.39.53-.57a.66.66,0,0,0,.22-.31c0-.12,0-.28,0-.4s.44-.34.53-.56a17.17,17.17,0,0,0,5,.93c0,.24.33.48.3.72s-.14.24-.16.36a.62.62,0,0,0,.09.37,1.85,1.85,0,0,1,.3.72c0,.24-.3.49-.19.73a1.34,1.34,0,0,0,.41.72h.25a1.45,1.45,0,0,0,.4-.73c.09-.25-.19-.49-.21-.73a1.62,1.62,0,0,1,.28-.73.68.68,0,0,0,.08-.36c0-.12-.15-.24-.17-.37s.29-.48.28-.72a17.41,17.41,0,0,0,5-1.06c.09.22.49.31.55.55s0,.28,0,.4a.71.71,0,0,0,.22.3c.21.18.47.33.55.56s-.08.56.11.74a1.32,1.32,0,0,0,.66.51l.23-.09a1.38,1.38,0,0,0,.08-.83c0-.27-.36-.38-.47-.59a1.89,1.89,0,0,1,0-.79.7.7,0,0,0-.06-.36c-.07-.11-.23-.17-.29-.28s.07-.55,0-.78a17.27,17.27,0,0,0,4.22-2.89h0c.17.17.58.1.72.3s.08.27.15.37a.58.58,0,0,0,.32.19,1.75,1.75,0,0,1,.72.31c.16.18.13.55.38.65a1.36,1.36,0,0,0,.8.22l.18-.18a1.43,1.43,0,0,0-.24-.8c-.1-.24-.47-.21-.66-.37a1.66,1.66,0,0,1-.32-.71.63.63,0,0,0-.2-.32c-.1-.06-.27-.06-.37-.14s-.14-.55-.31-.71h0a17.22,17.22,0,0,0,2.81-4.28c.23.09.57-.12.78,0s.18.21.28.28a.65.65,0,0,0,.37.06,1.57,1.57,0,0,1,.78,0c.22.1.34.46.6.45a1.32,1.32,0,0,0,.83-.1l.09-.23a1.35,1.35,0,0,0-.52-.65c-.19-.18-.52,0-.75-.09s-.39-.33-.57-.54a.61.61,0,0,0-.3-.21c-.13,0-.28,0-.4,0s-.34-.45-.56-.54a17.73,17.73,0,0,0,1-5c.24,0,.48-.34.72-.3s.24.13.37.16a.61.61,0,0,0,.36-.09,1.67,1.67,0,0,1,.73-.29c.24,0,.48.3.72.19a1.27,1.27,0,0,0,.73-.41Zm-11.11,9.28a34.69,34.69,0,0,1-3-2.65c-.7-.68-1.37-1.38-2-2.09s-1.09-1.18-1.59-1.83a3.64,3.64,0,0,0,.3-.46c.78.2,1.53.5,2.3.75s1.83.65,2.72,1A35.68,35.68,0,0,1-249.78-53,13.41,13.41,0,0,1-252.11-49.5Zm-4.18,3.1A33.64,33.64,0,0,1-258.08-50c-.39-.89-.74-1.8-1.08-2.71s-.57-1.5-.79-2.28a4.73,4.73,0,0,0,.46-.32c.65.49,1.24,1,1.86,1.56s1.43,1.3,2.12,2a34.82,34.82,0,0,1,2.72,3A13.61,13.61,0,0,1-256.29-46.4Zm-5,1.26a33.94,33.94,0,0,1-.28-4c0-1,0-1.94,0-2.91,0-.81,0-1.61.14-2.42a2.8,2.8,0,0,0,.56-.12c.41.7.73,1.44,1.1,2.16.43.87.84,1.75,1.21,2.64A34.34,34.34,0,0,1-257.19-46,13.36,13.36,0,0,1-261.34-45.14Zm-5.15-.76a35.67,35.67,0,0,1,1.28-3.82c.35-.9.74-1.8,1.14-2.68.35-.72.65-1.47,1.05-2.18a3.45,3.45,0,0,0,.56.1c.12.81.14,1.61.2,2.42.06,1,.1,1.94.11,2.91a33.79,33.79,0,0,1-.17,4A13.12,13.12,0,0,1-266.49-45.9ZM-271-48.57a34.85,34.85,0,0,1,2.64-3q1-1.05,2.07-2c.6-.54,1.17-1.11,1.8-1.61l.49.31c-.2.78-.49,1.53-.74,2.3s-.64,1.83-1,2.73a34.66,34.66,0,0,1-1.69,3.66A13.37,13.37,0,0,1-271-48.57Zm-3.12-4.16a36.71,36.71,0,0,1,3.6-1.81c.89-.39,1.79-.75,2.7-1.1.76-.26,1.5-.58,2.28-.8a5,5,0,0,0,.33.47c-.49.65-1,1.23-1.56,1.85s-1.3,1.45-2,2.14a33.23,33.23,0,0,1-3,2.73A13.4,13.4,0,0,1-274.08-52.73ZM-272-67.41a34.77,34.77,0,0,1,3.05,2.62c.71.66,1.39,1.35,2.05,2.06s1.12,1.16,1.63,1.79a4.8,4.8,0,0,0-.3.48c-.79-.19-1.55-.48-2.32-.71-.92-.31-1.83-.64-2.73-1a33.76,33.76,0,0,1-3.68-1.67A13.55,13.55,0,0,1-272-67.41Zm4.14-3.14A35.49,35.49,0,0,1-266-67c.4.89.76,1.79,1.11,2.69s.6,1.5.82,2.28a3.83,3.83,0,0,0-.46.33c-.66-.48-1.25-1-1.87-1.55s-1.45-1.28-2.15-2a33.31,33.31,0,0,1-2.75-2.94A13.46,13.46,0,0,1-267.86-70.55Zm5-1.33a36.13,36.13,0,0,1,.33,4q0,1.45,0,2.91c0,.81,0,1.62-.11,2.42a5.07,5.07,0,0,0-.56.13c-.42-.69-.75-1.43-1.13-2.14-.44-.87-.86-1.74-1.25-2.63A37.91,37.91,0,0,1-267-70.95,13.29,13.29,0,0,1-262.83-71.88Zm5.48.81a35.58,35.58,0,0,1-1.33,3.8c-.36.9-.76,1.78-1.17,2.66s-.68,1.47-1.08,2.17a4.94,4.94,0,0,0-.67-.12c-.13-.8-.15-1.61-.23-2.41-.07-1-.12-1.94-.14-2.91a31.92,31.92,0,0,1,.12-4A13.46,13.46,0,0,1-257.35-71.07Zm4.43,2.72a36.54,36.54,0,0,1-2.67,3c-.68.69-1.39,1.36-2.1,2s-1.2,1.09-1.84,1.58A4.53,4.53,0,0,0-260-62c.2-.79.5-1.53.76-2.3.32-.92.67-1.82,1-2.72a36.56,36.56,0,0,1,1.74-3.63A13.34,13.34,0,0,1-252.92-68.35Zm3.07,4.2a36.66,36.66,0,0,1-3.62,1.77c-.9.38-1.8.73-2.72,1.06-.76.26-1.5.56-2.29.77a3.37,3.37,0,0,0-.31-.46c.49-.64,1.05-1.23,1.57-1.84s1.32-1.43,2-2.12a36.3,36.3,0,0,1,3-2.69A13.59,13.59,0,0,1-249.85-64.15Zm1.22,5.06a35.82,35.82,0,0,1-4,.25c-1,0-1.94,0-2.91,0-.81-.06-1.62-.06-2.42-.16a3.48,3.48,0,0,0-.12-.56c.7-.41,1.45-.73,2.17-1.09s1.75-.82,2.65-1.19a36.38,36.38,0,0,1,3.79-1.36A13.12,13.12,0,0,1-248.63-59.09Zm-22.19-2.58c.91.35,1.8.73,2.69,1.12.73.35,1.47.65,2.18,1a5,5,0,0,0-.09.56c-.81.13-1.61.15-2.42.22-1,.07-1.93.11-2.9.13a36.1,36.1,0,0,1-4-.15,13.5,13.5,0,0,1,.74-4.18A35.74,35.74,0,0,1-270.82-61.67Zm-4.55,3.9a36.24,36.24,0,0,1,4-.3c1,0,1.94,0,2.91,0,.8.05,1.61,0,2.41.13a3.78,3.78,0,0,0,.13.56c-.7.42-1.43.74-2.15,1.12s-1.75.84-2.64,1.22a35.63,35.63,0,0,1-3.78,1.4A13.26,13.26,0,0,1-275.37-57.77Zm22.14,2.52c-.9-.36-1.79-.75-2.67-1.16-.72-.35-1.46-.66-2.17-1.06A3.45,3.45,0,0,0-258-58c.81-.12,1.61-.13,2.42-.19q1.45-.09,2.91-.09a33.82,33.82,0,0,1,4,.2,13,13,0,0,1-.8,4.16A34.2,34.2,0,0,1-253.23-55.25Z" transform="translate(283 84)"/>\n      </g>\n      <g class="nomove">\n        <circle class="cls-2" cx="21" cy="21" r="15.4"/>\n        <circle class="cls-1" cx="21" cy="21" r="4.08"/>\n        <path class="cls-3" d="M-262-63.6a.87.87,0,0,1,.85.74.7.7,0,0,0,0-.14.88.88,0,0,0-.88-.89.89.89,0,0,0-.89.89.7.7,0,0,0,0,.14A.88.88,0,0,1-262-63.6Z" transform="translate(283 84)"/>\n        <path class="cls-3" d="M-262-65a2.52,2.52,0,0,1,2.5,2.25,1.43,1.43,0,0,0,0-.29A2.54,2.54,0,0,0-262-65.54,2.54,2.54,0,0,0-264.51-63a2.85,2.85,0,0,0,0,.29A2.54,2.54,0,0,1-262-65Z" transform="translate(283 84)"/>\n        <g>\n          <path class="cls-4" d="M-271.07-51.26a18,18,0,0,0,4.21,2,16.19,16.19,0,0,0,4.52.74,16.28,16.28,0,0,0,4.55-.53,18,18,0,0,0,4.29-1.78,12.78,12.78,0,0,1-4.13,2.34,13.33,13.33,0,0,1-4.73.72,13.27,13.27,0,0,1-4.7-1A12.6,12.6,0,0,1-271.07-51.26Z" transform="translate(283 84)"/>\n          <path class="cls-4" d="M-249.07-72.5a16.53,16.53,0,0,0-5.87-4.71,16.51,16.51,0,0,0-7.27-1.63,16.46,16.46,0,0,0-7.26,1.63,16.65,16.65,0,0,0-5.88,4.71,14.49,14.49,0,0,1,5.62-5.22,16.23,16.23,0,0,1,7.52-1.87,16.3,16.3,0,0,1,7.53,1.87A14.53,14.53,0,0,1-249.07-72.5Z" transform="translate(283 84)"/>\n        </g>\n      </g>\n    </g>\n  </svg>\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    <span class="phrase-link" title="', '">', '</span>\n  '], ['\n    <span class="phrase-link" title="', '">', '</span>\n  ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  <span class="phrase-word">\n    ', '\n  </span>'], ['\n  <span class="phrase-word">\n    ', '\n  </span>']),
+    _templateObject4 = _taggedTemplateLiteral(['<div class="phrase-couple" title="thats-me">that\'s me</div>'], ['<div class="phrase-couple" title="thats-me">that\'s me</div>']),
+    _templateObject5 = _taggedTemplateLiteral(['<div class="phrase-couple" title="timon">', '</div>'], ['<div class="phrase-couple" title="timon">', '</div>']),
+    _templateObject6 = _taggedTemplateLiteral(['<div class="phrase-couple" title="sea lover">SEA LOVER</div>'], ['<div class="phrase-couple" title="sea lover">SEA LOVER</div>']),
+    _templateObject7 = _taggedTemplateLiteral(['<div class="phrase-couple" title="dev">D<span title="dev">E</span>V</div>'], ['<div class="phrase-couple" title="dev">D<span title="dev">E</span>V</div>']),
+    _templateObject8 = _taggedTemplateLiteral(['<div class="phrase-couple" title="designer">DESIGNER</div>'], ['<div class="phrase-couple" title="designer">DESIGNER</div>']),
+    _templateObject9 = _taggedTemplateLiteral(['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  '], ['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var yo = __webpack_require__(50);
 
+var timon = yo(_templateObject);
 function phraseClick(e) {
   var drawArticles = __webpack_require__(97);
   e.preventDefault();
@@ -93952,8 +93958,8 @@ function phraseClick(e) {
 }
 
 function miniTemplateCreator(item) {
-  var i = yo(_templateObject, item, item);
-  var container = yo(_templateObject2, i);
+  var i = yo(_templateObject2, item, item);
+  var container = yo(_templateObject3, i);
 
   container.onclick = phraseClick;
   return container;
@@ -93963,53 +93969,38 @@ function itemCreator(items) {
   var template = document.createElement('div');
   template.setAttribute('class', 'phrase-links-container');
 
-  var me = yo(_templateObject3);
+  var me = yo(_templateObject4);
   me.onclick = phraseClick;
 
-  var bulletsClass = ['icon-certificate', 'icon-flash', 'icon-headphones'];
-  var bullets = [];
-  var containers = [];
+  var bullet = yo(_templateObject5, timon);
+  bullet.onclick = phraseClick;
 
-  for (var i = 0; i < 3; i++) {
-    var tBullet = yo(_templateObject4, bulletsClass[i]);
-    var tContainers = yo(_templateObject5, i);
-    bullets.push(tBullet);
-    containers.push(tContainers);
-  }
+  var seaLover = yo(_templateObject6);
+  seaLover.onclick = phraseClick;
 
-  var counter = 0;
-  var counterContainer = 0;
+  var dev = yo(_templateObject7);
+  dev.onclick = phraseClick;
 
-  for (var x = 0; x < 3; x++) {
-    // let c = containers[counterContainer - 1]
-    // c.appendChild(myItem)
-    var myContainer = containers[x];
+  var designer = yo(_templateObject8);
+  designer.onclick = phraseClick;
 
-    for (var _i = 1; _i < 3; _i++) {
-      var myItem = miniTemplateCreator(items[counter]);
-      myContainer.appendChild(myItem);
-      if (_i === 1) {
-        myContainer.appendChild(bullets[x]);
-      }
-      counter++;
-    }
-    template.appendChild(myContainer);
-  }
-
+  template.appendChild(designer);
+  template.appendChild(dev);
+  template.appendChild(seaLover);
+  template.appendChild(bullet);
   template.appendChild(me);
-
   return template;
 }
 
-function createTemplate(phrase) {
-  var items = itemCreator(phrase);
+function createTemplate() {
+  var items = itemCreator();
 
-  var template = yo(_templateObject6, items);
+  var template = yo(_templateObject9, items);
   return template;
 }
 
-module.exports = function (phrase, cb) {
-  return cb(createTemplate(phrase));
+module.exports = function (cb) {
+  return cb(createTemplate());
 };
 
 /***/ }),
@@ -96137,12 +96128,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _extends=O
 var _templateObject = _taggedTemplateLiteral(['<span class="tag"></span>'], ['<span class="tag"></span>']),
     _templateObject2 = _taggedTemplateLiteral(['<span class="message"></span>'], ['<span class="message"></span>']),
     _templateObject3 = _taggedTemplateLiteral(['<span class="alert"></span>'], ['<span class="alert"></span>']),
-    _templateObject4 = _taggedTemplateLiteral(['\n  <div class="tag-info">\n    ', '\n    ', '\n    ', '\n  </div>\n'], ['\n  <div class="tag-info">\n    ', '\n    ', '\n    ', '\n  </div>\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n  <div id="bar-trigger">\n  <div class="icon">\u25B3</div>\n  ', '\n  </div>\n'], ['\n  <div id="bar-trigger">\n  <div class="icon">\u25B3</div>\n  ', '\n  </div>\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n      <li class="bar-main-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    '], ['\n      <li class="bar-main-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n      <li class="bar-secondary-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    '], ['\n      <li class="bar-secondary-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n    <div id="bar-menu">\n      <span class="labels">leitmotiv</span>\n      ', '\n      ', '\n    </div>\n  '], ['\n    <div id="bar-menu">\n      <span class="labels">leitmotiv</span>\n      ', '\n      ', '\n    </div>\n  ']),
-    _templateObject9 = _taggedTemplateLiteral(['\n    <div class="bar-wrapper">\n      ', '\n      ', '\n    </div>\n  '], ['\n    <div class="bar-wrapper">\n      ', '\n      ', '\n    </div>\n  ']);
+    _templateObject4 = _taggedTemplateLiteral(['<div class="icon">\u25B6\uFE0E</div>'], ['<div class="icon">\u25B6\uFE0E</div>']),
+    _templateObject5 = _taggedTemplateLiteral(['\n<div class="tag-info">\n  ', '\n  ', '\n  ', '\n</div>\n'], ['\n<div class="tag-info">\n  ', '\n  ', '\n  ', '\n</div>\n']),
+    _templateObject6 = _taggedTemplateLiteral(['<div class="bar-bottom">\n  <div class="bar-bottom-upper">\n    <h1 class="bar-sanchez"></h1>\n  </div>\n</div>'], ['<div class="bar-bottom">\n  <div class="bar-bottom-upper">\n    <h1 class="bar-sanchez"></h1>\n  </div>\n</div>']),
+    _templateObject7 = _taggedTemplateLiteral(['\n  <div id="bar-trigger">\n  ', '\n  ', '\n  </div>\n'], ['\n  <div id="bar-trigger">\n  ', '\n  ', '\n  </div>\n']),
+    _templateObject8 = _taggedTemplateLiteral(['\n      <li class="bar-main-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    '], ['\n      <li class="bar-main-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    ']),
+    _templateObject9 = _taggedTemplateLiteral(['\n      <li class="bar-secondary-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    '], ['\n      <li class="bar-secondary-item item-bar-link">\n        <span class="bar-link" data-label="', '">\n          ', '\n        </span>\n      </li>\n    ']),
+    _templateObject10 = _taggedTemplateLiteral(['\n    <div id="bar-menu">\n      <div class="labels">Main topics</div>\n      ', '\n      ', '\n      ', '\n    </div>\n  '], ['\n    <div id="bar-menu">\n      <div class="labels">Main topics</div>\n      ', '\n      ', '\n      ', '\n    </div>\n  ']),
+    _templateObject11 = _taggedTemplateLiteral(['\n    <div class="bar-wrapper">\n      ', '\n      ', '\n    </div>\n  '], ['\n    <div class="bar-wrapper">\n      ', '\n      ', '\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -96151,7 +96144,8 @@ var empty = __webpack_require__(142);
 
 var opened = false;
 var limit = false;
-var menuBar = void 0;
+var menuBar = void 0,
+    msnry = void 0;
 // tags
 var MAINK = ['Design', 'Dev', 'Animation', 'Illustration', 'Resilience'];
 var SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front end'];
@@ -96160,11 +96154,14 @@ var SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front end'];
 var tag = yo(_templateObject);
 var message = yo(_templateObject2);
 var alertT = yo(_templateObject3);
+var icon = yo(_templateObject4);
 
-var tagInfo = yo(_templateObject4, message, alertT, tag);
+var tagInfo = yo(_templateObject5, message, alertT, tag);
+
+var bottom = yo(_templateObject6);
 
 // lanzador
-var trigger = yo(_templateObject5, tagInfo);
+var trigger = yo(_templateObject7, icon, tagInfo);
 
 var template = createTemplate();
 
@@ -96179,17 +96176,17 @@ function createTemplate() {
 
   // add main items
   for (var i = 0; i < MAINK.length; i++) {
-    linkTemplate = yo(_templateObject6, MAINK[i], MAINK[i]);
+    linkTemplate = yo(_templateObject8, MAINK[i], MAINK[i]);
     mainLinks.appendChild(linkTemplate);
   }
 
   // add main items
   for (var _i = 0; _i < SECONDK.length; _i++) {
-    linkTemplate = yo(_templateObject7, SECONDK[_i], SECONDK[_i]);
+    linkTemplate = yo(_templateObject9, SECONDK[_i], SECONDK[_i]);
     secondaryLinks.appendChild(linkTemplate);
   }
 
-  menuBar = yo(_templateObject8, mainLinks, secondaryLinks);
+  menuBar = yo(_templateObject10, mainLinks, secondaryLinks, bottom);
 
   menuBar.addEventListener('click', function (e) {
     if (!e.target.classList.contains('bar-link')) return;
@@ -96199,7 +96196,7 @@ function createTemplate() {
     drawArticles(myTag);
   });
 
-  var barTemplate = yo(_templateObject9, menuBar, trigger);
+  var barTemplate = yo(_templateObject11, menuBar, trigger);
 
   return barTemplate;
 }
@@ -96213,7 +96210,9 @@ trigger.addEventListener('click', function (e) {
     console.log('opened');
     app.classList.remove('main-bar-open-app');
     bar.classList.remove('main-bar-open-bar');
+    icon.classList.remove('rotate-icon');
   } else {
+    icon.classList.add('rotate-icon');
     app.classList.add('main-bar-open-app');
     bar.classList.add('main-bar-open-bar');
     opened = true;
@@ -96226,7 +96225,7 @@ window.addEventListener('scroll', function (e) {
   var app = document.getElementById('app');
   var bar = document.getElementById('main-bar');
 
-  if (vPosition > 720) {
+  if (vPosition > 920) {
     limit = true;
     trigger.classList.add('view');
   } else {

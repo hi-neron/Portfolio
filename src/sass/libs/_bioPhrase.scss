@@ -1,6 +1,15 @@
+@keyframes rotateTimon{
+  0% {
+    transform: rotateZ(25deg)
+  }
+  100% {
+    transform: rotateZ(-25deg)
+  }
+}
+
 .phrase-container {
   width: 100%;
-  margin-bottom: 150px;
+  margin-bottom: 190px;
   
   .phrase-wrapper {
     width: 100%;
@@ -9,6 +18,7 @@
 
 
     .phrase-content {
+      transform: rotate3d(0, 0, 0, 45deg);
       .phrase-links-container {
         font-size: 7vw;
 
@@ -29,45 +39,72 @@
           }
         }
 
-        .phrase-couple[title='num0']{
-          font-size: 110%;
-          line-height: 1.1em;
-          font-family: 'rali';
+        .phrase-couple[title='designer']{
+          font-size: 140%;
+          font-family: 'Sax';
+          margin-left: -0.25em;
+          letter-spacing: .07em;
         }
         
-        .phrase-couple[title='num1'] {
-          font-family: 'rame';
-          font-size: 60%;
-          line-height: 1.1em;
+        .phrase-couple[title='dev'] {
+          margin-left: 0.9em;
+          font-family: 'Sax';
+          font-size: 190%;
+          letter-spacing: 1.16em;
+          position: relative;
+
+          span {
+            &:before {
+              font-family: 'Josefin Sans';
+              content: '<';
+              position: absolute;
+              left: 50%;
+              margin-left: -2.7em;
+              font-size: 0.6em;
+              font-weight: 100;
+              top: .2em;
+            }
+            
+            &:after {
+              top: .2em;
+              font-family: 'Josefin Sans';
+              margin-left: .21em;
+              font-size: 0.6em;
+              font-weight: 100;
+              content: '>';
+              left: 50%;
+              position: absolute;
+            }
+          }
         }
-
-        .phrase-couple[title='num2'] {
-          font-size: 45%;
-          line-height: 1.6em;
-          font-family: 'rali';
-
+        
+        .phrase-couple[title='sea lover'] {
+          margin-bottom: 0.5em;
+          font-size: 120%;
+          font-family: 'Sax';
+          letter-spacing: 0.11em;
+          margin-left: -0.25em;
         }
-
+        
+        .phrase-couple[title='timon'] {
+          display: inline-block;
+          width: 1.2em;
+          margin-bottom: 0.7em;
+          .move {
+            transform-origin: 50%;
+            animation: 4s infinite alternate rotateTimon;
+            animation-timing-function: ease-in-out;
+          }
+        }
+        
         .phrase-couple[title='thats-me'] {
-          font-size: 28%;
-          line-height: 1em;
-          font-family: 'rali';
-          font-weight: 900;
-          letter-spacing: 0.5em;
-          text-transform: uppercase;
+          margin-left: 0.4em;
+          font-size: 74%;
+          font-family: 'Saxbo';
+          letter-spacing: 0.87em;
           cursor: pointer;
           position: relative;
 
-          &:before {
-            content: '';
-            position: absolute;
-            width: 9em;
-            transform: rotateZ(2deg);
-            border-top: 1px solid white;
-            top: .3em;
-            height: 1px;
-            background-color: $mainColor;
-          }
         }
       }
     }
@@ -86,7 +123,7 @@
   }
 }
 
-@media all and (min-width: 960px) {
+@media all and (min-width: 670px) {
   .phrase-container {
     .phrase-wrapper {
       margin-bottom: 40px !important;
@@ -94,7 +131,7 @@
     }
   }
   .phrase-links-container {
-    font-size: 3.4rem !important;
+    font-size: 3rem !important;
   }
 }
 

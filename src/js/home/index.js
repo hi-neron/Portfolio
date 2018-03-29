@@ -13,7 +13,7 @@ const empty = require('empty-element')
 const Lazy = require('vanilla-lazyload')
 
 // phrase intro
-let bioTags = ['DESIGNER', 'DEV', 'ILLUSTRATOR', 'RESILIENT', 'COFFEE', 'SEA LOVER']
+let bioTags = ['DESIGNER', 'DEV', 'SEA LOVER']
 
 // bar
 const barCreator = require('./bar')
@@ -32,7 +32,7 @@ page('/:tag?', create, (ctx, next) => {
   drawArticles(tag)
   
   // get intro
-  document.onload = intro.init(introContainer)
+  document.onload = intro.init(introContainer, ctx)
   
   // Bar
   barCreator((t) => {
@@ -40,7 +40,7 @@ page('/:tag?', create, (ctx, next) => {
   })
   
   // Bio
-  phraseC(bioTags, (template) => {
+  phraseC((template) => {
     phrase.appendChild(template)  
   })
 

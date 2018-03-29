@@ -3,7 +3,7 @@ const empty = require('empty-element')
 
 let opened = false
 let limit = false
-let menuBar
+let menuBar, msnry
 // tags
 const MAINK = ['Design', 'Dev', 'Animation', 'Illustration', 'Resilience']
 const SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front end']
@@ -12,19 +12,26 @@ const SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front end']
 let tag = yo`<span class="tag"></span>`
 let message = yo`<span class="message"></span>`
 let alertT = yo`<span class="alert"></span>`
+let icon = yo`<div class="icon">▶︎</div>`
 
 let tagInfo = yo`
-  <div class="tag-info">
-    ${message}
-    ${alertT}
-    ${tag}
-  </div>
+<div class="tag-info">
+  ${message}
+  ${alertT}
+  ${tag}
+</div>
 `
+
+let bottom = yo`<div class="bar-bottom">
+  <div class="bar-bottom-upper">
+    <h1 class="bar-sanchez"></h1>
+  </div>
+</div>`
 
 // lanzador
 let trigger = yo`
   <div id="bar-trigger">
-  <div class="icon">△</div>
+  ${icon}
   ${tagInfo}
   </div>
 `
@@ -66,9 +73,10 @@ function createTemplate() {
 
   menuBar = yo`
     <div id="bar-menu">
-      <span class="labels">leitmotiv</span>
+      <div class="labels">Main topics</div>
       ${mainLinks}
       ${secondaryLinks}
+      ${bottom}
     </div>
   `
 
@@ -100,7 +108,10 @@ trigger.addEventListener('click', (e) => {
     console.log('opened')
     app.classList.remove('main-bar-open-app');
     bar.classList.remove('main-bar-open-bar');
+    icon.classList.remove('rotate-icon');
+    
   } else {
+    icon.classList.add('rotate-icon');
     app.classList.add('main-bar-open-app');
     bar.classList.add('main-bar-open-bar');
     opened = true
@@ -113,7 +124,7 @@ window.addEventListener('scroll', (e) => {
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
 
-  if (vPosition > 720) {
+  if (vPosition > 920) {
     limit = true
     trigger.classList.add('view');
   } else {
