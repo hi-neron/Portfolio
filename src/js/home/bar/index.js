@@ -1,5 +1,6 @@
 const yo = require('yo-yo')
 const empty = require('empty-element')
+const Mojs = require('mo-js')
 
 let opened = false
 let limit = false
@@ -12,7 +13,7 @@ const SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front end']
 let tag = yo`<span class="tag"></span>`
 let message = yo`<span class="message"></span>`
 let alertT = yo`<span class="alert"></span>`
-let icon = yo`<div class="icon">▶︎</div>`
+let icon = yo`<div id="ico-bar" class="icon">▶︎</div>`
 
 let tagInfo = yo`
 <div class="tag-info">
@@ -98,11 +99,35 @@ function createTemplate() {
   return barTemplate
 }
 
+let mainColor = '#ff4f4f'
+let DURATION = 1000
+
+const burst = new Mojs.Burst({
+  parent: icon,
+  left: 5,
+  top: 4,
+  count: 5,
+  radius: {5: 15},
+  children: {
+    shape: 'line',
+    radius: 7,
+    scale: 1,
+    strokeDasharray: '100%',
+    strokeDashoffset: { '-100%' : '100%' },
+    duration: `rand(500, ${DURATION})`,
+    easing: 'ease.out',
+    stroke: mainColor
+  }
+})
 
 trigger.addEventListener('click', (e) => {
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
-
+  console.log(e)
+  burst
+  .setSpeed(1)
+  .replay()
+  
   if (opened) {
     opened = false
     console.log('opened')

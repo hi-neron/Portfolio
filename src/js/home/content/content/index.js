@@ -4,10 +4,12 @@ const yo = require('yo-yo')
 
 function articleGen(data) {
   let template = yo`
-    <div class="grid-item ${data.important? 'grid-item-widthx2': ''}" title="${data.title}">
-      <img data-src="${data.pictures.main.url}" alt="${data.pictures.main.comment}">
-      <h4 class="article-label">${data.title}</h4>
-    </div>
+    <article class="grid-item ${data.important? 'grid-item-widthx2': ''}" title="${data.title}">
+        <div class="article-content">
+          <img data-src="${data.pictures.main.url}" alt="${data.pictures.main.comment}">
+        </div>
+      <h1 class="article-label">${data.title}</h1>
+    </article>
   `
   return template
 }

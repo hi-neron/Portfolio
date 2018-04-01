@@ -27,9 +27,10 @@ function create(ctx, next) {
 
   app.appendChild(introContainer)
   app.appendChild(phrase)
-  document.body.appendChild(bar)
   app.appendChild(mainContent)
   app.appendChild(footer)
+  app.classList.add('no-overflow')
+  document.body.appendChild(bar)
   next()
 }
 

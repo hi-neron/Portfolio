@@ -19,7 +19,10 @@ let bioTags = ['DESIGNER', 'DEV', 'SEA LOVER']
 const barCreator = require('./bar')
 let app, mainContent, introContainer, phrase, msnry
 
-page('/:tag?', create, (ctx, next) => {
+// loader
+const loader = require('./loader')
+
+page('/:tag?', create, loader, (ctx, next) => {
   // vars
   let app = ctx.app
   let introContainer = ctx.introContainer

@@ -15,6 +15,7 @@
     "g": "^2.0.1",
     "lodash": "^4.17.5",
     "masonry-layout": "^4.2.1",
+    "mo-js": "^0.288.2",
     "page": "^1.8.3",
     "postprocessing": "^4.3.0",
     "three": "^0.90.0",

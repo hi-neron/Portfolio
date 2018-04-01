@@ -54,7 +54,8 @@ let magnitude = 3
 
 let sinProf
 
-let x = document.computer ? 46 : 28
+// size intro: pc || mobile
+let x = document.computer ? 44 : 28
 
 let mousePosition = {
   x: 0,
@@ -221,6 +222,7 @@ function world (debbug, assets, appContainer, ctx) {
 
     window.addEventListener( 'resize', onWindowResize, false )
 
+    ctx.mainLoader.destroy()
     render ()
     helloMove.play()
 

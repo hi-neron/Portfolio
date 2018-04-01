@@ -4,7 +4,7 @@ const yo = require('yo-yo')
 module.exports = function (cb){
   let template = yo`
     <footer class="footer">
-      footer
+      .dat
     </footer>
   `
   cb(null, template)
