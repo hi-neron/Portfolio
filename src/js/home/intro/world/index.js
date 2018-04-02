@@ -1,7 +1,6 @@
 'use strict'
 
 const THREE = require('three')
-const TWEEN = require('tween.js')
 
 const Stats = require('stats.js')
 const dat = require('dat.gui').default
@@ -222,7 +221,11 @@ function world (debbug, assets, appContainer, ctx) {
 
     window.addEventListener( 'resize', onWindowResize, false )
 
-    // ctx.mainLoader.destroy()
+    // remove loader
+    setTimeout(() => {
+      ctx.mainLoader.vanish()
+    }, 3000)
+
     render ()
     helloMove.play()
 

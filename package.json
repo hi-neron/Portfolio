@@ -20,6 +20,7 @@
     "postprocessing": "^4.3.0",
     "three": "^0.90.0",
     "three.proton.js": "^0.1.5",
+    "tween": "^0.9.0",
     "tween.js": "^16.6.0",
     "vanilla-lazyload": "^10.4.2",
     "yo-yo": "^1.4.1"

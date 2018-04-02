@@ -1,26 +1,45 @@
 #main-loader {
-  width: 0%;
-  height: 0%;
+  width: 100%;
+  height: 100%;
   z-index: 10;
   position: fixed;
   overflow: hidden;
-  background-image: linear-gradient(180deg, #f3f3f6 40%, #ebebeb 40%, #ebebeb 43.33%, #f1f1f1 43.33%, #f1f1f1 50%, #f3f3f6 50%, #f3f3f6 90%, #ebebeb 90%, #ebebeb 93.33%, #f1f1f1 93.33%, #f1f1f1 100%);
-  background-size: 30.00px 30.00px;
-
+  transition: .5s all ease-out;
+  backface-visibility: visible;
+  
+  .screen-black {
+    width: 3000px;
+    height: 3000px;
+    left: 50%;
+    top: 50%;
+    margin-left: -1500px;
+    margin-top: -1500px;
+    position: absolute;
+    background-color: $mainColor2;
+  }
+  
   .loader-wrapper {
     position: absolute;
     left: 50%;
     top: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+
     .loader-icon {
-      width: 50px;
-      height: 50px;
-      transform: translate(-50%, -50%);
+      position: absolute;
+      width: 78px;
+      height: 78px;
+      margin-left: -39px;
+      margin-top: -39px;
+      left: 50%;
+      top: 50%;
     }
   }
 }
 
 .loader-visible {
-  background-color: $myWhite;
+  border-radius: 0% !important;
   width: 100% !important;
   height: 100% !important;
 }

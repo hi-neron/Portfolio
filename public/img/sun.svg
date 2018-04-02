@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 127.36 76.32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #aefff8;
+        opacity: 0.3;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="63.68" y1="96.15" x2="63.68" y2="5.67" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#aefff8"/>
+      <stop offset="0.63" stop-color="#5d7b89"/>
+      <stop offset="1" stop-color="#2f304b"/>
+    </linearGradient>
+  </defs>
+  <title>sun</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g>
+        <path class="cls-1" d="M126.08,76.32A63.67,63.67,0,1,0,0,63.68,63.33,63.33,0,0,0,1.28,76.32Z"/>
+        <path class="cls-2" d="M108.6,76.32a46.68,46.68,0,1,0-89.85,0Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
