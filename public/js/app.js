@@ -58203,7 +58203,7 @@ function world(debbug, assets, appContainer, ctx) {
 
     window.addEventListener('resize', onWindowResize, false);
 
-    ctx.mainLoader.destroy();
+    // ctx.mainLoader.destroy()
     render();
     helloMove.play();
   });
@@ -108307,7 +108307,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n      <div id="main-loader" class="loader-visible">\n        <div class="loader-wrapper">\n          <div class="loader-icon">\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div id="main-loader" class="loader-visible">\n        <div class="loader-wrapper">\n          <div class="loader-icon">\n          </div>\n        </div>\n      </div>\n    ']);
+var _templateObject = _taggedTemplateLiteral(['\n      <div class="loader-icon">\n      </div>\n    '], ['\n      <div class="loader-icon">\n      </div>\n    ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n      <div id="main-loader" class="loader-visible">\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div id="main-loader" class="loader-visible">\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -108319,7 +108320,8 @@ var Loader = function () {
   function Loader(ctx) {
     _classCallCheck(this, Loader);
 
-    this.container = yo(_templateObject);
+    var loaderIcon = yo(_templateObject);
+    this.container = yo(_templateObject2, loaderIcon);
 
     this.ctx = ctx;
     document.body.appendChild(this.container);

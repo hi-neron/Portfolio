@@ -2,11 +2,14 @@ const yo = require('yo-yo')
 
 class Loader {
   constructor (ctx){
+    let loaderIcon = yo`
+      <div class="loader-icon">
+      </div>
+    `
     this.container = yo`
       <div id="main-loader" class="loader-visible">
         <div class="loader-wrapper">
-          <div class="loader-icon">
-          </div>
+          ${loaderIcon}
         </div>
       </div>
     `

@@ -14,8 +14,9 @@
 @import "libs/loader";
 
 %back1 {
-  background-image: linear-gradient(180deg, #f3f3f6 40.63%, #eeeeee 40.63%, #eeeeee 43.75%, #f1f1f1 43.75%, #f1f1f1 46.88%, #f0faf9 46.88%, #f0faf9 50%, #f3f3f6 50%, #f3f3f6 90.63%, #eeeeee 90.63%, #eeeeee 93.75%, #f1f1f1 93.75%, #f1f1f1 96.88%, #f0faf9 96.88%, #f0faf9 100%);
-  background-size: 32.00px 32.00px;
+  background-image: linear-gradient(180deg, #f3f3f6 40%, #ebebeb 40%, #ebebeb 43.33%, #f1f1f1 43.33%, #f1f1f1 50%, #f3f3f6 50%, #f3f3f6 90%, #ebebeb 90%, #ebebeb 93.33%, #f1f1f1 93.33%, #f1f1f1 100%);
+  background-size: 30.00px 30.00px;
+  background-attachment: fixed;
 }
 
 body {

@@ -4,6 +4,8 @@
   z-index: 10;
   position: fixed;
   overflow: hidden;
+  background-image: linear-gradient(180deg, #f3f3f6 40%, #ebebeb 40%, #ebebeb 43.33%, #f1f1f1 43.33%, #f1f1f1 50%, #f3f3f6 50%, #f3f3f6 90%, #ebebeb 90%, #ebebeb 93.33%, #f1f1f1 93.33%, #f1f1f1 100%);
+  background-size: 30.00px 30.00px;
 
   .loader-wrapper {
     position: absolute;
@@ -12,7 +14,6 @@
     .loader-icon {
       width: 50px;
       height: 50px;
-      background-color: red;
       transform: translate(-50%, -50%);
     }
   }

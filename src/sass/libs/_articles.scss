@@ -37,15 +37,18 @@ $width: 33.3%;
           }
         }
         
-        img {
-          min-height: 200px;
-          transition: all 0.3s ease-out;
-          width: 100%;
+        .article-content {
+
+          img {
+            min-height: 200px;
+            transition: all 0.3s ease-out;
+            width: 100%;
+          }
         }
         
         .article-label {
           text-align: left;
-          font-family: 'sax';
+          font-family: 'rame';
           color: $mainColor;
           line-height: 1.68rem;
           font-size: 1.25rem;
