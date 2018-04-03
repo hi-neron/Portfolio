@@ -52,7 +52,7 @@ const sun = yo`
       <stop offset="0.54" stop-color="#ff9d77"/>
     </radialGradient>
     <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffd664"/>
+      <stop offset="0" stop-color="#fff674"/>
       <stop offset="0.54" stop-color="#ff4f4f"/>
     </radialGradient>
   </defs>
@@ -205,11 +205,26 @@ class Loader {
     const container = new mojs.Html({
       el: this.screen,
       duration: 600,
-      scaleX: {1:0.025},
-      scaleY: {1:0.025},
-      backgroundColor: {'#161720': '#b37fae'},
-      easing: 'elastic.inout',
-      borderRadius: {0: '50%'}
+      scaleX: {
+        1:0.020, 
+        delay: 1000,
+        easing: 'elastic.out',
+        duration: 300
+      },
+      scaleY: {
+        1:0.020, 
+        delay: 1000,
+        duration: 300,
+        easing: 'elastic.out'
+      },
+      backgroundColor: {'#161720': '#2f304b'},
+      borderRadius: {0: '50%'},
+      angleX: {
+        0: 90, 
+        delay: 2000, 
+        duration: 500,
+        easing: 'elastic.out'
+      }
     })
     
     const loaderIcon = new mojs.Html({
@@ -221,14 +236,14 @@ class Loader {
     
     const nuageMo = new mojs.Html({
       el: nuage,
-      fill: {'#161720': '#fff8b4'},
+      fill: {'#161720': '#fff6c4'},
       duration: 300,
       easing: 'ease.out',
     })
     
     const nuage2Mo = new mojs.Html({
       el: nuage2,
-      fill: {'#161720': '#fff8b4'},
+      fill: {'#161720': '#fff6c4'},
       duration: 300,
       easing: 'ease.out',
     })
@@ -241,32 +256,32 @@ class Loader {
     })
 
     const burst = new mojs.Burst({
+      parent: this.container,
       count: 10,
       radius: {50: 120},
-      delay: 300,
       children: {
+        delay: 1050,
         shape: 'line',
         stroke: '#2f304b',
         duration: 1400,
-        scale: {3: 0},
         easing: 'ease.out'
       }
     })
 
     this.line1.tune({
-      stroke: 'white'
+      stroke: '#fff6c4'
     })
     this.line2.tune({
-      stroke: 'white'
+      stroke: '#fff6c4'
     })
     this.line3.tune({
-      stroke: 'white'
+      stroke: '#fff6c4'
     })
     this.line4.tune({
-      stroke: 'white'
+      stroke: '#fff6c4'
     })
     this.line5.tune({
-      stroke: 'white'
+      stroke: '#fff6c4'
     })
 
     
@@ -276,11 +291,20 @@ class Loader {
     setTimeout(() => {
       const rotate = new mojs.Html({
         el: this.container,
-        scale: {1: 0},
-        duration: 200,
-        easing: 'ease.out'
+        scale: {
+          1: 0, 
+          delay: 2000,
+          duration: 100,
+          easing: 'ease.in',
+        },
+        opacity: {
+          1: 0,
+          duration: 100,
+          delay: 1600,
+          easing: 'ease.out',
+        }
       }).play()
-    }, 1500);
+    }, 1000);
   }
 }
 

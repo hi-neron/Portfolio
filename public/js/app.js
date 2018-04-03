@@ -107423,7 +107423,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _templateObject = _taggedTemplateLiteral(['\n  <rect class="cls-6-sun" x="0" y="60" width="90" height="3"/>\n'], ['\n  <rect class="cls-6-sun" x="0" y="60" width="90" height="3"/>\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  <rect class="cls-6-sun" x="80" y="75" width="90" height="3"/>\n'], ['\n  <rect class="cls-6-sun" x="80" y="75" width="90" height="3"/>\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  <path class="cls-5-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n'], ['\n  <path class="cls-5-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="136.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff4f4f"/>\n      <stop offset="0.13" stop-color="#ff5351"/>\n      <stop offset="0.25" stop-color="#ff5d56"/>\n      <stop offset="0.36" stop-color="#ff7060"/>\n      <stop offset="0.47" stop-color="#ff896d"/>\n      <stop offset="0.54" stop-color="#ff9d77"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ffd664"/>\n      <stop offset="0.54" stop-color="#ff4f4f"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n'], ['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="136.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff4f4f"/>\n      <stop offset="0.13" stop-color="#ff5351"/>\n      <stop offset="0.25" stop-color="#ff5d56"/>\n      <stop offset="0.36" stop-color="#ff7060"/>\n      <stop offset="0.47" stop-color="#ff896d"/>\n      <stop offset="0.54" stop-color="#ff9d77"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ffd664"/>\n      <stop offset="0.54" stop-color="#ff4f4f"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="136.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff4f4f"/>\n      <stop offset="0.13" stop-color="#ff5351"/>\n      <stop offset="0.25" stop-color="#ff5d56"/>\n      <stop offset="0.36" stop-color="#ff7060"/>\n      <stop offset="0.47" stop-color="#ff896d"/>\n      <stop offset="0.54" stop-color="#ff9d77"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#fff674"/>\n      <stop offset="0.54" stop-color="#ff4f4f"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n'], ['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="136.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff4f4f"/>\n      <stop offset="0.13" stop-color="#ff5351"/>\n      <stop offset="0.25" stop-color="#ff5d56"/>\n      <stop offset="0.36" stop-color="#ff7060"/>\n      <stop offset="0.47" stop-color="#ff896d"/>\n      <stop offset="0.54" stop-color="#ff9d77"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#fff674"/>\n      <stop offset="0.54" stop-color="#ff4f4f"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    <div class="loader-icon">\n      ', '\n    </div>\n    '], ['\n    <div class="loader-icon">\n      ', '\n    </div>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['\n      <div class="screen-black"></div>\n    '], ['\n      <div class="screen-black"></div>\n    ']),
     _templateObject7 = _taggedTemplateLiteral(['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    ']);
@@ -107565,11 +107565,26 @@ var Loader = function () {
       var container = new mojs.Html({
         el: this.screen,
         duration: 600,
-        scaleX: { 1: 0.025 },
-        scaleY: { 1: 0.025 },
-        backgroundColor: { '#161720': '#b37fae' },
-        easing: 'elastic.inout',
-        borderRadius: { 0: '50%' }
+        scaleX: {
+          1: 0.020,
+          delay: 1000,
+          easing: 'elastic.out',
+          duration: 300
+        },
+        scaleY: {
+          1: 0.020,
+          delay: 1000,
+          duration: 300,
+          easing: 'elastic.out'
+        },
+        backgroundColor: { '#161720': '#2f304b' },
+        borderRadius: { 0: '50%' },
+        angleX: {
+          0: 90,
+          delay: 2000,
+          duration: 500,
+          easing: 'elastic.out'
+        }
       });
 
       var loaderIcon = new mojs.Html({
@@ -107581,14 +107596,14 @@ var Loader = function () {
 
       var nuageMo = new mojs.Html({
         el: nuage,
-        fill: { '#161720': '#fff8b4' },
+        fill: { '#161720': '#fff6c4' },
         duration: 300,
         easing: 'ease.out'
       });
 
       var nuage2Mo = new mojs.Html({
         el: nuage2,
-        fill: { '#161720': '#fff8b4' },
+        fill: { '#161720': '#fff6c4' },
         duration: 300,
         easing: 'ease.out'
       });
@@ -107601,32 +107616,32 @@ var Loader = function () {
       });
 
       var burst = new mojs.Burst({
+        parent: this.container,
         count: 10,
         radius: { 50: 120 },
-        delay: 300,
         children: {
+          delay: 1050,
           shape: 'line',
           stroke: '#2f304b',
           duration: 1400,
-          scale: { 3: 0 },
           easing: 'ease.out'
         }
       });
 
       this.line1.tune({
-        stroke: 'white'
+        stroke: '#fff6c4'
       });
       this.line2.tune({
-        stroke: 'white'
+        stroke: '#fff6c4'
       });
       this.line3.tune({
-        stroke: 'white'
+        stroke: '#fff6c4'
       });
       this.line4.tune({
-        stroke: 'white'
+        stroke: '#fff6c4'
       });
       this.line5.tune({
-        stroke: 'white'
+        stroke: '#fff6c4'
       });
 
       var vanline = new mojs.Timeline();
@@ -107635,11 +107650,20 @@ var Loader = function () {
       setTimeout(function () {
         var rotate = new mojs.Html({
           el: _this.container,
-          scale: { 1: 0 },
-          duration: 200,
-          easing: 'ease.out'
+          scale: {
+            1: 0,
+            delay: 2000,
+            duration: 100,
+            easing: 'ease.in'
+          },
+          opacity: {
+            1: 0,
+            duration: 100,
+            delay: 1600,
+            easing: 'ease.out'
+          }
         }).play();
-      }, 1500);
+      }, 1000);
     }
   }]);
 
