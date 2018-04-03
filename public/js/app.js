@@ -58203,7 +58203,7 @@ function world(debbug, assets, appContainer, ctx) {
 
     window.addEventListener('resize', onWindowResize, false);
 
-    // ctx.mainLoader.destroy()
+    ctx.mainLoader.destroy();
     render();
     helloMove.play();
   });
