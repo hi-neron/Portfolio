@@ -3,7 +3,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css?family=Inknut+Antiqua:300,500,700,800,900|Vollkorn:400,400i,700,700i,900,900i");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Alegreya+SC:400,500,700|Averia+Libre:300,400,700|Averia+Sans+Libre:400,700|Averia+Serif+Libre:300i,400,700|Old+Standard+TT:400,400i,700");
 html {
@@ -324,10 +323,59 @@ svg:focus {
       transition: all 0.5s; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item:hover {
         cursor: pointer; }
-      #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content img {
-        min-height: 200px;
-        transition: all 0.3s ease-out;
-        width: 100%; }
+      #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content {
+        position: relative; }
+        #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #ff4d4d;
+          opacity: 0;
+          transition: 0.05s all ease-out; }
+          #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container:hover {
+            opacity: .98 !important; }
+          #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper {
+            position: relative;
+            height: 50%;
+            min-height: 120px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px 40px;
+            text-align: left;
+            margin-top: -10px; }
+            #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top {
+              max-height: 70px;
+              overflow: hidden; }
+              #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-keywords .over-article-keyword {
+                -webkit-font-smoothing: antialiased !important;
+                font-family: 'saxi';
+                text-transform: capitalize;
+                color: rgba(22, 23, 32, 0.8);
+                line-height: 1.3em;
+                font-size: 1.2rem; }
+                #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-keywords .over-article-keyword .over-article-word {
+                  color: #aefff8;
+                  transition: .1s all ease-out; }
+                  #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-keywords .over-article-keyword .over-article-word:hover {
+                    color: #161720; }
+            #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom {
+              border-top: 1px solid rgba(22, 23, 32, 0.8);
+              margin-top: 10px;
+              width: 100%;
+              height: 220px;
+              color: #161720; }
+              #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom .over-article-content {
+                margin-top: 10px;
+                font-family: 'Josefin Sans';
+                font-weight: 300;
+                font-size: 1.1em;
+                line-height: 1.3em;
+                height: 30%;
+                overflow: hidden; }
+        #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content img {
+          min-height: 200px;
+          transition: all 0.3s ease-out;
+          width: 100%; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-label {
         text-align: left;
         font-family: 'sax';
@@ -402,13 +450,11 @@ svg:focus {
         .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple {
           color: #2f304b;
           -webkit-font-smoothing: antialiased !important;
-          letter-spacing: 0.3rem;
-          font-family: 'MySans'; }
-          .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple .phrase-word .phrase-link {
+          letter-spacing: 0.3rem; }
+          .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple:hover {
             cursor: pointer;
+            color: rgba(47, 48, 75, 0.8);
             transition: all .1s ease-in; }
-            .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple .phrase-word .phrase-link:hover {
-              color: #ff4d4d; }
         .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='designer'] {
           font-size: 140%;
           font-family: 'Sax';
@@ -478,6 +524,9 @@ svg:focus {
   .phrase-container .phrase-wrapper {
     margin-top: 50px; } }
 
+footer {
+  height: 500px; }
+
 #main-loader {
   width: 100%;
   height: 100%;
@@ -510,6 +559,14 @@ svg:focus {
       margin-top: -39px;
       left: 50%;
       top: 50%; }
+      #main-loader .loader-wrapper .loader-icon .loader-bottom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 84px;
+        height: 84px;
+        margin-left: -29px;
+        margin-top: 4px; }
 
 .loader-visible {
   border-radius: 0% !important;
@@ -517,7 +574,7 @@ svg:focus {
   height: 100% !important; }
 
 body {
-  background-image: linear-gradient(180deg, #f3f3f6 38.46%, #f5f5f5 38.46%, #f5f5f5 46.13%, #f0f0f2 46.13%, #f0f0f2 50%, #f3f3f6 50%, #f3f3f6 88.46%, #f5f5f5 88.46%, #f5f5f5 96.15%, #f0f0f2 96.15%, #f0f0f2 100%);
+  background-image: linear-gradient(180deg, #f8f8f8 40%, #f3f3f3 40%, #f3f3f3 43.33%, #f6f6f6 43.33%, #f6f6f6 46.67%, #f0fffc 46.67%, #f0fffc 50%, #f8f8f8 50%, #f8f8f8 90%, #f3f3f3 90%, #f3f3f3 93.33%, #f6f6f6 93.33%, #f6f6f6 96.67%, #f0fffc 96.67%, #f0fffc 100%);
   background-size: 30.00px 30.00px;
   background-attachment: fixed; }
 
@@ -525,7 +582,6 @@ body {
   font-family: 'Fira Sans';
   font-weight: 400;
   color: #090911;
-  background-color: #f3f3f6;
   overflow-x: hidden; }
 
 a {

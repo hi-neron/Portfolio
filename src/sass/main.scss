@@ -14,7 +14,7 @@
 @import "libs/loader";
 
 %back1 {
-  background-image: linear-gradient(180deg, #f3f3f6 38.46%, #f5f5f5 38.46%, #f5f5f5 46.13%, #f0f0f2 46.13%, #f0f0f2 50%, #f3f3f6 50%, #f3f3f6 88.46%, #f5f5f5 88.46%, #f5f5f5 96.15%, #f0f0f2 96.15%, #f0f0f2 100%);
+  background-image: linear-gradient(180deg, #f8f8f8 40%, #f3f3f3 40%, #f3f3f3 43.33%, #f6f6f6 43.33%, #f6f6f6 46.67%, #f0fffc 46.67%, #f0fffc 50%, #f8f8f8 50%, #f8f8f8 90%, #f3f3f3 90%, #f3f3f3 93.33%, #f6f6f6 93.33%, #f6f6f6 96.67%, #f0fffc 96.67%, #f0fffc 100%);
   background-size: 30.00px 30.00px;
   background-attachment: fixed;
 }
@@ -23,7 +23,6 @@ body {
   font-family: 'Fira Sans';
   font-weight: 400;
   color: rgb(9, 9, 17);
-  background-color: $myWhite;
   overflow-x: hidden;
   @extend %back1;
 }

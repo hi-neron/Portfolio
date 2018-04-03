@@ -24,18 +24,19 @@
         font-size: 7vw;
 
         .phrase-couple {
+
           color: $mainColor;
           -webkit-font-smoothing: antialiased !important;
           letter-spacing: 0.3rem;
-          font-family: 'MySans';
-
+          
+          &:hover {
+            cursor: pointer;
+            color: rgba($mainColor, 0.8);
+            transition: all .1s ease-in;
+          }
           .phrase-word {
             .phrase-link {
-              cursor: pointer;
-              transition: all .1s ease-in;
-              &:hover {
-                color: $secondaryColor;
-              }
+              
             }
           }
         }

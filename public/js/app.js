@@ -87821,26 +87821,80 @@ module.exports = {
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(['\n    <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          <img data-src="', '" alt="', '">\n        </div>\n      <h1 class="article-label">', '</h1>\n    </article>\n  '], ['\n    <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          <img data-src="', '" alt="', '">\n        </div>\n      <h1 class="article-label">', '</h1>\n    </article>\n  ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-keywords">\n      </div>\n      '], ['\n      <div class="over-article-keywords">\n      </div>\n      ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n        <span class="over-article-keyword">\n          [<span class="over-article-word">', '</span>]\n        </span>\n      '], ['\n        <span class="over-article-keyword">\n          [<span class="over-article-word">', '</span>]\n        </span>\n      ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            <div class="over-article-content">\n            ', '\n            </div>\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            <div class="over-article-content">\n            ', '\n            </div>\n          </div>\n        </div>\n      </div>\n    ']),
+    _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n        <h1 class="article-label">', '</h1>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n        <h1 class="article-label">', '</h1>\n      </article>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var yo = __webpack_require__(46);
 
+var Article = function () {
+  function Article(data) {
+    _classCallCheck(this, Article);
+
+    this.title = data.title;
+    this.type = data.type;
+    this.keywords = data.keywords;
+    this.content = data.content;
+    this.pictures = data.pictures;
+    this.important = data.important;
+
+    //pictures
+    this.mainPicture = this.pictures.main;
+    this.othersPictures = this.pictures.others ? this.pictures.others : null;
+
+    this.templateViewGenerator();
+  }
+
+  _createClass(Article, [{
+    key: 'templateViewGenerator',
+    value: function templateViewGenerator() {
+      var keywords = yo(_templateObject);
+
+      for (var i = 0; i < this.keywords.length; i++) {
+        var _template = yo(_templateObject2, this.keywords[i]);
+        keywords.appendChild(_template);
+      }
+
+      var over = yo(_templateObject3, keywords, this.content);
+
+      var template = yo(_templateObject4, this.important ? 'grid-item-widthx2' : '', this.title, over, this.mainPicture.url, this.mainPicture.comment, this.title);
+
+      var _this = this;
+      template.addEventListener('click', function (e) {
+        console.log(_this.title);
+      });
+
+      this.smallView = template;
+    }
+  }, {
+    key: 'templateContentGenerator',
+    value: function templateContentGenerator() {}
+  }]);
+
+  return Article;
+}();
+
 function articleGen(data) {
-  var template = yo(_templateObject, data.important ? 'grid-item-widthx2' : '', data.title, data.pictures.main.url, data.pictures.main.comment, data.title);
-  return template;
+  var article = new Article(data);
+  return article;
 }
 
 function createTemplate(items, cb) {
-  var articleTemplate = void 0;
+  var article = void 0;
 
-  var main = yo(_templateObject2);
+  var main = yo(_templateObject5);
 
   for (var i = 0; i < items.length; i++) {
-    articleTemplate = articleGen(items[i]);
-    main.appendChild(articleTemplate);
+    article = new Article(items[i]);
+    main.appendChild(article.smallView);
   }
 
   var response = {
@@ -87859,7 +87913,7 @@ module.exports = createTemplate;
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(['\n    <footer class="footer">\n      .dat\n    </footer>\n  '], ['\n    <footer class="footer">\n      .dat\n    </footer>\n  ']);
+var _templateObject = _taggedTemplateLiteral(['\n    <footer class="footer">\n      <div class="footer-wrapper">\n        <div class="footer-logo">\n        </div>\n        <div class="footer-contact">\n        </div>\n        <div class="footer-social">\n        </div>\n      </div>\n    </footer>\n  '], ['\n    <footer class="footer">\n      <div class="footer-wrapper">\n        <div class="footer-logo">\n        </div>\n        <div class="footer-contact">\n        </div>\n        <div class="footer-social">\n        </div>\n      </div>\n    </footer>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -107345,15 +107399,15 @@ var burst = new Mojs.Burst({
   parent: icon,
   left: 5,
   top: 4,
-  count: 5,
-  radius: { 5: 15 },
+  count: 4,
+  angle: 45,
+  radius: { 3: 12 },
   children: {
     shape: 'line',
-    radius: 7,
+    radius: 8,
     scale: 1,
     strokeDasharray: '100%',
     strokeDashoffset: { '-100%': '100%' },
-    duration: 'rand(500, ' + DURATION + ')',
     easing: 'ease.out',
     stroke: mainColor
   }
@@ -107423,10 +107477,12 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _templateObject = _taggedTemplateLiteral(['\n  <rect class="cls-6-sun" x="0" y="60" width="90" height="3"/>\n'], ['\n  <rect class="cls-6-sun" x="0" y="60" width="90" height="3"/>\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  <rect class="cls-6-sun" x="80" y="75" width="90" height="3"/>\n'], ['\n  <rect class="cls-6-sun" x="80" y="75" width="90" height="3"/>\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  <path class="cls-5-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n'], ['\n  <path class="cls-5-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="136.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff4f4f"/>\n      <stop offset="0.13" stop-color="#ff5351"/>\n      <stop offset="0.25" stop-color="#ff5d56"/>\n      <stop offset="0.36" stop-color="#ff7060"/>\n      <stop offset="0.47" stop-color="#ff896d"/>\n      <stop offset="0.54" stop-color="#ff9d77"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#fff674"/>\n      <stop offset="0.54" stop-color="#ff4f4f"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n'], ['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="136.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff4f4f"/>\n      <stop offset="0.13" stop-color="#ff5351"/>\n      <stop offset="0.25" stop-color="#ff5d56"/>\n      <stop offset="0.36" stop-color="#ff7060"/>\n      <stop offset="0.47" stop-color="#ff896d"/>\n      <stop offset="0.54" stop-color="#ff9d77"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#fff674"/>\n      <stop offset="0.54" stop-color="#ff4f4f"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    <div class="loader-icon">\n      ', '\n    </div>\n    '], ['\n    <div class="loader-icon">\n      ', '\n    </div>\n    ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n      <div class="screen-black"></div>\n    '], ['\n      <div class="screen-black"></div>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    ']);
+    _templateObject4 = _taggedTemplateLiteral(['\n  <path class="cls-1-bottom" d="M0,0A69.39,69.39,0,0,0,68.47,58.18,69.39,69.39,0,0,0,136.94,0Z""/>\n'], ['\n  <path class="cls-1-bottom" d="M0,0A69.39,69.39,0,0,0,68.47,58.18,69.39,69.39,0,0,0,136.94,0Z""/>\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n  <div class="loader-bottom">\n    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.66 83.56">\n      <defs>\n        <style>\n          .cls-1-bottom {\n            fill: #161720;\n          }\n        </style>\n      </defs>\n      <title>bottom</title>\n      <g id="Layer_2" data-name="Layer 2">\n        <g id="Layer_1-2" data-name="Layer 1">\n          ', '\n        </g>\n      </g>\n    </svg>\n  </div>\n'], ['\n  <div class="loader-bottom">\n    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.66 83.56">\n      <defs>\n        <style>\n          .cls-1-bottom {\n            fill: #161720;\n          }\n        </style>\n      </defs>\n      <title>bottom</title>\n      <g id="Layer_2" data-name="Layer 2">\n        <g id="Layer_1-2" data-name="Layer 1">\n          ', '\n        </g>\n      </g>\n    </svg>\n  </div>\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="156.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n'], ['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #161720;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="156.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n']),
+    _templateObject7 = _taggedTemplateLiteral(['\n    <div class="loader-icon">\n      ', '\n      ', '\n    </div>\n    '], ['\n    <div class="loader-icon">\n      ', '\n      ', '\n    </div>\n    ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="screen-black"></div>\n    '], ['\n      <div class="screen-black"></div>\n    ']),
+    _templateObject9 = _taggedTemplateLiteral(['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    ']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -107439,17 +107495,21 @@ var nuage = yo(_templateObject);
 var nuage2 = yo(_templateObject2);
 var circleSun = yo(_templateObject3);
 
-var sun = yo(_templateObject4, circleSun, nuage, nuage2);
+var bottomSea = yo(_templateObject4);
+
+var bottom = yo(_templateObject5, bottomSea);
+
+var sun = yo(_templateObject6, circleSun, nuage, nuage2);
 
 var Loader = function () {
   function Loader(ctx) {
     _classCallCheck(this, Loader);
 
-    this.loaderIcon = yo(_templateObject5, sun);
+    this.loaderIcon = yo(_templateObject7, sun, bottom);
 
-    this.screen = yo(_templateObject6);
+    this.screen = yo(_templateObject8);
 
-    this.container = yo(_templateObject7, this.screen, this.loaderIcon);
+    this.container = yo(_templateObject9, this.screen, this.loaderIcon);
 
     this.animate();
 
@@ -107460,7 +107520,7 @@ var Loader = function () {
   _createClass(Loader, [{
     key: 'animate',
     value: function animate() {
-      var waves = '#ff795f';
+      var waves = '#ff8662';
 
       this.line1 = new mojs.Shape({
         parent: this.loaderIcon,
@@ -107562,6 +107622,9 @@ var Loader = function () {
 
       console.log('vanish');
 
+      var initialColor = '#161720';
+      var finalColor = '#bfdfdc';
+
       var container = new mojs.Html({
         el: this.screen,
         duration: 600,
@@ -107577,13 +107640,19 @@ var Loader = function () {
           duration: 300,
           easing: 'elastic.out'
         },
-        backgroundColor: { '#161720': '#2f304b' },
+        backgroundColor: { initialColor: finalColor },
         borderRadius: { 0: '50%' },
         angleX: {
           0: 90,
           delay: 2000,
-          duration: 500,
+          duration: 400,
           easing: 'elastic.out'
+        },
+        y: {
+          1: 4,
+          delay: 2000,
+          duration: 100,
+          easing: 'ease.out'
         }
       });
 
@@ -107594,16 +107663,23 @@ var Loader = function () {
         easing: 'ease.out'
       });
 
+      var bottomSeaMo = new mojs.Html({
+        el: bottomSea,
+        fill: { initialColor: finalColor },
+        duration: 600,
+        easing: 'ease.out'
+      });
+
       var nuageMo = new mojs.Html({
         el: nuage,
-        fill: { '#161720': '#fff6c4' },
+        fill: { '#161720': '#ffffff' },
         duration: 300,
         easing: 'ease.out'
       });
 
       var nuage2Mo = new mojs.Html({
         el: nuage2,
-        fill: { '#161720': '#fff6c4' },
+        fill: { '#161720': '#ffffff' },
         duration: 300,
         easing: 'ease.out'
       });
@@ -107622,30 +107698,48 @@ var Loader = function () {
         children: {
           delay: 1050,
           shape: 'line',
-          stroke: '#2f304b',
+          counter: 6,
+          stroke: finalColor,
           duration: 1400,
           easing: 'ease.out'
         }
       });
 
+      var burst2 = new mojs.Burst({
+        parent: this.container,
+        count: 4,
+        degree: 180,
+        angle: -90,
+        y: 4,
+        radius: { 20: 80 },
+        children: {
+          delay: 2000,
+          shape: 'line',
+          stroke: '#ff5652',
+          duration: 1400,
+          easing: 'ease.out'
+        }
+      });
+
+      var lineColor = '#edfdfd';
       this.line1.tune({
-        stroke: '#fff6c4'
+        stroke: lineColor
       });
       this.line2.tune({
-        stroke: '#fff6c4'
+        stroke: lineColor
       });
       this.line3.tune({
-        stroke: '#fff6c4'
+        stroke: lineColor
       });
       this.line4.tune({
-        stroke: '#fff6c4'
+        stroke: lineColor
       });
       this.line5.tune({
-        stroke: '#fff6c4'
+        stroke: lineColor
       });
 
       var vanline = new mojs.Timeline();
-      vanline.add(loaderIcon, container, burst, nuageMo, nuage2Mo, circleSunMo).play();
+      vanline.add(loaderIcon, container, burst, burst2, nuageMo, nuage2Mo, bottomSeaMo, circleSunMo).play();
 
       setTimeout(function () {
         var rotate = new mojs.Html({

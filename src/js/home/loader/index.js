@@ -1,15 +1,41 @@
 const yo = require('yo-yo')
 const mojs = require('mo-js')
 
-var nuage = yo`
+const nuage = yo`
   <rect class="cls-6-sun" x="0" y="60" width="90" height="3"/>
 `
-var nuage2 = yo`
+const nuage2 = yo`
   <rect class="cls-6-sun" x="80" y="75" width="90" height="3"/>
 `
-var circleSun = yo`
+const circleSun = yo`
   <path class="cls-5-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>
 `
+
+const bottomSea = yo`
+  <path class="cls-1-bottom" d="M0,0A69.39,69.39,0,0,0,68.47,58.18,69.39,69.39,0,0,0,136.94,0Z""/>
+`
+
+const bottom = yo`
+  <div class="loader-bottom">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.66 83.56">
+      <defs>
+        <style>
+          .cls-1-bottom {
+            fill: #161720;
+          }
+        </style>
+      </defs>
+      <title>bottom</title>
+      <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+          ${bottomSea}
+        </g>
+      </g>
+    </svg>
+  </div>
+`
+
+
 
 const sun = yo`
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">
@@ -43,17 +69,13 @@ const sun = yo`
         fill: #161720;
       }
     </style>
-    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="136.54" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff4f4f"/>
-      <stop offset="0.13" stop-color="#ff5351"/>
-      <stop offset="0.25" stop-color="#ff5d56"/>
-      <stop offset="0.36" stop-color="#ff7060"/>
-      <stop offset="0.47" stop-color="#ff896d"/>
-      <stop offset="0.54" stop-color="#ff9d77"/>
+    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="156.54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff5652"/>
+      <stop offset="0.54" stop-color="#ff5652"/>
     </radialGradient>
     <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fff674"/>
-      <stop offset="0.54" stop-color="#ff4f4f"/>
+      <stop offset="0" stop-color="#ff5652"/>
+      <stop offset="0.54" stop-color="#ff5652"/>
     </radialGradient>
   </defs>
   <title>sunset</title>
@@ -81,6 +103,7 @@ class Loader {
     this.loaderIcon = yo`
     <div class="loader-icon">
       ${sun}
+      ${bottom}
     </div>
     `
 
@@ -104,7 +127,7 @@ class Loader {
   }
 
   animate () {
-    let waves = '#ff795f'
+    let waves = '#ff8662'
     
     this.line1 = new mojs.Shape({
       parent: this.loaderIcon,
@@ -202,6 +225,9 @@ class Loader {
   vanish () {
     console.log('vanish')
 
+    let initialColor = '#161720'
+    let finalColor = '#bfdfdc'
+
     const container = new mojs.Html({
       el: this.screen,
       duration: 600,
@@ -217,13 +243,19 @@ class Loader {
         duration: 300,
         easing: 'elastic.out'
       },
-      backgroundColor: {'#161720': '#2f304b'},
+      backgroundColor: {initialColor: finalColor},
       borderRadius: {0: '50%'},
       angleX: {
         0: 90, 
         delay: 2000, 
-        duration: 500,
+        duration: 400,
         easing: 'elastic.out'
+      },
+      y: {
+        1:4,
+        delay: 2000, 
+        duration: 100,
+        easing: 'ease.out'
       }
     })
     
@@ -233,17 +265,24 @@ class Loader {
       delay: 200,
       easing: 'ease.out',
     })
+
+    const bottomSeaMo = new mojs.Html({
+      el: bottomSea,
+      fill: { initialColor: finalColor},
+      duration: 600,
+      easing: 'ease.out',
+    })
     
     const nuageMo = new mojs.Html({
       el: nuage,
-      fill: {'#161720': '#fff6c4'},
+      fill: {'#161720': '#ffffff'},
       duration: 300,
       easing: 'ease.out',
     })
     
     const nuage2Mo = new mojs.Html({
       el: nuage2,
-      fill: {'#161720': '#fff6c4'},
+      fill: {'#161720': '#ffffff'},
       duration: 300,
       easing: 'ease.out',
     })
@@ -262,31 +301,49 @@ class Loader {
       children: {
         delay: 1050,
         shape: 'line',
-        stroke: '#2f304b',
+        counter: 6,
+        stroke: finalColor,
         duration: 1400,
         easing: 'ease.out'
       }
     })
 
+    const burst2 = new mojs.Burst({
+      parent: this.container,
+      count: 4,
+      degree: 180,
+      angle: -90,
+      y: 4,
+      radius: {20: 80},
+      children: {
+        delay: 2000,
+        shape: 'line',
+        stroke: '#ff5652',
+        duration: 1400,
+        easing: 'ease.out'
+      }
+    })
+
+    let lineColor = '#edfdfd'
     this.line1.tune({
-      stroke: '#fff6c4'
+      stroke: lineColor
     })
     this.line2.tune({
-      stroke: '#fff6c4'
+      stroke: lineColor
     })
     this.line3.tune({
-      stroke: '#fff6c4'
+      stroke: lineColor
     })
     this.line4.tune({
-      stroke: '#fff6c4'
+      stroke: lineColor
     })
     this.line5.tune({
-      stroke: '#fff6c4'
+      stroke: lineColor
     })
 
     
     const vanline = new mojs.Timeline
-    vanline.add(loaderIcon, container, burst, nuageMo, nuage2Mo, circleSunMo).play()
+    vanline.add(loaderIcon, container, burst, burst2, nuageMo, nuage2Mo, bottomSeaMo, circleSunMo).play()
     
     setTimeout(() => {
       const rotate = new mojs.Html({

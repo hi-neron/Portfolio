@@ -34,6 +34,16 @@
       margin-top: -39px;
       left: 50%;
       top: 50%;
+
+      .loader-bottom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 84px;
+        height: 84px;
+        margin-left: -29px;
+        margin-top: 4px;
+      }
     }
   }
 }

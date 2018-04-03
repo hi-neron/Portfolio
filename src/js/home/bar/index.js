@@ -106,15 +106,15 @@ const burst = new Mojs.Burst({
   parent: icon,
   left: 5,
   top: 4,
-  count: 5,
-  radius: {5: 15},
+  count: 4,
+  angle: 45,
+  radius: {3: 12},
   children: {
     shape: 'line',
-    radius: 7,
+    radius: 8,
     scale: 1,
     strokeDasharray: '100%',
     strokeDashoffset: { '-100%' : '100%' },
-    duration: `rand(500, ${DURATION})`,
     easing: 'ease.out',
     stroke: mainColor
   }
