@@ -87850,6 +87850,9 @@ var Article = function () {
     this.mainPicture = this.pictures.main;
     this.othersPictures = this.pictures.others ? this.pictures.others : null;
 
+    var myRegE = new RegExp(/[a-z].\n|[a-z][A-Z]\./g);
+    var paragraphs = myRegE.exec(this.content);
+    console.log(paragraphs);
     this.templateViewGenerator();
   }
 

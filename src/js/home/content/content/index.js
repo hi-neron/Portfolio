@@ -15,6 +15,9 @@ class Article {
     this.mainPicture = this.pictures.main
     this.othersPictures = this.pictures.others ? this.pictures.others : null
 
+    let myRegE = new RegExp(/[a-z].\n|[a-z][A-Z]\./g)
+    let paragraphs = myRegE.exec(this.content)
+    console.log(paragraphs)
     this.templateViewGenerator()
   }
 
