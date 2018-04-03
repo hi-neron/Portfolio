@@ -25,13 +25,19 @@ class Article {
       `
 
     for(let i = 0; i < this.keywords.length; i++) {
+      let myKeyword = this.keywords[i]
       let template = yo`
         <span class="over-article-keyword">
-          [<span class="over-article-word">${this.keywords[i]}</span>]
+          [<span class="over-article-word" data-keyword="${myKeyword}">${myKeyword}</span>]
         </span>
       `
       keywords.appendChild(template)
     }
+
+    // look for tag
+    // keywords.addEventListener('click', (e) => {
+    //   console.log(e.target)
+    // })
 
     let over = yo`
       <div class="over-article-container">
@@ -60,7 +66,13 @@ class Article {
 
     let _this = this
     template.addEventListener('click', (e) => {
-      console.log(_this.title)
+      const drawArticle = require('../../')
+      if (e.target.classList.contains('over-article-word')){
+        let data = e.target.getAttribute('data-keyword')
+        return drawArticle(data)
+      } else {
+        console.log(_this.title)
+      }
     })
 
     this.smallView = template
