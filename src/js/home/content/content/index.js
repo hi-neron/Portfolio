@@ -1,19 +1,39 @@
 'use strict'
 
 const yo = require('yo-yo')
+const _ = require('lodash')
+const empty = require('empty-element')
+
+// ventana de contenidos
+let contentContainer = document.createElement('div')
+contentContainer.setAttribute('id', 'article-content')
+document.body.appendChild(contentContainer)
+var screen = false
 
 class Article {
   constructor (data) {
+    // basic info
     this.title = data.title
     this.type = data.type
     this.keywords = data.keywords
     this.content = data.content
     this.pictures = data.pictures
     this.important = data.important
+    this.open = false
+
+    //view content
+    this.viewContent = _.truncate(this.content, {
+      'length': 100,
+      'separator': ' '
+    })
     
-    //pictures
+    // pictures
     this.mainPicture = this.pictures.main
     this.othersPictures = this.pictures.others ? this.pictures.others : null
+    
+    // content
+    let paragraphs = _.split(this.content, /\n/gim)
+    this.content = paragraphs
 
     this.templateViewGenerator()
   }
@@ -34,11 +54,6 @@ class Article {
       keywords.appendChild(template)
     }
 
-    // look for tag
-    // keywords.addEventListener('click', (e) => {
-    //   console.log(e.target)
-    // })
-
     let over = yo`
       <div class="over-article-container">
         <div class="over-article-wrapper">
@@ -47,7 +62,7 @@ class Article {
           </div>
           <div class="over-article-bottom">
             <div class="over-article-content">
-            ${this.content}
+            ${this.viewContent}
             </div>
           </div>
         </div>
@@ -65,13 +80,14 @@ class Article {
     `
 
     let _this = this
+
     template.addEventListener('click', (e) => {
       const drawArticle = require('../../')
       if (e.target.classList.contains('over-article-word')){
         let data = e.target.getAttribute('data-keyword')
         return drawArticle(data)
       } else {
-        console.log(_this.title)
+        _this.screenActivate()
       }
     })
 
@@ -79,11 +95,73 @@ class Article {
   }
 
   templateContentGenerator () {}
+
+  screenActivate () {
+    if (!screen) {
+      this.createContent((template) => {
+        screenSplashOpen(template)
+        screen = true
+      })
+      // ventana abierta
+    } else {
+      screenSplashClose()
+      screen = false
+    }
+  }
+
+  createContent(cb) {
+    let text = document.createElement('div')
+    text.setAttribute('class', 'article-content-readable')
+
+    let close = yo`
+    <div class="article-content-close">
+      x
+    </div>
+    `
+
+    for (let i = 0; i < this.content.length; i++) {
+      let p = yo`<p>${this.content[i]}</p>`
+      text.appendChild(p)
+    }
+
+    let template = yo`
+      <div class="article-content-wrapper">
+        ${close}
+        <header>
+          <figure>
+            <img src="${this.mainPicture.urlXX}">
+            <figcaption>${this.mainPicture.comment}</figcaption>
+          </figure>
+        </header>
+        <div class="article-content-info">
+          <h1 class="article-content-title">
+            ${this.title}
+          </h1>
+          ${text}
+        </div>
+        <footer class="article-content-footer">
+          social
+          gotoback
+          close
+        </footer>
+      </div>
+    `
+
+    close.addEventListener('click', (e) => {
+      screenSplashClose()
+    })
+
+    cb(template)
+  }
 }
 
-function articleGen(data) {
-  let article = new Article (data)
-  return article
+function screenSplashOpen(template) {
+  empty(contentContainer).appendChild(template)
+  contentContainer.classList.add('article-open')
+}
+
+function screenSplashClose() {
+  console.log('close')
 }
 
 function createTemplate (items, cb) {

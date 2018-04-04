@@ -11,6 +11,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/one/main.jpg',
+        urlXX: '/img/articles/one/main.jpg',
         comment: 'first coment main image',
       },
       others: [
@@ -32,6 +33,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/two/main.jpg',
+        urlXX: '/img/articles/two/main.jpg',
         comment: 'first coment main image',
       },
       others: [
@@ -58,6 +60,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/three/main.jpg',
+        urlXX: '/img/articles/three/main.jpg',
         comment: 'first coment main image',
       },
       others: []
@@ -73,6 +76,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/four/main.png',
+        urlXX: '/img/articles/four/main.png',
         comment: 'first coment main image',
       },
       others: []
@@ -88,6 +92,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/five/main.jpg',
+        urlXX: '/img/articles/five/main.jpg',
         comment: 'first coment main image',
       },
       others: []
