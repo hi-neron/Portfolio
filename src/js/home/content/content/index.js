@@ -110,8 +110,8 @@ class Article {
   }
 
   createContent(cb) {
-    let text = document.createElement('div')
-    text.setAttribute('class', 'article-content-readable')
+    let articleContent = document.createElement('div')
+    articleContent.setAttribute('class', 'article-content-readable')
 
     let close = yo`
     <div class="article-content-close">
@@ -119,9 +119,32 @@ class Article {
     </div>
     `
 
+    let myItems = _.merge(this.content, this.othersPictures)
+    console.log(myItems)
+
     for (let i = 0; i < this.content.length; i++) {
       let p = yo`<p>${this.content[i]}</p>`
-      text.appendChild(p)
+      if (this.othersPictures[i]) {
+        switch (this.othersPictures[i].type) {
+          case 'image':
+            break;
+          case 'quote':
+            break;
+
+          default:
+            break;
+        }
+
+        let image = yo`
+          <figure class="article-content-picture">
+            <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
+            <figcaption>${this.othersPictures[i].comment}</figcaption>
+          </figure>
+        `
+        articleContent.appendChild(image)
+      }
+      
+      articleContent.appendChild(p)
     }
 
     let template = yo`
@@ -137,7 +160,7 @@ class Article {
           <h1 class="article-content-title">
             ${this.title}
           </h1>
-          ${text}
+          ${articleContent}
         </div>
         <footer class="article-content-footer">
           social
@@ -161,7 +184,9 @@ function screenSplashOpen(template) {
 }
 
 function screenSplashClose() {
-  console.log('close')
+  empty(contentContainer)
+  contentContainer.classList.remove('article-open')
+  screen = false
 }
 
 function createTemplate (items, cb) {

@@ -104934,8 +104934,9 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-
     _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n        <h1 class="article-label">', '</h1>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n        <h1 class="article-label">', '</h1>\n      </article>\n    ']),
     _templateObject5 = _taggedTemplateLiteral(['\n    <div class="article-content-close">\n      x\n    </div>\n    '], ['\n    <div class="article-content-close">\n      x\n    </div>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['<p>', '</p>'], ['<p>', '</p>']),
-    _templateObject7 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
+    _templateObject7 = _taggedTemplateLiteral(['\n          <figure class="article-content-picture">\n            <img src="', '" alt="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        '], ['\n          <figure class="article-content-picture">\n            <img src="', '" alt="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    ']),
+    _templateObject9 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -105030,17 +105031,35 @@ var Article = function () {
   }, {
     key: 'createContent',
     value: function createContent(cb) {
-      var text = document.createElement('div');
-      text.setAttribute('class', 'article-content-readable');
+      var articleContent = document.createElement('div');
+      articleContent.setAttribute('class', 'article-content-readable');
 
       var close = yo(_templateObject5);
 
+      var myItems = _.merge(this.content, this.othersPictures);
+      console.log(myItems);
+
       for (var i = 0; i < this.content.length; i++) {
         var p = yo(_templateObject6, this.content[i]);
-        text.appendChild(p);
+        if (this.othersPictures[i]) {
+          switch (this.othersPictures[i].type) {
+            case 'image':
+              break;
+            case 'quote':
+              break;
+
+            default:
+              break;
+          }
+
+          var image = yo(_templateObject7, this.othersPictures[i].url, this.othersPictures[i].name, this.othersPictures[i].comment);
+          articleContent.appendChild(image);
+        }
+
+        articleContent.appendChild(p);
       }
 
-      var template = yo(_templateObject7, close, this.mainPicture.urlXX, this.mainPicture.comment, this.title, text);
+      var template = yo(_templateObject8, close, this.mainPicture.urlXX, this.mainPicture.comment, this.title, articleContent);
 
       close.addEventListener('click', function (e) {
         screenSplashClose();
@@ -105059,13 +105078,15 @@ function screenSplashOpen(template) {
 }
 
 function screenSplashClose() {
-  console.log('close');
+  empty(contentContainer);
+  contentContainer.classList.remove('article-open');
+  screen = false;
 }
 
 function createTemplate(items, cb) {
   var article = void 0;
 
-  var main = yo(_templateObject8);
+  var main = yo(_templateObject9);
 
   for (var i = 0; i < items.length; i++) {
     article = new Article(items[i]);
@@ -105107,10 +105128,10 @@ module.exports = function (cb) {
 
 
 module.exports = [{
-  title: 'The Gun Owners of the Parkland Generation',
+  title: 'El mundo tiene un nuevo Museo de la Empatía',
   type: 'ilustration',
   important: true,
-  content: 'Cillum voluptate tempor Lorem fugiat Lorem non. Et nulla ullamco consequat incididunt. Irure commodo velit ad incididunt duis officia ut labore sunt. Labore in ipsum voluptate ipsum duis amet.\n              Reprehenderit eu consectetur consectetur do magna laborum nulla. Quis cupidatat cupidatat voluptate quis anim veniam enim incididunt proident cillum proident ex irure proident. Commodo deserunt deserunt qui laborum laborum ut laboris. Ut duis occaecat magna et aliquip et. Ex nisi commodo anim eu. Aute non elit eiusmod dolore velit aute dolore nulla irure pariatur minim dolor.\n              Aute qui et reprehenderit anim pariatur sint est est. Proident et ut aute excepteur et anim nulla officia ex ipsum esse laboris. Anim sunt cillum nostrud quis esse duis ex deserunt. Labore nulla duis duis commodo Lorem sunt commodo. Sit veniam pariatur sint pariatur nulla ut proident et ad proident velit exercitation nostrud. Ea quis veniam dolor laborum proident.',
+  content: 'En 2015, la artista inglesa Clare Patey fund\xF3 el Museo de la Empat\xEDa para que hombres, mujeres y ni\xF1os salieran de su zona de confort, pensaran por un momento en los dem\xE1s, y se interesaran por mirar el mundo a trav\xE9s de los ojos del otro. Con proyectos participativos como \u2018Una milla en mis zapatos\u2019 y \u2018Mil y un libros\u2019 el museo invita a sus visitantes a descubrir c\xF3mo la empat\xEDa tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.\n    El Museo de la Empat\xEDa \u2013administrado por la organizaci\xF3n de artistas Arts Admin\u2013 comenz\xF3 en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre c\xF3mo caminar en los pasos de alguien m\xE1s.\n    Hace un par de a\xF1os el escritor Roman Krznaric, autor del libro Empat\xEDa: Por qu\xE9 importa y c\xF3mo conseguirla (Empathy: Why it matters and how to get it), me contact\xF3 porque quer\xEDa convertir parte de la teor\xEDa que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidi\xF3 que pensara en proyectos que pudi\xE9ramos convertir en algo que se llamara el Museo de la Empat\xEDa.',
   keywords: ['illustrator', 'designer', 'dev', 'design'],
   pictures: {
     main: {
@@ -105126,9 +105147,9 @@ module.exports = [{
     }]
   }
 }, {
-  title: 'What Went Wrong in the Stormy Daniels Case',
+  title: 'Empiezan las apuestas sobre las películas que serán seleccionadas en Cannes',
   type: 'blog',
-  content: 'Nisi veniam sint voluptate excepteur cillum. Aute est proident tempor culpa. Fugiat sint sint dolor excepteur proident ad ea aute nostrud aliquip ea cupidatat. Tempor nisi pariatur eu do reprehenderit non est anim esse. Tempor commodo in laboris cillum tempor id incididunt nisi mollit esse deserunt officia proident ea. Veniam est commodo eu Lorem do cupidatat ipsum in do dolor tempor et.\n              Enim deserunt officia Lorem ea nostrud ullamco. Nisi mollit consequat laborum proident aliquip cupidatat exercitation et aliquip tempor ea voluptate ex eiusmod. Deserunt et est reprehenderit amet voluptate exercitation elit ex. Tempor non aliqua culpa commodo ut quis minim elit deserunt ipsum laborum do. Elit nostrud elit occaecat nostrud.',
+  content: 'A menos de dos semanas del anuncio de la selecci\xF3n oficial del Festival de Cannes, ya circulan los rumores sobre los directores que podr\xEDan competir por la Palma de Oro, entre ellos el estadounidense Damien Chazelle o el iran\xED Asghar Farhadi, y su filme con Javier Bardem, Pen\xE9lope Cruz y Ricardo Dar\xEDn. Para esta 71\xAA edici\xF3n, del 8 al 19 de mayo, varios nombres aparecen en las quinielas sobre la veintena de pel\xEDculas que competir\xE1n por el m\xE1ximo galard\xF3n del certamen, otorgado por un jurado presidido por la actriz australiana Cate Blanchett.\n    Le puede interesar: Cannes elige a la "comprometida" Cate Blanchett como presidenta de su jurado\n    La lista con los largometrajes seleccionados ser\xE1 revelada el 12 de abril por el delegado general de la muestra, Thierry Fr\xE9maux.\n    Entre los nombres que circulan para formar parte de la prestigiosa selecci\xF3n figura el director estadounidense Damien Chazelle, autor de la multipremiada La La Land, que podr\xEDa presentar First Man, una biopic sobre el astronauta Neil Armstrong protagonizado por Ryan Gosling.',
   keywords: ['resilient', 'designer', 'coffee'],
   pictures: {
     main: {
@@ -105138,19 +105159,24 @@ module.exports = [{
       comment: 'first coment main image'
     },
     others: [{
+      type: 'image',
       name: 'hello World',
-      url: '/img/articles/two/two.jpg',
+      url: '/img/articles/two/two.png',
       comment: 'this is a comment'
     }, {
+      type: 'image',
       name: 'hello World',
       url: '/img/articles/two/three.jpg',
       comment: 'this is a comment'
+    }, {
+      type: 'quote',
+      text: 'Formed of Laura Lee, Mark Speer and Donald “DJ” Johnson, the group discuss their new album, Con Todo El Mundo, their dream collaborations and the power of memory and nostalgia in music.'
     }]
   }
 }, {
-  title: 'What School Shooting Drills Look Like to Students',
+  title: 'Un ciclo de cine para celebrar a Chaplin',
   type: 'blog',
-  content: 'Nisi veniam sint voluptate excepteur cillum. Aute est proident tempor culpa. Fugiat sint sint dolor excepteur proident ad ea aute nostrud aliquip ea cupidatat. Tempor nisi pariatur eu do reprehenderit non est anim esse. Tempor commodo in laboris cillum tempor id incididunt nisi mollit esse deserunt officia proident ea. Veniam est commodo eu Lorem do cupidatat ipsum in do dolor tempor et.\n              Enim deserunt officia Lorem ea nostrud ullamco. Nisi mollit consequat laborum proident aliquip cupidatat exercitation et aliquip tempor ea voluptate ex eiusmod. Deserunt et est reprehenderit amet voluptate exercitation elit ex. Tempor non aliqua culpa commodo ut quis minim elit deserunt ipsum laborum do. Elit nostrud elit occaecat nostrud.',
+  content: 'Dos pel\xEDculas presentes en ambos ciclos hicieron a Chaplin merecedor de premios \xD3scar: en 1929 fue galardonado por El Circo, y en 1973 por la banda sonora de Candilejas. Y, en 1972 gan\xF3 el  galard\xF3n honor\xEDfico de la Academia por su trayectoria cinematogr\xE1fica El hombre transmiti\xF3 en sus largometrajes una cr\xEDtica constante a la sociedad en que viv\xEDa, a partir de personajes marginales o menospreciados. Sin embargo, su mensaje no fue desalentador: a trav\xE9s de la comedia logr\xF3 balancear la crudeza de la realidad, de tal manera que a cada burla en pantalla lo acompa\xF1aba una reflexi\xF3n y una mirada sarc\xE1stica y cr\xEDtica para no sucumbir ante el sistema.\n    Rodrigo Torrijos, editor de cine y cultura de la revista Rolling Stone, dice que Chaplin no se puede catalogar como una figura vigente, sino eterna. \u201CEs uno de los culpables de potenciar la m\xE1quina cinematogr\xE1fica, hizo trascender el negocio de la estimulaci\xF3n a trav\xE9s de im\xE1genes proyectadas en un muro, a un juego entre el poder, el cuerpo y la memoria. En Tiempos modernos met\xEDa la cabeza entre los engranajes de la automatizaci\xF3n que podr\xEDan aniquilarlo; no disimulaba el miedo, pero sal\xEDa del otro lado, no triunfante, pero al menos vivo, y con ese gesto solapado de resistencia, de desacato ante lo imaginado. Por eso est\xE1 presente, porque se sigue burlando de lo establecido, nos sigue inspirando a desafiar el poder, al negocio del entretenimiento, a la dictadura del aburrimiento. Es eterno porque siempre estaremos del lado de los vagos que muerden el cuello de lo imposible\u201D explica Torrijos.',
   keywords: ['designer', 'dev', 'sea lover'],
   pictures: {
     main: {
@@ -105162,9 +105188,9 @@ module.exports = [{
     others: []
   }
 }, {
-  title: 'The Fashion Legacy of Hubert de Givenchy',
+  title: 'De San Felipe (el barrio bogotano) a San Felipe (el castillo cartagenero)',
   type: 'blog',
-  content: 'Nisi veniam sint voluptate excepteur cillum. Aute est proident tempor culpa. Fugiat sint sint dolor excepteur proident ad ea aute nostrud aliquip ea cupidatat. Tempor nisi pariatur eu do reprehenderit non est anim esse. Tempor commodo in laboris cillum tempor id incididunt nisi mollit esse deserunt officia proident ea. Veniam est commodo eu Lorem do cupidatat ipsum in do dolor tempor et.\n              Enim deserunt officia Lorem ea nostrud ullamco. Nisi mollit consequat laborum proident aliquip cupidatat exercitation et aliquip tempor ea voluptate ex eiusmod. Deserunt et est reprehenderit amet voluptate exercitation elit ex. Tempor non aliqua culpa commodo ut quis minim elit deserunt ipsum laborum do. Elit nostrud elit occaecat nostrud.',
+  content: 'Mariana hace uso de su cuerpo como una plastilina de k\xEDnder: sin mezquindad nos recuerda que la gente est\xE1 muy delgada o es muy est\xFApida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo fam\xE9lico en tiempos de selfies, \xF3xido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aqu\xED un eufemismo para nuestra pobreza: nuestra esclavitud. Me regal\xF3 un pin donde aparece usando un vestido de ba\xF1o estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con p\xF3lvora de ca\xF1\xF3n con las que los tiranos espa\xF1oles nos defend\xEDan de los piratas.\n    El punto crucial de esta exhibici\xF3n titulada \u201CEstaba perdido, pero estar perdido nunca se sinti\xF3 tan cabr\xF3n\u201D, y que es preciso leer con acento puertorrique\xF1o, era una fuente amarilla cuya construcci\xF3n fue hecha a cuatro manos con el tambi\xE9n boricua y m\xEDtico artista Radam\xE9s \u201CJuni" Figueroa, cuyo contenido el p\xFAblico se apresur\xF3 a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o \xE9xtasis en su estado puro: de ese que toman los j\xF3venes ansiosos en fiestas electr\xF3nicas que duran d\xEDas y no tienen ni pies, cabeza, ni fin.\n    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Hab\xEDa mucha confusi\xF3n pero sobre todo hab\xEDa mucha nada. Una semana despu\xE9s estar\xEDa en un avi\xF3n con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente m\xE1quina de sopor.',
   keywords: ['illustrator', 'designer', 'sea lover'],
   pictures: {
     main: {
@@ -105176,9 +105202,9 @@ module.exports = [{
     others: []
   }
 }, {
-  title: 'Legacy de Givenchy Hubert has been killed ',
+  title: 'El Gran Salón México llega a Colombia',
   type: 'blog',
-  content: 'Nisi veniam sint voluptate excepteur cillum. Aute est proident tempor culpa. Fugiat sint sint dolor excepteur proident ad ea aute nostrud aliquip ea cupidatat. Tempor nisi pariatur eu do reprehenderit non est anim esse. Tempor commodo in laboris cillum tempor id incididunt nisi mollit esse deserunt officia proident ea. Veniam est commodo eu Lorem do cupidatat ipsum in do dolor tempor et.\n              Enim deserunt officia Lorem ea nostrud ullamco. Nisi mollit consequat laborum proident aliquip cupidatat exercitation et aliquip tempor ea voluptate ex eiusmod. Deserunt et est reprehenderit amet voluptate exercitation elit ex. Tempor non aliqua culpa commodo ut quis minim elit deserunt ipsum laborum do. Elit nostrud elit occaecat nostrud.',
+  content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
   keywords: ['coffee', 'resilient', 'sea lover'],
   pictures: {
     main: {
