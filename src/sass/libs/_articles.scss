@@ -68,7 +68,7 @@ $width: 33.3%;
                 overflow: hidden;
                 .over-article-keywords {
                   .over-article-keyword {
-                    -webkit-font-smoothing: antialiased !important;
+                    //-webkit-font-smoothing: antialiased !important;
                     font-family: 'saxi';
                     text-transform: capitalize;
                     color: rgba($mainColor2, 0.8);
