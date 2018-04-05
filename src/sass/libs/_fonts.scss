@@ -1,49 +1,95 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700');
 @import url('https://fonts.googleapis.com/css?family=Alegreya+SC:400,500,700|Averia+Libre:300,400,700|Averia+Sans+Libre:400,700|Averia+Serif+Libre:300i,400,700|Old+Standard+TT:400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua:300,400,700');
 
 @font-face {
   font-family: 'Beauty';
-  src: url('/fonts/Beauty.otf');
+  src: url('/fonts/Beauty.ttf');
 }
 
 @font-face {
-  font-family: 'cons';
-  src: url('/fonts/cons.ttf');
+  font-family: 'elel';
+  src: url('/fonts/EleLight.otf');
 }
 
 @font-face {
-  font-family: 'Sax';
-  src: url('/fonts/Sax.otf');
+  font-family: 'eleb';
+  src: url('/fonts/EleBlack.otf');
 }
 
 @font-face {
-  font-family: 'Saxi';
-  src: url('/fonts/Saxi.otf');
+  font-family: 'elem';
+  src: url('/fonts/EleMedium.otf');
 }
 
 @font-face {
-  font-family: 'Saxbo';
-  src: url('/fonts/Saxbo.ttf');
+  font-family: 'sax';
+  src: url('/fonts/sax.otf');
 }
 
 @font-face {
-  font-family: 'rabo';
-  src: url('/fonts/rabo.otf');
+  font-family: 'ratdbi';
+  src: url('/fonts/RatDSemiBold.ttf');
 }
 
 @font-face {
-  font-family: 'raexbo';
-  src: url('/fonts/raexbo.otf');
+  font-family: 'ratdb';
+  src: url('/fonts/RatDSemiBoldItalic.ttf');
 }
 
 @font-face {
-  font-family: 'rali';
-  src: url('/fonts/rali.otf');
+  font-family: 'ratMedium';
+  src: url('/fonts/RatMedium.ttf');
 }
 
 @font-face {
-  font-family: 'rame';
-  src: url('/fonts/rame.otf');
+  font-family: 'ratThin';
+  src: url('/fonts/RatThin.ttf');
+}
+
+@font-face {
+  font-family: 'ratlight';
+  src: url('/fonts/RatLight.ttf');
+}
+
+@font-face {
+  font-family: 'ratELight';
+  src: url('/fonts/RatExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'ratBook';
+  src: url('/fonts/RatBook.ttf');
+}
+
+@font-face {
+  font-family: 'plaBook';
+  src: url('/fonts/plaBook.ttf');
+}
+
+@font-face {
+  font-family: 'plaRegular';
+  src: url('/fonts/plaRegular.ttf');
+}
+
+@font-face {
+  font-family: 'plaHeavy';
+  src: url('/fonts/plaHeavy.ttf');
+}
+
+@font-face {
+  font-family: 'work100';
+  src: url('/fonts/work100.ttf');
+}
+
+@font-face {
+  font-family: 'work200';
+  src: url('/fonts/work200.ttf');
+}
+
+@font-face {
+  font-family: 'work500';
+  src: url('/fonts/work500.ttf');
 }
 
 @font-face {

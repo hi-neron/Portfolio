@@ -48,7 +48,7 @@ class Article {
       let myKeyword = this.keywords[i]
       let template = yo`
         <span class="over-article-keyword">
-          [<span class="over-article-word" data-keyword="${myKeyword}">${myKeyword}</span>]
+          <span class="over-article-word" data-keyword="${myKeyword}">${myKeyword}</span>
         </span>
       `
       keywords.appendChild(template)

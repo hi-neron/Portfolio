@@ -112,11 +112,11 @@ function itemCreator(items) {
   let designer = yo`<div class="phrase-couple" title="designer">DESIGNER</div>`
   designer.onclick = phraseClick
 
-  template.appendChild(designer)
-  template.appendChild(dev)
-  template.appendChild(seaLover)
+  // template.appendChild(designer)
+  // template.appendChild(dev)
+  // template.appendChild(seaLover)
   template.appendChild(bullet)
-  template.appendChild(me)
+  // template.appendChild(me)
   return template
 }
 

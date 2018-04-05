@@ -1,25 +1,19 @@
 $width: 33.3%;
 
 #main-content {
-  width: 90%;
+  margin-top: 100px;
+  width: 100%;
   text-align: center;
   display: inline-block;
   // margin-left: 52px;
   height: auto;
   min-height: 700px;
-
-  &:before {
-    content: '';
-    float: left;
-    width: 10%;
-    min-width: 52px;
-    height: 400px;
-  }
   
   .main-over-wrapper {
     display: inline-block;
     position: relative;
-    width: 85%;
+    min-width: 220px;
+    width: 100%;
 
     .main-content-wrapper {
       .grid-item-widthx2 {
@@ -33,24 +27,23 @@ $width: 33.3%;
 
         &:hover {
           cursor: pointer;
-          img {
-          }
         }
         
         .article-content {
           position: relative;
+          margin: 5px;
 
           
           .over-article-container {
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: $secondaryColor;
+            background-color: $secondaryColor2;
             opacity: 0;
             transition: 0.05s all ease-out;
             
             &:hover {
-              opacity: .98 !important;
+              opacity: .95 !important;
             }
 
             .over-article-wrapper {
@@ -67,25 +60,23 @@ $width: 33.3%;
                 max-height: 70px;
                 overflow: hidden;
                 .over-article-keywords {
+                  text-align: center;
                   .over-article-keyword {
-                    //-webkit-font-smoothing: antialiased !important;
-                    font-family: 'saxi';
+                    -webkit-font-smoothing: antialiased !important;
+                    font-family: 'beauty';
                     text-transform: capitalize;
                     color: rgba($mainColor2, 0.8);
                     line-height: 1.3em;
-                    font-size: 1.2rem;       
-                    
-                    &:hover {
-                      color: $mainColor2;
-                      text-decoration: line-through;
-                    }
+                    font-size: 2.2rem;    
+                    margin-right: 7px;   
+
                     
                     .over-article-word {
                       color: white;
                       transition: .1s all ease-out;
 
-                      &:before {
-                        content: '#';
+                      &:hover {
+                        color: $mainColor2;
                       }
                     }
                   }
@@ -95,15 +86,15 @@ $width: 33.3%;
               .over-article-bottom {
                 margin-top: 30px;
                 width: 100%;
-                height: 220px;
+                height: 240px;
                 color: $mainColor2;
 
                 .over-article-content {
                   margin-top: 10px;
-                  font-family: 'Josefin Sans';
+                  font-family: 'sax';
                   font-weight: 300;
                   font-size: 1.1em;
-                  line-height: 1.3em;
+                  line-height: 1.4em;
                   height: 30%;
                   overflow: hidden;
 
@@ -121,22 +112,26 @@ $width: 33.3%;
         
         .article-label {
           text-align: left;
-          font-family: 'sax';
-          color: $mainColor;
-          line-height: 1.68rem;
-          font-size: 1.2rem;
-          margin-top: -6px;
+          font-family: 'ratMedium';
+          -webkit-font-smoothing: antialiased;
+          color: $mainColor2;
+          line-height: 1.4rem;
+          font-size: 0.9rem;
+          margin-top: 15px;
           font-weight: 300;
-          padding: 24px;
-          letter-spacing: 0.02rem;
+          padding: 0 24px;
           padding-bottom: 65px;
-
-  
+          position: relative;
+          margin-bottom: 20px;
+          
+          
           &:after {
-            content: '  ⚓️';
-            color: rgba($mainColor, 0.5);
-            vertical-align: bottom;
+            content: '✸';
+            font-family: 'work500';
+            padding-left: 4px;
             font-size: 0.6em;
+            vertical-align: top;
+            color: $secondaryColor;
           }
 
         }
@@ -149,8 +144,6 @@ $width: 33.3%;
 
           }
         }
-  
-        .title {}
       }
     }
   }

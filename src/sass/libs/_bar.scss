@@ -9,11 +9,14 @@
 .rotate-icon {
   transform: rotateY(-180deg) !important;
 }
+.bar-visible {
+  background-color: $thirdColor3;
+}
 
 #main-bar {
   // vars
   $background-bar-color: rgba($mainColor2, 1);
-  $trigger-color: rgba($mainColor, 1);
+  $trigger-color: rgba($mainColor2, 1);
   $items-colors: $myWhite;
   $items-colors-over: $secondaryColor;
   // ---->
@@ -35,20 +38,21 @@
   }
 
   .bar-wrapper {
-    width: 410px;
+    width: 404px;
     height: 100%;
-
+    // background-color: $thirdColor3;
 
     #bar-trigger {
       color: $trigger-color;
-      font-family: 'rali';
-      width: 26px;
+      font-family: 'work500';
+      width: 30px;
       height: 60px;
-      margin-left: 16px;
+      margin-left: 6px;
       float: right;
       margin-top: 50px;
       opacity: 0;
       transition: all 0.25s ease-in;
+      position: relative;
       
       &:hover {
         cursor: pointer;
@@ -66,11 +70,11 @@
       }
       
       .tag-info {
-        font-size: 1rem;
+        font-size: 0.8rem;
         width: 380px;
-        height: 30px;
+        height: 26px;
         text-align: right;
-        transform: rotateZ(-90deg) translate(-190px, -174px);
+        transform: rotateZ(-89.5deg) translate(-190px, -174px);
         letter-spacing: 0.08rem;
 
         .message {
@@ -80,7 +84,7 @@
         .tag {
           // text-decoration: underline;
           // text-decoration-color: $secondaryColor;
-          font-family: 'raexbo';
+          font-family: 'plaHeavy';
           text-transform: lowercase;
         }
       }
@@ -95,8 +99,8 @@
 
       .labels {    
         padding-left: 20px;    
-        font-family: 'Josefin Sans';
-        font-size: 1.1rem;
+        font-family: 'plaBook';
+        font-size: 1rem;
         font-weight: 300;
         color: rgba($secondaryColor, 0.7);
         margin-bottom: 15px;
@@ -113,17 +117,17 @@
         padding: 20px;
         
         .bar-main-item {
-          margin-bottom: 1.1rem;
+          margin-bottom: .7rem;
           
           span {
             // Averia+Sans+Libre Averia+Serif+Libre Old+Standard+TT
             text-transform: uppercase;
-            font-family: 'Old Standard TT';
+            font-family: 'ratThin';
             -webkit-font-smoothing: antialiased;
-            font-weight: 300;
             text-decoration: none;
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: $items-colors;
+            letter-spacing: 0.2rem;
             
             &:hover {
               color: $thirdColor;

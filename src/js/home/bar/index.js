@@ -149,7 +149,7 @@ window.addEventListener('scroll', (e) => {
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
 
-  if (vPosition > 920) {
+  if (vPosition > 820) {
     limit = true
     trigger.classList.add('view');
   } else {

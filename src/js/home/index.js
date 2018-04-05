@@ -43,9 +43,9 @@ page('/:tag?', create, loader, (ctx, next) => {
   })
   
   // Bio
-  phraseC((template) => {
-    phrase.appendChild(template)  
-  })
+  // phraseC((template) => {
+  //   phrase.appendChild(template)  
+  // })
 
   content.getFooter((e, r) => {
     if (e) return console.log(new Error({message: 'An Error has ocurred'}))

@@ -21,7 +21,7 @@ const bottom = yo`
       <defs>
         <style>
           .cls-1-bottom {
-            fill: #161720;
+            fill: #666666;
           }
         </style>
       </defs>
@@ -66,7 +66,7 @@ const sun = yo`
       }
 
       .cls-6-sun {
-        fill: #161720;
+        fill: #666666;
       }
     </style>
     <radialGradient id="radial-gradient" cx="50" cy="113.33" r="156.54" gradientUnits="userSpaceOnUse">
@@ -127,13 +127,13 @@ class Loader {
   }
 
   animate () {
-    let waves = '#ff8662'
+    let waves = '#ffe6d2'
     
     this.line1 = new mojs.Shape({
       parent: this.loaderIcon,
       shape: 'line',
       stroke: waves,
-      strokeWidth: 3,
+      strokeWidth: 2.5,
       strokeDasharray: 5,
       strokeDashoffset: 3,
       strokeLinecap: 'round',
@@ -151,7 +151,7 @@ class Loader {
       parent: this.loaderIcon,
       shape: 'line',
       stroke: waves,
-      strokeWidth: 3,
+      strokeWidth: 2.5,
       strokeLinecap: 'round',
       y: 12,
       delay: 50,
@@ -168,7 +168,7 @@ class Loader {
       parent: this.loaderIcon,
       shape: 'line',
       stroke: waves,
-      strokeWidth: 3,
+      strokeWidth: 2.5,
       strokeLinecap: 'round',
       y: 15,
       delay: 100,
@@ -185,7 +185,7 @@ class Loader {
       parent: this.loaderIcon,
       shape: 'line',
       stroke: waves,
-      strokeWidth: 3,
+      strokeWidth: 2.5,
       strokeLinecap: 'round',
       y: 18,
       delay: 200,
@@ -201,7 +201,7 @@ class Loader {
       parent: this.loaderIcon,
       shape: 'line',
       stroke: waves,
-      strokeWidth: 3,
+      strokeWidth: 2.5,
       strokeLinecap: 'round',
       y: 20,
       delay: 300,
@@ -225,8 +225,8 @@ class Loader {
   vanish () {
     console.log('vanish')
 
-    let initialColor = '#161720'
-    let finalColor = '#bfdfdc'
+    let initialColor = '#2d2d2d'
+    let finalColor = '#cdf6f1'
 
     const container = new mojs.Html({
       el: this.screen,
@@ -275,14 +275,14 @@ class Loader {
     
     const nuageMo = new mojs.Html({
       el: nuage,
-      fill: {'#161720': '#ffffff'},
+      fill: {'#2d2d2d': '#ffffff'},
       duration: 300,
       easing: 'ease.out',
     })
     
     const nuage2Mo = new mojs.Html({
       el: nuage2,
-      fill: {'#161720': '#ffffff'},
+      fill: {'#2d2d2d': '#ffffff'},
       duration: 300,
       easing: 'ease.out',
     })
@@ -324,7 +324,7 @@ class Loader {
       }
     })
 
-    let lineColor = '#edfdfd'
+    let lineColor = '#ffffff'
     this.line1.tune({
       stroke: lineColor
     })
