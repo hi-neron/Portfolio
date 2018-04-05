@@ -48201,6 +48201,11 @@ page('/:tag?', create, loader, function (ctx, next) {
     msnry.layout();
   }, 500);
   next();
+
+  window.addEventListener('articleScreen', function (e) {
+    console.log('screen');
+    app.classList.contains('fixScroll') ? app.classList.remove('fixScroll') : app.classList.add('fixScroll');
+  });
 });
 
 function drawArticles(tag) {
@@ -48222,7 +48227,6 @@ function drawArticles(tag) {
       percentPosition: true,
       initLayout: false,
       transitionDuration: 0
-
     });
 
     msnry.layout();
@@ -87148,7 +87152,7 @@ var directionalLightS = 0xd2d2d2;
 var meColor = 0x666666;
 
 // sky Color
-var upperColor = 0xe6e6e6;
+var upperColor = 0xe3e3e3;
 
 // paneau
 var devDeColor = 0x5af2d9;
@@ -104938,7 +104942,7 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-
     _templateObject5 = _taggedTemplateLiteral(['\n    <div class="article-content-close">\n      x\n    </div>\n    '], ['\n    <div class="article-content-close">\n      x\n    </div>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['<p>', '</p>'], ['<p>', '</p>']),
     _templateObject7 = _taggedTemplateLiteral(['\n          <figure class="article-content-picture">\n            <img src="', '" alt="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        '], ['\n          <figure class="article-content-picture">\n            <img src="', '" alt="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    ']),
     _templateObject9 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -105062,7 +105066,7 @@ var Article = function () {
         articleContent.appendChild(p);
       }
 
-      var template = yo(_templateObject8, close, this.mainPicture.urlXX, this.mainPicture.comment, this.title, articleContent);
+      var template = yo(_templateObject8, close, this.mainPicture.urlXX, this.title, articleContent);
 
       close.addEventListener('click', function (e) {
         screenSplashClose();
@@ -105083,6 +105087,9 @@ function screenSplashOpen(template) {
 function screenSplashClose() {
   empty(contentContainer);
   contentContainer.classList.remove('article-open');
+  var ev = new CustomEvent('articleScreen');
+  window.dispatchEvent(ev);
+
   screen = false;
 }
 
@@ -107717,7 +107724,6 @@ var Loader = function () {
     key: 'destroy',
     value: function destroy() {
       this.ctx.app.classList.remove('no-overflow');
-      this.container.classList.remove('loader-visible');
     }
   }, {
     key: 'vanish',
@@ -107726,6 +107732,7 @@ var Loader = function () {
 
       console.log('vanish');
 
+      this.destroy();
       var initialColor = '#2d2d2d';
       var finalColor = '#cdf6f1';
 

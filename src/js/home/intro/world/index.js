@@ -44,7 +44,7 @@ let directionalLightS = 0xd2d2d2
 let meColor = 0x666666
 
 // sky Color
-let upperColor = 0xe6e6e6
+let upperColor = 0xe3e3e3
 
 // paneau
 let devDeColor = 0x5af2d9

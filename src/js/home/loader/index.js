@@ -219,12 +219,12 @@ class Loader {
 
   destroy () {
     this.ctx.app.classList.remove('no-overflow')
-    this.container.classList.remove('loader-visible')
   }
 
   vanish () {
     console.log('vanish')
 
+    this.destroy()
     let initialColor = '#2d2d2d'
     let finalColor = '#cdf6f1'
 

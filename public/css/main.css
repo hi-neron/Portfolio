@@ -361,8 +361,7 @@ svg:focus {
       #main-content .main-over-wrapper .main-content-wrapper .grid-item:hover {
         cursor: pointer; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content {
-        position: relative;
-        margin: 5px; }
+        position: relative; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container {
           position: absolute;
           width: 100%;
@@ -418,17 +417,19 @@ svg:focus {
           width: 100%; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-label {
         text-align: left;
-        font-family: 'ratMedium';
+        font-family: 'ratdb';
         -webkit-font-smoothing: antialiased;
         color: #353436;
-        line-height: 1.4rem;
         font-size: 0.9rem;
-        margin-top: 15px;
+        margin-top: 14px;
         font-weight: 300;
-        padding: 0 24px;
-        padding-bottom: 65px;
+        padding: 0 10px;
+        padding-bottom: 18px;
         position: relative;
-        margin-bottom: 20px; }
+        margin-bottom: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-label:after {
           content: '✸';
           font-family: 'work500';
@@ -693,7 +694,7 @@ footer {
     margin-left: -10px; } }
 
 #app {
-  background: #f4fffb;
+  background: #e6e6e6e6;
   background: url("/img/noise.png"), rgba(230, 230, 230, 0.97); }
 
 body {
@@ -725,6 +726,10 @@ a {
 .main-bar-open-bar {
   transform: translateX(0px) !important; }
 
-.noOverflow {
+.no-overflow {
+  overflow-y: auto;
+  height: 900px; }
+
+.fixScroll {
   overflow: hidden;
   height: 0; }

@@ -31,9 +31,7 @@ $width: 33.3%;
         
         .article-content {
           position: relative;
-          margin: 5px;
-
-          
+     
           .over-article-container {
             position: absolute;
             width: 100%;
@@ -112,18 +110,19 @@ $width: 33.3%;
         
         .article-label {
           text-align: left;
-          font-family: 'ratMedium';
+          font-family: 'ratdb';
           -webkit-font-smoothing: antialiased;
           color: $mainColor2;
-          line-height: 1.4rem;
           font-size: 0.9rem;
-          margin-top: 15px;
+          margin-top: 14px;
           font-weight: 300;
-          padding: 0 24px;
-          padding-bottom: 65px;
+          padding: 0 10px;
+          padding-bottom: 18px;
           position: relative;
-          margin-bottom: 20px;
-          
+          margin-bottom: 10px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           
           &:after {
             content: '✸';

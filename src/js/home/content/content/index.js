@@ -153,7 +153,6 @@ class Article {
         <header>
           <figure>
             <img src="${this.mainPicture.urlXX}">
-            <figcaption>${this.mainPicture.comment}</figcaption>
           </figure>
         </header>
         <div class="article-content-info">
@@ -186,6 +185,9 @@ function screenSplashOpen(template) {
 function screenSplashClose() {
   empty(contentContainer)
   contentContainer.classList.remove('article-open')
+  let ev = new CustomEvent('articleScreen')
+  window.dispatchEvent(ev)
+
   screen = false
 }
 

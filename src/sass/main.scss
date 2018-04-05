@@ -15,7 +15,7 @@
 @import "libs/articleOpen";
 
 %back1 {
-  background: #f4fffb;
+  background: #e6e6e6e6;
   background: url('/img/noise.png'), rgba(#e6e6e6, 0.97);
 }
 
@@ -57,7 +57,12 @@ a {
   // left: 300px !important;
 }
 
-.noOverflow {
+.no-overflow {
+  overflow-y: auto;
+  height: 900px;
+}
+
+.fixScroll {
   overflow: hidden;
   height: 0;
 }

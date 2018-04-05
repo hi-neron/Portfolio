@@ -58,6 +58,11 @@ page('/:tag?', create, loader, (ctx, next) => {
     msnry.layout()
   }, 500); 
   next()
+
+  window.addEventListener('articleScreen', (e) => {
+    console.log('screen')
+    app.classList.contains('fixScroll')? app.classList.remove('fixScroll'): app.classList.add('fixScroll')
+  })
 })
 
 function drawArticles (tag) {
@@ -79,7 +84,6 @@ function drawArticles (tag) {
       percentPosition: true,
       initLayout: false,
       transitionDuration: 0
-
     })
 
     msnry.layout()
@@ -92,6 +96,8 @@ function drawArticles (tag) {
     })
   })
 }
+
+
 
 function ChangeUrl(title, url) {
   if (typeof (history.pushState) != "undefined") {
