@@ -15,9 +15,9 @@
 
 #main-bar {
   // vars
-  $background-bar-color: rgba($mainColor2, 1);
+  $background-bar-color: rgba($thirdColor3, 1);
   $trigger-color: rgba($mainColor2, 1);
-  $items-colors: $myWhite;
+  $items-colors: $mainColor;
   $items-colors-over: $secondaryColor;
   // ---->
 
@@ -99,11 +99,10 @@
 
       .labels {    
         padding-left: 20px;    
-        font-family: 'plaBook';
+        font-family: 'josefin sans';
         font-size: 1rem;
         font-weight: 300;
-        color: rgba($secondaryColor, 0.7);
-        margin-bottom: 15px;
+        color: rgba($secondaryColor, 0.9);
       }
 
       .item-bar-link {
@@ -122,10 +121,10 @@
           span {
             // Averia+Sans+Libre Averia+Serif+Libre Old+Standard+TT
             text-transform: uppercase;
-            font-family: 'ratThin';
+            font-family: 'ratthin';
             -webkit-font-smoothing: antialiased;
             text-decoration: none;
-            font-size: 1.6rem;
+            font-size: 2rem;
             color: $items-colors;
             letter-spacing: 0.2rem;
             
@@ -139,19 +138,21 @@
       .secondary-bar-list {
         padding-left: 20px;
         margin-bottom: 110px;
+        padding-right: 100px;
 
         li {
           display: inline-block;  
           color: $items-colors;       
-          font-family: 'Inknut Antiqua';
+          font-family: 'work500';
           -webkit-font-smoothing: antialiased;              
           text-decoration: none;
           line-height: 1.6rem;
-          margin-right: 8px;
-          font-size: 0.9em;
+          margin-right: 9px;
+          font-size: 1em;
 
           &:after {
             content: ',';
+            margin-left: -3px; 
           }
 
           &:last-child {

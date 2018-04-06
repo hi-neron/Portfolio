@@ -5,7 +5,7 @@ const page = require('page')
 // contents
 const intro = require('./intro')
 const content = require('./content')
-const phraseC = require('./phrase')
+// const phraseC = require('./phrase')
 const Masonry = require('masonry-layout')
 const create = require('./utils/create')
 const empty = require('empty-element')
@@ -60,8 +60,14 @@ page('/:tag?', create, loader, (ctx, next) => {
   next()
 
   window.addEventListener('articleScreen', (e) => {
-    console.log('screen')
-    app.classList.contains('fixScroll')? app.classList.remove('fixScroll'): app.classList.add('fixScroll')
+    if (app.classList.contains('fixScroll')) {
+      let pos = getPosition(mainContent)
+      app.classList.remove('fixScroll')
+      window.scrollTo(0, pos.top)     
+    } else {
+      app.classList.add('fixScroll')
+    } 
+
   })
 })
 
@@ -70,6 +76,9 @@ function drawArticles (tag) {
   let overW = document.createElement('div')
   overW.setAttribute('class', 'main-over-wrapper')
   ChangeUrl('san', `/#!/${tag}`)
+
+  let pos = getPosition(mainContent)
+  window.scrollTo(0, pos.top)
 
   content.getMainContent(tag, (e, r) => {
     if (e) return new Error({message: 'An Error has ocurred'})
@@ -83,7 +92,8 @@ function drawArticles (tag) {
       columnWidth: '.grid-sizer',
       percentPosition: true,
       initLayout: false,
-      transitionDuration: 0
+      transitionDuration: 0,
+      originTop: false
     })
 
     msnry.layout()
@@ -97,7 +107,17 @@ function drawArticles (tag) {
   })
 }
 
-
+// get position to scroll them
+function getPosition(e){
+  let _x = 0;
+  let _y = 0;
+  while( e && !isNaN( e.offsetLeft ) && !isNaN( e.offsetTop ) ) {
+      _x += e.offsetLeft - e.scrollLeft;
+      _y += e.offsetTop - e.scrollTop;
+      e = e.offsetParent;
+  }
+  return { top: _y, left: _x };
+}
 
 function ChangeUrl(title, url) {
   if (typeof (history.pushState) != "undefined") {

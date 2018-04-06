@@ -18,7 +18,8 @@ module.exports = [
         {
           name: 'pedrito paramo',
           url: '/img/articles/one/two.jpg',
-          comment: 'another image footer'
+          comment: 'another image footer',
+          type: 'image'
         }
       ]
     },
@@ -26,10 +27,9 @@ module.exports = [
   {
     title: 'Empiezan las apuestas sobre las películas que serán seleccionadas en Cannes',
     type: 'blog',
-    content: `A menos de dos semanas del anuncio de la selección oficial del Festival de Cannes, ya circulan los rumores sobre los directores que podrían competir por la Palma de Oro, entre ellos el estadounidense Damien Chazelle o el iraní Asghar Farhadi, y su filme con Javier Bardem, Penélope Cruz y Ricardo Darín. Para esta 71ª edición, del 8 al 19 de mayo, varios nombres aparecen en las quinielas sobre la veintena de películas que competirán por el máximo galardón del certamen, otorgado por un jurado presidido por la actriz australiana Cate Blanchett.
-    Le puede interesar: Cannes elige a la "comprometida" Cate Blanchett como presidenta de su jurado
-    La lista con los largometrajes seleccionados será revelada el 12 de abril por el delegado general de la muestra, Thierry Frémaux.
-    Entre los nombres que circulan para formar parte de la prestigiosa selección figura el director estadounidense Damien Chazelle, autor de la multipremiada La La Land, que podría presentar First Man, una biopic sobre el astronauta Neil Armstrong protagonizado por Ryan Gosling.`,
+    content: `Tiene un piercing en la oreja izquierda y dice “chévere” más veces de las que uno esperaría que una persona de 44 años lo dijera. Usa gafas solo a ratos; gafas rectangulares de sólido marco negro. Desde hace siete años (con un intermedio de dos en Colombia) vive en Jaffa, o como a él le gusta decir, “en territorio sin nombre”, con su esposa y sus tres hijos. Allá escribió la novela Tres ataúdes blancos, ganadora del premio Herralde en 2010 y finalista del Rómulo Gallegos en 2011. Salvo un libro infantil, después de eso, nada. Hasta ahora.
+    Antonio Ungar dice que es muy zanahorio y muy solitario. Que quizás sea por eso que no le salen bien los diálogos en sus libros, con personajes muy concentrados sobre sí, y que quizás sea esa la razón por la que el alcohol funciona como mecanismo de desahogo en sus personajes. Personajes que pueden aparecer en ciudades inglesas o colombianas con la misma naturalidad con que pueden aparecer en ciudades francesas o italianas. No hay una geografía definida en su literatura. Como en su vida. Ha vivido en Manchester, en la selva colombiana, en México D.F., en Barcelona, en Iowa y en Palestina. Se graduó de arquitectura y empezó una maestría en literatura comparada que nunca terminó porque le tocaba leer teoría y crítica literaria, pero nunca llegaba a los libros.
+    En enero de este año estuvo en Barcelona unos días presentando su más reciente novela. Una novela que no tiene nada que ver con la anterior: ni en tamaño, ni en tono, ni en tema. Luego de una semana en ruedas de prensa, cocteles, almuerzos con editores, cenas con cónsules, estaba frito.`,
     keywords: ['resilient', 'designer', 'coffee'],
     pictures: {
       main: {
@@ -43,13 +43,13 @@ module.exports = [
           type: 'image',
           name: 'hello World',
           url: '/img/articles/two/two.png',
-          comment: 'this is a comment',
+          comment: 'did you know that information, say me the true, if you did not, we wil not have problems. relax with me boy ',
         },
         {
           type: 'image',
           name: 'hello World',
           url: '/img/articles/two/three.jpg',
-          comment: 'this is a comment',
+          comment: "Like you, I used to think the world was this great place where everybody lived by the same standards I did, then some kid with a nail showed me I was living in his world, a world where chaos rules not order, a world where righteousness is not rewarded. That's Cesar's world, and if you're not willing to play by his rules, then you're gonna have to pay the price.",
         },
         {
           type: 'quote',

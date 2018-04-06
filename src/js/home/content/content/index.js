@@ -58,12 +58,12 @@ class Article {
       <div class="over-article-container">
         <div class="over-article-wrapper">
           <div class="over-article-top">
-            ${keywords}
+            <div class="over-article-title">
+              ${this.title}
+            </div>
           </div>
           <div class="over-article-bottom">
-            <div class="over-article-content">
-            ${this.viewContent}
-            </div>
+            ${keywords}
           </div>
         </div>
       </div>
@@ -75,7 +75,6 @@ class Article {
           ${over}
           <img data-src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
         </div>
-        <h1 class="article-label">${this.title}</h1>
       </article>
     `
 
@@ -113,39 +112,72 @@ class Article {
     let articleContent = document.createElement('div')
     articleContent.setAttribute('class', 'article-content-readable')
 
+    let articleTitle = yo`
+      <h1 class="article-content-title article-item">
+        ${this.title}
+      </h1>
+    `
+
     let close = yo`
     <div class="article-content-close">
       x
     </div>
     `
-
-    let myItems = _.merge(this.content, this.othersPictures)
-    console.log(myItems)
+    articleContent.appendChild(articleTitle)
 
     for (let i = 0; i < this.content.length; i++) {
-      let p = yo`<p>${this.content[i]}</p>`
+      let form
+      let p = yo`
+      <div class="article-content-paragraph article-item">
+        <p>
+          ${this.content[i]}
+        </p>
+      </div>`
+
       if (this.othersPictures[i]) {
         switch (this.othersPictures[i].type) {
           case 'image':
+            form = yo`
+              <figure class="article-content-picture article-item">
+                <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
+                <figcaption>${this.othersPictures[i].comment}</figcaption>
+              </figure>
+            `
             break;
+
+          case 'image2':
+            form = yo`
+              <figure class="article-content-picture-xl article-item">
+                <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
+                <figcaption>${this.othersPictures[i].comment}</figcaption>
+              </figure>
+            `
+            break;
+
           case 'quote':
+            form = yo`
+              <h3 class="article-content-quote article-item">
+                <p>
+                  <q>
+                    ${this.othersPictures[i].text}
+                  </q>
+                </p>
+              </h3>
+            `
             break;
 
           default:
+            form = ''
             break;
         }
 
-        let image = yo`
-          <figure class="article-content-picture">
-            <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
-            <figcaption>${this.othersPictures[i].comment}</figcaption>
-          </figure>
-        `
-        articleContent.appendChild(image)
+        articleContent.appendChild(form)
       }
       
       articleContent.appendChild(p)
     }
+
+    
 
     let template = yo`
       <div class="article-content-wrapper">
@@ -156,15 +188,10 @@ class Article {
           </figure>
         </header>
         <div class="article-content-info">
-          <h1 class="article-content-title">
-            ${this.title}
-          </h1>
           ${articleContent}
         </div>
         <footer class="article-content-footer">
-          social
-          gotoback
-          close
+          bye!
         </footer>
       </div>
     `
@@ -176,18 +203,22 @@ class Article {
     cb(template)
   }
 }
+let ev = new CustomEvent('articleScreen')
 
 function screenSplashOpen(template) {
   empty(contentContainer).appendChild(template)
   contentContainer.classList.add('article-open')
+  // evento que: hace scroll al contenido, elimina la el overflow: hidden.
+  window.dispatchEvent(ev)
 }
 
 function screenSplashClose() {
+  // let scrollTo = document.getElementById('main-content')
+  // let pos = getPosition(scrollTo)
   empty(contentContainer)
   contentContainer.classList.remove('article-open')
-  let ev = new CustomEvent('articleScreen')
   window.dispatchEvent(ev)
-
+  // window.scrollTo(0, pos.top);
   screen = false
 }
 

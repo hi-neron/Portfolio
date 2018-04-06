@@ -20,10 +20,9 @@
     }
     
     header {
-      margin-bottom: 100px;
       figure {
         width: 100%;
-        max-height: 1000px;
+        max-height: 600px;
         overflow: hidden;
 
         img {
@@ -43,38 +42,85 @@
     
     .article-content-info {
       margin: 0 auto;
-      color: $mainColor2;
-      width: 80%;
+      color: $mainColor4;
+      width: 100%;
       min-width: 340px;
       
-      .article-content-title {
-        font-size: calc(78px + 4 * (100vw - 320px) / 1180);
-        line-height: 5.8rem;
-        font-family: 'work100';
-        margin-bottom: 1.2em;
-        text-align: left;
-        font-weight: 300;
-      }
-
       .article-content-readable {
         font-weight: 400;
-        width: 90%;
-        margin: 0 auto;
-        
-        p {
-          font-family: 'plaBook';
-          line-height: 1.55em;
-          font-size: calc(14px + 4 * (100vw - 320px) / 1180);
-          width: 50%;
-          min-width: 290px;
-          margin: 30px;
-          margin-bottom: 10px;
-          float: left;
+        width: 100%;
+        text-align: left;
 
-          &:nth-child(odd) {
+        .article-content-title {
+          font-size: calc(58px + 4 * (100vw - 320px) / 1180);
+          font-family: 'ratDbi';
+          text-transform: uppercase;
+          line-height: 4rem;
+          width: 50%;
+          min-width: 360px;
+          -webkit-hyphens: auto;
+          -moz-hyphens: auto;
+          -ms-hyphens: auto;
+          hyphens: auto;
+          padding: 5px;
+        }
+        
+        .article-item {
+          float: left;
+          &:nth-child(even) {
             float: right;
           }
         }
+        
+        .article-content-paragraph {
+          width: 48%;
+          min-width: 360px;
+
+          p {
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            font-family: 'ratMedium';
+            // -webkit-font-smoothing: antialiased;
+            padding: 35px;
+            line-height: 1.6em;
+            font-size: calc(12px + 4 * (100vw - 320px) / 1180);
+            float: right;
+          }
+        }
+
+        .article-content-picture {
+          width: 49%;
+          position: relative;
+          min-width: 360px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .article-content-picture-xl {
+          width: 100%;
+          min-width: 360px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .article-content-quote {
+          width: 48%;
+          p {
+            float: right;
+            width: 60%;
+            font-family: 'sax';
+            font-size: 1.2em;
+            line-height: 1.2em;
+            margin-right: 20px;
+          }
+        }
+        
       }
 
     }
@@ -86,6 +132,9 @@
       display: inline-block;
       text-align: center;
       padding-top: 120px;
+      font-family: 'saxbo';
+      color: $mainColor2;
+      font-size: 3rem;
     }
   }
 }
@@ -95,15 +144,59 @@
   height: 100% !important;
 }
 
-@media all and (max-width: 460px) {
+@media all and (max-width: 960px) {
   #article-content {
     .article-content-wrapper {
       .article-content-info {
+        padding: 0;
         .article-content-readable {
-          p {
-            float: left !important;
-            margin-left: -10px;
+          .article-content-title {
+            width: 100%;
+            min-width: 360px;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;      
           }
+                    
+          .article-content-paragraph {
+            width: 100%;
+            min-width: 360px;
+
+  
+            p {
+              -webkit-hyphens: auto;
+              -moz-hyphens: auto;
+              -ms-hyphens: auto;
+              hyphens: auto;
+              font-family: 'ratMedium';
+              // -webkit-font-smoothing: antialiased;
+              padding: 0;
+              line-height: 1.6em;
+              font-size: calc(12px + 4 * (100vw - 320px) / 1180);
+            }
+          }
+          .article-content-picture {
+            width: 100%;
+            padding: 0px !important;
+            float: left;
+
+            img {
+              width: 100%;
+            }
+          }
+          .article-content-quote {
+            width: 48%;
+            p {
+              float: right;
+              width: 60%;
+              font-family: 'sax';
+              font-size: 1.2em;
+              line-height: 1.2em;
+              margin-right: 20px;
+            }
+          }
+          
         }
       }
     }

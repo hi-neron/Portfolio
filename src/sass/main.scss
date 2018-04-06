@@ -58,8 +58,8 @@ a {
 }
 
 .no-overflow {
-  overflow-y: auto;
-  height: 900px;
+  overflow: hidden;
+  height: 100%;
 }
 
 .fixScroll {

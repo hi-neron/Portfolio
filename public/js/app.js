@@ -46588,7 +46588,7 @@ exports.f = __webpack_require__(7) ? gOPD : function getOwnPropertyDescriptor(O,
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(14);
 var toObject = __webpack_require__(11);
-var IE_PROTO = __webpack_require__(72)('IE_PROTO');
+var IE_PROTO = __webpack_require__(71)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -46733,7 +46733,7 @@ var ctx = __webpack_require__(21);
 var IObject = __webpack_require__(51);
 var toObject = __webpack_require__(11);
 var toLength = __webpack_require__(9);
-var asc = __webpack_require__(89);
+var asc = __webpack_require__(88);
 module.exports = function (TYPE, $create) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
@@ -46780,7 +46780,7 @@ if (__webpack_require__(7)) {
   var fails = __webpack_require__(4);
   var $export = __webpack_require__(0);
   var $typed = __webpack_require__(64);
-  var $buffer = __webpack_require__(95);
+  var $buffer = __webpack_require__(94);
   var ctx = __webpack_require__(21);
   var anInstance = __webpack_require__(43);
   var propertyDesc = __webpack_require__(35);
@@ -46795,21 +46795,21 @@ if (__webpack_require__(7)) {
   var classof = __webpack_require__(53);
   var isObject = __webpack_require__(5);
   var toObject = __webpack_require__(11);
-  var isArrayIter = __webpack_require__(86);
+  var isArrayIter = __webpack_require__(85);
   var create = __webpack_require__(40);
   var getPrototypeOf = __webpack_require__(20);
   var gOPN = __webpack_require__(41).f;
-  var getIterFn = __webpack_require__(88);
+  var getIterFn = __webpack_require__(87);
   var uid = __webpack_require__(36);
   var wks = __webpack_require__(6);
   var createArrayMethod = __webpack_require__(29);
   var createArrayIncludes = __webpack_require__(55);
   var speciesConstructor = __webpack_require__(62);
-  var ArrayIterators = __webpack_require__(91);
-  var Iterators = __webpack_require__(49);
+  var ArrayIterators = __webpack_require__(90);
+  var Iterators = __webpack_require__(48);
   var $iterDetect = __webpack_require__(59);
   var setSpecies = __webpack_require__(42);
-  var arrayFill = __webpack_require__(90);
+  var arrayFill = __webpack_require__(89);
   var arrayCopyWithin = __webpack_require__(118);
   var $DP = __webpack_require__(8);
   var $GOPD = __webpack_require__(19);
@@ -47449,7 +47449,7 @@ module.exports = false;
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(104);
-var enumBugKeys = __webpack_require__(73);
+var enumBugKeys = __webpack_require__(72);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -47476,21 +47476,21 @@ module.exports = function (index, length) {
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(1);
 var dPs = __webpack_require__(105);
-var enumBugKeys = __webpack_require__(73);
-var IE_PROTO = __webpack_require__(72)('IE_PROTO');
+var enumBugKeys = __webpack_require__(72);
+var IE_PROTO = __webpack_require__(71)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(70)('iframe');
+  var iframe = __webpack_require__(69)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(74).appendChild(iframe);
+  __webpack_require__(73).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -47522,7 +47522,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = __webpack_require__(104);
-var hiddenKeys = __webpack_require__(73).concat('length', 'prototype');
+var hiddenKeys = __webpack_require__(72).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -47566,10 +47566,10 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 var ctx = __webpack_require__(21);
 var call = __webpack_require__(116);
-var isArrayIter = __webpack_require__(86);
+var isArrayIter = __webpack_require__(85);
 var anObject = __webpack_require__(1);
 var toLength = __webpack_require__(9);
-var getIterFn = __webpack_require__(88);
+var getIterFn = __webpack_require__(87);
 var BREAK = {};
 var RETURN = {};
 var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -47604,6 +47604,73 @@ module.exports = function (target, src, safe) {
 
 /***/ }),
 /* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var def = __webpack_require__(8).f;
+var has = __webpack_require__(14);
+var TAG = __webpack_require__(6)('toStringTag');
+
+module.exports = function (it, tag, stat) {
+  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
+};
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__(0);
+var defined = __webpack_require__(26);
+var fails = __webpack_require__(4);
+var spaces = __webpack_require__(75);
+var space = '[' + spaces + ']';
+var non = '\u200b\u0085';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
+
+var exporter = function (KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
+    return !!spaces[KEY]() || non[KEY]() != non;
+  });
+  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
+  if (ALIAS) exp[ALIAS] = fn;
+  $export($export.P + $export.F * FORCE, 'String', exp);
+};
+
+// 1 -> String#trimLeft
+// 2 -> String#trimRight
+// 3 -> String#trim
+var trim = exporter.trim = function (string, TYPE) {
+  string = String(defined(string));
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
+  return string;
+};
+
+module.exports = exporter;
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports) {
+
+module.exports = {};
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(5);
+module.exports = function (it, TYPE) {
+  if (!isObject(it) || it._t !== TYPE) throw TypeError('Incompatible receiver, ' + TYPE + ' required!');
+  return it;
+};
+
+
+/***/ }),
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var bel = __webpack_require__(355) // turns template tag into DOM elements
@@ -47648,73 +47715,6 @@ module.exports.update = function (fromNode, toNode, opts) {
     }
   }
 }
-
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var def = __webpack_require__(8).f;
-var has = __webpack_require__(14);
-var TAG = __webpack_require__(6)('toStringTag');
-
-module.exports = function (it, tag, stat) {
-  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
-};
-
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $export = __webpack_require__(0);
-var defined = __webpack_require__(26);
-var fails = __webpack_require__(4);
-var spaces = __webpack_require__(76);
-var space = '[' + spaces + ']';
-var non = '\u200b\u0085';
-var ltrim = RegExp('^' + space + space + '*');
-var rtrim = RegExp(space + space + '*$');
-
-var exporter = function (KEY, exec, ALIAS) {
-  var exp = {};
-  var FORCE = fails(function () {
-    return !!spaces[KEY]() || non[KEY]() != non;
-  });
-  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
-  if (ALIAS) exp[ALIAS] = fn;
-  $export($export.P + $export.F * FORCE, 'String', exp);
-};
-
-// 1 -> String#trimLeft
-// 2 -> String#trimRight
-// 3 -> String#trim
-var trim = exporter.trim = function (string, TYPE) {
-  string = String(defined(string));
-  if (TYPE & 1) string = string.replace(ltrim, '');
-  if (TYPE & 2) string = string.replace(rtrim, '');
-  return string;
-};
-
-module.exports = exporter;
-
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-module.exports = {};
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(5);
-module.exports = function (it, TYPE) {
-  if (!isObject(it) || it._t !== TYPE) throw TypeError('Incompatible receiver, ' + TYPE + ' required!');
-  return it;
-};
 
 
 /***/ }),
@@ -47952,8 +47952,8 @@ var anInstance = __webpack_require__(43);
 var isObject = __webpack_require__(5);
 var fails = __webpack_require__(4);
 var $iterDetect = __webpack_require__(59);
-var setToStringTag = __webpack_require__(47);
-var inheritIfRequired = __webpack_require__(77);
+var setToStringTag = __webpack_require__(46);
+var inheritIfRequired = __webpack_require__(76);
 
 module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
   var Base = global[NAME];
@@ -48134,125 +48134,6 @@ module.exports = function (COLLECTION) {
 
 /***/ }),
 /* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var page = __webpack_require__(136);
-
-// contents
-var intro = __webpack_require__(351);
-var content = __webpack_require__(412);
-var phraseC = __webpack_require__(416);
-var Masonry = __webpack_require__(417);
-var create = __webpack_require__(422);
-var empty = __webpack_require__(100);
-
-var Lazy = __webpack_require__(423);
-
-// phrase intro
-var bioTags = ['DESIGNER', 'DEV', 'SEA LOVER'];
-
-// bar
-var barCreator = __webpack_require__(424);
-var app = void 0,
-    mainContent = void 0,
-    introContainer = void 0,
-    phrase = void 0,
-    msnry = void 0;
-
-// loader
-var loader = __webpack_require__(425);
-
-page('/:tag?', create, loader, function (ctx, next) {
-  // vars
-  var app = ctx.app;
-  var introContainer = ctx.introContainer;
-  var phrase = ctx.phrase;
-  var footer = ctx.footer;
-  var bar = ctx.bar;
-  var tag = ctx.params.tag;
-
-  mainContent = ctx.mainContent;
-  drawArticles(tag);
-
-  // get intro
-  document.onload = intro.init(introContainer, ctx);
-
-  // Bar
-  barCreator(function (t) {
-    bar.appendChild(t);
-  });
-
-  // Bio
-  // phraseC((template) => {
-  //   phrase.appendChild(template)  
-  // })
-
-  content.getFooter(function (e, r) {
-    if (e) return console.log(new Error({ message: 'An Error has ocurred' }));
-    console.log(r);
-    footer.appendChild(r);
-  });
-
-  document.body.appendChild(app);
-  setTimeout(function () {
-    msnry.layout();
-  }, 500);
-  next();
-
-  window.addEventListener('articleScreen', function (e) {
-    console.log('screen');
-    app.classList.contains('fixScroll') ? app.classList.remove('fixScroll') : app.classList.add('fixScroll');
-  });
-});
-
-function drawArticles(tag) {
-  tag = tag ? tag.toLowerCase() : '';
-  var overW = document.createElement('div');
-  overW.setAttribute('class', 'main-over-wrapper');
-  ChangeUrl('san', '/#!/' + tag);
-
-  content.getMainContent(tag, function (e, r) {
-    if (e) return new Error({ message: 'An Error has ocurred' });
-    var main = r.main;
-
-    empty(overW).appendChild(main);
-    empty(mainContent).appendChild(overW);
-
-    msnry = new Masonry(main, {
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer',
-      percentPosition: true,
-      initLayout: false,
-      transitionDuration: 0
-    });
-
-    msnry.layout();
-
-    new Lazy({
-      container: main,
-      callback_load: function callback_load(e) {
-        msnry.layout();
-      }
-    });
-  });
-}
-
-function ChangeUrl(title, url) {
-  if (typeof history.pushState != "undefined") {
-    var obj = { Title: title, Url: url };
-    history.pushState(obj, obj.Title, obj.Url);
-  } else {
-    alert("Browser does not support HTML5.");
-  }
-}
-
-module.exports = drawArticles;
-
-/***/ }),
-/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48508,7 +48389,7 @@ class BlurPass extends __WEBPACK_IMPORTED_MODULE_2__Pass_js__["a" /* Pass */] {
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(5);
@@ -48521,7 +48402,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3);
@@ -48536,7 +48417,7 @@ module.exports = function (name) {
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var shared = __webpack_require__(54)('keys');
@@ -48547,7 +48428,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -48557,7 +48438,7 @@ module.exports = (
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var document = __webpack_require__(3).document;
@@ -48565,7 +48446,7 @@ module.exports = document && document.documentElement;
 
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
@@ -48596,7 +48477,7 @@ module.exports = {
 
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports) {
 
 module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
@@ -48604,11 +48485,11 @@ module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u20
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(5);
-var setPrototypeOf = __webpack_require__(75).set;
+var setPrototypeOf = __webpack_require__(74).set;
 module.exports = function (that, target, C) {
   var S = target.constructor;
   var P;
@@ -48619,7 +48500,7 @@ module.exports = function (that, target, C) {
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48638,7 +48519,7 @@ module.exports = function repeat(count) {
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports) {
 
 // 20.2.2.28 Math.sign(x)
@@ -48649,7 +48530,7 @@ module.exports = Math.sign || function sign(x) {
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports) {
 
 // 20.2.2.14 Math.expm1(x)
@@ -48665,7 +48546,7 @@ module.exports = (!$expm1
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(27);
@@ -48688,7 +48569,7 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48698,9 +48579,9 @@ var $export = __webpack_require__(0);
 var redefine = __webpack_require__(16);
 var hide = __webpack_require__(15);
 var has = __webpack_require__(14);
-var Iterators = __webpack_require__(49);
-var $iterCreate = __webpack_require__(83);
-var setToStringTag = __webpack_require__(47);
+var Iterators = __webpack_require__(48);
+var $iterCreate = __webpack_require__(82);
+var setToStringTag = __webpack_require__(46);
 var getPrototypeOf = __webpack_require__(20);
 var ITERATOR = __webpack_require__(6)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -48765,14 +48646,14 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var create = __webpack_require__(40);
 var descriptor = __webpack_require__(35);
-var setToStringTag = __webpack_require__(47);
+var setToStringTag = __webpack_require__(46);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -48785,7 +48666,7 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // helper for String#{startsWith, endsWith, includes}
@@ -48799,7 +48680,7 @@ module.exports = function (that, searchString, NAME) {
 
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MATCH = __webpack_require__(6)('match');
@@ -48817,11 +48698,11 @@ module.exports = function (KEY) {
 
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
-var Iterators = __webpack_require__(49);
+var Iterators = __webpack_require__(48);
 var ITERATOR = __webpack_require__(6)('iterator');
 var ArrayProto = Array.prototype;
 
@@ -48831,7 +48712,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48846,12 +48727,12 @@ module.exports = function (object, index, value) {
 
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof = __webpack_require__(53);
 var ITERATOR = __webpack_require__(6)('iterator');
-var Iterators = __webpack_require__(49);
+var Iterators = __webpack_require__(48);
 module.exports = __webpack_require__(24).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
@@ -48860,7 +48741,7 @@ module.exports = __webpack_require__(24).getIteratorMethod = function (it) {
 
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
@@ -48872,7 +48753,7 @@ module.exports = function (original, length) {
 
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48894,21 +48775,21 @@ module.exports = function fill(value /* , start = 0, end = @length */) {
 
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var addToUnscopables = __webpack_require__(34);
 var step = __webpack_require__(119);
-var Iterators = __webpack_require__(49);
+var Iterators = __webpack_require__(48);
 var toIObject = __webpack_require__(18);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(82)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(81)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -48935,13 +48816,13 @@ addToUnscopables('entries');
 
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(21);
 var invoke = __webpack_require__(109);
-var html = __webpack_require__(74);
-var cel = __webpack_require__(70);
+var html = __webpack_require__(73);
+var cel = __webpack_require__(69);
 var global = __webpack_require__(3);
 var process = global.process;
 var setTask = global.setImmediate;
@@ -49025,11 +48906,11 @@ module.exports = {
 
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3);
-var macrotask = __webpack_require__(92).set;
+var macrotask = __webpack_require__(91).set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
@@ -49099,7 +48980,7 @@ module.exports = function () {
 
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49124,7 +49005,7 @@ module.exports.f = function (C) {
 
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49142,8 +49023,8 @@ var toLength = __webpack_require__(9);
 var toIndex = __webpack_require__(128);
 var gOPN = __webpack_require__(41).f;
 var dP = __webpack_require__(8).f;
-var arrayFill = __webpack_require__(90);
-var setToStringTag = __webpack_require__(47);
+var arrayFill = __webpack_require__(89);
+var setToStringTag = __webpack_require__(46);
 var ARRAY_BUFFER = 'ArrayBuffer';
 var DATA_VIEW = 'DataView';
 var PROTOTYPE = 'prototype';
@@ -49407,7 +49288,7 @@ exports[DATA_VIEW] = $DataView;
 
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3);
@@ -49417,7 +49298,7 @@ module.exports = navigator && navigator.userAgent || '';
 
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -49605,6 +49486,146 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var page = __webpack_require__(136);
+
+// contents
+var intro = __webpack_require__(351);
+var content = __webpack_require__(412);
+// const phraseC = require('./phrase')
+var Masonry = __webpack_require__(416);
+var create = __webpack_require__(421);
+var empty = __webpack_require__(100);
+
+var Lazy = __webpack_require__(422);
+
+// phrase intro
+var bioTags = ['DESIGNER', 'DEV', 'SEA LOVER'];
+
+// bar
+var barCreator = __webpack_require__(423);
+var app = void 0,
+    mainContent = void 0,
+    introContainer = void 0,
+    phrase = void 0,
+    msnry = void 0;
+
+// loader
+var loader = __webpack_require__(424);
+
+page('/:tag?', create, loader, function (ctx, next) {
+  // vars
+  var app = ctx.app;
+  var introContainer = ctx.introContainer;
+  var phrase = ctx.phrase;
+  var footer = ctx.footer;
+  var bar = ctx.bar;
+  var tag = ctx.params.tag;
+
+  mainContent = ctx.mainContent;
+  drawArticles(tag);
+
+  // get intro
+  document.onload = intro.init(introContainer, ctx);
+
+  // Bar
+  barCreator(function (t) {
+    bar.appendChild(t);
+  });
+
+  // Bio
+  // phraseC((template) => {
+  //   phrase.appendChild(template)  
+  // })
+
+  content.getFooter(function (e, r) {
+    if (e) return console.log(new Error({ message: 'An Error has ocurred' }));
+    console.log(r);
+    footer.appendChild(r);
+  });
+
+  document.body.appendChild(app);
+  setTimeout(function () {
+    msnry.layout();
+  }, 500);
+  next();
+
+  window.addEventListener('articleScreen', function (e) {
+    if (app.classList.contains('fixScroll')) {
+      var pos = getPosition(mainContent);
+      app.classList.remove('fixScroll');
+      window.scrollTo(0, pos.top);
+    } else {
+      app.classList.add('fixScroll');
+    }
+  });
+});
+
+function drawArticles(tag) {
+  tag = tag ? tag.toLowerCase() : '';
+  var overW = document.createElement('div');
+  overW.setAttribute('class', 'main-over-wrapper');
+  ChangeUrl('san', '/#!/' + tag);
+
+  var pos = getPosition(mainContent);
+  window.scrollTo(0, pos.top);
+
+  content.getMainContent(tag, function (e, r) {
+    if (e) return new Error({ message: 'An Error has ocurred' });
+    var main = r.main;
+
+    empty(overW).appendChild(main);
+    empty(mainContent).appendChild(overW);
+
+    msnry = new Masonry(main, {
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true,
+      initLayout: false,
+      transitionDuration: 0,
+      originTop: false
+    });
+
+    msnry.layout();
+
+    new Lazy({
+      container: main,
+      callback_load: function callback_load(e) {
+        msnry.layout();
+      }
+    });
+  });
+}
+
+// get position to scroll them
+function getPosition(e) {
+  var _x = 0;
+  var _y = 0;
+  while (e && !isNaN(e.offsetLeft) && !isNaN(e.offsetTop)) {
+    _x += e.offsetLeft - e.scrollLeft;
+    _y += e.offsetTop - e.scrollTop;
+    e = e.offsetParent;
+  }
+  return { top: _y, left: _x };
+}
+
+function ChangeUrl(title, url) {
+  if (typeof history.pushState != "undefined") {
+    var obj = { Title: title, Url: url };
+    history.pushState(obj, obj.Title, obj.Url);
+  } else {
+    alert("Browser does not support HTML5.");
+  }
+}
+
+module.exports = drawArticles;
 
 /***/ }),
 /* 98 */
@@ -50089,7 +50110,7 @@ return getSize;
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(7) && !__webpack_require__(4)(function () {
-  return Object.defineProperty(__webpack_require__(70)('div'), 'a', { get: function () { return 7; } }).a != 7;
+  return Object.defineProperty(__webpack_require__(69)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
@@ -50107,7 +50128,7 @@ exports.f = __webpack_require__(6);
 var has = __webpack_require__(14);
 var toIObject = __webpack_require__(18);
 var arrayIndexOf = __webpack_require__(55)(false);
-var IE_PROTO = __webpack_require__(72)('IE_PROTO');
+var IE_PROTO = __webpack_require__(71)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -50267,8 +50288,8 @@ module.exports = function (fn, args, that) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseInt = __webpack_require__(3).parseInt;
-var $trim = __webpack_require__(48).trim;
-var ws = __webpack_require__(76);
+var $trim = __webpack_require__(47).trim;
+var ws = __webpack_require__(75);
 var hex = /^[-+]?0[xX]/;
 
 module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix) {
@@ -50282,9 +50303,9 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseFloat = __webpack_require__(3).parseFloat;
-var $trim = __webpack_require__(48).trim;
+var $trim = __webpack_require__(47).trim;
 
-module.exports = 1 / $parseFloat(__webpack_require__(76) + '-0') !== -Infinity ? function parseFloat(str) {
+module.exports = 1 / $parseFloat(__webpack_require__(75) + '-0') !== -Infinity ? function parseFloat(str) {
   var string = $trim(String(str), 3);
   var result = $parseFloat(string);
   return result === 0 && string.charAt(0) == '-' ? -0 : result;
@@ -50329,7 +50350,7 @@ module.exports = Math.log1p || function log1p(x) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.16 Math.fround(x)
-var sign = __webpack_require__(79);
+var sign = __webpack_require__(78);
 var pow = Math.pow;
 var EPSILON = pow(2, -52);
 var EPSILON32 = pow(2, -23);
@@ -50477,7 +50498,7 @@ module.exports = function (exec) {
 
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(5);
-var newPromiseCapability = __webpack_require__(94);
+var newPromiseCapability = __webpack_require__(93);
 
 module.exports = function (C, x) {
   anObject(C);
@@ -50496,7 +50517,7 @@ module.exports = function (C, x) {
 "use strict";
 
 var strong = __webpack_require__(124);
-var validate = __webpack_require__(50);
+var validate = __webpack_require__(49);
 var MAP = 'Map';
 
 // 23.1 Map Objects
@@ -50527,12 +50548,12 @@ var redefineAll = __webpack_require__(45);
 var ctx = __webpack_require__(21);
 var anInstance = __webpack_require__(43);
 var forOf = __webpack_require__(44);
-var $iterDefine = __webpack_require__(82);
+var $iterDefine = __webpack_require__(81);
 var step = __webpack_require__(119);
 var setSpecies = __webpack_require__(42);
 var DESCRIPTORS = __webpack_require__(7);
 var fastKey = __webpack_require__(33).fastKey;
-var validate = __webpack_require__(50);
+var validate = __webpack_require__(49);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
 
 var getEntry = function (that, key) {
@@ -50673,7 +50694,7 @@ module.exports = {
 "use strict";
 
 var strong = __webpack_require__(124);
-var validate = __webpack_require__(50);
+var validate = __webpack_require__(49);
 var SET = 'Set';
 
 // 23.2 Set Objects
@@ -50700,7 +50721,7 @@ var assign = __webpack_require__(107);
 var weak = __webpack_require__(127);
 var isObject = __webpack_require__(5);
 var fails = __webpack_require__(4);
-var validate = __webpack_require__(50);
+var validate = __webpack_require__(49);
 var WEAK_MAP = 'WeakMap';
 var getWeak = meta.getWeak;
 var isExtensible = Object.isExtensible;
@@ -50767,7 +50788,7 @@ var anInstance = __webpack_require__(43);
 var forOf = __webpack_require__(44);
 var createArrayMethod = __webpack_require__(29);
 var $has = __webpack_require__(14);
-var validate = __webpack_require__(50);
+var validate = __webpack_require__(49);
 var arrayFind = createArrayMethod(5);
 var arrayFindIndex = createArrayMethod(6);
 var id = 0;
@@ -50929,7 +50950,7 @@ module.exports = flattenIntoArray;
 
 // https://github.com/tc39/proposal-string-pad-start-end
 var toLength = __webpack_require__(9);
-var repeat = __webpack_require__(78);
+var repeat = __webpack_require__(77);
 var defined = __webpack_require__(26);
 
 module.exports = function (that, maxLength, fillString, left) {
@@ -51753,7 +51774,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 
   page.sameOrigin = sameOrigin;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(97)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(96)))
 
 /***/ }),
 /* 137 */
@@ -51786,7 +51807,7 @@ module.exports = doccy;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BloomPass_js__ = __webpack_require__(367);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__BloomPass_js__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BlurPass_js__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BlurPass_js__ = __webpack_require__(68);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__BlurPass_js__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BokehPass_js__ = __webpack_require__(388);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__BokehPass_js__["a"]; });
@@ -81460,7 +81481,7 @@ __webpack_require__(248);
 __webpack_require__(249);
 __webpack_require__(250);
 __webpack_require__(251);
-__webpack_require__(91);
+__webpack_require__(90);
 __webpack_require__(252);
 __webpack_require__(253);
 __webpack_require__(120);
@@ -81575,11 +81596,11 @@ var redefine = __webpack_require__(16);
 var META = __webpack_require__(33).KEY;
 var $fails = __webpack_require__(4);
 var shared = __webpack_require__(54);
-var setToStringTag = __webpack_require__(47);
+var setToStringTag = __webpack_require__(46);
 var uid = __webpack_require__(36);
 var wks = __webpack_require__(6);
 var wksExt = __webpack_require__(103);
-var wksDefine = __webpack_require__(71);
+var wksDefine = __webpack_require__(70);
 var enumKeys = __webpack_require__(149);
 var isArray = __webpack_require__(57);
 var anObject = __webpack_require__(1);
@@ -82027,7 +82048,7 @@ module.exports = Object.is || function is(x, y) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(0);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(75).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(74).set });
 
 
 /***/ }),
@@ -82128,13 +82149,13 @@ $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $pars
 var global = __webpack_require__(3);
 var has = __webpack_require__(14);
 var cof = __webpack_require__(22);
-var inheritIfRequired = __webpack_require__(77);
+var inheritIfRequired = __webpack_require__(76);
 var toPrimitive = __webpack_require__(25);
 var fails = __webpack_require__(4);
 var gOPN = __webpack_require__(41).f;
 var gOPD = __webpack_require__(19).f;
 var dP = __webpack_require__(8).f;
-var $trim = __webpack_require__(48).trim;
+var $trim = __webpack_require__(47).trim;
 var NUMBER = 'Number';
 var $Number = global[NUMBER];
 var Base = $Number;
@@ -82204,7 +82225,7 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
 var $export = __webpack_require__(0);
 var toInteger = __webpack_require__(27);
 var aNumberValue = __webpack_require__(112);
-var repeat = __webpack_require__(78);
+var repeat = __webpack_require__(77);
 var $toFixed = 1.0.toFixed;
 var floor = Math.floor;
 var data = [0, 0, 0, 0, 0, 0];
@@ -82509,7 +82530,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 
 // 20.2.2.9 Math.cbrt(x)
 var $export = __webpack_require__(0);
-var sign = __webpack_require__(79);
+var sign = __webpack_require__(78);
 
 $export($export.S, 'Math', {
   cbrt: function cbrt(x) {
@@ -82553,7 +82574,7 @@ $export($export.S, 'Math', {
 
 // 20.2.2.14 Math.expm1(x)
 var $export = __webpack_require__(0);
-var $expm1 = __webpack_require__(80);
+var $expm1 = __webpack_require__(79);
 
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 });
 
@@ -82667,7 +82688,7 @@ $export($export.S, 'Math', {
 // 20.2.2.28 Math.sign(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { sign: __webpack_require__(79) });
+$export($export.S, 'Math', { sign: __webpack_require__(78) });
 
 
 /***/ }),
@@ -82676,7 +82697,7 @@ $export($export.S, 'Math', { sign: __webpack_require__(79) });
 
 // 20.2.2.30 Math.sinh(x)
 var $export = __webpack_require__(0);
-var expm1 = __webpack_require__(80);
+var expm1 = __webpack_require__(79);
 var exp = Math.exp;
 
 // V8 near Chromium 38 has a problem with very small numbers
@@ -82697,7 +82718,7 @@ $export($export.S + $export.F * __webpack_require__(4)(function () {
 
 // 20.2.2.33 Math.tanh(x)
 var $export = __webpack_require__(0);
-var expm1 = __webpack_require__(80);
+var expm1 = __webpack_require__(79);
 var exp = Math.exp;
 
 $export($export.S, 'Math', {
@@ -82783,7 +82804,7 @@ $export($export.S, 'String', {
 "use strict";
 
 // 21.1.3.25 String.prototype.trim()
-__webpack_require__(48)('trim', function ($trim) {
+__webpack_require__(47)('trim', function ($trim) {
   return function trim() {
     return $trim(this, 3);
   };
@@ -82796,10 +82817,10 @@ __webpack_require__(48)('trim', function ($trim) {
 
 "use strict";
 
-var $at = __webpack_require__(81)(true);
+var $at = __webpack_require__(80)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(82)(String, 'String', function (iterated) {
+__webpack_require__(81)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -82821,7 +82842,7 @@ __webpack_require__(82)(String, 'String', function (iterated) {
 "use strict";
 
 var $export = __webpack_require__(0);
-var $at = __webpack_require__(81)(false);
+var $at = __webpack_require__(80)(false);
 $export($export.P, 'String', {
   // 21.1.3.3 String.prototype.codePointAt(pos)
   codePointAt: function codePointAt(pos) {
@@ -82839,11 +82860,11 @@ $export($export.P, 'String', {
 
 var $export = __webpack_require__(0);
 var toLength = __webpack_require__(9);
-var context = __webpack_require__(84);
+var context = __webpack_require__(83);
 var ENDS_WITH = 'endsWith';
 var $endsWith = ''[ENDS_WITH];
 
-$export($export.P + $export.F * __webpack_require__(85)(ENDS_WITH), 'String', {
+$export($export.P + $export.F * __webpack_require__(84)(ENDS_WITH), 'String', {
   endsWith: function endsWith(searchString /* , endPosition = @length */) {
     var that = context(this, searchString, ENDS_WITH);
     var endPosition = arguments.length > 1 ? arguments[1] : undefined;
@@ -82865,10 +82886,10 @@ $export($export.P + $export.F * __webpack_require__(85)(ENDS_WITH), 'String', {
 // 21.1.3.7 String.prototype.includes(searchString, position = 0)
 
 var $export = __webpack_require__(0);
-var context = __webpack_require__(84);
+var context = __webpack_require__(83);
 var INCLUDES = 'includes';
 
-$export($export.P + $export.F * __webpack_require__(85)(INCLUDES), 'String', {
+$export($export.P + $export.F * __webpack_require__(84)(INCLUDES), 'String', {
   includes: function includes(searchString /* , position = 0 */) {
     return !!~context(this, searchString, INCLUDES)
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
@@ -82884,7 +82905,7 @@ var $export = __webpack_require__(0);
 
 $export($export.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
-  repeat: __webpack_require__(78)
+  repeat: __webpack_require__(77)
 });
 
 
@@ -82897,11 +82918,11 @@ $export($export.P, 'String', {
 
 var $export = __webpack_require__(0);
 var toLength = __webpack_require__(9);
-var context = __webpack_require__(84);
+var context = __webpack_require__(83);
 var STARTS_WITH = 'startsWith';
 var $startsWith = ''[STARTS_WITH];
 
-$export($export.P + $export.F * __webpack_require__(85)(STARTS_WITH), 'String', {
+$export($export.P + $export.F * __webpack_require__(84)(STARTS_WITH), 'String', {
   startsWith: function startsWith(searchString /* , position = 0 */) {
     var that = context(this, searchString, STARTS_WITH);
     var index = toLength(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length));
@@ -83239,10 +83260,10 @@ var ctx = __webpack_require__(21);
 var $export = __webpack_require__(0);
 var toObject = __webpack_require__(11);
 var call = __webpack_require__(116);
-var isArrayIter = __webpack_require__(86);
+var isArrayIter = __webpack_require__(85);
 var toLength = __webpack_require__(9);
-var createProperty = __webpack_require__(87);
-var getIterFn = __webpack_require__(88);
+var createProperty = __webpack_require__(86);
+var getIterFn = __webpack_require__(87);
 
 $export($export.S + $export.F * !__webpack_require__(59)(function (iter) { Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
@@ -83280,7 +83301,7 @@ $export($export.S + $export.F * !__webpack_require__(59)(function (iter) { Array
 "use strict";
 
 var $export = __webpack_require__(0);
-var createProperty = __webpack_require__(87);
+var createProperty = __webpack_require__(86);
 
 // WebKit Array.of isn't generic
 $export($export.S + $export.F * __webpack_require__(4)(function () {
@@ -83325,7 +83346,7 @@ $export($export.P + $export.F * (__webpack_require__(51) != Object || !__webpack
 "use strict";
 
 var $export = __webpack_require__(0);
-var html = __webpack_require__(74);
+var html = __webpack_require__(73);
 var cof = __webpack_require__(22);
 var toAbsoluteIndex = __webpack_require__(39);
 var toLength = __webpack_require__(9);
@@ -83595,7 +83616,7 @@ __webpack_require__(34)('copyWithin');
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', { fill: __webpack_require__(90) });
+$export($export.P, 'Array', { fill: __webpack_require__(89) });
 
 __webpack_require__(34)('fill');
 
@@ -83654,7 +83675,7 @@ __webpack_require__(42)('Array');
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3);
-var inheritIfRequired = __webpack_require__(77);
+var inheritIfRequired = __webpack_require__(76);
 var dP = __webpack_require__(8).f;
 var gOPN = __webpack_require__(41).f;
 var isRegExp = __webpack_require__(58);
@@ -83873,9 +83894,9 @@ var aFunction = __webpack_require__(13);
 var anInstance = __webpack_require__(43);
 var forOf = __webpack_require__(44);
 var speciesConstructor = __webpack_require__(62);
-var task = __webpack_require__(92).set;
-var microtask = __webpack_require__(93)();
-var newPromiseCapabilityModule = __webpack_require__(94);
+var task = __webpack_require__(91).set;
+var microtask = __webpack_require__(92)();
+var newPromiseCapabilityModule = __webpack_require__(93);
 var perform = __webpack_require__(121);
 var promiseResolve = __webpack_require__(122);
 var PROMISE = 'Promise';
@@ -84071,7 +84092,7 @@ if (!USE_NATIVE) {
 }
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
-__webpack_require__(47)($Promise, PROMISE);
+__webpack_require__(46)($Promise, PROMISE);
 __webpack_require__(42)(PROMISE);
 Wrapper = __webpack_require__(24)[PROMISE];
 
@@ -84144,7 +84165,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(59)(function
 "use strict";
 
 var weak = __webpack_require__(127);
-var validate = __webpack_require__(50);
+var validate = __webpack_require__(49);
 var WEAK_SET = 'WeakSet';
 
 // 23.4 WeakSet Objects
@@ -84166,7 +84187,7 @@ __webpack_require__(63)(WEAK_SET, function (get) {
 
 var $export = __webpack_require__(0);
 var $typed = __webpack_require__(64);
-var buffer = __webpack_require__(95);
+var buffer = __webpack_require__(94);
 var anObject = __webpack_require__(1);
 var toAbsoluteIndex = __webpack_require__(39);
 var toLength = __webpack_require__(9);
@@ -84217,7 +84238,7 @@ __webpack_require__(42)(ARRAY_BUFFER);
 
 var $export = __webpack_require__(0);
 $export($export.G + $export.W + $export.F * !__webpack_require__(64).ABV, {
-  DataView: __webpack_require__(95).DataView
+  DataView: __webpack_require__(94).DataView
 });
 
 
@@ -84457,7 +84478,7 @@ var Enumerate = function (iterated) {
   var key;
   for (key in iterated) keys.push(key);
 };
-__webpack_require__(83)(Enumerate, 'Object', function () {
+__webpack_require__(82)(Enumerate, 'Object', function () {
   var that = this;
   var keys = that._k;
   var key;
@@ -84639,7 +84660,7 @@ $export($export.S, 'Reflect', { set: set });
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
 var $export = __webpack_require__(0);
-var setProto = __webpack_require__(75);
+var setProto = __webpack_require__(74);
 
 if (setProto) $export($export.S, 'Reflect', {
   setPrototypeOf: function setPrototypeOf(target, proto) {
@@ -84685,7 +84706,7 @@ var flattenIntoArray = __webpack_require__(130);
 var toObject = __webpack_require__(11);
 var toLength = __webpack_require__(9);
 var aFunction = __webpack_require__(13);
-var arraySpeciesCreate = __webpack_require__(89);
+var arraySpeciesCreate = __webpack_require__(88);
 
 $export($export.P, 'Array', {
   flatMap: function flatMap(callbackfn /* , thisArg */) {
@@ -84714,7 +84735,7 @@ var flattenIntoArray = __webpack_require__(130);
 var toObject = __webpack_require__(11);
 var toLength = __webpack_require__(9);
 var toInteger = __webpack_require__(27);
-var arraySpeciesCreate = __webpack_require__(89);
+var arraySpeciesCreate = __webpack_require__(88);
 
 $export($export.P, 'Array', {
   flatten: function flatten(/* depthArg = 1 */) {
@@ -84738,7 +84759,7 @@ __webpack_require__(34)('flatten');
 
 // https://github.com/mathiasbynens/String.prototype.at
 var $export = __webpack_require__(0);
-var $at = __webpack_require__(81)(true);
+var $at = __webpack_require__(80)(true);
 
 $export($export.P, 'String', {
   at: function at(pos) {
@@ -84756,7 +84777,7 @@ $export($export.P, 'String', {
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = __webpack_require__(0);
 var $pad = __webpack_require__(131);
-var userAgent = __webpack_require__(96);
+var userAgent = __webpack_require__(95);
 
 // https://github.com/zloirock/core-js/issues/280
 $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAgent), 'String', {
@@ -84775,7 +84796,7 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = __webpack_require__(0);
 var $pad = __webpack_require__(131);
-var userAgent = __webpack_require__(96);
+var userAgent = __webpack_require__(95);
 
 // https://github.com/zloirock/core-js/issues/280
 $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAgent), 'String', {
@@ -84792,7 +84813,7 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 "use strict";
 
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-__webpack_require__(48)('trimLeft', function ($trim) {
+__webpack_require__(47)('trimLeft', function ($trim) {
   return function trimLeft() {
     return $trim(this, 1);
   };
@@ -84806,7 +84827,7 @@ __webpack_require__(48)('trimLeft', function ($trim) {
 "use strict";
 
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-__webpack_require__(48)('trimRight', function ($trim) {
+__webpack_require__(47)('trimRight', function ($trim) {
   return function trimRight() {
     return $trim(this, 2);
   };
@@ -84832,7 +84853,7 @@ var $RegExpStringIterator = function (regexp, string) {
   this._s = string;
 };
 
-__webpack_require__(83)($RegExpStringIterator, 'RegExp String', function next() {
+__webpack_require__(82)($RegExpStringIterator, 'RegExp String', function next() {
   var match = this._r.exec(this._s);
   return { value: match, done: match === null };
 });
@@ -84854,14 +84875,14 @@ $export($export.P, 'String', {
 /* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(71)('asyncIterator');
+__webpack_require__(70)('asyncIterator');
 
 
 /***/ }),
 /* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(71)('observable');
+__webpack_require__(70)('observable');
 
 
 /***/ }),
@@ -84873,7 +84894,7 @@ var $export = __webpack_require__(0);
 var ownKeys = __webpack_require__(129);
 var toIObject = __webpack_require__(18);
 var gOPD = __webpack_require__(19);
-var createProperty = __webpack_require__(87);
+var createProperty = __webpack_require__(86);
 
 $export($export.S, 'Object', {
   getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
@@ -85345,7 +85366,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 
 // https://github.com/tc39/proposal-promise-try
 var $export = __webpack_require__(0);
-var newPromiseCapability = __webpack_require__(94);
+var newPromiseCapability = __webpack_require__(93);
 var perform = __webpack_require__(121);
 
 $export($export.S, 'Promise', { 'try': function (callbackfn) {
@@ -85532,7 +85553,7 @@ $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
 
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
 var $export = __webpack_require__(0);
-var microtask = __webpack_require__(93)();
+var microtask = __webpack_require__(92)();
 var process = __webpack_require__(3).process;
 var isNode = __webpack_require__(22)(process) == 'process';
 
@@ -85554,7 +85575,7 @@ $export($export.G, {
 var $export = __webpack_require__(0);
 var global = __webpack_require__(3);
 var core = __webpack_require__(24);
-var microtask = __webpack_require__(93)();
+var microtask = __webpack_require__(92)();
 var OBSERVABLE = __webpack_require__(6)('observable');
 var aFunction = __webpack_require__(13);
 var anObject = __webpack_require__(1);
@@ -85757,7 +85778,7 @@ __webpack_require__(42)('Observable');
 // ie9- setTimeout & setInterval additional parameters fix
 var global = __webpack_require__(3);
 var $export = __webpack_require__(0);
-var userAgent = __webpack_require__(96);
+var userAgent = __webpack_require__(95);
 var slice = [].slice;
 var MSIE = /MSIE .\./.test(userAgent); // <- dirty ie9- check
 var wrap = function (set) {
@@ -85781,7 +85802,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
-var $task = __webpack_require__(92);
+var $task = __webpack_require__(91);
 $export($export.G + $export.B, {
   setImmediate: $task.set,
   clearImmediate: $task.clear
@@ -85792,12 +85813,12 @@ $export($export.G + $export.B, {
 /* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $iterators = __webpack_require__(91);
+var $iterators = __webpack_require__(90);
 var getKeys = __webpack_require__(38);
 var redefine = __webpack_require__(16);
 var global = __webpack_require__(3);
 var hide = __webpack_require__(15);
-var Iterators = __webpack_require__(49);
+var Iterators = __webpack_require__(48);
 var wks = __webpack_require__(6);
 var ITERATOR = wks('iterator');
 var TO_STRING_TAG = wks('toStringTag');
@@ -86643,7 +86664,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 page.base('/#!');
-__webpack_require__(68);
+__webpack_require__(97);
 
 page();
 
@@ -87089,7 +87110,7 @@ var THREE = __webpack_require__(2);
 
 var Stats = __webpack_require__(353);
 var dat = __webpack_require__(354).default;
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(50);
 __webpack_require__(364);
 
 var SCREEN_WIDTH = void 0,
@@ -91980,7 +92001,7 @@ class EffectComposer {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__materials__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BlurPass_js__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BlurPass_js__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Pass_js__ = __webpack_require__(10);
 
 
@@ -94979,7 +95000,7 @@ const GlitchMode = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__materials__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__RenderPass_js__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__BlurPass_js__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__BlurPass_js__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Pass_js__ = __webpack_require__(10);
 
 
@@ -95566,7 +95587,7 @@ class MaskPass extends __WEBPACK_IMPORTED_MODULE_0__Pass_js__["a" /* Pass */] {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__materials__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BlurPass_js__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BlurPass_js__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Pass_js__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__RenderPass_js__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ShaderPass_js__ = __webpack_require__(140);
@@ -104593,7 +104614,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(410).setImmediate, __webpack_require__(97), __webpack_require__(32), __webpack_require__(141)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(410).setImmediate, __webpack_require__(96), __webpack_require__(32), __webpack_require__(141)(module)))
 
 /***/ }),
 /* 410 */
@@ -104853,7 +104874,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32), __webpack_require__(97)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32), __webpack_require__(96)))
 
 /***/ }),
 /* 412 */
@@ -104866,7 +104887,7 @@ var drawMainTemplate = __webpack_require__(413);
 var footer = __webpack_require__(414);
 var _ = __webpack_require__(142);
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(50);
 
 function getFooter(cb) {
   footer(function (e, r) {
@@ -104937,19 +104958,22 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-keywords">\n      </div>\n      '], ['\n      <div class="over-article-keywords">\n      </div>\n      ']),
     _templateObject2 = _taggedTemplateLiteral(['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      '], ['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            <div class="over-article-content">\n            ', '\n            </div>\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            <div class="over-article-content">\n            ', '\n            </div>\n          </div>\n        </div>\n      </div>\n    ']),
-    _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n        <h1 class="article-label">', '</h1>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n        <h1 class="article-label">', '</h1>\n      </article>\n    ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    <div class="article-content-close">\n      x\n    </div>\n    '], ['\n    <div class="article-content-close">\n      x\n    </div>\n    ']),
-    _templateObject6 = _taggedTemplateLiteral(['<p>', '</p>'], ['<p>', '</p>']),
-    _templateObject7 = _taggedTemplateLiteral(['\n          <figure class="article-content-picture">\n            <img src="', '" alt="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        '], ['\n          <figure class="article-content-picture">\n            <img src="', '" alt="', '">\n            <figcaption>', '</figcaption>\n          </figure>\n        ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          <h1 class="article-content-title">\n            ', '\n          </h1>\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          social\n          gotoback\n          close\n        </footer>\n      </div>\n    ']),
-    _templateObject9 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
+    _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    ']),
+    _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n      <h1 class="article-content-title article-item">\n        ', '\n      </h1>\n    '], ['\n      <h1 class="article-content-title article-item">\n        ', '\n      </h1>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    <div class="article-content-close">\n      x\n    </div>\n    '], ['\n    <div class="article-content-close">\n      x\n    </div>\n    ']),
+    _templateObject7 = _taggedTemplateLiteral(['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>'], ['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>']),
+    _templateObject8 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
+    _templateObject9 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
+    _templateObject10 = _taggedTemplateLiteral(['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            '], ['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            ']),
+    _templateObject11 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    ']),
+    _templateObject12 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(50);
 var _ = __webpack_require__(142);
 var empty = __webpack_require__(100);
 
@@ -105000,14 +105024,14 @@ var Article = function () {
         keywords.appendChild(_template);
       }
 
-      var over = yo(_templateObject3, keywords, this.viewContent);
+      var over = yo(_templateObject3, this.title, keywords);
 
-      var template = yo(_templateObject4, this.important ? 'grid-item-widthx2' : '', this.title, over, this.mainPicture.url, this.mainPicture.comment, this.title);
+      var template = yo(_templateObject4, this.important ? 'grid-item-widthx2' : '', this.title, over, this.mainPicture.url, this.mainPicture.comment);
 
       var _this = this;
 
       template.addEventListener('click', function (e) {
-        var drawArticle = __webpack_require__(68);
+        var drawArticle = __webpack_require__(97);
         if (e.target.classList.contains('over-article-word')) {
           var data = e.target.getAttribute('data-keyword');
           return drawArticle(data);
@@ -105041,32 +105065,41 @@ var Article = function () {
       var articleContent = document.createElement('div');
       articleContent.setAttribute('class', 'article-content-readable');
 
-      var close = yo(_templateObject5);
+      var articleTitle = yo(_templateObject5, this.title);
 
-      var myItems = _.merge(this.content, this.othersPictures);
-      console.log(myItems);
+      var close = yo(_templateObject6);
+      articleContent.appendChild(articleTitle);
 
       for (var i = 0; i < this.content.length; i++) {
-        var p = yo(_templateObject6, this.content[i]);
+        var form = void 0;
+        var p = yo(_templateObject7, this.content[i]);
+
         if (this.othersPictures[i]) {
           switch (this.othersPictures[i].type) {
             case 'image':
+              form = yo(_templateObject8, this.othersPictures[i].url, this.othersPictures[i].name, this.othersPictures[i].comment);
               break;
+
+            case 'image2':
+              form = yo(_templateObject9, this.othersPictures[i].url, this.othersPictures[i].name, this.othersPictures[i].comment);
+              break;
+
             case 'quote':
+              form = yo(_templateObject10, this.othersPictures[i].text);
               break;
 
             default:
+              form = '';
               break;
           }
 
-          var image = yo(_templateObject7, this.othersPictures[i].url, this.othersPictures[i].name, this.othersPictures[i].comment);
-          articleContent.appendChild(image);
+          articleContent.appendChild(form);
         }
 
         articleContent.appendChild(p);
       }
 
-      var template = yo(_templateObject8, close, this.mainPicture.urlXX, this.title, articleContent);
+      var template = yo(_templateObject11, close, this.mainPicture.urlXX, articleContent);
 
       close.addEventListener('click', function (e) {
         screenSplashClose();
@@ -105079,24 +105112,29 @@ var Article = function () {
   return Article;
 }();
 
+var ev = new CustomEvent('articleScreen');
+
 function screenSplashOpen(template) {
   empty(contentContainer).appendChild(template);
   contentContainer.classList.add('article-open');
+  // evento que: hace scroll al contenido, elimina la el overflow: hidden.
+  window.dispatchEvent(ev);
 }
 
 function screenSplashClose() {
+  // let scrollTo = document.getElementById('main-content')
+  // let pos = getPosition(scrollTo)
   empty(contentContainer);
   contentContainer.classList.remove('article-open');
-  var ev = new CustomEvent('articleScreen');
   window.dispatchEvent(ev);
-
+  // window.scrollTo(0, pos.top);
   screen = false;
 }
 
 function createTemplate(items, cb) {
   var article = void 0;
 
-  var main = yo(_templateObject9);
+  var main = yo(_templateObject12);
 
   for (var i = 0; i < items.length; i++) {
     article = new Article(items[i]);
@@ -105123,7 +105161,7 @@ var _templateObject = _taggedTemplateLiteral(['\n    <footer class="footer">\n  
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(50);
 
 module.exports = function (cb) {
   var template = yo(_templateObject);
@@ -105153,13 +105191,14 @@ module.exports = [{
     others: [{
       name: 'pedrito paramo',
       url: '/img/articles/one/two.jpg',
-      comment: 'another image footer'
+      comment: 'another image footer',
+      type: 'image'
     }]
   }
 }, {
   title: 'Empiezan las apuestas sobre las películas que serán seleccionadas en Cannes',
   type: 'blog',
-  content: 'A menos de dos semanas del anuncio de la selecci\xF3n oficial del Festival de Cannes, ya circulan los rumores sobre los directores que podr\xEDan competir por la Palma de Oro, entre ellos el estadounidense Damien Chazelle o el iran\xED Asghar Farhadi, y su filme con Javier Bardem, Pen\xE9lope Cruz y Ricardo Dar\xEDn. Para esta 71\xAA edici\xF3n, del 8 al 19 de mayo, varios nombres aparecen en las quinielas sobre la veintena de pel\xEDculas que competir\xE1n por el m\xE1ximo galard\xF3n del certamen, otorgado por un jurado presidido por la actriz australiana Cate Blanchett.\n    Le puede interesar: Cannes elige a la "comprometida" Cate Blanchett como presidenta de su jurado\n    La lista con los largometrajes seleccionados ser\xE1 revelada el 12 de abril por el delegado general de la muestra, Thierry Fr\xE9maux.\n    Entre los nombres que circulan para formar parte de la prestigiosa selecci\xF3n figura el director estadounidense Damien Chazelle, autor de la multipremiada La La Land, que podr\xEDa presentar First Man, una biopic sobre el astronauta Neil Armstrong protagonizado por Ryan Gosling.',
+  content: 'Tiene un piercing en la oreja izquierda y dice \u201Cch\xE9vere\u201D m\xE1s veces de las que uno esperar\xEDa que una persona de 44 a\xF1os lo dijera. Usa gafas solo a ratos; gafas rectangulares de s\xF3lido marco negro. Desde hace siete a\xF1os (con un intermedio de dos en Colombia) vive en Jaffa, o como a \xE9l le gusta decir, \u201Cen territorio sin nombre\u201D, con su esposa y sus tres hijos. All\xE1 escribi\xF3 la novela Tres ata\xFAdes blancos, ganadora del premio Herralde en 2010 y finalista del R\xF3mulo Gallegos en 2011. Salvo un libro infantil, despu\xE9s de eso, nada. Hasta ahora.\n    Antonio Ungar dice que es muy zanahorio y muy solitario. Que quiz\xE1s sea por eso que no le salen bien los di\xE1logos en sus libros, con personajes muy concentrados sobre s\xED, y que quiz\xE1s sea esa la raz\xF3n por la que el alcohol funciona como mecanismo de desahogo en sus personajes. Personajes que pueden aparecer en ciudades inglesas o colombianas con la misma naturalidad con que pueden aparecer en ciudades francesas o italianas. No hay una geograf\xEDa definida en su literatura. Como en su vida. Ha vivido en Manchester, en la selva colombiana, en M\xE9xico D.F., en Barcelona, en Iowa y en Palestina. Se gradu\xF3 de arquitectura y empez\xF3 una maestr\xEDa en literatura comparada que nunca termin\xF3 porque le tocaba leer teor\xEDa y cr\xEDtica literaria, pero nunca llegaba a los libros.\n    En enero de este a\xF1o estuvo en Barcelona unos d\xEDas presentando su m\xE1s reciente novela. Una novela que no tiene nada que ver con la anterior: ni en tama\xF1o, ni en tono, ni en tema. Luego de una semana en ruedas de prensa, cocteles, almuerzos con editores, cenas con c\xF3nsules, estaba frito.',
   keywords: ['resilient', 'designer', 'coffee'],
   pictures: {
     main: {
@@ -105172,12 +105211,12 @@ module.exports = [{
       type: 'image',
       name: 'hello World',
       url: '/img/articles/two/two.png',
-      comment: 'this is a comment'
+      comment: 'did you know that information, say me the true, if you did not, we wil not have problems. relax with me boy '
     }, {
       type: 'image',
       name: 'hello World',
       url: '/img/articles/two/three.jpg',
-      comment: 'this is a comment'
+      comment: "Like you, I used to think the world was this great place where everybody lived by the same standards I did, then some kid with a nail showed me I was living in his world, a world where chaos rules not order, a world where righteousness is not rewarded. That's Cesar's world, and if you're not willing to play by his rules, then you're gonna have to pay the price."
     }, {
       type: 'quote',
       text: 'Formed of Laura Lee, Mark Speer and Donald “DJ” Johnson, the group discuss their new album, Con Todo El Mundo, their dream collaborations and the power of memory and nostalgia in music.'
@@ -105231,82 +105270,6 @@ module.exports = [{
 /* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-var _templateObject = _taggedTemplateLiteral(['\n  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42 46.48">\n    <defs>\n      <style>\n        .cls-1, .cls-5 {\n          fill: #ff4d4d;\n        }\n        \n        .cls-6 {\n          fill: #2f304b;\n        }\n\n        .cls-2 {\n          fill: none;\n          stroke: #ff4d4d;\n          stroke-miterlimit: 10;\n          stroke-width: 4px;\n        }\n\n        .cls-3 {\n          fill: #f8f8f8;\n        }\n\n        .cls-4 {\n          fill: #fff;\n        }\n\n        .cls-5 {\n          opacity: 0.25;\n        }\n      </style>\n      <symbol id="Nuevo_s\xEDmbolo_1" data-name="Nuevo s\xEDmbolo 1" viewBox="0 0 2.58 23.28">\n        <path class="cls-1" d="M1.42,0a1.34,1.34,0,0,1,.4.73c.1.24-.18.48-.2.73a1.68,1.68,0,0,0,.29.72A.72.72,0,0,1,2,2.55c0,.12-.15.24-.17.36s.3.49.29.73l0,.73c0,.48-.06,1-.12,1.45a47.44,47.44,0,0,0-.41,5.82c0,1,0,1.94.07,2.91a22,22,0,0,0,.25,2.91,10.4,10.4,0,0,1,.18,1.46,5.42,5.42,0,0,0,0,1.45,24.68,24.68,0,0,0,.52,2.91H0a24.68,24.68,0,0,0,.52-2.91,5.42,5.42,0,0,0,0-1.45,8.09,8.09,0,0,1,.18-1.46A22,22,0,0,0,1,14.55c.05-1,.08-1.94.08-2.91A47.46,47.46,0,0,0,.61,5.82c0-.48-.09-1-.12-1.45l0-.73c0-.24.33-.49.29-.73S.61,2.67.59,2.55a.71.71,0,0,1,.08-.37A1.68,1.68,0,0,0,1,1.46c0-.25-.3-.49-.2-.73A1.36,1.36,0,0,1,1.17,0Z"/>\n      </symbol>\n    </defs>\n    <title>timon_1</title>\n    <g>\n      <g class="move">\n        <use width="2.58" height="23.28" transform="matrix(0.92, 0.38, -0.38, 0.92, 27.81, 1.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-5" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(34.88 5.19) rotate(44.82)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(39.86 11.68) rotate(67.23)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-10" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(41.99 19.57) rotate(89.64)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(40.95 27.68) rotate(112.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(36.89 34.78) rotate(134.45)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(-0.92, 0.39, -0.39, -0.92, 30.44, 39.8)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(22.56 41.98) rotate(179.27)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(14.44 40.99) rotate(-158.32)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(7.32 36.98) rotate(-135.91)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(2.26 30.56) rotate(-113.5)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(0.03 22.69) rotate(-91.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(0.36, -0.93, 0.93, 0.36, 0.97, 14.57)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(4.93 7.41) rotate(-46.28)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(11.32 2.31) rotate(-23.87)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-35" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="matrix(1, -0.03, 0.03, 1, 19.17, 0.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n      </g>\n      <g class="move">\n        <path id="shadow" class="cls-5" d="M-241-58.78a1.35,1.35,0,0,0-.73-.39c-.25-.1-.49.18-.73.2a1.72,1.72,0,0,1-.73-.29.68.68,0,0,0-.36-.08c-.12,0-.24.15-.37.17s-.48-.3-.72-.29a17.38,17.38,0,0,0-1-5c.23-.09.32-.49.56-.55s.27,0,.4,0a.64.64,0,0,0,.3-.22c.18-.21.33-.46.56-.55s.56.09.75-.1a1.34,1.34,0,0,0,.51-.65l-.1-.23a1.35,1.35,0,0,0-.82-.09c-.27,0-.38.35-.6.46a1.57,1.57,0,0,1-.78,0,.65.65,0,0,0-.37.06c-.1.07-.17.23-.27.29s-.56-.08-.78,0a17.59,17.59,0,0,0-2.87-4.24h0c.17-.16.11-.57.3-.72s.27-.07.38-.14a.69.69,0,0,0,.19-.32,1.75,1.75,0,0,1,.31-.72c.18-.16.55-.13.65-.37a1.38,1.38,0,0,0,.23-.8l-.18-.18a1.36,1.36,0,0,0-.8.23c-.24.1-.21.47-.37.66a1.69,1.69,0,0,1-.72.31.67.67,0,0,0-.31.2c-.07.1-.07.27-.15.37s-.55.14-.71.31h0a17,17,0,0,0-4.25-2.84c.09-.22-.12-.57,0-.78s.21-.18.28-.28a.56.56,0,0,0,.06-.37,1.57,1.57,0,0,1,0-.78c.1-.22.46-.33.46-.6a1.37,1.37,0,0,0-.1-.82l-.23-.1a1.35,1.35,0,0,0-.65.52c-.19.19,0,.52-.1.75s-.34.38-.54.56a.64.64,0,0,0-.22.3c0,.13,0,.28,0,.4s-.45.34-.54.56a17.38,17.38,0,0,0-5.46-1c0-.24-.34-.47-.31-.71s.13-.25.15-.37a.69.69,0,0,0-.09-.36,1.73,1.73,0,0,1-.31-.72c0-.25.29-.5.18-.74a1.3,1.3,0,0,0-.42-.71h-.25a1.38,1.38,0,0,0-.39.74c-.09.25.2.48.22.72a1.59,1.59,0,0,1-.27.74.68.68,0,0,0-.08.36c0,.12.16.24.18.36s-.28.49-.27.74a17,17,0,0,0-5,1.12c-.09-.23-.49-.31-.55-.55s0-.28,0-.4A.66.66,0,0,0-269-76c-.21-.17-.47-.32-.56-.54s.08-.57-.11-.75a1.35,1.35,0,0,0-.66-.5l-.23.1a1.3,1.3,0,0,0-.08.83c0,.26.36.37.48.58a1.72,1.72,0,0,1,0,.79.62.62,0,0,0,.07.36c.07.1.23.17.29.27s-.07.56,0,.78A17.8,17.8,0,0,0-274-71.12h0c-.17-.17-.58-.1-.73-.29s-.08-.27-.15-.37a.69.69,0,0,0-.32-.19,1.66,1.66,0,0,1-.73-.3c-.16-.18-.14-.55-.39-.64a1.29,1.29,0,0,0-.8-.21l-.17.18a1.37,1.37,0,0,0,.24.79c.11.24.48.21.66.36a1.61,1.61,0,0,1,.33.71.6.6,0,0,0,.21.32c.1.06.27.06.37.13s.15.55.33.71h0a17,17,0,0,0-2.76,4.31c-.23-.09-.57.13-.78,0s-.17-.21-.28-.28a.63.63,0,0,0-.37-.05,1.71,1.71,0,0,1-.78,0c-.22-.1-.34-.45-.6-.45a1.4,1.4,0,0,0-.83.11l-.09.24a1.33,1.33,0,0,0,.53.64c.19.18.52,0,.75.08s.39.33.57.53a.69.69,0,0,0,.31.21c.12,0,.28-.05.4,0s.34.44.56.53a17.54,17.54,0,0,0-.89,5c-.24,0-.48.34-.72.31s-.24-.13-.37-.16a.69.69,0,0,0-.36.09,1.59,1.59,0,0,1-.72.3c-.24,0-.49-.28-.73-.18a1.36,1.36,0,0,0-.72.42V-58a1.38,1.38,0,0,0,.74.39c.24.1.48-.19.72-.21a1.59,1.59,0,0,1,.74.27.68.68,0,0,0,.36.08c.12,0,.24-.15.36-.17s.49.28.73.28a17.37,17.37,0,0,0,1.09,5c-.22.09-.31.49-.55.55s-.27,0-.4,0a.66.66,0,0,0-.29.22c-.18.21-.33.47-.56.55s-.56-.08-.74.11a1.36,1.36,0,0,0-.51.66l.1.23a1.3,1.3,0,0,0,.83.08c.26,0,.37-.36.59-.47a1.57,1.57,0,0,1,.78,0,.67.67,0,0,0,.37-.07c.1-.07.16-.23.27-.29s.56.07.78,0a17,17,0,0,0,2.91,4.2h0c-.17.18-.1.58-.3.73s-.26.08-.37.15a.64.64,0,0,0-.19.32,1.62,1.62,0,0,1-.3.72c-.18.16-.55.14-.65.39a1.29,1.29,0,0,0-.21.8l.18.17a1.26,1.26,0,0,0,.79-.24c.25-.1.21-.47.37-.66a1.66,1.66,0,0,1,.71-.32.7.7,0,0,0,.32-.2c.06-.11.06-.28.13-.38s.55-.14.72-.32h0a17.49,17.49,0,0,0,4.29,2.79c-.09.22.13.56,0,.77s-.21.18-.28.28a.66.66,0,0,0-.06.37,1.58,1.58,0,0,1,0,.78c-.11.22-.46.34-.45.61a1.37,1.37,0,0,0,.1.82l.24.09a1.37,1.37,0,0,0,.64-.52c.18-.19,0-.52.09-.75s.33-.39.53-.57a.66.66,0,0,0,.22-.31c0-.12,0-.28,0-.4s.44-.34.53-.56a17.17,17.17,0,0,0,5,.93c0,.24.33.48.3.72s-.14.24-.16.36a.62.62,0,0,0,.09.37,1.85,1.85,0,0,1,.3.72c0,.24-.3.49-.19.73a1.34,1.34,0,0,0,.41.72h.25a1.45,1.45,0,0,0,.4-.73c.09-.25-.19-.49-.21-.73a1.62,1.62,0,0,1,.28-.73.68.68,0,0,0,.08-.36c0-.12-.15-.24-.17-.37s.29-.48.28-.72a17.41,17.41,0,0,0,5-1.06c.09.22.49.31.55.55s0,.28,0,.4a.71.71,0,0,0,.22.3c.21.18.47.33.55.56s-.08.56.11.74a1.32,1.32,0,0,0,.66.51l.23-.09a1.38,1.38,0,0,0,.08-.83c0-.27-.36-.38-.47-.59a1.89,1.89,0,0,1,0-.79.7.7,0,0,0-.06-.36c-.07-.11-.23-.17-.29-.28s.07-.55,0-.78a17.27,17.27,0,0,0,4.22-2.89h0c.17.17.58.1.72.3s.08.27.15.37a.58.58,0,0,0,.32.19,1.75,1.75,0,0,1,.72.31c.16.18.13.55.38.65a1.36,1.36,0,0,0,.8.22l.18-.18a1.43,1.43,0,0,0-.24-.8c-.1-.24-.47-.21-.66-.37a1.66,1.66,0,0,1-.32-.71.63.63,0,0,0-.2-.32c-.1-.06-.27-.06-.37-.14s-.14-.55-.31-.71h0a17.22,17.22,0,0,0,2.81-4.28c.23.09.57-.12.78,0s.18.21.28.28a.65.65,0,0,0,.37.06,1.57,1.57,0,0,1,.78,0c.22.1.34.46.6.45a1.32,1.32,0,0,0,.83-.1l.09-.23a1.35,1.35,0,0,0-.52-.65c-.19-.18-.52,0-.75-.09s-.39-.33-.57-.54a.61.61,0,0,0-.3-.21c-.13,0-.28,0-.4,0s-.34-.45-.56-.54a17.73,17.73,0,0,0,1-5c.24,0,.48-.34.72-.3s.24.13.37.16a.61.61,0,0,0,.36-.09,1.67,1.67,0,0,1,.73-.29c.24,0,.48.3.72.19a1.27,1.27,0,0,0,.73-.41Zm-11.11,9.28a34.69,34.69,0,0,1-3-2.65c-.7-.68-1.37-1.38-2-2.09s-1.09-1.18-1.59-1.83a3.64,3.64,0,0,0,.3-.46c.78.2,1.53.5,2.3.75s1.83.65,2.72,1A35.68,35.68,0,0,1-249.78-53,13.41,13.41,0,0,1-252.11-49.5Zm-4.18,3.1A33.64,33.64,0,0,1-258.08-50c-.39-.89-.74-1.8-1.08-2.71s-.57-1.5-.79-2.28a4.73,4.73,0,0,0,.46-.32c.65.49,1.24,1,1.86,1.56s1.43,1.3,2.12,2a34.82,34.82,0,0,1,2.72,3A13.61,13.61,0,0,1-256.29-46.4Zm-5,1.26a33.94,33.94,0,0,1-.28-4c0-1,0-1.94,0-2.91,0-.81,0-1.61.14-2.42a2.8,2.8,0,0,0,.56-.12c.41.7.73,1.44,1.1,2.16.43.87.84,1.75,1.21,2.64A34.34,34.34,0,0,1-257.19-46,13.36,13.36,0,0,1-261.34-45.14Zm-5.15-.76a35.67,35.67,0,0,1,1.28-3.82c.35-.9.74-1.8,1.14-2.68.35-.72.65-1.47,1.05-2.18a3.45,3.45,0,0,0,.56.1c.12.81.14,1.61.2,2.42.06,1,.1,1.94.11,2.91a33.79,33.79,0,0,1-.17,4A13.12,13.12,0,0,1-266.49-45.9ZM-271-48.57a34.85,34.85,0,0,1,2.64-3q1-1.05,2.07-2c.6-.54,1.17-1.11,1.8-1.61l.49.31c-.2.78-.49,1.53-.74,2.3s-.64,1.83-1,2.73a34.66,34.66,0,0,1-1.69,3.66A13.37,13.37,0,0,1-271-48.57Zm-3.12-4.16a36.71,36.71,0,0,1,3.6-1.81c.89-.39,1.79-.75,2.7-1.1.76-.26,1.5-.58,2.28-.8a5,5,0,0,0,.33.47c-.49.65-1,1.23-1.56,1.85s-1.3,1.45-2,2.14a33.23,33.23,0,0,1-3,2.73A13.4,13.4,0,0,1-274.08-52.73ZM-272-67.41a34.77,34.77,0,0,1,3.05,2.62c.71.66,1.39,1.35,2.05,2.06s1.12,1.16,1.63,1.79a4.8,4.8,0,0,0-.3.48c-.79-.19-1.55-.48-2.32-.71-.92-.31-1.83-.64-2.73-1a33.76,33.76,0,0,1-3.68-1.67A13.55,13.55,0,0,1-272-67.41Zm4.14-3.14A35.49,35.49,0,0,1-266-67c.4.89.76,1.79,1.11,2.69s.6,1.5.82,2.28a3.83,3.83,0,0,0-.46.33c-.66-.48-1.25-1-1.87-1.55s-1.45-1.28-2.15-2a33.31,33.31,0,0,1-2.75-2.94A13.46,13.46,0,0,1-267.86-70.55Zm5-1.33a36.13,36.13,0,0,1,.33,4q0,1.45,0,2.91c0,.81,0,1.62-.11,2.42a5.07,5.07,0,0,0-.56.13c-.42-.69-.75-1.43-1.13-2.14-.44-.87-.86-1.74-1.25-2.63A37.91,37.91,0,0,1-267-70.95,13.29,13.29,0,0,1-262.83-71.88Zm5.48.81a35.58,35.58,0,0,1-1.33,3.8c-.36.9-.76,1.78-1.17,2.66s-.68,1.47-1.08,2.17a4.94,4.94,0,0,0-.67-.12c-.13-.8-.15-1.61-.23-2.41-.07-1-.12-1.94-.14-2.91a31.92,31.92,0,0,1,.12-4A13.46,13.46,0,0,1-257.35-71.07Zm4.43,2.72a36.54,36.54,0,0,1-2.67,3c-.68.69-1.39,1.36-2.1,2s-1.2,1.09-1.84,1.58A4.53,4.53,0,0,0-260-62c.2-.79.5-1.53.76-2.3.32-.92.67-1.82,1-2.72a36.56,36.56,0,0,1,1.74-3.63A13.34,13.34,0,0,1-252.92-68.35Zm3.07,4.2a36.66,36.66,0,0,1-3.62,1.77c-.9.38-1.8.73-2.72,1.06-.76.26-1.5.56-2.29.77a3.37,3.37,0,0,0-.31-.46c.49-.64,1.05-1.23,1.57-1.84s1.32-1.43,2-2.12a36.3,36.3,0,0,1,3-2.69A13.59,13.59,0,0,1-249.85-64.15Zm1.22,5.06a35.82,35.82,0,0,1-4,.25c-1,0-1.94,0-2.91,0-.81-.06-1.62-.06-2.42-.16a3.48,3.48,0,0,0-.12-.56c.7-.41,1.45-.73,2.17-1.09s1.75-.82,2.65-1.19a36.38,36.38,0,0,1,3.79-1.36A13.12,13.12,0,0,1-248.63-59.09Zm-22.19-2.58c.91.35,1.8.73,2.69,1.12.73.35,1.47.65,2.18,1a5,5,0,0,0-.09.56c-.81.13-1.61.15-2.42.22-1,.07-1.93.11-2.9.13a36.1,36.1,0,0,1-4-.15,13.5,13.5,0,0,1,.74-4.18A35.74,35.74,0,0,1-270.82-61.67Zm-4.55,3.9a36.24,36.24,0,0,1,4-.3c1,0,1.94,0,2.91,0,.8.05,1.61,0,2.41.13a3.78,3.78,0,0,0,.13.56c-.7.42-1.43.74-2.15,1.12s-1.75.84-2.64,1.22a35.63,35.63,0,0,1-3.78,1.4A13.26,13.26,0,0,1-275.37-57.77Zm22.14,2.52c-.9-.36-1.79-.75-2.67-1.16-.72-.35-1.46-.66-2.17-1.06A3.45,3.45,0,0,0-258-58c.81-.12,1.61-.13,2.42-.19q1.45-.09,2.91-.09a33.82,33.82,0,0,1,4,.2,13,13,0,0,1-.8,4.16A34.2,34.2,0,0,1-253.23-55.25Z" transform="translate(283 84)"/>\n      </g>\n      <g class="nomove">\n        <circle class="cls-2" cx="21" cy="21" r="15.4"/>\n        <circle class="cls-1" cx="21" cy="21" r="4.08"/>\n        <path class="cls-3" d="M-262-63.6a.87.87,0,0,1,.85.74.7.7,0,0,0,0-.14.88.88,0,0,0-.88-.89.89.89,0,0,0-.89.89.7.7,0,0,0,0,.14A.88.88,0,0,1-262-63.6Z" transform="translate(283 84)"/>\n        <path class="cls-3" d="M-262-65a2.52,2.52,0,0,1,2.5,2.25,1.43,1.43,0,0,0,0-.29A2.54,2.54,0,0,0-262-65.54,2.54,2.54,0,0,0-264.51-63a2.85,2.85,0,0,0,0,.29A2.54,2.54,0,0,1-262-65Z" transform="translate(283 84)"/>\n        <g>\n          <path class="cls-4" d="M-271.07-51.26a18,18,0,0,0,4.21,2,16.19,16.19,0,0,0,4.52.74,16.28,16.28,0,0,0,4.55-.53,18,18,0,0,0,4.29-1.78,12.78,12.78,0,0,1-4.13,2.34,13.33,13.33,0,0,1-4.73.72,13.27,13.27,0,0,1-4.7-1A12.6,12.6,0,0,1-271.07-51.26Z" transform="translate(283 84)"/>\n          <path class="cls-4" d="M-249.07-72.5a16.53,16.53,0,0,0-5.87-4.71,16.51,16.51,0,0,0-7.27-1.63,16.46,16.46,0,0,0-7.26,1.63,16.65,16.65,0,0,0-5.88,4.71,14.49,14.49,0,0,1,5.62-5.22,16.23,16.23,0,0,1,7.52-1.87,16.3,16.3,0,0,1,7.53,1.87A14.53,14.53,0,0,1-249.07-72.5Z" transform="translate(283 84)"/>\n        </g>\n      </g>\n    </g>\n  </svg>\n'], ['\n  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42 46.48">\n    <defs>\n      <style>\n        .cls-1, .cls-5 {\n          fill: #ff4d4d;\n        }\n        \n        .cls-6 {\n          fill: #2f304b;\n        }\n\n        .cls-2 {\n          fill: none;\n          stroke: #ff4d4d;\n          stroke-miterlimit: 10;\n          stroke-width: 4px;\n        }\n\n        .cls-3 {\n          fill: #f8f8f8;\n        }\n\n        .cls-4 {\n          fill: #fff;\n        }\n\n        .cls-5 {\n          opacity: 0.25;\n        }\n      </style>\n      <symbol id="Nuevo_s\xEDmbolo_1" data-name="Nuevo s\xEDmbolo 1" viewBox="0 0 2.58 23.28">\n        <path class="cls-1" d="M1.42,0a1.34,1.34,0,0,1,.4.73c.1.24-.18.48-.2.73a1.68,1.68,0,0,0,.29.72A.72.72,0,0,1,2,2.55c0,.12-.15.24-.17.36s.3.49.29.73l0,.73c0,.48-.06,1-.12,1.45a47.44,47.44,0,0,0-.41,5.82c0,1,0,1.94.07,2.91a22,22,0,0,0,.25,2.91,10.4,10.4,0,0,1,.18,1.46,5.42,5.42,0,0,0,0,1.45,24.68,24.68,0,0,0,.52,2.91H0a24.68,24.68,0,0,0,.52-2.91,5.42,5.42,0,0,0,0-1.45,8.09,8.09,0,0,1,.18-1.46A22,22,0,0,0,1,14.55c.05-1,.08-1.94.08-2.91A47.46,47.46,0,0,0,.61,5.82c0-.48-.09-1-.12-1.45l0-.73c0-.24.33-.49.29-.73S.61,2.67.59,2.55a.71.71,0,0,1,.08-.37A1.68,1.68,0,0,0,1,1.46c0-.25-.3-.49-.2-.73A1.36,1.36,0,0,1,1.17,0Z"/>\n      </symbol>\n    </defs>\n    <title>timon_1</title>\n    <g>\n      <g class="move">\n        <use width="2.58" height="23.28" transform="matrix(0.92, 0.38, -0.38, 0.92, 27.81, 1.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-5" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(34.88 5.19) rotate(44.82)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(39.86 11.68) rotate(67.23)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-10" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(41.99 19.57) rotate(89.64)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(40.95 27.68) rotate(112.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(36.89 34.78) rotate(134.45)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(-0.92, 0.39, -0.39, -0.92, 30.44, 39.8)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(22.56 41.98) rotate(179.27)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(14.44 40.99) rotate(-158.32)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(7.32 36.98) rotate(-135.91)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(2.26 30.56) rotate(-113.5)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(0.03 22.69) rotate(-91.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(0.36, -0.93, 0.93, 0.36, 0.97, 14.57)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(4.93 7.41) rotate(-46.28)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(11.32 2.31) rotate(-23.87)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-35" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="matrix(1, -0.03, 0.03, 1, 19.17, 0.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n      </g>\n      <g class="move">\n        <path id="shadow" class="cls-5" d="M-241-58.78a1.35,1.35,0,0,0-.73-.39c-.25-.1-.49.18-.73.2a1.72,1.72,0,0,1-.73-.29.68.68,0,0,0-.36-.08c-.12,0-.24.15-.37.17s-.48-.3-.72-.29a17.38,17.38,0,0,0-1-5c.23-.09.32-.49.56-.55s.27,0,.4,0a.64.64,0,0,0,.3-.22c.18-.21.33-.46.56-.55s.56.09.75-.1a1.34,1.34,0,0,0,.51-.65l-.1-.23a1.35,1.35,0,0,0-.82-.09c-.27,0-.38.35-.6.46a1.57,1.57,0,0,1-.78,0,.65.65,0,0,0-.37.06c-.1.07-.17.23-.27.29s-.56-.08-.78,0a17.59,17.59,0,0,0-2.87-4.24h0c.17-.16.11-.57.3-.72s.27-.07.38-.14a.69.69,0,0,0,.19-.32,1.75,1.75,0,0,1,.31-.72c.18-.16.55-.13.65-.37a1.38,1.38,0,0,0,.23-.8l-.18-.18a1.36,1.36,0,0,0-.8.23c-.24.1-.21.47-.37.66a1.69,1.69,0,0,1-.72.31.67.67,0,0,0-.31.2c-.07.1-.07.27-.15.37s-.55.14-.71.31h0a17,17,0,0,0-4.25-2.84c.09-.22-.12-.57,0-.78s.21-.18.28-.28a.56.56,0,0,0,.06-.37,1.57,1.57,0,0,1,0-.78c.1-.22.46-.33.46-.6a1.37,1.37,0,0,0-.1-.82l-.23-.1a1.35,1.35,0,0,0-.65.52c-.19.19,0,.52-.1.75s-.34.38-.54.56a.64.64,0,0,0-.22.3c0,.13,0,.28,0,.4s-.45.34-.54.56a17.38,17.38,0,0,0-5.46-1c0-.24-.34-.47-.31-.71s.13-.25.15-.37a.69.69,0,0,0-.09-.36,1.73,1.73,0,0,1-.31-.72c0-.25.29-.5.18-.74a1.3,1.3,0,0,0-.42-.71h-.25a1.38,1.38,0,0,0-.39.74c-.09.25.2.48.22.72a1.59,1.59,0,0,1-.27.74.68.68,0,0,0-.08.36c0,.12.16.24.18.36s-.28.49-.27.74a17,17,0,0,0-5,1.12c-.09-.23-.49-.31-.55-.55s0-.28,0-.4A.66.66,0,0,0-269-76c-.21-.17-.47-.32-.56-.54s.08-.57-.11-.75a1.35,1.35,0,0,0-.66-.5l-.23.1a1.3,1.3,0,0,0-.08.83c0,.26.36.37.48.58a1.72,1.72,0,0,1,0,.79.62.62,0,0,0,.07.36c.07.1.23.17.29.27s-.07.56,0,.78A17.8,17.8,0,0,0-274-71.12h0c-.17-.17-.58-.1-.73-.29s-.08-.27-.15-.37a.69.69,0,0,0-.32-.19,1.66,1.66,0,0,1-.73-.3c-.16-.18-.14-.55-.39-.64a1.29,1.29,0,0,0-.8-.21l-.17.18a1.37,1.37,0,0,0,.24.79c.11.24.48.21.66.36a1.61,1.61,0,0,1,.33.71.6.6,0,0,0,.21.32c.1.06.27.06.37.13s.15.55.33.71h0a17,17,0,0,0-2.76,4.31c-.23-.09-.57.13-.78,0s-.17-.21-.28-.28a.63.63,0,0,0-.37-.05,1.71,1.71,0,0,1-.78,0c-.22-.1-.34-.45-.6-.45a1.4,1.4,0,0,0-.83.11l-.09.24a1.33,1.33,0,0,0,.53.64c.19.18.52,0,.75.08s.39.33.57.53a.69.69,0,0,0,.31.21c.12,0,.28-.05.4,0s.34.44.56.53a17.54,17.54,0,0,0-.89,5c-.24,0-.48.34-.72.31s-.24-.13-.37-.16a.69.69,0,0,0-.36.09,1.59,1.59,0,0,1-.72.3c-.24,0-.49-.28-.73-.18a1.36,1.36,0,0,0-.72.42V-58a1.38,1.38,0,0,0,.74.39c.24.1.48-.19.72-.21a1.59,1.59,0,0,1,.74.27.68.68,0,0,0,.36.08c.12,0,.24-.15.36-.17s.49.28.73.28a17.37,17.37,0,0,0,1.09,5c-.22.09-.31.49-.55.55s-.27,0-.4,0a.66.66,0,0,0-.29.22c-.18.21-.33.47-.56.55s-.56-.08-.74.11a1.36,1.36,0,0,0-.51.66l.1.23a1.3,1.3,0,0,0,.83.08c.26,0,.37-.36.59-.47a1.57,1.57,0,0,1,.78,0,.67.67,0,0,0,.37-.07c.1-.07.16-.23.27-.29s.56.07.78,0a17,17,0,0,0,2.91,4.2h0c-.17.18-.1.58-.3.73s-.26.08-.37.15a.64.64,0,0,0-.19.32,1.62,1.62,0,0,1-.3.72c-.18.16-.55.14-.65.39a1.29,1.29,0,0,0-.21.8l.18.17a1.26,1.26,0,0,0,.79-.24c.25-.1.21-.47.37-.66a1.66,1.66,0,0,1,.71-.32.7.7,0,0,0,.32-.2c.06-.11.06-.28.13-.38s.55-.14.72-.32h0a17.49,17.49,0,0,0,4.29,2.79c-.09.22.13.56,0,.77s-.21.18-.28.28a.66.66,0,0,0-.06.37,1.58,1.58,0,0,1,0,.78c-.11.22-.46.34-.45.61a1.37,1.37,0,0,0,.1.82l.24.09a1.37,1.37,0,0,0,.64-.52c.18-.19,0-.52.09-.75s.33-.39.53-.57a.66.66,0,0,0,.22-.31c0-.12,0-.28,0-.4s.44-.34.53-.56a17.17,17.17,0,0,0,5,.93c0,.24.33.48.3.72s-.14.24-.16.36a.62.62,0,0,0,.09.37,1.85,1.85,0,0,1,.3.72c0,.24-.3.49-.19.73a1.34,1.34,0,0,0,.41.72h.25a1.45,1.45,0,0,0,.4-.73c.09-.25-.19-.49-.21-.73a1.62,1.62,0,0,1,.28-.73.68.68,0,0,0,.08-.36c0-.12-.15-.24-.17-.37s.29-.48.28-.72a17.41,17.41,0,0,0,5-1.06c.09.22.49.31.55.55s0,.28,0,.4a.71.71,0,0,0,.22.3c.21.18.47.33.55.56s-.08.56.11.74a1.32,1.32,0,0,0,.66.51l.23-.09a1.38,1.38,0,0,0,.08-.83c0-.27-.36-.38-.47-.59a1.89,1.89,0,0,1,0-.79.7.7,0,0,0-.06-.36c-.07-.11-.23-.17-.29-.28s.07-.55,0-.78a17.27,17.27,0,0,0,4.22-2.89h0c.17.17.58.1.72.3s.08.27.15.37a.58.58,0,0,0,.32.19,1.75,1.75,0,0,1,.72.31c.16.18.13.55.38.65a1.36,1.36,0,0,0,.8.22l.18-.18a1.43,1.43,0,0,0-.24-.8c-.1-.24-.47-.21-.66-.37a1.66,1.66,0,0,1-.32-.71.63.63,0,0,0-.2-.32c-.1-.06-.27-.06-.37-.14s-.14-.55-.31-.71h0a17.22,17.22,0,0,0,2.81-4.28c.23.09.57-.12.78,0s.18.21.28.28a.65.65,0,0,0,.37.06,1.57,1.57,0,0,1,.78,0c.22.1.34.46.6.45a1.32,1.32,0,0,0,.83-.1l.09-.23a1.35,1.35,0,0,0-.52-.65c-.19-.18-.52,0-.75-.09s-.39-.33-.57-.54a.61.61,0,0,0-.3-.21c-.13,0-.28,0-.4,0s-.34-.45-.56-.54a17.73,17.73,0,0,0,1-5c.24,0,.48-.34.72-.3s.24.13.37.16a.61.61,0,0,0,.36-.09,1.67,1.67,0,0,1,.73-.29c.24,0,.48.3.72.19a1.27,1.27,0,0,0,.73-.41Zm-11.11,9.28a34.69,34.69,0,0,1-3-2.65c-.7-.68-1.37-1.38-2-2.09s-1.09-1.18-1.59-1.83a3.64,3.64,0,0,0,.3-.46c.78.2,1.53.5,2.3.75s1.83.65,2.72,1A35.68,35.68,0,0,1-249.78-53,13.41,13.41,0,0,1-252.11-49.5Zm-4.18,3.1A33.64,33.64,0,0,1-258.08-50c-.39-.89-.74-1.8-1.08-2.71s-.57-1.5-.79-2.28a4.73,4.73,0,0,0,.46-.32c.65.49,1.24,1,1.86,1.56s1.43,1.3,2.12,2a34.82,34.82,0,0,1,2.72,3A13.61,13.61,0,0,1-256.29-46.4Zm-5,1.26a33.94,33.94,0,0,1-.28-4c0-1,0-1.94,0-2.91,0-.81,0-1.61.14-2.42a2.8,2.8,0,0,0,.56-.12c.41.7.73,1.44,1.1,2.16.43.87.84,1.75,1.21,2.64A34.34,34.34,0,0,1-257.19-46,13.36,13.36,0,0,1-261.34-45.14Zm-5.15-.76a35.67,35.67,0,0,1,1.28-3.82c.35-.9.74-1.8,1.14-2.68.35-.72.65-1.47,1.05-2.18a3.45,3.45,0,0,0,.56.1c.12.81.14,1.61.2,2.42.06,1,.1,1.94.11,2.91a33.79,33.79,0,0,1-.17,4A13.12,13.12,0,0,1-266.49-45.9ZM-271-48.57a34.85,34.85,0,0,1,2.64-3q1-1.05,2.07-2c.6-.54,1.17-1.11,1.8-1.61l.49.31c-.2.78-.49,1.53-.74,2.3s-.64,1.83-1,2.73a34.66,34.66,0,0,1-1.69,3.66A13.37,13.37,0,0,1-271-48.57Zm-3.12-4.16a36.71,36.71,0,0,1,3.6-1.81c.89-.39,1.79-.75,2.7-1.1.76-.26,1.5-.58,2.28-.8a5,5,0,0,0,.33.47c-.49.65-1,1.23-1.56,1.85s-1.3,1.45-2,2.14a33.23,33.23,0,0,1-3,2.73A13.4,13.4,0,0,1-274.08-52.73ZM-272-67.41a34.77,34.77,0,0,1,3.05,2.62c.71.66,1.39,1.35,2.05,2.06s1.12,1.16,1.63,1.79a4.8,4.8,0,0,0-.3.48c-.79-.19-1.55-.48-2.32-.71-.92-.31-1.83-.64-2.73-1a33.76,33.76,0,0,1-3.68-1.67A13.55,13.55,0,0,1-272-67.41Zm4.14-3.14A35.49,35.49,0,0,1-266-67c.4.89.76,1.79,1.11,2.69s.6,1.5.82,2.28a3.83,3.83,0,0,0-.46.33c-.66-.48-1.25-1-1.87-1.55s-1.45-1.28-2.15-2a33.31,33.31,0,0,1-2.75-2.94A13.46,13.46,0,0,1-267.86-70.55Zm5-1.33a36.13,36.13,0,0,1,.33,4q0,1.45,0,2.91c0,.81,0,1.62-.11,2.42a5.07,5.07,0,0,0-.56.13c-.42-.69-.75-1.43-1.13-2.14-.44-.87-.86-1.74-1.25-2.63A37.91,37.91,0,0,1-267-70.95,13.29,13.29,0,0,1-262.83-71.88Zm5.48.81a35.58,35.58,0,0,1-1.33,3.8c-.36.9-.76,1.78-1.17,2.66s-.68,1.47-1.08,2.17a4.94,4.94,0,0,0-.67-.12c-.13-.8-.15-1.61-.23-2.41-.07-1-.12-1.94-.14-2.91a31.92,31.92,0,0,1,.12-4A13.46,13.46,0,0,1-257.35-71.07Zm4.43,2.72a36.54,36.54,0,0,1-2.67,3c-.68.69-1.39,1.36-2.1,2s-1.2,1.09-1.84,1.58A4.53,4.53,0,0,0-260-62c.2-.79.5-1.53.76-2.3.32-.92.67-1.82,1-2.72a36.56,36.56,0,0,1,1.74-3.63A13.34,13.34,0,0,1-252.92-68.35Zm3.07,4.2a36.66,36.66,0,0,1-3.62,1.77c-.9.38-1.8.73-2.72,1.06-.76.26-1.5.56-2.29.77a3.37,3.37,0,0,0-.31-.46c.49-.64,1.05-1.23,1.57-1.84s1.32-1.43,2-2.12a36.3,36.3,0,0,1,3-2.69A13.59,13.59,0,0,1-249.85-64.15Zm1.22,5.06a35.82,35.82,0,0,1-4,.25c-1,0-1.94,0-2.91,0-.81-.06-1.62-.06-2.42-.16a3.48,3.48,0,0,0-.12-.56c.7-.41,1.45-.73,2.17-1.09s1.75-.82,2.65-1.19a36.38,36.38,0,0,1,3.79-1.36A13.12,13.12,0,0,1-248.63-59.09Zm-22.19-2.58c.91.35,1.8.73,2.69,1.12.73.35,1.47.65,2.18,1a5,5,0,0,0-.09.56c-.81.13-1.61.15-2.42.22-1,.07-1.93.11-2.9.13a36.1,36.1,0,0,1-4-.15,13.5,13.5,0,0,1,.74-4.18A35.74,35.74,0,0,1-270.82-61.67Zm-4.55,3.9a36.24,36.24,0,0,1,4-.3c1,0,1.94,0,2.91,0,.8.05,1.61,0,2.41.13a3.78,3.78,0,0,0,.13.56c-.7.42-1.43.74-2.15,1.12s-1.75.84-2.64,1.22a35.63,35.63,0,0,1-3.78,1.4A13.26,13.26,0,0,1-275.37-57.77Zm22.14,2.52c-.9-.36-1.79-.75-2.67-1.16-.72-.35-1.46-.66-2.17-1.06A3.45,3.45,0,0,0-258-58c.81-.12,1.61-.13,2.42-.19q1.45-.09,2.91-.09a33.82,33.82,0,0,1,4,.2,13,13,0,0,1-.8,4.16A34.2,34.2,0,0,1-253.23-55.25Z" transform="translate(283 84)"/>\n      </g>\n      <g class="nomove">\n        <circle class="cls-2" cx="21" cy="21" r="15.4"/>\n        <circle class="cls-1" cx="21" cy="21" r="4.08"/>\n        <path class="cls-3" d="M-262-63.6a.87.87,0,0,1,.85.74.7.7,0,0,0,0-.14.88.88,0,0,0-.88-.89.89.89,0,0,0-.89.89.7.7,0,0,0,0,.14A.88.88,0,0,1-262-63.6Z" transform="translate(283 84)"/>\n        <path class="cls-3" d="M-262-65a2.52,2.52,0,0,1,2.5,2.25,1.43,1.43,0,0,0,0-.29A2.54,2.54,0,0,0-262-65.54,2.54,2.54,0,0,0-264.51-63a2.85,2.85,0,0,0,0,.29A2.54,2.54,0,0,1-262-65Z" transform="translate(283 84)"/>\n        <g>\n          <path class="cls-4" d="M-271.07-51.26a18,18,0,0,0,4.21,2,16.19,16.19,0,0,0,4.52.74,16.28,16.28,0,0,0,4.55-.53,18,18,0,0,0,4.29-1.78,12.78,12.78,0,0,1-4.13,2.34,13.33,13.33,0,0,1-4.73.72,13.27,13.27,0,0,1-4.7-1A12.6,12.6,0,0,1-271.07-51.26Z" transform="translate(283 84)"/>\n          <path class="cls-4" d="M-249.07-72.5a16.53,16.53,0,0,0-5.87-4.71,16.51,16.51,0,0,0-7.27-1.63,16.46,16.46,0,0,0-7.26,1.63,16.65,16.65,0,0,0-5.88,4.71,14.49,14.49,0,0,1,5.62-5.22,16.23,16.23,0,0,1,7.52-1.87,16.3,16.3,0,0,1,7.53,1.87A14.53,14.53,0,0,1-249.07-72.5Z" transform="translate(283 84)"/>\n        </g>\n      </g>\n    </g>\n  </svg>\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    <span class="phrase-link" title="', '">', '</span>\n  '], ['\n    <span class="phrase-link" title="', '">', '</span>\n  ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  <span class="phrase-word">\n    ', '\n  </span>'], ['\n  <span class="phrase-word">\n    ', '\n  </span>']),
-    _templateObject4 = _taggedTemplateLiteral(['<div class="phrase-couple" title="thats-me">that\'s me</div>'], ['<div class="phrase-couple" title="thats-me">that\'s me</div>']),
-    _templateObject5 = _taggedTemplateLiteral(['<div class="phrase-couple" title="timon">', '</div>'], ['<div class="phrase-couple" title="timon">', '</div>']),
-    _templateObject6 = _taggedTemplateLiteral(['<div class="phrase-couple" title="sea lover">SEA LOVER</div>'], ['<div class="phrase-couple" title="sea lover">SEA LOVER</div>']),
-    _templateObject7 = _taggedTemplateLiteral(['<div class="phrase-couple" title="dev">D<span title="dev">E</span>V</div>'], ['<div class="phrase-couple" title="dev">D<span title="dev">E</span>V</div>']),
-    _templateObject8 = _taggedTemplateLiteral(['<div class="phrase-couple" title="designer">DESIGNER</div>'], ['<div class="phrase-couple" title="designer">DESIGNER</div>']),
-    _templateObject9 = _taggedTemplateLiteral(['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  '], ['\n    <div class="phrase-container">\n      <div class="phrase-wrapper">\n        <h3 class="phrase-content">\n          ', '\n        </h3>\n      </div>\n    </div>\n  ']);
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var yo = __webpack_require__(46);
-
-var timon = yo(_templateObject);
-function phraseClick(e) {
-  var drawArticles = __webpack_require__(68);
-  e.preventDefault();
-  var tag = e.srcElement.title;
-  tag = tag === 'thats-me' ? '' : tag;
-  drawArticles(tag);
-}
-
-function miniTemplateCreator(item) {
-  var i = yo(_templateObject2, item, item);
-  var container = yo(_templateObject3, i);
-
-  container.onclick = phraseClick;
-  return container;
-}
-
-function itemCreator(items) {
-  var template = document.createElement('div');
-  template.setAttribute('class', 'phrase-links-container');
-
-  var me = yo(_templateObject4);
-  me.onclick = phraseClick;
-
-  var bullet = yo(_templateObject5, timon);
-  bullet.onclick = phraseClick;
-
-  var seaLover = yo(_templateObject6);
-  seaLover.onclick = phraseClick;
-
-  var dev = yo(_templateObject7);
-  dev.onclick = phraseClick;
-
-  var designer = yo(_templateObject8);
-  designer.onclick = phraseClick;
-
-  // template.appendChild(designer)
-  // template.appendChild(dev)
-  // template.appendChild(seaLover)
-  template.appendChild(bullet);
-  // template.appendChild(me)
-  return template;
-}
-
-function createTemplate() {
-  var items = itemCreator();
-
-  var template = yo(_templateObject9, items);
-  return template;
-}
-
-module.exports = function (cb) {
-  return cb(createTemplate());
-};
-
-/***/ }),
-/* 417 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Masonry v4.2.1
  * Cascading grid layout library
@@ -105321,7 +105284,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   if ( true ) {
     // AMD
     !(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-        __webpack_require__(418),
+        __webpack_require__(417),
         __webpack_require__(101)
       ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
@@ -105551,7 +105514,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 418 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -105569,8 +105532,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
     !(__WEBPACK_AMD_DEFINE_ARRAY__ = [
         __webpack_require__(143),
         __webpack_require__(101),
-        __webpack_require__(419),
-        __webpack_require__(421)
+        __webpack_require__(418),
+        __webpack_require__(420)
       ], __WEBPACK_AMD_DEFINE_RESULT__ = (function( EvEmitter, getSize, utils, Item ) {
         return factory( window, EvEmitter, getSize, utils, Item);
       }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -106495,7 +106458,7 @@ return Outlayer;
 
 
 /***/ }),
-/* 419 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -106512,7 +106475,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
   if ( true ) {
     // AMD
     !(__WEBPACK_AMD_DEFINE_ARRAY__ = [
-      __webpack_require__(420)
+      __webpack_require__(419)
     ], __WEBPACK_AMD_DEFINE_RESULT__ = (function( matchesSelector ) {
       return factory( window, matchesSelector );
     }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -106743,7 +106706,7 @@ return utils;
 
 
 /***/ }),
-/* 420 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -106806,7 +106769,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 
 /***/ }),
-/* 421 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -107367,7 +107330,7 @@ return Item;
 
 
 /***/ }),
-/* 422 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107410,7 +107373,7 @@ function create(ctx, next) {
 module.exports = create;
 
 /***/ }),
-/* 423 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(e,t){"object"===( false?"undefined":_typeof(exports))&&"undefined"!=typeof module?module.exports=t(): true?!(__WEBPACK_AMD_DEFINE_FACTORY__ = (t),
@@ -107420,7 +107383,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _extends=O
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):e.LazyLoad=t()}(this,function(){"use strict";var e={elements_selector:"img",container:document,threshold:300,data_src:"src",data_srcset:"srcset",class_loading:"loading",class_loaded:"loaded",class_error:"error",callback_load:null,callback_error:null,callback_set:null,callback_enter:null},t=function(e,t){return e.getAttribute("data-"+t)},n=function(e,t,n){return e.setAttribute("data-"+t,n)},r=function(e){return e.filter(function(e){return!t(e,"was-processed")})},s=function(e,t){var n,r=new e(t);try{n=new CustomEvent("LazyLoad::Initialized",{detail:{instance:r}})}catch(e){(n=document.createEvent("CustomEvent")).initCustomEvent("LazyLoad::Initialized",!1,!1,{instance:r})}window.dispatchEvent(n)},o=function(e,n){var r=n.data_srcset,s=e.parentNode;if("PICTURE"===s.tagName)for(var o,a=0;o=s.children[a];a+=1)if("SOURCE"===o.tagName){var i=t(o,r);i&&o.setAttribute("srcset",i)}},a=function(e,n){var r=n.data_src,s=n.data_srcset,a=e.tagName,i=t(e,r);if("IMG"===a){o(e,n);var c=t(e,s);return c&&e.setAttribute("srcset",c),void(i&&e.setAttribute("src",i))}"IFRAME"!==a?i&&(e.style.backgroundImage='url("'+i+'")'):i&&e.setAttribute("src",i)},i="classList"in document.createElement("p"),c=function(e,t){i?e.classList.add(t):e.className+=(e.className?" ":"")+t},l=function(e,t){i?e.classList.remove(t):e.className=e.className.replace(new RegExp("(^|\\s+)"+t+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")},u=function(e,t){e&&e(t)},d=function(e,t,n){e.removeEventListener("load",t),e.removeEventListener("error",n)},f=function(e,t){var n=function n(s){_(s,!0,t),d(e,n,r)},r=function r(s){_(s,!1,t),d(e,n,r)};e.addEventListener("load",n),e.addEventListener("error",r)},_=function(e,t,n){var r=e.target;l(r,n.class_loading),c(r,t?n.class_loaded:n.class_error),u(t?n.callback_load:n.callback_error,r)},v=function(e,t){u(t.callback_enter,e),["IMG","IFRAME"].indexOf(e.tagName)>-1&&(f(e,t),c(e,t.class_loading)),a(e,t),n(e,"was-processed",!0),u(t.callback_set,e)},m=function(t,n){this._settings=_extends({},e,t),this._setObserver(),this.update(n)};m.prototype={_setObserver:function(){var e=this;if("IntersectionObserver"in window){var t=this._settings;this._observer=new IntersectionObserver(function(n){n.forEach(function(n){if(n.isIntersecting||n.intersectionRatio>0){var r=n.target;v(r,t),e._observer.unobserve(r)}}),e._elements=r(e._elements)},{root:t.container===document?null:t.container,rootMargin:t.threshold+"px"})}},update:function(e){var t=this,n=this._settings,s=e||n.container.querySelectorAll(n.elements_selector);this._elements=r(Array.prototype.slice.call(s)),this._observer?this._elements.forEach(function(e){t._observer.observe(e)}):(this._elements.forEach(function(e){v(e,n)}),this._elements=r(this._elements))},destroy:function(){var e=this;this._observer&&(r(this._elements).forEach(function(t){e._observer.unobserve(t)}),this._observer=null),this._elements=null,this._settings=null}};var b=window.lazyLoadOptions;return b&&function(e,t){if(t.length)for(var n,r=0;n=t[r];r+=1)s(e,n);else s(e,t)}(m,b),m});
 
 /***/ }),
-/* 424 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107440,7 +107403,7 @@ var _templateObject = _taggedTemplateLiteral(['<span class="tag"></span>'], ['<s
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(50);
 var empty = __webpack_require__(100);
 var Mojs = __webpack_require__(144);
 
@@ -107492,7 +107455,7 @@ function createTemplate() {
 
   menuBar.addEventListener('click', function (e) {
     if (!e.target.classList.contains('bar-link')) return;
-    var drawArticles = __webpack_require__(68);
+    var drawArticles = __webpack_require__(97);
     // tag to search
     var myTag = e.target.getAttribute('data-label');
     drawArticles(myTag);
@@ -107577,7 +107540,7 @@ module.exports = function (cb) {
 };
 
 /***/ }),
-/* 425 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107585,142 +107548,128 @@ module.exports = function (cb) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  <rect class="cls-6-sun" x="0" y="60" width="90" height="3"/>\n'], ['\n  <rect class="cls-6-sun" x="0" y="60" width="90" height="3"/>\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  <rect class="cls-6-sun" x="80" y="75" width="90" height="3"/>\n'], ['\n  <rect class="cls-6-sun" x="80" y="75" width="90" height="3"/>\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  <path class="cls-5-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n'], ['\n  <path class="cls-5-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n  <path class="cls-1-bottom" d="M0,0A69.39,69.39,0,0,0,68.47,58.18,69.39,69.39,0,0,0,136.94,0Z""/>\n'], ['\n  <path class="cls-1-bottom" d="M0,0A69.39,69.39,0,0,0,68.47,58.18,69.39,69.39,0,0,0,136.94,0Z""/>\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n  <div class="loader-bottom">\n    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.66 83.56">\n      <defs>\n        <style>\n          .cls-1-bottom {\n            fill: #666666;\n          }\n        </style>\n      </defs>\n      <title>bottom</title>\n      <g id="Layer_2" data-name="Layer 2">\n        <g id="Layer_1-2" data-name="Layer 1">\n          ', '\n        </g>\n      </g>\n    </svg>\n  </div>\n'], ['\n  <div class="loader-bottom">\n    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.66 83.56">\n      <defs>\n        <style>\n          .cls-1-bottom {\n            fill: #666666;\n          }\n        </style>\n      </defs>\n      <title>bottom</title>\n      <g id="Layer_2" data-name="Layer 2">\n        <g id="Layer_1-2" data-name="Layer 1">\n          ', '\n        </g>\n      </g>\n    </svg>\n  </div>\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #666666;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="156.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n'], ['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 165.36 95.32">\n  <defs>\n    <style>\n      .cls-1-sun, .cls-2-sun, .cls-3-sun, .cls-4-sun {\n        fill: #ff8725;\n      }\n\n      .cls-1-sun {\n        opacity: 0.01;\n      }\n\n      .cls-2-sun {\n        opacity: 0.03;\n      }\n\n      .cls-3-sun {\n        opacity: 0.06;\n      }\n\n      .cls-4-sun {\n        opacity: 0.4;\n      }\n\n      .cls-5-sun {\n        fill: url(#radial-gradient);\n      }\n\n      .cls-6-sun {\n        fill: #666666;\n      }\n    </style>\n    <radialGradient id="radial-gradient" cx="50" cy="113.33" r="156.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n    <radialGradient id="radial-gradient-2" cx="85" cy="100" r="196.54" gradientUnits="userSpaceOnUse">\n      <stop offset="0" stop-color="#ff5652"/>\n      <stop offset="0.54" stop-color="#ff5652"/>\n    </radialGradient>\n  </defs>\n  <title>sunset</title>\n  <g id="Layer_2" data-name="Layer 2">\n    <g id="Layer_1-2" data-name="Layer 1">\n      <g>\n        <g>\n          <path class="cls-1-sun" d="M164.37,95.32A82.68,82.68,0,1,0,1,95.32Z"/>\n          <path class="cls-2-sun" d="M152.11,95.32a65.67,65.67,0,0,0,1.25-12.64A70.68,70.68,0,0,0,12,82.68a65.66,65.66,0,0,0,1.24,12.64Z"/>\n          <path class="cls-3-sun" d="M139.86,95.32a54.59,54.59,0,0,0,1.5-12.64A58.68,58.68,0,0,0,24,82.68a54.59,54.59,0,0,0,1.5,12.64Z"/>\n          <path class="cls-4-sun" d="M127.6,95.32a46.68,46.68,0,1,0-89.85,0Z"/>\n        </g>\n        ', '\n        ', '\n        ', '\n      </g>\n    </g>\n  </g>\n</svg>\n\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    <div class="loader-icon">\n      ', '\n      ', '\n    </div>\n    '], ['\n    <div class="loader-icon">\n      ', '\n      ', '\n    </div>\n    ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="screen-black"></div>\n    '], ['\n      <div class="screen-black"></div>\n    ']),
-    _templateObject9 = _taggedTemplateLiteral(['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    ']);
+var _templateObject = _taggedTemplateLiteral(['\n  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42 46.48">\n    <defs>\n      <style>\n        .cls-1, .cls-5 {\n          fill: #ff4d4d;\n        }\n        \n        .cls-6 {\n          fill: #2f304b;\n        }\n\n        .cls-2 {\n          fill: none;\n          stroke: #ff4d4d;\n          stroke-miterlimit: 10;\n          stroke-width: 4px;\n        }\n\n        .cls-3 {\n          fill: #f8f8f8;\n        }\n\n        .cls-4 {\n          fill: #fff;\n        }\n\n        .cls-5 {\n          opacity: 0.25;\n        }\n      </style>\n      <symbol id="Nuevo_s\xEDmbolo_1" data-name="Nuevo s\xEDmbolo 1" viewBox="0 0 2.58 23.28">\n        <path class="cls-1" d="M1.42,0a1.34,1.34,0,0,1,.4.73c.1.24-.18.48-.2.73a1.68,1.68,0,0,0,.29.72A.72.72,0,0,1,2,2.55c0,.12-.15.24-.17.36s.3.49.29.73l0,.73c0,.48-.06,1-.12,1.45a47.44,47.44,0,0,0-.41,5.82c0,1,0,1.94.07,2.91a22,22,0,0,0,.25,2.91,10.4,10.4,0,0,1,.18,1.46,5.42,5.42,0,0,0,0,1.45,24.68,24.68,0,0,0,.52,2.91H0a24.68,24.68,0,0,0,.52-2.91,5.42,5.42,0,0,0,0-1.45,8.09,8.09,0,0,1,.18-1.46A22,22,0,0,0,1,14.55c.05-1,.08-1.94.08-2.91A47.46,47.46,0,0,0,.61,5.82c0-.48-.09-1-.12-1.45l0-.73c0-.24.33-.49.29-.73S.61,2.67.59,2.55a.71.71,0,0,1,.08-.37A1.68,1.68,0,0,0,1,1.46c0-.25-.3-.49-.2-.73A1.36,1.36,0,0,1,1.17,0Z"/>\n      </symbol>\n    </defs>\n    <title>timon_1</title>\n    <g>\n      <g class="move">\n        <use width="2.58" height="23.28" transform="matrix(0.92, 0.38, -0.38, 0.92, 27.81, 1.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-5" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(34.88 5.19) rotate(44.82)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(39.86 11.68) rotate(67.23)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-10" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(41.99 19.57) rotate(89.64)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(40.95 27.68) rotate(112.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(36.89 34.78) rotate(134.45)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(-0.92, 0.39, -0.39, -0.92, 30.44, 39.8)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(22.56 41.98) rotate(179.27)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(14.44 40.99) rotate(-158.32)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(7.32 36.98) rotate(-135.91)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(2.26 30.56) rotate(-113.5)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(0.03 22.69) rotate(-91.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(0.36, -0.93, 0.93, 0.36, 0.97, 14.57)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(4.93 7.41) rotate(-46.28)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(11.32 2.31) rotate(-23.87)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-35" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="matrix(1, -0.03, 0.03, 1, 19.17, 0.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n      </g>\n      <g class="move">\n        <path id="shadow" class="cls-5" d="M-241-58.78a1.35,1.35,0,0,0-.73-.39c-.25-.1-.49.18-.73.2a1.72,1.72,0,0,1-.73-.29.68.68,0,0,0-.36-.08c-.12,0-.24.15-.37.17s-.48-.3-.72-.29a17.38,17.38,0,0,0-1-5c.23-.09.32-.49.56-.55s.27,0,.4,0a.64.64,0,0,0,.3-.22c.18-.21.33-.46.56-.55s.56.09.75-.1a1.34,1.34,0,0,0,.51-.65l-.1-.23a1.35,1.35,0,0,0-.82-.09c-.27,0-.38.35-.6.46a1.57,1.57,0,0,1-.78,0,.65.65,0,0,0-.37.06c-.1.07-.17.23-.27.29s-.56-.08-.78,0a17.59,17.59,0,0,0-2.87-4.24h0c.17-.16.11-.57.3-.72s.27-.07.38-.14a.69.69,0,0,0,.19-.32,1.75,1.75,0,0,1,.31-.72c.18-.16.55-.13.65-.37a1.38,1.38,0,0,0,.23-.8l-.18-.18a1.36,1.36,0,0,0-.8.23c-.24.1-.21.47-.37.66a1.69,1.69,0,0,1-.72.31.67.67,0,0,0-.31.2c-.07.1-.07.27-.15.37s-.55.14-.71.31h0a17,17,0,0,0-4.25-2.84c.09-.22-.12-.57,0-.78s.21-.18.28-.28a.56.56,0,0,0,.06-.37,1.57,1.57,0,0,1,0-.78c.1-.22.46-.33.46-.6a1.37,1.37,0,0,0-.1-.82l-.23-.1a1.35,1.35,0,0,0-.65.52c-.19.19,0,.52-.1.75s-.34.38-.54.56a.64.64,0,0,0-.22.3c0,.13,0,.28,0,.4s-.45.34-.54.56a17.38,17.38,0,0,0-5.46-1c0-.24-.34-.47-.31-.71s.13-.25.15-.37a.69.69,0,0,0-.09-.36,1.73,1.73,0,0,1-.31-.72c0-.25.29-.5.18-.74a1.3,1.3,0,0,0-.42-.71h-.25a1.38,1.38,0,0,0-.39.74c-.09.25.2.48.22.72a1.59,1.59,0,0,1-.27.74.68.68,0,0,0-.08.36c0,.12.16.24.18.36s-.28.49-.27.74a17,17,0,0,0-5,1.12c-.09-.23-.49-.31-.55-.55s0-.28,0-.4A.66.66,0,0,0-269-76c-.21-.17-.47-.32-.56-.54s.08-.57-.11-.75a1.35,1.35,0,0,0-.66-.5l-.23.1a1.3,1.3,0,0,0-.08.83c0,.26.36.37.48.58a1.72,1.72,0,0,1,0,.79.62.62,0,0,0,.07.36c.07.1.23.17.29.27s-.07.56,0,.78A17.8,17.8,0,0,0-274-71.12h0c-.17-.17-.58-.1-.73-.29s-.08-.27-.15-.37a.69.69,0,0,0-.32-.19,1.66,1.66,0,0,1-.73-.3c-.16-.18-.14-.55-.39-.64a1.29,1.29,0,0,0-.8-.21l-.17.18a1.37,1.37,0,0,0,.24.79c.11.24.48.21.66.36a1.61,1.61,0,0,1,.33.71.6.6,0,0,0,.21.32c.1.06.27.06.37.13s.15.55.33.71h0a17,17,0,0,0-2.76,4.31c-.23-.09-.57.13-.78,0s-.17-.21-.28-.28a.63.63,0,0,0-.37-.05,1.71,1.71,0,0,1-.78,0c-.22-.1-.34-.45-.6-.45a1.4,1.4,0,0,0-.83.11l-.09.24a1.33,1.33,0,0,0,.53.64c.19.18.52,0,.75.08s.39.33.57.53a.69.69,0,0,0,.31.21c.12,0,.28-.05.4,0s.34.44.56.53a17.54,17.54,0,0,0-.89,5c-.24,0-.48.34-.72.31s-.24-.13-.37-.16a.69.69,0,0,0-.36.09,1.59,1.59,0,0,1-.72.3c-.24,0-.49-.28-.73-.18a1.36,1.36,0,0,0-.72.42V-58a1.38,1.38,0,0,0,.74.39c.24.1.48-.19.72-.21a1.59,1.59,0,0,1,.74.27.68.68,0,0,0,.36.08c.12,0,.24-.15.36-.17s.49.28.73.28a17.37,17.37,0,0,0,1.09,5c-.22.09-.31.49-.55.55s-.27,0-.4,0a.66.66,0,0,0-.29.22c-.18.21-.33.47-.56.55s-.56-.08-.74.11a1.36,1.36,0,0,0-.51.66l.1.23a1.3,1.3,0,0,0,.83.08c.26,0,.37-.36.59-.47a1.57,1.57,0,0,1,.78,0,.67.67,0,0,0,.37-.07c.1-.07.16-.23.27-.29s.56.07.78,0a17,17,0,0,0,2.91,4.2h0c-.17.18-.1.58-.3.73s-.26.08-.37.15a.64.64,0,0,0-.19.32,1.62,1.62,0,0,1-.3.72c-.18.16-.55.14-.65.39a1.29,1.29,0,0,0-.21.8l.18.17a1.26,1.26,0,0,0,.79-.24c.25-.1.21-.47.37-.66a1.66,1.66,0,0,1,.71-.32.7.7,0,0,0,.32-.2c.06-.11.06-.28.13-.38s.55-.14.72-.32h0a17.49,17.49,0,0,0,4.29,2.79c-.09.22.13.56,0,.77s-.21.18-.28.28a.66.66,0,0,0-.06.37,1.58,1.58,0,0,1,0,.78c-.11.22-.46.34-.45.61a1.37,1.37,0,0,0,.1.82l.24.09a1.37,1.37,0,0,0,.64-.52c.18-.19,0-.52.09-.75s.33-.39.53-.57a.66.66,0,0,0,.22-.31c0-.12,0-.28,0-.4s.44-.34.53-.56a17.17,17.17,0,0,0,5,.93c0,.24.33.48.3.72s-.14.24-.16.36a.62.62,0,0,0,.09.37,1.85,1.85,0,0,1,.3.72c0,.24-.3.49-.19.73a1.34,1.34,0,0,0,.41.72h.25a1.45,1.45,0,0,0,.4-.73c.09-.25-.19-.49-.21-.73a1.62,1.62,0,0,1,.28-.73.68.68,0,0,0,.08-.36c0-.12-.15-.24-.17-.37s.29-.48.28-.72a17.41,17.41,0,0,0,5-1.06c.09.22.49.31.55.55s0,.28,0,.4a.71.71,0,0,0,.22.3c.21.18.47.33.55.56s-.08.56.11.74a1.32,1.32,0,0,0,.66.51l.23-.09a1.38,1.38,0,0,0,.08-.83c0-.27-.36-.38-.47-.59a1.89,1.89,0,0,1,0-.79.7.7,0,0,0-.06-.36c-.07-.11-.23-.17-.29-.28s.07-.55,0-.78a17.27,17.27,0,0,0,4.22-2.89h0c.17.17.58.1.72.3s.08.27.15.37a.58.58,0,0,0,.32.19,1.75,1.75,0,0,1,.72.31c.16.18.13.55.38.65a1.36,1.36,0,0,0,.8.22l.18-.18a1.43,1.43,0,0,0-.24-.8c-.1-.24-.47-.21-.66-.37a1.66,1.66,0,0,1-.32-.71.63.63,0,0,0-.2-.32c-.1-.06-.27-.06-.37-.14s-.14-.55-.31-.71h0a17.22,17.22,0,0,0,2.81-4.28c.23.09.57-.12.78,0s.18.21.28.28a.65.65,0,0,0,.37.06,1.57,1.57,0,0,1,.78,0c.22.1.34.46.6.45a1.32,1.32,0,0,0,.83-.1l.09-.23a1.35,1.35,0,0,0-.52-.65c-.19-.18-.52,0-.75-.09s-.39-.33-.57-.54a.61.61,0,0,0-.3-.21c-.13,0-.28,0-.4,0s-.34-.45-.56-.54a17.73,17.73,0,0,0,1-5c.24,0,.48-.34.72-.3s.24.13.37.16a.61.61,0,0,0,.36-.09,1.67,1.67,0,0,1,.73-.29c.24,0,.48.3.72.19a1.27,1.27,0,0,0,.73-.41Zm-11.11,9.28a34.69,34.69,0,0,1-3-2.65c-.7-.68-1.37-1.38-2-2.09s-1.09-1.18-1.59-1.83a3.64,3.64,0,0,0,.3-.46c.78.2,1.53.5,2.3.75s1.83.65,2.72,1A35.68,35.68,0,0,1-249.78-53,13.41,13.41,0,0,1-252.11-49.5Zm-4.18,3.1A33.64,33.64,0,0,1-258.08-50c-.39-.89-.74-1.8-1.08-2.71s-.57-1.5-.79-2.28a4.73,4.73,0,0,0,.46-.32c.65.49,1.24,1,1.86,1.56s1.43,1.3,2.12,2a34.82,34.82,0,0,1,2.72,3A13.61,13.61,0,0,1-256.29-46.4Zm-5,1.26a33.94,33.94,0,0,1-.28-4c0-1,0-1.94,0-2.91,0-.81,0-1.61.14-2.42a2.8,2.8,0,0,0,.56-.12c.41.7.73,1.44,1.1,2.16.43.87.84,1.75,1.21,2.64A34.34,34.34,0,0,1-257.19-46,13.36,13.36,0,0,1-261.34-45.14Zm-5.15-.76a35.67,35.67,0,0,1,1.28-3.82c.35-.9.74-1.8,1.14-2.68.35-.72.65-1.47,1.05-2.18a3.45,3.45,0,0,0,.56.1c.12.81.14,1.61.2,2.42.06,1,.1,1.94.11,2.91a33.79,33.79,0,0,1-.17,4A13.12,13.12,0,0,1-266.49-45.9ZM-271-48.57a34.85,34.85,0,0,1,2.64-3q1-1.05,2.07-2c.6-.54,1.17-1.11,1.8-1.61l.49.31c-.2.78-.49,1.53-.74,2.3s-.64,1.83-1,2.73a34.66,34.66,0,0,1-1.69,3.66A13.37,13.37,0,0,1-271-48.57Zm-3.12-4.16a36.71,36.71,0,0,1,3.6-1.81c.89-.39,1.79-.75,2.7-1.1.76-.26,1.5-.58,2.28-.8a5,5,0,0,0,.33.47c-.49.65-1,1.23-1.56,1.85s-1.3,1.45-2,2.14a33.23,33.23,0,0,1-3,2.73A13.4,13.4,0,0,1-274.08-52.73ZM-272-67.41a34.77,34.77,0,0,1,3.05,2.62c.71.66,1.39,1.35,2.05,2.06s1.12,1.16,1.63,1.79a4.8,4.8,0,0,0-.3.48c-.79-.19-1.55-.48-2.32-.71-.92-.31-1.83-.64-2.73-1a33.76,33.76,0,0,1-3.68-1.67A13.55,13.55,0,0,1-272-67.41Zm4.14-3.14A35.49,35.49,0,0,1-266-67c.4.89.76,1.79,1.11,2.69s.6,1.5.82,2.28a3.83,3.83,0,0,0-.46.33c-.66-.48-1.25-1-1.87-1.55s-1.45-1.28-2.15-2a33.31,33.31,0,0,1-2.75-2.94A13.46,13.46,0,0,1-267.86-70.55Zm5-1.33a36.13,36.13,0,0,1,.33,4q0,1.45,0,2.91c0,.81,0,1.62-.11,2.42a5.07,5.07,0,0,0-.56.13c-.42-.69-.75-1.43-1.13-2.14-.44-.87-.86-1.74-1.25-2.63A37.91,37.91,0,0,1-267-70.95,13.29,13.29,0,0,1-262.83-71.88Zm5.48.81a35.58,35.58,0,0,1-1.33,3.8c-.36.9-.76,1.78-1.17,2.66s-.68,1.47-1.08,2.17a4.94,4.94,0,0,0-.67-.12c-.13-.8-.15-1.61-.23-2.41-.07-1-.12-1.94-.14-2.91a31.92,31.92,0,0,1,.12-4A13.46,13.46,0,0,1-257.35-71.07Zm4.43,2.72a36.54,36.54,0,0,1-2.67,3c-.68.69-1.39,1.36-2.1,2s-1.2,1.09-1.84,1.58A4.53,4.53,0,0,0-260-62c.2-.79.5-1.53.76-2.3.32-.92.67-1.82,1-2.72a36.56,36.56,0,0,1,1.74-3.63A13.34,13.34,0,0,1-252.92-68.35Zm3.07,4.2a36.66,36.66,0,0,1-3.62,1.77c-.9.38-1.8.73-2.72,1.06-.76.26-1.5.56-2.29.77a3.37,3.37,0,0,0-.31-.46c.49-.64,1.05-1.23,1.57-1.84s1.32-1.43,2-2.12a36.3,36.3,0,0,1,3-2.69A13.59,13.59,0,0,1-249.85-64.15Zm1.22,5.06a35.82,35.82,0,0,1-4,.25c-1,0-1.94,0-2.91,0-.81-.06-1.62-.06-2.42-.16a3.48,3.48,0,0,0-.12-.56c.7-.41,1.45-.73,2.17-1.09s1.75-.82,2.65-1.19a36.38,36.38,0,0,1,3.79-1.36A13.12,13.12,0,0,1-248.63-59.09Zm-22.19-2.58c.91.35,1.8.73,2.69,1.12.73.35,1.47.65,2.18,1a5,5,0,0,0-.09.56c-.81.13-1.61.15-2.42.22-1,.07-1.93.11-2.9.13a36.1,36.1,0,0,1-4-.15,13.5,13.5,0,0,1,.74-4.18A35.74,35.74,0,0,1-270.82-61.67Zm-4.55,3.9a36.24,36.24,0,0,1,4-.3c1,0,1.94,0,2.91,0,.8.05,1.61,0,2.41.13a3.78,3.78,0,0,0,.13.56c-.7.42-1.43.74-2.15,1.12s-1.75.84-2.64,1.22a35.63,35.63,0,0,1-3.78,1.4A13.26,13.26,0,0,1-275.37-57.77Zm22.14,2.52c-.9-.36-1.79-.75-2.67-1.16-.72-.35-1.46-.66-2.17-1.06A3.45,3.45,0,0,0-258-58c.81-.12,1.61-.13,2.42-.19q1.45-.09,2.91-.09a33.82,33.82,0,0,1,4,.2,13,13,0,0,1-.8,4.16A34.2,34.2,0,0,1-253.23-55.25Z" transform="translate(283 84)"/>\n      </g>\n      <g class="nomove">\n        <circle class="cls-2" cx="21" cy="21" r="15.4"/>\n        <circle class="cls-1" cx="21" cy="21" r="4.08"/>\n        <path class="cls-3" d="M-262-63.6a.87.87,0,0,1,.85.74.7.7,0,0,0,0-.14.88.88,0,0,0-.88-.89.89.89,0,0,0-.89.89.7.7,0,0,0,0,.14A.88.88,0,0,1-262-63.6Z" transform="translate(283 84)"/>\n        <path class="cls-3" d="M-262-65a2.52,2.52,0,0,1,2.5,2.25,1.43,1.43,0,0,0,0-.29A2.54,2.54,0,0,0-262-65.54,2.54,2.54,0,0,0-264.51-63a2.85,2.85,0,0,0,0,.29A2.54,2.54,0,0,1-262-65Z" transform="translate(283 84)"/>\n        <g>\n          <path class="cls-4" d="M-271.07-51.26a18,18,0,0,0,4.21,2,16.19,16.19,0,0,0,4.52.74,16.28,16.28,0,0,0,4.55-.53,18,18,0,0,0,4.29-1.78,12.78,12.78,0,0,1-4.13,2.34,13.33,13.33,0,0,1-4.73.72,13.27,13.27,0,0,1-4.7-1A12.6,12.6,0,0,1-271.07-51.26Z" transform="translate(283 84)"/>\n          <path class="cls-4" d="M-249.07-72.5a16.53,16.53,0,0,0-5.87-4.71,16.51,16.51,0,0,0-7.27-1.63,16.46,16.46,0,0,0-7.26,1.63,16.65,16.65,0,0,0-5.88,4.71,14.49,14.49,0,0,1,5.62-5.22,16.23,16.23,0,0,1,7.52-1.87,16.3,16.3,0,0,1,7.53,1.87A14.53,14.53,0,0,1-249.07-72.5Z" transform="translate(283 84)"/>\n        </g>\n      </g>\n    </g>\n  </svg>\n'], ['\n  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42 46.48">\n    <defs>\n      <style>\n        .cls-1, .cls-5 {\n          fill: #ff4d4d;\n        }\n        \n        .cls-6 {\n          fill: #2f304b;\n        }\n\n        .cls-2 {\n          fill: none;\n          stroke: #ff4d4d;\n          stroke-miterlimit: 10;\n          stroke-width: 4px;\n        }\n\n        .cls-3 {\n          fill: #f8f8f8;\n        }\n\n        .cls-4 {\n          fill: #fff;\n        }\n\n        .cls-5 {\n          opacity: 0.25;\n        }\n      </style>\n      <symbol id="Nuevo_s\xEDmbolo_1" data-name="Nuevo s\xEDmbolo 1" viewBox="0 0 2.58 23.28">\n        <path class="cls-1" d="M1.42,0a1.34,1.34,0,0,1,.4.73c.1.24-.18.48-.2.73a1.68,1.68,0,0,0,.29.72A.72.72,0,0,1,2,2.55c0,.12-.15.24-.17.36s.3.49.29.73l0,.73c0,.48-.06,1-.12,1.45a47.44,47.44,0,0,0-.41,5.82c0,1,0,1.94.07,2.91a22,22,0,0,0,.25,2.91,10.4,10.4,0,0,1,.18,1.46,5.42,5.42,0,0,0,0,1.45,24.68,24.68,0,0,0,.52,2.91H0a24.68,24.68,0,0,0,.52-2.91,5.42,5.42,0,0,0,0-1.45,8.09,8.09,0,0,1,.18-1.46A22,22,0,0,0,1,14.55c.05-1,.08-1.94.08-2.91A47.46,47.46,0,0,0,.61,5.82c0-.48-.09-1-.12-1.45l0-.73c0-.24.33-.49.29-.73S.61,2.67.59,2.55a.71.71,0,0,1,.08-.37A1.68,1.68,0,0,0,1,1.46c0-.25-.3-.49-.2-.73A1.36,1.36,0,0,1,1.17,0Z"/>\n      </symbol>\n    </defs>\n    <title>timon_1</title>\n    <g>\n      <g class="move">\n        <use width="2.58" height="23.28" transform="matrix(0.92, 0.38, -0.38, 0.92, 27.81, 1.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-5" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(34.88 5.19) rotate(44.82)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(39.86 11.68) rotate(67.23)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-10" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="translate(41.99 19.57) rotate(89.64)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(40.95 27.68) rotate(112.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(36.89 34.78) rotate(134.45)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(-0.92, 0.39, -0.39, -0.92, 30.44, 39.8)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(22.56 41.98) rotate(179.27)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(14.44 40.99) rotate(-158.32)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(7.32 36.98) rotate(-135.91)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(2.26 30.56) rotate(-113.5)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(0.03 22.69) rotate(-91.09)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="matrix(0.36, -0.93, 0.93, 0.36, 0.97, 14.57)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(4.93 7.41) rotate(-46.28)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use width="2.58" height="23.28" transform="translate(11.32 2.31) rotate(-23.87)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n        <use id="Nuevo_s\xEDmbolo_1-35" data-name="Nuevo s\xEDmbolo 1" width="2.58" height="23.28" transform="matrix(1, -0.03, 0.03, 1, 19.17, 0.04)" xlink:href="#Nuevo_s\xEDmbolo_1"/>\n      </g>\n      <g class="move">\n        <path id="shadow" class="cls-5" d="M-241-58.78a1.35,1.35,0,0,0-.73-.39c-.25-.1-.49.18-.73.2a1.72,1.72,0,0,1-.73-.29.68.68,0,0,0-.36-.08c-.12,0-.24.15-.37.17s-.48-.3-.72-.29a17.38,17.38,0,0,0-1-5c.23-.09.32-.49.56-.55s.27,0,.4,0a.64.64,0,0,0,.3-.22c.18-.21.33-.46.56-.55s.56.09.75-.1a1.34,1.34,0,0,0,.51-.65l-.1-.23a1.35,1.35,0,0,0-.82-.09c-.27,0-.38.35-.6.46a1.57,1.57,0,0,1-.78,0,.65.65,0,0,0-.37.06c-.1.07-.17.23-.27.29s-.56-.08-.78,0a17.59,17.59,0,0,0-2.87-4.24h0c.17-.16.11-.57.3-.72s.27-.07.38-.14a.69.69,0,0,0,.19-.32,1.75,1.75,0,0,1,.31-.72c.18-.16.55-.13.65-.37a1.38,1.38,0,0,0,.23-.8l-.18-.18a1.36,1.36,0,0,0-.8.23c-.24.1-.21.47-.37.66a1.69,1.69,0,0,1-.72.31.67.67,0,0,0-.31.2c-.07.1-.07.27-.15.37s-.55.14-.71.31h0a17,17,0,0,0-4.25-2.84c.09-.22-.12-.57,0-.78s.21-.18.28-.28a.56.56,0,0,0,.06-.37,1.57,1.57,0,0,1,0-.78c.1-.22.46-.33.46-.6a1.37,1.37,0,0,0-.1-.82l-.23-.1a1.35,1.35,0,0,0-.65.52c-.19.19,0,.52-.1.75s-.34.38-.54.56a.64.64,0,0,0-.22.3c0,.13,0,.28,0,.4s-.45.34-.54.56a17.38,17.38,0,0,0-5.46-1c0-.24-.34-.47-.31-.71s.13-.25.15-.37a.69.69,0,0,0-.09-.36,1.73,1.73,0,0,1-.31-.72c0-.25.29-.5.18-.74a1.3,1.3,0,0,0-.42-.71h-.25a1.38,1.38,0,0,0-.39.74c-.09.25.2.48.22.72a1.59,1.59,0,0,1-.27.74.68.68,0,0,0-.08.36c0,.12.16.24.18.36s-.28.49-.27.74a17,17,0,0,0-5,1.12c-.09-.23-.49-.31-.55-.55s0-.28,0-.4A.66.66,0,0,0-269-76c-.21-.17-.47-.32-.56-.54s.08-.57-.11-.75a1.35,1.35,0,0,0-.66-.5l-.23.1a1.3,1.3,0,0,0-.08.83c0,.26.36.37.48.58a1.72,1.72,0,0,1,0,.79.62.62,0,0,0,.07.36c.07.1.23.17.29.27s-.07.56,0,.78A17.8,17.8,0,0,0-274-71.12h0c-.17-.17-.58-.1-.73-.29s-.08-.27-.15-.37a.69.69,0,0,0-.32-.19,1.66,1.66,0,0,1-.73-.3c-.16-.18-.14-.55-.39-.64a1.29,1.29,0,0,0-.8-.21l-.17.18a1.37,1.37,0,0,0,.24.79c.11.24.48.21.66.36a1.61,1.61,0,0,1,.33.71.6.6,0,0,0,.21.32c.1.06.27.06.37.13s.15.55.33.71h0a17,17,0,0,0-2.76,4.31c-.23-.09-.57.13-.78,0s-.17-.21-.28-.28a.63.63,0,0,0-.37-.05,1.71,1.71,0,0,1-.78,0c-.22-.1-.34-.45-.6-.45a1.4,1.4,0,0,0-.83.11l-.09.24a1.33,1.33,0,0,0,.53.64c.19.18.52,0,.75.08s.39.33.57.53a.69.69,0,0,0,.31.21c.12,0,.28-.05.4,0s.34.44.56.53a17.54,17.54,0,0,0-.89,5c-.24,0-.48.34-.72.31s-.24-.13-.37-.16a.69.69,0,0,0-.36.09,1.59,1.59,0,0,1-.72.3c-.24,0-.49-.28-.73-.18a1.36,1.36,0,0,0-.72.42V-58a1.38,1.38,0,0,0,.74.39c.24.1.48-.19.72-.21a1.59,1.59,0,0,1,.74.27.68.68,0,0,0,.36.08c.12,0,.24-.15.36-.17s.49.28.73.28a17.37,17.37,0,0,0,1.09,5c-.22.09-.31.49-.55.55s-.27,0-.4,0a.66.66,0,0,0-.29.22c-.18.21-.33.47-.56.55s-.56-.08-.74.11a1.36,1.36,0,0,0-.51.66l.1.23a1.3,1.3,0,0,0,.83.08c.26,0,.37-.36.59-.47a1.57,1.57,0,0,1,.78,0,.67.67,0,0,0,.37-.07c.1-.07.16-.23.27-.29s.56.07.78,0a17,17,0,0,0,2.91,4.2h0c-.17.18-.1.58-.3.73s-.26.08-.37.15a.64.64,0,0,0-.19.32,1.62,1.62,0,0,1-.3.72c-.18.16-.55.14-.65.39a1.29,1.29,0,0,0-.21.8l.18.17a1.26,1.26,0,0,0,.79-.24c.25-.1.21-.47.37-.66a1.66,1.66,0,0,1,.71-.32.7.7,0,0,0,.32-.2c.06-.11.06-.28.13-.38s.55-.14.72-.32h0a17.49,17.49,0,0,0,4.29,2.79c-.09.22.13.56,0,.77s-.21.18-.28.28a.66.66,0,0,0-.06.37,1.58,1.58,0,0,1,0,.78c-.11.22-.46.34-.45.61a1.37,1.37,0,0,0,.1.82l.24.09a1.37,1.37,0,0,0,.64-.52c.18-.19,0-.52.09-.75s.33-.39.53-.57a.66.66,0,0,0,.22-.31c0-.12,0-.28,0-.4s.44-.34.53-.56a17.17,17.17,0,0,0,5,.93c0,.24.33.48.3.72s-.14.24-.16.36a.62.62,0,0,0,.09.37,1.85,1.85,0,0,1,.3.72c0,.24-.3.49-.19.73a1.34,1.34,0,0,0,.41.72h.25a1.45,1.45,0,0,0,.4-.73c.09-.25-.19-.49-.21-.73a1.62,1.62,0,0,1,.28-.73.68.68,0,0,0,.08-.36c0-.12-.15-.24-.17-.37s.29-.48.28-.72a17.41,17.41,0,0,0,5-1.06c.09.22.49.31.55.55s0,.28,0,.4a.71.71,0,0,0,.22.3c.21.18.47.33.55.56s-.08.56.11.74a1.32,1.32,0,0,0,.66.51l.23-.09a1.38,1.38,0,0,0,.08-.83c0-.27-.36-.38-.47-.59a1.89,1.89,0,0,1,0-.79.7.7,0,0,0-.06-.36c-.07-.11-.23-.17-.29-.28s.07-.55,0-.78a17.27,17.27,0,0,0,4.22-2.89h0c.17.17.58.1.72.3s.08.27.15.37a.58.58,0,0,0,.32.19,1.75,1.75,0,0,1,.72.31c.16.18.13.55.38.65a1.36,1.36,0,0,0,.8.22l.18-.18a1.43,1.43,0,0,0-.24-.8c-.1-.24-.47-.21-.66-.37a1.66,1.66,0,0,1-.32-.71.63.63,0,0,0-.2-.32c-.1-.06-.27-.06-.37-.14s-.14-.55-.31-.71h0a17.22,17.22,0,0,0,2.81-4.28c.23.09.57-.12.78,0s.18.21.28.28a.65.65,0,0,0,.37.06,1.57,1.57,0,0,1,.78,0c.22.1.34.46.6.45a1.32,1.32,0,0,0,.83-.1l.09-.23a1.35,1.35,0,0,0-.52-.65c-.19-.18-.52,0-.75-.09s-.39-.33-.57-.54a.61.61,0,0,0-.3-.21c-.13,0-.28,0-.4,0s-.34-.45-.56-.54a17.73,17.73,0,0,0,1-5c.24,0,.48-.34.72-.3s.24.13.37.16a.61.61,0,0,0,.36-.09,1.67,1.67,0,0,1,.73-.29c.24,0,.48.3.72.19a1.27,1.27,0,0,0,.73-.41Zm-11.11,9.28a34.69,34.69,0,0,1-3-2.65c-.7-.68-1.37-1.38-2-2.09s-1.09-1.18-1.59-1.83a3.64,3.64,0,0,0,.3-.46c.78.2,1.53.5,2.3.75s1.83.65,2.72,1A35.68,35.68,0,0,1-249.78-53,13.41,13.41,0,0,1-252.11-49.5Zm-4.18,3.1A33.64,33.64,0,0,1-258.08-50c-.39-.89-.74-1.8-1.08-2.71s-.57-1.5-.79-2.28a4.73,4.73,0,0,0,.46-.32c.65.49,1.24,1,1.86,1.56s1.43,1.3,2.12,2a34.82,34.82,0,0,1,2.72,3A13.61,13.61,0,0,1-256.29-46.4Zm-5,1.26a33.94,33.94,0,0,1-.28-4c0-1,0-1.94,0-2.91,0-.81,0-1.61.14-2.42a2.8,2.8,0,0,0,.56-.12c.41.7.73,1.44,1.1,2.16.43.87.84,1.75,1.21,2.64A34.34,34.34,0,0,1-257.19-46,13.36,13.36,0,0,1-261.34-45.14Zm-5.15-.76a35.67,35.67,0,0,1,1.28-3.82c.35-.9.74-1.8,1.14-2.68.35-.72.65-1.47,1.05-2.18a3.45,3.45,0,0,0,.56.1c.12.81.14,1.61.2,2.42.06,1,.1,1.94.11,2.91a33.79,33.79,0,0,1-.17,4A13.12,13.12,0,0,1-266.49-45.9ZM-271-48.57a34.85,34.85,0,0,1,2.64-3q1-1.05,2.07-2c.6-.54,1.17-1.11,1.8-1.61l.49.31c-.2.78-.49,1.53-.74,2.3s-.64,1.83-1,2.73a34.66,34.66,0,0,1-1.69,3.66A13.37,13.37,0,0,1-271-48.57Zm-3.12-4.16a36.71,36.71,0,0,1,3.6-1.81c.89-.39,1.79-.75,2.7-1.1.76-.26,1.5-.58,2.28-.8a5,5,0,0,0,.33.47c-.49.65-1,1.23-1.56,1.85s-1.3,1.45-2,2.14a33.23,33.23,0,0,1-3,2.73A13.4,13.4,0,0,1-274.08-52.73ZM-272-67.41a34.77,34.77,0,0,1,3.05,2.62c.71.66,1.39,1.35,2.05,2.06s1.12,1.16,1.63,1.79a4.8,4.8,0,0,0-.3.48c-.79-.19-1.55-.48-2.32-.71-.92-.31-1.83-.64-2.73-1a33.76,33.76,0,0,1-3.68-1.67A13.55,13.55,0,0,1-272-67.41Zm4.14-3.14A35.49,35.49,0,0,1-266-67c.4.89.76,1.79,1.11,2.69s.6,1.5.82,2.28a3.83,3.83,0,0,0-.46.33c-.66-.48-1.25-1-1.87-1.55s-1.45-1.28-2.15-2a33.31,33.31,0,0,1-2.75-2.94A13.46,13.46,0,0,1-267.86-70.55Zm5-1.33a36.13,36.13,0,0,1,.33,4q0,1.45,0,2.91c0,.81,0,1.62-.11,2.42a5.07,5.07,0,0,0-.56.13c-.42-.69-.75-1.43-1.13-2.14-.44-.87-.86-1.74-1.25-2.63A37.91,37.91,0,0,1-267-70.95,13.29,13.29,0,0,1-262.83-71.88Zm5.48.81a35.58,35.58,0,0,1-1.33,3.8c-.36.9-.76,1.78-1.17,2.66s-.68,1.47-1.08,2.17a4.94,4.94,0,0,0-.67-.12c-.13-.8-.15-1.61-.23-2.41-.07-1-.12-1.94-.14-2.91a31.92,31.92,0,0,1,.12-4A13.46,13.46,0,0,1-257.35-71.07Zm4.43,2.72a36.54,36.54,0,0,1-2.67,3c-.68.69-1.39,1.36-2.1,2s-1.2,1.09-1.84,1.58A4.53,4.53,0,0,0-260-62c.2-.79.5-1.53.76-2.3.32-.92.67-1.82,1-2.72a36.56,36.56,0,0,1,1.74-3.63A13.34,13.34,0,0,1-252.92-68.35Zm3.07,4.2a36.66,36.66,0,0,1-3.62,1.77c-.9.38-1.8.73-2.72,1.06-.76.26-1.5.56-2.29.77a3.37,3.37,0,0,0-.31-.46c.49-.64,1.05-1.23,1.57-1.84s1.32-1.43,2-2.12a36.3,36.3,0,0,1,3-2.69A13.59,13.59,0,0,1-249.85-64.15Zm1.22,5.06a35.82,35.82,0,0,1-4,.25c-1,0-1.94,0-2.91,0-.81-.06-1.62-.06-2.42-.16a3.48,3.48,0,0,0-.12-.56c.7-.41,1.45-.73,2.17-1.09s1.75-.82,2.65-1.19a36.38,36.38,0,0,1,3.79-1.36A13.12,13.12,0,0,1-248.63-59.09Zm-22.19-2.58c.91.35,1.8.73,2.69,1.12.73.35,1.47.65,2.18,1a5,5,0,0,0-.09.56c-.81.13-1.61.15-2.42.22-1,.07-1.93.11-2.9.13a36.1,36.1,0,0,1-4-.15,13.5,13.5,0,0,1,.74-4.18A35.74,35.74,0,0,1-270.82-61.67Zm-4.55,3.9a36.24,36.24,0,0,1,4-.3c1,0,1.94,0,2.91,0,.8.05,1.61,0,2.41.13a3.78,3.78,0,0,0,.13.56c-.7.42-1.43.74-2.15,1.12s-1.75.84-2.64,1.22a35.63,35.63,0,0,1-3.78,1.4A13.26,13.26,0,0,1-275.37-57.77Zm22.14,2.52c-.9-.36-1.79-.75-2.67-1.16-.72-.35-1.46-.66-2.17-1.06A3.45,3.45,0,0,0-258-58c.81-.12,1.61-.13,2.42-.19q1.45-.09,2.91-.09a33.82,33.82,0,0,1,4,.2,13,13,0,0,1-.8,4.16A34.2,34.2,0,0,1-253.23-55.25Z" transform="translate(283 84)"/>\n      </g>\n      <g class="nomove">\n        <circle class="cls-2" cx="21" cy="21" r="15.4"/>\n        <circle class="cls-1" cx="21" cy="21" r="4.08"/>\n        <path class="cls-3" d="M-262-63.6a.87.87,0,0,1,.85.74.7.7,0,0,0,0-.14.88.88,0,0,0-.88-.89.89.89,0,0,0-.89.89.7.7,0,0,0,0,.14A.88.88,0,0,1-262-63.6Z" transform="translate(283 84)"/>\n        <path class="cls-3" d="M-262-65a2.52,2.52,0,0,1,2.5,2.25,1.43,1.43,0,0,0,0-.29A2.54,2.54,0,0,0-262-65.54,2.54,2.54,0,0,0-264.51-63a2.85,2.85,0,0,0,0,.29A2.54,2.54,0,0,1-262-65Z" transform="translate(283 84)"/>\n        <g>\n          <path class="cls-4" d="M-271.07-51.26a18,18,0,0,0,4.21,2,16.19,16.19,0,0,0,4.52.74,16.28,16.28,0,0,0,4.55-.53,18,18,0,0,0,4.29-1.78,12.78,12.78,0,0,1-4.13,2.34,13.33,13.33,0,0,1-4.73.72,13.27,13.27,0,0,1-4.7-1A12.6,12.6,0,0,1-271.07-51.26Z" transform="translate(283 84)"/>\n          <path class="cls-4" d="M-249.07-72.5a16.53,16.53,0,0,0-5.87-4.71,16.51,16.51,0,0,0-7.27-1.63,16.46,16.46,0,0,0-7.26,1.63,16.65,16.65,0,0,0-5.88,4.71,14.49,14.49,0,0,1,5.62-5.22,16.23,16.23,0,0,1,7.52-1.87,16.3,16.3,0,0,1,7.53,1.87A14.53,14.53,0,0,1-249.07-72.5Z" transform="translate(283 84)"/>\n        </g>\n      </g>\n    </g>\n  </svg>\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    <div class="loader-icon">\n      ', '\n    </div>\n    '], ['\n    <div class="loader-icon">\n      ', '\n    </div>\n    ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n      <div class="screen-black"></div>\n    '], ['\n      <div class="screen-black"></div>\n    ']),
+    _templateObject4 = _taggedTemplateLiteral(['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div id="main-loader" class="loader-visible">\n        ', '\n        <div class="loader-wrapper">\n          ', '\n        </div>\n      </div>\n    ']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(50);
 var mojs = __webpack_require__(144);
 
-var nuage = yo(_templateObject);
-var nuage2 = yo(_templateObject2);
-var circleSun = yo(_templateObject3);
-
-var bottomSea = yo(_templateObject4);
-
-var bottom = yo(_templateObject5, bottomSea);
-
-var sun = yo(_templateObject6, circleSun, nuage, nuage2);
+var timon = yo(_templateObject);
 
 var Loader = function () {
   function Loader(ctx) {
     _classCallCheck(this, Loader);
 
-    this.loaderIcon = yo(_templateObject7, sun, bottom);
+    this.loaderIcon = yo(_templateObject2, timon);
 
-    this.screen = yo(_templateObject8);
+    this.screen = yo(_templateObject3);
 
-    this.container = yo(_templateObject9, this.screen, this.loaderIcon);
+    this.container = yo(_templateObject4, this.screen, this.loaderIcon);
 
-    this.animate();
+    // this.animate()
 
     this.ctx = ctx;
     document.body.appendChild(this.container);
   }
 
+  // animate () {
+  //   let waves = '#ffe6d2'
+
+  //   this.line1 = new mojs.Shape({
+  //     parent: this.loaderIcon,
+  //     shape: 'line',
+  //     stroke: waves,
+  //     strokeWidth: 2.5,
+  //     strokeDasharray: 5,
+  //     strokeDashoffset: 3,
+  //     strokeLinecap: 'round',
+  //     y: 9,
+  //     width: 40,
+  //     origin: '50%, 50%',
+  //     x: {'3%': '-3%'},
+  //     isYoyo: true,
+  //     repeat: 999,
+  //     duration: 1000,
+  //   })
+
+  //   this.line2 = new mojs.Shape({
+  //     strokeDasharray: 4,
+  //     parent: this.loaderIcon,
+  //     shape: 'line',
+  //     stroke: waves,
+  //     strokeWidth: 2.5,
+  //     strokeLinecap: 'round',
+  //     y: 12,
+  //     delay: 50,
+  //     width: 34,
+  //     origin: '50%, 50%',
+  //     x: {'4%': '-4%'},
+  //     isYoyo: true,
+  //     repeat: 999,
+  //     duration: 1000,
+  //   })
+
+  //   this.line3 = new mojs.Shape({
+  //     strokeDasharray: 4,
+  //     parent: this.loaderIcon,
+  //     shape: 'line',
+  //     stroke: waves,
+  //     strokeWidth: 2.5,
+  //     strokeLinecap: 'round',
+  //     y: 15,
+  //     delay: 100,
+  //     width: 26,
+  //     origin: '50%, 50%',
+  //     x: {'7%': '-7%'},
+  //     isYoyo: true,
+  //     repeat: 999,
+  //     duration: 1000,
+  //   })
+
+  //   this.line4 = new mojs.Shape({
+  //     strokeDasharray: 4,
+  //     parent: this.loaderIcon,
+  //     shape: 'line',
+  //     stroke: waves,
+  //     strokeWidth: 2.5,
+  //     strokeLinecap: 'round',
+  //     y: 18,
+  //     delay: 200,
+  //     width: 18,
+  //     origin: '50%, 50%',
+  //     x: {'10%': '-10%'},
+  //     isYoyo: true,
+  //     repeat: 999,
+  //     duration: 1000,
+  //   })
+
+  //   this.line5 = new mojs.Shape({
+  //     parent: this.loaderIcon,
+  //     shape: 'line',
+  //     stroke: waves,
+  //     strokeWidth: 2.5,
+  //     strokeLinecap: 'round',
+  //     y: 20,
+  //     delay: 300,
+  //     width: 4,
+  //     origin: '50%, 50%',
+  //     x: {'25%': '-25%'},
+  //     isYoyo: true,
+  //     repeat: 999,
+  //     duration: 1000,
+  //   })
+
+  //   const timeline = new mojs.Timeline 
+  //   timeline.add(this.line1, this.line2, this.line3, this.line4, this.line5).play()
+  // }
+
   _createClass(Loader, [{
-    key: 'animate',
-    value: function animate() {
-      var waves = '#ffe6d2';
-
-      this.line1 = new mojs.Shape({
-        parent: this.loaderIcon,
-        shape: 'line',
-        stroke: waves,
-        strokeWidth: 2.5,
-        strokeDasharray: 5,
-        strokeDashoffset: 3,
-        strokeLinecap: 'round',
-        y: 9,
-        width: 40,
-        origin: '50%, 50%',
-        x: { '3%': '-3%' },
-        isYoyo: true,
-        repeat: 999,
-        duration: 1000
-      });
-
-      this.line2 = new mojs.Shape({
-        strokeDasharray: 4,
-        parent: this.loaderIcon,
-        shape: 'line',
-        stroke: waves,
-        strokeWidth: 2.5,
-        strokeLinecap: 'round',
-        y: 12,
-        delay: 50,
-        width: 34,
-        origin: '50%, 50%',
-        x: { '4%': '-4%' },
-        isYoyo: true,
-        repeat: 999,
-        duration: 1000
-      });
-
-      this.line3 = new mojs.Shape({
-        strokeDasharray: 4,
-        parent: this.loaderIcon,
-        shape: 'line',
-        stroke: waves,
-        strokeWidth: 2.5,
-        strokeLinecap: 'round',
-        y: 15,
-        delay: 100,
-        width: 26,
-        origin: '50%, 50%',
-        x: { '7%': '-7%' },
-        isYoyo: true,
-        repeat: 999,
-        duration: 1000
-      });
-
-      this.line4 = new mojs.Shape({
-        strokeDasharray: 4,
-        parent: this.loaderIcon,
-        shape: 'line',
-        stroke: waves,
-        strokeWidth: 2.5,
-        strokeLinecap: 'round',
-        y: 18,
-        delay: 200,
-        width: 18,
-        origin: '50%, 50%',
-        x: { '10%': '-10%' },
-        isYoyo: true,
-        repeat: 999,
-        duration: 1000
-      });
-
-      this.line5 = new mojs.Shape({
-        parent: this.loaderIcon,
-        shape: 'line',
-        stroke: waves,
-        strokeWidth: 2.5,
-        strokeLinecap: 'round',
-        y: 20,
-        delay: 300,
-        width: 4,
-        origin: '50%, 50%',
-        x: { '25%': '-25%' },
-        isYoyo: true,
-        repeat: 999,
-        duration: 1000
-      });
-
-      var timeline = new mojs.Timeline();
-      timeline.add(this.line1, this.line2, this.line3, this.line4, this.line5).play();
-    }
-  }, {
     key: 'destroy',
     value: function destroy() {
       this.ctx.app.classList.remove('no-overflow');
@@ -107732,7 +107681,6 @@ var Loader = function () {
 
       console.log('vanish');
 
-      this.destroy();
       var initialColor = '#2d2d2d';
       var finalColor = '#cdf6f1';
 
@@ -107741,29 +107689,22 @@ var Loader = function () {
         duration: 600,
         scaleX: {
           1: 0.020,
-          delay: 1000,
           easing: 'elastic.out',
+          delay: 200,
           duration: 300
         },
         scaleY: {
           1: 0.020,
-          delay: 1000,
           duration: 300,
+          delay: 200,
           easing: 'elastic.out'
         },
-        backgroundColor: { initialColor: finalColor },
         borderRadius: { 0: '50%' },
         angleX: {
           0: 90,
-          delay: 2000,
+          delay: 1000,
           duration: 400,
           easing: 'elastic.out'
-        },
-        y: {
-          1: 4,
-          delay: 2000,
-          duration: 100,
-          easing: 'ease.out'
         }
       });
 
@@ -107774,40 +107715,12 @@ var Loader = function () {
         easing: 'ease.out'
       });
 
-      var bottomSeaMo = new mojs.Html({
-        el: bottomSea,
-        fill: { initialColor: finalColor },
-        duration: 600,
-        easing: 'ease.out'
-      });
-
-      var nuageMo = new mojs.Html({
-        el: nuage,
-        fill: { '#2d2d2d': '#ffffff' },
-        duration: 300,
-        easing: 'ease.out'
-      });
-
-      var nuage2Mo = new mojs.Html({
-        el: nuage2,
-        fill: { '#2d2d2d': '#ffffff' },
-        duration: 300,
-        easing: 'ease.out'
-      });
-
-      var circleSunMo = new mojs.Html({
-        el: circleSun,
-        fill: 'url(#radial-gradient-2)',
-        duration: 300,
-        easing: 'ease.out'
-      });
-
       var burst = new mojs.Burst({
         parent: this.container,
-        count: 10,
-        radius: { 50: 120 },
+        count: 8,
+        radius: { 40: 120 },
         children: {
-          delay: 1050,
+          delay: 250,
           shape: 'line',
           counter: 6,
           stroke: finalColor,
@@ -107818,56 +107731,38 @@ var Loader = function () {
 
       var burst2 = new mojs.Burst({
         parent: this.container,
-        count: 4,
-        degree: 180,
-        angle: -90,
-        y: 4,
+        count: 8,
         radius: { 20: 80 },
         children: {
-          delay: 2000,
+          delay: 1050,
           shape: 'line',
-          stroke: '#ff5652',
+          counter: 6,
+          stroke: finalColor,
           duration: 1400,
           easing: 'ease.out'
         }
       });
 
-      var lineColor = '#ffffff';
-      this.line1.tune({
-        stroke: lineColor
-      });
-      this.line2.tune({
-        stroke: lineColor
-      });
-      this.line3.tune({
-        stroke: lineColor
-      });
-      this.line4.tune({
-        stroke: lineColor
-      });
-      this.line5.tune({
-        stroke: lineColor
-      });
-
       var vanline = new mojs.Timeline();
-      vanline.add(loaderIcon, container, burst, burst2, nuageMo, nuage2Mo, bottomSeaMo, circleSunMo).play();
+      vanline.add(loaderIcon, container, burst, burst2).play();
 
       setTimeout(function () {
         var rotate = new mojs.Html({
           el: _this.container,
           scale: {
             1: 0,
-            delay: 2000,
+            delay: 600,
             duration: 100,
             easing: 'ease.in'
           },
           opacity: {
             1: 0,
             duration: 100,
-            delay: 1600,
+            delay: 600,
             easing: 'ease.out'
           }
         }).play();
+        _this.destroy();
       }, 1000);
     }
   }]);

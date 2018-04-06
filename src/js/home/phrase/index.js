@@ -72,6 +72,7 @@ let timon = yo`
     </g>
   </svg>
 `
+
 function phraseClick(e) {
   const drawArticles = require('../index.js')
   e.preventDefault()
