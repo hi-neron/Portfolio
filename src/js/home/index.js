@@ -24,7 +24,7 @@ const loader = require('./loader')
 
 page('/:tag?', create, loader, (ctx, next) => {
   // vars
-  let app = ctx.app
+  app = ctx.app
   let introContainer = ctx.introContainer
   let phrase = ctx.phrase
   let footer = ctx.footer
@@ -97,13 +97,17 @@ function drawArticles (tag) {
     })
 
     msnry.layout()
-  
-    new Lazy({
-      container: main,
-      callback_load: (e) => {
-        msnry.layout()
-      }
-    })
+    
+    setTimeout(() => {
+      new Lazy({
+        container: app,
+        threshold: 1000,
+        callback_load: (e) => {
+          console.log(e)
+          msnry.layout()
+        }
+      })
+    }, 6000);
   })
 }
 

@@ -60,6 +60,9 @@ class Article {
           <div class="over-article-top">
             <div class="over-article-title">
               ${this.title}
+              <span class="over-article-type">
+                <span>${this.type}</span>
+              </span>
             </div>
           </div>
           <div class="over-article-bottom">
@@ -203,8 +206,8 @@ class Article {
     cb(template)
   }
 }
-let ev = new CustomEvent('articleScreen')
 
+let ev = new CustomEvent('articleScreen')
 function screenSplashOpen(template) {
   empty(contentContainer).appendChild(template)
   contentContainer.classList.add('article-open')

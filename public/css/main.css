@@ -259,7 +259,7 @@ svg:focus {
         width: 380px;
         height: 26px;
         text-align: right;
-        transform: rotateZ(-89.5deg) translate(-190px, -174px);
+        transform: rotateZ(-88.5deg) translate(-190px, -174px);
         letter-spacing: 0.08rem; }
         #main-bar .bar-wrapper #bar-trigger .tag-info .message {
           font-weight: 300; }
@@ -360,6 +360,7 @@ svg:focus {
     #main-content .main-over-wrapper .main-content-wrapper .grid-item-widthx2 {
       width: 66.6%; }
     #main-content .main-over-wrapper .main-content-wrapper .grid-item {
+      box-shadow: 0 -5px 8px rgba(0, 0, 0, 0.05), 0 -1px 0 rgba(255, 255, 255, 0.35);
       width: 33.3%;
       overflow: hidden;
       transition: all 0.5s; }
@@ -372,7 +373,14 @@ svg:focus {
           position: absolute;
           width: 100%;
           height: 100%;
-          background-color: #bbbbbb;
+          background: #bbbbbb;
+          background: -moz-linear-gradient(top, #bbbbbb 0%, #bbbbbb 38%, rgba(187, 187, 187, 0.94) 59%, rgba(187, 187, 187, 0.9) 73%, rgba(187, 187, 187, 0.76) 100%);
+          background: -webkit-gradient(left top, left bottom, color-stop(0%, #bbbbbb), color-stop(38%, #bbbbbb), color-stop(59%, rgba(187, 187, 187, 0.94)), color-stop(73%, rgba(187, 187, 187, 0.9)), color-stop(100%, rgba(187, 187, 187, 0.76)));
+          background: -webkit-linear-gradient(top, #bbbbbb 0%, #bbbbbb 38%, rgba(187, 187, 187, 0.94) 59%, rgba(187, 187, 187, 0.9) 73%, rgba(187, 187, 187, 0.76) 100%);
+          background: -o-linear-gradient(top, #bbbbbb 0%, #bbbbbb 38%, rgba(187, 187, 187, 0.94) 59%, rgba(187, 187, 187, 0.9) 73%, rgba(187, 187, 187, 0.76) 100%);
+          background: -ms-linear-gradient(top, #bbbbbb 0%, #bbbbbb 38%, rgba(187, 187, 187, 0.94) 59%, rgba(187, 187, 187, 0.9) 73%, rgba(187, 187, 187, 0.76) 100%);
+          background: linear-gradient(to bottom, #bbbbbb 0%, #bbbbbb 38%, rgba(187, 187, 187, 0.94) 59%, rgba(187, 187, 187, 0.9) 73%, rgba(187, 187, 187, 0.76) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbbbbb', endColorstr='#bbbbbb', GradientType=0 );
           opacity: 0;
           transition: 0.05s all ease-out; }
           #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container:hover {
@@ -387,7 +395,9 @@ svg:focus {
               #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-title {
                 margin-top: 5px;
                 margin-left: 5px;
-                font-family: 'ratdbi';
+                margin-right: 5px;
+                font-family: 'ratThin';
+                text-transform: uppercase;
                 font-size: calc(36px + 4 * (100vw - 320px) / 1180);
                 line-height: 1.1em;
                 overflow: hidden;
@@ -398,6 +408,17 @@ svg:focus {
                 -ms-hyphens: auto;
                 hyphens: auto;
                 -webkit-hyphenate-character: '\~'; }
+                #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-title .over-article-type {
+                  color: #f3f3f6;
+                  font-size: 0.6rem; }
+                  #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-title .over-article-type span {
+                    vertical-align: top;
+                    -webkit-hyphens: none;
+                    -moz-hyphens: none;
+                    -ms-hyphens: none;
+                    hyphens: none;
+                    background-color: #ff4d4d;
+                    padding: 3px 5px 2px 3px; }
             #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom {
               width: 100%;
               height: 240px;

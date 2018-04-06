@@ -49522,7 +49522,7 @@ var loader = __webpack_require__(424);
 
 page('/:tag?', create, loader, function (ctx, next) {
   // vars
-  var app = ctx.app;
+  app = ctx.app;
   var introContainer = ctx.introContainer;
   var phrase = ctx.phrase;
   var footer = ctx.footer;
@@ -49595,12 +49595,16 @@ function drawArticles(tag) {
 
     msnry.layout();
 
-    new Lazy({
-      container: main,
-      callback_load: function callback_load(e) {
-        msnry.layout();
-      }
-    });
+    setTimeout(function () {
+      new Lazy({
+        container: app,
+        threshold: 1000,
+        callback_load: function callback_load(e) {
+          console.log(e);
+          msnry.layout();
+        }
+      });
+    }, 6000);
   });
 }
 
@@ -104958,7 +104962,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-keywords">\n      </div>\n      '], ['\n      <div class="over-article-keywords">\n      </div>\n      ']),
     _templateObject2 = _taggedTemplateLiteral(['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      '], ['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    ']),
     _templateObject5 = _taggedTemplateLiteral(['\n      <h1 class="article-content-title article-item">\n        ', '\n      </h1>\n    '], ['\n      <h1 class="article-content-title article-item">\n        ', '\n      </h1>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['\n    <div class="article-content-close">\n      x\n    </div>\n    '], ['\n    <div class="article-content-close">\n      x\n    </div>\n    ']),
@@ -105024,7 +105028,7 @@ var Article = function () {
         keywords.appendChild(_template);
       }
 
-      var over = yo(_templateObject3, this.title, keywords);
+      var over = yo(_templateObject3, this.title, this.type, keywords);
 
       var template = yo(_templateObject4, this.important ? 'grid-item-widthx2' : '', this.title, over, this.mainPicture.url, this.mainPicture.comment);
 
@@ -105113,7 +105117,6 @@ var Article = function () {
 }();
 
 var ev = new CustomEvent('articleScreen');
-
 function screenSplashOpen(template) {
   empty(contentContainer).appendChild(template);
   contentContainer.classList.add('article-open');
@@ -105178,7 +105181,6 @@ module.exports = function (cb) {
 module.exports = [{
   title: 'El mundo tiene un nuevo Museo de la Empatía',
   type: 'ilustration',
-  important: true,
   content: 'En 2015, la artista inglesa Clare Patey fund\xF3 el Museo de la Empat\xEDa para que hombres, mujeres y ni\xF1os salieran de su zona de confort, pensaran por un momento en los dem\xE1s, y se interesaran por mirar el mundo a trav\xE9s de los ojos del otro. Con proyectos participativos como \u2018Una milla en mis zapatos\u2019 y \u2018Mil y un libros\u2019 el museo invita a sus visitantes a descubrir c\xF3mo la empat\xEDa tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.\n    El Museo de la Empat\xEDa \u2013administrado por la organizaci\xF3n de artistas Arts Admin\u2013 comenz\xF3 en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre c\xF3mo caminar en los pasos de alguien m\xE1s.\n    Hace un par de a\xF1os el escritor Roman Krznaric, autor del libro Empat\xEDa: Por qu\xE9 importa y c\xF3mo conseguirla (Empathy: Why it matters and how to get it), me contact\xF3 porque quer\xEDa convertir parte de la teor\xEDa que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidi\xF3 que pensara en proyectos que pudi\xE9ramos convertir en algo que se llamara el Museo de la Empat\xEDa.',
   keywords: ['illustrator', 'designer', 'dev', 'design'],
   pictures: {
@@ -105198,6 +105200,7 @@ module.exports = [{
 }, {
   title: 'Empiezan las apuestas sobre las películas que serán seleccionadas en Cannes',
   type: 'blog',
+  important: true,
   content: 'Tiene un piercing en la oreja izquierda y dice \u201Cch\xE9vere\u201D m\xE1s veces de las que uno esperar\xEDa que una persona de 44 a\xF1os lo dijera. Usa gafas solo a ratos; gafas rectangulares de s\xF3lido marco negro. Desde hace siete a\xF1os (con un intermedio de dos en Colombia) vive en Jaffa, o como a \xE9l le gusta decir, \u201Cen territorio sin nombre\u201D, con su esposa y sus tres hijos. All\xE1 escribi\xF3 la novela Tres ata\xFAdes blancos, ganadora del premio Herralde en 2010 y finalista del R\xF3mulo Gallegos en 2011. Salvo un libro infantil, despu\xE9s de eso, nada. Hasta ahora.\n    Antonio Ungar dice que es muy zanahorio y muy solitario. Que quiz\xE1s sea por eso que no le salen bien los di\xE1logos en sus libros, con personajes muy concentrados sobre s\xED, y que quiz\xE1s sea esa la raz\xF3n por la que el alcohol funciona como mecanismo de desahogo en sus personajes. Personajes que pueden aparecer en ciudades inglesas o colombianas con la misma naturalidad con que pueden aparecer en ciudades francesas o italianas. No hay una geograf\xEDa definida en su literatura. Como en su vida. Ha vivido en Manchester, en la selva colombiana, en M\xE9xico D.F., en Barcelona, en Iowa y en Palestina. Se gradu\xF3 de arquitectura y empez\xF3 una maestr\xEDa en literatura comparada que nunca termin\xF3 porque le tocaba leer teor\xEDa y cr\xEDtica literaria, pero nunca llegaba a los libros.\n    En enero de este a\xF1o estuvo en Barcelona unos d\xEDas presentando su m\xE1s reciente novela. Una novela que no tiene nada que ver con la anterior: ni en tama\xF1o, ni en tono, ni en tema. Luego de una semana en ruedas de prensa, cocteles, almuerzos con editores, cenas con c\xF3nsules, estaba frito.',
   keywords: ['resilient', 'designer', 'coffee'],
   pictures: {
