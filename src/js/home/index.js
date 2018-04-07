@@ -97,17 +97,14 @@ function drawArticles (tag) {
     })
 
     msnry.layout()
-    
-    setTimeout(() => {
-      new Lazy({
-        container: app,
-        threshold: 1000,
-        callback_load: (e) => {
-          console.log(e)
-          msnry.layout()
-        }
-      })
-    }, 6000);
+    new Lazy({
+      container: app,
+      threshold: 1000,
+      callback_load: (e) => {
+        console.log(e)
+        msnry.layout()
+      }
+    })
   })
 }
 
