@@ -104961,14 +104961,15 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-
     _templateObject2 = _taggedTemplateLiteral(['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      '], ['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      ']),
     _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n      <h1 class="article-content-title article-item">\n        ', '\n      </h1>\n    '], ['\n      <h1 class="article-content-title article-item">\n        ', '\n      </h1>\n    ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    <div class="article-content-close">\n      x\n    </div>\n    '], ['\n    <div class="article-content-close">\n      x\n    </div>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>'], ['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>']),
-    _templateObject8 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
-    _templateObject9 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
-    _templateObject10 = _taggedTemplateLiteral(['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            '], ['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            ']),
-    _templateObject11 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <header>\n          <figure>\n            <img src="', '">\n          </figure>\n        </header>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    ']),
-    _templateObject12 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
+    _templateObject5 = _taggedTemplateLiteral(['\n        <span class="article-one-keyword">\n            ', '\n        </span>\n      '], ['\n        <span class="article-one-keyword">\n            ', '\n        </span>\n      ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        ', '\n      </header>\n    '], ['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        ', '\n      </header>\n    ']),
+    _templateObject7 = _taggedTemplateLiteral(['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    '], ['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>'], ['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>']),
+    _templateObject9 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
+    _templateObject10 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
+    _templateObject11 = _taggedTemplateLiteral(['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            '], ['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            ']),
+    _templateObject12 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    ']),
+    _templateObject13 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -105063,30 +105064,51 @@ var Article = function () {
   }, {
     key: 'createContent',
     value: function createContent(cb) {
-      var articleContent = document.createElement('div');
+      // crea la plantilla del item abierto
+
+      // Main container
+      var articleContent = document.createElement('article');
       articleContent.setAttribute('class', 'article-content-readable');
 
-      var articleTitle = yo(_templateObject5, this.title);
+      // keywords template generator
+      var keywordsTemplate = document.createElement('div');
+      keywordsTemplate.setAttribute('class', 'article-keywords');
 
-      var close = yo(_templateObject6);
+      var keyword = void 0;
+      console.log(this.keywords);
+
+      // each one keyword template generator
+      for (var i = 0; i < this.keywords.length; i++) {
+        var oneKeyword = yo(_templateObject5, keyword);
+
+        keywordsTemplate.appendChild(oneKeyword);
+      }
+
+      // header
+      var articleTitle = yo(_templateObject6, this.title, this.type, keywordsTemplate);
+
+      // trigger to close
+      var close = yo(_templateObject7);
+
       articleContent.appendChild(articleTitle);
 
-      for (var i = 0; i < this.content.length; i++) {
+      // Content constructor
+      for (var _i = 0; _i < this.content.length; _i++) {
         var form = void 0;
-        var p = yo(_templateObject7, this.content[i]);
+        var p = yo(_templateObject8, this.content[_i]);
 
-        if (this.othersPictures[i]) {
-          switch (this.othersPictures[i].type) {
+        if (this.othersPictures[_i]) {
+          switch (this.othersPictures[_i].type) {
             case 'image':
-              form = yo(_templateObject8, this.othersPictures[i].url, this.othersPictures[i].name, this.othersPictures[i].comment);
+              form = yo(_templateObject9, this.othersPictures[_i].url, this.othersPictures[_i].name, this.othersPictures[_i].comment);
               break;
 
             case 'image2':
-              form = yo(_templateObject9, this.othersPictures[i].url, this.othersPictures[i].name, this.othersPictures[i].comment);
+              form = yo(_templateObject10, this.othersPictures[_i].url, this.othersPictures[_i].name, this.othersPictures[_i].comment);
               break;
 
             case 'quote':
-              form = yo(_templateObject10, this.othersPictures[i].text);
+              form = yo(_templateObject11, this.othersPictures[_i].text);
               break;
 
             default:
@@ -105100,7 +105122,7 @@ var Article = function () {
         articleContent.appendChild(p);
       }
 
-      var template = yo(_templateObject11, close, this.mainPicture.urlXX, articleContent);
+      var template = yo(_templateObject12, close, this.mainPicture.urlXX, articleContent);
 
       close.addEventListener('click', function (e) {
         screenSplashClose();
@@ -105114,6 +105136,7 @@ var Article = function () {
 }();
 
 var ev = new CustomEvent('articleScreen');
+
 function screenSplashOpen(template) {
   empty(contentContainer).appendChild(template);
   contentContainer.classList.add('article-open');
@@ -105134,7 +105157,7 @@ function screenSplashClose() {
 function createTemplate(items, cb) {
   var article = void 0;
 
-  var main = yo(_templateObject12);
+  var main = yo(_templateObject13);
 
   for (var i = 0; i < items.length; i++) {
     article = new Article(items[i]);
@@ -105178,6 +105201,7 @@ module.exports = function (cb) {
 module.exports = [{
   title: 'El mundo tiene un nuevo Museo de la Empatía',
   type: 'ilustration',
+  intro: 'este es un texto introductorio',
   content: 'En 2015, la artista inglesa Clare Patey fund\xF3 el Museo de la Empat\xEDa para que hombres, mujeres y ni\xF1os salieran de su zona de confort, pensaran por un momento en los dem\xE1s, y se interesaran por mirar el mundo a trav\xE9s de los ojos del otro. Con proyectos participativos como \u2018Una milla en mis zapatos\u2019 y \u2018Mil y un libros\u2019 el museo invita a sus visitantes a descubrir c\xF3mo la empat\xEDa tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.\n    El Museo de la Empat\xEDa \u2013administrado por la organizaci\xF3n de artistas Arts Admin\u2013 comenz\xF3 en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre c\xF3mo caminar en los pasos de alguien m\xE1s.\n    Hace un par de a\xF1os el escritor Roman Krznaric, autor del libro Empat\xEDa: Por qu\xE9 importa y c\xF3mo conseguirla (Empathy: Why it matters and how to get it), me contact\xF3 porque quer\xEDa convertir parte de la teor\xEDa que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidi\xF3 que pensara en proyectos que pudi\xE9ramos convertir en algo que se llamara el Museo de la Empat\xEDa.',
   keywords: ['illustrator', 'designer', 'dev', 'design'],
   pictures: {

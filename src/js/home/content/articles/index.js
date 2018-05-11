@@ -2,6 +2,7 @@ module.exports = [
   {
     title: 'El mundo tiene un nuevo Museo de la Empatía',
     type: 'ilustration',
+    intro: 'este es un texto introductorio',
     content:  `En 2015, la artista inglesa Clare Patey fundó el Museo de la Empatía para que hombres, mujeres y niños salieran de su zona de confort, pensaran por un momento en los demás, y se interesaran por mirar el mundo a través de los ojos del otro. Con proyectos participativos como ‘Una milla en mis zapatos’ y ‘Mil y un libros’ el museo invita a sus visitantes a descubrir cómo la empatía tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.
     El Museo de la Empatía –administrado por la organización de artistas Arts Admin– comenzó en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre cómo caminar en los pasos de alguien más.
     Hace un par de años el escritor Roman Krznaric, autor del libro Empatía: Por qué importa y cómo conseguirla (Empathy: Why it matters and how to get it), me contactó porque quería convertir parte de la teoría que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidió que pensara en proyectos que pudiéramos convertir en algo que se llamara el Museo de la Empatía.`,

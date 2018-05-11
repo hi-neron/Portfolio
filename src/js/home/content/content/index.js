@@ -112,22 +112,54 @@ class Article {
   }
 
   createContent(cb) {
-    let articleContent = document.createElement('div')
+    // crea la plantilla del item abierto
+
+    // Main container
+    let articleContent = document.createElement('article')
     articleContent.setAttribute('class', 'article-content-readable')
 
+    // keywords template generator
+    let keywordsTemplate = document.createElement('div')
+    keywordsTemplate.setAttribute('class', 'article-keywords')
+
+    let keyword 
+    console.log(this.keywords)
+
+    // each one keyword template generator
+    for (let i = 0; i < this.keywords.length; i++) {
+      let oneKeyword = yo`
+        <span class="article-one-keyword">
+            ${keyword}
+        </span>
+      `
+
+      keywordsTemplate.appendChild(oneKeyword)
+    }
+
+    // header
     let articleTitle = yo`
-      <h1 class="article-content-title article-item">
-        ${this.title}
-      </h1>
+      <header class="article-header">
+        <h1 class="article-content-title article-item">
+          ${this.title}
+          <span>${this.type}</span>
+        </h1>
+        ${keywordsTemplate}
+      </header>
     `
 
+    // trigger to close
     let close = yo`
-    <div class="article-content-close">
-      x
-    </div>
+      <div class="article-closer-container">
+        <div class="article-close-line line-one">
+        </div>
+        <div class="article-close-line line-two">
+        </div>
+      </div>
     `
+
     articleContent.appendChild(articleTitle)
 
+    // Content constructor
     for (let i = 0; i < this.content.length; i++) {
       let form
       let p = yo`
@@ -185,11 +217,9 @@ class Article {
     let template = yo`
       <div class="article-content-wrapper">
         ${close}
-        <header>
-          <figure>
-            <img src="${this.mainPicture.urlXX}">
-          </figure>
-        </header>
+        <figure class="article-main-image">
+          <img src="${this.mainPicture.urlXX}">
+        </figure>
         <div class="article-content-info">
           ${articleContent}
         </div>
@@ -208,6 +238,7 @@ class Article {
 }
 
 let ev = new CustomEvent('articleScreen')
+
 function screenSplashOpen(template) {
   empty(contentContainer).appendChild(template)
   contentContainer.classList.add('article-open')
