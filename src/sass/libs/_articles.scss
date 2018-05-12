@@ -21,10 +21,10 @@ $width: 33.3%;
       }
   
       .grid-item{
-        box-shadow: 0 -5px 8px rgba(#000, 0.05), 0 -1px 0 rgba(#fff, 0.35);
+        box-shadow: 0 -5px 8px rgba(#000, 0.03), 0 -2px 4px rgba($mainColor4, 0.03), 0 -1px 0 rgba($mainColor4, 0.03);
         width: $width;
         overflow: hidden;
-        transition: all 0.5s;
+        // transition: all 0.5s;
 
         &:hover {
           cursor: pointer;
@@ -65,21 +65,19 @@ $width: 33.3%;
                 width: 100%;
 
                 .over-article-title {
-                  margin-top: 5px;
-                  margin-left: 5px;
-                  margin-right: 5px;
-                  font-family: 'ratThin';
+                  margin: 35px 35px 0 35px;
+                  font-family: 'ratBook';
                   text-transform: uppercase;
-                  font-size: calc(36px + 4 * (100vw - 320px) / 1180);
-                  line-height: 1.1em;
-                  overflow: hidden;
+                  font-size: calc(26px + 4 * (100vw - 320px) / 1180);
+                  line-height: 2rem;
+
                   max-width: 99%;
-                  color: $mainColor;
+                  color: $mainColor4;
                   -webkit-hyphens: auto;
                   -moz-hyphens: auto;
                   -ms-hyphens: auto;
                   hyphens: auto;
-                  -webkit-hyphenate-character: '\~';
+                  -webkit-hyphenate-character: '⌁';
 
 
                   .over-article-type {
@@ -105,30 +103,34 @@ $width: 33.3%;
                 height: 240px;
                 margin-top: 5px;
                 color: $mainColor2;
+                margin: 0px 35px 0px 35px;
 
                 .over-article-keywords {
                   text-align: left;
+                  margin-left: 2px;
 
                   .over-article-keyword {
                     -webkit-font-smoothing: antialiased !important;
-                    font-family: 'work500';
+                    font-family: 'ratBook';
                     text-transform: capitalize;
                     line-height: 1.3em;
-                    font-size: 1.05rem;    
-                    margin-left: 5px;
+                    font-size: .8rem;    
+                    margin-right: 6px;
                     text-decoration: underline;
-                    color: rgba($thirdColor3, 1);
+                    color: rgba($mainColor4, 1);
                     text-decoration-color: transparent; 
                     
+                    .over-article-word {
+                      color: rgba($mainColor4, 1);
+                      transition: .1s all ease-out;
+                      text-transform: uppercase;
+                    }
+
                     &:hover {
-                      text-decoration-color: $secondaryColor2;; 
+                      font-family: 'ratDemiB';
                     }
                     
-                    .over-article-word {
-                      color: rgba($thirdColor3, 1);
-                      transition: .1s all ease-out;
 
-                    }
                   }
                 }
               }

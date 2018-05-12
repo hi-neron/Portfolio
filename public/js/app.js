@@ -49589,7 +49589,7 @@ function drawArticles(tag) {
       columnWidth: '.grid-sizer',
       percentPosition: true,
       initLayout: false,
-      transitionDuration: 0,
+      transitionDuration: 0.5,
       originTop: false
     });
 
@@ -104962,13 +104962,13 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-
     _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    ']),
     _templateObject5 = _taggedTemplateLiteral(['\n        <span class="article-one-keyword">\n            ', '\n        </span>\n      '], ['\n        <span class="article-one-keyword">\n            ', '\n        </span>\n      ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        ', '\n      </header>\n    '], ['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        ', '\n      </header>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        <div class="article-subtitle-container">\n          <div class="article-subtitle">\n            ', '\n            <div className="article-keywords-container">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    '], ['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        <div class="article-subtitle-container">\n          <div class="article-subtitle">\n            ', '\n            <div className="article-keywords-container">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    ']),
     _templateObject7 = _taggedTemplateLiteral(['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    '], ['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    ']),
     _templateObject8 = _taggedTemplateLiteral(['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>'], ['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>']),
     _templateObject9 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
     _templateObject10 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
     _templateObject11 = _taggedTemplateLiteral(['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            '], ['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            ']),
-    _templateObject12 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          bye!\n        </footer>\n      </div>\n    ']),
+    _templateObject12 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          ', '\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          ', '\n        </footer>\n      </div>\n    ']),
     _templateObject13 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -104990,12 +104990,18 @@ var Article = function () {
     _classCallCheck(this, Article);
 
     // basic info
+    var endWord = data.endWord ? data.endWord : 'fin';
+
+    console.log(endWord + 'fin-phrase');
+
     this.title = data.title;
     this.type = data.type;
     this.keywords = data.keywords;
     this.content = data.content;
     this.pictures = data.pictures;
     this.important = data.important;
+    this.intro = data.intro;
+    this.endWord = endWord;
     this.open = false;
 
     //view content
@@ -105079,13 +105085,14 @@ var Article = function () {
 
       // each one keyword template generator
       for (var i = 0; i < this.keywords.length; i++) {
-        var oneKeyword = yo(_templateObject5, keyword);
+        var _keyword = this.keywords[i];
+        var oneKeyword = yo(_templateObject5, _keyword);
 
         keywordsTemplate.appendChild(oneKeyword);
       }
 
       // header
-      var articleTitle = yo(_templateObject6, this.title, this.type, keywordsTemplate);
+      var articleTitle = yo(_templateObject6, this.title, this.type, this.intro, keywordsTemplate);
 
       // trigger to close
       var close = yo(_templateObject7);
@@ -105122,7 +105129,7 @@ var Article = function () {
         articleContent.appendChild(p);
       }
 
-      var template = yo(_templateObject12, close, this.mainPicture.urlXX, articleContent);
+      var template = yo(_templateObject12, close, this.mainPicture.urlXX, articleContent, this.endWord);
 
       close.addEventListener('click', function (e) {
         screenSplashClose();
@@ -105201,7 +105208,7 @@ module.exports = function (cb) {
 module.exports = [{
   title: 'El mundo tiene un nuevo Museo de la Empatía',
   type: 'ilustration',
-  intro: 'este es un texto introductorio',
+  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'En 2015, la artista inglesa Clare Patey fund\xF3 el Museo de la Empat\xEDa para que hombres, mujeres y ni\xF1os salieran de su zona de confort, pensaran por un momento en los dem\xE1s, y se interesaran por mirar el mundo a trav\xE9s de los ojos del otro. Con proyectos participativos como \u2018Una milla en mis zapatos\u2019 y \u2018Mil y un libros\u2019 el museo invita a sus visitantes a descubrir c\xF3mo la empat\xEDa tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.\n    El Museo de la Empat\xEDa \u2013administrado por la organizaci\xF3n de artistas Arts Admin\u2013 comenz\xF3 en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre c\xF3mo caminar en los pasos de alguien m\xE1s.\n    Hace un par de a\xF1os el escritor Roman Krznaric, autor del libro Empat\xEDa: Por qu\xE9 importa y c\xF3mo conseguirla (Empathy: Why it matters and how to get it), me contact\xF3 porque quer\xEDa convertir parte de la teor\xEDa que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidi\xF3 que pensara en proyectos que pudi\xE9ramos convertir en algo que se llamara el Museo de la Empat\xEDa.',
   keywords: ['illustrator', 'designer', 'dev', 'design'],
   pictures: {
@@ -105221,6 +105228,7 @@ module.exports = [{
 }, {
   title: 'Empiezan las apuestas sobre las películas que serán seleccionadas en Cannes',
   type: 'blog',
+  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   important: true,
   content: 'Tiene un piercing en la oreja izquierda y dice \u201Cch\xE9vere\u201D m\xE1s veces de las que uno esperar\xEDa que una persona de 44 a\xF1os lo dijera. Usa gafas solo a ratos; gafas rectangulares de s\xF3lido marco negro. Desde hace siete a\xF1os (con un intermedio de dos en Colombia) vive en Jaffa, o como a \xE9l le gusta decir, \u201Cen territorio sin nombre\u201D, con su esposa y sus tres hijos. All\xE1 escribi\xF3 la novela Tres ata\xFAdes blancos, ganadora del premio Herralde en 2010 y finalista del R\xF3mulo Gallegos en 2011. Salvo un libro infantil, despu\xE9s de eso, nada. Hasta ahora.\n    Antonio Ungar dice que es muy zanahorio y muy solitario. Que quiz\xE1s sea por eso que no le salen bien los di\xE1logos en sus libros, con personajes muy concentrados sobre s\xED, y que quiz\xE1s sea esa la raz\xF3n por la que el alcohol funciona como mecanismo de desahogo en sus personajes. Personajes que pueden aparecer en ciudades inglesas o colombianas con la misma naturalidad con que pueden aparecer en ciudades francesas o italianas. No hay una geograf\xEDa definida en su literatura. Como en su vida. Ha vivido en Manchester, en la selva colombiana, en M\xE9xico D.F., en Barcelona, en Iowa y en Palestina. Se gradu\xF3 de arquitectura y empez\xF3 una maestr\xEDa en literatura comparada que nunca termin\xF3 porque le tocaba leer teor\xEDa y cr\xEDtica literaria, pero nunca llegaba a los libros.\n    En enero de este a\xF1o estuvo en Barcelona unos d\xEDas presentando su m\xE1s reciente novela. Una novela que no tiene nada que ver con la anterior: ni en tama\xF1o, ni en tono, ni en tema. Luego de una semana en ruedas de prensa, cocteles, almuerzos con editores, cenas con c\xF3nsules, estaba frito.',
   keywords: ['resilient', 'designer', 'coffee'],
@@ -105237,10 +105245,9 @@ module.exports = [{
       url: '/img/articles/two/two.png',
       comment: 'did you know that information, say me the true, if you did not, we wil not have problems. relax with me boy '
     }, {
-      type: 'image',
+      type: 'image2',
       name: 'hello World',
-      url: '/img/articles/two/three.jpg',
-      comment: "Like you, I used to think the world was this great place where everybody lived by the same standards I did, then some kid with a nail showed me I was living in his world, a world where chaos rules not order, a world where righteousness is not rewarded. That's Cesar's world, and if you're not willing to play by his rules, then you're gonna have to pay the price."
+      url: '/img/articles/two/three.jpg'
     }, {
       type: 'quote',
       text: 'Formed of Laura Lee, Mark Speer and Donald “DJ” Johnson, the group discuss their new album, Con Todo El Mundo, their dream collaborations and the power of memory and nostalgia in music.'
@@ -105249,6 +105256,7 @@ module.exports = [{
 }, {
   title: 'Un ciclo de cine para celebrar a Chaplin',
   type: 'blog',
+  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'Dos pel\xEDculas presentes en ambos ciclos hicieron a Chaplin merecedor de premios \xD3scar: en 1929 fue galardonado por El Circo, y en 1973 por la banda sonora de Candilejas. Y, en 1972 gan\xF3 el  galard\xF3n honor\xEDfico de la Academia por su trayectoria cinematogr\xE1fica El hombre transmiti\xF3 en sus largometrajes una cr\xEDtica constante a la sociedad en que viv\xEDa, a partir de personajes marginales o menospreciados. Sin embargo, su mensaje no fue desalentador: a trav\xE9s de la comedia logr\xF3 balancear la crudeza de la realidad, de tal manera que a cada burla en pantalla lo acompa\xF1aba una reflexi\xF3n y una mirada sarc\xE1stica y cr\xEDtica para no sucumbir ante el sistema.\n    Rodrigo Torrijos, editor de cine y cultura de la revista Rolling Stone, dice que Chaplin no se puede catalogar como una figura vigente, sino eterna. \u201CEs uno de los culpables de potenciar la m\xE1quina cinematogr\xE1fica, hizo trascender el negocio de la estimulaci\xF3n a trav\xE9s de im\xE1genes proyectadas en un muro, a un juego entre el poder, el cuerpo y la memoria. En Tiempos modernos met\xEDa la cabeza entre los engranajes de la automatizaci\xF3n que podr\xEDan aniquilarlo; no disimulaba el miedo, pero sal\xEDa del otro lado, no triunfante, pero al menos vivo, y con ese gesto solapado de resistencia, de desacato ante lo imaginado. Por eso est\xE1 presente, porque se sigue burlando de lo establecido, nos sigue inspirando a desafiar el poder, al negocio del entretenimiento, a la dictadura del aburrimiento. Es eterno porque siempre estaremos del lado de los vagos que muerden el cuello de lo imposible\u201D explica Torrijos.',
   keywords: ['designer', 'dev', 'sea lover'],
   pictures: {
@@ -105263,6 +105271,7 @@ module.exports = [{
 }, {
   title: 'De San Felipe (el barrio bogotano) a San Felipe (el castillo cartagenero)',
   type: 'blog',
+  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'Mariana hace uso de su cuerpo como una plastilina de k\xEDnder: sin mezquindad nos recuerda que la gente est\xE1 muy delgada o es muy est\xFApida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo fam\xE9lico en tiempos de selfies, \xF3xido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aqu\xED un eufemismo para nuestra pobreza: nuestra esclavitud. Me regal\xF3 un pin donde aparece usando un vestido de ba\xF1o estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con p\xF3lvora de ca\xF1\xF3n con las que los tiranos espa\xF1oles nos defend\xEDan de los piratas.\n    El punto crucial de esta exhibici\xF3n titulada \u201CEstaba perdido, pero estar perdido nunca se sinti\xF3 tan cabr\xF3n\u201D, y que es preciso leer con acento puertorrique\xF1o, era una fuente amarilla cuya construcci\xF3n fue hecha a cuatro manos con el tambi\xE9n boricua y m\xEDtico artista Radam\xE9s \u201CJuni" Figueroa, cuyo contenido el p\xFAblico se apresur\xF3 a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o \xE9xtasis en su estado puro: de ese que toman los j\xF3venes ansiosos en fiestas electr\xF3nicas que duran d\xEDas y no tienen ni pies, cabeza, ni fin.\n    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Hab\xEDa mucha confusi\xF3n pero sobre todo hab\xEDa mucha nada. Una semana despu\xE9s estar\xEDa en un avi\xF3n con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente m\xE1quina de sopor.',
   keywords: ['illustrator', 'designer', 'sea lover'],
   pictures: {
@@ -105277,6 +105286,7 @@ module.exports = [{
 }, {
   title: 'El Gran Salón México llega a Colombia',
   type: 'blog',
+  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
   keywords: ['coffee', 'resilient', 'sea lover'],
   pictures: {

@@ -92,7 +92,7 @@ function drawArticles (tag) {
       columnWidth: '.grid-sizer',
       percentPosition: true,
       initLayout: false,
-      transitionDuration: 0,
+      transitionDuration: 0.5,
       originTop: false
     })
 

@@ -13,12 +13,18 @@ var screen = false
 class Article {
   constructor (data) {
     // basic info
+    let endWord = data.endWord ? data.endWord : 'fin'
+
+    console.log(endWord + 'fin-phrase')
+
     this.title = data.title
     this.type = data.type
     this.keywords = data.keywords
     this.content = data.content
     this.pictures = data.pictures
     this.important = data.important
+    this.intro = data.intro
+    this.endWord = endWord
     this.open = false
 
     //view content
@@ -127,6 +133,7 @@ class Article {
 
     // each one keyword template generator
     for (let i = 0; i < this.keywords.length; i++) {
+      let keyword = this.keywords[i]
       let oneKeyword = yo`
         <span class="article-one-keyword">
             ${keyword}
@@ -143,7 +150,14 @@ class Article {
           ${this.title}
           <span>${this.type}</span>
         </h1>
-        ${keywordsTemplate}
+        <div class="article-subtitle-container">
+          <div class="article-subtitle">
+            ${this.intro}
+            <div className="article-keywords-container">
+              ${keywordsTemplate}
+            </div>
+          </div>
+        </div>
       </header>
     `
 
@@ -212,8 +226,6 @@ class Article {
       articleContent.appendChild(p)
     }
 
-    
-
     let template = yo`
       <div class="article-content-wrapper">
         ${close}
@@ -224,7 +236,7 @@ class Article {
           ${articleContent}
         </div>
         <footer class="article-content-footer">
-          bye!
+          ${this.endWord}
         </footer>
       </div>
     `

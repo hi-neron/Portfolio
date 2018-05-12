@@ -28,6 +28,11 @@
 }
 
 @font-face {
+  font-family: 'saxi';
+  src: url('/fonts/saxi.otf');
+}
+
+@font-face {
   font-family: 'saxbo';
   src: url('/fonts/saxbo.ttf');
 }
@@ -69,7 +74,12 @@
 
 @font-face {
   font-family: 'ratBookI';
-  src: url('/fonts/RatBookItal.ttf');
+  src: url('/fonts/RatBookItalic.ttf');
+}
+
+@font-face {
+  font-family: 'ratDemiB';
+  src: url('/fonts/RatDemiB.ttf');
 }
 
 @font-face {

@@ -80,13 +80,15 @@
       img {
         width: 100%;
       }
+
       figcaption {
         font-family: 'saxi';
         color: $mainColor;
         text-align: right;
-        margin-right: 15px;
+        margin-right: 5px;
         margin-top: 5px;
-        font-size: 0.9em;
+        font-size: 1rem;
+        line-height: 1.3rem;
       }
     }
     
@@ -103,21 +105,21 @@
 
         header {
           display: inline-block;
-          margin-top: 7px;
-          margin-left: 7px;
-          margin-bottom: 30px;
+          margin-top: 12px;
+          margin-bottom: 20px;
 
           .article-content-title {
             display: inline-block;
-            font-size: calc(34px + 4 * (100vw - 320px) / 1180);
+            font-size: calc(44px + 4 * (100vw - 320px) / 1180);
             font-family: 'ratLight';
             text-transform: uppercase;
-            line-height: 2.7rem;
-            max-width: 75%;
+            line-height: calc(50px + 4 * (100vw - 320px) / 1180);
+            max-width: 100%;
             min-width: 360px;
             -webkit-hyphens: auto;
             -moz-hyphens: auto;
             -ms-hyphens: auto;
+            -webkit-hyphenate-character: '⌁';
             hyphens: auto;
             padding: 5px;
 
@@ -134,25 +136,54 @@
             }
           }
 
-          .article-keywords {
-            display: inline-block;
+          
+          .article-subtitle-container {            
             width: 100%;
-            margin-left: 10px;
-            margin-top: 8px;
+            
+            .article-subtitle {
+              font-family: 'ratDemiB';
+              width: 60%;
+              float: right;
+              margin: 40px 10% 30px 40px;
+              font-size: calc(13px + 4 * (100vw - 320px) / 1180);
+              line-height: 1.55rem;
 
-            .article-one-keyword {
-              font-family: 'ratBookI';
-              text-transform: uppercase;
-              font-size: 0.9rem;
-              // background-color: $thirdColor;
-              color: rgba($mainColor2, 1);
-              margin-right: 5px;
-              
-              &:hover {
-                color: rgba($mainColor, 1);
-                cursor: pointer;
-                text-decoration: line-through;
-                // text-decoration-color: $secondaryColor;
+              .article-keywords-container {
+                margin-top: 8px;
+                
+                .article-keywords {
+                  background-color: $mainColor4;
+                  display: inline-block;
+                  height: 15px;
+                  border-radius: 1px;
+                  
+                  .article-one-keyword {
+                    font-family: 'ratBook';
+                    text-transform: uppercase;
+                    font-size: 0.6rem;
+                    vertical-align: top;
+                    padding: 0px 3px 2px 3px;
+                    margin-top: -3px;
+                    margin-right: 10px;
+                    display: inline-block;
+                    color: rgba($mainColor3, 1);
+
+                    &:before {
+                      content: '#';
+                      display: inline-block;
+                    }
+                    
+                    &:nth-last-of-type(1){
+                      margin-right: 0px;
+                    }
+
+                    
+                    &:hover {
+                      font-family: 'ratDemiB';
+                      cursor: pointer;
+                    }
+                  }
+                }
               }
             }
           }
@@ -161,44 +192,36 @@
         .article-content-paragraph {
           width: 100%;
           min-width: 360px;
-          max-width: 65%;
-          margin: 16px;
+          max-width: 100%;
 
           p {
-            margin-bottom: 1rem;
+            margin: 0 auto;
             -webkit-hyphens: auto;
             -moz-hyphens: auto;
             -ms-hyphens: auto;
             hyphens: auto;
+            width: 80%;
+            -webkit-hyphenate-character: '⌁';
             font-family: 'ratBook';
             // -webkit-font-smoothing: antialiased;
-            line-height: 1.5rem;
-            font-size: calc(10px + 4 * (100vw - 320px) / 1180);
-            float: right;
-            
+            line-height: calc(22px + 4 * (100vw - 320px) / 1180);
+            font-size: calc(12px + 4 * (100vw - 320px) / 1180);
+            margin-bottom: 30px;
+
             &:before {
-              content: "      ";
+              content: "    ";
+              padding-right: 0px;
+              padding-left: 10px;
             }
 
-            &:after{
-              margin-top: 18px;
-              margin-bottom: 20px;
-              font-size: 0.9rem;
-              content: "____";
-              text-align: center;
-              font-family: 'plaHeavy';
-              display: inline-block;
-              width: 100%;
-              color: $secondaryColor;
-
-            }
           }
         }
 
         .article-content-picture {
-          width: 49%;
+          width: 70%;
           position: relative;
           min-width: 360px;
+          margin-bottom: 50px;
 
           img {
             width: 100%;
@@ -206,23 +229,26 @@
         }
 
         .article-content-picture-xl {
-          width: 100%;
           min-width: 360px;
+          position: relative;
 
+          
           img {
             width: 100%;
           }
         }
 
         .article-content-quote {
-          width: 48%;
+          width: 58%;
+
           p {
             float: right;
             width: 60%;
-            font-family: 'sax';
+            font-family: 'saxi';
             font-size: 1.2em;
             line-height: 1.2em;
-            margin-right: 20px;
+            margin: 25px 20px 35px 0;
+
           }
         }
         
@@ -232,12 +258,12 @@
 
     .article-content-footer {
       width: 100%;
-      height: 170px;
+      height: 250px;
       clear: both;
       display: inline-block;
       text-align: center;
-      padding-top: 120px;
-      font-family: 'saxbo';
+      padding-top: 100px;
+      font-family: 'saxi';
       color: $mainColor2;
       font-size: 3rem;
     }
@@ -254,30 +280,52 @@
     .article-content-wrapper {
       .article-content-info {
         padding: 0;
+        width: 100%;
         .article-content-readable {
           header {
             .article-content-title {
               max-width: 100%;
+              font-size: calc(38px + 4 * (100vw - 320px) / 1180);
+              line-height: calc(42px + 4 * (100vw - 320px) / 1180);
+
             }
             .article-keywords {
               .article-one-keyword {
+              }
+            }
+
+            .article-subtitle-container {            
+              width: 100%;
+              
+              .article-subtitle {
+                font-family: 'ratDemiB';
+                width: 90%;
+                float: none;
+                padding: 0;
+                margin: 40px 5% 30px 5%;
+                font-size: calc(15px + 4 * (100vw - 320px) / 1180);
+                line-height: 1.55rem;
               }
             }
           }
                     
           .article-content-paragraph {
             min-width: 360px;
-            max-width: 95%;
 
             p {
               -webkit-hyphens: auto;
               -moz-hyphens: auto;
               -ms-hyphens: auto;
               hyphens: auto;
+              width: 90%;
+
+              -webkit-hyphenate-character: '⌁';
               // -webkit-font-smoothing: antialiased;
               padding: 0;
-              font-size: calc(11px + 4 * (100vw - 320px) / 1180);
+              font-size: calc(13px + 4 * (100vw - 320px) / 1180);
+              line-height: calc(22px + 4 * (100vw - 320px) / 1180);
             }
+
           }
           .article-content-picture {
             width: 100%;
@@ -289,14 +337,14 @@
             }
           }
           .article-content-quote {
-            width: 48%;
+            width: 100%;
             p {
+              margin: 25px 20px 35px 0;
               float: right;
-              width: 60%;
-              font-family: 'sax';
+              width: 70%;
+              font-family: 'saxi';
               font-size: 1.2em;
               line-height: 1.2em;
-              margin-right: 20px;
             }
           }
           
