@@ -26,6 +26,7 @@ class Article {
     this.intro = data.intro
     this.endWord = endWord
     this.open = false
+    this.themeBlack = data.themeBlack | false
 
     //view content
     this.viewContent = _.truncate(this.content, {
@@ -131,6 +132,11 @@ class Article {
     let keyword 
     console.log(this.keywords)
 
+    // its a black theme?
+    let backBlack = this.themeBlack ? 'article-back-black': ''
+    let colorBlack = this.themeBlack ? 'article-color-black': ''
+    let backWhiteBlack = this.themeBlack ? 'article-white-black': ''
+
     // each one keyword template generator
     for (let i = 0; i < this.keywords.length; i++) {
       let keyword = this.keywords[i]
@@ -146,10 +152,17 @@ class Article {
     // header
     let articleTitle = yo`
       <header class="article-header">
-        <h1 class="article-content-title article-item">
-          ${this.title}
-          <span>${this.type}</span>
-        </h1>
+        <div class="article-header-top">
+          <h1 class="article-content-title article-item ${colorBlack}">
+            ${this.title}
+          </h1>
+          <div class="article-content-type-container">
+            <div class="article-content-type">
+              ${this.type}
+            </div>
+          </div>
+        </div>
+
         <div class="article-subtitle-container">
           <div class="article-subtitle">
             ${this.intro}
@@ -227,7 +240,7 @@ class Article {
     }
 
     let template = yo`
-      <div class="article-content-wrapper">
+      <div class="article-content-wrapper ${backBlack}">
         ${close}
         <figure class="article-main-image">
           <img src="${this.mainPicture.urlXX}">

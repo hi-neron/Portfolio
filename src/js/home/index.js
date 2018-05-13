@@ -97,6 +97,7 @@ function drawArticles (tag) {
     })
 
     msnry.layout()
+    
     new Lazy({
       container: app,
       threshold: 1000,

@@ -49594,6 +49594,7 @@ function drawArticles(tag) {
     });
 
     msnry.layout();
+
     new Lazy({
       container: app,
       threshold: 1000,
@@ -104962,13 +104963,13 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-
     _templateObject3 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            <div class="over-article-title">\n              ', '\n              <span class="over-article-type">\n                <span>', '</span>\n              </span>\n            </div>\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img data-src="', '" alt="', '">\n        </div>\n      </article>\n    ']),
     _templateObject5 = _taggedTemplateLiteral(['\n        <span class="article-one-keyword">\n            ', '\n        </span>\n      '], ['\n        <span class="article-one-keyword">\n            ', '\n        </span>\n      ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        <div class="article-subtitle-container">\n          <div class="article-subtitle">\n            ', '\n            <div className="article-keywords-container">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    '], ['\n      <header class="article-header">\n        <h1 class="article-content-title article-item">\n          ', '\n          <span>', '</span>\n        </h1>\n        <div class="article-subtitle-container">\n          <div class="article-subtitle">\n            ', '\n            <div className="article-keywords-container">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n      <header class="article-header">\n        <div class="article-header-top">\n          <h1 class="article-content-title article-item ', '">\n            ', '\n          </h1>\n          <div class="article-content-type-container">\n            <div class="article-content-type">\n              ', '\n            </div>\n          </div>\n        </div>\n\n        <div class="article-subtitle-container">\n          <div class="article-subtitle">\n            ', '\n            <div className="article-keywords-container">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    '], ['\n      <header class="article-header">\n        <div class="article-header-top">\n          <h1 class="article-content-title article-item ', '">\n            ', '\n          </h1>\n          <div class="article-content-type-container">\n            <div class="article-content-type">\n              ', '\n            </div>\n          </div>\n        </div>\n\n        <div class="article-subtitle-container">\n          <div class="article-subtitle">\n            ', '\n            <div className="article-keywords-container">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    ']),
     _templateObject7 = _taggedTemplateLiteral(['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    '], ['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    ']),
     _templateObject8 = _taggedTemplateLiteral(['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>'], ['\n      <div class="article-content-paragraph article-item">\n        <p>\n          ', '\n        </p>\n      </div>']),
     _templateObject9 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
     _templateObject10 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption>', '</figcaption>\n              </figure>\n            ']),
     _templateObject11 = _taggedTemplateLiteral(['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            '], ['\n              <h3 class="article-content-quote article-item">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </h3>\n            ']),
-    _templateObject12 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          ', '\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          ', '\n        </footer>\n      </div>\n    ']),
+    _templateObject12 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper ', '">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          ', '\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper ', '">\n        ', '\n        <figure class="article-main-image">\n          <img src="', '">\n        </figure>\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer">\n          ', '\n        </footer>\n      </div>\n    ']),
     _templateObject13 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -105003,6 +105004,7 @@ var Article = function () {
     this.intro = data.intro;
     this.endWord = endWord;
     this.open = false;
+    this.themeBlack = data.themeBlack | false;
 
     //view content
     this.viewContent = _.truncate(this.content, {
@@ -105083,6 +105085,11 @@ var Article = function () {
       var keyword = void 0;
       console.log(this.keywords);
 
+      // its a black theme?
+      var backBlack = this.themeBlack ? 'article-back-black' : '';
+      var colorBlack = this.themeBlack ? 'article-color-black' : '';
+      var backWhiteBlack = this.themeBlack ? 'article-white-black' : '';
+
       // each one keyword template generator
       for (var i = 0; i < this.keywords.length; i++) {
         var _keyword = this.keywords[i];
@@ -105092,7 +105099,7 @@ var Article = function () {
       }
 
       // header
-      var articleTitle = yo(_templateObject6, this.title, this.type, this.intro, keywordsTemplate);
+      var articleTitle = yo(_templateObject6, colorBlack, this.title, this.type, this.intro, keywordsTemplate);
 
       // trigger to close
       var close = yo(_templateObject7);
@@ -105129,7 +105136,7 @@ var Article = function () {
         articleContent.appendChild(p);
       }
 
-      var template = yo(_templateObject12, close, this.mainPicture.urlXX, articleContent, this.endWord);
+      var template = yo(_templateObject12, backBlack, close, this.mainPicture.urlXX, articleContent, this.endWord);
 
       close.addEventListener('click', function (e) {
         screenSplashClose();
@@ -105208,6 +105215,7 @@ module.exports = function (cb) {
 module.exports = [{
   title: 'El mundo tiene un nuevo Museo de la Empatía',
   type: 'ilustration',
+  themeBlack: true,
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'En 2015, la artista inglesa Clare Patey fund\xF3 el Museo de la Empat\xEDa para que hombres, mujeres y ni\xF1os salieran de su zona de confort, pensaran por un momento en los dem\xE1s, y se interesaran por mirar el mundo a trav\xE9s de los ojos del otro. Con proyectos participativos como \u2018Una milla en mis zapatos\u2019 y \u2018Mil y un libros\u2019 el museo invita a sus visitantes a descubrir c\xF3mo la empat\xEDa tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.\n    El Museo de la Empat\xEDa \u2013administrado por la organizaci\xF3n de artistas Arts Admin\u2013 comenz\xF3 en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre c\xF3mo caminar en los pasos de alguien m\xE1s.\n    Hace un par de a\xF1os el escritor Roman Krznaric, autor del libro Empat\xEDa: Por qu\xE9 importa y c\xF3mo conseguirla (Empathy: Why it matters and how to get it), me contact\xF3 porque quer\xEDa convertir parte de la teor\xEDa que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidi\xF3 que pensara en proyectos que pudi\xE9ramos convertir en algo que se llamara el Museo de la Empat\xEDa.',
   keywords: ['illustrator', 'designer', 'dev', 'design'],
@@ -105255,6 +105263,7 @@ module.exports = [{
   }
 }, {
   title: 'Un ciclo de cine para celebrar a Chaplin',
+  themeBlack: true,
   type: 'blog',
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'Dos pel\xEDculas presentes en ambos ciclos hicieron a Chaplin merecedor de premios \xD3scar: en 1929 fue galardonado por El Circo, y en 1973 por la banda sonora de Candilejas. Y, en 1972 gan\xF3 el  galard\xF3n honor\xEDfico de la Academia por su trayectoria cinematogr\xE1fica El hombre transmiti\xF3 en sus largometrajes una cr\xEDtica constante a la sociedad en que viv\xEDa, a partir de personajes marginales o menospreciados. Sin embargo, su mensaje no fue desalentador: a trav\xE9s de la comedia logr\xF3 balancear la crudeza de la realidad, de tal manera que a cada burla en pantalla lo acompa\xF1aba una reflexi\xF3n y una mirada sarc\xE1stica y cr\xEDtica para no sucumbir ante el sistema.\n    Rodrigo Torrijos, editor de cine y cultura de la revista Rolling Stone, dice que Chaplin no se puede catalogar como una figura vigente, sino eterna. \u201CEs uno de los culpables de potenciar la m\xE1quina cinematogr\xE1fica, hizo trascender el negocio de la estimulaci\xF3n a trav\xE9s de im\xE1genes proyectadas en un muro, a un juego entre el poder, el cuerpo y la memoria. En Tiempos modernos met\xEDa la cabeza entre los engranajes de la automatizaci\xF3n que podr\xEDan aniquilarlo; no disimulaba el miedo, pero sal\xEDa del otro lado, no triunfante, pero al menos vivo, y con ese gesto solapado de resistencia, de desacato ante lo imaginado. Por eso est\xE1 presente, porque se sigue burlando de lo establecido, nos sigue inspirando a desafiar el poder, al negocio del entretenimiento, a la dictadura del aburrimiento. Es eterno porque siempre estaremos del lado de los vagos que muerden el cuello de lo imposible\u201D explica Torrijos.',

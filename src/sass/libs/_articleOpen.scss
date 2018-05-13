@@ -1,12 +1,26 @@
+.article-back-black {
+  background-color: $mainColor4 !important;
+  color: $mainColor3 !important;
+}
+
+.article-color-black {
+  color: $myWhite !important;
+}
+
+.article-white-black {
+  background-color: $mainColor3 !important;
+}
+
+
 #article-content {
   position: fixed;
   width: 0;
   height: 0;
   z-index: 11;
-  background-color: $contentBackground;
   overflow-y: auto;
   
   .article-content-wrapper {
+    background-color: $contentBackground;
     width: 100%;
     position: relative;
     display: inline-block;
@@ -106,35 +120,44 @@
         header {
           display: inline-block;
           margin-top: 12px;
-          margin-bottom: 20px;
 
-          .article-content-title {
-            display: inline-block;
-            font-size: calc(44px + 4 * (100vw - 320px) / 1180);
-            font-family: 'ratLight';
-            text-transform: uppercase;
-            line-height: calc(50px + 4 * (100vw - 320px) / 1180);
-            max-width: 100%;
-            min-width: 360px;
-            -webkit-hyphens: auto;
-            -moz-hyphens: auto;
-            -ms-hyphens: auto;
-            -webkit-hyphenate-character: '⌁';
-            hyphens: auto;
-            padding: 5px;
-
-            span {
-              vertical-align: middle;
-              font-family: 'ratLight';
-              border-radius: 5%;
-              color: white;
+          .article-header-top {
+            .article-content-title {
+              display: inline-block;
+              font-size: calc(60px + 4 * (100vw - 320px) / 1180);
+              font-family: 'ratThin';
               text-transform: uppercase;
-              background-color: $secondaryColor;
-              padding: 6px 5px 4px 6px;
-              letter-spacing: 0.05rem;
-              font-size: 0.6rem;
+              line-height: calc(66px + 4 * (100vw - 320px) / 1180);
+              min-width: 360px;
+              width: 70%;
+              -webkit-hyphens: auto;
+              -moz-hyphens: auto;
+              -ms-hyphens: auto;
+              -webkit-hyphenate-character: '⌁';
+              hyphens: auto;
+              margin: 0px 5%;
+              -webkit-font-smoothing: antialiased !important;
+
+  
+            }
+            .article-content-type-container {
+              margin-left: 5%;
+              .article-content-type {
+                margin-left: 4px;
+                display: inline-block;
+                vertical-align: middle;
+                font-family: 'ratDemiB';
+                border-radius: 5%;
+                color: white;
+                text-transform: uppercase;
+                background-color: $secondaryColor;
+                padding: 6px 5px 4px 6px;
+                letter-spacing: 0.1rem;
+                font-size: 0.7rem;
+              }
             }
           }
+
 
           
           .article-subtitle-container {            
@@ -147,8 +170,11 @@
               margin: 40px 10% 30px 40px;
               font-size: calc(13px + 4 * (100vw - 320px) / 1180);
               line-height: 1.55rem;
+              -webkit-font-smoothing: antialiased !important;
 
+              
               .article-keywords-container {
+                margin-bottom: 20px;
                 margin-top: 8px;
                 
                 .article-keywords {
@@ -283,14 +309,13 @@
         width: 100%;
         .article-content-readable {
           header {
-            .article-content-title {
-              max-width: 100%;
-              font-size: calc(38px + 4 * (100vw - 320px) / 1180);
-              line-height: calc(42px + 4 * (100vw - 320px) / 1180);
-
-            }
-            .article-keywords {
-              .article-one-keyword {
+            .article-header-top {
+              .article-content-title {
+                margin: 0 5%;
+                font-size: calc(38px + 4 * (100vw - 320px) / 1180);
+                line-height: calc(42px + 4 * (100vw - 320px) / 1180);
+                font-family: 'ratLight';
+  
               }
             }
 
@@ -302,7 +327,7 @@
                 width: 90%;
                 float: none;
                 padding: 0;
-                margin: 40px 5% 30px 5%;
+                margin: 40px 5% 50px 5%;
                 font-size: calc(15px + 4 * (100vw - 320px) / 1180);
                 line-height: 1.55rem;
               }
@@ -324,6 +349,77 @@
               padding: 0;
               font-size: calc(13px + 4 * (100vw - 320px) / 1180);
               line-height: calc(22px + 4 * (100vw - 320px) / 1180);
+            }
+
+          }
+          .article-content-picture {
+            width: 100%;
+            padding: 0px !important;
+            float: left;
+
+            img {
+              width: 100%;
+            }
+          }
+          .article-content-quote {
+            width: 100%;
+            p {
+              margin: 25px 20px 35px 0;
+              float: right;
+              width: 70%;
+              font-family: 'saxi';
+              font-size: 1.2em;
+              line-height: 1.2em;
+            }
+          }
+          
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1480px) {
+  #article-content {
+    .article-content-wrapper {
+      .article-content-info {
+        .article-content-readable {
+          header {
+            .article-header-top {
+              .article-content-title {
+              }
+            }
+
+            .article-subtitle-container {            
+              .article-subtitle {
+              }
+            }
+          }
+                    
+          .article-content-paragraph {
+            p {
+              margin-top: 50px;
+              -webkit-hyphens: auto;
+              -moz-hyphens: auto;
+              -ms-hyphens: auto;
+              hyphens: auto;
+              width: 90%;
+              column-count: 2;
+              column-gap: 80px;
+              column-rule: 1px dotted rgba($mainColor4, 0.8);
+
+              -webkit-hyphenate-character: '⌁';
+              // -webkit-font-smoothing: antialiased;
+              padding: 0;
+              font-size: calc(11px + 4 * (100vw - 320px) / 1180);
+              line-height: calc(20px + 4 * (100vw - 320px) / 1180);
+
+              &:after {
+                content: "↙︎";
+                width: 20px;
+                height: 2px;
+                color: $mainColor4;
+              }
             }
 
           }
