@@ -10,12 +10,72 @@ contentContainer.setAttribute('id', 'article-content')
 document.body.appendChild(contentContainer)
 var screen = false
 
+
+// Different class for each one article
+
+function toColor (color) {
+  return `#${color.toString(16)}`
+}
+
+class NewStyle {
+  constructor (color) {
+    this.className = `article-${color[0]}`
+
+    // colors
+    this.color = toColor(color[0])
+    this.contrastColor = toColor(color[1])
+
+    this.letter = this.letterColor()
+    this.back = this.backColor()
+    this.smallBack = this.smallBackColor()
+    this.overLetter = this.overLetterColor()
+
+  }
+
+  letterColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-letter-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { color: ${this.contrastColor} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+
+    return className
+  }
+
+  backColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-back-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { background-color: ${this.color} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+    return className
+  }
+
+  smallBackColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-small-back-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { background-color: ${this.contrastColor} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+
+    return className
+  }
+  overLetterColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-small-letter-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { color: ${this.color} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+
+    return className
+  }
+
+}
+
 class Article {
   constructor (data) {
     // basic info
     let endWord = data.endWord ? data.endWord : 'fin'
-
-    console.log(endWord + 'fin-phrase')
 
     this.title = data.title
     this.type = data.type
@@ -26,7 +86,9 @@ class Article {
     this.intro = data.intro
     this.endWord = endWord
     this.open = false
-    this.themeBlack = data.themeBlack | false
+
+    // set colors theme
+    this.color = data.colors ? data.colors : [0xEAEAEA, 0x1E1E1E]
 
     //view content
     this.viewContent = _.truncate(this.content, {
@@ -79,8 +141,10 @@ class Article {
       </div>
     `
 
+    let important = this.important ? 'grid-item-widthx2': ''
+
     let template = yo`
-      <article class="grid-item ${this.important? 'grid-item-widthx2': ''}" title="${this.title}">
+      <article class="grid-item ${important}" title="${this.title}">
         <div class="article-content">
           ${over}
           <img data-src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
@@ -130,18 +194,16 @@ class Article {
     keywordsTemplate.setAttribute('class', 'article-keywords')
 
     let keyword 
-    console.log(this.keywords)
+    
+    let cStyle = new NewStyle(this.color)
 
-    // its a black theme?
-    let backBlack = this.themeBlack ? 'article-back-black': ''
-    let colorBlack = this.themeBlack ? 'article-color-black': ''
-    let backWhiteBlack = this.themeBlack ? 'article-white-black': ''
+    keywordsTemplate.classList.add(cStyle.smallBack)
 
     // each one keyword template generator
     for (let i = 0; i < this.keywords.length; i++) {
       let keyword = this.keywords[i]
       let oneKeyword = yo`
-        <span class="article-one-keyword">
+        <span class="article-one-keyword ${cStyle.overLetter}">
             ${keyword}
         </span>
       `
@@ -153,20 +215,27 @@ class Article {
     let articleTitle = yo`
       <header class="article-header">
         <div class="article-header-top">
-          <h1 class="article-content-title article-item ${colorBlack}">
-            ${this.title}
-          </h1>
-          <div class="article-content-type-container">
-            <div class="article-content-type">
-              ${this.type}
+          <figure class="article-main-image">
+            <img src="${this.mainPicture.urlXX}">
+          </figure>
+          <div className="article-content-title-container">
+            <h1 class="article-content-title article-item ${cStyle.letter}">
+              <span class="${cStyle.back}">
+                ${this.title}
+              </span>
+            </h1>
+            <div class="article-content-type-container">
+              <div class="article-content-type">
+                ${this.type}
+              </div>
             </div>
           </div>
         </div>
 
         <div class="article-subtitle-container">
-          <div class="article-subtitle">
+          <div class="article-subtitle ${cStyle.letter}">
             ${this.intro}
-            <div className="article-keywords-container">
+            <div className="article-keywords-container ">
               ${keywordsTemplate}
             </div>
           </div>
@@ -190,7 +259,7 @@ class Article {
     for (let i = 0; i < this.content.length; i++) {
       let form
       let p = yo`
-      <div class="article-content-paragraph article-item">
+      <div class="article-content-paragraph article-item ${cStyle.letter}">
         <p>
           ${this.content[i]}
         </p>
@@ -202,7 +271,7 @@ class Article {
             form = yo`
               <figure class="article-content-picture article-item">
                 <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
-                <figcaption>${this.othersPictures[i].comment}</figcaption>
+                <figcaption class="${cStyle.letter}">${this.othersPictures[i].comment}</figcaption>
               </figure>
             `
             break;
@@ -211,14 +280,14 @@ class Article {
             form = yo`
               <figure class="article-content-picture-xl article-item">
                 <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
-                <figcaption>${this.othersPictures[i].comment}</figcaption>
+                <figcaption class="${cStyle.letter}">${this.othersPictures[i].comment}</figcaption>
               </figure>
             `
             break;
 
           case 'quote':
             form = yo`
-              <h3 class="article-content-quote article-item">
+              <h3 class="article-content-quote article-item ${cStyle.letter}">
                 <p>
                   <q>
                     ${this.othersPictures[i].text}
@@ -239,16 +308,14 @@ class Article {
       articleContent.appendChild(p)
     }
 
+    // main template of open article
     let template = yo`
-      <div class="article-content-wrapper ${backBlack}">
+      <div class="article-content-wrapper ${cStyle.back}">
         ${close}
-        <figure class="article-main-image">
-          <img src="${this.mainPicture.urlXX}">
-        </figure>
         <div class="article-content-info">
           ${articleContent}
         </div>
-        <footer class="article-content-footer">
+        <footer class="article-content-footer ${cStyle.letter}">
           ${this.endWord}
         </footer>
       </div>

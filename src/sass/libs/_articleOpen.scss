@@ -5,6 +5,12 @@
 
 .article-color-black {
   color: $myWhite !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.article-color-white {
+  color: $mainColor4 !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
 .article-white-black {
@@ -42,7 +48,7 @@
         margin-left: 3px;
         margin-top: 2px;
         transform: translate(-50%, -50%);
-        font-family: 'ratDb';
+        font-family: 'eleb';
         text-transform: uppercase;
         font-size: 0.65rem;
         letter-spacing: 0.1rem;
@@ -53,7 +59,7 @@
       .article-close-line {
         position: absolute;
         width: 35px;
-        height: 2px;
+        height: 3px;
         top: 50%;
         //left: 2px;
         transform: translate(0%, -50%);
@@ -69,10 +75,11 @@
       .line-two {
         transform: rotate(-45deg);
       }
-
+      
       &:hover {
         cursor: pointer;
         .line-one {
+          margin-left: 0px;
           top: 10%;
           transform: rotate(0deg);
         }
@@ -83,26 +90,6 @@
         &:after {
           opacity: 1;
         }
-      }
-    }
-    
-    figure {
-      width: 100%;
-      max-height: 600px;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-      }
-
-      figcaption {
-        font-family: 'saxi';
-        color: $mainColor;
-        text-align: right;
-        margin-right: 5px;
-        margin-top: 5px;
-        font-size: 1rem;
-        line-height: 1.3rem;
       }
     }
     
@@ -117,49 +104,65 @@
         width: 100%;
         text-align: left;
 
-        header {
+        .article-header {
           display: inline-block;
-          margin-top: 12px;
+          position: relative;
 
           .article-header-top {
-            .article-content-title {
-              display: inline-block;
-              font-size: calc(60px + 4 * (100vw - 320px) / 1180);
-              font-family: 'ratThin';
-              text-transform: uppercase;
-              line-height: calc(66px + 4 * (100vw - 320px) / 1180);
-              min-width: 360px;
-              width: 70%;
-              -webkit-hyphens: auto;
-              -moz-hyphens: auto;
-              -ms-hyphens: auto;
-              -webkit-hyphenate-character: '⌁';
-              hyphens: auto;
-              margin: 0px 5%;
-              -webkit-font-smoothing: antialiased !important;
+            position: relative;
 
-  
-            }
-            .article-content-type-container {
-              margin-left: 5%;
-              .article-content-type {
-                margin-left: 4px;
-                display: inline-block;
-                vertical-align: middle;
-                font-family: 'ratDemiB';
-                border-radius: 5%;
-                color: white;
-                text-transform: uppercase;
-                background-color: $secondaryColor;
-                padding: 6px 5px 4px 6px;
-                letter-spacing: 0.1rem;
-                font-size: 0.7rem;
+            .article-main-image {
+              width: 100%;
+              max-height: 600px;
+              overflow: hidden;
+        
+              img {
+                width: 100%;
               }
             }
+
+            .article-content-title-container {
+              position: absolute;
+              top: 0;
+
+              .article-content-title {
+                font-size: calc(36px + 4 * (100vw - 320px) / 1180);
+                font-family: 'eleb';
+                text-transform: uppercase;
+                line-height: calc(44px + 4 * (100vw - 320px) / 1180);
+                min-width: 360px;
+                width: 60%;
+                -webkit-hyphens: auto;
+                -moz-hyphens: auto;
+                -ms-hyphens: auto;
+                -webkit-hyphenate-character: '⌁';
+                hyphens: auto;
+                margin: 25px 5% 0px 5%;
+              }
+  
+              .article-content-type-container {
+                margin-left: 5%;
+
+                .article-content-type {
+                  margin-left: 3px;
+                  display: inline-block;
+                  vertical-align: middle;
+                  font-family: 'ratDemiB';
+                  border-radius: 5%;
+                  margin-top: 6px;
+                  color: white;
+                  text-transform: uppercase;
+                  background-color: $secondaryColor;
+                  padding: 6px 5px 4px 6px;
+                  letter-spacing: 0.1rem;
+                  font-size: 0.7rem;
+
+                }
+              }
+            }
+
           }
-
-
-          
+       
           .article-subtitle-container {            
             width: 100%;
             
@@ -180,15 +183,15 @@
                 .article-keywords {
                   background-color: $mainColor4;
                   display: inline-block;
-                  height: 15px;
+                  height: 17px;
                   border-radius: 1px;
                   
                   .article-one-keyword {
                     font-family: 'ratBook';
                     text-transform: uppercase;
-                    font-size: 0.6rem;
+                    font-size: 0.7rem;
                     vertical-align: top;
-                    padding: 0px 3px 2px 3px;
+                    padding: 0px 5px 4px 5px;
                     margin-top: -3px;
                     margin-right: 10px;
                     display: inline-block;
@@ -197,6 +200,7 @@
                     &:before {
                       content: '#';
                       display: inline-block;
+                      margin-right: -5px
                     }
                     
                     &:nth-last-of-type(1){
@@ -406,7 +410,7 @@
               width: 90%;
               column-count: 2;
               column-gap: 80px;
-              column-rule: 1px dotted rgba($mainColor4, 0.8);
+              column-rule: 1px dotted;
 
               -webkit-hyphenate-character: '⌁';
               // -webkit-font-smoothing: antialiased;
@@ -418,7 +422,7 @@
                 content: "↙︎";
                 width: 20px;
                 height: 2px;
-                color: $mainColor4;
+
               }
             }
 

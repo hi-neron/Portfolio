@@ -68,9 +68,9 @@ $width: 33.3%;
                   margin: 35px 35px 0 35px;
                   font-family: 'ratBook';
                   text-transform: uppercase;
-                  font-size: calc(26px + 4 * (100vw - 320px) / 1180);
-                  line-height: 2rem;
-
+                  font-size: calc(24px + 4 * (100vw - 320px) / 1180);
+                  line-height: 1.9rem;
+                  -webkit-font-smoothing: antialiased !important;
                   max-width: 99%;
                   color: $mainColor4;
                   -webkit-hyphens: auto;
