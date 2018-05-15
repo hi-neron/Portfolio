@@ -14,7 +14,20 @@ var screen = false
 // Different class for each one article
 
 function toColor (color) {
-  return `#${color.toString(16)}`
+  return color === 0? '#000000' : `#${color.toString(16)}`
+}
+
+function toColorRGB (color) {
+  color = color.slice(1)
+  console.log(color)
+  let r = parseInt(color.slice(0, 2), 16)
+  let g = parseInt(color.slice(2, 4), 16)
+  let b = parseInt(color.slice(4, 6), 16)
+  
+  let colorRGB = [r, g, b]
+  console.log(colorRGB)
+
+  return colorRGB
 }
 
 class NewStyle {
@@ -24,6 +37,8 @@ class NewStyle {
     // colors
     this.color = toColor(color[0])
     this.contrastColor = toColor(color[1])
+
+    this.colorRGB = toColorRGB(this.color)
 
     this.letter = this.letterColor()
     this.back = this.backColor()
@@ -220,7 +235,7 @@ class Article {
           </figure>
           <div className="article-content-title-container">
             <h1 class="article-content-title article-item ${cStyle.letter}">
-              <span class="${cStyle.back}">
+              <span style="background-color:rgba(${cStyle.colorRGB}, 0.85)" >
                 ${this.title}
               </span>
             </h1>
@@ -270,7 +285,9 @@ class Article {
           case 'image':
             form = yo`
               <figure class="article-content-picture article-item">
-                <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
+                <div className="article-content-picture-container">
+                  <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
+                </div>
                 <figcaption class="${cStyle.letter}">${this.othersPictures[i].comment}</figcaption>
               </figure>
             `
@@ -287,13 +304,13 @@ class Article {
 
           case 'quote':
             form = yo`
-              <h3 class="article-content-quote article-item ${cStyle.letter}">
+              <div class="article-content-quote article-item ${cStyle.letter}">
                 <p>
                   <q>
                     ${this.othersPictures[i].text}
                   </q>
                 </p>
-              </h3>
+              </div>
             `
             break;
 

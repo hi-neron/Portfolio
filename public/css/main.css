@@ -88,6 +88,10 @@ svg:focus {
   src: url("/fonts/EleMedium.otf"); }
 
 @font-face {
+  font-family: 'eleMI';
+  src: url("/fonts/eleMI.otf"); }
+
+@font-face {
   font-family: 'sax';
   src: url("/fonts/sax.otf"); }
 
@@ -675,8 +679,8 @@ footer {
     display: inline-block; }
     #article-content .article-content-wrapper .article-closer-container {
       position: fixed;
-      right: 45px;
-      top: 45px;
+      right: 55px;
+      top: 35px;
       color: #ff4d4d;
       z-index: 11;
       width: 30px;
@@ -705,6 +709,7 @@ footer {
         transform-origin: 50% 0%;
         transition: 0.1s; }
       #article-content .article-content-wrapper .article-closer-container .line-one {
+        margin-left: 2px;
         transform: rotate(45deg); }
       #article-content .article-content-wrapper .article-closer-container .line-two {
         transform: rotate(-45deg); }
@@ -743,10 +748,10 @@ footer {
               position: absolute;
               top: 0; }
               #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-title {
-                font-size: calc(36px + 4 * (100vw - 320px) / 1180);
+                font-size: calc(48px + 4 * (100vw - 320px) / 1180);
                 font-family: 'eleb';
                 text-transform: uppercase;
-                line-height: calc(44px + 4 * (100vw - 320px) / 1180);
+                line-height: calc(66px + 4 * (100vw - 320px) / 1180);
                 min-width: 360px;
                 width: 60%;
                 -webkit-hyphens: auto;
@@ -755,6 +760,8 @@ footer {
                 -webkit-hyphenate-character: '⌁';
                 hyphens: auto;
                 margin: 25px 5% 0px 5%; }
+                #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-title span {
+                  padding-right: 5px; }
               #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-type-container {
                 margin-left: 5%; }
                 #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-type-container .article-content-type {
@@ -817,8 +824,8 @@ footer {
             -moz-hyphens: auto;
             -ms-hyphens: auto;
             hyphens: auto;
-            width: 80%;
             -webkit-hyphenate-character: '⌁';
+            width: 80%;
             font-family: 'ratBook';
             line-height: calc(22px + 4 * (100vw - 320px) / 1180);
             font-size: calc(12px + 4 * (100vw - 320px) / 1180);
@@ -828,26 +835,48 @@ footer {
               padding-right: 0px;
               padding-left: 10px; }
         #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture {
-          width: 70%;
+          width: 100%;
           position: relative;
           min-width: 360px;
           margin-bottom: 50px; }
-          #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture img {
-            width: 100%; }
+          #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture .article-content-picture-container {
+            width: 65%;
+            display: inline-block; }
+            #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture .article-content-picture-container img {
+              width: 100%; }
+          #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture figcaption {
+            margin-left: 10px;
+            vertical-align: 30px;
+            font-family: 'ratBook';
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            -webkit-hyphenate-character: '⌁';
+            line-height: calc(18px + 4 * (100vw - 320px) / 1180);
+            font-size: calc(10px + 4 * (100vw - 320px) / 1180);
+            display: inline-block;
+            width: 30%; }
         #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture-xl {
           min-width: 360px;
-          position: relative; }
+          position: relative;
+          margin: 50px 0px; }
           #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture-xl img {
             width: 100%; }
         #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-quote {
-          width: 58%; }
+          width: 50%;
+          margin-left: 10%;
+          float: left; }
           #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-quote p {
-            float: right;
-            width: 60%;
-            font-family: 'saxi';
-            font-size: 1.2em;
-            line-height: 1.2em;
-            margin: 25px 20px 35px 0; }
+            line-height: calc(22px + 4 * (100vw - 320px) / 1180);
+            font-size: calc(12px + 4 * (100vw - 320px) / 1180);
+            line-height: 1.4rem;
+            margin: 0 30px 10px 0; }
+            #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-quote p q {
+              font-family: 'eleMI'; }
+          #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-quote:nth(odd) {
+            float: right !important;
+            margin-right: 10%; }
     #article-content .article-content-wrapper .article-content-footer {
       width: 100%;
       height: 250px;
@@ -867,21 +896,65 @@ footer {
   #article-content .article-content-wrapper .article-content-info {
     padding: 0;
     width: 100%; }
-    #article-content .article-content-wrapper .article-content-info .article-content-readable header .article-header-top .article-content-title {
-      margin: 0 5%;
-      font-size: calc(38px + 4 * (100vw - 320px) / 1180);
-      line-height: calc(42px + 4 * (100vw - 320px) / 1180);
-      font-family: 'ratLight'; }
-    #article-content .article-content-wrapper .article-content-info .article-content-readable header .article-subtitle-container {
+    #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container {
+      position: absolute;
+      top: 0; }
+      #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-title {
+        font-size: calc(32px + 4 * (100vw - 320px) / 1180);
+        font-family: 'eleb';
+        line-height: calc(44px + 4 * (100vw - 320px) / 1180);
+        margin: 15px 5% 0px 5%; }
+      #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-type-container {
+        margin-left: 5%; }
+        #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-type-container .article-content-type {
+          margin-left: 3px;
+          display: inline-block;
+          vertical-align: middle;
+          font-family: 'ratDemiB';
+          border-radius: 5%;
+          margin-top: 6px;
+          color: white;
+          text-transform: uppercase;
+          background-color: #ff4d4d;
+          padding: 6px 5px 4px 6px;
+          letter-spacing: 0.1rem;
+          font-size: 0.7rem; }
+    #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container {
       width: 100%; }
-      #article-content .article-content-wrapper .article-content-info .article-content-readable header .article-subtitle-container .article-subtitle {
+      #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle {
         font-family: 'ratDemiB';
         width: 90%;
         float: none;
         padding: 0;
         margin: 40px 5% 50px 5%;
-        font-size: calc(15px + 4 * (100vw - 320px) / 1180);
-        line-height: 1.55rem; }
+        font-size: calc(15px + 4 * (100vw - 320px) / 1180); }
+        #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container {
+          margin-bottom: 20px;
+          margin-top: 8px; }
+          #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container .article-keywords {
+            background-color: #1e1e1e;
+            display: inline-block;
+            height: 17px;
+            border-radius: 1px; }
+            #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container .article-keywords .article-one-keyword {
+              font-family: 'ratBook';
+              text-transform: uppercase;
+              font-size: 0.7rem;
+              vertical-align: top;
+              padding: 0px 5px 4px 5px;
+              margin-top: -3px;
+              margin-right: 10px;
+              display: inline-block;
+              color: #bbbbbb; }
+              #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container .article-keywords .article-one-keyword:before {
+                content: '#';
+                display: inline-block;
+                margin-right: -5px; }
+              #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container .article-keywords .article-one-keyword:nth-last-of-type(1) {
+                margin-right: 0px; }
+              #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container .article-keywords .article-one-keyword:hover {
+                font-family: 'ratDemiB';
+                cursor: pointer; }
     #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-paragraph {
       min-width: 360px; }
       #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-paragraph p {
