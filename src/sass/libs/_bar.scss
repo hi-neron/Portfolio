@@ -2,6 +2,7 @@
   opacity: 1 !important;
 }
 
+
 .alert {
   color: $secondaryColor !important;
 }
@@ -29,7 +30,7 @@
   width: 30px;
   position: fixed;
   top: 0px;
-  transform: translateX(-363px);
+  transform: translateX(-360px);
   z-index: 10;
 
   .bar-fix {
@@ -44,7 +45,7 @@
 
     #bar-trigger {
       color: $trigger-color;
-      font-family: 'work500';
+      font-family: 'ratDemiB';
       width: 30px;
       height: 60px;
       margin-left: 6px;
@@ -53,6 +54,7 @@
       opacity: 0;
       transition: all 0.25s ease-in;
       position: relative;
+      text-transform: uppercase;
       
       &:hover {
         cursor: pointer;
@@ -70,12 +72,12 @@
       }
       
       .tag-info {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         width: 380px;
         height: 26px;
         text-align: right;
         transform: rotateZ(-88.5deg) translate(-190px, -174px);
-        letter-spacing: 0.08rem;
+        letter-spacing: 0.08em;
 
         .message {
           font-weight: 300;
@@ -84,8 +86,8 @@
         .tag {
           // text-decoration: underline;
           // text-decoration-color: $secondaryColor;
-          font-family: 'plaHeavy';
-          text-transform: lowercase;
+          font-family: 'ratDBi';
+          text-transform: uppercase;
         }
       }
     }

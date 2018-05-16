@@ -15,8 +15,7 @@
 @import "libs/articleOpen";
 
 %back1 {
-  background: #e6e6e6e6;
-  background: url('/img/noise.png'), rgba(#e6e6e6, 0.97);
+  background: url('/img/noise.png'), linear-gradient(to bottom, #a8a8a8 35%,#ACB7B6 55%,#a8a8a8 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 body {

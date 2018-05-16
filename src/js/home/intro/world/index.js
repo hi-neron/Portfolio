@@ -41,10 +41,10 @@ let ambientLightS = 0x505050
 let directionalLightS = 0xd2d2d2
 
 // me & name color
-let meColor = 0x666666
+let meColor = 0x2e2e2e
 
 // sky Color
-let upperColor = 0xe3e3e3
+let upperColor = 0xa8a8a8
 
 // paneau
 let devDeColor = 0x5af2d9

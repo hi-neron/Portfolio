@@ -87172,10 +87172,10 @@ var ambientLightS = 0x505050;
 var directionalLightS = 0xd2d2d2;
 
 // me & name color
-var meColor = 0x666666;
+var meColor = 0x2e2e2e;
 
 // sky Color
-var upperColor = 0xe3e3e3;
+var upperColor = 0xa8a8a8;
 
 // paneau
 var devDeColor = 0x5af2d9;
