@@ -5,9 +5,17 @@ const page = require('page')
 // contents
 const intro = require('./intro')
 const content = require('./content')
-// const phraseC = require('./phrase')
+
+// For grid
 const Masonry = require('masonry-layout')
+
+// For load images
+const ImagesLoaded = require('imagesloaded')
+
+// initilize elements
 const create = require('./utils/create')
+
+// utility to create empty elements
 const empty = require('empty-element')
 
 const Lazy = require('vanilla-lazyload')
@@ -17,7 +25,7 @@ let bioTags = ['DESIGNER', 'DEV', 'SEA LOVER']
 
 // bar
 const barCreator = require('./bar')
-let app, mainContent, introContainer, phrase, msnry
+let app, mainContent, introContainer, phrase, msnry, imgLoaded
 
 // loader
 const loader = require('./loader')
@@ -25,6 +33,7 @@ const loader = require('./loader')
 page('/:tag?', create, loader, (ctx, next) => {
   // vars
   app = ctx.app
+
   let introContainer = ctx.introContainer
   let phrase = ctx.phrase
   let footer = ctx.footer
@@ -32,32 +41,21 @@ page('/:tag?', create, loader, (ctx, next) => {
   let tag = ctx.params.tag
 
   mainContent = ctx.mainContent
-  drawArticles(tag)
   
   // get intro
   document.onload = intro.init(introContainer, ctx)
+  drawArticles(tag, ctx)
   
   // Bar
   barCreator((t) => {
     bar.appendChild(t)
   })
   
-  // Bio
-  // phraseC((template) => {
-  //   phrase.appendChild(template)  
-  // })
-
   content.getFooter((e, r) => {
     if (e) return console.log(new Error({message: 'An Error has ocurred'}))
     console.log(r)
     footer.appendChild(r)
   })
-
-  document.body.appendChild(app)
-  setTimeout(() => {
-    msnry.layout()
-  }, 500); 
-  next()
 
   window.addEventListener('articleScreen', (e) => {
     if (app.classList.contains('fixScroll')) {
@@ -67,11 +65,31 @@ page('/:tag?', create, loader, (ctx, next) => {
     } else {
       app.classList.add('fixScroll')
     } 
-
   })
+
+  next()
 })
 
-function drawArticles (tag) {
+function contentDraw (w, r, cb) {
+  empty(w).appendChild(r.main)
+  empty(mainContent).appendChild(w)
+
+  msnry = new Masonry(r.main, {
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+    transitionDuration: 0,
+    originTop: false
+  })
+
+  let images = document.querySelectorAll('.images-to-load')
+  imgLoaded = ImagesLoaded(images)
+
+  cb()
+}
+
+// dibula los articulos 
+function drawArticles (tag, ctx) {
   tag = tag ? tag.toLowerCase(): ''
   let overW = document.createElement('div')
   overW.setAttribute('class', 'main-over-wrapper')
@@ -82,30 +100,20 @@ function drawArticles (tag) {
 
   content.getMainContent(tag, (e, r) => {
     if (e) return new Error({message: 'An Error has ocurred'})
-    let main = r.main
 
-    empty(overW).appendChild(main)
-    empty(mainContent).appendChild(overW)
+    contentDraw(overW, r, () => {
+      let main = r.main
+      let initialize = r.resizeEvents
 
-    msnry = new Masonry(main, {
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer',
-      percentPosition: true,
-      initLayout: false,
-      transitionDuration: 0.5,
-      originTop: false
+      imgLoaded.on('done', function (i) {
+        setTimeout(() => {
+          msnry.layout()
+          initialize()
+          ctx.mainLoader.vanish()
+        }, 400);
+      })
     })
-
-    msnry.layout()
     
-    new Lazy({
-      container: app,
-      threshold: 1000,
-      callback_load: (e) => {
-        console.log(e)
-        msnry.layout()
-      }
-    })
   })
 }
 

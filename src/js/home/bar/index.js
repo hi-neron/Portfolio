@@ -6,7 +6,7 @@ let opened = false
 let limit = false
 let menuBar, msnry
 // tags
-const MAINK = ['Design', 'Dev', 'Animation', 'Illustration', 'Resilience']
+const MAINK = ['Diseño', 'Dev', 'Animación', 'Mar', 'Ilustración', 'Resiliencia', 'Café']
 const SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front end']
 
 // tag info template
@@ -51,11 +51,9 @@ function createTemplate() {
   // add main items
   for (let i = 0; i < MAINK.length; i++) {
     linkTemplate = yo`
-      <li class="bar-main-item item-bar-link">
-        <span class="bar-link" data-label="${MAINK[i]}">
-          ${MAINK[i]}
-        </span>
-      </li>
+    <span class="bar-link" data-label="${MAINK[i]}">
+      ${MAINK[i]}
+    </span>
     `
     mainLinks.appendChild(linkTemplate)
   }
@@ -63,18 +61,15 @@ function createTemplate() {
   // add main items
   for (let i = 0; i < SECONDK.length; i++) {
     linkTemplate = yo`
-      <li class="bar-secondary-item item-bar-link">
-        <span class="bar-link" data-label="${SECONDK[i]}">
-          ${SECONDK[i]}
-        </span>
-      </li>
+      <span class="bar-link" data-label="${SECONDK[i]}">
+        ${SECONDK[i]}
+      </span>
     `
     secondaryLinks.appendChild(linkTemplate)
   }
 
   menuBar = yo`
     <div id="bar-menu">
-      <div class="labels">Main topics</div>
       ${mainLinks}
       ${secondaryLinks}
       ${bottom}

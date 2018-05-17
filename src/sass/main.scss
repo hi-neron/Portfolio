@@ -14,15 +14,17 @@
 @import "libs/loader";
 @import "libs/articleOpen";
 
+
 %back1 {
-  background: url('/img/noise.png'), linear-gradient(to bottom, #a8a8a8 35%,#ACB7B6 55%,#a8a8a8 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url('/img/noise1.png'), linear-gradient(to bottom, #aba9a9 35%,#ACB7B6 55%,#a8a8a8 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 body {
-  font-family: 'Fira Sans';
+  font-family: 'ratBook';
   font-weight: 400;
   color: rgb(9, 9, 17);
   overflow-x: hidden;
+  background-color: $secondaryColor;
 }
 
 a {

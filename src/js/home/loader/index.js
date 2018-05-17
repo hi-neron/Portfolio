@@ -100,97 +100,6 @@ class Loader {
     document.body.appendChild(this.container)
   }
 
-  // animate () {
-  //   let waves = '#ffe6d2'
-    
-  //   this.line1 = new mojs.Shape({
-  //     parent: this.loaderIcon,
-  //     shape: 'line',
-  //     stroke: waves,
-  //     strokeWidth: 2.5,
-  //     strokeDasharray: 5,
-  //     strokeDashoffset: 3,
-  //     strokeLinecap: 'round',
-  //     y: 9,
-  //     width: 40,
-  //     origin: '50%, 50%',
-  //     x: {'3%': '-3%'},
-  //     isYoyo: true,
-  //     repeat: 999,
-  //     duration: 1000,
-  //   })
-    
-  //   this.line2 = new mojs.Shape({
-  //     strokeDasharray: 4,
-  //     parent: this.loaderIcon,
-  //     shape: 'line',
-  //     stroke: waves,
-  //     strokeWidth: 2.5,
-  //     strokeLinecap: 'round',
-  //     y: 12,
-  //     delay: 50,
-  //     width: 34,
-  //     origin: '50%, 50%',
-  //     x: {'4%': '-4%'},
-  //     isYoyo: true,
-  //     repeat: 999,
-  //     duration: 1000,
-  //   })
-    
-  //   this.line3 = new mojs.Shape({
-  //     strokeDasharray: 4,
-  //     parent: this.loaderIcon,
-  //     shape: 'line',
-  //     stroke: waves,
-  //     strokeWidth: 2.5,
-  //     strokeLinecap: 'round',
-  //     y: 15,
-  //     delay: 100,
-  //     width: 26,
-  //     origin: '50%, 50%',
-  //     x: {'7%': '-7%'},
-  //     isYoyo: true,
-  //     repeat: 999,
-  //     duration: 1000,
-  //   })
-    
-  //   this.line4 = new mojs.Shape({
-  //     strokeDasharray: 4,
-  //     parent: this.loaderIcon,
-  //     shape: 'line',
-  //     stroke: waves,
-  //     strokeWidth: 2.5,
-  //     strokeLinecap: 'round',
-  //     y: 18,
-  //     delay: 200,
-  //     width: 18,
-  //     origin: '50%, 50%',
-  //     x: {'10%': '-10%'},
-  //     isYoyo: true,
-  //     repeat: 999,
-  //     duration: 1000,
-  //   })
-
-  //   this.line5 = new mojs.Shape({
-  //     parent: this.loaderIcon,
-  //     shape: 'line',
-  //     stroke: waves,
-  //     strokeWidth: 2.5,
-  //     strokeLinecap: 'round',
-  //     y: 20,
-  //     delay: 300,
-  //     width: 4,
-  //     origin: '50%, 50%',
-  //     x: {'25%': '-25%'},
-  //     isYoyo: true,
-  //     repeat: 999,
-  //     duration: 1000,
-  //   })
- 
-  //   const timeline = new mojs.Timeline 
-  //   timeline.add(this.line1, this.line2, this.line3, this.line4, this.line5).play()
-  // }
-
   destroy () {
     this.ctx.app.classList.remove('no-overflow')
   }
@@ -287,6 +196,8 @@ class Loader {
 
 module.exports = function (ctx, next) {
   let loader = new Loader(ctx)
+
+  // el loader lo maneja el contexto
   ctx.mainLoader = loader
   next()
 }

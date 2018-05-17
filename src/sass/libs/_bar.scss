@@ -4,7 +4,7 @@
 
 
 .alert {
-  color: $secondaryColor !important;
+  color: $secondaryColor !important;  
 }
 
 .rotate-icon {
@@ -15,11 +15,13 @@
 }
 
 #main-bar {
-  // vars
-  $background-bar-color: rgba($thirdColor3, 1);
-  $trigger-color: rgba($mainColor4, 1);
-  $items-colors: $mainColor;
+  // items & background of bar content
+  $background-bar-color: #adfff1;
+  $items-colors: $secondaryColor;
   $items-colors-over: $secondaryColor;
+  
+  // trigger
+  $trigger-color: $mainColor;
   // ---->
 
   -webkit-transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
@@ -72,12 +74,19 @@
       }
       
       .tag-info {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         width: 380px;
         height: 26px;
         text-align: right;
         transform: rotateZ(-88.5deg) translate(-190px, -174px);
         letter-spacing: 0.08em;
+        -webkit-font-smoothing: antialiased;
+
+        span {
+          background-color: rgba($body, 1);
+          padding: 1px 0px 0px 1px;
+          display: inline-block;
+        }
 
         .message {
           font-weight: 300;
@@ -95,17 +104,10 @@
     #bar-menu {
       width: 360px;
       display: inline-block;
-      background-color: $background-bar-color;
+      background: $background-bar-color;
+      box-shadow:  5px 0px 0px rgba($mainColor, 0.3);
       height: 100%;
-      padding-top: 80px;
-
-      .labels {    
-        padding-left: 20px;    
-        font-family: 'josefin sans';
-        font-size: 1rem;
-        font-weight: 300;
-        color: rgba($secondaryColor, 0.9);
-      }
+      padding-top: 0px;
 
       .item-bar-link {
         &:hover {
@@ -114,58 +116,57 @@
       }
 
       .main-bar-list {
-        margin-bottom: 35px;
-        padding: 20px;
+        padding: 10px 10px 0px 10px;
         
-        .bar-main-item {
-          margin-bottom: .7rem;
+        .bar-link {
+          text-transform: uppercase;
+          font-family: 'eleb';
+          -webkit-font-smoothing: antialiased;
+          text-decoration: none;
+          font-size: 3.2rem;
+          color: $items-colors;
+          line-height: 3.4rem;
+
+          -webkit-hyphens: auto;
+          -moz-hyphens: auto;
+          -ms-hyphens: auto;
+          hyphens: auto;
+          -webkit-hyphenate-character: '⌁';
           
-          span {
-            // Averia+Sans+Libre Averia+Serif+Libre Old+Standard+TT
-            text-transform: uppercase;
-            font-family: 'ratthin';
-            -webkit-font-smoothing: antialiased;
-            text-decoration: none;
-            font-size: 2rem;
-            color: $items-colors;
-            letter-spacing: 0.2rem;
-            
-            &:hover {
-              color: $thirdColor;
-            }
+          &:hover {
+            color: $mainColor;
+            cursor: pointer;
           }
         }
       }
 
       .secondary-bar-list {
-        padding-left: 20px;
-        margin-bottom: 110px;
-        padding-right: 100px;
+        padding: 6px 10px 0 10px;
 
-        li {
-          display: inline-block;  
+        .bar-link {
+          -webkit-hyphens: auto;
+          -moz-hyphens: auto;
+          -ms-hyphens: auto;
+          hyphens: auto;
+          -webkit-hyphenate-character: '⌁';
+
           color: $items-colors;       
-          font-family: 'work500';
+          font-family: 'ratDemiB';
           -webkit-font-smoothing: antialiased;              
           text-decoration: none;
-          line-height: 1.6rem;
+          display: inline-block;
+          
+          text-transform: uppercase;
           margin-right: 9px;
-          font-size: 1em;
-
-          &:after {
-            content: ',';
-            margin-left: -3px; 
-          }
-
-          &:last-child {
-            &:after {
-              content: '.';
-            }
-          }
+          font-size: 1.2em;
+          border: 2px solid transparent;
+          margin-bottom: 6px;
+          border-bottom: 2px solid $secondaryColor;
+          padding: 3px 2px 0px 2px; 
 
           &:hover {
             cursor: pointer;
-            color: $thirdColor2;
+            border: 2px solid $secondaryColor;
           }
         }
       }

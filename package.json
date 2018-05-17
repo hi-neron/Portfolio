@@ -13,6 +13,7 @@
     "empty": "^0.10.1",
     "empty-element": "^1.0.0",
     "g": "^2.0.1",
+    "imagesloaded": "^4.1.4",
     "lodash": "^4.17.5",
     "masonry-layout": "^4.2.1",
     "mo-js": "^0.288.2",

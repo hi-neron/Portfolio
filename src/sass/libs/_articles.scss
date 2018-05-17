@@ -21,7 +21,7 @@ $width: 33.3%;
       }
   
       .grid-item{
-        box-shadow: 0 -5px 8px rgba(#000, 0.03), 0 -2px 4px rgba($mainColor4, 0.03), 0 -1px 0 rgba($mainColor4, 0.03);
+        box-shadow: 0 -20px 0px rgba(#000, 0.02), 0 -15px 0 rgba($mainColor, 0.02), 0 -10px 0 rgba($mainColor, 0.02), 0 -5px 0 rgba($mainColor, 0.02), 0 -1px 0 rgba($mainColor, 0.1);
         width: $width;
         overflow: hidden;
         // transition: all 0.5s;
@@ -38,14 +38,8 @@ $width: 33.3%;
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(187,187,187,1);
-            background: -moz-linear-gradient(top, rgba(187,187,187,1) 0%, rgba(187,187,187,1) 38%, rgba(187,187,187,0.94) 59%, rgba(187,187,187,0.9) 73%, rgba(187,187,187,0.76) 100%);
-            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(187,187,187,1)), color-stop(38%, rgba(187,187,187,1)), color-stop(59%, rgba(187,187,187,0.94)), color-stop(73%, rgba(187,187,187,0.9)), color-stop(100%, rgba(187,187,187,0.76)));
-            background: -webkit-linear-gradient(top, rgba(187,187,187,1) 0%, rgba(187,187,187,1) 38%, rgba(187,187,187,0.94) 59%, rgba(187,187,187,0.9) 73%, rgba(187,187,187,0.76) 100%);
-            background: -o-linear-gradient(top, rgba(187,187,187,1) 0%, rgba(187,187,187,1) 38%, rgba(187,187,187,0.94) 59%, rgba(187,187,187,0.9) 73%, rgba(187,187,187,0.76) 100%);
-            background: -ms-linear-gradient(top, rgba(187,187,187,1) 0%, rgba(187,187,187,1) 38%, rgba(187,187,187,0.94) 59%, rgba(187,187,187,0.9) 73%, rgba(187,187,187,0.76) 100%);
-            background: linear-gradient(to bottom, rgba(187,187,187,1) 0%, rgba(187,187,187,1) 38%, rgba(187,187,187,0.94) 59%, rgba(187,187,187,0.9) 73%, rgba(187,187,187,0.76) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbbbbb', endColorstr='#bbbbbb', GradientType=0 );
+            background: rgba($secondaryColor,1);
+            background: url('/img/noise.png'), linear-gradient(to bottom, rgba($secondaryColor,1) 0%, rgba($secondaryColor,1) 50%, rgba($secondaryColor,0.96) 69%, rgba($secondaryColor,0.94) 73%, rgba($secondaryColor,0.92) 100%);
             opacity: 0;
             transition: 0.05s all ease-out;
             
@@ -63,71 +57,99 @@ $width: 33.3%;
               .over-article-top {
                 overflow: hidden;
                 width: 100%;
-
+                
                 .over-article-title {
-                  margin: 35px 35px 0 35px;
-                  font-family: 'ratBook';
+                  display: inline-block;
+                  margin: 15px 15px 0px 15px;
+                  padding-bottom: -2px;
+                  font-family: 'eleb';
                   text-transform: uppercase;
-                  font-size: calc(24px + 4 * (100vw - 320px) / 1180);
-                  line-height: 1.9rem;
+                  font-size: 2.5em;
+                  line-height: 1.1em;
                   -webkit-font-smoothing: antialiased !important;
-                  max-width: 99%;
+                  width: 70%;
                   color: $mainColor4;
+                  transform: rotate(0.5deg);
+
                   -webkit-hyphens: auto;
                   -moz-hyphens: auto;
                   -ms-hyphens: auto;
                   hyphens: auto;
                   -webkit-hyphenate-character: '⌁';
 
-
-                  .over-article-type {
-                    color: $myWhite;
-                    font-size: 0.6rem;
+                }
+                
+                .over-article-type {
+                  color: $secondaryColor;
+                  font-size: 0.95rem;
+                  font-family: 'ratDemiB';
+                  margin: 17px 15px 8px 17px;
+                  
+                  span {
                     
-                    span {
-                      vertical-align: top;
-                      -webkit-hyphens: none;
-                      -moz-hyphens: none;
-                      -ms-hyphens: none;
-                      hyphens: none;
-                      background-color: $secondaryColor;
-                      padding: 3px 5px 2px 3px;
+                    // box-shadow: 0px -1px 1px rgba(white, 0.7);
+                    text-transform: uppercase;
+                    vertical-align: top;
+                    -webkit-hyphens: none;
+                    -moz-hyphens: none;
+                    -ms-hyphens: none;
+                    hyphens: none;
+                    letter-spacing: 0.03em;
+                    background-color: $mainColor;
+                    padding: 4px 9px 3px 9px;
+                    position: relative;
+                    
+                    &:before {
+                      content: "type:";
+                      font-family: 'ratDemiB';
+                      text-transform: none;
+                      font-size: 0.6em;
+                      top: -11px;
+                      left: 5px;
+                      position: absolute;
+                      color: $mainColor;
                     }
-                  }
 
+                  }
                 }
               }
-
               .over-article-bottom {
                 width: 100%;
                 height: 240px;
                 margin-top: 5px;
                 color: $mainColor2;
-                margin: 0px 35px 0px 35px;
-
+                margin: 2px 15px 0px 15px;
+                
                 .over-article-keywords {
                   text-align: left;
-                  margin-left: 2px;
-
+                  margin-left: -1px;
+                  
                   .over-article-keyword {
                     -webkit-font-smoothing: antialiased !important;
-                    font-family: 'ratBook';
+                    font-family: 'ratDemiB';
                     text-transform: capitalize;
-                    line-height: 1.3em;
-                    font-size: .8rem;    
-                    margin-right: 6px;
+                    font-size: 1em;    
+                    margin-right: -10px;
                     text-decoration: underline;
                     color: rgba($mainColor4, 1);
-                    text-decoration-color: transparent; 
+                    text-decoration-color: transparent;
+                    padding: 4px 3px 0px 2px;
                     
                     .over-article-word {
+                      line-height: 1.5em;
                       color: rgba($mainColor4, 1);
-                      transition: .1s all ease-out;
                       text-transform: uppercase;
+                      transition: .1s all ease-out;
+                      border: 2px solid transparent;
+                      border-bottom: 2px solid $mainColor;
+                      padding: 4px 2px 0px 2px;
                     }
 
                     &:hover {
-                      font-family: 'ratDemiB';
+                      .over-article-word {
+                        border: 2px solid $thirdColor;
+                        color: $thirdColor
+                      }
                     }
                     
 

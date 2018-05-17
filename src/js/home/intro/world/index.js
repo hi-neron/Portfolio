@@ -221,13 +221,6 @@ function world (debbug, assets, appContainer, ctx) {
       addControls(control)
     }
 
-    window.addEventListener( 'resize', onWindowResize, false )
-
-    // remove loader
-    setTimeout(() => {
-      ctx.mainLoader.vanish()
-    }, 3000)
-
     render ()
     helloMove.play()
 
@@ -446,4 +439,7 @@ function render (ts) {
   animation = requestAnimationFrame(render)
 }
 
-module.exports = world
+module.exports = {
+  world,
+  onWindowResize
+}

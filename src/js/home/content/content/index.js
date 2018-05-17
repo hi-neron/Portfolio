@@ -4,15 +4,32 @@ const yo = require('yo-yo')
 const _ = require('lodash')
 const empty = require('empty-element')
 
+// resize event for intro
+const introR = require('../../intro/world').onWindowResize
+
 // ventana de contenidos
 let contentContainer = document.createElement('div')
 contentContainer.setAttribute('id', 'article-content')
 document.body.appendChild(contentContainer)
+
 var screen = false
 
+let articlesList = []
+
+window.addEventListener( 'resize', (e) => {
+  introR()
+  resizeEvents()
+})
+
+function resizeEvents () {
+  articlesList.map(articleMap)
+}
+
+function articleMap (article) {
+  article.setFontSize()
+}
 
 // Different class for each one article
-
 function toColor (color) {
   return color === 0? '#000000' : `#${color.toString(16)}`
 }
@@ -122,6 +139,62 @@ class Article {
     this.templateViewGenerator()
   }
 
+  // Set new font size according to parent width
+  setFontSize () {
+    // reset
+    this.titleContainer.style.width = null
+    this.titleContainer.style.fontSize = null
+    
+    // let master size
+    let masterSize = window.innerWidth
+    if (masterSize > 582 && masterSize < 1090 && this.titleContainer.offsetWidth > masterSize / 2 + 30) {
+      this.titleContainer.style.fontSize = '4.3rem'
+    }
+
+    
+    // parents sizes
+    let parentWidth = this.smallView.offsetWidth
+    let parentHeight = this.smallView.offsetHeight
+
+    // title size
+    let titleWidth =  this.titleContainer.offsetWidth
+    let titleHeight =  this.titleContainer.offsetHeight
+
+    // font size
+    let fontSize = parseInt(window.getComputedStyle(this.titleContainer).fontSize, 10)
+    let idealHeight = parentHeight * 0.55
+
+
+
+    console.log(`Title: ${this.title} Parent: W: ${parentWidth}, H:${parentHeight} / Title: W: ${titleWidth}, H: ${titleHeight} / fontsize: ${fontSize}`)
+    console.log(`masterSize: ${masterSize}`)
+
+    
+    // el numero ideal es maximo 70% de la altura
+    while (titleHeight > idealHeight) {
+      // si se pasa aumentar el ancho
+      if (titleWidth < parentWidth - 20) {
+        titleWidth = titleWidth + 2
+        this.titleContainer.style.width = `${titleWidth}px`
+      } else if ( fontSize > 22 ) {
+        fontSize = fontSize - 1
+        this.titleContainer.style.fontSize = `${fontSize}px`
+      } else {
+        idealHeight = idealHeight + 2
+        break
+      }
+
+
+      // si el ancho no alcanza reducir el tamaño de la fuente
+      // evaular si paso
+      console.log(idealHeight, titleHeight)
+      titleHeight =  this.titleContainer.offsetHeight
+    }
+
+
+  }
+
+  // articles grid container generator
   templateViewGenerator () {
     let keywords = yo`
       <div class="over-article-keywords">
@@ -137,17 +210,25 @@ class Article {
       `
       keywords.appendChild(template)
     }
+    
+    this.typeContainer = yo`
+    <div class="over-article-type">
+      <span>${this.type}</span>
+    </div>
+    `
 
-    let over = yo`
+    this.titleContainer = yo`
+    <div class="over-article-title">
+      ${this.title}
+      </div>
+      `
+      
+      let over = yo`
       <div class="over-article-container">
         <div class="over-article-wrapper">
           <div class="over-article-top">
-            <div class="over-article-title">
-              ${this.title}
-              <span class="over-article-type">
-                <span>${this.type}</span>
-              </span>
-            </div>
+            ${this.titleContainer}
+            ${this.typeContainer}
           </div>
           <div class="over-article-bottom">
             ${keywords}
@@ -162,7 +243,7 @@ class Article {
       <article class="grid-item ${important}" title="${this.title}">
         <div class="article-content">
           ${over}
-          <img data-src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
+          <img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
         </div>
       </article>
     `
@@ -182,8 +263,6 @@ class Article {
     this.smallView = template
   }
 
-  templateContentGenerator () {}
-
   screenActivate () {
     if (!screen) {
       this.createContent((template) => {
@@ -197,6 +276,7 @@ class Article {
     }
   }
 
+  // Article view
   createContent(cb) {
     // crea la plantilla del item abierto
 
@@ -367,6 +447,7 @@ function screenSplashClose() {
 
 function createTemplate (items, cb) {
   let article
+  articlesList = []
 
   let main = yo`
     <div class="main-content-wrapper">
@@ -377,10 +458,12 @@ function createTemplate (items, cb) {
   for (let i = 0; i < items.length; i++) {
     article = new Article(items[i])
     main.appendChild(article.smallView)
+    articlesList.push(article)
   }
 
   let response = {
-    main
+    main,
+    resizeEvents
   }
 
   cb(null, response)

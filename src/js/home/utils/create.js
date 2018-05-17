@@ -1,5 +1,3 @@
-
-
 function create(ctx, next) {
   let app = document.createElement('div')
   app.setAttribute('id', 'app')
@@ -31,6 +29,7 @@ function create(ctx, next) {
   app.appendChild(footer)
   app.classList.add('no-overflow')
   document.body.appendChild(bar)
+  document.body.appendChild(app)
   next()
 }
 

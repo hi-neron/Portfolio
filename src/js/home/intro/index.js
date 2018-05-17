@@ -1,12 +1,12 @@
 'use strict'
-const world = require('./world')
+const intro = require('./world').world
 let scene, renderer, stats, camera, control
 
 let getAssets = require('./loader')
 
 let init = function (container, ctx) {
   getAssets((e, assets) => {
-    world(false, assets, container, ctx)
+    intro(false, assets, container, ctx)
   })
 }
 

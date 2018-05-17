@@ -12,9 +12,12 @@ function getFooter (cb) {
 }
 
 function getMainContent (tag, cb) {
+  // obtiene los items
   getItems(tag, (e, items) => {
+    // los dibuja en un remplate
     drawMainTemplate(items, (e, r) => {
       if (e) return new Error({message: 'Error creating template of main contents'})
+      // entrega el template, y una funcion para inicializar los tamaños
       cb(null, r)
     })
   })
