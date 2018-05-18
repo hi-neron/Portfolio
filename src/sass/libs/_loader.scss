@@ -1,7 +1,32 @@
 
+@keyframes balloonShadow {
+  0% {
+    transform: translate(-3px, 1px) scale(1.3);
+    opacity: 0.5;
+  }
+  
+  40% {
+    transform: translate(-3px, 1px) scale(1);
+    opacity: 0.5;
+  }
+  
+  100% {
+    transform: translate(7px, -9px) scale(.6);
+    opacity: 0.3;
+  }
+}
+
 @keyframes balloon {
-  to {
-    transform: rotate(8deg)
+  0% {
+    transform: scale(1.3, 0.55);
+  }
+
+  40% {
+    transform: scale(1, 1.01);
+  }
+
+  100% {
+    transform: scale(0.99, 0.99) translateY(-15px);
   }
 }
 
@@ -42,13 +67,14 @@
 
       .loader-hi {
         position: absolute;
-        right: 23px;
-        top: -3px;
+        right: 38px;
+        top: -5px;
         width: 20px;
         line-height: 1.1rem;
         font-family: 'eleb';
         font-size: 1.1rem;
         color: $mainColor;
+        z-index: -1;
       }
       svg {
         #scene {
@@ -57,8 +83,13 @@
           #umbrella {}
           #balloon {
             #body-2 {
-              transform-origin: 78px 38px;
-              animation: balloon .5s ease-in-out infinite alternate;
+              transform-origin: 78px 42px;
+              animation: balloon .5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite alternate;
+            }
+            
+            #shadow-2 {
+              transform-origin: 82px 38px;
+              animation: balloonShadow .5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite alternate;
             }
           }
         }

@@ -109,8 +109,8 @@ function drawArticles (tag, ctx) {
         setTimeout(() => {
           msnry.layout()
           initialize()
-          // ctx.mainLoader.vanish()
-        }, 400);
+          ctx.mainLoader.vanish()
+        }, 1000);
       })
     })
     

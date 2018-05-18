@@ -2,7 +2,7 @@ const yo = require('yo-yo')
 const mojs = require('mo-js')
 
 let timon = yo`
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 90.56 46.4">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100.56 46.4">
   <defs>
     <style>
       .cls-1, .cls-18, .cls-6 {
@@ -162,8 +162,9 @@ let timon = yo`
       </g>
     </g>
     <g id="balloon">
-      <ellipse id="shadow-2" data-name="shadow" class="cls-6" cx="82.42" cy="38.32" rx="8.21" ry="2.44" transform="translate(-4.62 12.12) rotate(-8.19)"/>
+      <ellipse id="shadow-2" data-name="shadow" class="cls-6" cx="82.42" cy="38.32" rx="8.21" ry="2.44"/>
       <g id="body-2" data-name="body">
+        <circle class="cls-16" cx="78.42" cy="32.29" r="7.84"/>
         <path class="cls-16" d="M86.24,31.49a8,8,0,0,1,0,1.6,4.55,4.55,0,0,1-.1.66,4.09,4.09,0,0,1-.17.69,5.25,5.25,0,0,1-.22.67c-.08.22-.18.43-.28.64s-.17.34-.27.5a1.35,1.35,0,0,1-.14.22c-.09.15-.2.3-.3.45l0,0a6.12,6.12,0,0,1-.4.49l0,0a17.15,17.15,0,0,1,0-10.37c.15.17.3.35.44.54s.25.35.37.54l0,.07c.11.18.21.38.31.57s.2.42.28.64a5.25,5.25,0,0,1,.22.67,4.09,4.09,0,0,1,.17.69A4.55,4.55,0,0,1,86.24,31.49Z"/>
         <path class="cls-17" d="M82.79,25.77a6.71,6.71,0,0,1,1.52,1.34,17.15,17.15,0,0,0,0,10.37,7.55,7.55,0,0,1-1.53,1.34A19,19,0,0,1,82.79,25.77Z"/>
         <path class="cls-16" d="M82.79,25.76h0a19,19,0,0,0,0,13.05l-.08,0a7.47,7.47,0,0,1-1.18.64l-.69.26-.71.19a22,22,0,0,1,0-15.34l.71.19A8.46,8.46,0,0,1,82.79,25.76Z"/>
@@ -222,77 +223,10 @@ class Loader {
     let initialColor = '#2d2d2d'
     let finalColor = '#cdf6f1'
 
-    const container = new mojs.Html({
-      el: this.screen,
-      duration: 600,
-      scaleX: {
-        1:0.020, 
-        easing: 'elastic.out',
-        delay: 200,
-        duration: 300
-      },
-      scaleY: {
-        1:0.020, 
-        duration: 300,
-        delay: 200,
-        easing: 'elastic.out'
-      },
-      borderRadius: {0: '50%'},
-      angleX: {
-        0: 90, 
-        delay: 1000, 
-        duration: 400,
-        easing: 'elastic.out'
-      },
-    })
-    
-    const loaderIcon = new mojs.Html({
-      el: this.loaderIcon,
-      duration: 300,
-      delay: 200,
-      easing: 'ease.out',
-    })
-
-    const burst = new mojs.Burst({
-      parent: this.container,
-      count: 8,
-      radius: {40: 120},
-      children: {
-        delay: 250,
-        shape: 'line',
-        counter: 6,
-        stroke: finalColor,
-        duration: 1400,
-        easing: 'ease.out'
-      }
-    })
-
-    const burst2 = new mojs.Burst({
-      parent: this.container,
-      count: 8,
-      radius: {20: 80},
-      children: {
-        delay: 1050,
-        shape: 'line',
-        counter: 6,
-        stroke: finalColor,
-        duration: 1400,
-        easing: 'ease.out'
-      }
-    })
- 
-    const vanline = new mojs.Timeline
-    vanline.add(loaderIcon, container, burst, burst2).play()
     
     setTimeout(() => {
       const rotate = new mojs.Html({
         el: this.container,
-        scale: {
-          1: 0, 
-          delay: 600,
-          duration: 100,
-          easing: 'ease.in',
-        },
         opacity: {
           1: 0,
           duration: 100,
@@ -301,7 +235,7 @@ class Loader {
         }
       }).play()
       this.destroy()
-    }, 1000);
+    }, 2000);
   }
 }
 
