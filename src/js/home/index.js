@@ -109,7 +109,7 @@ function drawArticles (tag, ctx) {
         setTimeout(() => {
           msnry.layout()
           initialize()
-          ctx.mainLoader.vanish()
+          // ctx.mainLoader.vanish()
         }, 400);
       })
     })
