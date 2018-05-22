@@ -1,6 +1,5 @@
 const yo = require('yo-yo')
 const empty = require('empty-element')
-const Mojs = require('mo-js')
 
 let opened = false
 let limit = false
@@ -97,31 +96,11 @@ function createTemplate() {
 let mainColor = '#ff4f4f'
 let DURATION = 1000
 
-const burst = new Mojs.Burst({
-  parent: icon,
-  left: 5,
-  top: 4,
-  count: 4,
-  angle: 45,
-  radius: {3: 12},
-  children: {
-    shape: 'line',
-    radius: 8,
-    scale: 1,
-    strokeDasharray: '100%',
-    strokeDashoffset: { '-100%' : '100%' },
-    easing: 'ease.out',
-    stroke: mainColor
-  }
-})
-
 trigger.addEventListener('click', (e) => {
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
   console.log(e)
-  burst
-  .setSpeed(1)
-  .replay()
+
   
   if (opened) {
     opened = false
