@@ -27,31 +27,70 @@ mainContainer.classList.add('container')
 
 document.mainContainer = mainContainer
 
-// background-color
+// main name
+let htmlName = yo`
+  <div className="my-name-container">
+    <div className="my-name">
+      <div className="first-line">
+        <span>J</span>
+        <span>O</span>
+        <span>S</span>
+        <span>E</span>
+      </div>
+      <div className="second-line">
+        <span>S</span>
+        <span>Á</span>
+        <span class="space">­</span>
+        <span>N</span>
+        <span class="next-line">⌁</span>
+      </div>
+      <div className="third-line">
+        <span>C</span>
+        <span>H</span>
+        <span>E</span>
+        <span>Z</span>
+      </div>
+    </div>
+  </div>`
+
+// // background-color
+// let initBackColor = 0xf3f3f6
 let initBackColor = 0xf3f3f6
 
-// tea COLOR
-// let teaColorS = 0x82534c
-// let teaEmissiveS = 0xd22525
-// let ambientLightS = 0xe8adad
-// let directionalLightS = 0xdb9ae
-let teaColorS = 0x161616
-let teaEmissiveS = 0xff4b4b
-let ambientLightS = 0x505050
-let directionalLightS = 0xd2d2d2
+// // tea COLOR
+// let teaColorS = 0x161616
+// let teaEmissiveS = 0xff4b4b
+// let ambientLightS = 0x505050
+// let directionalLightS = 0xd2d2d2
+
+// // me & name color
+// let meColor = 0x2e2e2e
+
+// // sky Color
+// let upperColor = 0xa8a8a8
+
+// // paneau
+// let devDeColor = 0x5af2d9
+// let devDeColorEmi = 0x44e6ca
+
+// tea COLOR with blue
+let teaColorS = 0xff7878
+let teaEmissiveS = 0xf02323
+let ambientLightS = 0xff164d
+let directionalLightS = 0x3225ff
 
 // me & name color
-let meColor = 0x2e2e2e
+let meColor = 0x57ffe2
 
 // sky Color
-let upperColor = 0xa8a8a8
+let upperColor = 0x433a69
 
 // paneau
 let devDeColor = 0x5af2d9
 let devDeColorEmi = 0x44e6ca
 
-let size = 5
-let magnitude = 3
+let size = 3
+let magnitude = 2
 
 let sinProf
 
@@ -67,13 +106,13 @@ window.onmousemove = mousePos
 
 function world (debbug, assets, appContainer, ctx) {
   renderer = new THREE.WebGLRenderer({alpha: true, antialias:true})
-  renderer.setPixelRatio( window.devicePixelRatio )
+  renderer.setPixelRatio( window.devicePixelRatio)
   deb = debbug
   clock = new THREE.Clock(true)
 
   // getting assets
   let models = assets.geometries
-  let fonts = assets.fonts
+  // let fonts = assets.fonts
   ctx.animation = animation
 
   conf (appContainer, (renderer) => {
@@ -87,14 +126,14 @@ function world (debbug, assets, appContainer, ctx) {
       this.directionalLight = directionalLightS
       this.devDeColor = devDeColor
       this.devDeColorEmission = devDeColorEmi
-      this.capY = -0.53
       this.teaMakerRotation = 0.7
-      this.posX = 2
-      this.posY = -6.2
-      this.posZ = 0
-      this.rotY = 0.17
-      this.rotX = -0.29
-      this.rotZ = 0.27
+      this.capY = -0.53
+      this.posX = -4.7
+      this.posY = -0.3
+      this.posZ = 12.7
+      this.rotY = 0.166
+      this.rotX = -0.48
+      this.rotZ = 0.32
       this.translateX = -4.9
       this.translateY = -4
       this.translateZ = 9.8
@@ -108,7 +147,7 @@ function world (debbug, assets, appContainer, ctx) {
     let lettersMaterial = new THREE.MeshPhongMaterial({
       color: upperColor,
       emissive: 0xaa5858,
-      emissiveIntensity: 0.6,
+      emissiveIntensity: 1,
       flatShading: true
     })
 
@@ -120,25 +159,25 @@ function world (debbug, assets, appContainer, ctx) {
     
     // NAME
     // Material
-    let nameMaterial = new THREE.MeshBasicMaterial({
-      color: meColor
-    })
+    // let nameMaterial = new THREE.MeshBasicMaterial({
+    //   color: meColor
+    // })
 
     // font
-    let square = fonts.square
+    // let square = fonts.square
 
     // geometry
-    let nameGeometry = new THREE.TextGeometry(`Jose                   Sánchez`, {
-      font: square,
-      size: fontSizeName,
-      height: 0,
-      curveSegments: 2
-    })
+    // let nameGeometry = new THREE.TextGeometry(`Jose                   Sánchez`, {
+    //   font: square,
+    //   size: fontSizeName,
+    //   height: 0,
+    //   curveSegments: 2
+    // })
 
     // mesh
-    name = new THREE.Mesh(nameGeometry, nameMaterial)
+    // name = new THREE.Mesh(nameGeometry, nameMaterial)
 
-    name.geometry.computeVertexNormals(true)
+    // name.geometry.computeVertexNormals(true)
 
     // ME
     let meMaterial = new THREE.MeshBasicMaterial({
@@ -199,16 +238,15 @@ function world (debbug, assets, appContainer, ctx) {
     me.rotation.y = 0.7 * Math.PI
 
     
-    scene.add(name)
+    // scene.add(name)
     teaPotWrapper.add(me)
     teaPotWrapper.add(teaCap)
     teaPotWrapper.add(teaBody)
     teaPotWrapper.add(lettersDD)
 
-    // teaPotWrapper.rotation.x = 0.04 * Math.PI
     teaPotWrapper.position.y = -5
 
-    sky = createSky(upperColor, 0.95, 77)
+    sky = createSky(upperColor, 77)
 
     // adds
     scene.add(teaPotWrapper)
@@ -232,11 +270,12 @@ function conf (appContainer, cb) {
   renderer.setClearColor(initBackColor, 0)
   SCREEN_WIDTH = window.innerWidth
   SCREEN_HEIGHT = window.innerHeight
+
   HALF_SCREEN_W = SCREEN_WIDTH / 2
   HALF_SCREEN_H = SCREEN_HEIGHT / 2
 
-  let width = window.innerWidth
-  let height = window.innerHeight
+  let width = SCREEN_WIDTH  > 320 ? SCREEN_WIDTH : 320
+  let height = SCREEN_HEIGHT
 
   renderer.setSize(width, height)
   renderer.shadowMap.enabled = true;
@@ -261,7 +300,18 @@ function conf (appContainer, cb) {
 
   scene.add(ambientLight)
   scene.add(directionalLight)
+  scene.fog = new THREE.Fog(meColor, 0.0005, 60);
 
+  let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+  let f = 32
+  camera.left =  aspect * f / - 2
+  camera.right = aspect * f / 2
+  camera.bottom =   f / - 2
+  camera.top = f / 2
+
+  camera.updateProjectionMatrix();
+
+  mainContainer.appendChild(htmlName)
   mainContainer.appendChild(renderer.domElement)
   appContainer.appendChild(mainContainer)
 
@@ -269,13 +319,15 @@ function conf (appContainer, cb) {
 }
 
 
-function createSky (color, opacity, y) {
-  let skyGeometry = new THREE.PlaneGeometry(400, 15, 200, 15)
+function createSky (color, y) {
+  let skyGeometry = new THREE.PlaneGeometry(100, 7, 100, 7)
+  let opacity = 0.8
 
-  let skyMaterial = new THREE.MeshBasicMaterial({
+
+  let skyMaterial = new THREE.MeshPhongMaterial({
     color,
     transparent: true,
-    opacity,
+    opacity
   })
 
   let skyMesh = new THREE.Mesh(skyGeometry, skyMaterial)
@@ -330,16 +382,19 @@ function createStats () {
 }
 
 function onWindowResize () {
-  SCREEN_WIDTH = window.innerWidth;
-  let  SCREEN_HEIGHT = window.innerHeight;
+  SCREEN_WIDTH = window.innerWidth
+  SCREEN_HEIGHT = mainContainer.offsetHeight
+  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+  
   let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
   let f = 35
-  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-
   camera.left =  aspect * f / - 2
   camera.right = aspect * f / 2
   camera.bottom =   f / - 2
   camera.top = f / 2
+
+  console.log(aspect, f)
+
   camera.updateProjectionMatrix();
 }
 
@@ -370,8 +425,8 @@ function render (ts) {
   teaBody.material.emissive = myEmissive
   teaBody.material.color = myColor
 
-  me.material.color = personColor
-  name.material.color = personColor
+  // me.material.color = personColor
+  // name.material.color = personColor
   
   directionalLight.color = myDirectional
 
@@ -395,12 +450,12 @@ function render (ts) {
 
 
   // textPos
-  name.position.x = control.translateX
-  name.position.y = control.translateY
-  name.position.z = control.translateZ
-  name.rotation.x = control.rotateX * Math.PI
-  name.rotation.y = control.rotateY * Math.PI
-  name.rotation.z = control.rotateZ * Math.PI
+  // name.position.x = control.translateX
+  // name.position.y = control.translateY
+  // name.position.z = control.translateZ
+  // name.rotation.x = control.rotateX * Math.PI
+  // name.rotation.y = control.rotateY * Math.PI
+  // name.rotation.z = control.rotateZ * Math.PI
 
   let skyLength = sky.geometry.vertices.length
 
@@ -411,6 +466,7 @@ function render (ts) {
     var dist2 = new THREE.Vector2(vs.x, vs.y).sub(center);
     vs.z = Math.sin(dist2.length()/-size + (ts/900)) * magnitude;
   }
+
 
   sky.geometry.verticesNeedUpdate = true;
 

@@ -36,13 +36,11 @@ function toColor (color) {
 
 function toColorRGB (color) {
   color = color.slice(1)
-  console.log(color)
   let r = parseInt(color.slice(0, 2), 16)
   let g = parseInt(color.slice(2, 4), 16)
   let b = parseInt(color.slice(4, 6), 16)
   
   let colorRGB = [r, g, b]
-  console.log(colorRGB)
 
   return colorRGB
 }
@@ -166,8 +164,8 @@ class Article {
 
 
 
-    console.log(`Title: ${this.title} Parent: W: ${parentWidth}, H:${parentHeight} / Title: W: ${titleWidth}, H: ${titleHeight} / fontsize: ${fontSize}`)
-    console.log(`masterSize: ${masterSize}`)
+    // console.log(`Title: ${this.title} Parent: W: ${parentWidth}, H:${parentHeight} / Title: W: ${titleWidth}, H: ${titleHeight} / fontsize: ${fontSize}`)
+    // console.log(`masterSize: ${masterSize}`)
 
     
     // el numero ideal es maximo 70% de la altura
@@ -187,7 +185,7 @@ class Article {
 
       // si el ancho no alcanza reducir el tamaño de la fuente
       // evaular si paso
-      console.log(idealHeight, titleHeight)
+      // console.log(idealHeight, titleHeight)
       titleHeight =  this.titleContainer.offsetHeight
     }
 

@@ -51,19 +51,21 @@ module.exports = function (cb){
           cb(new Error('not found geometry'))
         }
       })
-    },
-    function(geometries, cb){
-      fontLoader.load('/fonts/square.json', (font) => {
-        if (font) {
-          let fonts = {
-            square: font
-          }
-          cb(null, geometries, fonts)
-        } else {
-          cb(new Error('not found geometry'))
-        }
-      })
     }
+
+    // function(geometries, cb){
+    //   fontLoader.load('/fonts/square.json', (font) => {
+    //     if (font) {
+    //       let fonts = {
+    //         square: font
+    //       }
+    //       cb(null, geometries, fonts)
+    //     } else {
+    //       cb(new Error('not found geometry'))
+    //     }
+    //   })
+    // }
+    
   ], function(e, geometries, fonts) {
     let assets = {
       geometries,

@@ -16,7 +16,7 @@
 
 
 %back1 {
-  background: url('/img/noise1.png'), linear-gradient(to bottom, #aba9a9 35%,#ACB7B6 55%,#a8a8a8 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url('/img/noise1.png'), linear-gradient(to bottom, #d2d2d2 35%,#ACB7B6 55%,#a8a8a8 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 body {
@@ -45,6 +45,7 @@ a {
   -moz-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
     -o-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
        transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); /* custom */
+  width: 100%;
   transform: translateX(0px);
 }
 

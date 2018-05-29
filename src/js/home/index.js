@@ -107,10 +107,13 @@ function drawArticles (tag, ctx) {
 
       imgLoaded.on('done', function (i) {
         setTimeout(() => {
-          msnry.layout()
           initialize()
+          msnry.layout()
           ctx.mainLoader.vanish()
-        }, 1000);
+          setTimeout(() => {
+            msnry.layout()
+          }, 200);
+        }, 1200);
       })
     })
     
