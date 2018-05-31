@@ -223,7 +223,7 @@ svg:focus {
   opacity: 1 !important; }
 
 .alert {
-  color: #ff435c !important; }
+  color: #ff425b !important; }
 
 .rotate-icon {
   transform: rotateY(-180deg) !important; }
@@ -250,7 +250,7 @@ svg:focus {
     width: 404px;
     height: 100%; }
     #main-bar .bar-wrapper #bar-trigger {
-      color: #17161a;
+      color: #2a3031;
       font-family: 'ratDemiB';
       width: 30px;
       height: 60px;
@@ -264,7 +264,7 @@ svg:focus {
       #main-bar .bar-wrapper #bar-trigger:hover {
         cursor: pointer; }
         #main-bar .bar-wrapper #bar-trigger:hover .icon {
-          color: #ff435c; }
+          color: #ff425b; }
       #main-bar .bar-wrapper #bar-trigger .icon {
         transition: all 0.25s ease-in;
         font-size: 1rem;
@@ -291,8 +291,8 @@ svg:focus {
     #main-bar .bar-wrapper #bar-menu {
       width: 360px;
       display: inline-block;
-      background: #1b1920;
-      box-shadow: 5px 0px 0px rgba(23, 22, 26, 0.3);
+      background: #dcf0ea;
+      box-shadow: 5px 0px 0px rgba(42, 48, 49, 0.3);
       height: 100%;
       padding-top: 0px; }
       #main-bar .bar-wrapper #bar-menu .item-bar-link:hover {
@@ -305,20 +305,20 @@ svg:focus {
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
           font-size: 3.2rem;
-          color: #ff435c;
+          color: #ff425b;
           line-height: 3.4rem;
           -webkit-hyphens: auto;
           -moz-hyphens: auto;
           -ms-hyphens: auto;
           hyphens: auto;
           -webkit-hyphenate-character: '⌁';
-          background: url("/img/noise2.png") #ff435c;
+          background: url("/img/noise2.png") #ff425b;
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent; }
           #main-bar .bar-wrapper #bar-menu .main-bar-list .bar-link:hover {
             cursor: pointer;
-            background: url("/img/noise1.png") rgba(131, 255, 218, 0.8);
+            background: url("/img/noise1.png") rgba(84, 56, 145, 0.8);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent; }
@@ -330,7 +330,7 @@ svg:focus {
           -ms-hyphens: auto;
           hyphens: auto;
           -webkit-hyphenate-character: '⌁';
-          color: #ff435c;
+          color: #ff425b;
           font-family: 'ratDemiB';
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
@@ -340,16 +340,16 @@ svg:focus {
           font-size: 1.2em;
           border: 2px solid transparent;
           margin-bottom: 6px;
-          border-bottom: 2px solid #ff435c;
+          border-bottom: 2px solid #ff425b;
           padding: 3px 2px 0px 2px;
-          background: url("/img/noise2.png") #ff435c;
+          background: url("/img/noise2.png") #ff425b;
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent; }
           #main-bar .bar-wrapper #bar-menu .secondary-bar-list .bar-link:hover {
             cursor: pointer;
-            border: 2px solid #83ffda;
-            color: #83ffda; }
+            border: 2px solid #543891;
+            color: #543891; }
       #main-bar .bar-wrapper #bar-menu .bar-bottom {
         width: 100%;
         height: 100%;
@@ -384,17 +384,15 @@ svg:focus {
         letter-spacing: -0.12em;
         font-family: 'eleb';
         text-align: center;
-        color: rgba(218, 218, 218, 0.85);
+        color: rgba(26, 39, 39, 0.85);
         font-size: calc(5vw + 9vh + 6vmin);
         line-height: 1.05em;
-        text-shadow: 0 -2px 0.15em rgba(255, 255, 255, 0.15), 0 -4px 10px rgba(131, 255, 218, 0.5), 0 -2px 1px rgba(131, 255, 218, 0.5), 0 4px 5px rgba(255, 67, 92, 0.8), 0 4px 10px rgba(255, 67, 92, 0.8), 0 -2px 0.02em rgba(255, 255, 255, 0.5), 0 5px 0.01em rgba(23, 22, 26, 0.5), 0 -2px 0.15em rgba(23, 22, 26, 0.2); }
+        text-shadow: 0 -2px 8px rgba(255, 255, 255, 0.15), 0 -6px 8px rgba(189, 230, 219, 0.6), 0 -3px 2px rgba(213, 255, 247, 0.8), 0 4px 0px #ff7598, 0 7px 2px rgba(42, 48, 49, 0.2), 0 8px 8px rgba(255, 66, 91, 0.7), 0 -2px 2px rgba(255, 255, 255, 0.5), 0 20px 4px rgba(84, 56, 145, 0.3); }
         #intro .intro-wrapper .my-name-container .my-name .name-line {
           width: 100%; }
         #intro .intro-wrapper .my-name-container .my-name .second-line {
           margin-left: -0.7rem;
           width: 110%; }
-          #intro .intro-wrapper .my-name-container .my-name .second-line span:nth-of-type(5) {
-            color: rgba(0, 0, 0, 0.75); }
           #intro .intro-wrapper .my-name-container .my-name .second-line .space {
             display: inline-block;
             width: 0.7em; }
@@ -435,7 +433,7 @@ svg:focus {
     #main-content .main-over-wrapper .main-content-wrapper .grid-item-widthx2 {
       width: 66.6%; }
     #main-content .main-over-wrapper .main-content-wrapper .grid-item {
-      box-shadow: 0 -20px 0px rgba(0, 0, 0, 0.02), 0 -15px 0 rgba(23, 22, 26, 0.02), 0 -10px 0 rgba(23, 22, 26, 0.02), 0 -5px 0 rgba(23, 22, 26, 0.02), 0 -1px 0 rgba(23, 22, 26, 0.1);
+      box-shadow: 0 -20px 0px rgba(84, 56, 145, 0.02), 0 -15px 0 rgba(84, 56, 145, 0.04), 0 -10px 0 rgba(84, 56, 145, 0.03), 0 -5px 0 rgba(84, 56, 145, 0.03), 0 -2px 0 rgba(84, 56, 145, 0.03);
       width: 33.3%;
       overflow: hidden; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item:hover {
@@ -447,8 +445,8 @@ svg:focus {
           position: absolute;
           width: 100%;
           height: 100%;
-          background: #ff435c;
-          background: url("/img/noise.png"), linear-gradient(to bottom, #ff435c 0%, #ff435c 50%, rgba(255, 67, 92, 0.96) 69%, rgba(255, 67, 92, 0.94) 73%, rgba(255, 67, 92, 0.92) 100%);
+          background: #dddddd;
+          background: url("/img/noise.png"), linear-gradient(to bottom, #dddddd 0%, #dddddd 50%, rgba(221, 221, 221, 0.96) 70%, rgba(221, 221, 221, 0.9) 80%, rgba(221, 221, 221, 0.8) 100%);
           opacity: 0;
           transition: 0.05s all ease-out; }
           #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container:hover {
@@ -470,7 +468,7 @@ svg:focus {
                 line-height: 1.1em;
                 -webkit-font-smoothing: antialiased !important;
                 width: 70%;
-                color: #1b1920;
+                color: #2a3031;
                 transform: rotate(0.5deg);
                 -webkit-hyphens: auto;
                 -moz-hyphens: auto;
@@ -478,10 +476,10 @@ svg:focus {
                 hyphens: auto;
                 -webkit-hyphenate-character: '⌁'; }
               #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-type {
-                color: #ff435c;
+                color: #ff648b;
                 font-size: 0.95rem;
                 font-family: 'ratDemiB';
-                margin: 17px 15px 8px 17px; }
+                margin: 20px 15px 8px 17px; }
                 #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-type span {
                   text-transform: uppercase;
                   vertical-align: top;
@@ -490,7 +488,7 @@ svg:focus {
                   -ms-hyphens: none;
                   hyphens: none;
                   letter-spacing: 0.03em;
-                  background-color: #17161a;
+                  background-color: #2a3031;
                   padding: 4px 9px 3px 9px;
                   position: relative; }
                   #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-top .over-article-type span:before {
@@ -501,13 +499,12 @@ svg:focus {
                     top: -11px;
                     left: 5px;
                     position: absolute;
-                    color: #17161a; }
+                    color: #2a3031; }
             #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom {
               width: 100%;
               height: 240px;
               margin-top: 5px;
-              color: #17161a;
-              margin: 2px 15px 0px 15px; }
+              margin: 8px 15px 0px 15px; }
               #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom .over-article-keywords {
                 text-align: left;
                 margin-left: -1px; }
@@ -518,20 +515,19 @@ svg:focus {
                   font-size: 1em;
                   margin-right: -10px;
                   text-decoration: underline;
-                  color: #1b1920;
+                  color: #2a3031;
                   text-decoration-color: transparent;
                   padding: 4px 3px 0px 2px; }
                   #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom .over-article-keywords .over-article-keyword .over-article-word {
                     line-height: 1.5em;
-                    color: #1b1920;
                     text-transform: uppercase;
                     transition: .1s all ease-out;
                     border: 2px solid transparent;
-                    border-bottom: 2px solid #17161a;
+                    border-bottom: 2px solid #2a3031;
                     padding: 4px 2px 0px 2px; }
                   #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom .over-article-keywords .over-article-keyword:hover .over-article-word {
-                    border: 2px solid #83ffda;
-                    color: #83ffda; }
+                    border: 2px solid #ff648b;
+                    color: #ff648b; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content img {
           min-height: 200px;
           transition: all 0.3s ease-out;
@@ -539,7 +535,7 @@ svg:focus {
       #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-label {
         text-align: left;
         font-family: 'ratLight';
-        color: #17161a;
+        color: #2a3031;
         font-size: 0.8em;
         margin-top: 8px;
         font-weight: 300;
@@ -550,7 +546,7 @@ svg:focus {
         overflow: hidden;
         text-overflow: ellipsis; }
       #main-content .main-over-wrapper .main-content-wrapper .grid-item:hover .article-label {
-        color: #ff435c; }
+        color: #ff425b; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item:hover .article-label::after {
           color: #83ffda; }
 
@@ -600,12 +596,12 @@ svg:focus {
       .phrase-container .phrase-wrapper .phrase-content .phrase-links-container {
         font-size: 7vw; }
         .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple {
-          color: #17161a;
+          color: #2a3031;
           -webkit-font-smoothing: antialiased !important;
           letter-spacing: 0.3rem; }
           .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple:hover {
             cursor: pointer;
-            color: rgba(23, 22, 26, 0.8);
+            color: rgba(42, 48, 49, 0.8);
             transition: all .1s ease-in; }
         .phrase-container .phrase-wrapper .phrase-content .phrase-links-container .phrase-couple[title='designer'] {
           font-size: 140%;
@@ -720,7 +716,7 @@ footer {
         line-height: 1.1rem;
         font-family: 'eleb';
         font-size: 1.1rem;
-        color: #17161a;
+        color: #2a3031;
         z-index: -1; }
 
 .loader-visible {
@@ -729,7 +725,7 @@ footer {
   height: 100% !important; }
 
 .article-back-black {
-  background-color: #1b1920 !important;
+  background-color: #543891 !important;
   color: #1b1920 !important; }
 
 .article-color-black {
@@ -737,7 +733,7 @@ footer {
   -webkit-font-smoothing: antialiased !important; }
 
 .article-color-white {
-  color: #1b1920 !important;
+  color: #543891 !important;
   -webkit-font-smoothing: antialiased !important; }
 
 .article-white-black {
@@ -758,7 +754,7 @@ footer {
       position: fixed;
       right: 55px;
       top: 35px;
-      color: #ff435c;
+      color: #ff425b;
       z-index: 11;
       width: 30px;
       height: 30px; }
@@ -782,7 +778,7 @@ footer {
         height: 3px;
         top: 50%;
         transform: translate(0%, -50%);
-        background-color: #ff435c;
+        background-color: #ff425b;
         transform-origin: 50% 0%;
         transition: 0.1s; }
       #article-content .article-content-wrapper .article-closer-container .line-one {
@@ -803,7 +799,7 @@ footer {
           opacity: 1; }
     #article-content .article-content-wrapper .article-content-info {
       margin: 0 auto;
-      color: #1b1920;
+      color: #543891;
       width: 100%;
       min-width: 340px; }
       #article-content .article-content-wrapper .article-content-info .article-content-readable {
@@ -850,7 +846,7 @@ footer {
                   margin-top: 6px;
                   color: white;
                   text-transform: uppercase;
-                  background-color: #ff435c;
+                  background-color: #ff425b;
                   padding: 6px 5px 4px 6px;
                   letter-spacing: 0.1rem;
                   font-size: 0.7rem; }
@@ -868,7 +864,7 @@ footer {
                 margin-bottom: 20px;
                 margin-top: 8px; }
                 #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container .article-keywords {
-                  background-color: #1b1920;
+                  background-color: #543891;
                   display: inline-block;
                   height: 17px;
                   border-radius: 1px; }
@@ -1001,7 +997,7 @@ footer {
           margin-top: 6px;
           color: white;
           text-transform: uppercase;
-          background-color: #ff435c;
+          background-color: #ff425b;
           padding: 6px 5px 4px 6px;
           letter-spacing: 0.1rem;
           font-size: 0.7rem; }
@@ -1018,7 +1014,7 @@ footer {
           margin-bottom: 20px;
           margin-top: 8px; }
           #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container .article-keywords {
-            background-color: #1b1920;
+            background-color: #543891;
             display: inline-block;
             height: 17px;
             border-radius: 1px; }
@@ -1120,7 +1116,7 @@ body {
 a {
   text-decoration: none; }
   a:visited {
-    color: #17161a; }
+    color: #2a3031; }
 
 #main-bar {
   position: fixed; }

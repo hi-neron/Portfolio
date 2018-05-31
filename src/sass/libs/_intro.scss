@@ -30,28 +30,24 @@
         letter-spacing: -0.12em;
         font-family: 'eleb';
         text-align: center;
-        color: rgba(#dadada, .85);
+        color: rgba(#1a2727, .85);
         font-size: calc(5vw + 9vh + 6vmin);
         line-height: 1.05em;
-        text-shadow:  0 -2px 0.15em rgba(white, .15), 
-                      0 -4px 10px rgba($thirdColor, .5), 
-                      0 -2px 1px rgba($thirdColor, .5), 
-                      0 4px 5px rgba($secondaryColor, .8),
-                      0 4px 10px rgba($secondaryColor, .8),
-                      0 -2px 0.02em rgba(white, .5), 
-                      0 5px 0.01em rgba($mainColor, .5), 
-                      0 -2px 0.15em rgba($mainColor, .2),;
+        text-shadow:  0 -2px 8px rgba(white, .15), 
+                      0 -6px 8px rgba(#bde6db, .6), 
+                      0 -3px 2px rgba($thirdColor3, .8), 
+                      0 4px 0px rgba(rgb(255, 117, 152), 1),
+                      0 7px 2px rgba($mainColor, .2),
+                      0 8px 8px rgba($secondaryColor, .7),
+                      0 -2px 2px rgba(white, .5), 
+                      0 20px 4px rgba($mainColor4, .3);
+
 
         .name-line {
           width: 100%;
         }
         
         .second-line {
-          span {
-            &:nth-of-type(5) {
-              color: rgba(#000000, .75);
-            }
-          }
           // letter-spacing: -0.04em;
           margin-left: -0.7rem;
           width: 110%;

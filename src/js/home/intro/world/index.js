@@ -83,7 +83,7 @@ let directionalLightS = 0x3225ff
 let meColor = 0x57ffe2
 
 // sky Color
-let upperColor = 0x433a69
+let upperColor = 0x434246
 
 // paneau
 let devDeColor = 0x5af2d9
@@ -103,6 +103,23 @@ let mousePosition = {
 }
 
 window.onmousemove = mousePos
+
+
+function onWindowResize () {
+  SCREEN_WIDTH = window.innerWidth
+  SCREEN_HEIGHT = mainContainer.offsetHeight
+  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+  
+  let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+  let f = 38
+  camera.left =  aspect * f / - 2
+  camera.right = aspect * f / 2
+  camera.bottom =   f / - 2
+  camera.top = f / 2
+
+  camera.updateProjectionMatrix();
+}
+
 
 function world (debbug, assets, appContainer, ctx) {
   renderer = new THREE.WebGLRenderer({alpha: true, antialias:true})
@@ -128,12 +145,12 @@ function world (debbug, assets, appContainer, ctx) {
       this.devDeColorEmission = devDeColorEmi
       this.teaMakerRotation = 0.7
       this.capY = -0.53
-      this.posX = -4.7
-      this.posY = -0.3
-      this.posZ = 12.7
-      this.rotY = 0.166
-      this.rotX = -0.48
-      this.rotZ = 0.32
+      this.posX = -0.3
+      this.posY = -4.7
+      this.posZ = -1.43
+      this.rotY = -0.12
+      this.rotX = 0.5
+      this.rotZ = 0.75
       this.translateX = -4.9
       this.translateY = -4
       this.translateZ = 9.8
@@ -249,8 +266,8 @@ function world (debbug, assets, appContainer, ctx) {
     sky = createSky(upperColor, 77)
 
     // adds
-    scene.add(teaPotWrapper)
     scene.add(sky)
+    scene.add(teaPotWrapper)
 
     camera.lookAt(teaCap.position)
 
@@ -288,9 +305,6 @@ function conf (appContainer, cb) {
   // lights
   ambientLight = new THREE.AmbientLight( 0xf1f1f1, 1 ) // soft white light scene.add( light );
   directionalLight = new THREE.DirectionalLight( 0xffffff, 1.3) // soft white light scene.add( light );
-  // directionalLight.position.x = -1
-  // directionalLight.position.z = 1
-  // directionalLight.position.y = 4
 
   directionalLight.position.x = -3
   directionalLight.position.z = 3
@@ -298,44 +312,40 @@ function conf (appContainer, cb) {
 
   directionalLight.castShadow = true
 
+
   scene.add(ambientLight)
   scene.add(directionalLight)
-  scene.fog = new THREE.Fog(meColor, 0.0005, 60);
-
-  let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-  let f = 32
-  camera.left =  aspect * f / - 2
-  camera.right = aspect * f / 2
-  camera.bottom =   f / - 2
-  camera.top = f / 2
-
-  camera.updateProjectionMatrix();
+  scene.fog = new THREE.Fog(meColor, 0.0015, 60);
 
   mainContainer.appendChild(htmlName)
   mainContainer.appendChild(renderer.domElement)
   appContainer.appendChild(mainContainer)
 
+  onWindowResize()
+
   cb(renderer)
 }
 
-
 function createSky (color, y) {
-  let skyGeometry = new THREE.PlaneGeometry(100, 7, 100, 7)
-  let opacity = 0.8
+  let skyGeometry = new THREE.PlaneGeometry(75, 10, 400, 1)
+  let opacity = 0.5
 
 
-  let skyMaterial = new THREE.MeshPhongMaterial({
+  let skyMaterial = new THREE.MeshBasicMaterial({
     color,
+    opacity,
     transparent: true,
-    opacity
+    wireframe: true,
+    fog: false
   })
 
   let skyMesh = new THREE.Mesh(skyGeometry, skyMaterial)
   skyMesh.rotation.y = -0.2 * Math.PI;
-
   skyMesh.position.x = 0
   skyMesh.position.y = y
   skyMesh.position.z = -27
+
+  skyMesh.receiveShadow = true
   
   return skyMesh
 }
@@ -379,23 +389,6 @@ function createStats () {
   stats.domElement.style.top = '93%'
   document.body.appendChild(stats.domElement)
   return stats
-}
-
-function onWindowResize () {
-  SCREEN_WIDTH = window.innerWidth
-  SCREEN_HEIGHT = mainContainer.offsetHeight
-  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-  
-  let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-  let f = 35
-  camera.left =  aspect * f / - 2
-  camera.right = aspect * f / 2
-  camera.bottom =   f / - 2
-  camera.top = f / 2
-
-  console.log(aspect, f)
-
-  camera.updateProjectionMatrix();
 }
 
 function mousePos (e) {
@@ -464,7 +457,7 @@ function render (ts) {
   for (var i = 0; i < skyLength; i++) {
     var vs = sky.geometry.vertices[i]
     var dist2 = new THREE.Vector2(vs.x, vs.y).sub(center);
-    vs.z = Math.sin(dist2.length()/-size + (ts/900)) * magnitude;
+    vs.z = Math.sin(dist2.length() / size + (ts/900)) * magnitude;
   }
 
 

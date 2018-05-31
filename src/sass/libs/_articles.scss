@@ -21,7 +21,11 @@ $width: 33.3%;
       }
   
       .grid-item{
-        box-shadow: 0 -20px 0px rgba(#000, 0.02), 0 -15px 0 rgba($mainColor, 0.02), 0 -10px 0 rgba($mainColor, 0.02), 0 -5px 0 rgba($mainColor, 0.02), 0 -1px 0 rgba($mainColor, 0.1);
+        box-shadow: 0 -20px 0px rgba($mainColor4, 0.02), 
+                    0 -15px 0 rgba($mainColor4, 0.04), 
+                    0 -10px 0 rgba($mainColor4, 0.03), 
+                    0 -5px 0 rgba($mainColor4, 0.03), 
+                    0 -2px 0 rgba($mainColor4, 0.03);
         width: $width;
         overflow: hidden;
         // transition: all 0.5s;
@@ -38,8 +42,14 @@ $width: 33.3%;
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba($secondaryColor,1);
-            background: url('/img/noise.png'), linear-gradient(to bottom, rgba($secondaryColor,1) 0%, rgba($secondaryColor,1) 50%, rgba($secondaryColor,0.96) 69%, rgba($secondaryColor,0.94) 73%, rgba($secondaryColor,0.92) 100%);
+            background: rgba($backgroundOverArticles,1);
+            background: url('/img/noise.png'), 
+                        linear-gradient(to bottom, 
+                        rgba($backgroundOverArticles,1) 0%,
+                        rgba($backgroundOverArticles,1) 50%, 
+                        rgba($backgroundOverArticles,0.96) 70%, 
+                        rgba($backgroundOverArticles,0.90) 80%, 
+                        rgba($backgroundOverArticles,0.80) 100%);
             opacity: 0;
             transition: 0.05s all ease-out;
             
@@ -58,6 +68,7 @@ $width: 33.3%;
                 overflow: hidden;
                 width: 100%;
                 
+
                 .over-article-title {
                   display: inline-block;
                   margin: 15px 15px 0px 15px;
@@ -68,7 +79,7 @@ $width: 33.3%;
                   line-height: 1.1em;
                   -webkit-font-smoothing: antialiased !important;
                   width: 70%;
-                  color: $mainColor4;
+                  color: $textColor;
                   transform: rotate(0.5deg);
 
                   -webkit-hyphens: auto;
@@ -80,10 +91,10 @@ $width: 33.3%;
                 }
                 
                 .over-article-type {
-                  color: $secondaryColor;
+                  color: $secondaryColor3;
                   font-size: 0.95rem;
                   font-family: 'ratDemiB';
-                  margin: 17px 15px 8px 17px;
+                  margin: 20px 15px 8px 17px;
                   
                   span {
                     
@@ -95,7 +106,7 @@ $width: 33.3%;
                     -ms-hyphens: none;
                     hyphens: none;
                     letter-spacing: 0.03em;
-                    background-color: $mainColor;
+                    background-color: $bottomTextColor;
                     padding: 4px 9px 3px 9px;
                     position: relative;
                     
@@ -107,7 +118,7 @@ $width: 33.3%;
                       top: -11px;
                       left: 5px;
                       position: absolute;
-                      color: $mainColor;
+                      color: $bottomTextColor;
                     }
 
                   }
@@ -117,8 +128,7 @@ $width: 33.3%;
                 width: 100%;
                 height: 240px;
                 margin-top: 5px;
-                color: $mainColor2;
-                margin: 2px 15px 0px 15px;
+                margin: 8px 15px 0px 15px;
                 
                 .over-article-keywords {
                   text-align: left;
@@ -131,28 +141,25 @@ $width: 33.3%;
                     font-size: 1em;    
                     margin-right: -10px;
                     text-decoration: underline;
-                    color: rgba($mainColor4, 1);
+                    color: rgba($bottomTextColor, 1);
                     text-decoration-color: transparent;
                     padding: 4px 3px 0px 2px;
                     
                     .over-article-word {
                       line-height: 1.5em;
-                      color: rgba($mainColor4, 1);
                       text-transform: uppercase;
                       transition: .1s all ease-out;
                       border: 2px solid transparent;
-                      border-bottom: 2px solid $mainColor;
+                      border-bottom: 2px solid $bottomTextColor;
                       padding: 4px 2px 0px 2px;
                     }
 
                     &:hover {
                       .over-article-word {
-                        border: 2px solid $thirdColor;
-                        color: $thirdColor
+                        border: 2px solid $articlesOverLetters;
+                        color: $articlesOverLetters;
                       }
                     }
-                    
-
                   }
                 }
               }

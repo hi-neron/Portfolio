@@ -2,20 +2,38 @@ $introGray: #dadada;
 
 $body: #eaeaea;
 
-$mainColor: #17161a;
+$mainColor: rgb(42, 48, 49);
 $mainColor2: #17161a;
 $mainColor3: #1b1920;
-$mainColor4: #1b1920;
+$mainColor4: #543891;
 
-$secondaryColor: #ff435c;
-$secondaryColor2: #ff4f4f;
+$secondaryColor: #ff425b;
+$secondaryColor2: #eb2d2d;
+$secondaryColor3: #ff648b;
 
 $thirdColor: #83ffda;
 $thirdColor2: #aefff8;
 $thirdColor3: #d5fff7;
 
-$gray: #a3cfcf;
+$gray: #dddddd;
  
 $myWhite: #f3f3f6;
 $contentBackground: #EAEAEA;
 
+
+// ---->
+// BAR CONTENT
+$background-bar-color:#dcf0ea;
+$items-colors: $secondaryColor;
+$items-colors-over: $mainColor4;
+// trigger
+$trigger-color: $mainColor;
+
+// ---->
+// ARTICLES GRID
+$textColor: $mainColor;
+$bottomTextColor: $mainColor;
+$backgroundOverArticles: $gray;
+
+// overs
+$articlesOverLetters: $secondaryColor3;

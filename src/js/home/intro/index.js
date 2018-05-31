@@ -6,7 +6,7 @@ let getAssets = require('./loader')
 
 let init = function (container, ctx) {
   getAssets((e, assets) => {
-    intro(false, assets, container, ctx)
+    intro(true, assets, container, ctx)
   })
 }
 

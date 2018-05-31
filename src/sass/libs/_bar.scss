@@ -15,15 +15,6 @@
 }
 
 #main-bar {
-  // items & background of bar content
-  $background-bar-color: $mainColor3;
-  $items-colors: $secondaryColor;
-  $items-colors-over: $secondaryColor;
-  
-  // trigger
-  $trigger-color: $mainColor;
-  // ---->
-
   -webkit-transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
   -moz-transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
     -o-transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
@@ -133,14 +124,14 @@
           hyphens: auto;
           -webkit-hyphenate-character: '⌁';
 
-          background: url('/img/noise2.png') rgba($secondaryColor, 1);
+          background: url('/img/noise2.png') rgba($items-colors, 1);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
           
           &:hover {
             cursor: pointer;
-            background: url('/img/noise1.png') rgba($thirdColor, .8);
+            background: url('/img/noise1.png') rgba($items-colors-over, .8);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -169,18 +160,18 @@
           font-size: 1.2em;
           border: 2px solid transparent;
           margin-bottom: 6px;
-          border-bottom: 2px solid $secondaryColor;
+          border-bottom: 2px solid $items-colors;
           padding: 3px 2px 0px 2px; 
 
-          background: url('/img/noise2.png') rgba($secondaryColor, 1);
+          background: url('/img/noise2.png') rgba($items-colors, 1);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
 
           &:hover {
             cursor: pointer;
-            border: 2px solid $thirdColor;
-            color: $thirdColor;
+            border: 2px solid $items-colors-over;
+            color: $items-colors-over;
           }
         }
       }
