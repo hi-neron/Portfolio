@@ -83,7 +83,7 @@ let directionalLightS = 0x3225ff
 let meColor = 0x57ffe2
 
 // sky Color
-let upperColor = 0x434246
+let upperColor = 0xe3437
 
 // paneau
 let devDeColor = 0x5af2d9
@@ -145,12 +145,12 @@ function world (debbug, assets, appContainer, ctx) {
       this.devDeColorEmission = devDeColorEmi
       this.teaMakerRotation = 0.7
       this.capY = -0.53
-      this.posX = -0.3
-      this.posY = -4.7
-      this.posZ = -1.43
-      this.rotY = -0.12
-      this.rotX = 0.5
-      this.rotZ = 0.75
+      this.posX = -1.4
+      this.posY = -3.2
+      this.posZ = 0.7
+      this.rotY = 0.1
+      this.rotX = -0.35
+      this.rotZ = 0.132
       this.translateX = -4.9
       this.translateY = -4
       this.translateZ = 9.8
@@ -327,16 +327,15 @@ function conf (appContainer, cb) {
 }
 
 function createSky (color, y) {
-  let skyGeometry = new THREE.PlaneGeometry(75, 10, 400, 1)
+  let skyGeometry = new THREE.PlaneGeometry(75, 13, 75, 1)
   let opacity = 0.5
 
 
-  let skyMaterial = new THREE.MeshBasicMaterial({
+  let skyMaterial = new THREE.MeshPhongMaterial({
     color,
     opacity,
     transparent: true,
-    wireframe: true,
-    fog: false
+    blending: THREE.NoBlending
   })
 
   let skyMesh = new THREE.Mesh(skyGeometry, skyMaterial)
@@ -344,8 +343,6 @@ function createSky (color, y) {
   skyMesh.position.x = 0
   skyMesh.position.y = y
   skyMesh.position.z = -27
-
-  skyMesh.receiveShadow = true
   
   return skyMesh
 }

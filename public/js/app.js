@@ -52006,7 +52006,7 @@ var directionalLightS = 0x3225ff;
 var meColor = 0x57ffe2;
 
 // sky Color
-var upperColor = 0x434246;
+var upperColor = 0xe3437;
 
 // paneau
 var devDeColor = 0x5af2d9;
@@ -52066,12 +52066,12 @@ function world(debbug, assets, appContainer, ctx) {
       this.devDeColorEmission = devDeColorEmi;
       this.teaMakerRotation = 0.7;
       this.capY = -0.53;
-      this.posX = -0.3;
-      this.posY = -4.7;
-      this.posZ = -1.43;
-      this.rotY = -0.12;
-      this.rotX = 0.5;
-      this.rotZ = 0.75;
+      this.posX = -1.4;
+      this.posY = -3.2;
+      this.posZ = 0.7;
+      this.rotY = 0.1;
+      this.rotX = -0.35;
+      this.rotZ = 0.132;
       this.translateX = -4.9;
       this.translateY = -4;
       this.translateZ = 9.8;
@@ -52245,15 +52245,14 @@ function conf(appContainer, cb) {
 }
 
 function createSky(color, y) {
-  var skyGeometry = new THREE.PlaneGeometry(75, 10, 400, 1);
+  var skyGeometry = new THREE.PlaneGeometry(75, 13, 75, 1);
   var opacity = 0.5;
 
-  var skyMaterial = new THREE.MeshBasicMaterial({
+  var skyMaterial = new THREE.MeshPhongMaterial({
     color: color,
     opacity: opacity,
     transparent: true,
-    wireframe: true,
-    fog: false
+    blending: THREE.NoBlending
   });
 
   var skyMesh = new THREE.Mesh(skyGeometry, skyMaterial);
@@ -52261,8 +52260,6 @@ function createSky(color, y) {
   skyMesh.position.x = 0;
   skyMesh.position.y = y;
   skyMesh.position.z = -27;
-
-  skyMesh.receiveShadow = true;
 
   return skyMesh;
 }
