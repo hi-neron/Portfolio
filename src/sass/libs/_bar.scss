@@ -69,12 +69,11 @@
         width: 380px;
         height: 26px;
         text-align: right;
-        transform: rotateZ(-88.5deg) translate(-190px, -174px);
+        transform: rotateZ(-90deg) translate(-190px, -174px);
         letter-spacing: 0.08em;
         -webkit-font-smoothing: antialiased;
 
         span {
-          background-color: rgba($body, 1);
           padding: 1px 0px 0px 1px;
           display: inline-block;
         }

@@ -55,7 +55,7 @@ let htmlName = yo`
 
 // // background-color
 // let initBackColor = 0xf3f3f6
-let initBackColor = 0xf3f3f6
+let initBackColor = 0x62c0c8
 
 // // tea COLOR
 // let teaColorS = 0x161616
@@ -74,23 +74,23 @@ let initBackColor = 0xf3f3f6
 // let devDeColorEmi = 0x44e6ca
 
 // tea COLOR with blue
-let teaColorS = 0xff7878
-let teaEmissiveS = 0xf02323
-let ambientLightS = 0xff164d
-let directionalLightS = 0x3225ff
+let teaColorS = 0x372c84
+let teaEmissiveS = 0xff1f39
+let ambientLightS = 0xd4162c
+let directionalLightS = 0xa1e8ff
 
 // me & name color
-let meColor = 0x57ffe2
+let meColor = 0Xd5fff7
 
 // sky Color
-let upperColor = 0x434246
+let upperColor = 0x649ea2
 
 // paneau
 let devDeColor = 0x5af2d9
 let devDeColorEmi = 0x44e6ca
 
 let size = 3
-let magnitude = 2
+let magnitude = 3
 
 let sinProf
 
@@ -145,12 +145,12 @@ function world (debbug, assets, appContainer, ctx) {
       this.devDeColorEmission = devDeColorEmi
       this.teaMakerRotation = 0.7
       this.capY = -0.53
-      this.posX = -0.3
-      this.posY = -4.7
-      this.posZ = -1.43
-      this.rotY = -0.12
-      this.rotX = 0.5
-      this.rotZ = 0.75
+      this.posX = 4
+      this.posY = -5.8
+      this.posZ = -2.5
+      this.rotY = 0.84
+      this.rotX = 0.58
+      this.rotZ = 0.21
       this.translateX = -4.9
       this.translateY = -4
       this.translateZ = 9.8
@@ -171,35 +171,15 @@ function world (debbug, assets, appContainer, ctx) {
     lettersDD = new THREE.Mesh(models.letters, lettersMaterial)
     lettersDD.castShadow = true
     lettersDD.receiveShadow = true
+   
     // assets
-
-    
-    // NAME
-    // Material
-    // let nameMaterial = new THREE.MeshBasicMaterial({
-    //   color: meColor
-    // })
-
-    // font
-    // let square = fonts.square
-
-    // geometry
-    // let nameGeometry = new THREE.TextGeometry(`Jose                   Sánchez`, {
-    //   font: square,
-    //   size: fontSizeName,
-    //   height: 0,
-    //   curveSegments: 2
-    // })
-
-    // mesh
-    // name = new THREE.Mesh(nameGeometry, nameMaterial)
-
-    // name.geometry.computeVertexNormals(true)
 
     // ME
     let meMaterial = new THREE.MeshBasicMaterial({
       color: meColor,
-      skinning: true
+      skinning: true,
+      blending: THREE.NoBlending
+
     })
 
     let meGeometry = models.me
@@ -223,16 +203,23 @@ function world (debbug, assets, appContainer, ctx) {
     let materialCap = new THREE.MeshLambertMaterial({
       color: initBackColor,
       emissive: initBackColor,
+      emissiveIntensity: 0.9,
       flatShading: true
     })
 
     teaCap = new THREE.Mesh(models.cap, materialCap)
     teaBody = new THREE.Mesh(models.body, materialBody)
 
+
+    sky = createSky(upperColor, 77)
+    
     teaCap.receiveShadow = true
     teaCap.castShadow = true
     teaBody.castShadow = true
     teaBody.receiveShadow = true
+
+    me.castShadow = true
+    me.receiveShadow = true
 
     teaPotWrapper = new THREE.Group()
     teaBody.position.x = -0.25
@@ -262,8 +249,6 @@ function world (debbug, assets, appContainer, ctx) {
     teaPotWrapper.add(lettersDD)
 
     teaPotWrapper.position.y = -5
-
-    sky = createSky(upperColor, 77)
 
     // adds
     scene.add(sky)
@@ -297,6 +282,8 @@ function conf (appContainer, cb) {
   renderer.setSize(width, height)
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFBasicShadowMap
+  renderer.shadowMap.renderReverseSided = false;
+
   camera = new THREE.OrthographicCamera(width / - x, width / x, height / x, height / - x, 1, 1000);
   camera.position.x = 15
   camera.position.y = -3
@@ -327,7 +314,7 @@ function conf (appContainer, cb) {
 }
 
 function createSky (color, y) {
-  let skyGeometry = new THREE.PlaneGeometry(75, 10, 400, 1)
+  let skyGeometry = new THREE.PlaneGeometry(85, 11, 85, 11)
   let opacity = 0.5
 
 
@@ -335,8 +322,8 @@ function createSky (color, y) {
     color,
     opacity,
     transparent: true,
-    wireframe: true,
-    fog: false
+    fog: false,
+    blending: THREE.NoBlending
   })
 
   let skyMesh = new THREE.Mesh(skyGeometry, skyMaterial)
@@ -345,8 +332,9 @@ function createSky (color, y) {
   skyMesh.position.y = y
   skyMesh.position.z = -27
 
-  skyMesh.receiveShadow = true
-  
+  skyMesh.render
+
+
   return skyMesh
 }
 
@@ -456,12 +444,11 @@ function render (ts) {
 
   for (var i = 0; i < skyLength; i++) {
     var vs = sky.geometry.vertices[i]
-    var dist2 = new THREE.Vector2(vs.x, vs.y).sub(center);
-    vs.z = Math.sin(dist2.length() / size + (ts/900)) * magnitude;
+    var dist2 = new THREE.Vector2(vs.x, vs.y).sub(center)
+    vs.z = Math.sin(dist2.length()/-size + (ts/900)) * magnitude
   }
 
-
-  sky.geometry.verticesNeedUpdate = true;
+  sky.geometry.verticesNeedUpdate = true
 
   // rotate the teapot
   let middleX = (SCREEN_WIDTH - HALF_SCREEN_W) - mousePosition.x

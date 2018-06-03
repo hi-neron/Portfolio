@@ -49566,6 +49566,10 @@ page('/:tag?', create, loader, function (ctx, next) {
     }
   });
 
+  app.addEventListener('scroll', function (e) {
+    console.log('scroll');
+  });
+
   next();
 });
 
@@ -49577,8 +49581,8 @@ function contentDraw(w, r, cb) {
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentPosition: true,
-    transitionDuration: 0,
-    originTop: false
+    transitionDuration: 300,
+    gutter: 14
   });
 
   var images = document.querySelectorAll('.images-to-load');
@@ -49595,7 +49599,8 @@ function drawArticles(tag, ctx) {
   ChangeUrl('san', '/#!/' + tag);
 
   var pos = getPosition(mainContent);
-  window.scrollTo(0, pos.top);
+  pos = pos.top - 12;
+  window.scrollTo(0, pos);
 
   content.getMainContent(tag, function (e, r) {
     if (e) return new Error({ message: 'An Error has ocurred' });
@@ -51978,7 +51983,7 @@ var htmlName = yo(_templateObject);
 
 // // background-color
 // let initBackColor = 0xf3f3f6
-var initBackColor = 0xf3f3f6;
+var initBackColor = 0x62c0c8;
 
 // // tea COLOR
 // let teaColorS = 0x161616
@@ -51997,23 +52002,23 @@ var initBackColor = 0xf3f3f6;
 // let devDeColorEmi = 0x44e6ca
 
 // tea COLOR with blue
-var teaColorS = 0xff7878;
-var teaEmissiveS = 0xf02323;
-var ambientLightS = 0xff164d;
-var directionalLightS = 0x3225ff;
+var teaColorS = 0x372c84;
+var teaEmissiveS = 0xff1f39;
+var ambientLightS = 0xd4162c;
+var directionalLightS = 0xa1e8ff;
 
 // me & name color
-var meColor = 0x57ffe2;
+var meColor = 0Xd5fff7;
 
 // sky Color
-var upperColor = 0x434246;
+var upperColor = 0x649ea2;
 
 // paneau
 var devDeColor = 0x5af2d9;
 var devDeColorEmi = 0x44e6ca;
 
 var size = 3;
-var magnitude = 2;
+var magnitude = 3;
 
 var sinProf = void 0;
 
@@ -52066,12 +52071,12 @@ function world(debbug, assets, appContainer, ctx) {
       this.devDeColorEmission = devDeColorEmi;
       this.teaMakerRotation = 0.7;
       this.capY = -0.53;
-      this.posX = -0.3;
-      this.posY = -4.7;
-      this.posZ = -1.43;
-      this.rotY = -0.12;
-      this.rotX = 0.5;
-      this.rotZ = 0.75;
+      this.posX = 4;
+      this.posY = -5.8;
+      this.posZ = -2.5;
+      this.rotY = 0.84;
+      this.rotX = 0.58;
+      this.rotZ = 0.21;
       this.translateX = -4.9;
       this.translateY = -4;
       this.translateZ = 9.8;
@@ -52092,35 +52097,15 @@ function world(debbug, assets, appContainer, ctx) {
     lettersDD = new THREE.Mesh(models.letters, lettersMaterial);
     lettersDD.castShadow = true;
     lettersDD.receiveShadow = true;
+
     // assets
-
-
-    // NAME
-    // Material
-    // let nameMaterial = new THREE.MeshBasicMaterial({
-    //   color: meColor
-    // })
-
-    // font
-    // let square = fonts.square
-
-    // geometry
-    // let nameGeometry = new THREE.TextGeometry(`Jose                   Sánchez`, {
-    //   font: square,
-    //   size: fontSizeName,
-    //   height: 0,
-    //   curveSegments: 2
-    // })
-
-    // mesh
-    // name = new THREE.Mesh(nameGeometry, nameMaterial)
-
-    // name.geometry.computeVertexNormals(true)
 
     // ME
     var meMaterial = new THREE.MeshBasicMaterial({
       color: meColor,
-      skinning: true
+      skinning: true,
+      blending: THREE.NoBlending
+
     });
 
     var meGeometry = models.me;
@@ -52144,16 +52129,22 @@ function world(debbug, assets, appContainer, ctx) {
     var materialCap = new THREE.MeshLambertMaterial({
       color: initBackColor,
       emissive: initBackColor,
+      emissiveIntensity: 0.9,
       flatShading: true
     });
 
     teaCap = new THREE.Mesh(models.cap, materialCap);
     teaBody = new THREE.Mesh(models.body, materialBody);
 
+    sky = createSky(upperColor, 77);
+
     teaCap.receiveShadow = true;
     teaCap.castShadow = true;
     teaBody.castShadow = true;
     teaBody.receiveShadow = true;
+
+    me.castShadow = true;
+    me.receiveShadow = true;
 
     teaPotWrapper = new THREE.Group();
     teaBody.position.x = -0.25;
@@ -52182,8 +52173,6 @@ function world(debbug, assets, appContainer, ctx) {
     teaPotWrapper.add(lettersDD);
 
     teaPotWrapper.position.y = -5;
-
-    sky = createSky(upperColor, 77);
 
     // adds
     scene.add(sky);
@@ -52216,6 +52205,8 @@ function conf(appContainer, cb) {
   renderer.setSize(width, height);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFBasicShadowMap;
+  renderer.shadowMap.renderReverseSided = false;
+
   camera = new THREE.OrthographicCamera(width / -x, width / x, height / x, height / -x, 1, 1000);
   camera.position.x = 15;
   camera.position.y = -3;
@@ -52245,15 +52236,15 @@ function conf(appContainer, cb) {
 }
 
 function createSky(color, y) {
-  var skyGeometry = new THREE.PlaneGeometry(75, 10, 400, 1);
+  var skyGeometry = new THREE.PlaneGeometry(85, 11, 85, 11);
   var opacity = 0.5;
 
   var skyMaterial = new THREE.MeshBasicMaterial({
     color: color,
     opacity: opacity,
     transparent: true,
-    wireframe: true,
-    fog: false
+    fog: false,
+    blending: THREE.NoBlending
   });
 
   var skyMesh = new THREE.Mesh(skyGeometry, skyMaterial);
@@ -52262,7 +52253,7 @@ function createSky(color, y) {
   skyMesh.position.y = y;
   skyMesh.position.z = -27;
 
-  skyMesh.receiveShadow = true;
+  skyMesh.render;
 
   return skyMesh;
 }
@@ -52373,7 +52364,7 @@ function render(ts) {
   for (var i = 0; i < skyLength; i++) {
     var vs = sky.geometry.vertices[i];
     var dist2 = new THREE.Vector2(vs.x, vs.y).sub(center);
-    vs.z = Math.sin(dist2.length() / size + ts / 900) * magnitude;
+    vs.z = Math.sin(dist2.length() / -size + ts / 900) * magnitude;
   }
 
   sky.geometry.verticesNeedUpdate = true;
@@ -75582,7 +75573,7 @@ var getAssets = __webpack_require__(407);
 
 var init = function init(container, ctx) {
   getAssets(function (e, assets) {
-    intro(true, assets, container, ctx);
+    intro(false, assets, container, ctx);
   });
 };
 
@@ -92982,21 +92973,22 @@ module.exports = {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-keywords">\n      </div>\n      '], ['\n      <div class="over-article-keywords">\n      </div>\n      ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      '], ['\n        <span class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </span>\n      ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    '], ['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    ']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    <div class="over-article-title">\n      ', '\n      </div>\n      '], ['\n    <div class="over-article-title">\n      ', '\n      </div>\n      ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n      </div>\n    ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n        </div>\n      </article>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n        <span class="article-one-keyword ', '">\n            ', '\n        </span>\n      '], ['\n        <span class="article-one-keyword ', '">\n            ', '\n        </span>\n      ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n      <header class="article-header">\n        <div class="article-header-top">\n          <figure class="article-main-image">\n            <img src="', '">\n          </figure>\n          <div className="article-content-title-container">\n            <h1 class="article-content-title article-item ', '">\n              <span style="background-color:rgba(', ', 0.85)" >\n                ', '\n              </span>\n            </h1>\n            <div class="article-content-type-container">\n              <div class="article-content-type">\n                ', '\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class="article-subtitle-container">\n          <div class="article-subtitle ', '">\n            ', '\n            <div className="article-keywords-container ">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    '], ['\n      <header class="article-header">\n        <div class="article-header-top">\n          <figure class="article-main-image">\n            <img src="', '">\n          </figure>\n          <div className="article-content-title-container">\n            <h1 class="article-content-title article-item ', '">\n              <span style="background-color:rgba(', ', 0.85)" >\n                ', '\n              </span>\n            </h1>\n            <div class="article-content-type-container">\n              <div class="article-content-type">\n                ', '\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class="article-subtitle-container">\n          <div class="article-subtitle ', '">\n            ', '\n            <div className="article-keywords-container ">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    ']),
-    _templateObject9 = _taggedTemplateLiteral(['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    '], ['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    ']),
-    _templateObject10 = _taggedTemplateLiteral(['\n      <div class="article-content-paragraph article-item ', '">\n        <p>\n          ', '\n        </p>\n      </div>'], ['\n      <div class="article-content-paragraph article-item ', '">\n        <p>\n          ', '\n        </p>\n      </div>']),
-    _templateObject11 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture article-item">\n                <div className="article-content-picture-container">\n                  <img src="', '" alt="', '">\n                </div>\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture article-item">\n                <div className="article-content-picture-container">\n                  <img src="', '" alt="', '">\n                </div>\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            ']),
-    _templateObject12 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            ']),
-    _templateObject13 = _taggedTemplateLiteral(['\n              <div class="article-content-quote article-item ', '">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </div>\n            '], ['\n              <div class="article-content-quote article-item ', '">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </div>\n            ']),
-    _templateObject14 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper ', '">\n        ', '\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer ', '">\n          ', '\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper ', '">\n        ', '\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer ', '">\n          ', '\n        </footer>\n      </div>\n    ']),
-    _templateObject15 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
+var _templateObject = _taggedTemplateLiteral(['\n      <div className="over-article-loader">\n      </div>\n    '], ['\n      <div className="over-article-loader">\n      </div>\n    ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n      <div class="over-article-keywords">\n      </div>\n      '], ['\n      <div class="over-article-keywords">\n      </div>\n      ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n        <div class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </div>\n      '], ['\n        <div class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </div>\n      ']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    '], ['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    <div class="over-article-title">\n      ', '\n    </div>\n    '], ['\n    <div class="over-article-title">\n      ', '\n    </div>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n        ', '\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n          </div>\n          <div class="over-article-bottom">\n            ', '\n          </div>\n        </div>\n        ', '\n      </div>\n    ']),
+    _templateObject7 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n        </div>\n      </article>\n    ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n        <span class="article-one-keyword ', '">\n            ', '\n        </span>\n      '], ['\n        <span class="article-one-keyword ', '">\n            ', '\n        </span>\n      ']),
+    _templateObject9 = _taggedTemplateLiteral(['\n      <header class="article-header">\n        <div class="article-header-top">\n          <figure class="article-main-image">\n            <img src="', '">\n          </figure>\n          <div className="article-content-title-container">\n            <h1 class="article-content-title article-item ', '">\n              <span style="background-color:rgba(', ', 0.85)" >\n                ', '\n              </span>\n            </h1>\n            <div class="article-content-type-container">\n              <div class="article-content-type">\n                ', '\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class="article-subtitle-container">\n          <div class="article-subtitle ', '">\n            ', '\n            <div className="article-keywords-container ">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    '], ['\n      <header class="article-header">\n        <div class="article-header-top">\n          <figure class="article-main-image">\n            <img src="', '">\n          </figure>\n          <div className="article-content-title-container">\n            <h1 class="article-content-title article-item ', '">\n              <span style="background-color:rgba(', ', 0.85)" >\n                ', '\n              </span>\n            </h1>\n            <div class="article-content-type-container">\n              <div class="article-content-type">\n                ', '\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class="article-subtitle-container">\n          <div class="article-subtitle ', '">\n            ', '\n            <div className="article-keywords-container ">\n              ', '\n            </div>\n          </div>\n        </div>\n      </header>\n    ']),
+    _templateObject10 = _taggedTemplateLiteral(['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    '], ['\n      <div class="article-closer-container">\n        <div class="article-close-line line-one">\n        </div>\n        <div class="article-close-line line-two">\n        </div>\n      </div>\n    ']),
+    _templateObject11 = _taggedTemplateLiteral(['\n      <div class="article-content-paragraph article-item ', '">\n        <p>\n          ', '\n        </p>\n      </div>'], ['\n      <div class="article-content-paragraph article-item ', '">\n        <p>\n          ', '\n        </p>\n      </div>']),
+    _templateObject12 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture article-item">\n                <div className="article-content-picture-container">\n                  <img src="', '" alt="', '">\n                </div>\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture article-item">\n                <div className="article-content-picture-container">\n                  <img src="', '" alt="', '">\n                </div>\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            ']),
+    _templateObject13 = _taggedTemplateLiteral(['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            '], ['\n              <figure class="article-content-picture-xl article-item">\n                <img src="', '" alt="', '">\n                <figcaption class="', '">', '</figcaption>\n              </figure>\n            ']),
+    _templateObject14 = _taggedTemplateLiteral(['\n              <div class="article-content-quote article-item ', '">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </div>\n            '], ['\n              <div class="article-content-quote article-item ', '">\n                <p>\n                  <q>\n                    ', '\n                  </q>\n                </p>\n              </div>\n            ']),
+    _templateObject15 = _taggedTemplateLiteral(['\n      <div class="article-content-wrapper ', '">\n        ', '\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer ', '">\n          ', '\n        </footer>\n      </div>\n    '], ['\n      <div class="article-content-wrapper ', '">\n        ', '\n        <div class="article-content-info">\n          ', '\n        </div>\n        <footer class="article-content-footer ', '">\n          ', '\n        </footer>\n      </div>\n    ']),
+    _templateObject16 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -93028,7 +93020,7 @@ function resizeEvents() {
 }
 
 function articleMap(article) {
-  article.setFontSize();
+  article.cbFont();
 }
 
 // Different class for each one article
@@ -93155,7 +93147,7 @@ var Article = function () {
 
   _createClass(Article, [{
     key: 'setFontSize',
-    value: function setFontSize() {
+    value: function setFontSize(cb) {
       // reset
       this.titleContainer.style.width = null;
       this.titleContainer.style.fontSize = null;
@@ -93178,29 +93170,44 @@ var Article = function () {
       var fontSize = parseInt(window.getComputedStyle(this.titleContainer).fontSize, 10);
       var idealHeight = parentHeight * 0.55;
 
-      // console.log(`Title: ${this.title} Parent: W: ${parentWidth}, H:${parentHeight} / Title: W: ${titleWidth}, H: ${titleHeight} / fontsize: ${fontSize}`)
-      // console.log(`masterSize: ${masterSize}`)
-
+      this.keywordsContainer.classList.add('show-keywords');
 
       // el numero ideal es maximo 70% de la altura
       while (titleHeight > idealHeight) {
         // si se pasa aumentar el ancho
-        if (titleWidth < parentWidth - 20) {
-          titleWidth = titleWidth + 2;
-          this.titleContainer.style.width = titleWidth + 'px';
-        } else if (fontSize > 22) {
-          fontSize = fontSize - 1;
-          this.titleContainer.style.fontSize = fontSize + 'px';
-        } else {
-          idealHeight = idealHeight + 2;
-          break;
-        }
-
         // si el ancho no alcanza reducir el tamaño de la fuente
         // evaular si paso
         // console.log(idealHeight, titleHeight)
         titleHeight = this.titleContainer.offsetHeight;
+
+        if (titleWidth < parentWidth - 60) {
+          titleWidth = titleWidth + 2;
+          this.titleContainer.style.width = titleWidth + 'px';
+        } else if (fontSize >= 22) {
+          fontSize = fontSize - 1;
+          this.titleContainer.style.fontSize = fontSize + 'px';
+        } else {
+          idealHeight = idealHeight + 2;
+        }
       }
+
+      var keySpace = parentHeight - (titleHeight + 55);
+      if (keySpace < 80) {
+        this.keywordsContainer.classList.remove('show-keywords');
+      }
+      cb();
+    }
+
+    // cb da font 
+
+  }, {
+    key: 'cbFont',
+    value: function cbFont() {
+      var _this2 = this;
+
+      this.setFontSize(function () {
+        _this2.articleLoader.classList.add('to-show');
+      });
     }
 
     // articles grid container generator
@@ -93208,23 +93215,25 @@ var Article = function () {
   }, {
     key: 'templateViewGenerator',
     value: function templateViewGenerator() {
-      var keywords = yo(_templateObject);
+      // loader 
+      this.articleLoader = yo(_templateObject);
+      this.keywordsContainer = yo(_templateObject2);
 
       for (var i = 0; i < this.keywords.length; i++) {
         var myKeyword = this.keywords[i];
-        var _template = yo(_templateObject2, myKeyword, myKeyword);
-        keywords.appendChild(_template);
+        var _template = yo(_templateObject3, myKeyword, myKeyword);
+        this.keywordsContainer.appendChild(_template);
       }
 
-      this.typeContainer = yo(_templateObject3, this.type);
+      this.typeContainer = yo(_templateObject4, this.type);
 
-      this.titleContainer = yo(_templateObject4, this.title);
+      this.titleContainer = yo(_templateObject5, this.title);
 
-      var over = yo(_templateObject5, this.titleContainer, this.typeContainer, keywords);
+      var over = yo(_templateObject6, this.titleContainer, this.typeContainer, this.keywordsContainer, this.articleLoader);
 
       var important = this.important ? 'grid-item-widthx2' : '';
 
-      var template = yo(_templateObject6, important, this.title, over, this.mainPicture.url, this.mainPicture.url, this.mainPicture.comment);
+      var template = yo(_templateObject7, important, this.title, over, this.mainPicture.url, this.mainPicture.url, this.mainPicture.comment);
 
       var _this = this;
 
@@ -93279,36 +93288,36 @@ var Article = function () {
       // each one keyword template generator
       for (var i = 0; i < this.keywords.length; i++) {
         var _keyword = this.keywords[i];
-        var oneKeyword = yo(_templateObject7, cStyle.overLetter, _keyword);
+        var oneKeyword = yo(_templateObject8, cStyle.overLetter, _keyword);
 
         keywordsTemplate.appendChild(oneKeyword);
       }
 
       // header
-      var articleTitle = yo(_templateObject8, this.mainPicture.urlXX, cStyle.letter, cStyle.colorRGB, this.title, this.type, cStyle.letter, this.intro, keywordsTemplate);
+      var articleTitle = yo(_templateObject9, this.mainPicture.urlXX, cStyle.letter, cStyle.colorRGB, this.title, this.type, cStyle.letter, this.intro, keywordsTemplate);
 
       // trigger to close
-      var close = yo(_templateObject9);
+      var close = yo(_templateObject10);
 
       articleContent.appendChild(articleTitle);
 
       // Content constructor
       for (var _i = 0; _i < this.content.length; _i++) {
         var form = void 0;
-        var p = yo(_templateObject10, cStyle.letter, this.content[_i]);
+        var p = yo(_templateObject11, cStyle.letter, this.content[_i]);
 
         if (this.othersPictures[_i]) {
           switch (this.othersPictures[_i].type) {
             case 'image':
-              form = yo(_templateObject11, this.othersPictures[_i].url, this.othersPictures[_i].name, cStyle.letter, this.othersPictures[_i].comment);
-              break;
-
-            case 'image2':
               form = yo(_templateObject12, this.othersPictures[_i].url, this.othersPictures[_i].name, cStyle.letter, this.othersPictures[_i].comment);
               break;
 
+            case 'image2':
+              form = yo(_templateObject13, this.othersPictures[_i].url, this.othersPictures[_i].name, cStyle.letter, this.othersPictures[_i].comment);
+              break;
+
             case 'quote':
-              form = yo(_templateObject13, cStyle.letter, this.othersPictures[_i].text);
+              form = yo(_templateObject14, cStyle.letter, this.othersPictures[_i].text);
               break;
 
             default:
@@ -93323,7 +93332,7 @@ var Article = function () {
       }
 
       // main template of open article
-      var template = yo(_templateObject14, cStyle.back, close, articleContent, cStyle.letter, this.endWord);
+      var template = yo(_templateObject15, cStyle.back, close, articleContent, cStyle.letter, this.endWord);
 
       close.addEventListener('click', function (e) {
         screenSplashClose();
@@ -93359,7 +93368,7 @@ function createTemplate(items, cb) {
   var article = void 0;
   articlesList = [];
 
-  var main = yo(_templateObject15);
+  var main = yo(_templateObject16);
 
   for (var i = 0; i < items.length; i++) {
     article = new Article(items[i]);

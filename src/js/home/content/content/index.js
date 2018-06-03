@@ -26,7 +26,7 @@ function resizeEvents () {
 }
 
 function articleMap (article) {
-  article.setFontSize()
+  article.cbFont()
 }
 
 // Different class for each one article
@@ -138,7 +138,7 @@ class Article {
   }
 
   // Set new font size according to parent width
-  setFontSize () {
+  setFontSize (cb) {
     // reset
     this.titleContainer.style.width = null
     this.titleContainer.style.fontSize = null
@@ -162,39 +162,49 @@ class Article {
     let fontSize = parseInt(window.getComputedStyle(this.titleContainer).fontSize, 10)
     let idealHeight = parentHeight * 0.55
 
-
-
-    // console.log(`Title: ${this.title} Parent: W: ${parentWidth}, H:${parentHeight} / Title: W: ${titleWidth}, H: ${titleHeight} / fontsize: ${fontSize}`)
-    // console.log(`masterSize: ${masterSize}`)
-
+    this.keywordsContainer.classList.add('show-keywords')
     
     // el numero ideal es maximo 70% de la altura
     while (titleHeight > idealHeight) {
       // si se pasa aumentar el ancho
-      if (titleWidth < parentWidth - 20) {
-        titleWidth = titleWidth + 2
-        this.titleContainer.style.width = `${titleWidth}px`
-      } else if ( fontSize > 22 ) {
-        fontSize = fontSize - 1
-        this.titleContainer.style.fontSize = `${fontSize}px`
-      } else {
-        idealHeight = idealHeight + 2
-        break
-      }
-
-
       // si el ancho no alcanza reducir el tamaño de la fuente
       // evaular si paso
       // console.log(idealHeight, titleHeight)
       titleHeight =  this.titleContainer.offsetHeight
+
+      if (titleWidth < parentWidth - 60) {
+        titleWidth = titleWidth + 2
+        this.titleContainer.style.width = `${titleWidth}px`
+      } else if ( fontSize >= 22 ) {
+        fontSize = fontSize - 1
+        this.titleContainer.style.fontSize = `${fontSize}px`
+      } else {
+        idealHeight = idealHeight + 2
+      }
     }
 
+    let keySpace = parentHeight - (titleHeight + 55)
+    if (keySpace < 80) {
+      this.keywordsContainer.classList.remove('show-keywords')
+    }
+    cb()
+  }
 
+  // cb da font 
+  cbFont () {
+    this.setFontSize (() => {
+        this.articleLoader.classList.add('to-show')
+    }) 
   }
 
   // articles grid container generator
   templateViewGenerator () {
-    let keywords = yo`
+    // loader 
+    this.articleLoader = yo`
+      <div className="over-article-loader">
+      </div>
+    `
+    this.keywordsContainer = yo`
       <div class="over-article-keywords">
       </div>
       `
@@ -202,11 +212,11 @@ class Article {
     for(let i = 0; i < this.keywords.length; i++) {
       let myKeyword = this.keywords[i]
       let template = yo`
-        <span class="over-article-keyword">
+        <div class="over-article-keyword">
           <span class="over-article-word" data-keyword="${myKeyword}">${myKeyword}</span>
-        </span>
+        </div>
       `
-      keywords.appendChild(template)
+      this.keywordsContainer.appendChild(template)
     }
     
     this.typeContainer = yo`
@@ -218,8 +228,8 @@ class Article {
     this.titleContainer = yo`
     <div class="over-article-title">
       ${this.title}
-      </div>
-      `
+    </div>
+    `
       
       let over = yo`
       <div class="over-article-container">
@@ -229,9 +239,10 @@ class Article {
             ${this.typeContainer}
           </div>
           <div class="over-article-bottom">
-            ${keywords}
+            ${this.keywordsContainer}
           </div>
         </div>
+        ${this.articleLoader}
       </div>
     `
 

@@ -1,21 +1,23 @@
 $introGray: #dadada;
 
 $body: #eaeaea;
-
-$mainColor: rgb(42, 48, 49);
+$dat: #131618;
+$mainColor: #131618;
 $mainColor2: #17161a;
 $mainColor3: #1b1920;
 $mainColor4: #543891;
+$mainColor5: #977ab3;
 
-$secondaryColor: #ff425b;
+$secondaryColor: #FF4369;
 $secondaryColor2: #eb2d2d;
-$secondaryColor3: #ff648b;
+$secondaryColor3: #ff7e98;
 
-$thirdColor: #83ffda;
+$thirdColor: rgba(168, 255, 255, 0.87);
 $thirdColor2: #aefff8;
-$thirdColor3: #d5fff7;
+$thirdColor3: #caf9ff;
 
-$gray: #dddddd;
+$gray: rgb(243, 243, 243);
+$backgroundGray: #d2d2d2;
  
 $myWhite: #f3f3f6;
 $contentBackground: #EAEAEA;
@@ -31,9 +33,20 @@ $trigger-color: $mainColor;
 
 // ---->
 // ARTICLES GRID
-$textColor: $mainColor;
-$bottomTextColor: $mainColor;
-$backgroundOverArticles: $gray;
+
+// vars
+//$purple: rgb(163, 121, 181);
+$purple: $secondaryColor;
+$whiteOver: rgba($mainColor, .95);
+
+// Background
+$backgroundOverArticles: $whiteOver;
+
+// items
+$textColor: $secondaryColor;
+$bottomTextColor: $thirdColor3;
+$typeColor: $thirdColor3;
+
 
 // overs
-$articlesOverLetters: $secondaryColor3;
+$articlesOverLetters: $secondaryColor;

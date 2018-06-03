@@ -4,7 +4,7 @@
   min-height: 480px;
   z-index: 20;
   .intro-wrapper {
-    height: 110vh;
+    height: 105vh;
     position: relative;
 
     .my-name-container {
@@ -30,17 +30,25 @@
         letter-spacing: -0.12em;
         font-family: 'eleb';
         text-align: center;
-        color: rgba(#1a2727, .85);
+        color: rgba($mainColor, .85);
         font-size: calc(5vw + 9vh + 6vmin);
         line-height: 1.05em;
         text-shadow:  0 -2px 8px rgba(white, .15), 
                       0 -6px 8px rgba(#bde6db, .6), 
                       0 -3px 2px rgba($thirdColor3, .8), 
                       0 4px 0px rgba(rgb(255, 117, 152), 1),
+                      0 -2px 2px rgba(white, .5), 
                       0 7px 2px rgba($mainColor, .2),
                       0 8px 8px rgba($secondaryColor, .7),
-                      0 -2px 2px rgba(white, .5), 
-                      0 20px 4px rgba($mainColor4, .3);
+                      0 20px 2px rgba($mainColor4, .3);
+        // text-shadow:  0 -2px 8px rgba(white, .15), 
+        //               0 -6px 8px rgba(#bde6db, .6), 
+        //               0 -3px 2px rgba($thirdColor3, .8), 
+        //               0 4px 0px rgba(rgb(255, 117, 152), 1),
+        //               0 7px 2px rgba($mainColor, .2),
+        //               0 8px 8px rgba($secondaryColor, .7),
+        //               0 -2px 2px rgba(white, .5), 
+        //               0 20px 4px rgba($mainColor4, .3);
 
 
         .name-line {
@@ -53,7 +61,7 @@
           width: 110%;
           .space {
             display: inline-block;
-            width: 0.7em;
+            // width: 0.7em;
           }
           .next-line {
             font-size: 1.4em;

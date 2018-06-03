@@ -67,6 +67,10 @@ page('/:tag?', create, loader, (ctx, next) => {
     } 
   })
 
+  app.addEventListener('scroll', (e) => {
+    console.log('scroll')
+  })
+  
   next()
 })
 
@@ -78,8 +82,8 @@ function contentDraw (w, r, cb) {
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentPosition: true,
-    transitionDuration: 0,
-    originTop: false
+    transitionDuration: 300,
+    gutter: 14
   })
 
   let images = document.querySelectorAll('.images-to-load')
@@ -96,7 +100,8 @@ function drawArticles (tag, ctx) {
   ChangeUrl('san', `/#!/${tag}`)
 
   let pos = getPosition(mainContent)
-  window.scrollTo(0, pos.top)
+  pos = pos.top - 12
+  window.scrollTo(0, pos)
 
   content.getMainContent(tag, (e, r) => {
     if (e) return new Error({message: 'An Error has ocurred'})
