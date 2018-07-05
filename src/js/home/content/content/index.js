@@ -6,6 +6,7 @@ const empty = require('empty-element')
 
 // resize event for intro
 const introR = require('../../intro/world').onWindowResize
+const setNewWindowSize = require('../../').setNewWindowSize
 
 // ventana de contenidos
 let contentContainer = document.createElement('div')
@@ -19,6 +20,7 @@ let articlesList = []
 window.addEventListener( 'resize', (e) => {
   introR()
   resizeEvents()
+  setNewWindowSize()
 })
 
 function resizeEvents () {
@@ -260,7 +262,7 @@ class Article {
     let _this = this
 
     template.addEventListener('click', (e) => {
-      const drawArticle = require('../../')
+      const drawArticle = require('../../').drawArticles
       if (e.target.classList.contains('over-article-word')){
         let data = e.target.getAttribute('data-keyword')
         return drawArticle(data)

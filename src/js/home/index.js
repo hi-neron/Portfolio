@@ -18,30 +18,34 @@ const create = require('./utils/create')
 // utility to create empty elements
 const empty = require('empty-element')
 
-const Lazy = require('vanilla-lazyload')
-
 // phrase intro
 let bioTags = ['DESIGNER', 'DEV', 'SEA LOVER']
 
 // bar
-const barCreator = require('./bar')
+const barCreator = require('./bar').templateP
+const barBehavior = require('./bar').barBehavior
 let app, mainContent, introContainer, phrase, msnry, imgLoaded
 
 // loader
 const loader = require('./loader')
+
+// scroll
+let sum = []
+let scrollM = 0
+let maxDistance, windowSize
+let scrolling = false
 
 page('/:tag?', create, loader, (ctx, next) => {
   // vars
   app = ctx.app
 
   let introContainer = ctx.introContainer
-  let phrase = ctx.phrase
   let footer = ctx.footer
   let bar = ctx.bar
   let tag = ctx.params.tag
 
   mainContent = ctx.mainContent
-  
+
   // get intro
   document.onload = intro.init(introContainer, ctx)
   drawArticles(tag, ctx)
@@ -57,20 +61,18 @@ page('/:tag?', create, loader, (ctx, next) => {
     footer.appendChild(r)
   })
 
+  // ABRE EL ARTICULO: Lo dibuja cuando se abre
+  // se llama desde /content/content
   window.addEventListener('articleScreen', (e) => {
     if (app.classList.contains('fixScroll')) {
       let pos = getPosition(mainContent)
       app.classList.remove('fixScroll')
-      window.scrollTo(0, pos.top)     
+      window.scrollTo(0, pos.top)
     } else {
       app.classList.add('fixScroll')
     } 
   })
 
-  app.addEventListener('scroll', (e) => {
-    console.log('scroll')
-  })
-  
   next()
 })
 
@@ -83,7 +85,7 @@ function contentDraw (w, r, cb) {
     columnWidth: '.grid-sizer',
     percentPosition: true,
     transitionDuration: 300,
-    gutter: 14
+    gutter: 10
   })
 
   let images = document.querySelectorAll('.images-to-load')
@@ -101,7 +103,9 @@ function drawArticles (tag, ctx) {
 
   let pos = getPosition(mainContent)
   pos = pos.top - 12
-  window.scrollTo(0, pos)
+  // move!
+  // move!
+  scroll(null, pos)
 
   content.getMainContent(tag, (e, r) => {
     if (e) return new Error({message: 'An Error has ocurred'})
@@ -116,13 +120,19 @@ function drawArticles (tag, ctx) {
           msnry.layout()
           ctx.mainLoader.vanish()
           setTimeout(() => {
+            setNewWindowSize()
             msnry.layout()
           }, 200);
         }, 1200);
       })
     })
-    
   })
+}
+
+function setNewWindowSize () {
+  let body = document.body, html = document.documentElement;
+  maxDistance = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight )
+  windowSize = window.innerHeight
 }
 
 // get position to scroll them
@@ -146,4 +156,142 @@ function ChangeUrl(title, url) {
   }
 }
 
-module.exports = drawArticles
+//
+// Scroll Event Listener
+// 
+
+
+function getAccelerationNormal (sum) {
+  let size = sum.length
+  let result = 0
+
+  sum.map(element => {
+    result = result + parseFloat(element)
+    return element
+  })
+
+  return result / size
+}
+
+function windowScroll (acceleration, direction) {
+  direction = direction ? 1 : -1
+  scrollM += (acceleration * direction)
+  let maxScroll = maxDistance - windowSize
+  if (scrollM < 0) {
+    scrollM = 0
+    return false
+  }
+  if (scrollM > maxScroll) {
+    scrollM = maxScroll
+    return false
+  }
+  console.log(scrollM)
+  window.scrollTo(0, scrollM.toFixed(2))
+  return true
+}
+
+let speed = 0
+let acceleration = 0
+
+function scroll (e, to) {
+  if (e) {
+    // define velocidad positiva o negativa
+    let r = 0
+    let deltaY = e.deltaY
+    if (deltaY > 0) {
+      r = 5
+    } else if(deltaY < 0){
+      r = -5
+    }
+
+    speed += r
+
+    console.log(deltaY, r, speed)
+
+    function scrollAnimate () {
+      window.requestAnimationFrame(scrollAnimate)
+    }
+
+
+
+  }
+}
+
+window.addEventListener('wheel', (e) => {
+  // dont scroll
+  e.preventDefault()
+  scroll(e)
+  barBehavior()
+})
+
+module.exports = { drawArticles, setNewWindowSize }
+
+  /*
+    // set new y scroll speed
+    let maxSpeed = 16
+    let friction = 0.05
+    // scroll
+    let direction, absAcceleration, distance, moving = true
+
+    // scroll Move
+    let startValue, endingDistance, easingValue, time, currentIteration
+
+    if (e) {
+
+      let deltaY = e.deltaY
+      let scrollAcceleration = deltaY * maxSpeed / 700
+
+      while (sum.length > 3) {
+        sum.shift()
+      }
+
+      sum.push(scrollAcceleration)
+
+      let accelerationNormalized = getAccelerationNormal(sum)
+      direction = accelerationNormalized > 0 ? true: false
+      absAcceleration = Math.abs(accelerationNormalized)
+      scrollAnimate()
+
+    } else {
+      // let direction = (scrollM - to) > 0 ? false: true
+      startValue = scrollM
+      endingDistance = scrollM - to
+      easingValue = 0
+      time = 1000
+      currentIteration = 0
+      scrollMove()
+    }
+
+    function scrollAnimate () {
+      // window.scrollTo(0, speed)
+      absAcceleration -= friction
+
+      if (absAcceleration > 0.1 && moving ) {
+        moving = windowScroll(absAcceleration, direction)
+        window.requestAnimationFrame(scrollAnimate)
+      } else {
+        absAcceleration = 0
+        sum = []
+      }
+
+    }
+
+    function scrollMove () {
+
+      // let changeInValue = endingDistance - startValue
+      // let totalIterations = time / 60;
+
+      // let easingValue = easeInOut(currentIteration, startValue, changeInValue, totalIterations);
+
+      // currentIteration++;
+
+      // scrollM -= distance
+
+      // // window.scrollTo(0, easingValue)
+      // console.log(easingValue)
+
+      // if (currentIteration <= totalIterations) {
+      //   window.requestAnimationFrame(scrollMove);
+      // }
+    }
+  */

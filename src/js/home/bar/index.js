@@ -101,28 +101,27 @@ trigger.addEventListener('click', (e) => {
   let bar = document.getElementById('main-bar')
   console.log(e)
 
-  
   if (opened) {
     opened = false
     console.log('opened')
     app.classList.remove('main-bar-open-app');
     bar.classList.remove('main-bar-open-bar');
     icon.classList.remove('rotate-icon');
-    
+
   } else {
     icon.classList.add('rotate-icon');
     app.classList.add('main-bar-open-app');
     bar.classList.add('main-bar-open-bar');
     opened = true
     console.log('closed')
-  } 
+  }
 })
 
-window.addEventListener('scroll', (e) => {
+function barBehavior () {
   let vPosition = window.pageYOffset
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
-
+  
   if (vPosition > 820) {
     limit = true
     trigger.classList.add('view');
@@ -133,7 +132,26 @@ window.addEventListener('scroll', (e) => {
     app.classList.remove('main-bar-open-app');
     bar.classList.remove('main-bar-open-bar');
   }
-})
+}
+
+// window.addEventListener('scroll', (e) => {
+//   let vPosition = window.pageYOffset
+//   let app = document.getElementById('app')
+//   let bar = document.getElementById('main-bar')
+
+//   if (vPosition > 820) {
+//     limit = true
+//     trigger.classList.add('view');
+//   } else {
+//     limit = false
+//     opened = false
+//     trigger.classList.remove('view');
+//     app.classList.remove('main-bar-open-app');
+//     bar.classList.remove('main-bar-open-bar');
+//   }
+// })
+
+
 
 window.addEventListener('tagChange', (e) => {
   let newTag = e.tag
@@ -145,6 +163,11 @@ window.addEventListener('tagChange', (e) => {
   empty(message).innerHTML = newMessage
 })
 
-module.exports = function (cb) {
+function templateP (cb) {
   cb(template)
+}
+
+module.exports = {
+  templateP,
+  barBehavior
 }
