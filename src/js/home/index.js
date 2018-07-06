@@ -18,22 +18,19 @@ const create = require('./utils/create')
 // utility to create empty elements
 const empty = require('empty-element')
 
-// phrase intro
-let bioTags = ['DESIGNER', 'DEV', 'SEA LOVER']
-
 // bar
 const barCreator = require('./bar').templateP
 const barBehavior = require('./bar').barBehavior
-let app, mainContent, introContainer, phrase, msnry, imgLoaded
+let app, mainContent, msnry, imgLoaded, maxDistance, windowSize
 
 // loader
 const loader = require('./loader')
 
-// scroll
-let sum = []
-let scrollM = 0
-let maxDistance, windowSize
-let scrolling = false
+// resize events
+const introR = require('./intro/world').onWindowResize
+const resizeEvents = require('./content/content').resizeEvents
+
+let scrollA = true
 
 page('/:tag?', create, loader, (ctx, next) => {
   // vars
@@ -84,8 +81,7 @@ function contentDraw (w, r, cb) {
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentPosition: true,
-    transitionDuration: 300,
-    gutter: 10
+    transitionDuration: 300
   })
 
   let images = document.querySelectorAll('.images-to-load')
@@ -102,10 +98,14 @@ function drawArticles (tag, ctx) {
   ChangeUrl('san', `/#!/${tag}`)
 
   let pos = getPosition(mainContent)
-  pos = pos.top - 12
+  pos = pos.top
   // move!
   // move!
-  scroll(null, pos)
+
+  // si no hay un loader, entonces hace scroll
+  if (!ctx) {
+    scroll(null, pos)
+  }
 
   content.getMainContent(tag, (e, r) => {
     if (e) return new Error({message: 'An Error has ocurred'})
@@ -118,7 +118,11 @@ function drawArticles (tag, ctx) {
         setTimeout(() => {
           initialize()
           msnry.layout()
-          ctx.mainLoader.vanish()
+          // close loader
+          if (ctx) {
+            ctx.mainLoader.vanish()
+          }
+
           setTimeout(() => {
             setNewWindowSize()
             msnry.layout()
@@ -156,142 +160,65 @@ function ChangeUrl(title, url) {
   }
 }
 
-//
-// Scroll Event Listener
-// 
-
-
-function getAccelerationNormal (sum) {
-  let size = sum.length
-  let result = 0
-
-  sum.map(element => {
-    result = result + parseFloat(element)
-    return element
-  })
-
-  return result / size
-}
-
-function windowScroll (acceleration, direction) {
-  direction = direction ? 1 : -1
-  scrollM += (acceleration * direction)
-  let maxScroll = maxDistance - windowSize
-  if (scrollM < 0) {
-    scrollM = 0
-    return false
-  }
-  if (scrollM > maxScroll) {
-    scrollM = maxScroll
-    return false
-  }
-  console.log(scrollM)
-  window.scrollTo(0, scrollM.toFixed(2))
-  return true
-}
-
-let speed = 0
-let acceleration = 0
-
-function scroll (e, to) {
+function scroll (e, pos) {
+  let actualPosition, nextPosition, direction, add, factor, curve, util
+  let move = 0
   if (e) {
     // define velocidad positiva o negativa
-    let r = 0
-    let deltaY = e.deltaY
-    if (deltaY > 0) {
-      r = 5
-    } else if(deltaY < 0){
-      r = -5
+    // let r = 0
+    // let deltaY = e.deltaY
+    // if (deltaY > 0) {
+    //   r = 5
+    // } else if(deltaY < 0){
+    //   r = -5
+    // }
+
+    // speed += r
+
+    // console.log(deltaY, r, speed, intro)
+  } else {
+    // scroll to x pos
+    actualPosition = window.pageYOffset
+    nextPosition = pos
+    direction = actualPosition - nextPosition
+    util = Math.abs(direction)
+
+    factor = util / 50
+    add = direction >= 0 ? factor * -1 : factor
+    direction = Math.abs(direction)
+    
+    scrollmove()
+  } 
+  
+  function scrollmove () {
+    scrollA = false
+    
+    if (direction <= 1) {
+      scrollA = true
+    } else {
+      window.scrollTo(0, actualPosition += add)
+      direction -= factor
+      console.log(direction, scrollA, factor, nextPosition, actualPosition)
+      window.requestAnimationFrame(scrollmove)
     }
-
-    speed += r
-
-    console.log(deltaY, r, speed)
-
-    function scrollAnimate () {
-      window.requestAnimationFrame(scrollAnimate)
-    }
-
-
-
   }
+
 }
 
 window.addEventListener('wheel', (e) => {
   // dont scroll
-  e.preventDefault()
+  if (!scrollA) {
+    e.preventDefault
+  }
+  // e.preventDefault()
   scroll(e)
-  barBehavior()
+  barBehavior(getPosition(mainContent))
+})
+
+window.addEventListener( 'resize', (e) => {
+  introR()
+  resizeEvents()
+  setNewWindowSize()
 })
 
 module.exports = { drawArticles, setNewWindowSize }
-
-  /*
-    // set new y scroll speed
-    let maxSpeed = 16
-    let friction = 0.05
-    // scroll
-    let direction, absAcceleration, distance, moving = true
-
-    // scroll Move
-    let startValue, endingDistance, easingValue, time, currentIteration
-
-    if (e) {
-
-      let deltaY = e.deltaY
-      let scrollAcceleration = deltaY * maxSpeed / 700
-
-      while (sum.length > 3) {
-        sum.shift()
-      }
-
-      sum.push(scrollAcceleration)
-
-      let accelerationNormalized = getAccelerationNormal(sum)
-      direction = accelerationNormalized > 0 ? true: false
-      absAcceleration = Math.abs(accelerationNormalized)
-      scrollAnimate()
-
-    } else {
-      // let direction = (scrollM - to) > 0 ? false: true
-      startValue = scrollM
-      endingDistance = scrollM - to
-      easingValue = 0
-      time = 1000
-      currentIteration = 0
-      scrollMove()
-    }
-
-    function scrollAnimate () {
-      // window.scrollTo(0, speed)
-      absAcceleration -= friction
-
-      if (absAcceleration > 0.1 && moving ) {
-        moving = windowScroll(absAcceleration, direction)
-        window.requestAnimationFrame(scrollAnimate)
-      } else {
-        absAcceleration = 0
-        sum = []
-      }
-
-    }
-
-    function scrollMove () {
-
-      // let changeInValue = endingDistance - startValue
-      // let totalIterations = time / 60;
-
-      // let easingValue = easeInOut(currentIteration, startValue, changeInValue, totalIterations);
-
-      // currentIteration++;
-
-      // scrollM -= distance
-
-      // // window.scrollTo(0, easingValue)
-      // console.log(easingValue)
-
-      // if (currentIteration <= totalIterations) {
-      //   window.requestAnimationFrame(scrollMove);
-      // }
-    }
-  */

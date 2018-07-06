@@ -77,7 +77,7 @@ function createTemplate() {
 
   menuBar.addEventListener('click', (e) => {
     if (!e.target.classList.contains('bar-link')) return
-    const drawArticles = require('../')
+    const drawArticles = require('../').drawArticles
     // tag to search
     let myTag = e.target.getAttribute('data-label')
     drawArticles(myTag)
@@ -117,12 +117,12 @@ trigger.addEventListener('click', (e) => {
   }
 })
 
-function barBehavior () {
+function barBehavior (mainContentP) {
   let vPosition = window.pageYOffset
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
   
-  if (vPosition > 820) {
+  if (vPosition > mainContentP.top - 40) {
     limit = true
     trigger.classList.add('view');
   } else {

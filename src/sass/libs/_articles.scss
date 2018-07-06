@@ -33,7 +33,6 @@ $width: 33.3%;
         box-shadow: 0 3px 0 0 rgba($mainColor, 0.25);
         width: $width;
         overflow: hidden;
-        margin-bottom: 12px;
         border-radius: 2px;
         // transition: all 0.5s;
 
@@ -48,7 +47,11 @@ $width: 33.3%;
 
           &:hover {
             .over-article-container {
-              transform: rotate(0);
+              transform: translate(0, 0);
+              left: 0px;
+              top: 0px;
+              border-radius: 0;
+              background: $backgroundOverArticles;
             }
           }
   
@@ -56,10 +59,14 @@ $width: 33.3%;
             position: absolute;
             width: 100%;
             height: 100%;
-            background: $backgroundOverArticles;
-            transition: 0.3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform: rotateX(90deg);
+            background: $secondaryColor;
+            transition: 0.3s all;
+            border-radius: 10px;
+            transform: translate(100%, -100%);
+            left: -12px;
+            top: 12px;
             transform-origin: 0 0;
+
 
             .over-article-loader {
               width: 100%;
@@ -92,7 +99,7 @@ $width: 33.3%;
                   line-height: 1.1em;
                   -webkit-font-smoothing: antialiased !important;
                   width: 70%;
-                  color: $textColor;
+                  color: $thirdColor3;
                   -webkit-hyphens: auto;
                   -moz-hyphens: auto;
                   -ms-hyphens: auto;
@@ -175,7 +182,6 @@ $width: 33.3%;
                     }
                   }
 
-               
                 }
               }
             }
@@ -223,26 +229,26 @@ $width: 33.3%;
 }
 
 @media all and (max-width: 3000px) {
-  .grid-sizer {width: calc( 25% - 8px) !important}
-  .grid-item {width: calc( 25% - 8px) !important}
-  .grid-item-widthx2 {width: calc( 50% - 8px) !important}
+  .grid-sizer {width: calc( 25%) !important}
+  .grid-item {width: calc( 25%) !important}
+  .grid-item-widthx2 {width: calc( 50%) !important}
 }
 
 @media all and (max-width: 1400px) {
-  .grid-sizer {width: calc(33.3% - 6px) !important}
-  .grid-item {width: calc(33.3% - 6px) !important}
-  .grid-item-widthx2 {width: calc(66.6% - 6px) !important}
+  .grid-sizer {width: calc(33.3%) !important}
+  .grid-item {width: calc(33.3%) !important}
+  .grid-item-widthx2 {width: calc(66.6%) !important}
 }
 
 @media all and (max-width: 1090px) {
-  .grid-sizer {width: calc(50% - 6px ) !important}
-  .grid-item {width: calc(50% - 6px ) !important}
+  .grid-sizer {width: calc(50%) !important}
+  .grid-item {width: calc(50%) !important}
   .grid-item-widthx2 {width: 100% !important}
 }
 
 @media all and (max-width: 582px) {
   #main-content {
-    margin-left: calc(5% + 20px);
+    margin-left: calc(5%);
     margin-right: 0% !important;
   }
   .grid-sizer {width: 100% !important}

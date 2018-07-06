@@ -17,12 +17,6 @@ var screen = false
 
 let articlesList = []
 
-window.addEventListener( 'resize', (e) => {
-  introR()
-  resizeEvents()
-  setNewWindowSize()
-})
-
 function resizeEvents () {
   articlesList.map(articleMap)
 }
@@ -480,4 +474,7 @@ function createTemplate (items, cb) {
   cb(null, response)
 }
 
-module.exports = createTemplate
+module.exports = {
+  createTemplate, 
+  resizeEvents
+}

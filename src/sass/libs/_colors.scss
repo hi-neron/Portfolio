@@ -5,7 +5,7 @@ $dat: #131618;
 $mainColor: #131618;
 $mainColor2: #17161a;
 $mainColor3: #1b1920;
-$mainColor4: #543891;
+$mainColor4: #221f2e;
 $mainColor5: #977ab3;
 
 $secondaryColor: #FF4369;
@@ -15,8 +15,10 @@ $secondaryColor3: #ff7e98;
 $thirdColor: rgba(168, 255, 255, 0.87);
 $thirdColor2: #aefff8;
 $thirdColor3: #caf9ff;
+$thirdColor4: #e6fcff;
 
 $gray: rgb(243, 243, 243);
+$gray2: rgb(218, 218, 218);
 $backgroundGray: #d2d2d2;
  
 $myWhite: #f3f3f6;
@@ -25,9 +27,10 @@ $contentBackground: #EAEAEA;
 
 // ---->
 // BAR CONTENT
-$background-bar-color:#dcf0ea;
-$items-colors: $secondaryColor;
-$items-colors-over: $mainColor4;
+$background-bar-color: $backgroundGray;
+$items-colors: $mainColor;
+$items-colors-over: $thirdColor4;
+
 // trigger
 $trigger-color: $mainColor;
 
@@ -37,7 +40,7 @@ $trigger-color: $mainColor;
 // vars
 //$purple: rgb(163, 121, 181);
 $purple: $secondaryColor;
-$whiteOver: rgba($mainColor, .95);
+$whiteOver: rgba($mainColor4, .90);
 
 // Background
 $backgroundOverArticles: $whiteOver;
@@ -45,7 +48,7 @@ $backgroundOverArticles: $whiteOver;
 // items
 $textColor: $secondaryColor;
 $bottomTextColor: $thirdColor3;
-$typeColor: $thirdColor3;
+$typeColor: $secondaryColor;
 
 
 // overs

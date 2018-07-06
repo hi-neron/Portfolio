@@ -1,7 +1,6 @@
-const drawMainTemplate = require('./content')
+const drawMainTemplate = require('./content').createTemplate
 const footer = require('./footer')
 const _ = require('lodash')
-
 const yo = require('yo-yo')
 
 function getFooter (cb) {
