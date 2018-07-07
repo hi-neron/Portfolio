@@ -14,10 +14,14 @@ function create(ctx, next) {
   let mainContent = document.createElement('section')
   mainContent.setAttribute('id', 'main-content')
   ctx.mainContent = mainContent
-  
+
   let footer = document.createElement('footer')
   footer.setAttribute('id', 'footer')
   ctx.footer = footer
+
+  let cv = document.createElement('section')
+  cv.setAttribute('id', 'curriculum')
+  ctx.cv = cv
 
   let introContainer = document.createElement('intro')
   introContainer.setAttribute('id', 'intro')
@@ -27,7 +31,9 @@ function create(ctx, next) {
   app.appendChild(phrase)
   app.appendChild(mainContent)
   app.appendChild(footer)
+  app.appendChild(cv)
   app.classList.add('no-overflow')
+  document.body.appendChild(cv)
   document.body.appendChild(bar)
   document.body.appendChild(app)
   next()
