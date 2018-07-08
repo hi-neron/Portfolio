@@ -15,6 +15,10 @@ function create(ctx, next) {
   mainContent.setAttribute('id', 'main-content')
   ctx.mainContent = mainContent
   
+  let cv = document.createElement('section')
+  cv.setAttribute('id', 'cv')
+  ctx.cv = cv
+  
   let footer = document.createElement('footer')
   footer.setAttribute('id', 'footer')
   ctx.footer = footer
@@ -29,6 +33,7 @@ function create(ctx, next) {
   app.appendChild(footer)
   app.classList.add('no-overflow')
   document.body.appendChild(bar)
+  document.body.appendChild(cv)
   document.body.appendChild(app)
   next()
 }

@@ -18,6 +18,9 @@ const create = require('./utils/create')
 // utility to create empty elements
 const empty = require('empty-element')
 
+// cv creator
+const cvCreator = require('./curriculum')
+
 // bar
 const barCreator = require('./bar').templateP
 const barBehavior = require('./bar').barBehavior
@@ -39,6 +42,7 @@ page('/:tag?', create, loader, (ctx, next) => {
   let introContainer = ctx.introContainer
   let footer = ctx.footer
   let bar = ctx.bar
+  let cvi = ctx.cv
   let tag = ctx.params.tag
 
   mainContent = ctx.mainContent
@@ -50,6 +54,10 @@ page('/:tag?', create, loader, (ctx, next) => {
   // Bar
   barCreator((t) => {
     bar.appendChild(t)
+  })
+
+  cvCreator((t) => {
+    cvi.appendChild(t)
   })
   
   content.getFooter((e, r) => {

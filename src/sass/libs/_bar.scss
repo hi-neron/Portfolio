@@ -123,11 +123,6 @@
           hyphens: auto;
           -webkit-hyphenate-character: '⌁';
 
-          background: url('/img/noise2.png') rgba($items-colors, 1);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          
           &:hover {
             cursor: pointer;
             background: url('/img/noise1.png') rgba($items-colors-over, .8);

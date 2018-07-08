@@ -310,11 +310,7 @@ svg:focus {
           -moz-hyphens: auto;
           -ms-hyphens: auto;
           hyphens: auto;
-          -webkit-hyphenate-character: '⌁';
-          background: url("/img/noise2.png") #131618;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent; }
+          -webkit-hyphenate-character: '⌁'; }
           #main-bar .bar-wrapper #bar-menu .main-bar-list .bar-link:hover {
             cursor: pointer;
             background: url("/img/noise1.png") rgba(230, 252, 255, 0.8);
