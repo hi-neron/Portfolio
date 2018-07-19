@@ -31,9 +31,9 @@ function create(ctx, next) {
   app.appendChild(phrase)
   app.appendChild(mainContent)
   app.appendChild(footer)
+  app.appendChild(cv)
   app.classList.add('no-overflow')
   document.body.appendChild(bar)
-  document.body.appendChild(cv)
   document.body.appendChild(app)
   next()
 }

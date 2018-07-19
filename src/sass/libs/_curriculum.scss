@@ -1,0 +1,208 @@
+@keyframes eyes{
+  0% { background-position: 0 0 }
+  3% { background-position: 0 -168px }
+  6% { background-position: 0 0 }
+  46% { background-position: 0 0 }
+  49% { background-position: 0 -168px }
+  52% { background-position: 0 0 }
+  55% { background-position: 0 -168px }
+  58% { background-position: 0 0 }
+}
+
+.cv-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $introGray;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 1rem;
+  font-family: 'ratDemiB';
+  color: $mainColor4;
+  padding-bottom: 1rem;
+
+  .cv-design {
+    background-color: $gray;
+  }
+
+  .cv-dev {
+    background-color: $thirdColor2;
+  }
+
+  .cv-teamwork {
+    background-color: $mainColor4;
+    color: $gray;
+    -webkit-font-smoothing: antialiased !important;
+  }
+  
+  .cv-main{
+    padding: 1rem;
+    margin: 1rem 1rem 0 1rem;
+    font-size: calc(16px + 4 * (100vw - 320px) / 1180);
+    font-family: 'ratDemiB';
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+
+    .cv-main-top{
+      .cv-main-top-left{
+        float: left;
+        position: relative;
+        padding: 0 1.8rem 1rem 0;
+
+        .cv-me-eyes {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          margin-top: -54px;
+          margin-left: -12px;
+          width: 130px;
+          height: 20px;
+          background: url('/img/eyes.png') no-repeat;
+          animation: eyes 7s steps(8) infinite;
+        }
+      }
+      .cv-main-top-right{
+        .cv-main-top-right-top{
+          margin-bottom: 1rem;
+          .cv-main-top-right-name{
+            font-family: 'ratDBi';
+            font-size: 2.5rem;
+            line-height: 1em;
+          }
+          .cv-main-top-right-title{
+            font-family: 'ratDBi';
+            font-size: 1.5rem;  
+            line-height: 1em;
+            span {
+              font-size: 0.8rem;
+            }
+          }
+          .cv-main-top-right-secondTitle{
+            font-family: 'ratDBi';
+            font-size: 1.5rem;  
+            line-height: 1em;
+            span {
+              font-size: 0.8rem;
+            }
+          }
+          .cv-main-top-right-info{
+            line-height: 1.3em;
+            font-size: .9em;
+            font-family: 'ratMedium';
+          }
+          .cv-main-top-right-mail{
+            font-family: 'ratMedium';
+            line-height: 1.3em;
+            font-size: 0.9rem;
+            color: $secondaryColor;
+          }
+        }
+        .cv-main-top-right-bottom{
+          margin-bottom: 34px * 4;
+          position: relative;
+
+          .cv-main-top-right-bottom-languages-title{
+            font-family: 'ratDBi';
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+          }
+          .cv-main-top-right-bottom-languages{
+            font-family: 'ratMedium';
+            position: absolute;
+            font-size: 0.7rem;
+            width: 100%;
+            z-index: -1;
+          }
+        }
+      }
+    }
+
+    .cv-main-bottom-bio {
+      line-height: 1.4rem;
+      .cv-main-bottom-bio-text {
+        p {
+          margin-bottom: 1rem;
+          
+        }
+        .cv-bio-highlight {
+          font-family: 'ratDBi';
+          color: $secondaryColor;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .cv-skill-body{
+    padding: 1rem;
+    margin: 1rem 1rem 0 1rem;
+
+    .cv-skill-header{
+      margin-bottom: .5rem;
+      .cv-skill-header-title{
+        font-size: 2rem;
+        font-family: 'ratDBi';
+      }
+      .cv-skill-header-years {
+        font-size: 1rem;
+        font-family: 'ratDB';
+        color: $secondaryColor;
+        
+      }
+    }
+    .cv-skill-skills{
+      margin-bottom: 1.3rem;
+      .cv-skill-skills-title{
+        font-family: 'ratDBi';
+        margin-bottom: .5rem;
+        font-size: 1.3em;
+      }
+      .cv-skill-skills-content{
+        font-family: 'ratDemiB';
+        font-size: 0.9rem;
+        margin-left: 1rem;
+        line-height: 1.2rem;
+      }
+    }
+    
+    .cv-skill-competences{
+      .cv-skill-competences-title {
+        margin-bottom: .5rem;
+        font-family: 'ratDBi';
+        font-size: 1.3em;
+      }
+      .cv-skill-competences-container{
+        .cv-skill-competence-title{}
+        .cv-skill-competence-score{}
+      }
+    }
+  }
+}
+
+.cv-filled-bar-container {
+  position: relative;
+  margin-bottom: 4px;
+
+  .cv-filled-bar {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    
+    .filled-square {
+      background-color: $mainColor4;
+
+      .cv-filled-bar-title {
+        font-size: 0.7rem;
+        font-family: 'ratDemiB';
+        padding: 4px;
+      }
+      
+      &:nth-last-child(1) {
+        align-self: center;
+        color: $gray;
+      }
+    }
+  }
+}
