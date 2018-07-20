@@ -1,5 +1,6 @@
 'use strict'
 const yo = require('yo-yo')
+const elf = require('./elf')
 let bio = yo`
   <div className="cv-main-bottom-bio-text">
     <p>Hi, I’m <span className="cv-bio-highlight name">Jose Sánchez</span>. I’m from Popayán, a small and precious city (Perhaps a bit outdated) in Colombia country. I got my professional degree in <span className="cv-bio-highlight gdesigner">Graphic Design</span> there, from the University of Cauca. On the process to achieve my degree (moreover to design) I too learned to <span className="cv-bio-highlight wteam">work on a team</span>, to be empathetic, <span className="cv-bio-highlight gdesigner">researching</span>, work with typography, <span className="cv-bio-highlight gdesigner">illustration</span>, to paint, a lot of things. I love to design but too the <span className="cv-bio-highlight gdesigner">develop</span>... I’ve programmed all my life. I also like maths, I like physics, cook, run, the coffee and the sea.</p>
@@ -7,6 +8,7 @@ let bio = yo`
     <p>Years ago, I’ve been working on the web: Interaction, multimedia, illustration and animation <span className="cv-bio-highlight gdesigner">(UX/UI)</span>, and I would like to continue like this for a long time.</p>
   </div>
 `
+
 let abilities = {
   "DESIGN" : {
     time: '5 years',
@@ -128,7 +130,7 @@ function curriculumCreator (cb) {
   `
 
   let social = document.createElement('div')
-  social.setAttribute('class', 'cv-socialnetworks')
+  social.setAttribute('class', 'cv-socialnetworks-container')
 
   template.appendChild(cvmain)
 
@@ -173,6 +175,53 @@ function curriculumCreator (cb) {
     template.appendChild(abilityTemplate)
   }
 
+  let socialnetworks = {
+    'twitter' : {
+      url: 'url',
+      icon: 'url'
+    },
+    'codepen' : {
+      url: 'url',
+      icon: 'url'
+    },
+    'instagram' : {
+      url: 'url',
+      icon: 'url'
+    },
+    'github' : {
+      url: 'url',
+      icon: 'url'
+    }
+  }
+
+  let socialButtons = document.createElement('div')
+  socialButtons.setAttribute('class', 'cv-socialnetworks-socialbag')
+  
+  for (let socialN in socialnetworks) {
+    let socialNT = document.createElement('a')
+    socialNT.setAttribute('class', `cv-socialnetworks-${socialN}`)
+    socialNT.setAttribute('href', socialnetworks[socialN].url)
+
+    let icon = yo`
+      <i className="icon-${socialN}"></i>
+    `
+
+    socialNT.appendChild(icon)
+    
+    socialButtons.appendChild(socialNT)
+  }
+
+  let socialTemplate = yo`
+    <div className="cv-socialnetworks-body">
+      <div className="cv-socialnetworks-top">
+        ${elf}
+      </div>
+      <div className="cv-socialnetworks-bottom">
+        ${socialButtons}
+      </div>
+    </div>
+  `
+  social.appendChild(socialTemplate)
   template.appendChild(social)
 
   cb(template)

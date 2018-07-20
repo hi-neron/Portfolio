@@ -46104,7 +46104,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var store = __webpack_require__(54)('wks');
-var uid = __webpack_require__(36);
+var uid = __webpack_require__(37);
 var Symbol = __webpack_require__(3).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
@@ -46476,7 +46476,7 @@ module.exports = function (it, key) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(8);
-var createDesc = __webpack_require__(35);
+var createDesc = __webpack_require__(36);
 module.exports = __webpack_require__(7) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -46492,7 +46492,7 @@ module.exports = __webpack_require__(7) ? function (object, key, value) {
 var global = __webpack_require__(3);
 var hide = __webpack_require__(15);
 var has = __webpack_require__(14);
-var SRC = __webpack_require__(36)('src');
+var SRC = __webpack_require__(37)('src');
 var TO_STRING = 'toString';
 var $toString = Function[TO_STRING];
 var TPL = ('' + $toString).split(TO_STRING);
@@ -46564,7 +46564,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(52);
-var createDesc = __webpack_require__(35);
+var createDesc = __webpack_require__(36);
 var toIObject = __webpack_require__(18);
 var toPrimitive = __webpack_require__(25);
 var has = __webpack_require__(14);
@@ -46802,32 +46802,32 @@ module.exports = g;
 "use strict";
 
 if (__webpack_require__(7)) {
-  var LIBRARY = __webpack_require__(37);
+  var LIBRARY = __webpack_require__(38);
   var global = __webpack_require__(3);
   var fails = __webpack_require__(4);
   var $export = __webpack_require__(0);
   var $typed = __webpack_require__(64);
   var $buffer = __webpack_require__(95);
   var ctx = __webpack_require__(21);
-  var anInstance = __webpack_require__(43);
-  var propertyDesc = __webpack_require__(35);
+  var anInstance = __webpack_require__(44);
+  var propertyDesc = __webpack_require__(36);
   var hide = __webpack_require__(15);
-  var redefineAll = __webpack_require__(45);
+  var redefineAll = __webpack_require__(46);
   var toInteger = __webpack_require__(27);
   var toLength = __webpack_require__(9);
   var toIndex = __webpack_require__(130);
-  var toAbsoluteIndex = __webpack_require__(39);
+  var toAbsoluteIndex = __webpack_require__(40);
   var toPrimitive = __webpack_require__(25);
   var has = __webpack_require__(14);
   var classof = __webpack_require__(53);
   var isObject = __webpack_require__(5);
   var toObject = __webpack_require__(11);
   var isArrayIter = __webpack_require__(86);
-  var create = __webpack_require__(40);
+  var create = __webpack_require__(41);
   var getPrototypeOf = __webpack_require__(20);
-  var gOPN = __webpack_require__(41).f;
+  var gOPN = __webpack_require__(42).f;
   var getIterFn = __webpack_require__(88);
-  var uid = __webpack_require__(36);
+  var uid = __webpack_require__(37);
   var wks = __webpack_require__(6);
   var createArrayMethod = __webpack_require__(29);
   var createArrayIncludes = __webpack_require__(55);
@@ -46835,7 +46835,7 @@ if (__webpack_require__(7)) {
   var ArrayIterators = __webpack_require__(91);
   var Iterators = __webpack_require__(49);
   var $iterDetect = __webpack_require__(59);
-  var setSpecies = __webpack_require__(42);
+  var setSpecies = __webpack_require__(43);
   var arrayFill = __webpack_require__(90);
   var arrayCopyWithin = __webpack_require__(120);
   var $DP = __webpack_require__(8);
@@ -47343,7 +47343,7 @@ module.exports = {
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var META = __webpack_require__(36)('meta');
+var META = __webpack_require__(37)('meta');
 var isObject = __webpack_require__(5);
 var has = __webpack_require__(14);
 var setDesc = __webpack_require__(8).f;
@@ -47413,6 +47413,54 @@ module.exports = function (key) {
 
 /***/ }),
 /* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var bel = __webpack_require__(356) // turns template tag into DOM elements
+var morphdom = __webpack_require__(363) // efficiently diffs + morphs two DOM elements
+var defaultEvents = __webpack_require__(364) // default events to be copied when dom elements update
+
+module.exports = bel
+
+// TODO move this + defaultEvents to a new module once we receive more feedback
+module.exports.update = function (fromNode, toNode, opts) {
+  if (!opts) opts = {}
+  if (opts.events !== false) {
+    if (!opts.onBeforeElUpdated) opts.onBeforeElUpdated = copier
+  }
+
+  return morphdom(fromNode, toNode, opts)
+
+  // morphdom only copies attributes. we decided we also wanted to copy events
+  // that can be set via attributes
+  function copier (f, t) {
+    // copy events:
+    var events = opts.events || defaultEvents
+    for (var i = 0; i < events.length; i++) {
+      var ev = events[i]
+      if (t[ev]) { // if new element has a whitelisted attribute
+        f[ev] = t[ev] // update existing element
+      } else if (f[ev]) { // if existing element has it and new one doesnt
+        f[ev] = undefined // remove it from existing element
+      }
+    }
+    var oldValue = f.value
+    var newValue = t.value
+    // copy values for form elements
+    if ((f.nodeName === 'INPUT' && f.type !== 'file') || f.nodeName === 'SELECT') {
+      if (!newValue && !t.hasAttribute('value')) {
+        t.value = f.value
+      } else if (newValue !== oldValue) {
+        f.value = newValue
+      }
+    } else if (f.nodeName === 'TEXTAREA') {
+      if (t.getAttribute('value') === null) f.value = t.value
+    }
+  }
+}
+
+
+/***/ }),
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -47426,7 +47474,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -47437,14 +47485,14 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = false;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
@@ -47457,7 +47505,7 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(27);
@@ -47470,7 +47518,7 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
@@ -47517,7 +47565,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
@@ -47530,7 +47578,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47550,7 +47598,7 @@ module.exports = function (KEY) {
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = function (it, Constructor, name, forbiddenField) {
@@ -47561,7 +47609,7 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(21);
@@ -47592,7 +47640,7 @@ exports.RETURN = RETURN;
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var redefine = __webpack_require__(16);
@@ -47600,54 +47648,6 @@ module.exports = function (target, src, safe) {
   for (var key in src) redefine(target, key, src[key], safe);
   return target;
 };
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var bel = __webpack_require__(356) // turns template tag into DOM elements
-var morphdom = __webpack_require__(363) // efficiently diffs + morphs two DOM elements
-var defaultEvents = __webpack_require__(364) // default events to be copied when dom elements update
-
-module.exports = bel
-
-// TODO move this + defaultEvents to a new module once we receive more feedback
-module.exports.update = function (fromNode, toNode, opts) {
-  if (!opts) opts = {}
-  if (opts.events !== false) {
-    if (!opts.onBeforeElUpdated) opts.onBeforeElUpdated = copier
-  }
-
-  return morphdom(fromNode, toNode, opts)
-
-  // morphdom only copies attributes. we decided we also wanted to copy events
-  // that can be set via attributes
-  function copier (f, t) {
-    // copy events:
-    var events = opts.events || defaultEvents
-    for (var i = 0; i < events.length; i++) {
-      var ev = events[i]
-      if (t[ev]) { // if new element has a whitelisted attribute
-        f[ev] = t[ev] // update existing element
-      } else if (f[ev]) { // if existing element has it and new one doesnt
-        f[ev] = undefined // remove it from existing element
-      }
-    }
-    var oldValue = f.value
-    var newValue = t.value
-    // copy values for form elements
-    if ((f.nodeName === 'INPUT' && f.type !== 'file') || f.nodeName === 'SELECT') {
-      if (!newValue && !t.hasAttribute('value')) {
-        t.value = f.value
-      } else if (newValue !== oldValue) {
-        f.value = newValue
-      }
-    } else if (f.nodeName === 'TEXTAREA') {
-      if (t.getAttribute('value') === null) f.value = t.value
-    }
-  }
-}
 
 
 /***/ }),
@@ -47785,7 +47785,7 @@ module.exports = function (key) {
 // true  -> Array#includes
 var toIObject = __webpack_require__(18);
 var toLength = __webpack_require__(9);
-var toAbsoluteIndex = __webpack_require__(39);
+var toAbsoluteIndex = __webpack_require__(40);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -47945,10 +47945,10 @@ module.exports = function (O, D) {
 var global = __webpack_require__(3);
 var $export = __webpack_require__(0);
 var redefine = __webpack_require__(16);
-var redefineAll = __webpack_require__(45);
+var redefineAll = __webpack_require__(46);
 var meta = __webpack_require__(33);
-var forOf = __webpack_require__(44);
-var anInstance = __webpack_require__(43);
+var forOf = __webpack_require__(45);
+var anInstance = __webpack_require__(44);
 var isObject = __webpack_require__(5);
 var fails = __webpack_require__(4);
 var $iterDetect = __webpack_require__(59);
@@ -48034,7 +48034,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 
 var global = __webpack_require__(3);
 var hide = __webpack_require__(15);
-var uid = __webpack_require__(36);
+var uid = __webpack_require__(37);
 var TYPED = uid('typed_array');
 var VIEW = uid('view');
 var ABV = !!(global.ArrayBuffer && global.DataView);
@@ -48069,7 +48069,7 @@ module.exports = {
 "use strict";
 
 // Forced replacement prototype accessors methods
-module.exports = __webpack_require__(37) || !__webpack_require__(4)(function () {
+module.exports = __webpack_require__(38) || !__webpack_require__(4)(function () {
   var K = Math.random();
   // In FF throws only define methods
   // eslint-disable-next-line no-undef, no-useless-call
@@ -48107,7 +48107,7 @@ module.exports = function (COLLECTION) {
 var $export = __webpack_require__(0);
 var aFunction = __webpack_require__(13);
 var ctx = __webpack_require__(21);
-var forOf = __webpack_require__(44);
+var forOf = __webpack_require__(45);
 
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { from: function from(source /* , mapFn, thisArg */) {
@@ -48171,7 +48171,7 @@ var app = void 0,
     windowSize = void 0;
 
 // loader
-var loader = __webpack_require__(424);
+var loader = __webpack_require__(425);
 
 // resize events
 var introR = __webpack_require__(98).onWindowResize;
@@ -48656,7 +48656,7 @@ module.exports = function (it) {
 
 var global = __webpack_require__(3);
 var core = __webpack_require__(24);
-var LIBRARY = __webpack_require__(37);
+var LIBRARY = __webpack_require__(38);
 var wksExt = __webpack_require__(105);
 var defineProperty = __webpack_require__(8).f;
 module.exports = function (name) {
@@ -48670,7 +48670,7 @@ module.exports = function (name) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var shared = __webpack_require__(54)('keys');
-var uid = __webpack_require__(36);
+var uid = __webpack_require__(37);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
@@ -48823,7 +48823,7 @@ module.exports = function (TO_STRING) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(37);
+var LIBRARY = __webpack_require__(38);
 var $export = __webpack_require__(0);
 var redefine = __webpack_require__(16);
 var hide = __webpack_require__(15);
@@ -48900,8 +48900,8 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 "use strict";
 
-var create = __webpack_require__(40);
-var descriptor = __webpack_require__(35);
+var create = __webpack_require__(41);
+var descriptor = __webpack_require__(36);
 var setToStringTag = __webpack_require__(47);
 var IteratorPrototype = {};
 
@@ -48967,7 +48967,7 @@ module.exports = function (it) {
 "use strict";
 
 var $defineProperty = __webpack_require__(8);
-var createDesc = __webpack_require__(35);
+var createDesc = __webpack_require__(36);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -49009,7 +49009,7 @@ module.exports = function (original, length) {
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 
 var toObject = __webpack_require__(11);
-var toAbsoluteIndex = __webpack_require__(39);
+var toAbsoluteIndex = __webpack_require__(40);
 var toLength = __webpack_require__(9);
 module.exports = function fill(value /* , start = 0, end = @length */) {
   var O = toObject(this);
@@ -49261,16 +49261,16 @@ module.exports.f = function (C) {
 
 var global = __webpack_require__(3);
 var DESCRIPTORS = __webpack_require__(7);
-var LIBRARY = __webpack_require__(37);
+var LIBRARY = __webpack_require__(38);
 var $typed = __webpack_require__(64);
 var hide = __webpack_require__(15);
-var redefineAll = __webpack_require__(45);
+var redefineAll = __webpack_require__(46);
 var fails = __webpack_require__(4);
-var anInstance = __webpack_require__(43);
+var anInstance = __webpack_require__(44);
 var toInteger = __webpack_require__(27);
 var toLength = __webpack_require__(9);
 var toIndex = __webpack_require__(130);
-var gOPN = __webpack_require__(41).f;
+var gOPN = __webpack_require__(42).f;
 var dP = __webpack_require__(8).f;
 var arrayFill = __webpack_require__(90);
 var setToStringTag = __webpack_require__(47);
@@ -49751,7 +49751,7 @@ var THREE = __webpack_require__(2);
 
 var Stats = __webpack_require__(354);
 var dat = __webpack_require__(355).default;
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(35);
 __webpack_require__(365);
 
 var SCREEN_WIDTH = void 0,
@@ -50861,7 +50861,7 @@ module.exports = function (object, names) {
 
 var dP = __webpack_require__(8);
 var anObject = __webpack_require__(1);
-var getKeys = __webpack_require__(38);
+var getKeys = __webpack_require__(39);
 
 module.exports = __webpack_require__(7) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -50880,7 +50880,7 @@ module.exports = __webpack_require__(7) ? Object.defineProperties : function def
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(18);
-var gOPN = __webpack_require__(41).f;
+var gOPN = __webpack_require__(42).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -50906,7 +50906,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(38);
+var getKeys = __webpack_require__(39);
 var gOPS = __webpack_require__(56);
 var pIE = __webpack_require__(52);
 var toObject = __webpack_require__(11);
@@ -51145,7 +51145,7 @@ module.exports = function (that, callbackfn, aLen, memo, isRight) {
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 
 var toObject = __webpack_require__(11);
-var toAbsoluteIndex = __webpack_require__(39);
+var toAbsoluteIndex = __webpack_require__(40);
 var toLength = __webpack_require__(9);
 
 module.exports = [].copyWithin || function copyWithin(target /* = 0 */, start /* = 0, end = @length */) {
@@ -51254,14 +51254,14 @@ module.exports = __webpack_require__(63)(MAP, function (get) {
 "use strict";
 
 var dP = __webpack_require__(8).f;
-var create = __webpack_require__(40);
-var redefineAll = __webpack_require__(45);
+var create = __webpack_require__(41);
+var redefineAll = __webpack_require__(46);
 var ctx = __webpack_require__(21);
-var anInstance = __webpack_require__(43);
-var forOf = __webpack_require__(44);
+var anInstance = __webpack_require__(44);
+var forOf = __webpack_require__(45);
 var $iterDefine = __webpack_require__(82);
 var step = __webpack_require__(121);
-var setSpecies = __webpack_require__(42);
+var setSpecies = __webpack_require__(43);
 var DESCRIPTORS = __webpack_require__(7);
 var fastKey = __webpack_require__(33).fastKey;
 var validate = __webpack_require__(50);
@@ -51491,12 +51491,12 @@ if (fails(function () { return new $WeakMap().set((Object.freeze || Object)(tmp)
 
 "use strict";
 
-var redefineAll = __webpack_require__(45);
+var redefineAll = __webpack_require__(46);
 var getWeak = __webpack_require__(33).getWeak;
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(5);
-var anInstance = __webpack_require__(43);
-var forOf = __webpack_require__(44);
+var anInstance = __webpack_require__(44);
+var forOf = __webpack_require__(45);
 var createArrayMethod = __webpack_require__(29);
 var $has = __webpack_require__(14);
 var validate = __webpack_require__(50);
@@ -51598,7 +51598,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // all object keys, includes non-enumerable and symbols
-var gOPN = __webpack_require__(41);
+var gOPN = __webpack_require__(42);
 var gOPS = __webpack_require__(56);
 var anObject = __webpack_require__(1);
 var Reflect = __webpack_require__(3).Reflect;
@@ -51681,7 +51681,7 @@ module.exports = function (that, maxLength, fillString, left) {
 /* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getKeys = __webpack_require__(38);
+var getKeys = __webpack_require__(39);
 var toIObject = __webpack_require__(18);
 var isEnum = __webpack_require__(52).f;
 module.exports = function (isEntries) {
@@ -51718,7 +51718,7 @@ module.exports = function (NAME) {
 /* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var forOf = __webpack_require__(44);
+var forOf = __webpack_require__(45);
 
 module.exports = function (iter, ITERATOR) {
   var result = [];
@@ -52832,7 +52832,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(35);
 var _ = __webpack_require__(145);
 var empty = __webpack_require__(101);
 
@@ -70349,7 +70349,7 @@ var _templateObject = _taggedTemplateLiteral(['<span class="tag"></span>'], ['<s
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(35);
 var empty = __webpack_require__(101);
 
 var opened = false;
@@ -70750,7 +70750,7 @@ var META = __webpack_require__(33).KEY;
 var $fails = __webpack_require__(4);
 var shared = __webpack_require__(54);
 var setToStringTag = __webpack_require__(47);
-var uid = __webpack_require__(36);
+var uid = __webpack_require__(37);
 var wks = __webpack_require__(6);
 var wksExt = __webpack_require__(105);
 var wksDefine = __webpack_require__(71);
@@ -70760,12 +70760,12 @@ var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(5);
 var toIObject = __webpack_require__(18);
 var toPrimitive = __webpack_require__(25);
-var createDesc = __webpack_require__(35);
-var _create = __webpack_require__(40);
+var createDesc = __webpack_require__(36);
+var _create = __webpack_require__(41);
 var gOPNExt = __webpack_require__(108);
 var $GOPD = __webpack_require__(19);
 var $DP = __webpack_require__(8);
-var $keys = __webpack_require__(38);
+var $keys = __webpack_require__(39);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -70888,11 +70888,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(41).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(42).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(52).f = $propertyIsEnumerable;
   __webpack_require__(56).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(37)) {
+  if (DESCRIPTORS && !__webpack_require__(38)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -70980,7 +70980,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(38);
+var getKeys = __webpack_require__(39);
 var gOPS = __webpack_require__(56);
 var pIE = __webpack_require__(52);
 module.exports = function (it) {
@@ -71002,7 +71002,7 @@ module.exports = function (it) {
 
 var $export = __webpack_require__(0);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(40) });
+$export($export.S, 'Object', { create: __webpack_require__(41) });
 
 
 /***/ }),
@@ -71059,7 +71059,7 @@ __webpack_require__(28)('getPrototypeOf', function () {
 
 // 19.1.2.14 Object.keys(O)
 var toObject = __webpack_require__(11);
-var $keys = __webpack_require__(38);
+var $keys = __webpack_require__(39);
 
 __webpack_require__(28)('keys', function () {
   return function keys(it) {
@@ -71305,7 +71305,7 @@ var cof = __webpack_require__(22);
 var inheritIfRequired = __webpack_require__(77);
 var toPrimitive = __webpack_require__(25);
 var fails = __webpack_require__(4);
-var gOPN = __webpack_require__(41).f;
+var gOPN = __webpack_require__(42).f;
 var gOPD = __webpack_require__(19).f;
 var dP = __webpack_require__(8).f;
 var $trim = __webpack_require__(48).trim;
@@ -71314,7 +71314,7 @@ var $Number = global[NUMBER];
 var Base = $Number;
 var proto = $Number.prototype;
 // Opera ~12 has broken Object#toString
-var BROKEN_COF = cof(__webpack_require__(40)(proto)) == NUMBER;
+var BROKEN_COF = cof(__webpack_require__(41)(proto)) == NUMBER;
 var TRIM = 'trim' in String.prototype;
 
 // 7.1.3 ToNumber(argument)
@@ -71902,7 +71902,7 @@ $export($export.S, 'Math', {
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
-var toAbsoluteIndex = __webpack_require__(39);
+var toAbsoluteIndex = __webpack_require__(40);
 var fromCharCode = String.fromCharCode;
 var $fromCodePoint = String.fromCodePoint;
 
@@ -72501,7 +72501,7 @@ $export($export.P + $export.F * (__webpack_require__(51) != Object || !__webpack
 var $export = __webpack_require__(0);
 var html = __webpack_require__(74);
 var cof = __webpack_require__(22);
-var toAbsoluteIndex = __webpack_require__(39);
+var toAbsoluteIndex = __webpack_require__(40);
 var toLength = __webpack_require__(9);
 var arraySlice = [].slice;
 
@@ -72820,7 +72820,7 @@ __webpack_require__(34)(KEY);
 /* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(42)('Array');
+__webpack_require__(43)('Array');
 
 
 /***/ }),
@@ -72830,7 +72830,7 @@ __webpack_require__(42)('Array');
 var global = __webpack_require__(3);
 var inheritIfRequired = __webpack_require__(77);
 var dP = __webpack_require__(8).f;
-var gOPN = __webpack_require__(41).f;
+var gOPN = __webpack_require__(42).f;
 var isRegExp = __webpack_require__(58);
 var $flags = __webpack_require__(60);
 var $RegExp = global.RegExp;
@@ -72869,7 +72869,7 @@ if (__webpack_require__(7) && (!CORRECT_NEW || __webpack_require__(4)(function (
   __webpack_require__(16)(global, 'RegExp', $RegExp);
 }
 
-__webpack_require__(42)('RegExp');
+__webpack_require__(43)('RegExp');
 
 
 /***/ }),
@@ -73037,15 +73037,15 @@ __webpack_require__(61)('split', 2, function (defined, SPLIT, $split) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(37);
+var LIBRARY = __webpack_require__(38);
 var global = __webpack_require__(3);
 var ctx = __webpack_require__(21);
 var classof = __webpack_require__(53);
 var $export = __webpack_require__(0);
 var isObject = __webpack_require__(5);
 var aFunction = __webpack_require__(13);
-var anInstance = __webpack_require__(43);
-var forOf = __webpack_require__(44);
+var anInstance = __webpack_require__(44);
+var forOf = __webpack_require__(45);
 var speciesConstructor = __webpack_require__(62);
 var task = __webpack_require__(92).set;
 var microtask = __webpack_require__(93)();
@@ -73214,7 +73214,7 @@ if (!USE_NATIVE) {
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = __webpack_require__(45)($Promise.prototype, {
+  Internal.prototype = __webpack_require__(46)($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected) {
       var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -73246,7 +73246,7 @@ if (!USE_NATIVE) {
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 __webpack_require__(47)($Promise, PROMISE);
-__webpack_require__(42)(PROMISE);
+__webpack_require__(43)(PROMISE);
 Wrapper = __webpack_require__(24)[PROMISE];
 
 // statics
@@ -73342,7 +73342,7 @@ var $export = __webpack_require__(0);
 var $typed = __webpack_require__(64);
 var buffer = __webpack_require__(95);
 var anObject = __webpack_require__(1);
-var toAbsoluteIndex = __webpack_require__(39);
+var toAbsoluteIndex = __webpack_require__(40);
 var toLength = __webpack_require__(9);
 var isObject = __webpack_require__(5);
 var ArrayBuffer = __webpack_require__(3).ArrayBuffer;
@@ -73382,7 +73382,7 @@ $export($export.P + $export.U + $export.F * __webpack_require__(4)(function () {
   }
 });
 
-__webpack_require__(42)(ARRAY_BUFFER);
+__webpack_require__(43)(ARRAY_BUFFER);
 
 
 /***/ }),
@@ -73522,7 +73522,7 @@ $export($export.S + $export.F * !__webpack_require__(4)(function () {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
 var $export = __webpack_require__(0);
-var create = __webpack_require__(40);
+var create = __webpack_require__(41);
 var aFunction = __webpack_require__(13);
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(5);
@@ -73780,7 +73780,7 @@ var gOPD = __webpack_require__(19);
 var getPrototypeOf = __webpack_require__(20);
 var has = __webpack_require__(14);
 var $export = __webpack_require__(0);
-var createDesc = __webpack_require__(35);
+var createDesc = __webpack_require__(36);
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(5);
 
@@ -74732,10 +74732,10 @@ var microtask = __webpack_require__(93)();
 var OBSERVABLE = __webpack_require__(6)('observable');
 var aFunction = __webpack_require__(13);
 var anObject = __webpack_require__(1);
-var anInstance = __webpack_require__(43);
-var redefineAll = __webpack_require__(45);
+var anInstance = __webpack_require__(44);
+var redefineAll = __webpack_require__(46);
 var hide = __webpack_require__(15);
-var forOf = __webpack_require__(44);
+var forOf = __webpack_require__(45);
 var RETURN = forOf.RETURN;
 
 var getMethod = function (fn) {
@@ -74921,7 +74921,7 @@ hide($Observable.prototype, OBSERVABLE, function () { return this; });
 
 $export($export.G, { Observable: $Observable });
 
-__webpack_require__(42)('Observable');
+__webpack_require__(43)('Observable');
 
 
 /***/ }),
@@ -74967,7 +74967,7 @@ $export($export.G + $export.B, {
 /***/ (function(module, exports, __webpack_require__) {
 
 var $iterators = __webpack_require__(91);
-var getKeys = __webpack_require__(38);
+var getKeys = __webpack_require__(39);
 var redefine = __webpack_require__(16);
 var global = __webpack_require__(3);
 var hide = __webpack_require__(15);
@@ -93571,7 +93571,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 var drawMainTemplate = __webpack_require__(144).createTemplate;
 var footer = __webpack_require__(414);
 var _ = __webpack_require__(145);
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(35);
 
 function getFooter(cb) {
   footer(function (e, r) {
@@ -93645,7 +93645,7 @@ var _templateObject = _taggedTemplateLiteral(['\n    <footer class="footer">\n  
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(35);
 
 module.exports = function (cb) {
   var template = yo(_templateObject);
@@ -96265,12 +96265,16 @@ module.exports = create;
 var _templateObject = _taggedTemplateLiteral(['\n  <div className="cv-main-bottom-bio-text">\n    <p>Hi, I\u2019m <span className="cv-bio-highlight name">Jose Sa\u0301nchez</span>. I\u2019m from Popaya\u0301n, a small and precious city (Perhaps a bit outdated) in Colombia country. I got my professional degree in <span className="cv-bio-highlight gdesigner">Graphic Design</span> there, from the University of Cauca. On the process to achieve my degree (moreover to design) I too learned to <span className="cv-bio-highlight wteam">work on a team</span>, to be empathetic, <span className="cv-bio-highlight gdesigner">researching</span>, work with typography, <span className="cv-bio-highlight gdesigner">illustration</span>, to paint, a lot of things. I love to design but too the <span className="cv-bio-highlight gdesigner">develop</span>... I\u2019ve programmed all my life. I also like maths, I like physics, cook, run, the coffee and the sea.</p>\n    <p>\xBFWhat is my most powerful skill? I learn too fast and love it. I prefer to say that I work looking for solutions or "challenging me" before to design, to develop, to illustrate, blah, blah, bl... I named my way of work: <span className="cv-bio-highlight gdesigner">resilience style</span>.</p>\n    <p>Years ago, I\u2019ve been working on the web: Interaction, multimedia, illustration and animation <span className="cv-bio-highlight gdesigner">(UX/UI)</span>, and I would like to continue like this for a long time.</p>\n  </div>\n'], ['\n  <div className="cv-main-bottom-bio-text">\n    <p>Hi, I\u2019m <span className="cv-bio-highlight name">Jose Sa\u0301nchez</span>. I\u2019m from Popaya\u0301n, a small and precious city (Perhaps a bit outdated) in Colombia country. I got my professional degree in <span className="cv-bio-highlight gdesigner">Graphic Design</span> there, from the University of Cauca. On the process to achieve my degree (moreover to design) I too learned to <span className="cv-bio-highlight wteam">work on a team</span>, to be empathetic, <span className="cv-bio-highlight gdesigner">researching</span>, work with typography, <span className="cv-bio-highlight gdesigner">illustration</span>, to paint, a lot of things. I love to design but too the <span className="cv-bio-highlight gdesigner">develop</span>... I\u2019ve programmed all my life. I also like maths, I like physics, cook, run, the coffee and the sea.</p>\n    <p>\xBFWhat is my most powerful skill? I learn too fast and love it. I prefer to say that I work looking for solutions or "challenging me" before to design, to develop, to illustrate, blah, blah, bl... I named my way of work: <span className="cv-bio-highlight gdesigner">resilience style</span>.</p>\n    <p>Years ago, I\u2019ve been working on the web: Interaction, multimedia, illustration and animation <span className="cv-bio-highlight gdesigner">(UX/UI)</span>, and I would like to continue like this for a long time.</p>\n  </div>\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    <div className="cv-main">\n      <div className="cv-main-top">\n        <div className="cv-main-top-left">\n          <img src="/img/me.png" alt="me"/>\n          <div class="cv-me-eyes"></div>\n        </div>\n        <div className="cv-main-top-right">\n          <div className="cv-main-top-right-top">\n            <h2 className="cv-main-top-right-name">\n            JOSE_L. S\xC1NCHEZ\n            </h2>\n            <div className="cv-main-top-right-line"></div>\n            <h3 className="cv-main-top-right-title">\n              GRAPHIC DESIGNER <span>(professional)</span>\n            </h3>\n            <div className="cv-main-top-right-secondTitle">\n              FRONT-END <span>(self-taught)</span>\n            </div>\n            <div className="cv-main-top-right-info">\n              Bogota\u0301 / Colombia \n            </div>\n            <a className="cv-main-top-right-mail" href="mailto:hola@josesan.ch">\n              hola@josesan.ch\n            </a>\n          </div>\n          <div className="cv-main-top-right-bottom">\n            <h3 className="cv-main-top-right-bottom-languages-title">\n              LANGUAGES\n            </h3>\n            <div className="cv-main-top-right-bottom-languages">\n              ', '\n              ', '\n              ', '\n            </div>\n          </div>\n        </div>\n      </div>\n      <div className="cv-main-bottom-bio">\n        ', '\n      </div>\n    </div>\n  '], ['\n    <div className="cv-main">\n      <div className="cv-main-top">\n        <div className="cv-main-top-left">\n          <img src="/img/me.png" alt="me"/>\n          <div class="cv-me-eyes"></div>\n        </div>\n        <div className="cv-main-top-right">\n          <div className="cv-main-top-right-top">\n            <h2 className="cv-main-top-right-name">\n            JOSE_L. S\xC1NCHEZ\n            </h2>\n            <div className="cv-main-top-right-line"></div>\n            <h3 className="cv-main-top-right-title">\n              GRAPHIC DESIGNER <span>(professional)</span>\n            </h3>\n            <div className="cv-main-top-right-secondTitle">\n              FRONT-END <span>(self-taught)</span>\n            </div>\n            <div className="cv-main-top-right-info">\n              Bogota\u0301 / Colombia \n            </div>\n            <a className="cv-main-top-right-mail" href="mailto:hola@josesan.ch">\n              hola@josesan.ch\n            </a>\n          </div>\n          <div className="cv-main-top-right-bottom">\n            <h3 className="cv-main-top-right-bottom-languages-title">\n              LANGUAGES\n            </h3>\n            <div className="cv-main-top-right-bottom-languages">\n              ', '\n              ', '\n              ', '\n            </div>\n          </div>\n        </div>\n      </div>\n      <div className="cv-main-bottom-bio">\n        ', '\n      </div>\n    </div>\n  ']),
     _templateObject3 = _taggedTemplateLiteral(['\n        <div className="cv-skill-competence">\n          ', '\n        </div>\n      '], ['\n        <div className="cv-skill-competence">\n          ', '\n        </div>\n      ']),
-    _templateObject4 = _taggedTemplateLiteral(['\n      <div className="cv-skill-body cv-', '">\n        <div className="cv-skill-header">\n          <h2 className="cv-skill-header-title">\n            ', '\n            <span className="cv-skill-header-years">\n              ', '\n            </span>\n          </h2>\n        </div>\n        <div className="cv-skill-skills">\n          <h2 className="cv-skill-skills-title">SKILLS</h2>\n          <span className="cv-skill-skills-content">\n            ', '\n          </span>\n        </div>\n        <div className="cv-skill-competences">\n          <h2 className="cv-skill-competences-title">ABILITIES</h2>\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div className="cv-skill-body cv-', '">\n        <div className="cv-skill-header">\n          <h2 className="cv-skill-header-title">\n            ', '\n            <span className="cv-skill-header-years">\n              ', '\n            </span>\n          </h2>\n        </div>\n        <div className="cv-skill-skills">\n          <h2 className="cv-skill-skills-title">SKILLS</h2>\n          <span className="cv-skill-skills-content">\n            ', '\n          </span>\n        </div>\n        <div className="cv-skill-competences">\n          <h2 className="cv-skill-competences-title">ABILITIES</h2>\n          ', '\n        </div>\n      </div>\n    ']);
+    _templateObject4 = _taggedTemplateLiteral(['\n      <div className="cv-skill-body cv-', '">\n        <div className="cv-skill-header">\n          <h2 className="cv-skill-header-title">\n            ', '\n            <span className="cv-skill-header-years">\n              ', '\n            </span>\n          </h2>\n        </div>\n        <div className="cv-skill-skills">\n          <h2 className="cv-skill-skills-title">SKILLS</h2>\n          <span className="cv-skill-skills-content">\n            ', '\n          </span>\n        </div>\n        <div className="cv-skill-competences">\n          <h2 className="cv-skill-competences-title">ABILITIES</h2>\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div className="cv-skill-body cv-', '">\n        <div className="cv-skill-header">\n          <h2 className="cv-skill-header-title">\n            ', '\n            <span className="cv-skill-header-years">\n              ', '\n            </span>\n          </h2>\n        </div>\n        <div className="cv-skill-skills">\n          <h2 className="cv-skill-skills-title">SKILLS</h2>\n          <span className="cv-skill-skills-content">\n            ', '\n          </span>\n        </div>\n        <div className="cv-skill-competences">\n          <h2 className="cv-skill-competences-title">ABILITIES</h2>\n          ', '\n        </div>\n      </div>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n      <i className="icon-', '"></i>\n    '], ['\n      <i className="icon-', '"></i>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n    <div className="cv-socialnetworks-body">\n      <div className="cv-socialnetworks-top">\n        ', '\n      </div>\n      <div className="cv-socialnetworks-bottom">\n        ', '\n      </div>\n    </div>\n  '], ['\n    <div className="cv-socialnetworks-body">\n      <div className="cv-socialnetworks-top">\n        ', '\n      </div>\n      <div className="cv-socialnetworks-bottom">\n        ', '\n      </div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var yo = __webpack_require__(46);
+var yo = __webpack_require__(35);
+var elf = __webpack_require__(424);
 var bio = yo(_templateObject);
+
 var abilities = {
   "DESIGN": {
     time: '5 years',
@@ -96350,7 +96354,7 @@ function curriculumCreator(cb) {
   var cvmain = yo(_templateObject2, barGenerator(12, 12, 'SPANISH (native language)', '#FF4369'), barGenerator(12, 10, 'ENGLISH (10/12)', '#FF4369'), barGenerator(12, 6, 'FRENCH (6/12)', '#FF4369'), bio);
 
   var social = document.createElement('div');
-  social.setAttribute('class', 'cv-socialnetworks');
+  social.setAttribute('class', 'cv-socialnetworks-container');
 
   template.appendChild(cvmain);
 
@@ -96370,6 +96374,42 @@ function curriculumCreator(cb) {
     template.appendChild(abilityTemplate);
   }
 
+  var socialnetworks = {
+    'twitter': {
+      url: 'url',
+      icon: 'url'
+    },
+    'codepen': {
+      url: 'url',
+      icon: 'url'
+    },
+    'instagram': {
+      url: 'url',
+      icon: 'url'
+    },
+    'github': {
+      url: 'url',
+      icon: 'url'
+    }
+  };
+
+  var socialButtons = document.createElement('div');
+  socialButtons.setAttribute('class', 'cv-socialnetworks-socialbag');
+
+  for (var socialN in socialnetworks) {
+    var socialNT = document.createElement('a');
+    socialNT.setAttribute('class', 'cv-socialnetworks-' + socialN);
+    socialNT.setAttribute('href', socialnetworks[socialN].url);
+
+    var icon = yo(_templateObject5, socialN);
+
+    socialNT.appendChild(icon);
+
+    socialButtons.appendChild(socialNT);
+  }
+
+  var socialTemplate = yo(_templateObject6, elf, socialButtons);
+  social.appendChild(socialTemplate);
   template.appendChild(social);
 
   cb(template);
@@ -96379,6 +96419,22 @@ module.exports = curriculumCreator;
 
 /***/ }),
 /* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _templateObject = _taggedTemplateLiteral(['\n  <svg version="1.1" class="elf" x="0px" y="0px" width="100%" viewBox="0 0 130 130" style="enable-background:new 0 0 130 130">\n    <g class="elf-wire">\n      <g>\n        <g>\n          <path style="fill:#efefef;" d="M96.282,120.22c-6.63,0-15.934,0-28.936-0.002c-12.538-0.002-22.128-3.496-28.503-10.388\n            c-9.331-10.084-8.359-24.098-8.348-24.238l0.996,0.077c-0.01,0.137-0.942,13.733,8.093,23.49\n            c6.179,6.673,15.519,10.057,27.762,10.059c39,0.007,44.749,0.001,44.75,0v1C112.096,120.218,109.539,120.22,96.282,120.22z"/>\n        </g>\n        \n          <line style="fill:none;stroke:#FFFFFF;stroke-width:0.4351;stroke-miterlimit:10;" x1="115.346" y1="118.39" x2="117.492" y2="118.39"/>\n        \n          <line style="fill:none;stroke:#FFFFFF;stroke-width:0.4351;stroke-miterlimit:10;" x1="115.346" y1="119.718" x2="117.492" y2="119.718"/>\n        <rect x="110.971" y="119.22" style="opacity:0.75;fill:#efefef;" width="1.438" height="1"/>\n        <rect x="112.096" y="117.536" style="fill:#efefef;" width="3.875" height="2.812"/>\n      </g>\n    </g>\n    <g class="elf-legs">\n      <g>\n        <g>\n          <g>\n            <polygon style="fill:#221f2e;" points="35.727,119.718 35.64,119.718 35.64,91.374 40.878,91.374 40.878,117.012         "/>\n          </g>\n          <g>\n            <rect x="46.552" y="91.374" style="fill:#221f2e;" width="5.238" height="28.344"/>\n          </g>\n        </g>\n        <polygon style="fill:#221f2e;" points="47.894,115.353 38.51,119.718 47.894,119.718    "/>\n        <polygon style="fill:#221f2e;" points="36.618,115.353 27.234,119.718 35.64,119.718    "/>\n        <rect x="46.538" y="94.098" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="97.848" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="101.598" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="105.348" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="109.098" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="112.848" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="35.613" y="112.848" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="109.098" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="105.348" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="94.098" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="97.848" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="101.598" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="46.513" y="93.64" style="opacity:0.35;fill:#FF4369;" width="5.292" height="1.979"/>\n        <rect x="35.613" y="93.64" style="opacity:0.35;fill:#FF4369;" width="5.292" height="1.979"/>\n      </g>\n    </g>\n    <g class="elf-body" title="body">\n      <g>\n        <g class="elf-computer">\n            <rect x="26.023" y="87.427" transform="matrix(0.9971 0.0766 -0.0766 0.9971 6.9178 -1.9332)" style="fill:#C6C6C5;" width="5.271" height="3.567"/>\n            <rect x="24.891" y="90.505" transform="matrix(0.9971 0.0766 -0.0766 0.9971 7.0494 -1.9179)" style="fill:#D6D6D5;" width="7.271" height="0.859"/>\n          <path style="fill:#E1E1E0;" d="M13.22,82.424l-0.184,2.398c-0.067,0.878,0.59,1.645,1.468,1.713l27.724,2.13\n            c0.878,0.067,1.645-0.59,1.713-1.468l0.184-2.398L13.22,82.424z"/>\n          <path style="fill:#221f2e;" d="M44.126,84.798l1.51-19.659c0.082-1.074-0.721-2.011-1.795-2.093L16.824,60.97\n            c-1.074-0.082-2.011,0.721-2.093,1.795l-1.51,19.659L44.126,84.798z"/>\n          <circle style="fill:#221f2e;" cx="28.526" cy="85.522" r="0.708"/>\n            <rect x="15.958" y="64.031" transform="matrix(0.9971 0.0766 -0.0766 0.9971 5.6811 -2.0291)" style="fill:#FF4369;" width="26.667" height="18.021" title="screen"/>\n          <g>\n            <polygon style="fill:#FFD262;" points="25.5,75 32.5,75 28.5,70"/>\n          </g>\n          <path style="opacity:0.35;fill:#221f2e;" d="M27.171,83.496l15.833,1.216l1.4-18.223c0.143-1.867-1.253-3.496-3.12-3.639\n            l-10.537-0.81L27.171,83.496z"/>\n        </g>\n        <g class="elf-body_1_">\n          <polygon style="fill:#221f2e;" points="56.12,93.627 30.284,93.627 33.5,57.25 52.99,58.343       "/>\n          <path style="opacity:0.3;fill:#FF4369;" d="M45.642,80.828c0,0,1.288,3.986,9.54,2.219l-0.465-5.238L45.642,80.828z"/>\n          <g>\n            <path style="fill:#ffc095;" d="M46.552,82.556c-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c4.476,0,7.067-1.527,7.067-9.333\n              c0-5.122-2.94-5.846-3.275-5.911c-1.366-0.202-2.282-1.47-2.08-2.835c0.201-1.365,1.487-2.309,2.865-2.103\n              c2.591,0.383,7.49,3.145,7.49,10.849C58.62,71.768,58.62,82.556,46.552,82.556z"/>\n          </g>\n          <polygon style="fill:#FF4369;" points="58.625,56.875 43.202,55.216 28.5,57.125 37.125,58.5 33,62 40.542,60.75 42.625,64.667 \n            44.625,61 54.625,62.625 51,58.833       "/>\n          <path style="fill:#BF5433;" d="M43.202,55.216l-8.882,1.061c2.316,2.197,5.437,3.554,8.882,3.554\n            c3.518,0,6.704-1.411,9.033-3.692L43.202,55.216z"/>\n        </g>\n        <g class="elf-head" title="head">\n          <g >\n            <path style="fill:#ffc095;" d="M33.415,47.68c0,0,3.585-9.18-4.748-9.847C28.667,37.833,27.5,46.333,33.415,47.68z"/>\n            <path style="fill:none;stroke:#2F2F2F;stroke-width:2;stroke-miterlimit:10;" d="M31.481,42.312\n              c0.116-0.75,0.79-1.034,1.019-1.812c1.833-6.229,6.595-11.886,11.967-13.545"/>\n            <ellipse style="fill:#4D4D4D;" cx="31.375" cy="43.917" rx="2.708" ry="4.333"/>\n            <path style="fill:#ffc095;" d="M43.202,31.245c-7.134,0-12.918,5.784-12.918,12.918s5.784,12.918,12.918,12.918\n              S56.12,51.298,56.12,44.163S50.336,31.245,43.202,31.245z"/>\n            <path style="fill:#ffc095;" d="M53.643,47.68c0,0-0.976-8.18,9.857-9.847C63.5,37.833,63.667,46.5,53.643,47.68z"/>\n            \n              <ellipse style="fill:none;stroke:#FFFFFF;stroke-width:0.9369;stroke-miterlimit:10;" cx="44.402" cy="36.901" rx="22.801" ry="21.401"/>\n            <g title="moustache">\n              <polygon style="fill:#221f2e" points="39,46.5 38,50 30,51" class="moustache-left"/>\n              <polygon style="fill:#221f2e" points="41,46.5 42,50 50,51" class="moustache-right"/>\n            </g>\n            <polygon title="nose" style="fill:#FF4369;" points="33.973,47.601 40.588,40.725 43.202,47.601"/>\n            <path style="fill:#FFFFFF;" d="M30.709,24.603L30.709,24.603c-0.665-0.416-0.693-1.526,0.108-2.298\n              c1.031-0.995,2.252-1.783,3.594-2.32c1.041-0.417,2.075,0.039,2.21,0.798l0,0c0.137,0.762-0.392,1.502-1.116,1.798\n              c-0.992,0.397-1.896,0.981-2.658,1.718C32.284,24.834,31.375,25.024,30.709,24.603z"/>\n            <path style="opacity:0.2;fill:#4D4D4D;" d="M51.042,44.75c0,2.945,1.492,5.333,3.333,5.333c0.112,0,0.217-0.035,0.326-0.052\n              c0.901-1.762,1.419-3.753,1.419-5.868c0-1.591-0.301-3.109-0.828-4.516c-0.293-0.135-0.597-0.23-0.917-0.23\n              C52.534,39.417,51.042,41.804,51.042,44.75z"/>\n            <ellipse style="fill:#4D4D4D;" cx="54.375" cy="43.917" rx="3.333" ry="5.333"/>\n            <path style="fill:none;stroke:#2F2F2F;stroke-width:3;stroke-miterlimit:10;" d="M44.467,26.955\n              c0.767-0.237,1.547-0.392,2.333-0.456c6.718-0.545,9.785,4.466,8.828,13.047c-0.039,0.194-0.082,0.386-0.128,0.579"/>\n            <ellipse style="fill:#767676;" cx="55.292" cy="43.917" rx="2.786" ry="4.458"/>\n            <ellipse style="fill:#221f2e;" cx="57.417" cy="43.917" rx="1.036" ry="1.658"/>\n            <path title="hair" style="opacity:0.3;fill:#221f2e;" d="M44.625,30.375c-0.687,0-5.667,2.375-6.458,2.708c-0.891,0.375-1.792,1.034-1.792,2\n              s0.784,1.75,1.75,1.75c0.596,0,1.122-0.3,1.438-0.755c0.316,0.456,0.841,0.755,1.438,0.755c0.687,0,1.276-0.4,1.562-0.977\n              c0.286,0.577,0.875,0.977,1.562,0.977c0.966,0,1.688-0.734,1.75-1.75C45.945,33.939,45.591,30.375,44.625,30.375z"/>\n            <path title="hair" style="fill:#221f2e;" d="M44.625,29c-1.297,0-4.953,1.748-6.469,2.609c-0.598,0.34-1.781,1.132-1.781,2.099\n              s0.784,1.75,1.75,1.75c0.596,0,1.122-0.3,1.438-0.755c0.316,0.456,0.841,0.755,1.438,0.755c0.687,0,1.276-0.4,1.562-0.977\n              c0.286,0.577,0.875,0.977,1.562,0.977c0.966,0,1.688-0.734,1.75-1.75C45.945,32.564,45.591,29,44.625,29z"/>\n            <path style="fill:#221f2e;" d="M47.193,31.87l-3.375-0.375c0,0,0.04-2.163,0.641-2.432c0.544-0.244,2.184,0.61,2.526,1.099\n              C47.231,30.514,47.193,31.87,47.193,31.87z"/>\n            <path style="fill:#333333;" d="M68.312,47.719"/>\n          </g>\n        </g>\n      </g>\n    </g>\n  </svg>          \n'], ['\n  <svg version="1.1" class="elf" x="0px" y="0px" width="100%" viewBox="0 0 130 130" style="enable-background:new 0 0 130 130">\n    <g class="elf-wire">\n      <g>\n        <g>\n          <path style="fill:#efefef;" d="M96.282,120.22c-6.63,0-15.934,0-28.936-0.002c-12.538-0.002-22.128-3.496-28.503-10.388\n            c-9.331-10.084-8.359-24.098-8.348-24.238l0.996,0.077c-0.01,0.137-0.942,13.733,8.093,23.49\n            c6.179,6.673,15.519,10.057,27.762,10.059c39,0.007,44.749,0.001,44.75,0v1C112.096,120.218,109.539,120.22,96.282,120.22z"/>\n        </g>\n        \n          <line style="fill:none;stroke:#FFFFFF;stroke-width:0.4351;stroke-miterlimit:10;" x1="115.346" y1="118.39" x2="117.492" y2="118.39"/>\n        \n          <line style="fill:none;stroke:#FFFFFF;stroke-width:0.4351;stroke-miterlimit:10;" x1="115.346" y1="119.718" x2="117.492" y2="119.718"/>\n        <rect x="110.971" y="119.22" style="opacity:0.75;fill:#efefef;" width="1.438" height="1"/>\n        <rect x="112.096" y="117.536" style="fill:#efefef;" width="3.875" height="2.812"/>\n      </g>\n    </g>\n    <g class="elf-legs">\n      <g>\n        <g>\n          <g>\n            <polygon style="fill:#221f2e;" points="35.727,119.718 35.64,119.718 35.64,91.374 40.878,91.374 40.878,117.012         "/>\n          </g>\n          <g>\n            <rect x="46.552" y="91.374" style="fill:#221f2e;" width="5.238" height="28.344"/>\n          </g>\n        </g>\n        <polygon style="fill:#221f2e;" points="47.894,115.353 38.51,119.718 47.894,119.718    "/>\n        <polygon style="fill:#221f2e;" points="36.618,115.353 27.234,119.718 35.64,119.718    "/>\n        <rect x="46.538" y="94.098" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="97.848" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="101.598" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="105.348" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="109.098" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="46.538" y="112.848" style="fill:#FF4369;" width="5.267" height="2.125"/>\n        <rect x="35.613" y="112.848" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="109.098" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="105.348" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="94.098" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="97.848" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="35.613" y="101.598" style="fill:#FF4369;" width="5.292" height="2.125"/>\n        <rect x="46.513" y="93.64" style="opacity:0.35;fill:#FF4369;" width="5.292" height="1.979"/>\n        <rect x="35.613" y="93.64" style="opacity:0.35;fill:#FF4369;" width="5.292" height="1.979"/>\n      </g>\n    </g>\n    <g class="elf-body" title="body">\n      <g>\n        <g class="elf-computer">\n            <rect x="26.023" y="87.427" transform="matrix(0.9971 0.0766 -0.0766 0.9971 6.9178 -1.9332)" style="fill:#C6C6C5;" width="5.271" height="3.567"/>\n            <rect x="24.891" y="90.505" transform="matrix(0.9971 0.0766 -0.0766 0.9971 7.0494 -1.9179)" style="fill:#D6D6D5;" width="7.271" height="0.859"/>\n          <path style="fill:#E1E1E0;" d="M13.22,82.424l-0.184,2.398c-0.067,0.878,0.59,1.645,1.468,1.713l27.724,2.13\n            c0.878,0.067,1.645-0.59,1.713-1.468l0.184-2.398L13.22,82.424z"/>\n          <path style="fill:#221f2e;" d="M44.126,84.798l1.51-19.659c0.082-1.074-0.721-2.011-1.795-2.093L16.824,60.97\n            c-1.074-0.082-2.011,0.721-2.093,1.795l-1.51,19.659L44.126,84.798z"/>\n          <circle style="fill:#221f2e;" cx="28.526" cy="85.522" r="0.708"/>\n            <rect x="15.958" y="64.031" transform="matrix(0.9971 0.0766 -0.0766 0.9971 5.6811 -2.0291)" style="fill:#FF4369;" width="26.667" height="18.021" title="screen"/>\n          <g>\n            <polygon style="fill:#FFD262;" points="25.5,75 32.5,75 28.5,70"/>\n          </g>\n          <path style="opacity:0.35;fill:#221f2e;" d="M27.171,83.496l15.833,1.216l1.4-18.223c0.143-1.867-1.253-3.496-3.12-3.639\n            l-10.537-0.81L27.171,83.496z"/>\n        </g>\n        <g class="elf-body_1_">\n          <polygon style="fill:#221f2e;" points="56.12,93.627 30.284,93.627 33.5,57.25 52.99,58.343       "/>\n          <path style="opacity:0.3;fill:#FF4369;" d="M45.642,80.828c0,0,1.288,3.986,9.54,2.219l-0.465-5.238L45.642,80.828z"/>\n          <g>\n            <path style="fill:#ffc095;" d="M46.552,82.556c-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5c4.476,0,7.067-1.527,7.067-9.333\n              c0-5.122-2.94-5.846-3.275-5.911c-1.366-0.202-2.282-1.47-2.08-2.835c0.201-1.365,1.487-2.309,2.865-2.103\n              c2.591,0.383,7.49,3.145,7.49,10.849C58.62,71.768,58.62,82.556,46.552,82.556z"/>\n          </g>\n          <polygon style="fill:#FF4369;" points="58.625,56.875 43.202,55.216 28.5,57.125 37.125,58.5 33,62 40.542,60.75 42.625,64.667 \n            44.625,61 54.625,62.625 51,58.833       "/>\n          <path style="fill:#BF5433;" d="M43.202,55.216l-8.882,1.061c2.316,2.197,5.437,3.554,8.882,3.554\n            c3.518,0,6.704-1.411,9.033-3.692L43.202,55.216z"/>\n        </g>\n        <g class="elf-head" title="head">\n          <g >\n            <path style="fill:#ffc095;" d="M33.415,47.68c0,0,3.585-9.18-4.748-9.847C28.667,37.833,27.5,46.333,33.415,47.68z"/>\n            <path style="fill:none;stroke:#2F2F2F;stroke-width:2;stroke-miterlimit:10;" d="M31.481,42.312\n              c0.116-0.75,0.79-1.034,1.019-1.812c1.833-6.229,6.595-11.886,11.967-13.545"/>\n            <ellipse style="fill:#4D4D4D;" cx="31.375" cy="43.917" rx="2.708" ry="4.333"/>\n            <path style="fill:#ffc095;" d="M43.202,31.245c-7.134,0-12.918,5.784-12.918,12.918s5.784,12.918,12.918,12.918\n              S56.12,51.298,56.12,44.163S50.336,31.245,43.202,31.245z"/>\n            <path style="fill:#ffc095;" d="M53.643,47.68c0,0-0.976-8.18,9.857-9.847C63.5,37.833,63.667,46.5,53.643,47.68z"/>\n            \n              <ellipse style="fill:none;stroke:#FFFFFF;stroke-width:0.9369;stroke-miterlimit:10;" cx="44.402" cy="36.901" rx="22.801" ry="21.401"/>\n            <g title="moustache">\n              <polygon style="fill:#221f2e" points="39,46.5 38,50 30,51" class="moustache-left"/>\n              <polygon style="fill:#221f2e" points="41,46.5 42,50 50,51" class="moustache-right"/>\n            </g>\n            <polygon title="nose" style="fill:#FF4369;" points="33.973,47.601 40.588,40.725 43.202,47.601"/>\n            <path style="fill:#FFFFFF;" d="M30.709,24.603L30.709,24.603c-0.665-0.416-0.693-1.526,0.108-2.298\n              c1.031-0.995,2.252-1.783,3.594-2.32c1.041-0.417,2.075,0.039,2.21,0.798l0,0c0.137,0.762-0.392,1.502-1.116,1.798\n              c-0.992,0.397-1.896,0.981-2.658,1.718C32.284,24.834,31.375,25.024,30.709,24.603z"/>\n            <path style="opacity:0.2;fill:#4D4D4D;" d="M51.042,44.75c0,2.945,1.492,5.333,3.333,5.333c0.112,0,0.217-0.035,0.326-0.052\n              c0.901-1.762,1.419-3.753,1.419-5.868c0-1.591-0.301-3.109-0.828-4.516c-0.293-0.135-0.597-0.23-0.917-0.23\n              C52.534,39.417,51.042,41.804,51.042,44.75z"/>\n            <ellipse style="fill:#4D4D4D;" cx="54.375" cy="43.917" rx="3.333" ry="5.333"/>\n            <path style="fill:none;stroke:#2F2F2F;stroke-width:3;stroke-miterlimit:10;" d="M44.467,26.955\n              c0.767-0.237,1.547-0.392,2.333-0.456c6.718-0.545,9.785,4.466,8.828,13.047c-0.039,0.194-0.082,0.386-0.128,0.579"/>\n            <ellipse style="fill:#767676;" cx="55.292" cy="43.917" rx="2.786" ry="4.458"/>\n            <ellipse style="fill:#221f2e;" cx="57.417" cy="43.917" rx="1.036" ry="1.658"/>\n            <path title="hair" style="opacity:0.3;fill:#221f2e;" d="M44.625,30.375c-0.687,0-5.667,2.375-6.458,2.708c-0.891,0.375-1.792,1.034-1.792,2\n              s0.784,1.75,1.75,1.75c0.596,0,1.122-0.3,1.438-0.755c0.316,0.456,0.841,0.755,1.438,0.755c0.687,0,1.276-0.4,1.562-0.977\n              c0.286,0.577,0.875,0.977,1.562,0.977c0.966,0,1.688-0.734,1.75-1.75C45.945,33.939,45.591,30.375,44.625,30.375z"/>\n            <path title="hair" style="fill:#221f2e;" d="M44.625,29c-1.297,0-4.953,1.748-6.469,2.609c-0.598,0.34-1.781,1.132-1.781,2.099\n              s0.784,1.75,1.75,1.75c0.596,0,1.122-0.3,1.438-0.755c0.316,0.456,0.841,0.755,1.438,0.755c0.687,0,1.276-0.4,1.562-0.977\n              c0.286,0.577,0.875,0.977,1.562,0.977c0.966,0,1.688-0.734,1.75-1.75C45.945,32.564,45.591,29,44.625,29z"/>\n            <path style="fill:#221f2e;" d="M47.193,31.87l-3.375-0.375c0,0,0.04-2.163,0.641-2.432c0.544-0.244,2.184,0.61,2.526,1.099\n              C47.231,30.514,47.193,31.87,47.193,31.87z"/>\n            <path style="fill:#333333;" d="M68.312,47.719"/>\n          </g>\n        </g>\n      </g>\n    </g>\n  </svg>          \n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var yo = __webpack_require__(35);
+
+var elf = yo(_templateObject);
+module.exports = elf;
+
+/***/ }),
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96400,8 +96456,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var yo = __webpack_require__(46);
-var gsap = __webpack_require__(425);
+var yo = __webpack_require__(35);
+var gsap = __webpack_require__(426);
 
 var TweenMax = gsap.TweenMax;
 var TimelineMax = gsap.TimelineMax;
@@ -96518,7 +96574,7 @@ module.exports = function (ctx, next) {
 };
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!

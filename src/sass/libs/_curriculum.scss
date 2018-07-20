@@ -1,3 +1,48 @@
+
+@keyframes rotateHead {
+  0% {
+    -webkit-transform: rotate(-25deg);
+    -moz-transform: rotate(-25deg);
+    -ms-transform: rotate(-25deg);
+    transform: rotate(-25deg); 
+  }
+  100% {
+    -webkit-transform: rotate(-7deg);
+    -moz-transform: rotate(-7deg);
+    -ms-transform: rotate(-7deg);
+    transform: rotate(-7deg); 
+  } 
+}
+
+
+@keyframes cyneticAir {
+  0% {
+    -webkit-transform: rotate(50deg);
+    -moz-transform: rotate(50deg);
+    -ms-transform: rotate(50deg);
+    transform: rotate(50deg); }
+  100% {
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    transform: rotate(-10deg); 
+  } 
+}
+
+@keyframes breath {
+  0% {
+    -webkit-transform: rotate(-12deg);
+    -moz-transform: rotate(-12deg);
+    -ms-transform: rotate(-12deg);
+    transform: rotate(-12deg); }
+  100% {
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    transform: rotate(-5deg); 
+  } 
+}
+
 @keyframes eyes{
   0% { background-position: 0 0 }
   3% { background-position: 0 -168px }
@@ -7,6 +52,64 @@
   52% { background-position: 0 0 }
   55% { background-position: 0 -168px }
   58% { background-position: 0 0 }
+}
+
+.elf {
+  .legs {
+    -webkit-transform-origin: 35px 48px;
+    -moz-transform-origin: 35px 48px;
+    -ms-transform-origin: 35px 48px;
+    transform-origin: 35px 48px; }
+  .wire {
+    -webkit-transform-origin: 35px 44px;
+    -moz-transform-origin: 35px 44px;
+    -ms-transform-origin: 35px 44px;
+    transform-origin: 35px 44px; 
+  }
+
+  &:hover {
+    g[title~=head] {
+      -webkit-animation: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -moz-transition: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -ms-transition: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      animation: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
+    }
+    path[title~=hair] {
+      -webkit-animation: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -moz-transition: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -ms-transition: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      animation: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
+    }
+    g[title~=body] {
+      -webkit-animation: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -moz-transition: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -ms-transition: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      animation: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
+    }
+  }
+  
+  g[title~=head] {
+    -webkit-transform-origin: 60px 60px;
+    -moz-transform-origin: 60px 60px;
+    -ms-transform-origin: 60px 60px;
+    transform-origin: 60px 60px;
+
+  }
+
+  path[title~=hair] {
+    -webkit-transform-origin: 48px 28px;
+    -moz-transform-origin: 48px 28px;
+    -ms-transform-origin: 48px 28px;
+    transform-origin: 48px 28px;
+
+  }
+
+  g[title~=body] {
+    -webkit-transform-origin: 48px 57px;
+    -moz-transform-origin: 48px 57px;
+    -ms-transform-origin: 48px 57px;
+    transform-origin: 48px 57px;
+  }
 }
 
 .cv-container{
@@ -120,7 +223,7 @@
     }
 
     .cv-main-bottom-bio {
-      line-height: 1.4rem;
+      line-height: 1.35em;
       .cv-main-bottom-bio-text {
         p {
           margin-bottom: 1rem;
@@ -176,6 +279,33 @@
       .cv-skill-competences-container{
         .cv-skill-competence-title{}
         .cv-skill-competence-score{}
+      }
+    }
+  }
+
+  .cv-socialnetworks-container {
+    margin: 1rem;
+    padding: 1rem;
+
+    .cv-socialnetworks-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      height: 100%;
+      grid-template-areas: 
+        ". . . . . ."
+        ". . e e e ."
+        ". . e e e ."
+        ". b b b b .";
+      align-content: center;
+      align-items: stretch;
+      
+      .cv-socialnetworks-top {
+        grid-area: e;       }
+
+      .cv-socialnetworks-bottom {
+        grid-area: b;
+        .cv-socialnetworks-socialbag {}
       }
     }
   }
