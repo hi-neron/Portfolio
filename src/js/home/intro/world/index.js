@@ -16,10 +16,6 @@ let scene, renderer, camera, stats, control,
     a, sum, me, lettersDD, animation
 
 
-let fontSizeName = 2.8
-let messageH1 = 'Jose Sánchez'
-let messageH2 = 'dev et designer'
-
 const mainContainer = document.createElement('div')
 
 mainContainer.setAttribute('class', 'intro-wrapper')
@@ -95,7 +91,7 @@ let magnitude = 3
 let sinProf
 
 // size intro: pc || mobile
-let x = document.computer ? 44 : 28
+let x = document.computer ? 48 : 32
 
 let mousePosition = {
   x: 0,

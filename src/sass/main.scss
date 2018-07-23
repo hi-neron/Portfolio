@@ -29,12 +29,17 @@
               // #a8a8a8 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   font-family: 'ratBook';
   font-weight: 400;
-  color: rgb(9, 9, 17);
-  overflow-x: hidden;
-  background-color: $backgroundGray;
+  color: $mainColor4;
+  overflow-x: hidden; 
+  background: #d2d2d2; /* Old browsers */  
 }
 
 a {

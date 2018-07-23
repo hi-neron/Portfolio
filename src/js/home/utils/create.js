@@ -3,10 +3,6 @@ function create(ctx, next) {
   app.setAttribute('id', 'app')
   ctx.app = app
 
-  let phrase = document.createElement('section')
-  phrase.setAttribute('class', 'first-phrase')
-  ctx.phrase = phrase
-
   let bar = document.createElement('nav')
   bar.setAttribute('id', 'main-bar')
   ctx.bar = bar
@@ -28,11 +24,10 @@ function create(ctx, next) {
   ctx.introContainer = introContainer
 
   app.appendChild(introContainer)
-  app.appendChild(phrase)
   app.appendChild(mainContent)
   app.appendChild(footer)
-  app.appendChild(cv)
   app.classList.add('no-overflow')
+  document.body.appendChild(cv)
   document.body.appendChild(bar)
   document.body.appendChild(app)
   next()

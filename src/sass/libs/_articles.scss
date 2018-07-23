@@ -15,7 +15,7 @@ $width: 33.3%;
   display: inline-block;
   height: auto;
   min-height: 700px;
-  margin: 100px 1% 0 1%;
+  margin: 100px 0 0 0;
 
   
   .main-over-wrapper {
@@ -33,7 +33,6 @@ $width: 33.3%;
         box-shadow: 0 3px 0 0 rgba($mainColor, 0.25);
         width: $width;
         overflow: hidden;
-        border-radius: 2px;
         // transition: all 0.5s;
 
         &:hover {
@@ -61,7 +60,6 @@ $width: 33.3%;
             height: 100%;
             background: $secondaryColor;
             transition: 0.3s all;
-            border-radius: 10px;
             transform: translate(100%, -100%);
             left: -12px;
             top: 12px;

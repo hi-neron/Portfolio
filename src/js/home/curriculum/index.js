@@ -1,6 +1,38 @@
 'use strict'
 const yo = require('yo-yo')
 const elf = require('./elf')
+const socialButtons = require('../social')
+
+// colors
+let mainColor = '#221f2e'
+let secondaryColor = '#FF4369'
+let thirdColor = '#cfffff'
+let gray = '#e7e7e7'
+
+let launcher = document.createElement('div')
+launcher.setAttribute('id', 'cv-launcher-container')
+
+let abilitiesContainer = document.createElement('div')
+abilitiesContainer.setAttribute('class', 'cv-skills-container')
+
+let template = document.createElement('div')
+template.setAttribute('class', 'cv-container')
+
+let me = yo`<p className="cv-launcher-button-text2">
+  ME
+</p>`
+
+let launcherButton = yo`
+<div className="cv-launcher-button">
+  <p className="cv-launcher-button-text1">
+    ABOUT
+  </p>
+  ${me}
+</div>
+`
+
+launcher.appendChild(launcherButton)
+
 let bio = yo`
   <div className="cv-main-bottom-bio-text">
     <p>Hi, I’m <span className="cv-bio-highlight name">Jose Sánchez</span>. I’m from Popayán, a small and precious city (Perhaps a bit outdated) in Colombia country. I got my professional degree in <span className="cv-bio-highlight gdesigner">Graphic Design</span> there, from the University of Cauca. On the process to achieve my degree (moreover to design) I too learned to <span className="cv-bio-highlight wteam">work on a team</span>, to be empathetic, <span className="cv-bio-highlight gdesigner">researching</span>, work with typography, <span className="cv-bio-highlight gdesigner">illustration</span>, to paint, a lot of things. I love to design but too the <span className="cv-bio-highlight gdesigner">develop</span>... I’ve programmed all my life. I also like maths, I like physics, cook, run, the coffee and the sea.</p>
@@ -49,6 +81,8 @@ let abilities = {
   }
 }
 
+let curriculum = true
+
 function barGenerator (max, number, label, color) {
   let container = document.createElement('div')
   container.setAttribute('class', 'cv-filled-bar-container')
@@ -78,13 +112,39 @@ function barGenerator (max, number, label, color) {
   return container
 }
 
+launcherButton.onclick = (ev) => {
+  let parent = template.parentNode
+  if(curriculum){
+    parent.style.transform = 'translateX(0%)'
+    me.style.left = '30px'
+    launcherButton.style.backgroundColor = mainColor
+    document.body.style.overflowY = 'hidden'
+    
+  } else {
+    me.style.left = '4px'
+    document.body.style.overflowY = 'scroll'
+    launcherButton.style.backgroundColor = thirdColor
+    parent.style.transform = 'translateX(-100%)'
+  }
+  curriculum =! curriculum  
+
+  // if (pos < 30) {
+  //   parent.style.right = `${100 - ((pos - 4)/20)}%`
+  //   if (pos < 6 + snap){
+  //     pos = 4
+  //     parent.style.right = `${100 - ((pos - 4)/20)}%`
+  //   } else if (pos > 30 - snap) {
+  //     pos = 30
+  //     parent.style.right = `0%`
+  //     curriculum = true
+  //   }
+  //   me.style.left = `${pos}px`
+  // } 
+  
+  // console.log(ev, pos)
+}
+
 function curriculumCreator (cb) {
-  let abilitiesContainer = document.createElement('div')
-  abilitiesContainer.setAttribute('class', 'cv-skills-container')
-
-  let template = document.createElement('div')
-  template.setAttribute('class', 'cv-container')
-
   let cvmain = yo`
     <div className="cv-main">
       <div className="cv-main-top">
@@ -175,42 +235,6 @@ function curriculumCreator (cb) {
     template.appendChild(abilityTemplate)
   }
 
-  let socialnetworks = {
-    'twitter' : {
-      url: 'url',
-      icon: 'url'
-    },
-    'codepen' : {
-      url: 'url',
-      icon: 'url'
-    },
-    'instagram' : {
-      url: 'url',
-      icon: 'url'
-    },
-    'github' : {
-      url: 'url',
-      icon: 'url'
-    }
-  }
-
-  let socialButtons = document.createElement('div')
-  socialButtons.setAttribute('class', 'cv-socialnetworks-socialbag')
-  
-  for (let socialN in socialnetworks) {
-    let socialNT = document.createElement('a')
-    socialNT.setAttribute('class', `cv-socialnetworks-${socialN}`)
-    socialNT.setAttribute('href', socialnetworks[socialN].url)
-
-    let icon = yo`
-      <i className="icon-${socialN}"></i>
-    `
-
-    socialNT.appendChild(icon)
-    
-    socialButtons.appendChild(socialNT)
-  }
-
   let socialTemplate = yo`
     <div className="cv-socialnetworks-body">
       <div className="cv-socialnetworks-top">
@@ -224,7 +248,7 @@ function curriculumCreator (cb) {
   social.appendChild(socialTemplate)
   template.appendChild(social)
 
-  cb(template)
+  cb({cv:template, launcher:launcher})
 }
 
 module.exports = curriculumCreator

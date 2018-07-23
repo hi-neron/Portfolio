@@ -57,7 +57,8 @@ page('/:tag?', create, loader, (ctx, next) => {
   })
 
   cvCreator((t) => {
-    cvi.appendChild(t)
+    cvi.appendChild(t.cv)
+    document.body.appendChild(t.launcher)
   })
   
   content.getFooter((e, r) => {

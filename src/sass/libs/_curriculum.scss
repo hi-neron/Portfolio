@@ -69,22 +69,22 @@
 
   &:hover {
     g[title~=head] {
-      -webkit-animation: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      -moz-transition: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      -ms-transition: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      animation: rotateHead 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
+      -webkit-animation: rotateHead 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -moz-transition: rotateHead 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -ms-transition: rotateHead 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      animation: rotateHead 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
     }
     path[title~=hair] {
-      -webkit-animation: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      -moz-transition: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      -ms-transition: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      animation: cyneticAir 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
+      -webkit-animation: cyneticAir 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -moz-transition: cyneticAir 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -ms-transition: cyneticAir 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      animation: cyneticAir 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
     }
     g[title~=body] {
-      -webkit-animation: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      -moz-transition: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      -ms-transition: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
-      animation: breath 0.20s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
+      -webkit-animation: breath 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -moz-transition: breath 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      -ms-transition: breath 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate;
+      animation: breath 0.25s cubic-bezier(0.05, 0.52, 0.12, 0.99) infinite alternate; 
     }
   }
   
@@ -112,200 +112,263 @@
   }
 }
 
-.cv-container{
+#cv-launcher-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: $introGray;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-gap: 1rem;
-  font-family: 'ratDemiB';
-  color: $mainColor4;
-  padding-bottom: 1rem;
+  top: 20vh;
+  right: 0;
+  z-index: 2;
 
-  .cv-design {
-    background-color: $gray;
+  &:hover {
+    .cv-launcher-button {
+      background-color: $secondaryColor !important;
+    }
   }
 
-  .cv-dev {
-    background-color: $thirdColor2;
-  }
-
-  .cv-teamwork {
-    background-color: $mainColor4;
-    color: $gray;
+  .cv-launcher-button {
+    background-color: $thirdColor5;
+    padding: 4px;
+    font-family: 'eleb';
+    text-align: left;
+    color: $backgroundGray;
     -webkit-font-smoothing: antialiased !important;
+    position: relative;
+    height: 32px;
+    transition: 0.1s ease-in;
+    width: 70px;
+    cursor: pointer;
+
+    .cv-launcher-button-text1 {}
+    .cv-launcher-button-text2 {
+      position: absolute;
+      left: 4px;
+      transition: 0.2s all ease-in;
+    }
   }
+}
+
+#cv {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  left: 0;
+  transform: translateX(-100%);
+  overflow-y: scroll;
+  height: 100%;
+  transition: .4s all cubic-bezier(0.785, 0.135, 0.150, 0.860);
   
-  .cv-main{
-    padding: 1rem;
-    margin: 1rem 1rem 0 1rem;
-    font-size: calc(16px + 4 * (100vw - 320px) / 1180);
+  .cv-container{
+    padding-bottom: 2rem;
+    width: 100%;
+    background-color: rgba($introGray, 1);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 1rem;
     font-family: 'ratDemiB';
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
-
-    .cv-main-top{
-      .cv-main-top-left{
-        float: left;
-        position: relative;
-        padding: 0 1.8rem 1rem 0;
-
-        .cv-me-eyes {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          margin-top: -54px;
-          margin-left: -12px;
-          width: 130px;
-          height: 20px;
-          background: url('/img/eyes.png') no-repeat;
-          animation: eyes 7s steps(8) infinite;
-        }
-      }
-      .cv-main-top-right{
-        .cv-main-top-right-top{
-          margin-bottom: 1rem;
-          .cv-main-top-right-name{
-            font-family: 'ratDBi';
-            font-size: 2.5rem;
-            line-height: 1em;
-          }
-          .cv-main-top-right-title{
-            font-family: 'ratDBi';
-            font-size: 1.5rem;  
-            line-height: 1em;
-            span {
-              font-size: 0.8rem;
-            }
-          }
-          .cv-main-top-right-secondTitle{
-            font-family: 'ratDBi';
-            font-size: 1.5rem;  
-            line-height: 1em;
-            span {
-              font-size: 0.8rem;
-            }
-          }
-          .cv-main-top-right-info{
-            line-height: 1.3em;
-            font-size: .9em;
-            font-family: 'ratMedium';
-          }
-          .cv-main-top-right-mail{
-            font-family: 'ratMedium';
-            line-height: 1.3em;
-            font-size: 0.9rem;
-            color: $secondaryColor;
-          }
-        }
-        .cv-main-top-right-bottom{
-          margin-bottom: 34px * 4;
-          position: relative;
-
-          .cv-main-top-right-bottom-languages-title{
-            font-family: 'ratDBi';
-            font-size: 1.5rem;
-            margin-bottom: 0.4rem;
-          }
-          .cv-main-top-right-bottom-languages{
-            font-family: 'ratMedium';
-            position: absolute;
-            font-size: 0.7rem;
-            width: 100%;
-            z-index: -1;
-          }
-        }
-      }
+    color: $mainColor4;
+  
+    .cv-design {
+      background-color: $gray;
     }
-
-    .cv-main-bottom-bio {
-      line-height: 1.35em;
-      .cv-main-bottom-bio-text {
-        p {
-          margin-bottom: 1rem;
-          
-        }
-        .cv-bio-highlight {
-          font-family: 'ratDBi';
-          color: $secondaryColor;
-          cursor: pointer;
-        }
-      }
+  
+    .cv-dev {
+      background-color: $thirdColor2;
     }
-  }
-
-  .cv-skill-body{
-    padding: 1rem;
-    margin: 1rem 1rem 0 1rem;
-
-    .cv-skill-header{
-      margin-bottom: .5rem;
-      .cv-skill-header-title{
-        font-size: 2rem;
-        font-family: 'ratDBi';
-      }
-      .cv-skill-header-years {
-        font-size: 1rem;
-        font-family: 'ratDB';
-        color: $secondaryColor;
-        
-      }
-    }
-    .cv-skill-skills{
-      margin-bottom: 1.3rem;
-      .cv-skill-skills-title{
-        font-family: 'ratDBi';
-        margin-bottom: .5rem;
-        font-size: 1.3em;
-      }
-      .cv-skill-skills-content{
-        font-family: 'ratDemiB';
-        font-size: 0.9rem;
-        margin-left: 1rem;
-        line-height: 1.2rem;
-      }
+  
+    .cv-teamwork {
+      background-color: $mainColor4;
+      color: $gray;
+      -webkit-font-smoothing: antialiased !important;
     }
     
-    .cv-skill-competences{
-      .cv-skill-competences-title {
-        margin-bottom: .5rem;
-        font-family: 'ratDBi';
-        font-size: 1.3em;
+    .cv-main{
+      padding: 1rem;
+      margin: 1rem 1rem 0 1rem;
+      font-size: calc(16px + 4 * (100vw - 320px) / 1180);
+      font-family: 'ratDemiB';
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+  
+      .cv-main-top{
+        .cv-main-top-left{
+          float: left;
+          position: relative;
+          padding: 0 1.8rem 1rem 0;
+          z-index: 1;
+  
+          .cv-me-eyes {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: -54px;
+            margin-left: -12px;
+            width: 130px;
+            height: 20px;
+            background: url('/img/eyes.png') no-repeat;
+            animation: eyes 7s steps(8) infinite;
+          }
+        }
+        .cv-main-top-right{
+          .cv-main-top-right-top{
+            margin-bottom: 1rem;
+            .cv-main-top-right-name{
+              font-family: 'ratDBi';
+              font-size: 2.5rem;
+              line-height: 1em;
+            }
+            .cv-main-top-right-title{
+              font-family: 'ratDBi';
+              font-size: 1.5rem;  
+              line-height: 1em;
+              span {
+                font-size: 0.8rem;
+              }
+            }
+            .cv-main-top-right-secondTitle{
+              font-family: 'ratDBi';
+              font-size: 1.5rem;  
+              line-height: 1em;
+              span {
+                font-size: 0.8rem;
+              }
+            }
+            .cv-main-top-right-info{
+              line-height: 1.3em;
+              font-size: .9em;
+              font-family: 'ratMedium';
+            }
+            .cv-main-top-right-mail{
+              font-family: 'ratMedium';
+              line-height: 1.3em;
+              font-size: 0.9rem;
+              color: $secondaryColor;
+            }
+          }
+          .cv-main-top-right-bottom{
+            margin-bottom: 34px * 4;
+            position: relative;
+            z-index: 0;
+  
+            .cv-main-top-right-bottom-languages-title{
+              font-family: 'ratDBi';
+              font-size: 1.5rem;
+              margin-bottom: 0.4rem;
+            }
+            .cv-main-top-right-bottom-languages{
+              font-family: 'ratMedium';
+              position: absolute;
+              font-size: 0.7rem;
+              width: 100%;
+              z-index: -1;
+            }
+          }
+        }
       }
-      .cv-skill-competences-container{
-        .cv-skill-competence-title{}
-        .cv-skill-competence-score{}
+  
+      .cv-main-bottom-bio {
+        line-height: 1.35em;
+        .cv-main-bottom-bio-text {
+          p {
+            margin-bottom: 1rem;
+            
+          }
+          .cv-bio-highlight {
+            font-family: 'ratDBi';
+            color: $secondaryColor;
+            cursor: pointer;
+          }
+        }
       }
     }
-  }
-
-  .cv-socialnetworks-container {
-    margin: 1rem;
-    padding: 1rem;
-
-    .cv-socialnetworks-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-rows: auto;
-      height: 100%;
-      grid-template-areas: 
+  
+    .cv-skill-body{
+      padding: 1rem;
+      margin: 1rem 1rem 0 1rem;
+  
+      .cv-skill-header{
+        margin-bottom: .5rem;
+        .cv-skill-header-title{
+          font-size: 2rem;
+          font-family: 'ratDBi';
+        }
+        .cv-skill-header-years {
+          font-size: 1rem;
+          font-family: 'ratDB';
+          color: $secondaryColor;
+          
+        }
+      }
+      .cv-skill-skills{
+        margin-bottom: 1.3rem;
+        .cv-skill-skills-title{
+          font-family: 'ratDBi';
+          margin-bottom: .5rem;
+          font-size: 1.3em;
+        }
+        .cv-skill-skills-content{
+          font-family: 'ratDemiB';
+          font-size: 0.9rem;
+          margin-left: 1rem;
+          line-height: 1.2rem;
+        }
+      }
+      
+      .cv-skill-competences{
+        .cv-skill-competences-title {
+          margin-bottom: .5rem;
+          font-family: 'ratDBi';
+          font-size: 1.3em;
+        }
+        .cv-skill-competences-container{
+          .cv-skill-competence-title{}
+          .cv-skill-competence-score{}
+        }
+      }
+    }
+  
+    .cv-socialnetworks-container {
+      margin: 1rem;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      .cv-socialnetworks-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        height: 100%;
+        grid-template-areas: 
         ". . . . . ."
         ". . e e e ."
         ". . e e e ."
         ". b b b b .";
-      align-content: center;
-      align-items: stretch;
-      
-      .cv-socialnetworks-top {
-        grid-area: e;       }
-
-      .cv-socialnetworks-bottom {
-        grid-area: b;
-        .cv-socialnetworks-socialbag {}
+        align-content: center;
+        align-items: stretch;
+        
+        .cv-socialnetworks-top {
+          grid-area: e;       }
+          
+          .cv-socialnetworks-bottom {
+            &:after {
+              content: '⌁';
+              font-size: 2em;
+              font-family: 'eleb';
+              height: 10px;
+              line-height: 3rem;
+              margin-bottom: -20px;
+            }
+            grid-area: b;
+            text-align: center;
+          .cv-socialnetworks-socialbag {
+            margin-top: 15px;
+            a {
+              color: $mainColor4;
+              font-size: 1.55rem;
+              &:hover {
+                color: $secondaryColor;
+              }
+            }
+          }
+        }
       }
     }
   }

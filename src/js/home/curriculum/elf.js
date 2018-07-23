@@ -2,21 +2,6 @@ const yo = require('yo-yo')
 
 let elf = yo`
   <svg version="1.1" class="elf" x="0px" y="0px" width="100%" viewBox="0 0 130 130" style="enable-background:new 0 0 130 130">
-    <g class="elf-wire">
-      <g>
-        <g>
-          <path style="fill:#efefef;" d="M96.282,120.22c-6.63,0-15.934,0-28.936-0.002c-12.538-0.002-22.128-3.496-28.503-10.388
-            c-9.331-10.084-8.359-24.098-8.348-24.238l0.996,0.077c-0.01,0.137-0.942,13.733,8.093,23.49
-            c6.179,6.673,15.519,10.057,27.762,10.059c39,0.007,44.749,0.001,44.75,0v1C112.096,120.218,109.539,120.22,96.282,120.22z"/>
-        </g>
-        
-          <line style="fill:none;stroke:#FFFFFF;stroke-width:0.4351;stroke-miterlimit:10;" x1="115.346" y1="118.39" x2="117.492" y2="118.39"/>
-        
-          <line style="fill:none;stroke:#FFFFFF;stroke-width:0.4351;stroke-miterlimit:10;" x1="115.346" y1="119.718" x2="117.492" y2="119.718"/>
-        <rect x="110.971" y="119.22" style="opacity:0.75;fill:#efefef;" width="1.438" height="1"/>
-        <rect x="112.096" y="117.536" style="fill:#efefef;" width="3.875" height="2.812"/>
-      </g>
-    </g>
     <g class="elf-legs">
       <g>
         <g>
@@ -48,9 +33,9 @@ let elf = yo`
     <g class="elf-body" title="body">
       <g>
         <g class="elf-computer">
-            <rect x="26.023" y="87.427" transform="matrix(0.9971 0.0766 -0.0766 0.9971 6.9178 -1.9332)" style="fill:#C6C6C5;" width="5.271" height="3.567"/>
-            <rect x="24.891" y="90.505" transform="matrix(0.9971 0.0766 -0.0766 0.9971 7.0494 -1.9179)" style="fill:#D6D6D5;" width="7.271" height="0.859"/>
-          <path style="fill:#E1E1E0;" d="M13.22,82.424l-0.184,2.398c-0.067,0.878,0.59,1.645,1.468,1.713l27.724,2.13
+          <rect x="26.023" y="87.427" transform="matrix(0.9971 0.0766 -0.0766 0.9971 6.9178 -1.9332)" style="fill:#C0C0C1;" width="5.271" height="3.567"/>
+          <rect x="24.891" y="90.505" transform="matrix(0.9971 0.0766 -0.0766 0.9971 7.0494 -1.9179)" style="fill:#f1f1f2;" width="7.271" height="0.859"/>
+          <path style="fill:#f1f1f2;" d="M13.22,82.424l-0.184,2.398c-0.067,0.878,0.59,1.645,1.468,1.713l27.724,2.13
             c0.878,0.067,1.645-0.59,1.713-1.468l0.184-2.398L13.22,82.424z"/>
           <path style="fill:#221f2e;" d="M44.126,84.798l1.51-19.659c0.082-1.074-0.721-2.011-1.795-2.093L16.824,60.97
             c-1.074-0.082-2.011,0.721-2.093,1.795l-1.51,19.659L44.126,84.798z"/>

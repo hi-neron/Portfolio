@@ -41,6 +41,7 @@ function toColorRGB (color) {
   return colorRGB
 }
 
+// nuevo estilo para nuevo articulo
 class NewStyle {
   constructor (color) {
     this.className = `article-${color[0]}`
@@ -198,6 +199,9 @@ class Article {
     // loader 
     this.articleLoader = yo`
       <div className="over-article-loader">
+        <div className="over-article-loader-text">
+          <span className="over-article-loader-sphere"></span>LOADING
+        </div>
       </div>
     `
     this.keywordsContainer = yo`
