@@ -125,22 +125,7 @@ launcherButton.onclick = (ev) => {
     launcherButton.style.backgroundColor = thirdColor
     parent.style.transform = 'translateX(-100%)'
   }
-  curriculum =! curriculum  
-
-  // if (pos < 30) {
-  //   parent.style.right = `${100 - ((pos - 4)/20)}%`
-  //   if (pos < 6 + snap){
-  //     pos = 4
-  //     parent.style.right = `${100 - ((pos - 4)/20)}%`
-  //   } else if (pos > 30 - snap) {
-  //     pos = 30
-  //     parent.style.right = `0%`
-  //     curriculum = true
-  //   }
-  //   me.style.left = `${pos}px`
-  // } 
-  
-  // console.log(ev, pos)
+  curriculum =! curriculum
 }
 
 function curriculumCreator (cb) {

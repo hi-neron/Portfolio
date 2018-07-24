@@ -90,7 +90,8 @@ function contentDraw (w, r, cb) {
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentPosition: true,
-    transitionDuration: 300
+    transitionDuration: 300,
+    gap: 10
   })
 
   let images = document.querySelectorAll('.images-to-load')

@@ -1,12 +1,11 @@
 const yo = require('yo-yo')
 const empty = require('empty-element')
+const _ = require('lodash')
+
 
 let opened = false
 let limit = false
 let menuBar, msnry
-// tags
-const MAINK = ['Design', 'Dev', 'UX-UI', 'Illustration', 'Resiliencia', 'Café']
-const SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front-end', 'co-creation']
 
 // tag info template
 let tag = yo`<span class="tag"></span>`
@@ -36,11 +35,59 @@ let trigger = yo`
   </div>
 `
 
+function getTags () {
+  const articles = require('../content/articles')
+  let preTags = []
+  let scoredTags = []
+  for (let article in articles) {
+    let articleTags = articles[article].keywords
+    for (let i = 0; i < articleTags.length; i++) {
+      preTags.push(articleTags[i])
+    }
+  }
+
+  for (let x = 0; x < preTags.length; x++) {
+    let counter = 0
+    for (let y = 0; y < preTags.length; y++) {
+      if (preTags[x] === preTags[y]) counter++
+    }
+    let score = {
+      name : preTags[x],
+      counter
+    }
+    scoredTags.push(score)
+  }
+
+  let result = _.sortBy(_.uniqBy(scoredTags, 'name'), 'counter')
+  
+  let maink = []
+  let secondk = []
+
+  result.map((ob) => {
+    if(ob.counter > 3) {
+      maink.push(ob.name)
+    } else {
+      secondk.push(ob.name)
+    }
+  })
+
+  return {
+    maink,
+    secondk
+  }
+
+}
+
 let template = createTemplate()
 
 function createTemplate() {
   let linkTemplate
- 
+
+  let tags = getTags()
+
+  let MAINK = tags.maink
+  let SECONDK = tags.secondk
+
   let mainLinks = document.createElement('ul')
   mainLinks.setAttribute('class', 'main-bar-list')
 

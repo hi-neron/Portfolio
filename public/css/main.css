@@ -456,8 +456,6 @@ svg:focus {
           background: #FF4369;
           transition: 0.3s all;
           transform: translate(100%, -100%);
-          left: -12px;
-          top: 12px;
           transform-origin: 0 0; }
           #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-loader {
             width: 100%;
