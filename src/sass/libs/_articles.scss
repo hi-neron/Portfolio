@@ -10,7 +10,7 @@ $width: 33.3%;
 }
 
 #main-content {
-  width: 98%;
+  width: 100%;
   text-align: center;
   display: inline-block;
   height: auto;
@@ -246,7 +246,6 @@ $width: 33.3%;
 
 @media all and (max-width: 582px) {
   #main-content {
-    margin-left: calc(5%);
     margin-right: 0% !important;
   }
   .grid-sizer {width: 100% !important}

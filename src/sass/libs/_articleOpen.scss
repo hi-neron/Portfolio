@@ -116,9 +116,11 @@
               width: 100%;
               max-height: 600px;
               overflow: hidden;
+              text-align: center;
         
               img {
                 width: 100%;
+                max-width: 1400px;
               }
             }
 
@@ -127,12 +129,12 @@
               top: 0;
 
               .article-content-title {
-                font-size: calc(48px + 4 * (100vw - 320px) / 1180);
+                font-size: calc(64px + 4 * (100vw - 320px) / 1180);
                 font-family: 'eleb';
                 text-transform: uppercase;
                 line-height: calc(66px + 4 * (100vw - 320px) / 1180);
                 min-width: 360px;
-                width: 60%;
+                width: 55%;
                 -webkit-hyphens: auto;
                 -moz-hyphens: auto;
                 -ms-hyphens: auto;
@@ -142,7 +144,6 @@
 
                 span {
                   padding-right: 5px;
-                  
                 }
               }
   
@@ -153,15 +154,15 @@
                   margin-left: 3px;
                   display: inline-block;
                   vertical-align: middle;
-                  font-family: 'ratDemiB';
+                  font-family: 'ratDBi';
                   border-radius: 5%;
                   margin-top: 6px;
-                  color: white;
+                  color: $mainColor4;
                   text-transform: uppercase;
                   background-color: $secondaryColor;
                   padding: 6px 5px 4px 6px;
                   letter-spacing: 0.1rem;
-                  font-size: 0.7rem;
+                  font-size: 0.9rem;
 
                 }
               }
@@ -177,7 +178,7 @@
               width: 60%;
               float: right;
               margin: 40px 10% 30px 40px;
-              font-size: calc(13px + 4 * (100vw - 320px) / 1180);
+              font-size: calc(16px + 4 * (100vw - 320px) / 1180);
               line-height: 1.55rem;
               -webkit-font-smoothing: antialiased !important;
 
@@ -213,7 +214,6 @@
                       margin-right: 0px;
                     }
 
-                    
                     &:hover {
                       font-family: 'ratDemiB';
                       cursor: pointer;
@@ -258,9 +258,10 @@
           position: relative;
           min-width: 360px;
           margin-bottom: 50px;
-
+          text-align: center;
           .article-content-picture-container {
             width: 65%;
+            max-width: 500px;
             display: inline-block;
             img {
               width: 100%;

@@ -10,7 +10,7 @@ module.exports = function (cb){
         <a href="mailto:hola@josesan.ch" className="footer-mailto">hola@josesan.ch</a>
         </p>
         <p class="footer-content-socialButtons">
-        ${socialButtons}
+        ${socialButtons()}
         </p>
         <p class="footer-content-rights">
           2018 / All rights reserved

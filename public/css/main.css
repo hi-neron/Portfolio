@@ -420,7 +420,7 @@ svg:focus {
   align-content: flex-start; }
 
 #main-content {
-  width: 98%;
+  width: 100%;
   text-align: center;
   display: inline-block;
   height: auto;
@@ -595,7 +595,6 @@ svg:focus {
 
 @media all and (max-width: 582px) {
   #main-content {
-    margin-left: calc(5%);
     margin-right: 0% !important; }
   .grid-sizer {
     width: 100% !important; }
@@ -712,9 +711,9 @@ footer {
         footer .footer-wrapper .footer-content-socialButtons .cv-socialnetworks-socialbag a:hover {
           color: #ff7e98; }
     footer .footer-wrapper .footer-content-rights {
-      color: rgba(34, 31, 46, 0.3);
+      color: rgba(34, 31, 46, 0.5);
       margin-top: 20px;
-      font-size: 0.7rem; }
+      font-size: 0.5rem; }
 
 .display-none {
   display: none; }
@@ -855,19 +854,21 @@ footer {
             #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-main-image {
               width: 100%;
               max-height: 600px;
-              overflow: hidden; }
+              overflow: hidden;
+              text-align: center; }
               #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-main-image img {
-                width: 100%; }
+                width: 100%;
+                max-width: 1400px; }
             #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container {
               position: absolute;
               top: 0; }
               #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-header-top .article-content-title-container .article-content-title {
-                font-size: calc(48px + 4 * (100vw - 320px) / 1180);
+                font-size: calc(64px + 4 * (100vw - 320px) / 1180);
                 font-family: 'eleb';
                 text-transform: uppercase;
                 line-height: calc(66px + 4 * (100vw - 320px) / 1180);
                 min-width: 360px;
-                width: 60%;
+                width: 55%;
                 -webkit-hyphens: auto;
                 -moz-hyphens: auto;
                 -ms-hyphens: auto;
@@ -882,15 +883,15 @@ footer {
                   margin-left: 3px;
                   display: inline-block;
                   vertical-align: middle;
-                  font-family: 'ratDemiB';
+                  font-family: 'ratDBi';
                   border-radius: 5%;
                   margin-top: 6px;
-                  color: white;
+                  color: #221f2e;
                   text-transform: uppercase;
                   background-color: #FF4369;
                   padding: 6px 5px 4px 6px;
                   letter-spacing: 0.1rem;
-                  font-size: 0.7rem; }
+                  font-size: 0.9rem; }
           #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container {
             width: 100%; }
             #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle {
@@ -898,7 +899,7 @@ footer {
               width: 60%;
               float: right;
               margin: 40px 10% 30px 40px;
-              font-size: calc(13px + 4 * (100vw - 320px) / 1180);
+              font-size: calc(16px + 4 * (100vw - 320px) / 1180);
               line-height: 1.55rem;
               -webkit-font-smoothing: antialiased !important; }
               #article-content .article-content-wrapper .article-content-info .article-content-readable .article-header .article-subtitle-container .article-subtitle .article-keywords-container {
@@ -952,9 +953,11 @@ footer {
           width: 100%;
           position: relative;
           min-width: 360px;
-          margin-bottom: 50px; }
+          margin-bottom: 50px;
+          text-align: center; }
           #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture .article-content-picture-container {
             width: 65%;
+            max-width: 500px;
             display: inline-block; }
             #article-content .article-content-wrapper .article-content-info .article-content-readable .article-content-picture .article-content-picture-container img {
               width: 100%; }
@@ -1285,7 +1288,6 @@ footer {
     background-color: #b3b3b3;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    grid-gap: 1rem;
     font-family: 'ratDemiB';
     color: #221f2e; }
     #cv .cv-container .cv-design {

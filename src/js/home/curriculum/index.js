@@ -1,7 +1,6 @@
 'use strict'
 const yo = require('yo-yo')
 const elf = require('./elf')
-const socialButtons = require('../social')
 
 // colors
 let mainColor = '#221f2e'
@@ -145,6 +144,8 @@ launcherButton.onclick = (ev) => {
 }
 
 function curriculumCreator (cb) {
+  const socialButtons = require('../social')
+  
   let cvmain = yo`
     <div className="cv-main">
       <div className="cv-main-top">
@@ -241,7 +242,7 @@ function curriculumCreator (cb) {
         ${elf}
       </div>
       <div className="cv-socialnetworks-bottom">
-        ${socialButtons}
+        ${socialButtons()}
       </div>
     </div>
   `

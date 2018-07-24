@@ -5,8 +5,8 @@ let opened = false
 let limit = false
 let menuBar, msnry
 // tags
-const MAINK = ['Diseño', 'Dev', 'Animación', 'Mar', 'Ilustración', 'Resiliencia', 'Café']
-const SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front end']
+const MAINK = ['Design', 'Dev', 'UX-UI', 'Illustration', 'Resiliencia', 'Café']
+const SECONDK = ['Brand', 'Week Challenge', 'Coffee & Sea lover', 'Front-end', 'co-creation']
 
 // tag info template
 let tag = yo`<span class="tag"></span>`
