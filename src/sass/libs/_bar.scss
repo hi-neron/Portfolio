@@ -25,30 +25,31 @@
   top: 0px;
   transform: translateX(-360px);
   z-index: 1;
-
+  
   .bar-fix {
     position: fixed;
     top: 0;
   }
-
+  
   .bar-wrapper {
+    position: relative;
     width: 404px;
     height: 100%;
-    // background-color: $thirdColor3;
-
+    
     #bar-trigger {
-      transform: rotateZ(2deg);
       color: $trigger-color;
       font-family: 'ratDemiB';
-      width: 30px;
-      height: 60px;
-      margin-left: 6px;
-      float: right;
-      margin-top: 50px;
       opacity: 0;
       transition: all 0.25s ease-in;
-      position: relative;
+      left: 370px; 
+      bottom: 0px;
+      position: absolute;
       text-transform: uppercase;
+      text-align: left;
+      transform: rotateZ(-90deg);
+      transform-origin: left top;
+
+      
       
       &:hover {
         cursor: pointer;
@@ -57,37 +58,39 @@
         }
       }
       
-      .icon {
-        transition: all 0.25s ease-in;
-        font-size: 1rem;
-        transform: rotateY(0deg) translate(3px, 6px);
-        transform-origin: 8px;
-        backface-visibility: visible;
-      }
-      
-      .tag-info {
-        font-size: 0.8rem;
-        width: 380px;
-        height: 26px;
-        text-align: right;
-        transform: rotateZ(-90deg) translate(-190px, -174px);
-        letter-spacing: 0.08em;
-        -webkit-font-smoothing: antialiased;
-
-        span {
-          padding: 1px 0px 0px 1px;
-          display: inline-block;
-        }
-
-        .message {
-          font-weight: 300;
-        }
+      .tag-position {        
+        width: 300px;
         
-        .tag {
-          // text-decoration: underline;
-          // text-decoration-color: $secondaryColor;
-          font-family: 'ratDBi';
-          text-transform: uppercase;
+        .tag-background {
+
+          &:before {
+            font-family: 'fontello';
+            font-size: 0,8rem;
+            content: '\e800';
+          }
+
+          display: inline;
+          background-color: $background-bar-trigger-color;
+          font-size: 0.9rem;
+          letter-spacing: 0.1em;
+          -webkit-font-smoothing: antialiased;
+          padding: 13px 10px 8px 10px;
+
+          span {
+            display: inline;
+            line-height: 1.3rem;
+          }
+          
+          .message {
+            font-weight: 300;
+          }
+          
+          .tag {
+            // text-decoration: underline;
+            // text-decoration-color: $secondaryColor;
+            font-family: 'ratDBi';
+            text-transform: uppercase;
+          }
         }
       }
     }
@@ -113,9 +116,9 @@
           font-family: 'eleb';
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
-          font-size: 3.2rem;
+          font-size: 3.8rem;
           color: $items-colors;
-          line-height: 3.4rem;
+          line-height: 3.5rem;
 
           -webkit-hyphens: auto;
           -moz-hyphens: auto;

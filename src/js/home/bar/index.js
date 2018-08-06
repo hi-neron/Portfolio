@@ -14,10 +14,12 @@ let alertT = yo`<span class="alert"></span>`
 let icon = yo`<div id="ico-bar" class="icon">▶︎</div>`
 
 let tagInfo = yo`
-<div class="tag-info">
-  ${message}
-  ${alertT}
-  ${tag}
+<div class="tag-position">
+  <div class="tag-background">
+    ${message}
+    ${alertT}
+    ${tag}
+  </div>
 </div>
 `
 
@@ -30,7 +32,6 @@ let bottom = yo`<div class="bar-bottom">
 // lanzador
 let trigger = yo`
   <div id="bar-trigger">
-  ${icon}
   ${tagInfo}
   </div>
 `
@@ -169,7 +170,7 @@ function barBehavior (mainContentP) {
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
   
-  if (vPosition > mainContentP.top - 40) {
+  if (vPosition > mainContentP.top - 150) {
     limit = true
     trigger.classList.add('view');
   } else {
