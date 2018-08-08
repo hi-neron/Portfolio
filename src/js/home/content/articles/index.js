@@ -1,25 +1,5 @@
 module.exports = [
   {
-    title: 'Mutar',
-    subtitle: 'co-founder Startup Project, When I wanted to be independent',
-    type: 'project',
-    colors: [0x270944, 0xaefff8],
-    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    content: `Mariana hace uso de su cuerpo como una plastilina de kínder: sin mezquindad nos recuerda que la gente está muy delgada o es muy estúpida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo famélico en tiempos de selfies, óxido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aquí un eufemismo para nuestra pobreza: nuestra esclavitud. Me regaló un pin donde aparece usando un vestido de baño estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con pólvora de cañón con las que los tiranos españoles nos defendían de los piratas.
-    El punto crucial de esta exhibición titulada “Estaba perdido, pero estar perdido nunca se sintió tan cabrón”, y que es preciso leer con acento puertorriqueño, era una fuente amarilla cuya construcción fue hecha a cuatro manos con el también boricua y mítico artista Radamés “Juni" Figueroa, cuyo contenido el público se apresuró a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o éxtasis en su estado puro: de ese que toman los jóvenes ansiosos en fiestas electrónicas que duran días y no tienen ni pies, cabeza, ni fin.
-    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Había mucha confusión pero sobre todo había mucha nada. Una semana después estaría en un avión con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente máquina de sopor.`,
-    keywords: ['illustration', 'design', 'animation', 'ux-ui', 'dev', 'brand'],
-      pictures: {
-      main: {
-        name: 'hello World',
-        url: '/img/articles/four/main.gif',
-        urlXX: '/img/articles/four/main.gif',
-        comment: 'first coment main image',
-      },
-      others: []
-    },
-  },
-  {
     title: 'Inside the mouse king castle',
     subtitle: 'Imagen-Palabra 2017, exposure',
     type: 'Illustration',
@@ -73,6 +53,26 @@ module.exports = [
         name: 'hello World',
         url: '/img/articles/eight/main.png',
         urlXX: '/img/articles/eight/main.png',
+        comment: 'first coment main image',
+      },
+      others: []
+    },
+  },
+  {
+    title: 'Mutar',
+    subtitle: 'co-founder Startup Project, When I wanted to be independent',
+    type: 'project',
+    colors: [0x270944, 0xaefff8],
+    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
+    content: `Mariana hace uso de su cuerpo como una plastilina de kínder: sin mezquindad nos recuerda que la gente está muy delgada o es muy estúpida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo famélico en tiempos de selfies, óxido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aquí un eufemismo para nuestra pobreza: nuestra esclavitud. Me regaló un pin donde aparece usando un vestido de baño estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con pólvora de cañón con las que los tiranos españoles nos defendían de los piratas.
+    El punto crucial de esta exhibición titulada “Estaba perdido, pero estar perdido nunca se sintió tan cabrón”, y que es preciso leer con acento puertorriqueño, era una fuente amarilla cuya construcción fue hecha a cuatro manos con el también boricua y mítico artista Radamés “Juni" Figueroa, cuyo contenido el público se apresuró a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o éxtasis en su estado puro: de ese que toman los jóvenes ansiosos en fiestas electrónicas que duran días y no tienen ni pies, cabeza, ni fin.
+    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Había mucha confusión pero sobre todo había mucha nada. Una semana después estaría en un avión con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente máquina de sopor.`,
+    keywords: ['illustration', 'design', 'animation', 'ux-ui', 'dev', 'brand'],
+      pictures: {
+      main: {
+        name: 'hello World',
+        url: '/img/articles/four/main.gif',
+        urlXX: '/img/articles/four/main.gif',
         comment: 'first coment main image',
       },
       others: []

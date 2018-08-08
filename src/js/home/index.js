@@ -19,7 +19,8 @@ const create = require('./utils/create')
 const empty = require('empty-element')
 
 // cv creator
-const cvCreator = require('./curriculum')
+const cvCreator = require('./curriculum').curriculumCreator
+const cvBehavior = require('./curriculum').curriculumBehavior
 
 // bar
 const barCreator = require('./bar').templateP
@@ -221,8 +222,10 @@ window.addEventListener('wheel', (e) => {
     e.preventDefault
   }
   // e.preventDefault()
+  let mainContentPosition = getPosition(mainContent)
   scroll(e)
-  barBehavior(getPosition(mainContent))
+  barBehavior(mainContentPosition)
+  curriculumBehavior(mainContentPosition)
 })
 
 window.addEventListener( 'resize', (e) => {

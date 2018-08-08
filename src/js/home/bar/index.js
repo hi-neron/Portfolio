@@ -4,8 +4,7 @@ const _ = require('lodash')
 
 
 let opened = false
-let limit = false
-let menuBar, msnry
+let menuBar
 
 // tag info template
 let tag = yo`<span class="tag"></span>`
@@ -29,7 +28,7 @@ let bottom = yo`<div class="bar-bottom">
   </div>
 </div>`
 
-// lanzador
+// Launcher
 let trigger = yo`
   <div id="bar-trigger">
   ${tagInfo}
@@ -167,39 +166,13 @@ trigger.addEventListener('click', (e) => {
 
 function barBehavior (mainContentP) {
   let vPosition = window.pageYOffset
-  let app = document.getElementById('app')
-  let bar = document.getElementById('main-bar')
-  
+
   if (vPosition > mainContentP.top - 150) {
-    limit = true
     trigger.classList.add('view');
   } else {
-    limit = false
-    opened = false
     trigger.classList.remove('view');
-    app.classList.remove('main-bar-open-app');
-    bar.classList.remove('main-bar-open-bar');
   }
 }
-
-// window.addEventListener('scroll', (e) => {
-//   let vPosition = window.pageYOffset
-//   let app = document.getElementById('app')
-//   let bar = document.getElementById('main-bar')
-
-//   if (vPosition > 820) {
-//     limit = true
-//     trigger.classList.add('view');
-//   } else {
-//     limit = false
-//     opened = false
-//     trigger.classList.remove('view');
-//     app.classList.remove('main-bar-open-app');
-//     bar.classList.remove('main-bar-open-bar');
-//   }
-// })
-
-
 
 window.addEventListener('tagChange', (e) => {
   let newTag = e.tag
