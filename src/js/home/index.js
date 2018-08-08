@@ -91,7 +91,8 @@ function contentDraw (w, r, cb) {
     columnWidth: '.grid-sizer',
     percentPosition: true,
     transitionDuration: 300,
-    gap: 10
+    gutter: 10,
+    originTop: false
   })
 
   let images = document.querySelectorAll('.images-to-load')

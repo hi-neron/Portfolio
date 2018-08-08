@@ -3,7 +3,7 @@ const yo = require('yo-yo')
 const elf = require('./elf')
 
 // colors
-let mainColor = '#221f2e'
+let mainColor = '#322934'
 let secondaryColor = '#FF4369'
 let thirdColor = '#cfffff'
 let gray = '#e7e7e7'
@@ -145,10 +145,10 @@ function curriculumCreator (cb) {
             </h2>
             <div className="cv-main-top-right-line"></div>
             <h3 className="cv-main-top-right-title">
-              GRAPHIC DESIGNER <span>(professional)</span>
+              GRAPHIC DESIGNER <span>/ professional</span>
             </h3>
             <div className="cv-main-top-right-secondTitle">
-              FRONT-END <span>(self-taught)</span>
+              FRONT-END <span>/ self-taught</span>
             </div>
             <div className="cv-main-top-right-info">
               Bogotá / Colombia 
@@ -162,7 +162,7 @@ function curriculumCreator (cb) {
               LANGUAGES
             </h3>
             <div className="cv-main-top-right-bottom-languages">
-              ${barGenerator(12, 12, 'SPANISH (native language)', '#FF4369')}
+              ${barGenerator(12, 12, 'SPANISH (native)', '#FF4369')}
               ${barGenerator(12, 10, 'ENGLISH (10/12)', '#FF4369')}
               ${barGenerator(12, 6, 'FRENCH (6/12)', '#FF4369')}
             </div>

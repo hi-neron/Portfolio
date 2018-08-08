@@ -126,6 +126,7 @@
 
   .cv-launcher-button {
     background-color: $thirdColor5;
+    box-shadow: 0 3px 0 rgba($mainColor4, 0.1);
     padding: 4px;
     font-family: 'eleb';
     text-align: left;
@@ -163,7 +164,7 @@
     background-color: rgba($introGray, 1);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    font-family: 'ratDemiB';
+    font-family: 'LMono';
     color: $mainColor4;
   
     .cv-design {
@@ -183,8 +184,9 @@
     .cv-main{
       padding: 1rem;
       margin: 1rem 1rem 0 1rem;
-      font-size: calc(16px + 4 * (100vw - 320px) / 1180);
-      font-family: 'ratDemiB';
+      font-size: calc(18px + 4 * (100vw - 320px) / 1180);
+      font-family: 'LMono';
+      font-variation-settings: 'wght' 800, 'wdth' 95;
       grid-column: 1 / 3;
       grid-row: 1 / 3;
   
@@ -210,52 +212,66 @@
         }
         .cv-main-top-right{
           .cv-main-top-right-top{
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             .cv-main-top-right-name{
-              font-family: 'ratDBi';
-              font-size: 2.5rem;
-              line-height: 1em;
+              font-family: 'LMono';
+              letter-spacing: 0.2rem;
+              font-variation-settings: 'wght' 800, 'wdth' 60;
+              font-size: calc(48px + 4 * (100vw - 320px) / 1180);
+              margin-bottom: 0.2em;
+              line-height: 1.1em;
             }
             .cv-main-top-right-title{
-              font-family: 'ratDBi';
-              font-size: 1.5rem;  
-              line-height: 1em;
+              font-family: 'LMono';
+              font-size: 1.6rem;
+              font-variation-settings: 'wght' 1000, 'wdth' 75;
               span {
-                font-size: 0.8rem;
+                vertical-align: 75%;
+                font-variation-settings: 'wght' 1000, 'wdth' 55;
+                font-size: 0.7rem;
               }
             }
             .cv-main-top-right-secondTitle{
-              font-family: 'ratDBi';
-              font-size: 1.5rem;  
-              line-height: 1em;
+              font-family: 'LMono';
+              font-variation-settings: 'wght' 1000, 'wdth' 75;
+              font-size: 1.3rem;  
               span {
-                font-size: 0.8rem;
+                vertical-align: 50%;
+                font-size: 0.7rem;
+                font-variation-settings: 'wght' 1000, 'wdth' 55;
               }
             }
             .cv-main-top-right-info{
-              line-height: 1.3em;
-              font-size: .9em;
-              font-family: 'ratMedium';
+              
+              font-size: 0.8em;
+              font-variation-settings: 'wght' 600, 'wdth' 75;
+              font-family: 'LMono';
             }
             .cv-main-top-right-mail{
-              font-family: 'ratMedium';
-              line-height: 1.3em;
+              font-family: 'LMono';
+              text-transform: uppercase;
               font-size: 0.9rem;
-              color: $secondaryColor;
+              letter-spacing: 0.2rem;
+              font-variation-settings: 'wght' 300, 'wdth' 75;
+              color: $mainColor;
+
+              &:hover {
+                color: $secondaryColor;
+              }
             }
           }
           .cv-main-top-right-bottom{
-            margin-bottom: 34px * 4;
+            margin-bottom: 39px * 4;
             position: relative;
             z-index: 0;
   
             .cv-main-top-right-bottom-languages-title{
-              font-family: 'ratDBi';
+              font-family: 'LMono';
               font-size: 1.5rem;
               margin-bottom: 0.4rem;
             }
             .cv-main-top-right-bottom-languages{
-              font-family: 'ratMedium';
+              font-family: 'LMono';
               position: absolute;
               font-size: 0.7rem;
               width: 100%;
@@ -266,15 +282,16 @@
       }
   
       .cv-main-bottom-bio {
-        line-height: 1.35em;
+        line-height: 1.30em;
         .cv-main-bottom-bio-text {
           p {
             margin-bottom: 1rem;
             
           }
           .cv-bio-highlight {
-            font-family: 'ratDBi';
+            font-family: 'LMono';
             color: $secondaryColor;
+            font-variation-settings: 'wght' 1000, 'wdth' 100;
             cursor: pointer;
           }
         }
@@ -284,39 +301,42 @@
     .cv-skill-body{
       padding: 1rem;
       margin: 1rem 1rem 0 1rem;
-  
+      
       .cv-skill-header{
         margin-bottom: .5rem;
         .cv-skill-header-title{
           font-size: 2rem;
-          font-family: 'ratDBi';
+          font-family: 'LMono';
+          font-variation-settings: 'wght' 800, 'wdth' 100;
         }
         .cv-skill-header-years {
           font-size: 1rem;
-          font-family: 'ratDB';
+          font-family: 'LMono';
           color: $secondaryColor;
-          
         }
       }
       .cv-skill-skills{
         margin-bottom: 1.3rem;
         .cv-skill-skills-title{
-          font-family: 'ratDBi';
+          font-family: 'LMono';
           margin-bottom: .5rem;
           font-size: 1.3em;
+          font-variation-settings: 'wght' 800, 'wdth' 90;
         }
         .cv-skill-skills-content{
-          font-family: 'ratDemiB';
-          font-size: 0.9rem;
+          font-variation-settings: 'wght' 800, 'wdth' 90;
+          font-family: 'LMono';
+          font-size: 1rem;
           margin-left: 1rem;
-          line-height: 1.2rem;
+          line-height: 1.3rem;
         }
       }
       
       .cv-skill-competences{
         .cv-skill-competences-title {
+          font-variation-settings: 'wght' 800, 'wdth' 90;
           margin-bottom: .5rem;
-          font-family: 'ratDBi';
+          font-family: 'LMono';
           font-size: 1.3em;
         }
         .cv-skill-competences-container{
@@ -350,7 +370,7 @@
             &:after {
               content: '⌁';
               font-size: 2em;
-              font-family: 'eleb';
+              font-family: 'LMono';
               height: 10px;
               line-height: 3rem;
               margin-bottom: -20px;
@@ -387,8 +407,10 @@
 
       .cv-filled-bar-title {
         font-size: 0.7rem;
-        font-family: 'ratDemiB';
+        font-family: 'LMono';
         padding: 4px;
+        line-height: 0.9rem;
+        font-variation-settings: 'wght' 1000, 'wdth' 100;
       }
       
       &:nth-last-child(1) {

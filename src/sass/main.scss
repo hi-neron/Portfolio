@@ -40,6 +40,7 @@ body {
   color: $mainColor4;
   overflow-x: hidden; 
   background: #d2d2d2; /* Old browsers */  
+  text-rendering: geometricPrecision;
 }
 
 a {

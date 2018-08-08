@@ -105,6 +105,7 @@ class Article {
     let endWord = data.endWord ? data.endWord : 'fin'
 
     this.title = data.title
+    this.subtitle = data.subtitle
     this.type = data.type
     this.keywords = data.keywords
     this.content = data.content
@@ -228,6 +229,9 @@ class Article {
     this.titleContainer = yo`
     <div class="over-article-title">
       ${this.title}
+      <span className="over-article-subtitle">
+        ${this.subtitle}
+      </span>
     </div>
     `
       
@@ -242,7 +246,6 @@ class Article {
             ${this.keywordsContainer}
           </div>
         </div>
-        ${this.articleLoader}
       </div>
     `
 
@@ -253,6 +256,7 @@ class Article {
         <div class="article-content">
           ${over}
           <img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
+          ${this.articleLoader}
         </div>
       </article>
     `
@@ -261,11 +265,16 @@ class Article {
 
     template.addEventListener('click', (e) => {
       const drawArticle = require('../../').drawArticles
-      if (e.target.classList.contains('over-article-word')){
-        let data = e.target.getAttribute('data-keyword')
+      let o = e.target
+      if (o.classList.contains('over-article-word')){
+        let data = o.getAttribute('data-keyword')
         return drawArticle(data)
       } else {
-        _this.screenActivate()
+        if (o.classList.contains('over-article-title') || o.classList.contains('over-article-subtitle')){
+          _this.screenActivate()
+        } else {
+          return
+        }
       }
     })
 

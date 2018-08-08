@@ -1,6 +1,7 @@
 module.exports = [
   {
-    title: 'Mutar: Startup Project',
+    title: 'Mutar',
+    subtitle: 'co-founder Startup Project, When I wanted to be independent',
     type: 'project',
     colors: [0x270944, 0xaefff8],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -19,7 +20,8 @@ module.exports = [
     },
   },
   {
-    title: 'Imagen-palabra 2017: Inside the fridge',
+    title: 'Inside the mouse king castle',
+    subtitle: 'Imagen-Palabra 2017, exposure',
     type: 'Illustration',
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     important: false,
@@ -58,7 +60,8 @@ module.exports = [
     },
   },
   {
-    title: 'Popayán random illustrations',
+    title: "That's Popayán!",
+    subtitle: 'Icecreaming* my birth city',
     type: 'illustration',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -77,6 +80,7 @@ module.exports = [
   },
   {
     title: 'Huele a caña!',
+    subtitle: '(Smells like cane) A micro-project, I did it in two days',
     type: 'micro-project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -94,7 +98,8 @@ module.exports = [
     },
   },
   {
-    title: 'Kids society. a serious videogame for childrens without rules',
+    title: 'Kids society',
+    subtitle: 'A serious video game for children who do not respect the rules',
     type: 'Project',
     colors: [0xffd193, 0x161405],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -104,7 +109,7 @@ module.exports = [
       pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/three/main.png',
+        url: '/img/articles/three/main.svg',
         urlXX: '/img/articles/three/main_b.png',
         comment: 'first coment main image',
       },
@@ -112,7 +117,8 @@ module.exports = [
     },
   },
   {
-    title: 'Historias de Popayán',
+    title: 'Popayán stories',
+    subtitle: '(Historias de Popayán) A videogame to know the forgotten history of Popayan city',
     type: 'project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -131,6 +137,7 @@ module.exports = [
   },
   {
     title: 'Historias de Cal',
+    subtitle: 'Historias de Cal',
     type: 'project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -148,7 +155,8 @@ module.exports = [
     },
   },
   {
-    title: 'PROYECTO AUTÓMATA ~ Un fanzine colectivo',
+    title: 'AUTÓMATA PROJECT',
+    subtitle: 'Un fanzine colectivo',
     type: 'PROJECT',
     colors: [0x7b7b79, 0xe5e7da],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",

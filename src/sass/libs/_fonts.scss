@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Alegreya+SC:400,500,700|Averia+Libre:300,400,700|Averia+Sans+Libre:400,700|Averia+Serif+Libre:300i,400,700|Old+Standard+TT:400,400i,700');
-@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua:300,400,700');
+@font-face {
+  font-family: 'LMono';
+  src: url('/fonts/leagueMono.ttf');
+}
 
 @font-face {
-  font-family: 'Beauty';
-  src: url('/fonts/Beauty.ttf');
+  font-family: 'GGX';
+  src: url('/fonts/GradeGX.woff2');
 }
 
 @font-face {
@@ -27,95 +28,6 @@
   src: url('/fonts/eleMI.otf');
 }
 
-@font-face {
-  font-family: 'sax';
-  src: url('/fonts/sax.otf');
-}
-
-@font-face {
-  font-family: 'saxi';
-  src: url('/fonts/saxi.otf');
-}
-
-@font-face {
-  font-family: 'saxbo';
-  src: url('/fonts/saxbo.ttf');
-}
-
-@font-face {
-  font-family: 'ratdbi';
-  src: url('/fonts/RatDSemiBold.ttf');
-}
-
-@font-face {
-  font-family: 'ratdb';
-  src: url('/fonts/RatDSemiBoldItalic.ttf');
-}
-
-@font-face {
-  font-family: 'ratMedium';
-  src: url('/fonts/RatMedium.ttf');
-}
-
-@font-face {
-  font-family: 'ratThin';
-  src: url('/fonts/RatThin.ttf');
-}
-
-@font-face {
-  font-family: 'ratlight';
-  src: url('/fonts/RatLight.ttf');
-}
-
-@font-face {
-  font-family: 'ratELight';
-  src: url('/fonts/RatExtraLight.ttf');
-}
-
-@font-face {
-  font-family: 'ratBook';
-  src: url('/fonts/RatBook.ttf');
-}
-
-@font-face {
-  font-family: 'ratBookI';
-  src: url('/fonts/RatBookItalic.ttf');
-}
-
-@font-face {
-  font-family: 'ratDemiB';
-  src: url('/fonts/RatDemiB.ttf');
-}
-
-@font-face {
-  font-family: 'plaBook';
-  src: url('/fonts/plaBook.ttf');
-}
-
-@font-face {
-  font-family: 'plaRegular';
-  src: url('/fonts/plaRegular.ttf');
-}
-
-@font-face {
-  font-family: 'plaHeavy';
-  src: url('/fonts/plaHeavy.ttf');
-}
-
-@font-face {
-  font-family: 'work100';
-  src: url('/fonts/work100.ttf');
-}
-
-@font-face {
-  font-family: 'work200';
-  src: url('/fonts/work200.ttf');
-}
-
-@font-face {
-  font-family: 'work500';
-  src: url('/fonts/work500.ttf');
-}
 
 @font-face {
   font-family: 'fontello';
