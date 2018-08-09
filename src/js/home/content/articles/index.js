@@ -1,27 +1,7 @@
 module.exports = [
   {
-    title: 'Mutar',
-    subtitle: 'co-founder Startup Project, When I wanted to be independent',
-    type: 'project',
-    colors: [0x270944, 0xaefff8],
-    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    content: `Mariana hace uso de su cuerpo como una plastilina de kínder: sin mezquindad nos recuerda que la gente está muy delgada o es muy estúpida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo famélico en tiempos de selfies, óxido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aquí un eufemismo para nuestra pobreza: nuestra esclavitud. Me regaló un pin donde aparece usando un vestido de baño estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con pólvora de cañón con las que los tiranos españoles nos defendían de los piratas.
-    El punto crucial de esta exhibición titulada “Estaba perdido, pero estar perdido nunca se sintió tan cabrón”, y que es preciso leer con acento puertorriqueño, era una fuente amarilla cuya construcción fue hecha a cuatro manos con el también boricua y mítico artista Radamés “Juni" Figueroa, cuyo contenido el público se apresuró a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o éxtasis en su estado puro: de ese que toman los jóvenes ansiosos en fiestas electrónicas que duran días y no tienen ni pies, cabeza, ni fin.
-    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Había mucha confusión pero sobre todo había mucha nada. Una semana después estaría en un avión con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente máquina de sopor.`,
-    keywords: ['illustration', 'design', 'animation', 'ux-ui', 'dev', 'brand'],
-      pictures: {
-      main: {
-        name: 'hello World',
-        url: '/img/articles/four/main.gif',
-        urlXX: '/img/articles/four/main.gif',
-        comment: 'first coment main image',
-      },
-      others: []
-    },
-  },
-  {
     title: 'Inside the mouse king castle',
-    subtitle: 'Imagen-Palabra 2017, exposure',
+    subtitle: 'Imagen-Palabra 2017, exposure.',
     type: 'Illustration',
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     important: false,
@@ -29,7 +9,7 @@ module.exports = [
     content: `Tiene un piercing en la oreja izquierda y dice “chévere” más veces de las que uno esperaría que una persona de 44 años lo dijera. Usa gafas solo a ratos; gafas rectangulares de sólido marco negro. Desde hace siete años (con un intermedio de dos en Colombia) vive en Jaffa, o como a él le gusta decir, “en territorio sin nombre”, con su esposa y sus tres hijos. Allá escribió la novela Tres ataúdes blancos, ganadora del premio Herralde en 2010 y finalista del Rómulo Gallegos en 2011. Salvo un libro infantil, después de eso, nada. Hasta ahora.
     Antonio Ungar dice que es muy zanahorio y muy solitario. Que quizás sea por eso que no le salen bien los diálogos en sus libros, con personajes muy concentrados sobre sí, y que quizás sea esa la razón por la que el alcohol funciona como mecanismo de desahogo en sus personajes. Personajes que pueden aparecer en ciudades inglesas o colombianas con la misma naturalidad con que pueden aparecer en ciudades francesas o italianas. No hay una geografía definida en su literatura. Como en su vida. Ha vivido en Manchester, en la selva colombiana, en México D.F., en Barcelona, en Iowa y en Palestina. Se graduó de arquitectura y empezó una maestría en literatura comparada que nunca terminó porque le tocaba leer teoría y crítica literaria, pero nunca llegaba a los libros.
     En enero de este año estuvo en Barcelona unos días presentando su más reciente novela. Una novela que no tiene nada que ver con la anterior: ni en tamaño, ni en tono, ni en tema. Luego de una semana en ruedas de prensa, cocteles, almuerzos con editores, cenas con cónsules, estaba frito.`,
-    keywords: ['illustration', 'design', 'challenge', 'expo'],
+    keywords: ['illustration', 'challenge', 'expo'],
     pictures: {
       main: {
         name: 'hello World',
@@ -61,7 +41,7 @@ module.exports = [
   },
   {
     title: "That's Popayán!",
-    subtitle: 'Icecreaming* my birth city',
+    subtitle: 'Icecreaming* my birth city.',
     type: 'illustration',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -79,8 +59,28 @@ module.exports = [
     },
   },
   {
+    title: 'Mutar',
+    subtitle: 'co-founder Startup Project, When I wanted to be independent.',
+    type: 'project',
+    colors: [0x270944, 0xaefff8],
+    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
+    content: `Mariana hace uso de su cuerpo como una plastilina de kínder: sin mezquindad nos recuerda que la gente está muy delgada o es muy estúpida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo famélico en tiempos de selfies, óxido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aquí un eufemismo para nuestra pobreza: nuestra esclavitud. Me regaló un pin donde aparece usando un vestido de baño estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con pólvora de cañón con las que los tiranos españoles nos defendían de los piratas.
+    El punto crucial de esta exhibición titulada “Estaba perdido, pero estar perdido nunca se sintió tan cabrón”, y que es preciso leer con acento puertorriqueño, era una fuente amarilla cuya construcción fue hecha a cuatro manos con el también boricua y mítico artista Radamés “Juni" Figueroa, cuyo contenido el público se apresuró a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o éxtasis en su estado puro: de ese que toman los jóvenes ansiosos en fiestas electrónicas que duran días y no tienen ni pies, cabeza, ni fin.
+    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Había mucha confusión pero sobre todo había mucha nada. Una semana después estaría en un avión con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente máquina de sopor.`,
+    keywords: ['illustration', 'design', 'animation', 'ux-ui', 'dev', 'brand'],
+      pictures: {
+      main: {
+        name: 'hello World',
+        url: '/img/articles/four/main.gif',
+        urlXX: '/img/articles/four/main.gif',
+        comment: 'first coment main image',
+      },
+      others: []
+    },
+  },
+  {
     title: 'Huele a caña!',
-    subtitle: '(Smells like cane) A micro-project, I did it in two days',
+    subtitle: '(Smells like cane) A micro-project, I did it in two days.',
     type: 'micro-project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -99,7 +99,7 @@ module.exports = [
   },
   {
     title: 'Kids society',
-    subtitle: 'A serious video game for children who do not respect the rules',
+    subtitle: 'A serious video game for children who do not respect the rules.',
     type: 'Project',
     colors: [0xffd193, 0x161405],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -118,7 +118,7 @@ module.exports = [
   },
   {
     title: 'Popayán stories',
-    subtitle: '(Historias de Popayán) A videogame to know the forgotten history of Popayan city',
+    subtitle: '(Historias de Popayán) A videogame to know the forgotten history of Popayan city.',
     type: 'project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -137,7 +137,7 @@ module.exports = [
   },
   {
     title: 'Historias de Cal',
-    subtitle: 'Historias de Cal',
+    subtitle: '(lime stories) A small videogame on the website of the Popayan town hall to teach children important topics about city.',
     type: 'project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -147,7 +147,7 @@ module.exports = [
       pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/sept/main.gif',
+        url: '/img/articles/five/main.svg',
         urlXX: '/img/articles/sept/main.png',
         comment: 'first coment main image',
       },

@@ -1,11 +1,11 @@
 footer {
-  height: 260px;
+  height: 300px;
 
   .footer-wrapper {
     text-align: center;
     font-size: 1rem;
     color: rgba($mainColor4, 0.6);
-    padding-top: 165px;
+    padding-top: 125px;
     line-height: 1.5rem;
     
     .footer-content-mail {
@@ -20,7 +20,7 @@ footer {
     }
     
     .footer-content-socialButtons {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       .cv-socialnetworks-socialbag {
         a {
           color: rgba($mainColor4, 1);
@@ -32,8 +32,9 @@ footer {
     }
 
     .footer-content-rights {
-      color: rgba($mainColor4, 0.5);
-      margin-top: 20px;
+      color: rgba($mainColor4, 0.75);
+      font-variation-settings: 'wght' 400, 'wdth' 125;
+      margin-top: 50px;
       font-size: 0.5rem;
     }
   }

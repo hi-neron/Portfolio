@@ -15,7 +15,7 @@ $secondaryColor3: #ff9bbd;
 
 $skin: #ffc095;
 
-$thirdColor: rgba(168, 255, 255, 0.87);
+$thirdColor: #a8ffff;
 $thirdColor2: #aefff8;
 $thirdColor3: #caf9ff;
 $thirdColor4: #e6fcff;
@@ -33,12 +33,12 @@ $contentBackground: #EAEAEA;
 
 // ---->
 // BAR CONTENT
-$background-bar-color: $mainColor4;
-$items-colors: $mainColor;
-$items-colors-over: $thirdColor4;
+$background-bar-color: $thirdColor5;
+$items-colors: $mainColor4;
+$items-colors-over: $secondaryColor;
 
 // trigger
-$background-bar-trigger-color: $mainColor2;
+$background-bar-trigger-color: $mainColor4;
 $trigger-color: $thirdColor4;
 
 // ---->

@@ -22,11 +22,11 @@
 @import "libs/font/fontello";
 
 %back1 {
-  background: url('/img/noise1.png'), #d2d2d2; 
-              // linear-gradient(to bottom, 
-              // #d2d2d2 35%,
-              // #ACB7B6 55%,
-              // #a8a8a8 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url('/img/noise1.png'), linear-gradient(155deg, 
+  #dadada 0%,
+  #dadada 20%,
+  #908792 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 html {
@@ -35,7 +35,7 @@ html {
 
 body {
   height: 100%;
-  font-family: 'ratBook';
+  font-family: 'LMono';
   font-weight: 400;
   color: $mainColor4;
   overflow-x: hidden; 

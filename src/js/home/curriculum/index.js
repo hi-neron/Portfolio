@@ -128,6 +128,16 @@ launcherButton.onclick = (ev) => {
   curriculum =! curriculum
 }
 
+function curriculumBehavior (mainContentP) {
+  let vPosition = window.pageYOffset
+
+  if (vPosition > mainContentP.top - 150) {
+    trigger.classList.add('view');
+  } else {
+    trigger.classList.remove('view');
+  }
+}
+
 function curriculumCreator (cb) {
   const socialButtons = require('../social')
   
@@ -237,4 +247,7 @@ function curriculumCreator (cb) {
   cb({cv:template, launcher:launcher})
 }
 
-module.exports = curriculumCreator
+module.exports = {
+  curriculumCreator,
+  curriculumBehavior
+}

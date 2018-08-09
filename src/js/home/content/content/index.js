@@ -227,8 +227,10 @@ class Article {
     `
 
     this.titleContainer = yo`
-    <div class="over-article-title">
-      ${this.title}
+    <div class="over-article-titles">
+      <span className="over-article-title">
+        ${this.title}
+      </span>
       <span className="over-article-subtitle">
         ${this.subtitle}
       </span>
