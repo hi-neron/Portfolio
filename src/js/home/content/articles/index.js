@@ -1,5 +1,24 @@
 module.exports = [
   {
+    title: "That's Popayán!",
+    subtitle: 'Icecreaming* my birth city.',
+    type: 'illustration',
+    colors: [0x000000, 0xffffff],
+    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
+    content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
+    Aunque los organizadores del evento tienen planeado realizar el Gran Salón México (GSM) en noviembre, tendrán, como antesala y con la convicción de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edición especial en un país distinto a México. En 2018 la exhibición se realizará en Colombia: obras de 18 ilustradores mexicanos podrán serán mostrados a artistas colombiano y al público local.`,
+    keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history'],
+      pictures: {
+      main: {
+        name: 'hello World',
+        url: '/img/articles/eight/main.png',
+        urlXX: '/img/articles/eight/main.png',
+        comment: 'first coment main image',
+      },
+      others: []
+    },
+  },
+  {
     title: 'Inside the mouse king castle',
     subtitle: 'Imagen-Palabra 2017, exposure.',
     type: 'Illustration',
@@ -37,25 +56,6 @@ module.exports = [
           cabeceando, casi dormido`,
         }
       ]
-    },
-  },
-  {
-    title: "That's Popayán!",
-    subtitle: 'Icecreaming* my birth city.',
-    type: 'illustration',
-    colors: [0x000000, 0xffffff],
-    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
-    Aunque los organizadores del evento tienen planeado realizar el Gran Salón México (GSM) en noviembre, tendrán, como antesala y con la convicción de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edición especial en un país distinto a México. En 2018 la exhibición se realizará en Colombia: obras de 18 ilustradores mexicanos podrán serán mostrados a artistas colombiano y al público local.`,
-    keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history'],
-      pictures: {
-      main: {
-        name: 'hello World',
-        url: '/img/articles/eight/main.png',
-        urlXX: '/img/articles/eight/main.png',
-        comment: 'first coment main image',
-      },
-      others: []
     },
   },
   {

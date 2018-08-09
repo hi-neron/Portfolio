@@ -70400,6 +70400,23 @@ module.exports = socialCreator;
 
 
 module.exports = [{
+  title: "That's Popayán!",
+  subtitle: 'Icecreaming* my birth city.',
+  type: 'illustration',
+  colors: [0x000000, 0xffffff],
+  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
+  content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
+  keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history'],
+  pictures: {
+    main: {
+      name: 'hello World',
+      url: '/img/articles/eight/main.png',
+      urlXX: '/img/articles/eight/main.png',
+      comment: 'first coment main image'
+    },
+    others: []
+  }
+}, {
   title: 'Inside the mouse king castle',
   subtitle: 'Imagen-Palabra 2017, exposure.',
   type: 'Illustration',
@@ -70428,23 +70445,6 @@ module.exports = [{
       type: 'quote',
       text: 'Una vez, al filo de una l\xFAgubre media noche,\n          mientras d\xE9bil y cansado, en tristes reflexiones embebido,\n          inclinado sobre un viejo y raro libro de olvidada ciencia,\n          cabeceando, casi dormido'
     }]
-  }
-}, {
-  title: "That's Popayán!",
-  subtitle: 'Icecreaming* my birth city.',
-  type: 'illustration',
-  colors: [0x000000, 0xffffff],
-  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-  content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
-  keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history'],
-  pictures: {
-    main: {
-      name: 'hello World',
-      url: '/img/articles/eight/main.png',
-      urlXX: '/img/articles/eight/main.png',
-      comment: 'first coment main image'
-    },
-    others: []
   }
 }, {
   title: 'Mutar',
