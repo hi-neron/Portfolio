@@ -1,0 +1,185 @@
+.view {
+  opacity: 1 !important;
+}
+
+
+.alert {
+  color: $secondaryColor !important;  
+}
+
+.rotate-icon {
+  transform: rotateY(-180deg) !important;
+}
+.bar-visible {
+  background-color: $thirdColor3;
+}
+
+#main-bar {
+  -webkit-transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+  -moz-transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+    -o-transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+       transition: all .4s cubic-bezier(0.765, 0.005, 0.365, 1.000); /* custom */
+  height: 100%;
+  width: 30px;
+  position: fixed;
+  top: 0px;
+  transform: translateX(-360px);
+  z-index: 1;
+  
+  .bar-fix {
+    position: fixed;
+    top: 0;
+  }
+  
+  .bar-wrapper {
+    position: relative;
+    height: 100%;
+    
+    #bar-trigger {
+      color: $trigger-color;
+      font-family: 'LMono';
+      opacity: 0;
+      transition: all 0.25s ease-in;
+      left: 369px; 
+      bottom: 10%;
+      position: absolute;
+      text-transform: uppercase;
+      text-align: left;
+      transform: rotateZ(-90deg);
+      transform-origin: left top;
+
+      &:hover {
+        cursor: pointer;
+        .icon {
+          color: $secondaryColor;
+        }
+      }
+      
+      .tag-position {        
+        width: 400px;
+        
+        .tag-background {
+
+          &:before {
+            font-family: 'fontello';
+            font-size: 0,8rem;
+            content: '\e800';
+          }
+
+          display: inline;
+          background-color: $background-bar-trigger-color;
+          font-size: 0.9rem;
+          letter-spacing: 0.1em;
+          -webkit-font-smoothing: antialiased;
+          padding: 10px 10px 8px 10px;
+
+          span {
+            display: inline;
+            line-height: 1.3rem;
+          }
+          
+          .message {
+            font-weight: 300;
+          }
+          
+          .tag {
+            // text-decoration: underline;
+            // text-decoration-color: $secondaryColor;
+            font-family: 'LMono';
+            text-transform: uppercase;
+            font-variation-settings: 'wght' 1000, 'wdth' 130;
+          }
+        }
+      }
+    }
+
+    #bar-menu {
+      width: 360px;
+      display: inline-block;
+      background: $background-bar-color;
+      height: 100%;
+      padding-top: 0px;
+
+      .item-bar-link {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .main-bar-list {
+        padding: 10px 10px 0px 10px;
+        
+        .bar-link {
+          text-transform: uppercase;
+          font-family: 'eleb';
+          -webkit-font-smoothing: antialiased;
+          text-decoration: none;
+          font-size: 3.8rem;
+          color: $items-colors;
+          line-height: 3.5rem;
+
+          -webkit-hyphens: auto;
+          -moz-hyphens: auto;
+          -ms-hyphens: auto;
+          hyphens: auto;
+          -webkit-hyphenate-character: '⌁';
+
+          &:hover {
+            cursor: pointer;
+            background: url('/img/noise1.png') rgba($items-colors-over, .8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0px 0px 10px rgba($items-colors-over, .5);
+          }
+        }
+      }
+
+      .secondary-bar-list {
+        padding: 6px 10px 0 10px;
+
+        .bar-link {
+          -webkit-hyphens: auto;
+          -moz-hyphens: auto;
+          -ms-hyphens: auto;
+          hyphens: auto;
+          -webkit-hyphenate-character: '⌁';
+
+          color: $items-colors;       
+          font-family: 'LMono';
+          font-variation-settings: 'wght' 400, 'wdth' 110;
+          letter-spacing: 0.2rem;
+          -webkit-font-smoothing: antialiased;              
+          text-decoration: none;
+          display: inline-block;
+          
+          text-transform: uppercase;
+          margin-right: 9px;
+          font-size: 1.2em;
+          border: 1px solid transparent;
+          margin-bottom: 6px;
+          border-bottom: 1px solid $items-colors;
+          padding: 3px 2px 4px 2px; 
+
+          &:hover {
+            cursor: pointer;
+            color: $items-colors-over;
+            border-bottom: 1px solid $items-colors-over;
+            text-shadow: 0px 0px 2px 1px rgba($items-colors-over, .2);
+          }
+        }
+      }
+
+      .bar-bottom {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .bar-sanchez {
+        }
+      }
+    }
+
+  }
+}
+

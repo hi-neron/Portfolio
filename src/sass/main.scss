@@ -1,3 +1,86 @@
+// Reset Library
+@import "libs/reset";
+
+// Main styles
+@import "libs/fonts";
+@import "libs/colors";
+
+// Second Styles
+@import "libs/bar";
+@import "libs/intro";
+@import "libs/articles";
+@import "libs/bioPhrase";
+@import "libs/footer";
+@import "libs/loader";
+@import "libs/articleOpen";
+@import "libs/curriculum";
+
+//fontello
+@import "libs/font/animation";
+@import "libs/font/fontello-codes";
+@import "libs/font/fontello-embedded";
+@import "libs/font/fontello";
+
+%back1 {
+  background: url('/img/noise1.png'), linear-gradient(155deg, 
+  #dadada 0%,
+  #dadada 20%,
+  #908792 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+html {
+  height: 100%;
+}
+
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  height: 100%;
+  font-family: 'LMono';
+  font-weight: 400;
+  color: $mainColor4;
+  overflow-x: hidden; 
+  background: #d2d2d2; /* Old browsers */  
+  text-rendering: geometricPrecision;
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: $mainColor;
+  }
+}
+
+#main-bar {
+  position: fixed;
+}
+
+#app {
+  @extend %back1;
+  position: absolute;
+  -webkit-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+  -moz-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+    -o-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
+       transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); /* custom */
+  width: 100%;
+  transform: translateX(0px);
+}
+
+.main-bar-open-app {
+  transform: translateX(350px) !important;
+  // left: 300px !important;
+}
+
+.main-bar-open-bar {
+  transform: translateX(0px) !important;
+  // left: 300px !important;
+}
+
+.no-overflow {
+  overflow: hidden;
+  height: 100%;
+}
+
+.fixScroll {
+  overflow: hidden;
+  height: 0;
 }

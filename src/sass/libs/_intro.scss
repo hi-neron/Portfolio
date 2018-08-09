@@ -1,0 +1,102 @@
+
+#intro {
+  width: 100%;
+  min-height: 480px;
+  z-index: 20;
+  .intro-wrapper {
+    height: 105vh;
+    position: relative;
+
+    .my-name-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      margin-top: -5vh;
+      width: 70vw;
+      height: 70vh;
+      min-width: 520px;
+      min-height: 420px;
+      max-width: 860px;
+      max-height: 800px;
+      
+      .my-name {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        margin-left: -10px;
+        transform: translate(-50%, -50%);
+        letter-spacing: -0.12em;
+        font-family: 'eleb';
+        text-align: center;
+        color: rgba($mainColor4, .90);
+        font-size: calc(5vw + 9vh + 6vmin);
+        line-height: 1.05em;
+        text-shadow:  0 -2px 8px rgba(white, .15), 
+                      0 -6px 8px rgba(#bde6db, .6), 
+                      0 -3px 2px rgba($thirdColor3, .8), 
+                      0 4px 0px rgba(rgb(255, 117, 152), 1),
+                      0 -2px 2px rgba(white, .5), 
+                      0 7px 2px rgba($mainColor, .2),
+                      0 8px 8px rgba($secondaryColor, .7),
+                      0 20px 2px rgba($mainColor4, .3);
+        // text-shadow:  0 -2px 8px rgba(white, .15), 
+        //               0 -6px 8px rgba(#bde6db, .6), 
+        //               0 -3px 2px rgba($thirdColor3, .8), 
+        //               0 4px 0px rgba(rgb(255, 117, 152), 1),
+        //               0 7px 2px rgba($mainColor, .2),
+        //               0 8px 8px rgba($secondaryColor, .7),
+        //               0 -2px 2px rgba(white, .5), 
+        //               0 20px 4px rgba($mainColor4, .3);
+
+
+        .name-line {
+          width: 100%;
+        }
+        
+        .second-line {
+          // letter-spacing: -0.04em;
+          margin-left: -0.7rem;
+          width: 110%;
+          .space {
+            display: inline-block;
+            // width: 0.7em;
+          }
+          .next-line {
+            font-size: 1.4em;
+          }
+        }
+      }
+    }
+  }
+}
+
+#main_title {
+  position: absolute;
+  font-family: 'Oldy';
+  width: 280px;
+  color: white;
+  font-size: 2.2rem;
+  left: 50%;
+  top: 50%;
+  // transform: translate(-164px, -100px);
+  // letter-spacing: .1rem;
+
+  path {
+    fill: transparent
+  }
+
+  text {
+    fill: #fff
+  }
+
+  .h2_com {
+    position: absolute;
+    font-size: 0.9rem;
+    top: 120px;
+    left: 50%;
+    transform: translateX(0px);
+  }
+}

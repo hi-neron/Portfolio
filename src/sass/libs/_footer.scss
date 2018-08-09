@@ -1,0 +1,41 @@
+footer {
+  height: 300px;
+
+  .footer-wrapper {
+    text-align: center;
+    font-size: 1rem;
+    color: rgba($mainColor4, 0.6);
+    padding-top: 125px;
+    line-height: 1.5rem;
+    
+    .footer-content-mail {
+      font-size: 0.7rem;
+
+      .footer-mailto {
+        color: rgba($mainColor4, 1);
+        &:hover {
+          color: rgba($secondaryColor3, 1)
+        }
+      }
+    }
+    
+    .footer-content-socialButtons {
+      font-size: 1.3rem;
+      .cv-socialnetworks-socialbag {
+        a {
+          color: rgba($mainColor4, 1);
+          &:hover {
+            color: $secondaryColor3;
+          }
+        }
+      }
+    }
+
+    .footer-content-rights {
+      color: rgba($mainColor4, 0.75);
+      font-variation-settings: 'wght' 400, 'wdth' 125;
+      margin-top: 50px;
+      font-size: 0.5rem;
+    }
+  }
+}
