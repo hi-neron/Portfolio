@@ -130,18 +130,11 @@ launcherButton.onclick = (ev) => {
 
 function curriculumBehavior (mainContentP) {
   let vPosition = window.pageYOffset
-  let app = document.getElementById('app')
-  let bar = document.getElementById('main-bar')
-  
+
   if (vPosition > mainContentP.top - 150) {
-    limit = true
     trigger.classList.add('view');
   } else {
-    limit = false
-    opened = false
     trigger.classList.remove('view');
-    app.classList.remove('main-bar-open-app');
-    bar.classList.remove('main-bar-open-bar');
   }
 }
 

@@ -190,7 +190,9 @@ function scroll (e, pos) {
   } else {
     // scroll to x pos
     actualPosition = window.pageYOffset
-    nextPosition = pos
+
+    // gutter from masonry
+    nextPosition = pos - 18
     direction = actualPosition - nextPosition
     util = Math.abs(direction)
 
@@ -209,7 +211,6 @@ function scroll (e, pos) {
     } else {
       window.scrollTo(0, actualPosition += add)
       direction -= factor
-      console.log(direction, scrollA, factor, nextPosition, actualPosition)
       window.requestAnimationFrame(scrollmove)
     }
   }
