@@ -132,9 +132,9 @@ function curriculumBehavior (mainContentP) {
   let vPosition = window.pageYOffset
 
   if (vPosition > mainContentP.top - 150) {
-    trigger.classList.add('view');
+    launcherButton.classList.add('curriculum-trigger-down')
   } else {
-    trigger.classList.remove('view');
+    launcherButton.classList.remove('curriculum-trigger-down')
   }
 }
 

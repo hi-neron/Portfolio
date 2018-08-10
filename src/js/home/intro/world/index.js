@@ -5,6 +5,8 @@ const THREE = require('three')
 const Stats = require('stats.js')
 const dat = require('dat.gui').default
 const yo = require('yo-yo')
+let run = true
+let runCounter = 0
 require('postprocessing')
 
 let SCREEN_WIDTH, SCREEN_HEIGHT, HALF_SCREEN_W, HALF_SCREEN_H
@@ -387,91 +389,96 @@ function render (ts) {
     stats.update()
   }
 
-  // add h2
+  if (run) {
+    let myColor = new THREE.Color(control.color)
+    let myEmissive = new THREE.Color(control.emissive)
+    let myAmbient = new THREE.Color(control.ambientLight)
+    let myDirectional = new THREE.Color(control.directionalLight)
+    let personColor = new THREE.Color(control.meColor)
 
-  // let myColor = control.color
-  let myColor = new THREE.Color(control.color)
-  let myEmissive = new THREE.Color(control.emissive)
-  let myAmbient = new THREE.Color(control.ambientLight)
-  let myDirectional = new THREE.Color(control.directionalLight)
-  let personColor = new THREE.Color(control.meColor)
+    let myDevDeColor = new THREE.Color(control.devDeColor)
+    let myDevDeColorEmission = new THREE.Color(control.devDeColorEmission)
 
-  let myDevDeColor = new THREE.Color(control.devDeColor)
-  let myDevDeColorEmission = new THREE.Color(control.devDeColorEmission)
+    teaBody.material.emissive = myEmissive
+    teaBody.material.color = myColor
 
-  teaBody.material.emissive = myEmissive
-  teaBody.material.color = myColor
+    // me.material.color = personColor
+    // name.material.color = personColor
+    
+    directionalLight.color = myDirectional
 
-  // me.material.color = personColor
-  // name.material.color = personColor
-  
-  directionalLight.color = myDirectional
+    ambientLight.color = myAmbient
+    directionalLight.color = myDirectional
 
-  ambientLight.color = myAmbient
-  directionalLight.color = myDirectional
+    lettersDD.material.color = myDevDeColor
+    lettersDD.material.emissive = myDevDeColorEmission
 
-  lettersDD.material.color = myDevDeColor
-  lettersDD.material.emissive = myDevDeColorEmission
+    let skyColor = new THREE.Color(control.upperColor)
 
-  let skyColor = new THREE.Color(control.upperColor)
+    sky.material.color = skyColor
 
-  sky.material.color = skyColor
+    // skyPos
+    sky.position.y = control.posY
+    sky.position.x = control.posX
+    sky.position.z = control.posZ
+    sky.rotation.x = control.rotX * Math.PI
+    sky.rotation.y = control.rotY * Math.PI
+    sky.rotation.z = control.rotZ * Math.PI
 
-  // skyPos
-  sky.position.y = control.posY
-  sky.position.x = control.posX
-  sky.position.z = control.posZ
-  sky.rotation.x = control.rotX * Math.PI
-  sky.rotation.y = control.rotY * Math.PI
-  sky.rotation.z = control.rotZ * Math.PI
+    let skyLength = sky.geometry.vertices.length
 
+    let center = new THREE.Vector2(0, 0)
 
-  // textPos
-  // name.position.x = control.translateX
-  // name.position.y = control.translateY
-  // name.position.z = control.translateZ
-  // name.rotation.x = control.rotateX * Math.PI
-  // name.rotation.y = control.rotateY * Math.PI
-  // name.rotation.z = control.rotateZ * Math.PI
+    for (var i = 0; i < skyLength; i++) {
+      var vs = sky.geometry.vertices[i]
+      var dist2 = new THREE.Vector2(vs.x, vs.y).sub(center)
+      vs.z = Math.sin(dist2.length()/-size + (ts/900)) * magnitude
+    }
 
-  let skyLength = sky.geometry.vertices.length
+    sky.geometry.verticesNeedUpdate = true
 
-  let center = new THREE.Vector2(0, 0)
+    // rotate the teapot
+    let middleX = (SCREEN_WIDTH - HALF_SCREEN_W) - mousePosition.x
+    let middleY = (SCREEN_HEIGHT - HALF_SCREEN_H) - mousePosition.y
+    let cameraY = (middleY * 3) / HALF_SCREEN_H
 
-  for (var i = 0; i < skyLength; i++) {
-    var vs = sky.geometry.vertices[i]
-    var dist2 = new THREE.Vector2(vs.x, vs.y).sub(center)
-    vs.z = Math.sin(dist2.length()/-size + (ts/900)) * magnitude
+    let delta = clock.getDelta()
+
+    if (document.computer) {
+      let rad = (middleX * (Math.PI)) / HALF_SCREEN_W
+      rad = (rad - 2.31)
+      teaPotWrapper.rotation.y = rad * -1
+      camera.position.y = cameraY * -1
+    } else {
+      teaPotWrapper.rotation.y += 0.01
+      camera.position.y = -3
+    }
+
+    camera.lookAt(teaPotWrapper.position)
+    mixer.update(delta)
+    renderer.render(scene, camera)
+    runCounter += 1
+    animation = requestAnimationFrame(render)
   }
+}
 
-  sky.geometry.verticesNeedUpdate = true
+function introBehavior (pos) {
+  let vPosition = window.pageYOffset
+  // when viewport 
 
-  // rotate the teapot
-  let middleX = (SCREEN_WIDTH - HALF_SCREEN_W) - mousePosition.x
-  let middleY = (SCREEN_HEIGHT - HALF_SCREEN_H) - mousePosition.y
-  let cameraY = (middleY * 3) / HALF_SCREEN_H
-
-  let delta = clock.getDelta()
-  
-  
-  
-  if (document.computer) {
-    let rad = (middleX * (Math.PI)) / HALF_SCREEN_W
-    rad = (rad - 2.31)
-    teaPotWrapper.rotation.y = rad * -1
-    camera.position.y = cameraY * -1
+  if (vPosition > pos.top - 250) {
+    run = false
+    runCounter = 0
   } else {
-    teaPotWrapper.rotation.y += 0.01
-    camera.position.y = -3
+    run = true
+    if (runCounter === 0) {
+      render()
+    }
   }
-
-  camera.lookAt(teaPotWrapper.position)
-  mixer.update(delta)
-  renderer.render(scene, camera)
-  animation = requestAnimationFrame(render)
 }
 
 module.exports = {
   world,
-  onWindowResize
+  onWindowResize,
+  introBehavior
 }

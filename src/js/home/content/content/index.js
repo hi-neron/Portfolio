@@ -143,7 +143,7 @@ class Article {
     
     // let master size
     let masterSize = window.innerWidth
-    if (masterSize > 582 && masterSize < 1090 && this.titleContainer.offsetWidth > masterSize / 2 + 30) {
+    if (masterSize > 700 && masterSize < 1050 && this.titleContainer.offsetWidth > masterSize / 2 + 30) {
       this.titleContainer.style.fontSize = '4.3rem'
     }
 
@@ -153,31 +153,23 @@ class Article {
     let parentHeight = this.smallView.offsetHeight
 
     // title size
-    let titleWidth =  this.titleContainer.offsetWidth
+
     let titleHeight =  this.titleContainer.offsetHeight
 
     // font size
     let fontSize = parseInt(window.getComputedStyle(this.titleContainer).fontSize, 10)
-    let idealHeight = parentHeight * 0.55
+    let idealHeight = parentHeight * 0.65
 
     this.keywordsContainer.classList.add('show-keywords')
-    
-    // el numero ideal es maximo 70% de la altura
-    while (titleHeight > idealHeight) {
-      // si se pasa aumentar el ancho
-      // si el ancho no alcanza reducir el tamaño de la fuente
-      // evaular si paso
-      // console.log(idealHeight, titleHeight)
-      titleHeight =  this.titleContainer.offsetHeight
 
-      if (titleWidth < parentWidth - 60) {
-        titleWidth = titleWidth + 2
-        this.titleContainer.style.width = `${titleWidth}px`
-      } else if ( fontSize >= 22 ) {
-        fontSize = fontSize - 1
-        this.titleContainer.style.fontSize = `${fontSize}px`
-      } else {
-        idealHeight = idealHeight + 2
+    while (titleHeight > idealHeight) {
+      titleHeight = this.titleContainer.offsetHeight
+      // titleHeight = parseInt(window.getComputedStyle(this.titleContainer).height, 10)
+      fontSize = fontSize - 2
+      this.titleContainer.style.fontSize = `${fontSize}px`
+
+      if (fontSize < 20) {
+        break
       }
     }
 
@@ -185,6 +177,7 @@ class Article {
     if (keySpace < 80) {
       this.keywordsContainer.classList.remove('show-keywords')
     }
+
     cb()
   }
 
@@ -243,10 +236,10 @@ class Article {
           <div class="over-article-top">
             ${this.titleContainer}
             ${this.typeContainer}
-          </div>
-          <div class="over-article-bottom">
-            ${this.keywordsContainer}
-          </div>
+              <div class="over-article-bottom">
+                ${this.keywordsContainer}
+              </div>
+            </div>
         </div>
       </div>
     `

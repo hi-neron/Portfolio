@@ -2,9 +2,14 @@
 
 const page = require('page')
 
-// contents
+// introduction
 const intro = require('./intro')
+const introR = require('./intro/world').onWindowResize
+const introBehavior = require('./intro/world').introBehavior
+
+// contents
 const content = require('./content')
+const resizeEvents = require('./content/content').resizeEvents
 
 // For grid
 const Masonry = require('masonry-layout')
@@ -31,8 +36,7 @@ let app, mainContent, msnry, imgLoaded, maxDistance, windowSize
 const loader = require('./loader')
 
 // resize events
-const introR = require('./intro/world').onWindowResize
-const resizeEvents = require('./content/content').resizeEvents
+
 
 let scrollA = true
 
@@ -64,7 +68,6 @@ page('/:tag?', create, loader, (ctx, next) => {
   
   content.getFooter((e, r) => {
     if (e) return console.log(new Error({message: 'An Error has ocurred'}))
-    console.log(r)
     footer.appendChild(r)
   })
 
@@ -92,7 +95,7 @@ function contentDraw (w, r, cb) {
     columnWidth: '.grid-sizer',
     percentPosition: true,
     transitionDuration: 300,
-    gutter: 18
+    gutter: 30
   })
 
   let images = document.querySelectorAll('.images-to-load')
@@ -226,13 +229,14 @@ window.addEventListener('wheel', (e) => {
   let mainContentPosition = getPosition(mainContent)
   scroll(e)
   barBehavior(mainContentPosition)
-  curriculumBehavior(mainContentPosition)
+  cvBehavior(mainContentPosition)
+  introBehavior(mainContentPosition)
 }, {passive: true})
 
 window.addEventListener( 'resize', (e) => {
   introR()
   resizeEvents()
   setNewWindowSize()
-})
+}, {passive: true})
 
 module.exports = { drawArticles, setNewWindowSize }
