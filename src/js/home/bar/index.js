@@ -64,12 +64,15 @@ function getTags () {
   let secondk = []
 
   result.map((ob) => {
-    if(ob.counter > 3) {
+    if(ob.counter > 2) {
       maink.push(ob.name)
     } else {
       secondk.push(ob.name)
     }
   })
+
+  maink = _.orderBy(maink, [], ['asc'])
+  secondk = _.orderBy(secondk, [], ['asc'])
 
   return {
     maink,

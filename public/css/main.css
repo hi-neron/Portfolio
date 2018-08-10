@@ -219,7 +219,7 @@ svg:focus {
     #main-bar .bar-wrapper #bar-menu {
       width: 360px;
       display: inline-block;
-      background: #cfffff;
+      background: #e6fcff;
       height: 100%;
       padding-top: 0px; }
       #main-bar .bar-wrapper #bar-menu .item-bar-link:hover {
@@ -231,9 +231,9 @@ svg:focus {
           font-family: 'eleb';
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
-          font-size: 3.8rem;
+          font-size: 3.6rem;
           color: #322934;
-          line-height: 3.5rem;
+          line-height: rem;
           -webkit-hyphens: auto;
           -moz-hyphens: auto;
           -ms-hyphens: auto;
@@ -241,11 +241,10 @@ svg:focus {
           -webkit-hyphenate-character: '⌁'; }
           #main-bar .bar-wrapper #bar-menu .main-bar-list .bar-link:hover {
             cursor: pointer;
-            background: url("/img/noise1.png") rgba(255, 67, 105, 0.8);
+            background: url("/img/noise1.png") #ff4369;
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent;
-            text-shadow: 0px 0px 10px rgba(255, 67, 105, 0.5); }
+            color: transparent; }
       #main-bar .bar-wrapper #bar-menu .secondary-bar-list {
         padding: 6px 10px 0 10px; }
         #main-bar .bar-wrapper #bar-menu .secondary-bar-list .bar-link {
@@ -256,21 +255,23 @@ svg:focus {
           -webkit-hyphenate-character: '⌁';
           color: #322934;
           font-family: 'LMono';
-          font-variation-settings: 'wght' 400, 'wdth' 110;
+          font-variation-settings: 'wght' 400, 'wdth' 120;
           letter-spacing: 0.2rem;
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
           display: inline-block;
+          text-align: justify;
           text-transform: uppercase;
           margin-right: 9px;
-          font-size: 1.2em;
+          font-size: 1.1em;
           border: 1px solid transparent;
-          margin-bottom: 6px;
+          margin-bottom: 8px;
           border-bottom: 1px solid #322934;
-          padding: 3px 2px 4px 2px; }
+          padding: 3px 2px 0.35em 2px;
+          line-height: 0.68em; }
           #main-bar .bar-wrapper #bar-menu .secondary-bar-list .bar-link:hover {
             cursor: pointer;
-            color: #FF4369;
+            color: #ff6f8c;
             border-bottom: 1px solid #FF4369;
             text-shadow: 0px 0px 2px 1px rgba(255, 67, 105, 0.2); }
       #main-bar .bar-wrapper #bar-menu .bar-bottom {
@@ -468,16 +469,18 @@ svg:focus {
                   text-decoration: none;
                   display: inline-block;
                   padding: 3px 8px 6px 8px;
-                  cursor: pointer; }
+                  cursor: pointer;
+                  transition: all 0.1s ease-in; }
                   #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom .over-article-keywords .over-article-keyword .over-article-word {
                     color: #f3f3f6;
                     font-family: 'LMono';
                     font-variation-settings: "wght" 550, "wdth" 110;
                     text-transform: uppercase;
                     transition: .2s all ease-out;
-                    padding-bottom: 2px; }
+                    padding-bottom: 2px;
+                    border-bottom: 1px solid transparent; }
                   #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper .over-article-bottom .over-article-keywords .over-article-keyword:hover .over-article-word {
-                    border-bottom: 1px solid #ff6f8c; }
+                    border-bottom: 1px solid #f3f3f6; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content img {
           min-height: 200px;
           transition: all 0.3s ease-out;
@@ -680,7 +683,7 @@ footer {
         line-height: 1.1rem;
         font-family: 'eleb';
         font-size: 1.1rem;
-        color: #131618;
+        color: #322934;
         z-index: -1; }
 
 .loader-visible {

@@ -177,6 +177,7 @@ $width: 33.3%;
                     display: inline-block;
                     padding: 3px 8px 6px 8px;
                     cursor: pointer;
+                    transition: all 0.1s ease-in;
                     
                     .over-article-word {
                       color: $myWhite;
@@ -186,12 +187,13 @@ $width: 33.3%;
                       text-transform: uppercase;
                       transition: .2s all ease-out;
                       padding-bottom: 2px;
+                      border-bottom: 1px solid transparent;
                       
                     }
                     
                     &:hover {
                       .over-article-word {
-                        border-bottom: 1px solid $secondaryColor2;
+                        border-bottom: 1px solid $myWhite;
                         // background-color: $secondaryColor3;
                         // color: $secondaryColor;
                       }

@@ -1,35 +1,3 @@
-
-// @keyframes balloonShadow {
-//   0% {
-//     transform: translate(-3px, 1px) scale(1.3);
-//     opacity: 0.5;
-//   }
-  
-//   40% {
-//     transform: translate(-3px, 1px) scale(1);
-//     opacity: 0.5;
-//   }
-  
-//   100% {
-//     transform: translate(7px, -9px) scale(.6);
-//     opacity: 0.3;
-//   }
-// }
-
-// @keyframes balloon {
-//   0% {
-//     transform: scale(1.3, 0.55);
-//   }
-
-//   40% {
-//     transform: scale(1, 1.01);
-//   }
-
-//   100% {
-//     transform: scale(0.99, 0.99) translateY(-15px);
-//   }
-// }
-
 .display-none {
   display: none;
 }
@@ -77,7 +45,7 @@
         line-height: 1.1rem;
         font-family: 'eleb';
         font-size: 1.1rem;
-        color: $mainColor;
+        color: $mainColor4;
         z-index: -1;
       }
       svg {

@@ -58,7 +58,7 @@ let scene = yo`
   <defs>
     <style>
       .cls-1, .cls-18, .cls-6 {
-        fill: #2e2e2e;
+        fill: #322934;
       }
 
       .cls-2 {

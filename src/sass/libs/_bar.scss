@@ -114,9 +114,9 @@
           font-family: 'eleb';
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
-          font-size: 3.8rem;
+          font-size: 3.6rem;
           color: $items-colors;
-          line-height: 3.5rem;
+          line-height: rem;
 
           -webkit-hyphens: auto;
           -moz-hyphens: auto;
@@ -126,11 +126,11 @@
 
           &:hover {
             cursor: pointer;
-            background: url('/img/noise1.png') rgba($items-colors-over, .8);
+            background: url('/img/noise1.png') rgba($items-colors-over, 1);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0px 0px 10px rgba($items-colors-over, .5);
+            // text-shadow: 0px 0px 3px rgba($items-colors-over, .2);
           }
         }
       }
@@ -147,23 +147,25 @@
 
           color: $items-colors;       
           font-family: 'LMono';
-          font-variation-settings: 'wght' 400, 'wdth' 110;
+          font-variation-settings: 'wght' 400, 'wdth' 120;
           letter-spacing: 0.2rem;
           -webkit-font-smoothing: antialiased;              
           text-decoration: none;
           display: inline-block;
+          text-align: justify;
           
           text-transform: uppercase;
           margin-right: 9px;
-          font-size: 1.2em;
+          font-size: 1.1em;
           border: 1px solid transparent;
-          margin-bottom: 6px;
+          margin-bottom: 8px;
           border-bottom: 1px solid $items-colors;
-          padding: 3px 2px 4px 2px; 
+          padding: 3px 2px 0.35em 2px; 
+          line-height: 0.68em;
 
           &:hover {
             cursor: pointer;
-            color: $items-colors-over;
+            color: $secondaryColor2;
             border-bottom: 1px solid $items-colors-over;
             text-shadow: 0px 0px 2px 1px rgba($items-colors-over, .2);
           }

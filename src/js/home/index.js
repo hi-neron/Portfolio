@@ -227,7 +227,7 @@ window.addEventListener('wheel', (e) => {
   scroll(e)
   barBehavior(mainContentPosition)
   curriculumBehavior(mainContentPosition)
-})
+}, {passive: true})
 
 window.addEventListener( 'resize', (e) => {
   introR()
