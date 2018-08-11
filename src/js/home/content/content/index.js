@@ -193,11 +193,13 @@ class Article {
     // loader 
     this.articleLoader = yo`
       <div className="over-article-loader">
-        <div className="over-article-loader-text">
-          <span className="over-article-loader-sphere"></span>LOADING
+        <div className="over-article-loader-display">
+          <span className="over-article-loader-sphere">
+          </span>
         </div>
       </div>
     `
+
     this.keywordsContainer = yo`
       <div class="over-article-keywords">
       </div>

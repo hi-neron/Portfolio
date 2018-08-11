@@ -387,6 +387,14 @@ svg:focus {
           position: absolute;
           top: 0;
           left: 0; }
+          #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-loader .over-article-loader-display {
+            width: 30px;
+            height: 60px;
+            background-color: #ff9bbd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container {
           position: absolute;
           width: 100%;
