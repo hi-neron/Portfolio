@@ -1,7 +1,7 @@
 module.exports = [
   {
     title: 'Historias de Cal',
-    subtitle: '(lime stories) A small videogame on the website of the Popayan town hall to teach children important topics about city.',
+    subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
     type: 'project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",

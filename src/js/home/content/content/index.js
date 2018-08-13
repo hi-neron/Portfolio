@@ -191,11 +191,43 @@ class Article {
   // articles grid container generator
   templateViewGenerator () {
     // loader 
+
+    let smoke = yo`
+      <div class="over-article-loader-smoke-svg">
+        <svg width="30px" height="40px" viewBox="0 0 30 40">
+          <defs>
+          <linearGradient id="Gradient1" x1="0" y1="0" x2="0" y2="100%">
+            <stop id="g-stop1" offset="0%" stop-color="#e6fcff02" />
+            <stop id="g-stop2" offset="60%" stop-color="#e6fcff23" />
+            <stop id="g-stop3" offset="100%" stop-color="#e6fcff02" />
+          </linearGradient>
+          </defs>
+          <path id="loader-smoke-l" fill="none" stroke-linecap="round" stroke="url(#Gradient1)" stroke-width="3" d="M15,5 Q20,10 15,15 Q10,20 15,25 Q20,30 15,35">
+        </svg>
+      </div>
+    `
     this.articleLoader = yo`
       <div className="over-article-loader">
         <div className="over-article-loader-display">
-          <span className="over-article-loader-sphere">
-          </span>
+          <div className="over-article-loader-smoke">
+            ${smoke}
+          </div>
+          <div className="over-article-loader-cup">
+            <div className="over-article-loader-cup-handle">
+            </div>
+            <div className="over-article-loader-cup-body">
+              <div className="over-article-loader-cup-top">
+              </div>
+              <div className="over-article-loader-cup-anchor">
+                <div className="anchor-top"></div>
+                <div className="anchor-body">
+                  <div className="anchor-top-line"></div>
+                  <div className="anchor-middle-line"></div>
+                </div>
+                <div className="anchor-bottom"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `
