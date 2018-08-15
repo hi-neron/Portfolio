@@ -1,0 +1,198 @@
+.article-open {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.document-close {
+    position: fixed;
+    right: 0px;
+    top: 10vh;
+    z-index: 11;
+    
+    .document-close-container {
+      background-color: $secondaryColor2;
+      color: $backgroundGray;
+      z-index: 11;
+      width: 70px;
+      height: 32px;
+      padding: 4px;
+
+      &:after {
+        content: "back";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: 3px;
+        margin-top: 2px;
+        transform: translate(-50%, -50%);
+        font-family: 'eleb';
+        text-transform: uppercase;
+        font-size: 0.65rem;
+        letter-spacing: 0.1rem;
+        transition: 0.1s;
+        color: $backgroundGray;
+      }
+
+      .article-close-line {
+        position: absolute;
+        width: 35px;
+        height: 2px;
+        top: 50%;
+        transform: translate(0%, -50%);
+        background-color: $secondaryColor;  
+        transform-origin: 50% 0%;
+        transition: 0.1s;
+      }
+      
+      .line-one {
+        margin-left: 2px;
+        transform: rotate(45deg);
+    
+      }
+      
+      .line-two {
+        transform: rotate(-45deg);
+      }
+
+    &:hover {
+      cursor: pointer;
+      .line-one {
+        margin-left: 0px;
+        top: 10%;
+        transform: rotate(0deg);
+      }
+      .line-two {
+        top: 90%;
+        transform: rotate(0deg);
+      }
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#article-content {
+  position: relative;
+  .document {
+    width: 100%;
+    font-family: 'LMono';
+    // height: 100%;
+    // padding-bottom: 2rem;
+  }
+}
+
+.document-project {
+  background-color: rgba(#EBE9DE, 1);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+
+  .document-project-front {
+    grid-column: 1 / 3;
+
+    .document-project-front-container{
+      position: relative;
+
+      .document-project-front-top{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 40px;
+        text-align: center;
+        color: rgb(245, 243, 234);
+
+        .document-project-front-top-left{
+          display: inline-block;
+          width: 38%;
+          vertical-align: top;
+          text-align: right;
+          padding-left: 8px;
+          padding-right: 4px;
+
+          .document-project-front-title{
+            color: #EBE9DE;
+            font-family: 'eleb';
+            font-size: calc(40px + 4 * (100vw - 320px) / 1180);
+            text-transform: uppercase;
+            line-height: 1.1em;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            -webkit-hyphenate-character: '⌁';
+          }
+          .document-project-front-type{
+            display: inline-block;
+            margin-top: 0.5em;
+            padding: 4px 4px 4px 8px;
+            letter-spacing: 0.2em;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            background-color:#EBE9DE;
+            color: #82352F;
+            font-variation-settings: 'wght' 900, 'wdth' 85;
+          }
+        }
+        .document-project-front-top-right{
+          vertical-align: bottom;
+          display: inline-block;
+          width: 52%;
+          padding-left: 4px;
+          padding-right: 8px;
+          text-align: left;
+
+          .document-project-front-subtitle{
+            font-family: 'eleb';
+            font-size: calc(20px + 4 * (100vw - 320px) / 1180);
+            line-height: 1.27em;
+            // padding-top: 2em;
+            text-transform: uppercase;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            -webkit-hyphenate-character: '⌁';
+
+          }
+        }
+      }
+      .document-project-front-imageContainer{
+        .document-project-front-image{
+          width: 100%;
+        }
+      }
+      .front-loader {
+        width: 100%;
+        height: 100%;
+        background-color: $mainColor4;
+      }
+    }
+  }
+
+  .document-project-abstract {
+    position: relative;
+    align-self: center;
+    text-align: center;
+    // grid-column: 3 / 5;
+    // grid-row: 0 / 1;
+
+    .document-project-abstract-container {
+      display: inline-block;
+      width: 80%;
+      height: 80%;
+      text-align: left;
+      .document-project-abstract-content {
+        padding: 40px 0;
+        width: 100%;
+        font-variation-settings: 'wght' 650, 'wdth' 85;
+        font-size: 15pt;
+        line-height: 1.2em;
+        color: rgb(75, 42, 40);
+      }
+    }
+  }
+}
+
+.document-illustration {}

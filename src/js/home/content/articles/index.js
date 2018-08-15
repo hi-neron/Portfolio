@@ -4,18 +4,44 @@ module.exports = [
     subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
     type: 'project',
     colors: [0x000000, 0xffffff],
-    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
-    Aunque los organizadores del evento tienen planeado realizar el Gran Salón México (GSM) en noviembre, tendrán, como antesala y con la convicción de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edición especial en un país distinto a México. En 2018 la exhibición se realizará en Colombia: obras de 18 ilustradores mexicanos podrán serán mostrados a artistas colombiano y al público local.`,
+    abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
-      pictures: {
+    content: [
+      {
+        type: 'image-single',
+        url: './img/articles/sept/main.gif',
+        title: 'cal gameplay',
+        subtitle: 'alcaldiadePopayan.com'
+      },
+      {
+        type: 'text-short',
+        text: 'El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.'
+      },
+      {
+        type: 'text-link',
+        text: 'Este es un link',
+        url: './files/mifile.pdf'
+      },
+      {
+        type: 'image-dual',
+        url: './img/articles/sept/main.gif',
+        url2: './img/articles/sept/main.gif',
+        title: 'cal gameplay',
+        subtitle: 'alcaldiadePopayan.com'
+      },
+      {
+        type: 'text-quote',
+        text: 'Este es un link',
+        data: 'twitter, jose sanchez'
+      },
+    ],
+    pictures: {
       main: {
         name: 'hello World',
         url: '/img/articles/sept/main.gif',
-        urlXX: '/img/articles/sept/main.png',
+        urlXX: '/img/articles/sept/mainxl.png',
         comment: 'first coment main image',
       },
-      others: []
     },
   },
   {

@@ -4,14 +4,16 @@ const yo = require('yo-yo')
 const _ = require('lodash')
 const empty = require('empty-element')
 
-// resize event for intro
-const introR = require('../../intro/world').onWindowResize
-const setNewWindowSize = require('../../').setNewWindowSize
+// loader caffee
+const caffeeLoader = require('./loader')
 
 // ventana de contenidos
 let contentContainer = document.createElement('div')
 contentContainer.setAttribute('id', 'article-content')
 document.body.appendChild(contentContainer)
+
+// Open article
+const articleOpen = require('./document/document')
 
 var screen = false
 
@@ -111,7 +113,7 @@ class Article {
     this.content = data.content
     this.pictures = data.pictures
     this.important = data.important
-    this.intro = data.intro
+    this.abstract = data.abstract
     this.endWord = endWord
     this.open = false
 
@@ -127,10 +129,6 @@ class Article {
     // pictures
     this.mainPicture = this.pictures.main
     this.othersPictures = this.pictures.others ? this.pictures.others : null
-    
-    // content
-    let paragraphs = _.split(this.content, /\n/gim)
-    this.content = paragraphs
 
     this.templateViewGenerator()
   }
@@ -185,52 +183,15 @@ class Article {
   cbFont () {
     this.setFontSize (() => {
         this.articleLoader.classList.add('to-show')
-    }) 
+    })
   }
 
   // articles grid container generator
   templateViewGenerator () {
     // loader 
-
-    let smoke = yo`
-      <div class="over-article-loader-smoke-svg">
-        <svg width="30px" height="40px" viewBox="0 0 30 40">
-          <defs>
-          <linearGradient id="Gradient1" x1="0" y1="0" x2="0" y2="100%">
-            <stop id="g-stop1" offset="0%" stop-color="#e6fcff02" />
-            <stop id="g-stop2" offset="60%" stop-color="#e6fcff23" />
-            <stop id="g-stop3" offset="100%" stop-color="#e6fcff02" />
-          </linearGradient>
-          </defs>
-          <path id="loader-smoke-l" fill="none" stroke-linecap="round" stroke="url(#Gradient1)" stroke-width="3" d="M15,5 Q20,10 15,15 Q10,20 15,25 Q20,30 15,35">
-        </svg>
-      </div>
-    `
-    this.articleLoader = yo`
-      <div className="over-article-loader">
-        <div className="over-article-loader-display">
-          <div className="over-article-loader-smoke">
-            ${smoke}
-          </div>
-          <div className="over-article-loader-cup">
-            <div className="over-article-loader-cup-handle">
-            </div>
-            <div className="over-article-loader-cup-body">
-              <div className="over-article-loader-cup-top">
-              </div>
-              <div className="over-article-loader-cup-anchor">
-                <div className="anchor-top"></div>
-                <div className="anchor-body">
-                  <div className="anchor-top-line"></div>
-                  <div className="anchor-middle-line"></div>
-                </div>
-                <div className="anchor-bottom"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `
+    this.articleLoader = document.createElement('div')
+    this.articleLoader.setAttribute('class', 'over-article-loader')
+    this.articleLoader.appendChild(caffeeLoader())
 
     this.keywordsContainer = yo`
       <div class="over-article-keywords">
@@ -310,166 +271,29 @@ class Article {
     this.smallView = template
   }
 
+  // Open modalwindow
   screenActivate () {
     if (!screen) {
-      this.createContent((template) => {
-        screenSplashOpen(template)
-        screen = true
-      })
+      screenSplashOpen(this.createContent())
       // ventana abierta
+      screen = true
     } else {
       screenSplashClose()
+      // ventana cerrada
       screen = false
     }
   }
 
-  // Article view
-  createContent(cb) {
+  // Open article template
+  createContent() {
     // crea la plantilla del item abierto
-
-    // Main container
-    let articleContent = document.createElement('article')
-    articleContent.setAttribute('class', 'article-content-readable')
-
-    // keywords template generator
-    let keywordsTemplate = document.createElement('div')
-    keywordsTemplate.setAttribute('class', 'article-keywords')
-
-    let keyword 
+    this.createdArticle = new articleOpen(this)
     
-    let cStyle = new NewStyle(this.color)
-
-    keywordsTemplate.classList.add(cStyle.smallBack)
-
-    // each one keyword template generator
-    for (let i = 0; i < this.keywords.length; i++) {
-      let keyword = this.keywords[i]
-      let oneKeyword = yo`
-        <span class="article-one-keyword ${cStyle.overLetter}">
-            ${keyword}
-        </span>
-      `
-
-      keywordsTemplate.appendChild(oneKeyword)
-    }
-
-    // header
-    let articleTitle = yo`
-      <header class="article-header">
-        <div class="article-header-top">
-          <figure class="article-main-image">
-            <img src="${this.mainPicture.urlXX}">
-          </figure>
-          <div className="article-content-title-container">
-            <h1 class="article-content-title article-item ${cStyle.letter}">
-              <span style="background-color:rgba(${cStyle.colorRGB}, 0.85)" >
-                ${this.title}
-              </span>
-            </h1>
-            <div class="article-content-type-container">
-              <div class="article-content-type">
-                ${this.type}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="article-subtitle-container">
-          <div class="article-subtitle ${cStyle.letter}">
-            ${this.intro}
-            <div className="article-keywords-container ">
-              ${keywordsTemplate}
-            </div>
-          </div>
-        </div>
-      </header>
-    `
-
-    // trigger to close
-    let close = yo`
-      <div class="article-closer-container">
-        <div class="article-close-line line-one">
-        </div>
-        <div class="article-close-line line-two">
-        </div>
-      </div>
-    `
-
-    articleContent.appendChild(articleTitle)
-
-    // Content constructor
-    for (let i = 0; i < this.content.length; i++) {
-      let form
-      let p = yo`
-      <div class="article-content-paragraph article-item ${cStyle.letter}">
-        <p>
-          ${this.content[i]}
-        </p>
-      </div>`
-
-      if (this.othersPictures[i]) {
-        switch (this.othersPictures[i].type) {
-          case 'image':
-            form = yo`
-              <figure class="article-content-picture article-item">
-                <div className="article-content-picture-container">
-                  <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
-                </div>
-                <figcaption class="${cStyle.letter}">${this.othersPictures[i].comment}</figcaption>
-              </figure>
-            `
-            break;
-
-          case 'image2':
-            form = yo`
-              <figure class="article-content-picture-xl article-item">
-                <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
-                <figcaption class="${cStyle.letter}">${this.othersPictures[i].comment}</figcaption>
-              </figure>
-            `
-            break;
-
-          case 'quote':
-            form = yo`
-              <div class="article-content-quote article-item ${cStyle.letter}">
-                <p>
-                  <q>
-                    ${this.othersPictures[i].text}
-                  </q>
-                </p>
-              </div>
-            `
-            break;
-
-          default:
-            form = ''
-            break;
-        }
-
-        articleContent.appendChild(form)
-      }
-      
-      articleContent.appendChild(p)
-    }
-
-    // main template of open article
-    let template = yo`
-      <div class="article-content-wrapper ${cStyle.back}">
-        ${close}
-        <div class="article-content-info">
-          ${articleContent}
-        </div>
-        <footer class="article-content-footer ${cStyle.letter}">
-          ${this.endWord}
-        </footer>
-      </div>
-    `
-
-    close.addEventListener('click', (e) => {
+    this.createdArticle.close.addEventListener('click', (e) => {
       screenSplashClose()
     })
-
-    cb(template)
+    
+    return this.createdArticle.container
   }
 }
 
