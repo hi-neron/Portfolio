@@ -11,6 +11,7 @@ class Content {
     this.style = `${this.super}-${this.type}`
     this.container = document.createElement('div')
     this.container.setAttribute('class', this.style)
+    console.log(this.style)
 
     switch (this.style) {
       case 'project-image-single':

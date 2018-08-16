@@ -769,7 +769,8 @@ footer {
 .document-project {
   background-color: #ebe9de;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-flow: dense; }
   .document-project .document-project-front {
     grid-column: 1 / 3; }
     .document-project .document-project-front .document-project-front-container {
@@ -836,7 +837,9 @@ footer {
   .document-project .document-project-abstract {
     position: relative;
     align-self: center;
-    text-align: center; }
+    text-align: center;
+    grid-column-end: span 2;
+    grid-row-end: span 2; }
     .document-project .document-project-abstract .document-project-abstract-container {
       display: inline-block;
       width: 80%;
