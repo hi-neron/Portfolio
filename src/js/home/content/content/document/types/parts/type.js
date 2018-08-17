@@ -1,7 +1,6 @@
 const imagesLoader = require('imagesloaded')
 const loader = require('../../../loader')
 const yo = require('yo-yo')
-const empty = require('empty-element')
 
 class Type {
   constructor (data) {
@@ -52,7 +51,7 @@ class Image extends Type {
     imagesLoader(this.container, (m) => {
       if (m.hasAnyBroken) return cb (m)
       setTimeout(() => {
-        empty(_this_.loaderContainer)
+        _this_.loaderContainer.remove()
         console.log('loader removed')
         cb (null, 'content loaded')
       }, 400);

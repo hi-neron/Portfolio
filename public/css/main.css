@@ -863,7 +863,7 @@ footer {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1; }
+      z-index: 0; }
       .document-project .image-single-2 .content-loader .caffe-loader {
         background: #322934; }
   .document-project .image-single-1 {
@@ -876,13 +876,13 @@ footer {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1; }
+      z-index: 2; }
       .document-project .image-single-1 .content-loader .caffe-loader {
         background: #322934; }
 
 .project-image-wrapper {
   position: relative;
-  z-index: 0; }
+  z-index: 1; }
   .project-image-wrapper .project-image {
     text-align: center; }
     .project-image-wrapper .project-image .project-image-img {

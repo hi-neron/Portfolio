@@ -196,7 +196,6 @@
     }
   }
 
-   
   .image-single-2 {
     grid-column-end: span 2;
     grid-row-end: span 1;
@@ -207,7 +206,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1;
+      z-index: 0;
       .caffe-loader {
         background: $mainColor4;
       }
@@ -225,7 +224,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 1;
+      z-index: 2;
       .caffe-loader {
         background: $mainColor4;
       }
@@ -235,7 +234,8 @@
 
 .project-image-wrapper {
   position: relative;
-  z-index: 0;
+  z-index: 1;
+
   .project-image {
     text-align: center;
     .project-image-img{
