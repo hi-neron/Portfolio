@@ -1,5 +1,5 @@
-const Illustration = require('./parts/illustration')
-const Project = require('./parts/project')
+const Type = require('./parts/type')
+
 
 class Content {
   constructor (data) {
@@ -11,31 +11,25 @@ class Content {
     this.style = `${this.super}-${this.type}`
     this.container = document.createElement('div')
     this.container.setAttribute('class', this.style)
-    console.log(this.style)
 
-    switch (this.style) {
-      case 'project-image-single':
-        console.log('i')
-        break;
-      case 'project-text-short':
-        console.log('t')
-        break;
-      case 'project-text-link':
-        console.log('in')
-        break;
-      case 'project-image-dual':
-        console.log('in')
-        break;
-      case 'project-text-quote':
-        console.log('in')
-        break;
-      default:
-        console.log('type Not Found')
-        break;
+    let classType = Type[data.type]
+
+    if (classType) {
+      this.object = new classType (data)
+      this.container = this.object.container
+    }
+  }
+
+  ready (cb) {
+    if (this.type === 'Image') {
+      this.object.imagesReady((e, m) => {
+        if (e) return cb(e)
+        return cb(null, m)
+      })
+    } else {
+      cb(null, m)
     }
   }
 }
-
-
 
 module.exports = Content

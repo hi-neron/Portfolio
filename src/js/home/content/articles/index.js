@@ -8,29 +8,44 @@ module.exports = [
     keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
     content: [
       {
-        type: 'image-single',
-        url: './img/articles/sept/main.gif',
-        title: 'cal gameplay',
-        subtitle: 'alcaldiadePopayan.com'
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/player.gif',
+        superCaption: 'sprites player',
+        caption: 'alcaldiadePopayan.com',
+        captionPos: 'left:top',
+        background: false
       },
       {
-        type: 'text-short',
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/bird.gif',
+        superCaption: 'sprites player',
+        caption: 'alcaldiadePopayan.com',
+        background: true
+      },
+      {
+        type: 'Text',
+        subtype: 'Short',
         text: 'El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.'
       },
       {
-        type: 'text-link',
+        type: 'Text',
+        subtype: 'Link',
         text: 'Este es un link',
         url: './files/mifile.pdf'
       },
       {
-        type: 'image-dual',
+        type: 'Image',
+        subtype: 'Dual:1',
         url: './img/articles/sept/main.gif',
         url2: './img/articles/sept/main.gif',
         title: 'cal gameplay',
         subtitle: 'alcaldiadePopayan.com'
       },
       {
-        type: 'text-quote',
+        type: 'Text',
+        subtype: 'Quote',
         text: 'Este es un link',
         data: 'twitter, jose sanchez'
       },

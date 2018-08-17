@@ -17,7 +17,7 @@ class Document {
     this.abstract = data.abstract
 
     // save content objects
-    this.contentsReady = []
+    this.contentToWait = []
 
     // set template
     this.type = data.type
@@ -42,14 +42,12 @@ class Document {
     switch (this.type) {
       case 'illustration':
         this.constructIllustration()
-        console.log('i')
         break;
       case 'project':
         this.constructProject()
         break;
       default:
         this.constructProject()
-        console.log('d')
         break;
     }
   }
@@ -72,10 +70,24 @@ class Document {
 
     for (let i = 0; i < content.length; i++) {
       let actual = content[i]
+
       actual.super = this.type
       let newContent = new contentType(actual)
-      this.contentsReady.push(newContent)
-      this.container.appendChild(newContent.container)
+      if (actual.type === 'Image') {
+        this.contentToWait.push(newContent)
+      }
+      try {
+        this.container.appendChild(newContent.container)
+      } catch (e) {
+        console.log(e, `element: ${actual} cant build`)
+      }
+    }
+
+    for (let x = 0; x < this.contentToWait.length; x++) {
+      this.contentToWait[x].ready((e, m) => {
+        if (e) return console.log(e)
+        console.log(m)
+      })
     }
 
   }
