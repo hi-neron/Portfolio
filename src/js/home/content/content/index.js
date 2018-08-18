@@ -27,80 +27,7 @@ function articleMap (article) {
   article.cbFont()
 }
 
-// Different class for each one article
-function toColor (color) {
-  return color === 0? '#000000' : `#${color.toString(16)}`
-}
-
-function toColorRGB (color) {
-  color = color.slice(1)
-  let r = parseInt(color.slice(0, 2), 16)
-  let g = parseInt(color.slice(2, 4), 16)
-  let b = parseInt(color.slice(4, 6), 16)
-  
-  let colorRGB = [r, g, b]
-
-  return colorRGB
-}
-
-// nuevo estilo para nuevo articulo
-class NewStyle {
-  constructor (color) {
-    this.className = `article-${color[0]}`
-
-    // colors
-    this.color = toColor(color[0])
-    this.contrastColor = toColor(color[1])
-
-    this.colorRGB = toColorRGB(this.color)
-
-    this.letter = this.letterColor()
-    this.back = this.backColor()
-    this.smallBack = this.smallBackColor()
-    this.overLetter = this.overLetterColor()
-
-  }
-
-  letterColor () {
-    let style = document.createElement('style')
-    let className = `${this.className}-letter-color`
-    style.type = 'text/css'
-    style.innerHTML = `.${className} { color: ${this.contrastColor} !important;}`
-    document.getElementsByTagName('head')[0].appendChild(style)
-
-    return className
-  }
-
-  backColor () {
-    let style = document.createElement('style')
-    let className = `${this.className}-back-color`
-    style.type = 'text/css'
-    style.innerHTML = `.${className} { background-color: ${this.color} !important;}`
-    document.getElementsByTagName('head')[0].appendChild(style)
-    return className
-  }
-
-  smallBackColor () {
-    let style = document.createElement('style')
-    let className = `${this.className}-small-back-color`
-    style.type = 'text/css'
-    style.innerHTML = `.${className} { background-color: ${this.contrastColor} !important;}`
-    document.getElementsByTagName('head')[0].appendChild(style)
-
-    return className
-  }
-  overLetterColor () {
-    let style = document.createElement('style')
-    let className = `${this.className}-small-letter-color`
-    style.type = 'text/css'
-    style.innerHTML = `.${className} { color: ${this.color} !important;}`
-    document.getElementsByTagName('head')[0].appendChild(style)
-
-    return className
-  }
-
-}
-
+// set articles grid and create an open article view
 class Article {
   constructor (data) {
     // basic info
@@ -116,11 +43,24 @@ class Article {
     this.abstract = data.abstract
     this.endWord = endWord
     this.open = false
+    this.front = data.front
+    
+    // Creation date
+
+    this.date = yo`
+      <div className="article-date-container">
+        <div className="article-date">
+          ${data.date.year}
+        </div>
+      </div>
+    `
+
+    this.date.style.color = data.date.color === 0 ? '#322934' : '#EAEAEA'
 
     // set colors theme
-    this.color = data.colors ? data.colors : [0xEAEAEA, 0x1E1E1E]
+    this.colors = data.colors ? data.colors : [0xEAEAEA, 0x1E1E1E, 0xFF6F8C]
 
-    //view content
+    // view content
     this.viewContent = _.truncate(this.content, {
       'length': 100,
       'separator': ' '
@@ -248,6 +188,7 @@ class Article {
           <img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
           ${this.articleLoader}
         </div>
+        ${this.date}
       </article>
     `
 
@@ -284,7 +225,7 @@ class Article {
     }
   }
 
-  // Open article template
+  // Create open-article template
   createContent() {
     // crea la plantilla del item abierto
     this.createdArticle = new articleOpen(this)

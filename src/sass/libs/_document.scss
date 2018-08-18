@@ -3,6 +3,13 @@
   height: 100% !important;
 }
 
+.document-label-top {
+  top: 0 !important;
+  bottom: none;
+  margin-top: 40px;
+  margin-bottom: 0 !important;
+}
+
 .document-close {
     position: fixed;
     right: 0px;
@@ -168,7 +175,9 @@
       .front-loader {
         width: 100%;
         height: 100%;
-        background-color: $mainColor4;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
   }
@@ -190,8 +199,7 @@
         width: 100%;
         font-variation-settings: 'wght' 650, 'wdth' 85;
         font-size: 14pt;
-        line-height: 1.2em;
-        color: rgb(75, 42, 40);
+        line-height: 1.4em;
       }
     }
   }
@@ -207,9 +215,6 @@
       top: 0;
       left: 0;
       z-index: 0;
-      .caffe-loader {
-        background: $mainColor4;
-      }
     }
   }
 
@@ -217,6 +222,7 @@
     grid-column-end: span 1;
     grid-row-end: span 1;
     position: relative;
+    min-height: 150px;
 
     .content-loader {
       width: 100%;
@@ -225,9 +231,6 @@
       top: 0;
       left: 0;
       z-index: 2;
-      .caffe-loader {
-        background: $mainColor4;
-      }
     }
   }
 }
@@ -245,23 +248,25 @@
     .project-image-captions{
       text-align: left;
       position: absolute;
-      top: 16px;
-      left: 16px;
       line-height: 1.1em;
-      background-color: $mainColor4;
       padding: 3px 4px 3px 3px;
       opacity: 0;
+      left: 50%;
+      transform: translateX(-50%);
       transition: all 0.3s ease-in-out;
+      text-align: left;
 
       .project-image-supercaption{
-        font-family: 'eleb';
-        margin-bottom: 0.1em;
-        color: $thirdColor4;
+        font-family: 'LMono';
+        margin-bottom: 0.2em;
+        font-size: 0.9em;
+        font-variation-settings: 'wght' 850, 'wdth' 95;
+        text-transform: uppercase;
       }
       .project-image-caption{
         font-family: 'LMono';
-        color: $thirdColor4;
         font-size: 0.8em;
+        font-variation-settings: 'wght' 550, 'wdth' 85;
       }
 
     }

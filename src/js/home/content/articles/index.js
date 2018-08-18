@@ -3,8 +3,11 @@ module.exports = [
     title: 'Historias de Cal',
     subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
     type: 'project',
-    colors: [0x82352f, 0xebe9df, 0x3892b3],
-    date: '2011',
+    colors: [0xebe9df, 0x4b2a28, 0x3892b3],
+    date: {
+      year: '2011',
+      color: 1
+    },
     abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
     content: [
@@ -12,17 +15,18 @@ module.exports = [
         type: 'Image',
         subtype: 'Single:1',
         url: './img/articles/sept/player.gif',
-        superCaption: 'sprites player',
-        caption: 'alcaldiadePopayan.com',
-        captionPos: 'left:top',
+        superCaption: 'game animation',
+        caption: 'player walking animation (historias de cal)',
+        captionPos: 'top',
         background: false
       },
       {
         type: 'Image',
         subtype: 'Single:1',
         url: './img/articles/sept/bird.gif',
-        superCaption: 'sprites player',
-        caption: 'alcaldiadePopayan.com',
+        superCaption: 'game animation',
+        caption: 'Bird intro (historias de cal)',
+        captionPos: 'bottom',
         background: true
       },
       {
@@ -51,12 +55,15 @@ module.exports = [
         data: 'twitter, jose sanchez'
       },
     ],
+    front: {
+      url: '/img/articles/sept/mainxl.png',
+      captionPos: 'bottom',
+      color: 1
+    },
     pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/sept/main.gif',
-        urlXX: '/img/articles/sept/mainxl.png',
-        comment: 'first coment main image',
+        url: '/img/articles/sept/main.gif'
       },
     },
   },
@@ -64,7 +71,10 @@ module.exports = [
     title: 'AUTÓMATA PROJECT',
     subtitle: 'Un fanzine colectivo',
     type: 'PROJECT',
-    date: '2017',
+    date: { 
+      year: '2017', 
+      color: 1
+    },
     colors: [0x7b7b79, 0xe5e7da],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content:  `En 2015, la artista inglesa Clare Patey fundó el Museo de la Empatía para que hombres, mujeres y niños salieran de su zona de confort, pensaran por un momento en los demás, y se interesaran por mirar el mundo a través de los ojos del otro. Con proyectos participativos como ‘Una milla en mis zapatos’ y ‘Mil y un libros’ el museo invita a sus visitantes a descubrir cómo la empatía tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.
@@ -110,7 +120,10 @@ module.exports = [
     title: "That's Popayán!",
     subtitle: 'Icecreaming* my birth city.',
     type: 'illustration',
-    date: '2015',
+    date: { 
+      year: '2015', 
+      color: 0
+    },
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
@@ -131,7 +144,10 @@ module.exports = [
     subtitle: 'Imagen-Palabra 2017, exposure.',
     type: 'Illustration',
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    date: '2017',
+    date: { 
+      year: '2017', 
+      color: 0
+    },
     important: false,
     colors: [0xd7edd6, 0x161405],
     content: `Tiene un piercing en la oreja izquierda y dice “chévere” más veces de las que uno esperaría que una persona de 44 años lo dijera. Usa gafas solo a ratos; gafas rectangulares de sólido marco negro. Desde hace siete años (con un intermedio de dos en Colombia) vive en Jaffa, o como a él le gusta decir, “en territorio sin nombre”, con su esposa y sus tres hijos. Allá escribió la novela Tres ataúdes blancos, ganadora del premio Herralde en 2010 y finalista del Rómulo Gallegos en 2011. Salvo un libro infantil, después de eso, nada. Hasta ahora.
@@ -171,7 +187,10 @@ module.exports = [
     title: 'Kids society',
     subtitle: 'A serious video game for children who do not respect the rules.',
     type: 'Project',
-    date: '2016',
+    date: { 
+      year: '2016', 
+      color: 1
+    },
     colors: [0xffd193, 0x161405],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `Dos películas presentes en ambos ciclos hicieron a Chaplin merecedor de premios Óscar: en 1929 fue galardonado por El Circo, y en 1973 por la banda sonora de Candilejas. Y, en 1972 ganó el  galardón honorífico de la Academia por su trayectoria cinematográfica El hombre transmitió en sus largometrajes una crítica constante a la sociedad en que vivía, a partir de personajes marginales o menospreciados. Sin embargo, su mensaje no fue desalentador: a través de la comedia logró balancear la crudeza de la realidad, de tal manera que a cada burla en pantalla lo acompañaba una reflexión y una mirada sarcástica y crítica para no sucumbir ante el sistema.
@@ -191,7 +210,10 @@ module.exports = [
     title: 'Portfolio 2018',
     subtitle: 'Design / Illustration / Develop et Animation for this page.',
     type: 'project',
-    date: '2018',
+    date: { 
+      year: '2018', 
+      color: 0
+    },
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
@@ -211,7 +233,10 @@ module.exports = [
     title: 'Huele a caña!',
     subtitle: '(Smells like cane) A micro-project, I did it in two days.',
     type: 'micro-project',
-    date: '2014',
+    date: { 
+      year: '2014', 
+      color: 1
+    },
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
@@ -231,7 +256,10 @@ module.exports = [
     title: 'Mutar',
     subtitle: 'co-founder Startup Project, When I wanted to be independent.',
     type: 'project',
-    date: '2016',
+    date: {
+      year: '2016',
+      color: 1
+    },
     colors: [0x270944, 0xaefff8],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `Mariana hace uso de su cuerpo como una plastilina de kínder: sin mezquindad nos recuerda que la gente está muy delgada o es muy estúpida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo famélico en tiempos de selfies, óxido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aquí un eufemismo para nuestra pobreza: nuestra esclavitud. Me regaló un pin donde aparece usando un vestido de baño estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con pólvora de cañón con las que los tiranos españoles nos defendían de los piratas.
@@ -251,7 +279,10 @@ module.exports = [
   {
     title: 'Historias de Popayán',
     subtitle: '(Popayán stories) A videogame to know the forgotten history of Popayan city.',
-    date: '2013',
+    date: { 
+      year: '2013', 
+      color: 0
+    },
     type: 'project',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",

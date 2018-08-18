@@ -10,11 +10,14 @@ class Type {
     this.size = data.size
     this.caption = data.caption
     this.superCaption = data.superCaption
+    this.colors = data.colors
 
     this.loaderContainer = document.createElement('div')
     this.loaderContainer.setAttribute('class', 'content-loader')
-    
+
     this.loaderContainer.appendChild(loader())
+
+    this.loaderContainer.style.backgroundColor = this.colors[0]
 
     // set container
     this.container = document.createElement('div')
@@ -41,6 +44,8 @@ class Image extends Type {
     super(data)
     this.subtype = data.subtype
     this.url = data.url
+    this.captionPos = data.captionPos // 'left:top'
+    this.backgroundLabel = data.background
 
     // build template
     this.templateConstructor()
@@ -88,6 +93,28 @@ class Image extends Type {
         ${caption}
       </figcaption>
     `
+
+    // set styles
+    // this.captionPos
+    // this.backgroundLabel
+
+    if (this.backgroundLabel) {
+      captions.style.backgroundColor = `${this.colors[0]} !important`
+      captions.style.color = `${this.colors[1]} !important`
+    }
+
+    console.log(this.captionPos)
+    switch (this.captionPos) {
+      case 'top':
+        captions.style.top = '16px'
+        break;
+      case 'bottom':
+        captions.style.bottom = '16px'
+        break;
+      default:
+        captions.style.top = '16px'
+        break;
+    }
 
     let template = yo`
       <figure className="project-image">

@@ -77,7 +77,8 @@ page('/:tag?', create, loader, (ctx, next) => {
     if (app.classList.contains('fixScroll')) {
       let pos = getPosition(mainContent)
       app.classList.remove('fixScroll')
-      window.scrollTo(0, pos.top)
+      // when article close, scroll to content position
+      window.scrollTo(0, pos.top - 30)
     } else {
       app.classList.add('fixScroll')
     } 

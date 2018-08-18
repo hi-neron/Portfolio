@@ -51626,7 +51626,8 @@ page('/:tag?', create, loader, function (ctx, next) {
     if (app.classList.contains('fixScroll')) {
       var pos = getPosition(mainContent);
       app.classList.remove('fixScroll');
-      window.scrollTo(0, pos.top);
+      // when article close, scroll to content position
+      window.scrollTo(0, pos.top - 30);
     } else {
       app.classList.add('fixScroll');
     }
@@ -73563,13 +73564,14 @@ module.exports = function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n      <div class="over-article-keywords">\n      </div>\n      '], ['\n      <div class="over-article-keywords">\n      </div>\n      ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        <div class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </div>\n      '], ['\n        <div class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </div>\n      ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    '], ['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    ']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    '], ['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n        </div>\n      </article>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
+var _templateObject = _taggedTemplateLiteral(['\n      <div className="article-date-container">\n        <div className="article-date">\n          ', '\n        </div>\n      </div>\n    '], ['\n      <div className="article-date-container">\n        <div className="article-date">\n          ', '\n        </div>\n      </div>\n    ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n      <div class="over-article-keywords">\n      </div>\n      '], ['\n      <div class="over-article-keywords">\n      </div>\n      ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n        <div class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </div>\n      '], ['\n        <div class="over-article-keyword">\n          <span class="over-article-word" data-keyword="', '">', '</span>\n        </div>\n      ']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    '], ['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    '], ['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    ']),
+    _templateObject7 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n        </div>\n        ', '\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n        </div>\n        ', '\n      </article>\n    ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -73602,89 +73604,7 @@ function articleMap(article) {
   article.cbFont();
 }
 
-// Different class for each one article
-function toColor(color) {
-  return color === 0 ? '#000000' : '#' + color.toString(16);
-}
-
-function toColorRGB(color) {
-  color = color.slice(1);
-  var r = parseInt(color.slice(0, 2), 16);
-  var g = parseInt(color.slice(2, 4), 16);
-  var b = parseInt(color.slice(4, 6), 16);
-
-  var colorRGB = [r, g, b];
-
-  return colorRGB;
-}
-
-// nuevo estilo para nuevo articulo
-
-var NewStyle = function () {
-  function NewStyle(color) {
-    _classCallCheck(this, NewStyle);
-
-    this.className = 'article-' + color[0];
-
-    // colors
-    this.color = toColor(color[0]);
-    this.contrastColor = toColor(color[1]);
-
-    this.colorRGB = toColorRGB(this.color);
-
-    this.letter = this.letterColor();
-    this.back = this.backColor();
-    this.smallBack = this.smallBackColor();
-    this.overLetter = this.overLetterColor();
-  }
-
-  _createClass(NewStyle, [{
-    key: 'letterColor',
-    value: function letterColor() {
-      var style = document.createElement('style');
-      var className = this.className + '-letter-color';
-      style.type = 'text/css';
-      style.innerHTML = '.' + className + ' { color: ' + this.contrastColor + ' !important;}';
-      document.getElementsByTagName('head')[0].appendChild(style);
-
-      return className;
-    }
-  }, {
-    key: 'backColor',
-    value: function backColor() {
-      var style = document.createElement('style');
-      var className = this.className + '-back-color';
-      style.type = 'text/css';
-      style.innerHTML = '.' + className + ' { background-color: ' + this.color + ' !important;}';
-      document.getElementsByTagName('head')[0].appendChild(style);
-      return className;
-    }
-  }, {
-    key: 'smallBackColor',
-    value: function smallBackColor() {
-      var style = document.createElement('style');
-      var className = this.className + '-small-back-color';
-      style.type = 'text/css';
-      style.innerHTML = '.' + className + ' { background-color: ' + this.contrastColor + ' !important;}';
-      document.getElementsByTagName('head')[0].appendChild(style);
-
-      return className;
-    }
-  }, {
-    key: 'overLetterColor',
-    value: function overLetterColor() {
-      var style = document.createElement('style');
-      var className = this.className + '-small-letter-color';
-      style.type = 'text/css';
-      style.innerHTML = '.' + className + ' { color: ' + this.color + ' !important;}';
-      document.getElementsByTagName('head')[0].appendChild(style);
-
-      return className;
-    }
-  }]);
-
-  return NewStyle;
-}();
+// set articles grid and create an open article view
 
 var Article = function () {
   function Article(data) {
@@ -73703,11 +73623,18 @@ var Article = function () {
     this.abstract = data.abstract;
     this.endWord = endWord;
     this.open = false;
+    this.front = data.front;
+
+    // Creation date
+
+    this.date = yo(_templateObject, data.date.year);
+
+    this.date.style.color = data.date.color === 0 ? '#322934' : '#EAEAEA';
 
     // set colors theme
-    this.color = data.colors ? data.colors : [0xEAEAEA, 0x1E1E1E];
+    this.colors = data.colors ? data.colors : [0xEAEAEA, 0x1E1E1E, 0xFF6F8C];
 
-    //view content
+    // view content
     this.viewContent = _.truncate(this.content, {
       'length': 100,
       'separator': ' '
@@ -73791,23 +73718,23 @@ var Article = function () {
       this.articleLoader.setAttribute('class', 'over-article-loader');
       this.articleLoader.appendChild(caffeeLoader());
 
-      this.keywordsContainer = yo(_templateObject);
+      this.keywordsContainer = yo(_templateObject2);
 
       for (var i = 0; i < this.keywords.length; i++) {
         var myKeyword = this.keywords[i];
-        var _template = yo(_templateObject2, myKeyword, myKeyword);
+        var _template = yo(_templateObject3, myKeyword, myKeyword);
         this.keywordsContainer.appendChild(_template);
       }
 
-      this.typeContainer = yo(_templateObject3, this.type);
+      this.typeContainer = yo(_templateObject4, this.type);
 
-      this.titleContainer = yo(_templateObject4, this.title, this.subtitle);
+      this.titleContainer = yo(_templateObject5, this.title, this.subtitle);
 
-      var over = yo(_templateObject5, this.titleContainer, this.typeContainer, this.keywordsContainer);
+      var over = yo(_templateObject6, this.titleContainer, this.typeContainer, this.keywordsContainer);
 
       var important = this.important ? 'grid-item-widthx2' : '';
 
-      var template = yo(_templateObject6, important, this.title, over, this.mainPicture.url, this.mainPicture.url, this.mainPicture.comment, this.articleLoader);
+      var template = yo(_templateObject7, important, this.title, over, this.mainPicture.url, this.mainPicture.url, this.mainPicture.comment, this.articleLoader, this.date);
 
       var _this = this;
 
@@ -73845,7 +73772,7 @@ var Article = function () {
       }
     }
 
-    // Open article template
+    // Create open-article template
 
   }, {
     key: 'createContent',
@@ -73887,7 +73814,7 @@ function createTemplate(items, cb) {
   var article = void 0;
   articlesList = [];
 
-  var main = yo(_templateObject7);
+  var main = yo(_templateObject8);
 
   for (var i = 0; i < items.length; i++) {
     article = new Article(items[i]);
@@ -73973,24 +73900,28 @@ module.exports = [{
   title: 'Historias de Cal',
   subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
   type: 'project',
-  colors: [0x82352f, 0xebe9df, 0x3892b3],
-  date: '2011',
+  colors: [0xebe9df, 0x4b2a28, 0x3892b3],
+  date: {
+    year: '2011',
+    color: 1
+  },
   abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
   content: [{
     type: 'Image',
     subtype: 'Single:1',
     url: './img/articles/sept/player.gif',
-    superCaption: 'sprites player',
-    caption: 'alcaldiadePopayan.com',
-    captionPos: 'left:top',
+    superCaption: 'game animation',
+    caption: 'player walking animation (historias de cal)',
+    captionPos: 'top',
     background: false
   }, {
     type: 'Image',
     subtype: 'Single:1',
     url: './img/articles/sept/bird.gif',
-    superCaption: 'sprites player',
-    caption: 'alcaldiadePopayan.com',
+    superCaption: 'game animation',
+    caption: 'Bird intro (historias de cal)',
+    captionPos: 'bottom',
     background: true
   }, {
     type: 'Text',
@@ -74014,19 +73945,25 @@ module.exports = [{
     text: 'Este es un link',
     data: 'twitter, jose sanchez'
   }],
+  front: {
+    url: '/img/articles/sept/mainxl.png',
+    captionPos: 'bottom',
+    color: 1
+  },
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/sept/main.gif',
-      urlXX: '/img/articles/sept/mainxl.png',
-      comment: 'first coment main image'
+      url: '/img/articles/sept/main.gif'
     }
   }
 }, {
   title: 'AUTÓMATA PROJECT',
   subtitle: 'Un fanzine colectivo',
   type: 'PROJECT',
-  date: '2017',
+  date: {
+    year: '2017',
+    color: 1
+  },
   colors: [0x7b7b79, 0xe5e7da],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'En 2015, la artista inglesa Clare Patey fund\xF3 el Museo de la Empat\xEDa para que hombres, mujeres y ni\xF1os salieran de su zona de confort, pensaran por un momento en los dem\xE1s, y se interesaran por mirar el mundo a trav\xE9s de los ojos del otro. Con proyectos participativos como \u2018Una milla en mis zapatos\u2019 y \u2018Mil y un libros\u2019 el museo invita a sus visitantes a descubrir c\xF3mo la empat\xEDa tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.\n    El Museo de la Empat\xEDa \u2013administrado por la organizaci\xF3n de artistas Arts Admin\u2013 comenz\xF3 en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre c\xF3mo caminar en los pasos de alguien m\xE1s.\n    Hace un par de a\xF1os el escritor Roman Krznaric, autor del libro Empat\xEDa: Por qu\xE9 importa y c\xF3mo conseguirla (Empathy: Why it matters and how to get it), me contact\xF3 porque quer\xEDa convertir parte de la teor\xEDa que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidi\xF3 que pensara en proyectos que pudi\xE9ramos convertir en algo que se llamara el Museo de la Empat\xEDa.',
@@ -74064,7 +74001,10 @@ module.exports = [{
   title: "That's Popayán!",
   subtitle: 'Icecreaming* my birth city.',
   type: 'illustration',
-  date: '2015',
+  date: {
+    year: '2015',
+    color: 0
+  },
   colors: [0x000000, 0xffffff],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
@@ -74083,7 +74023,10 @@ module.exports = [{
   subtitle: 'Imagen-Palabra 2017, exposure.',
   type: 'Illustration',
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-  date: '2017',
+  date: {
+    year: '2017',
+    color: 0
+  },
   important: false,
   colors: [0xd7edd6, 0x161405],
   content: 'Tiene un piercing en la oreja izquierda y dice \u201Cch\xE9vere\u201D m\xE1s veces de las que uno esperar\xEDa que una persona de 44 a\xF1os lo dijera. Usa gafas solo a ratos; gafas rectangulares de s\xF3lido marco negro. Desde hace siete a\xF1os (con un intermedio de dos en Colombia) vive en Jaffa, o como a \xE9l le gusta decir, \u201Cen territorio sin nombre\u201D, con su esposa y sus tres hijos. All\xE1 escribi\xF3 la novela Tres ata\xFAdes blancos, ganadora del premio Herralde en 2010 y finalista del R\xF3mulo Gallegos en 2011. Salvo un libro infantil, despu\xE9s de eso, nada. Hasta ahora.\n    Antonio Ungar dice que es muy zanahorio y muy solitario. Que quiz\xE1s sea por eso que no le salen bien los di\xE1logos en sus libros, con personajes muy concentrados sobre s\xED, y que quiz\xE1s sea esa la raz\xF3n por la que el alcohol funciona como mecanismo de desahogo en sus personajes. Personajes que pueden aparecer en ciudades inglesas o colombianas con la misma naturalidad con que pueden aparecer en ciudades francesas o italianas. No hay una geograf\xEDa definida en su literatura. Como en su vida. Ha vivido en Manchester, en la selva colombiana, en M\xE9xico D.F., en Barcelona, en Iowa y en Palestina. Se gradu\xF3 de arquitectura y empez\xF3 una maestr\xEDa en literatura comparada que nunca termin\xF3 porque le tocaba leer teor\xEDa y cr\xEDtica literaria, pero nunca llegaba a los libros.\n    En enero de este a\xF1o estuvo en Barcelona unos d\xEDas presentando su m\xE1s reciente novela. Una novela que no tiene nada que ver con la anterior: ni en tama\xF1o, ni en tono, ni en tema. Luego de una semana en ruedas de prensa, cocteles, almuerzos con editores, cenas con c\xF3nsules, estaba frito.',
@@ -74113,7 +74056,10 @@ module.exports = [{
   title: 'Kids society',
   subtitle: 'A serious video game for children who do not respect the rules.',
   type: 'Project',
-  date: '2016',
+  date: {
+    year: '2016',
+    color: 1
+  },
   colors: [0xffd193, 0x161405],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'Dos pel\xEDculas presentes en ambos ciclos hicieron a Chaplin merecedor de premios \xD3scar: en 1929 fue galardonado por El Circo, y en 1973 por la banda sonora de Candilejas. Y, en 1972 gan\xF3 el  galard\xF3n honor\xEDfico de la Academia por su trayectoria cinematogr\xE1fica El hombre transmiti\xF3 en sus largometrajes una cr\xEDtica constante a la sociedad en que viv\xEDa, a partir de personajes marginales o menospreciados. Sin embargo, su mensaje no fue desalentador: a trav\xE9s de la comedia logr\xF3 balancear la crudeza de la realidad, de tal manera que a cada burla en pantalla lo acompa\xF1aba una reflexi\xF3n y una mirada sarc\xE1stica y cr\xEDtica para no sucumbir ante el sistema.\n    Rodrigo Torrijos, editor de cine y cultura de la revista Rolling Stone, dice que Chaplin no se puede catalogar como una figura vigente, sino eterna. \u201CEs uno de los culpables de potenciar la m\xE1quina cinematogr\xE1fica, hizo trascender el negocio de la estimulaci\xF3n a trav\xE9s de im\xE1genes proyectadas en un muro, a un juego entre el poder, el cuerpo y la memoria. En Tiempos modernos met\xEDa la cabeza entre los engranajes de la automatizaci\xF3n que podr\xEDan aniquilarlo; no disimulaba el miedo, pero sal\xEDa del otro lado, no triunfante, pero al menos vivo, y con ese gesto solapado de resistencia, de desacato ante lo imaginado. Por eso est\xE1 presente, porque se sigue burlando de lo establecido, nos sigue inspirando a desafiar el poder, al negocio del entretenimiento, a la dictadura del aburrimiento. Es eterno porque siempre estaremos del lado de los vagos que muerden el cuello de lo imposible\u201D explica Torrijos.',
@@ -74131,7 +74077,10 @@ module.exports = [{
   title: 'Portfolio 2018',
   subtitle: 'Design / Illustration / Develop et Animation for this page.',
   type: 'project',
-  date: '2018',
+  date: {
+    year: '2018',
+    color: 0
+  },
   colors: [0x000000, 0xffffff],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
@@ -74149,7 +74098,10 @@ module.exports = [{
   title: 'Huele a caña!',
   subtitle: '(Smells like cane) A micro-project, I did it in two days.',
   type: 'micro-project',
-  date: '2014',
+  date: {
+    year: '2014',
+    color: 1
+  },
   colors: [0x000000, 0xffffff],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
@@ -74167,7 +74119,10 @@ module.exports = [{
   title: 'Mutar',
   subtitle: 'co-founder Startup Project, When I wanted to be independent.',
   type: 'project',
-  date: '2016',
+  date: {
+    year: '2016',
+    color: 1
+  },
   colors: [0x270944, 0xaefff8],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'Mariana hace uso de su cuerpo como una plastilina de k\xEDnder: sin mezquindad nos recuerda que la gente est\xE1 muy delgada o es muy est\xFApida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo fam\xE9lico en tiempos de selfies, \xF3xido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aqu\xED un eufemismo para nuestra pobreza: nuestra esclavitud. Me regal\xF3 un pin donde aparece usando un vestido de ba\xF1o estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con p\xF3lvora de ca\xF1\xF3n con las que los tiranos espa\xF1oles nos defend\xEDan de los piratas.\n    El punto crucial de esta exhibici\xF3n titulada \u201CEstaba perdido, pero estar perdido nunca se sinti\xF3 tan cabr\xF3n\u201D, y que es preciso leer con acento puertorrique\xF1o, era una fuente amarilla cuya construcci\xF3n fue hecha a cuatro manos con el tambi\xE9n boricua y m\xEDtico artista Radam\xE9s \u201CJuni" Figueroa, cuyo contenido el p\xFAblico se apresur\xF3 a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o \xE9xtasis en su estado puro: de ese que toman los j\xF3venes ansiosos en fiestas electr\xF3nicas que duran d\xEDas y no tienen ni pies, cabeza, ni fin.\n    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Hab\xEDa mucha confusi\xF3n pero sobre todo hab\xEDa mucha nada. Una semana despu\xE9s estar\xEDa en un avi\xF3n con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente m\xE1quina de sopor.',
@@ -74184,7 +74139,10 @@ module.exports = [{
 }, {
   title: 'Historias de Popayán',
   subtitle: '(Popayán stories) A videogame to know the forgotten history of Popayan city.',
-  date: '2013',
+  date: {
+    year: '2013',
+    color: 0
+  },
   type: 'project',
   colors: [0x000000, 0xffffff],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
@@ -102170,9 +102128,10 @@ module.exports = {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n      <div class="document-close-container">\n        <div class="document-close-line line-one">\n        </div>\n        <div class="document-close-line line-two">\n        </div>\n      </div>\n    '], ['\n      <div class="document-close-container">\n        <div class="document-close-line line-one">\n        </div>\n        <div class="document-close-line line-two">\n        </div>\n      </div>\n    ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n      <div className="document-project-front-container">\n        <div className="document-project-front-top">\n          <div className="document-project-front-top-left">\n            <h1 className="document-project-front-title">\n              ', '\n            </h1>\n            <div className="document-project-front-type">\n              ', '\n            </div>\n          </div>\n          <div className="document-project-front-top-right">\n            <h2 className="document-project-front-subtitle">\n              ', '\n            </h2>\n          </div>\n        </div>\n        <figure className="document-project-front-imageContainer">\n          <img src="', '" alt="" className="document-project-front-image"/>\n        </figure>\n      </div>\n    '], ['\n      <div className="document-project-front-container">\n        <div className="document-project-front-top">\n          <div className="document-project-front-top-left">\n            <h1 className="document-project-front-title">\n              ', '\n            </h1>\n            <div className="document-project-front-type">\n              ', '\n            </div>\n          </div>\n          <div className="document-project-front-top-right">\n            <h2 className="document-project-front-subtitle">\n              ', '\n            </h2>\n          </div>\n        </div>\n        <figure className="document-project-front-imageContainer">\n          <img src="', '" alt="" className="document-project-front-image"/>\n        </figure>\n      </div>\n    ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n      <div className="front-loader">\n        ', '\n      </div>\n    '], ['\n      <div className="front-loader">\n        ', '\n      </div>\n    ']),
-    _templateObject4 = _taggedTemplateLiteral(['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n        </h3>\n      </div>\n    '], ['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n        </h3>\n      </div>\n    ']);
+    _templateObject2 = _taggedTemplateLiteral(['\n    <div className="document-project-front-top">\n      <div className="document-project-front-top-left">\n        <h1 className="document-project-front-title">\n          ', '\n        </h1>\n        <div className="document-project-front-type">\n          ', '\n        </div>\n      </div>\n      <div className="document-project-front-top-right">\n        <h2 className="document-project-front-subtitle">\n          ', '\n        </h2>\n      </div>\n    </div>\n    '], ['\n    <div className="document-project-front-top">\n      <div className="document-project-front-top-left">\n        <h1 className="document-project-front-title">\n          ', '\n        </h1>\n        <div className="document-project-front-type">\n          ', '\n        </div>\n      </div>\n      <div className="document-project-front-top-right">\n        <h2 className="document-project-front-subtitle">\n          ', '\n        </h2>\n      </div>\n    </div>\n    ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n      <div className="document-project-front-container">\n        ', '\n        <figure className="document-project-front-imageContainer">\n          <img src="', '" alt="" className="document-project-front-image"/>\n        </figure>\n      </div>\n    '], ['\n      <div className="document-project-front-container">\n        ', '\n        <figure className="document-project-front-imageContainer">\n          <img src="', '" alt="" className="document-project-front-image"/>\n        </figure>\n      </div>\n    ']),
+    _templateObject4 = _taggedTemplateLiteral(['\n      <div className="front-loader">\n        ', '\n      </div>\n    '], ['\n      <div className="front-loader">\n        ', '\n      </div>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n        </h3>\n      </div>\n    '], ['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n        </h3>\n      </div>\n    ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -102183,6 +102142,91 @@ var yo = __webpack_require__(21);
 var loader = __webpack_require__(105);
 var empty = __webpack_require__(70);
 var imagesLoaded = __webpack_require__(106);
+
+// To web color
+function toColor(color) {
+  return color === 0 ? '#000000' : '#' + color.toString(16);
+}
+
+// Hex color to rgb notation
+function toColorRGB(color) {
+  color = color.slice(1);
+  var r = parseInt(color.slice(0, 2), 16);
+  var g = parseInt(color.slice(2, 4), 16);
+  var b = parseInt(color.slice(4, 6), 16);
+
+  var colorRGB = [r, g, b];
+
+  return colorRGB;
+}
+
+// Set stile for document contents
+
+var NewStyle = function () {
+  function NewStyle(color) {
+    _classCallCheck(this, NewStyle);
+
+    this.className = 'article-' + color[0];
+
+    // colors
+    this.color = toColor(color[0]);
+    this.contrastColor = toColor(color[1]);
+
+    this.colorRGB = toColorRGB(this.color);
+
+    this.letter = this.letterColor();
+    this.back = this.backColor();
+    this.smallBack = this.smallBackColor();
+    this.overLetter = this.overLetterColor();
+  }
+
+  _createClass(NewStyle, [{
+    key: 'letterColor',
+    value: function letterColor() {
+      var style = document.createElement('style');
+      var className = this.className + '-letter-color';
+      style.type = 'text/css';
+      style.innerHTML = '.' + className + ' { color: ' + this.contrastColor + ' !important;}';
+      document.getElementsByTagName('head')[0].appendChild(style);
+
+      return className;
+    }
+  }, {
+    key: 'backColor',
+    value: function backColor() {
+      var style = document.createElement('style');
+      var className = this.className + '-back-color';
+      style.type = 'text/css';
+      style.innerHTML = '.' + className + ' { background-color: ' + this.color + ' !important;}';
+      document.getElementsByTagName('head')[0].appendChild(style);
+      return className;
+    }
+  }, {
+    key: 'smallBackColor',
+    value: function smallBackColor() {
+      var style = document.createElement('style');
+      var className = this.className + '-small-back-color';
+      style.type = 'text/css';
+      style.innerHTML = '.' + className + ' { background-color: ' + this.contrastColor + ' !important;}';
+      document.getElementsByTagName('head')[0].appendChild(style);
+
+      return className;
+    }
+  }, {
+    key: 'overLetterColor',
+    value: function overLetterColor() {
+      var style = document.createElement('style');
+      var className = this.className + '-small-letter-color';
+      style.type = 'text/css';
+      style.innerHTML = '.' + className + ' { color: ' + this.color + ' !important;}';
+      document.getElementsByTagName('head')[0].appendChild(style);
+
+      return className;
+    }
+  }]);
+
+  return NewStyle;
+}();
 
 var Document = function () {
   function Document(data) {
@@ -102203,35 +102247,74 @@ var Document = function () {
     // set template
     this.type = data.type;
 
+    // first view
+    this.front = data.front;
+
     // utilities
     this.endWord = data.endWord;
-    this.color = data.color;
+
+    // colors
+    this.colors = data.colors.map(function (c) {
+      return toColor(c);
+    });
+
+    console.log(this.colors, data);
 
     this.build();
     // create template according to type
   }
 
-  // Build container
-
-
   _createClass(Document, [{
+    key: 'createStyle',
+    value: function createStyle(name) {
+      var def = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+      var custom = arguments[2];
+
+      var backgroundColor = this.colors[0];
+      var letterColor = this.colors[def];
+
+      letterColor = !letterColor ? this.colors[0] : letterColor;
+
+      var style = document.createElement('style');
+      var className = 'document-' + name + '-style';
+
+      style.type = 'text/css';
+      if (custom) {
+        style.innerHTML = custom;
+      } else {
+        style.innerHTML = '.' + className + ' {\n        color: ' + letterColor + ' !important;\n        background-color: ' + backgroundColor + ' !important;\n      }';
+      }
+
+      document.getElementsByTagName('head')[0].appendChild(style);
+      return style;
+    }
+
+    // Build container
+
+  }, {
     key: 'build',
     value: function build() {
+      // Build container
       this.container = document.createElement('div');
       this.container.setAttribute('class', 'document');
-      this.container.classList.add('document-project');
 
-      // Close trigger
+      // create a main style
+      this.mainStyle = this.createStyle('main');
+
+      // Close trigger creator
       this.closeCreator();
 
       switch (this.type) {
         case 'illustration':
+          this.container.classList.add('document-illustration');
           this.constructIllustration();
           break;
         case 'project':
+          this.container.classList.add('document-project', 'document-main-style');
           this.constructProject();
           break;
         default:
+          this.container.classList.add('document-project', 'document-main-style');
           this.constructProject();
           break;
       }
@@ -102255,8 +102338,8 @@ var Document = function () {
 
       for (var i = 0; i < content.length; i++) {
         var actual = content[i];
-
         actual.super = this.type;
+        actual.colors = this.colors;
         var newContent = new contentType(actual);
         if (actual.type === 'Image') {
           this.contentToWait.push(newContent);
@@ -102293,15 +102376,30 @@ var Document = function () {
       var front = document.createElement('div');
       front.setAttribute('class', 'document-project-front');
 
-      var template = yo(_templateObject2, this.title, this.type, this.subtitle, this.mainPicture.urlXX);
+      var styleName = 'front';
+      this.createStyle(styleName, 0);
 
-      var loaderContainer = yo(_templateObject3, loader());
+      front.classList.add('document-' + styleName + '-style');
+
+      var label = yo(_templateObject2, this.title, this.type, this.subtitle);
+
+      if (this.front.captionPos === 'top') {
+        label.classList.add('document-label-top');
+      }
+
+      var template = yo(_templateObject3, label, this.front.url);
+
+      var loaderContainer = yo(_templateObject4, loader());
+
+      loaderContainer.style.backgroundColor = this.colors[0];
 
       front.appendChild(template);
-      front.appendChild(loaderContainer);
+      template.appendChild(loaderContainer);
 
       imagesLoaded(template, function () {
-        empty(loaderContainer);
+        setTimeout(function () {
+          loaderContainer.remove();
+        }, 3000);
       });
 
       return front;
@@ -102313,7 +102411,7 @@ var Document = function () {
       var abstract = document.createElement('div');
       abstract.setAttribute('class', 'document-project-abstract');
 
-      var template = yo(_templateObject4, this.abstract);
+      var template = yo(_templateObject5, this.abstract);
 
       abstract.appendChild(template);
 
@@ -102501,6 +102599,7 @@ var Content = function () {
     this.style = this.super + '-' + this.type;
     this.container = document.createElement('div');
     this.container.setAttribute('class', this.style);
+    this.colors = data.colors;
 
     var classType = Type[data.type];
 
@@ -102513,6 +102612,7 @@ var Content = function () {
   _createClass(Content, [{
     key: 'ready',
     value: function ready(cb) {
+      var m = 'everything is cool';
       if (this.type === 'Image') {
         this.object.imagesReady(function (e, m) {
           if (e) return cb(e);
@@ -102564,11 +102664,14 @@ var Type = function Type(data) {
   this.size = data.size;
   this.caption = data.caption;
   this.superCaption = data.superCaption;
+  this.colors = data.colors;
 
   this.loaderContainer = document.createElement('div');
   this.loaderContainer.setAttribute('class', 'content-loader');
 
   this.loaderContainer.appendChild(loader());
+
+  this.loaderContainer.style.backgroundColor = this.colors[0];
 
   // set container
   this.container = document.createElement('div');
@@ -102598,6 +102701,8 @@ var Image = function (_Type) {
 
     _this.subtype = data.subtype;
     _this.url = data.url;
+    _this.captionPos = data.captionPos; // 'left:top'
+    _this.backgroundLabel = data.background;
 
     // build template
     _this.templateConstructor();
@@ -102636,6 +102741,28 @@ var Image = function (_Type) {
       }
 
       var captions = yo(_templateObject3, superCaption, caption);
+
+      // set styles
+      // this.captionPos
+      // this.backgroundLabel
+
+      if (this.backgroundLabel) {
+        captions.style.backgroundColor = this.colors[0] + ' !important';
+        captions.style.color = this.colors[1] + ' !important';
+      }
+
+      console.log(this.captionPos);
+      switch (this.captionPos) {
+        case 'top':
+          captions.style.top = '16px';
+          break;
+        case 'bottom':
+          captions.style.bottom = '16px';
+          break;
+        default:
+          captions.style.top = '16px';
+          break;
+      }
 
       var template = yo(_templateObject4, this.url, captions);
 

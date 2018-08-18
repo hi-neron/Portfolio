@@ -4,6 +4,79 @@ const loader = require('../loader')
 const empty = require('empty-element')
 const imagesLoaded = require('imagesloaded')
 
+// To web color
+function toColor (color) {
+  return color === 0? '#000000' : `#${color.toString(16)}`
+}
+
+// Hex color to rgb notation
+function toColorRGB (color) {
+  color = color.slice(1)
+  let r = parseInt(color.slice(0, 2), 16)
+  let g = parseInt(color.slice(2, 4), 16)
+  let b = parseInt(color.slice(4, 6), 16)
+  
+  let colorRGB = [r, g, b]
+
+  return colorRGB
+}
+
+// Set stile for document contents
+class NewStyle {
+  constructor (color) {
+    this.className = `article-${color[0]}`
+
+    // colors
+    this.color = toColor(color[0])
+    this.contrastColor = toColor(color[1])
+
+    this.colorRGB = toColorRGB(this.color)
+
+    this.letter = this.letterColor()
+    this.back = this.backColor()
+    this.smallBack = this.smallBackColor()
+    this.overLetter = this.overLetterColor()
+
+  }
+
+  letterColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-letter-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { color: ${this.contrastColor} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+
+    return className
+  }
+
+  backColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-back-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { background-color: ${this.color} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+    return className
+  }
+
+  smallBackColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-small-back-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { background-color: ${this.contrastColor} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+
+    return className
+  }
+  overLetterColor () {
+    let style = document.createElement('style')
+    let className = `${this.className}-small-letter-color`
+    style.type = 'text/css'
+    style.innerHTML = `.${className} { color: ${this.color} !important;}`
+    document.getElementsByTagName('head')[0].appendChild(style)
+
+    return className
+  }
+}
 
 class Document {
   constructor (data) {
@@ -21,32 +94,70 @@ class Document {
 
     // set template
     this.type = data.type
+
+    // first view
+    this.front = data.front
     
     // utilities
     this.endWord = data.endWord
-    this.color = data.color
 
+    // colors
+    this.colors = data.colors.map((c) => {
+      return toColor(c)
+    })
+
+    console.log(this.colors, data)
+    
     this.build()
     // create template according to type
+  }
+  
+  createStyle (name, def = 1, custom) {
+    let backgroundColor = this.colors[0]
+    let letterColor = this.colors[def]
+
+    letterColor = !letterColor ? this.colors[0]: letterColor
+
+    let style = document.createElement('style')
+    let className = `document-${name}-style`
+
+    style.type = 'text/css'
+    if (custom) {
+      style.innerHTML = custom
+    } else {
+      style.innerHTML = `.${className} {
+        color: ${letterColor} !important;
+        background-color: ${backgroundColor} !important;
+      }`
+    }
+
+    document.getElementsByTagName('head')[0].appendChild(style)
+    return style
   }
 
   // Build container
   build() {
+    // Build container
     this.container = document.createElement('div')
     this.container.setAttribute('class', 'document')
-    this.container.classList.add('document-project')
 
-    // Close trigger
+    // create a main style
+    this.mainStyle = this.createStyle('main')
+
+    // Close trigger creator
     this.closeCreator()
 
     switch (this.type) {
       case 'illustration':
+        this.container.classList.add('document-illustration')
         this.constructIllustration()
         break;
       case 'project':
+        this.container.classList.add('document-project', 'document-main-style')
         this.constructProject()
         break;
-      default:
+        default:
+        this.container.classList.add('document-project', 'document-main-style')
         this.constructProject()
         break;
     }
@@ -70,8 +181,8 @@ class Document {
 
     for (let i = 0; i < content.length; i++) {
       let actual = content[i]
-
       actual.super = this.type
+      actual.colors = this.colors
       let newContent = new contentType(actual)
       if (actual.type === 'Image') {
         this.contentToWait.push(newContent)
@@ -114,25 +225,38 @@ class Document {
     let front = document.createElement('div')
     front.setAttribute('class', 'document-project-front')
 
+    let styleName = 'front'
+    this.createStyle(styleName, 0)
+
+    front.classList.add(`document-${styleName}-style`)
+
+    let label = yo`
+    <div className="document-project-front-top">
+      <div className="document-project-front-top-left">
+        <h1 className="document-project-front-title">
+          ${this.title}
+        </h1>
+        <div className="document-project-front-type">
+          ${this.type}
+        </div>
+      </div>
+      <div className="document-project-front-top-right">
+        <h2 className="document-project-front-subtitle">
+          ${this.subtitle}
+        </h2>
+      </div>
+    </div>
+    `
+
+    if (this.front.captionPos === 'top') {
+      label.classList.add('document-label-top')
+    }
+    
     let template = yo`
       <div className="document-project-front-container">
-        <div className="document-project-front-top">
-          <div className="document-project-front-top-left">
-            <h1 className="document-project-front-title">
-              ${this.title}
-            </h1>
-            <div className="document-project-front-type">
-              ${this.type}
-            </div>
-          </div>
-          <div className="document-project-front-top-right">
-            <h2 className="document-project-front-subtitle">
-              ${this.subtitle}
-            </h2>
-          </div>
-        </div>
+        ${label}
         <figure className="document-project-front-imageContainer">
-          <img src="${this.mainPicture.urlXX}" alt="" className="document-project-front-image"/>
+          <img src="${this.front.url}" alt="" className="document-project-front-image"/>
         </figure>
       </div>
     `
@@ -143,11 +267,15 @@ class Document {
       </div>
     `
 
+    loaderContainer.style.backgroundColor = this.colors[0]
+
     front.appendChild(template)
-    front.appendChild(loaderContainer)
+    template.appendChild(loaderContainer)
 
     imagesLoaded(template, () => {
-      empty(loaderContainer)
+      setTimeout(() => {
+        loaderContainer.remove()
+      }, 3000)
     })
 
     return front

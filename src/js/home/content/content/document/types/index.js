@@ -11,6 +11,7 @@ class Content {
     this.style = `${this.super}-${this.type}`
     this.container = document.createElement('div')
     this.container.setAttribute('class', this.style)
+    this.colors = data.colors
 
     let classType = Type[data.type]
 
@@ -21,6 +22,7 @@ class Content {
   }
 
   ready (cb) {
+    let m = 'everything is cool'
     if (this.type === 'Image') {
       this.object.imagesReady((e, m) => {
         if (e) return cb(e)
