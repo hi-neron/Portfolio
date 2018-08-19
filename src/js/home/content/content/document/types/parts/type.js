@@ -205,6 +205,11 @@ class Text extends Type {
     this.backgroundLabel = data.background
     this.caption = data.caption || null
 
+    // link
+    if (subtype === 'link') {
+      this.linkType = broken[1]? broken[1] : 'link'
+    }
+
     switch (subtype) {
       case 'link':
         this.linkTemplateConstructor()
@@ -252,10 +257,22 @@ class Text extends Type {
         ${this.text}
       </a>
     `
+
+    let file = ''
+
+    if (this.linkType === 'download') {
+      let broken = this.url.split('/')
+      file = broken[broken.length - 1]
+    }
+
     let linkContainer = yo`
       <div className="link-container">
         ${link}
-        <span>${this.caption ? this.caption : ''}</span>
+        <p>
+          <i class="icon-${this.linkType}"></i>
+          ${file}
+          ${this.caption ? this.caption : ''}
+        </p>
       </div>
     `
     let template = yo`

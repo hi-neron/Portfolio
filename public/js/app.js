@@ -73570,7 +73570,7 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div className="article-d
     _templateObject4 = _taggedTemplateLiteral(['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    '], ['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    ']),
     _templateObject5 = _taggedTemplateLiteral(['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    '], ['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n        </div>\n        ', '\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n        </div>\n        ', '\n      </article>\n    ']),
+    _templateObject7 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n          ', '\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n          ', '\n        </div>\n      </article>\n    ']),
     _templateObject8 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -73949,10 +73949,10 @@ module.exports = [{
     }]
   }, {
     type: 'Text',
-    subtype: 'Link',
+    subtype: 'Link:download',
     background: false,
     text: 'Este es un link',
-    caption: '(56)',
+    caption: '56k',
     url: './files/mifile.pdf'
   }, {
     type: 'Text',
@@ -102662,7 +102662,7 @@ var _templateObject = _taggedTemplateLiteral(['\n        <div className="project
     _templateObject5 = _taggedTemplateLiteral(['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    '], ['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['\n      <div className="project-', '">\n        ', '\n      </div>\n    '], ['\n      <div className="project-', '">\n        ', '\n      </div>\n    ']),
     _templateObject7 = _taggedTemplateLiteral(['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    '], ['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n      <div className="link-container">\n        ', '\n        <span>', '</span>\n      </div>\n    '], ['\n      <div className="link-container">\n        ', '\n        <span>', '</span>\n      </div>\n    ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    '], ['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    ']),
     _templateObject9 = _taggedTemplateLiteral(['\n      <div className="project-link">\n        ', '\n      </div>\n    '], ['\n      <div className="project-link">\n        ', '\n      </div>\n    ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
@@ -102877,6 +102877,11 @@ var Text = function (_Type2) {
     _this2.backgroundLabel = data.background;
     _this2.caption = data.caption || null;
 
+    // link
+    if (subtype === 'link') {
+      _this2.linkType = broken[1] ? broken[1] : 'link';
+    }
+
     switch (subtype) {
       case 'link':
         _this2.linkTemplateConstructor();
@@ -102923,7 +102928,15 @@ var Text = function (_Type2) {
       wrapper.setAttribute('class', 'project-text-wrapper');
 
       var link = yo(_templateObject7, this.url, this.text);
-      var linkContainer = yo(_templateObject8, link, this.caption ? this.caption : '');
+
+      var file = '';
+
+      if (this.linkType === 'download') {
+        var broken = this.url.split('/');
+        file = broken[broken.length - 1];
+      }
+
+      var linkContainer = yo(_templateObject8, link, this.linkType, file, this.caption ? this.caption : '');
       var template = yo(_templateObject9, linkContainer);
 
       link.style.color = '' + this.colors[2];

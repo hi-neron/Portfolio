@@ -187,8 +187,8 @@ class Article {
           ${over}
           <img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
           ${this.articleLoader}
+          ${this.date}
         </div>
-        ${this.date}
       </article>
     `
 

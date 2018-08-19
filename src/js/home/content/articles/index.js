@@ -61,10 +61,10 @@ module.exports = [
       },
       {
         type: 'Text',
-        subtype: 'Link',
+        subtype: 'Link:download',
         background: false,
         text: 'Este es un link',
-        caption: '(56)',
+        caption: '56k',
         url: './files/mifile.pdf'
       },
       {

@@ -44,31 +44,8 @@ $width: 33.3%;
         margin-bottom: 46px;
         border-radius: 3px;
         position: relative;
-        // overflow: hidden;
+        overflow: hidden;
         
-        .article-date-container{
-          position: absolute;
-          bottom: 5px;
-          left: 3px;
-          cursor: pointer;
-          
-          .article-date {
-            // color: rgba($myWhite, 0.8);
-            opacity: 0.8;
-            font-size: 0.6em;
-            letter-spacing: 0.2em;
-            padding: 0 1px 1px 4px;
-            font-variation-settings: 'wght' 500, 'wdth' 85;
-            // background-color: rgba($mainColor4, 0.94);
-            transition: all 0.3s ease-in-out;
-            &:hover {
-              opacity: 1;
-              font-size: 0.9em;
-              font-variation-settings: 'wght' 800, 'wdth' 85;
-            }
-          }
-        }
-
         .article-content {
           position: relative;
           margin-bottom: -4px;
@@ -83,6 +60,29 @@ $width: 33.3%;
             }
           }
 
+          .article-date-container{
+            position: absolute;
+            bottom: 11px;
+            left: 3px;
+            cursor: pointer;
+            
+            .article-date {
+              // color: rgba($myWhite, 0.8);
+              opacity: 0.8;
+              font-size: 0.65em;
+              letter-spacing: 0.2em;
+              padding: 0 1px 1px 4px;
+              font-variation-settings: 'wght' 500, 'wdth' 85;
+              // background-color: rgba($mainColor4, 0.94);
+              transition: all 0.3s ease-in-out;
+              &:hover {
+                opacity: 1;
+                font-size: 2em;
+                font-variation-settings: 'wght' 100, 'wdth' 85;
+              }
+            }
+          }
+
           .over-article-loader{
             width: 100%;
             height: 100%;
@@ -90,6 +90,7 @@ $width: 33.3%;
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 1;
           }
 
           .over-article-container {
