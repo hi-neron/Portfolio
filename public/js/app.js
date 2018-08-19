@@ -73900,7 +73900,7 @@ module.exports = [{
   title: 'Historias de Cal',
   subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
   type: 'project',
-  colors: [0xebe9df, 0x4b2a28, 0x3892b3],
+  colors: [0xebe9df, 0x993e33, 0x7ca1c2],
   date: {
     year: '2011',
     color: 1
@@ -73926,19 +73926,34 @@ module.exports = [{
   }, {
     type: 'Text',
     subtype: 'Short',
+    background: true,
+    text: 'el velóz murcielago indú alcanzó los apaches y se los puse, yendo a correr por toda la manzana donde vivía su madre'
+  }, {
+    type: 'Text',
+    subtype: 'Long',
+    background: false,
     text: 'El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.'
+  }, {
+    type: 'Image',
+    subtype: 'Dual',
+    images: [{
+      url: './img/articles/sept/main.gif',
+      captionPos: 'top',
+      background: true,
+      caption: 'First image'
+    }, {
+      url: './img/articles/sept/main.gif',
+      captionPos: 'bottom',
+      background: true,
+      caption: 'Decond image'
+    }]
   }, {
     type: 'Text',
     subtype: 'Link',
+    background: false,
     text: 'Este es un link',
+    caption: '(56)',
     url: './files/mifile.pdf'
-  }, {
-    type: 'Image',
-    subtype: 'Dual:1',
-    url: './img/articles/sept/main.gif',
-    url2: './img/articles/sept/main.gif',
-    title: 'cal gameplay',
-    subtitle: 'alcaldiadePopayan.com'
   }, {
     type: 'Text',
     subtype: 'Quote',
@@ -102413,6 +102428,8 @@ var Document = function () {
 
       var template = yo(_templateObject5, this.abstract);
 
+      template.style.color = this.colors[1] + ' !important';
+
       abstract.appendChild(template);
 
       return abstract;
@@ -102638,10 +102655,15 @@ module.exports = Content;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      '], ['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        <div className="project-image-caption">\n          ', '\n        </div>\n      '], ['\n        <div className="project-image-caption">\n          ', '\n        </div>\n      ']),
+var _templateObject = _taggedTemplateLiteral(['\n        <div className="project-image-caption">\n          ', '\n        </div>\n      '], ['\n        <div className="project-image-caption">\n          ', '\n        </div>\n      ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      '], ['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      ']),
     _templateObject3 = _taggedTemplateLiteral(['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    '], ['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    ']),
-    _templateObject4 = _taggedTemplateLiteral(['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    '], ['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    ']);
+    _templateObject4 = _taggedTemplateLiteral(['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      '], ['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    '], ['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['\n      <div className="project-', '">\n        ', '\n      </div>\n    '], ['\n      <div className="project-', '">\n        ', '\n      </div>\n    ']),
+    _templateObject7 = _taggedTemplateLiteral(['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    '], ['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    ']),
+    _templateObject8 = _taggedTemplateLiteral(['\n      <div className="link-container">\n        ', '\n        <span>', '</span>\n      </div>\n    '], ['\n      <div className="link-container">\n        ', '\n        <span>', '</span>\n      </div>\n    ']),
+    _templateObject9 = _taggedTemplateLiteral(['\n      <div className="project-link">\n        ', '\n      </div>\n    '], ['\n      <div className="project-link">\n        ', '\n      </div>\n    ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -102658,7 +102680,7 @@ var yo = __webpack_require__(21);
 var Type = function Type(data) {
   _classCallCheck(this, Type);
 
-  this.type = data.type;
+  this.type = data.type.toLowerCase();
   this.style = data.style;
   this.container = data.container;
   this.size = data.size;
@@ -102686,7 +102708,6 @@ var Image = function (_Type) {
 
     var preSubtype = data.subtype;
     var broken = preSubtype.split(':');
-    console.log(broken);
     var subtype = broken[0];
 
     // item grid size
@@ -102701,11 +102722,12 @@ var Image = function (_Type) {
 
     _this.subtype = data.subtype;
     _this.url = data.url;
+    _this.images = data.images;
     _this.captionPos = data.captionPos; // 'left:top'
     _this.backgroundLabel = data.background;
 
     // build template
-    _this.templateConstructor();
+    _this.subtype === 'Dual' ? _this.dualTemplateConstructor() : _this.singleTemplateConstructor();
     return _this;
   }
 
@@ -102717,30 +102739,83 @@ var Image = function (_Type) {
         if (m.hasAnyBroken) return cb(m);
         setTimeout(function () {
           _this_.loaderContainer.remove();
-          console.log('loader removed');
           cb(null, 'content loaded');
         }, 400);
       });
     }
   }, {
-    key: 'templateConstructor',
-    value: function templateConstructor() {
+    key: 'getCaption',
+    value: function getCaption(data) {
+      var caption = '';
+
+      if (data) {
+        caption = yo(_templateObject, data);
+      }
+
+      return caption;
+    }
+  }, {
+    key: 'getSuperCaption',
+    value: function getSuperCaption(data) {
+      var superCaption = '';
+
+      if (data) {
+        superCaption = yo(_templateObject2, data);
+      }
+
+      return superCaption;
+    }
+  }, {
+    key: 'getSingleCaptions',
+    value: function getSingleCaptions() {
+      var superCaption = this.getSuperCaption(this.superCaption);
+      var caption = this.getCaption(this.caption);
+
+      var template = yo(_templateObject3, superCaption, caption);
+      return template;
+    }
+  }, {
+    key: 'dualTemplateConstructor',
+    value: function dualTemplateConstructor() {
+      var wrapper = document.createElement('div');
+      wrapper.setAttribute('class', 'project-image-dual-wrapper');
+
+      var _this_ = this;
+
+      this.images.map(function (e) {
+        var caption = _this_.getCaption(e.caption);
+
+        switch (e.captionPos) {
+          case 'top':
+            caption.style.top = '16px';
+            break;
+          case 'bottom':
+            caption.style.bottom = '16px';
+            break;
+          default:
+            caption.style.top = '16px';
+            break;
+        }
+
+        if (e.background) {
+          caption.style.backgroundColor = '' + _this_.colors[0];
+          caption.style.color = '' + _this_.colors[1];
+        }
+
+        var template = yo(_templateObject4, e.url, caption);
+        wrapper.appendChild(template);
+      });
+
+      this.container.appendChild(this.loaderContainer);
+      this.container.appendChild(wrapper);
+    }
+  }, {
+    key: 'singleTemplateConstructor',
+    value: function singleTemplateConstructor() {
       var wrapper = document.createElement('div');
       wrapper.setAttribute('class', 'project-image-wrapper');
 
-      var superCaption = '';
-
-      if (this.superCaption) {
-        superCaption = yo(_templateObject, this.superCaption);
-      }
-
-      var caption = '';
-
-      if (this.caption) {
-        caption = yo(_templateObject2, this.caption);
-      }
-
-      var captions = yo(_templateObject3, superCaption, caption);
+      var captions = this.getSingleCaptions();
 
       // set styles
       // this.captionPos
@@ -102751,20 +102826,19 @@ var Image = function (_Type) {
         captions.style.color = this.colors[1] + ' !important';
       }
 
-      console.log(this.captionPos);
       switch (this.captionPos) {
         case 'top':
           captions.style.top = '16px';
           break;
         case 'bottom':
-          captions.style.bottom = '16px';
+          captions.style.bottom = '0px';
           break;
         default:
           captions.style.top = '16px';
           break;
       }
 
-      var template = yo(_templateObject4, this.url, captions);
+      var template = yo(_templateObject5, this.url, captions);
 
       wrapper.appendChild(template);
       this.container.appendChild(this.loaderContainer);
@@ -102781,12 +102855,88 @@ var Text = function (_Type2) {
   function Text(data) {
     _classCallCheck(this, Text);
 
-    return _possibleConstructorReturn(this, (Text.__proto__ || Object.getPrototypeOf(Text)).call(this, data));
+    var preSubtype = data.subtype;
+    var broken = preSubtype.split(':');
+    var subtype = broken[0].toLowerCase();
+
+    // item grid size
+    var q = broken[1] ? '-' + broken[1] : '';
+
+    var style = (data.type + '-' + subtype + q).toLowerCase();
+
+    data.style = style;
+    data.size = q;
+
+    console.log(data);
+
+    var _this2 = _possibleConstructorReturn(this, (Text.__proto__ || Object.getPrototypeOf(Text)).call(this, data));
+
+    _this2.subtype = data.subtype;
+    _this2.url = data.url;
+    _this2.text = data.text;
+    _this2.backgroundLabel = data.background;
+    _this2.caption = data.caption || null;
+
+    switch (subtype) {
+      case 'link':
+        _this2.linkTemplateConstructor();
+        break;
+      case 'quote':
+        _this2.quoteTemplateConstructor();
+        break;
+      default:
+        _this2.textTemplateConstructor();
+        break;
+    }
+    return _this2;
   }
+  // toogle colors
+
 
   _createClass(Text, [{
-    key: 'templateConstructor',
-    value: function templateConstructor() {
+    key: 'setColor',
+    value: function setColor(template) {
+      if (this.backgroundLabel) {
+        template.style.backgroundColor = '' + this.colors[1];
+        template.style.color = '' + this.colors[0];
+      }
+
+      return template;
+    }
+  }, {
+    key: 'textTemplateConstructor',
+    value: function textTemplateConstructor() {
+      var wrapper = document.createElement('div');
+      wrapper.setAttribute('class', 'project-text-wrapper');
+
+      var template = yo(_templateObject6, this.type, this.text);
+
+      this.setColor(wrapper);
+
+      wrapper.appendChild(template);
+      this.container.appendChild(wrapper);
+    }
+  }, {
+    key: 'linkTemplateConstructor',
+    value: function linkTemplateConstructor() {
+      var wrapper = document.createElement('div');
+      wrapper.setAttribute('class', 'project-text-wrapper');
+
+      var link = yo(_templateObject7, this.url, this.text);
+      var linkContainer = yo(_templateObject8, link, this.caption ? this.caption : '');
+      var template = yo(_templateObject9, linkContainer);
+
+      link.style.color = '' + this.colors[2];
+      linkContainer.style.color = '' + this.colors[2];
+
+      this.setColor(wrapper);
+
+      wrapper.appendChild(template);
+      this.container.appendChild(wrapper);
+    }
+  }, {
+    key: 'quoteTemplateConstructor',
+    value: function quoteTemplateConstructor() {
       var container = document.createElement('div');
       container.setAttribute('class', this.type);
     }

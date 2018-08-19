@@ -790,6 +790,7 @@ footer {
   position: relative; }
   #article-content .document {
     width: 100%;
+    padding-bottom: 50px;
     font-family: 'LMono'; }
 
 .document-project {
@@ -872,8 +873,7 @@ footer {
     grid-row-end: span 1; }
     .document-project .document-project-abstract .document-project-abstract-container {
       display: inline-block;
-      width: 80%;
-      height: 80%;
+      padding: 3em;
       text-align: left; }
       .document-project .document-project-abstract .document-project-abstract-container .document-project-abstract-content {
         padding: 40px 0;
@@ -903,6 +903,54 @@ footer {
       top: 0;
       left: 0;
       z-index: 2; }
+  .document-project .image-dual {
+    grid-column-end: span 1;
+    grid-row-end: span 1;
+    position: relative;
+    min-height: 150px; }
+    .document-project .image-dual .content-loader {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2; }
+  .document-project .text-long {
+    grid-column-end: span 2;
+    grid-row-end: span 1;
+    text-align: left;
+    line-height: 1.45em;
+    font-size: 1em;
+    font-variation-settings: 'wght' 450, 'wdth' 85; }
+  .document-project .text-short {
+    grid-column-end: span 1;
+    grid-row-end: span 1;
+    text-align: left;
+    line-height: 1.4em;
+    font-size: 1.1em;
+    font-variation-settings: 'wght' 650, 'wdth' 85; }
+
+.project-image-dual-wrapper .project-dual-image {
+  position: relative; }
+  .project-image-dual-wrapper .project-dual-image .project-image-img {
+    display: inline-block;
+    width: 100%; }
+  .project-image-dual-wrapper .project-dual-image .project-image-caption {
+    position: absolute;
+    font-family: 'LMono';
+    font-size: 0.8em;
+    font-variation-settings: 'wght' 550, 'wdth' 85;
+    text-align: left;
+    position: absolute;
+    line-height: 1.1em;
+    padding: 3px 4px 3px 3px;
+    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+    text-align: left; }
+  .project-image-dual-wrapper .project-dual-image:hover .project-image-caption {
+    opacity: 1; }
 
 .project-image-wrapper {
   position: relative;
@@ -916,7 +964,6 @@ footer {
       position: absolute;
       line-height: 1.1em;
       padding: 3px 4px 3px 3px;
-      opacity: 0;
       left: 50%;
       transform: translateX(-50%);
       transition: all 0.3s ease-in-out;
@@ -925,14 +972,42 @@ footer {
         font-family: 'LMono';
         margin-bottom: 0.2em;
         font-size: 0.9em;
-        font-variation-settings: 'wght' 850, 'wdth' 95;
-        text-transform: uppercase; }
+        font-variation-settings: 'wght' 550, 'wdth' 95; }
       .project-image-wrapper .project-image .project-image-captions .project-image-caption {
         font-family: 'LMono';
         font-size: 0.8em;
-        font-variation-settings: 'wght' 550, 'wdth' 85; }
-    .project-image-wrapper .project-image:hover .project-image-captions {
-      opacity: 1; }
+        font-variation-settings: 'wght' 350, 'wdth' 95; }
+
+.project-text-wrapper {
+  width: 100%;
+  height: 100%; }
+  .project-text-wrapper .project-text {
+    padding: 3em;
+    font-family: 'LMono';
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    -webkit-hyphenate-character: '⌁'; }
+  .project-text-wrapper .project-link {
+    padding: 3em;
+    font-family: 'LMono';
+    text-align: center;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    -webkit-hyphenate-character: '⌁'; }
+    .project-text-wrapper .project-link a {
+      transition: all 0.1s ease-in-out;
+      font-variation-settings: 'wght' 550, 'wdth' 95; }
+      .project-text-wrapper .project-link a:hover {
+        font-variation-settings: 'wght' 900, 'wdth' 105; }
+    .project-text-wrapper .project-link span {
+      text-decoration: none !important;
+      font-size: 0.8em; }
 
 @media all and (max-width: 975px) {
   .document-project .document-project-abstract {

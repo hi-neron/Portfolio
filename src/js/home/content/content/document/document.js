@@ -294,6 +294,8 @@ class Document {
       </div>
     `
 
+    template.style.color = `${this.colors[1]} !important`
+
     abstract.appendChild(template)
 
     return abstract

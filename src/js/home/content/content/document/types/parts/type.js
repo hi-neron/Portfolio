@@ -4,7 +4,7 @@ const yo = require('yo-yo')
 
 class Type {
   constructor (data) {
-    this.type = data.type
+    this.type = data.type.toLowerCase()
     this.style = data.style
     this.container = data.container
     this.size = data.size
@@ -30,7 +30,6 @@ class Image extends Type {
   constructor (data) {
     let preSubtype = data.subtype
     let broken = preSubtype.split(':')
-    console.log(broken)
     let subtype = broken[0]
 
     // item grid size
@@ -44,11 +43,12 @@ class Image extends Type {
     super(data)
     this.subtype = data.subtype
     this.url = data.url
+    this.images = data.images
     this.captionPos = data.captionPos // 'left:top'
     this.backgroundLabel = data.background
 
     // build template
-    this.templateConstructor()
+    this.subtype === 'Dual' ? this.dualTemplateConstructor() : this.singleTemplateConstructor()
   }
 
   imagesReady (cb) {
@@ -57,42 +57,97 @@ class Image extends Type {
       if (m.hasAnyBroken) return cb (m)
       setTimeout(() => {
         _this_.loaderContainer.remove()
-        console.log('loader removed')
         cb (null, 'content loaded')
       }, 400);
     })
   }
 
-  templateConstructor () {
-    let wrapper = document.createElement('div')
-    wrapper.setAttribute('class', 'project-image-wrapper')
-
-    let superCaption = ''
-
-    if (this.superCaption) {
-      superCaption = yo`
-        <div className="project-image-supercaption">
-          ${this.superCaption}
-        </div>
-      `
-    }
-
+  getCaption(data) {
     let caption = ''
 
-    if (this.caption) {
+    if (data) {
       caption = yo`
         <div className="project-image-caption">
-          ${this.caption}
+          ${data}
         </div>
       `
     }
 
-    let captions = yo`
+    return caption
+  }
+
+  getSuperCaption (data) {
+    let superCaption = ''
+
+    if (data) {
+      superCaption = yo`
+        <div className="project-image-supercaption">
+          ${data}
+        </div>
+      `
+    }
+    
+    return superCaption
+  }
+
+  getSingleCaptions() {
+    let superCaption = this.getSuperCaption(this.superCaption)
+    let caption = this.getCaption(this.caption)
+
+    let template = yo`
       <figcaption className="project-image-captions">
         ${superCaption}
         ${caption}
       </figcaption>
     `
+    return template
+  }
+
+  dualTemplateConstructor () {
+    let wrapper = document.createElement('div')
+    wrapper.setAttribute('class', 'project-image-dual-wrapper')
+
+    let _this_ = this
+
+    this.images.map((e) => {
+      let caption = _this_.getCaption(e.caption)
+
+      switch (e.captionPos) {
+        case 'top':
+          caption.style.top = '16px'
+          break;
+        case 'bottom':
+          caption.style.bottom = '16px'
+          break;
+        default:
+          caption.style.top = '16px'
+          break;
+      }
+
+      if (e.background) {
+        caption.style.backgroundColor = `${_this_.colors[0]}`
+        caption.style.color = `${_this_.colors[1]}`
+      }
+
+      let template = yo`
+        <figure className="project-dual-image">
+          <img src="${e.url}" alt="" className="project-image-img"/>
+          ${caption}
+        </figure>
+      `
+      wrapper.appendChild(template)
+    })
+
+    this.container.appendChild(this.loaderContainer)
+    this.container.appendChild(wrapper)
+  }
+
+  singleTemplateConstructor () {
+    let wrapper = document.createElement('div')
+    wrapper.setAttribute('class', 'project-image-wrapper')
+
+
+    let captions = this.getSingleCaptions()
 
     // set styles
     // this.captionPos
@@ -103,13 +158,12 @@ class Image extends Type {
       captions.style.color = `${this.colors[1]} !important`
     }
 
-    console.log(this.captionPos)
     switch (this.captionPos) {
       case 'top':
         captions.style.top = '16px'
         break;
       case 'bottom':
-        captions.style.bottom = '16px'
+        captions.style.bottom = '0px'
         break;
       default:
         captions.style.top = '16px'
@@ -131,10 +185,95 @@ class Image extends Type {
 
 class Text extends Type {
   constructor (data) {
+    let preSubtype = data.subtype
+    let broken = preSubtype.split(':')
+    let subtype = broken[0].toLowerCase()
+
+    // item grid size
+    let q = broken[1]? `-${broken[1]}` : ''
+
+    let style = `${data.type}-${subtype}${q}`.toLowerCase()
+
+    data.style = style
+    data.size = q
+
+    console.log(data)
     super(data)
+    this.subtype = data.subtype
+    this.url = data.url
+    this.text = data.text
+    this.backgroundLabel = data.background
+    this.caption = data.caption || null
+
+    switch (subtype) {
+      case 'link':
+        this.linkTemplateConstructor()
+        break;
+      case 'quote':
+        this.quoteTemplateConstructor()
+        break;
+      default:
+        this.textTemplateConstructor()
+        break;
+    }
+  }
+  // toogle colors
+  setColor (template) {
+    if (this.backgroundLabel) {
+      template.style.backgroundColor = `${this.colors[1]}`
+      template.style.color = `${this.colors[0]}`
+    }
+
+    return template
   }
 
-  templateConstructor() {
+  textTemplateConstructor() {
+    let wrapper = document.createElement('div')
+    wrapper.setAttribute('class', 'project-text-wrapper')
+
+    let template = yo`
+      <div className="project-${this.type}">
+        ${this.text}
+      </div>
+    `
+
+    this.setColor(wrapper)
+
+    wrapper.appendChild(template)
+    this.container.appendChild(wrapper)
+  }
+
+  linkTemplateConstructor() {
+    let wrapper = document.createElement('div')
+    wrapper.setAttribute('class', 'project-text-wrapper')
+
+    let link = yo`
+      <a href="${this.url}" target="_blank">
+        ${this.text}
+      </a>
+    `
+    let linkContainer = yo`
+      <div className="link-container">
+        ${link}
+        <span>${this.caption ? this.caption : ''}</span>
+      </div>
+    `
+    let template = yo`
+      <div className="project-link">
+        ${linkContainer}
+      </div>
+    `
+
+    link.style.color = `${this.colors[2]}`
+    linkContainer.style.color = `${this.colors[2]}`
+
+    this.setColor(wrapper)
+
+    wrapper.appendChild(template)
+    this.container.appendChild(wrapper)
+  }
+
+  quoteTemplateConstructor() {
     let container = document.createElement('div')
     container.setAttribute('class', this.type)
   }

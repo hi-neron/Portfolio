@@ -3,7 +3,7 @@ module.exports = [
     title: 'Historias de Cal',
     subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
     type: 'project',
-    colors: [0xebe9df, 0x4b2a28, 0x3892b3],
+    colors: [0xebe9df, 0x993e33, 0x7ca1c2],
     date: {
       year: '2011',
       color: 1
@@ -32,21 +32,40 @@ module.exports = [
       {
         type: 'Text',
         subtype: 'Short',
+        background: true,
+        text: 'el velóz murcielago indú alcanzó los apaches y se los puse, yendo a correr por toda la manzana donde vivía su madre'
+      },
+      {
+        type: 'Text',
+        subtype: 'Long',
+        background: false,
         text: 'El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.'
+      },
+      {
+        type: 'Image',
+        subtype: 'Dual',
+        images: [
+          {
+            url: './img/articles/sept/main.gif',
+            captionPos: 'top',
+            background: true,
+            caption: 'First image'
+          },
+          {
+            url: './img/articles/sept/main.gif',
+            captionPos: 'bottom',
+            background: true,
+            caption: 'Decond image'
+          }
+        ]
       },
       {
         type: 'Text',
         subtype: 'Link',
+        background: false,
         text: 'Este es un link',
+        caption: '(56)',
         url: './files/mifile.pdf'
-      },
-      {
-        type: 'Image',
-        subtype: 'Dual:1',
-        url: './img/articles/sept/main.gif',
-        url2: './img/articles/sept/main.gif',
-        title: 'cal gameplay',
-        subtitle: 'alcaldiadePopayan.com'
       },
       {
         type: 'Text',
