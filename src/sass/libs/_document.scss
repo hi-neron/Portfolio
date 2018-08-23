@@ -269,6 +269,13 @@
     font-size: 1.1em;
     font-variation-settings: 'wght' 650, 'wdth' 85;
   }
+
+  .text-quote {
+    grid-column-end: span 2;
+    grid-row-end: span 1;
+    text-align: center;
+    font-variation-settings: 'wght' 650, 'wdth' 95;
+  }
 }
 
 .project-image-dual-wrapper{
@@ -381,6 +388,51 @@
       text-decoration: none !important;
       font-variation-settings: 'wght' 500, 'wdth' 75;
       font-size: 0.7em;
+    }
+  }
+
+  .project-quote {
+    .quote-container {
+      .quote-body {
+        padding: 3em;
+        font-family: 'LMono';
+        text-align: center;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+        font-size: 1.1em;
+        line-height: 1.4em;
+        -webkit-hyphenate-character: '⌁';
+
+        .quote-text{
+          text-align: center;
+          font-variation-settings: 'wght' 650, 'wdth' 95;
+          font-size: 1.2em;
+
+          &:before {
+            font-size: 2em;
+            content: '"';
+          }
+          &:after {
+            font-size: 2em;
+            content: '"';
+          }
+        }
+        .quote-label{
+          font-family: 'LMono';
+          font-size: 0.7em;
+          text-align: right;
+          .quote-data{
+            font-variation-settings: 'wght' 450, 'wdth' 95;
+            text-transform: capitalize;
+          }
+          .quote-subdata{
+            font-variation-settings: 'wght' 350, 'wdth' 95;
+
+          }
+        }
+      }
     }
   }
 }

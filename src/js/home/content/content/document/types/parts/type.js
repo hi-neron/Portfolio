@@ -202,12 +202,14 @@ class Text extends Type {
     this.subtype = data.subtype
     this.url = data.url
     this.text = data.text
+    this.data = data.data
+    this.subdata = data.subdata
     this.backgroundLabel = data.background
     this.caption = data.caption || null
 
     // link
     if (subtype === 'link') {
-      this.linkType = broken[1]? broken[1] : 'link'
+      this.linkType = broken[1] ? broken[1] : 'link'
     }
 
     switch (subtype) {
@@ -291,8 +293,38 @@ class Text extends Type {
   }
 
   quoteTemplateConstructor() {
-    let container = document.createElement('div')
-    container.setAttribute('class', this.type)
+    let wrapper = document.createElement('div')
+    wrapper.setAttribute('class', 'project-text-wrapper')
+    // if exists a subdata
+    let subdataTemplate = yo`
+      <span className="quote-subdata">
+        ${this.subdata}
+      </span>
+    `
+    let subdata = this.subdata ? subdataTemplate : null
+
+    let quoteContainer = yo`
+      <div className="quote-container">
+        <p class="quote-body">
+          <div className="quote-text">${this.text}</div>
+          <div className="quote-label">
+            <span className="quote-data">${this.data}</span>
+            ${subdataTemplate}
+          </div>
+        </p>
+      </div>
+    `
+
+    let template = yo`
+      <div className="project-quote">
+        ${quoteContainer}
+      </div>
+    `
+
+    this.setColor(wrapper)
+
+    wrapper.appendChild(template)
+    this.container.appendChild(wrapper)
   }
 }
 

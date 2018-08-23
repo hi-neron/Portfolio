@@ -349,7 +349,7 @@ svg:focus {
         letter-spacing: -0.12em;
         font-family: 'eleb';
         text-align: center;
-        color: rgba(50, 41, 52, 0.9);
+        color: rgba(50, 41, 52, 0.8);
         font-size: calc(5vw + 9vh + 6vmin);
         line-height: 1.05em;
         text-shadow: 0 -2px 8px rgba(255, 255, 255, 0.15), 0 -6px 8px rgba(189, 230, 219, 0.6), 0 -3px 2px rgba(202, 249, 255, 0.8), 0 4px 0px #ff7598, 0 -2px 2px rgba(255, 255, 255, 0.5), 0 7px 2px rgba(19, 22, 24, 0.2), 0 8px 8px rgba(255, 67, 105, 0.7), 0 20px 2px rgba(50, 41, 52, 0.3); }
@@ -972,6 +972,11 @@ footer {
     line-height: 1.4em;
     font-size: 1.1em;
     font-variation-settings: 'wght' 650, 'wdth' 85; }
+  .document-project .text-quote {
+    grid-column-end: span 2;
+    grid-row-end: span 1;
+    text-align: center;
+    font-variation-settings: 'wght' 650, 'wdth' 95; }
 
 .project-image-dual-wrapper .project-dual-image {
   position: relative; }
@@ -1054,6 +1059,36 @@ footer {
       text-decoration: none !important;
       font-variation-settings: 'wght' 500, 'wdth' 75;
       font-size: 0.7em; }
+  .project-text-wrapper .project-quote .quote-container .quote-body {
+    padding: 3em;
+    font-family: 'LMono';
+    text-align: center;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    font-size: 1.1em;
+    line-height: 1.4em;
+    -webkit-hyphenate-character: '⌁'; }
+    .project-text-wrapper .project-quote .quote-container .quote-body .quote-text {
+      text-align: center;
+      font-variation-settings: 'wght' 650, 'wdth' 95;
+      font-size: 1.2em; }
+      .project-text-wrapper .project-quote .quote-container .quote-body .quote-text:before {
+        font-size: 2em;
+        content: '"'; }
+      .project-text-wrapper .project-quote .quote-container .quote-body .quote-text:after {
+        font-size: 2em;
+        content: '"'; }
+    .project-text-wrapper .project-quote .quote-container .quote-body .quote-label {
+      font-family: 'LMono';
+      font-size: 0.7em;
+      text-align: right; }
+      .project-text-wrapper .project-quote .quote-container .quote-body .quote-label .quote-data {
+        font-variation-settings: 'wght' 450, 'wdth' 95;
+        text-transform: capitalize; }
+      .project-text-wrapper .project-quote .quote-container .quote-body .quote-label .quote-subdata {
+        font-variation-settings: 'wght' 350, 'wdth' 95; }
 
 @media all and (max-width: 975px) {
   .document-project .document-project-abstract {

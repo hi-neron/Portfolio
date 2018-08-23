@@ -70,8 +70,9 @@ module.exports = [
       {
         type: 'Text',
         subtype: 'Quote',
-        text: 'Este es un link',
-        data: 'twitter, jose sanchez'
+        text: 'Lo mejor del mundo mundial',
+        data: 'new york times',
+        subdata: '1982',
       },
     ],
     front: {
