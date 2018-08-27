@@ -4,9 +4,10 @@ let scene, renderer, stats, camera, control
 
 let getAssets = require('./loader')
 
-let init = function (container, ctx) {
+let init = function (container, ctx, cb) {
   getAssets((e, assets) => {
     intro(false, assets, container, ctx)
+    cb(true)
   })
 }
 

@@ -1,25 +1,7 @@
 const contentType = require('./types')
 const yo = require('yo-yo')
 const loader = require('../loader')
-const empty = require('empty-element')
 const imagesLoaded = require('imagesloaded')
-
-// To web color
-function toColor (color) {
-  return color === 0? '#000000' : `#${color.toString(16)}`
-}
-
-// Hex color to rgb notation
-function toColorRGB (color) {
-  color = color.slice(1)
-  let r = parseInt(color.slice(0, 2), 16)
-  let g = parseInt(color.slice(2, 4), 16)
-  let b = parseInt(color.slice(4, 6), 16)
-  
-  let colorRGB = [r, g, b]
-
-  return colorRGB
-}
 
 // Set stile for document contents
 class NewStyle {
@@ -88,6 +70,7 @@ class Document {
     this.mainPicture = data.mainPicture
     this.keywords = data.keywords
     this.abstract = data.abstract
+    this.colors = data.colors
 
     // save content objects
     this.contentToWait = []
@@ -101,13 +84,6 @@ class Document {
     // utilities
     this.endWord = data.endWord
 
-    // colors
-    this.colors = data.colors.map((c) => {
-      return toColor(c)
-    })
-
-    console.log(this.colors, data)
-    
     this.build()
     // create template according to type
   }
@@ -144,9 +120,6 @@ class Document {
     // create a main style
     this.mainStyle = this.createStyle('main')
 
-    // Close trigger creator
-    this.closeCreator()
-
     switch (this.type) {
       case 'illustration':
         this.container.classList.add('document-illustration')
@@ -163,18 +136,16 @@ class Document {
     }
   }
 
-  constructProject() {
+  constructProject() { 
     // Front-page
     let front = this.frontCreator()
 
     // Abstract
     let abstract = this.abstractCreator()
 
-
     // add Items
     this.container.appendChild(front)
     this.container.appendChild(abstract)
-    this.container.appendChild(this.close)
 
     // Contents
     let content = this.content
@@ -203,23 +174,6 @@ class Document {
 
   }
 
-  closeCreator() {
-    // Close window
-    this.close = document.createElement('div')
-    this.close.setAttribute('class', 'document-close')
-
-    let closeContainer = yo`
-      <div class="document-close-container">
-        <div class="document-close-line line-one">
-        </div>
-        <div class="document-close-line line-two">
-        </div>
-      </div>
-    `
-
-    this.close.appendChild(closeContainer)
-  }
-
   frontCreator() {
     // front window
     let front = document.createElement('div')
@@ -230,15 +184,22 @@ class Document {
 
     front.classList.add(`document-${styleName}-style`)
 
+    let typeContainer = yo`
+      <div className="document-project-front-type">
+        ${this.type}
+      </div>
+    `
+
+    typeContainer.style.color = this.colors[1]
+    typeContainer.style.backgroundColor = this.colors[2]
+
     let label = yo`
     <div className="document-project-front-top">
       <div className="document-project-front-top-left">
         <h1 className="document-project-front-title">
           ${this.title}
         </h1>
-        <div className="document-project-front-type">
-          ${this.type}
-        </div>
+        ${typeContainer}
       </div>
       <div className="document-project-front-top-right">
         <h2 className="document-project-front-subtitle">
@@ -273,9 +234,7 @@ class Document {
     template.appendChild(loaderContainer)
 
     imagesLoaded(template, () => {
-      setTimeout(() => {
-        loaderContainer.remove()
-      }, 3000)
+      loaderContainer.remove()
     })
 
     return front
@@ -313,141 +272,7 @@ class Document {
     this.container.classList.add('document-illustration')
     // l
   }
+
 }
 
 module.exports = Document
-
-  //   // crea la plantilla del item abierto
-
-  //   // Main container
-  //   let articleContent = document.createElement('article')
-  //   articleContent.setAttribute('class', 'article-content-readable')
-
-  //   // keywords template generator
-  //   let keywordsTemplate = document.createElement('div')
-  //   keywordsTemplate.setAttribute('class', 'article-keywords')
-
-  //   let keyword 
-    
-  //   let cStyle = new NewStyle(this.color)
-
-  //   keywordsTemplate.classList.add(cStyle.smallBack)
-
-  //   // each one keyword template generator
-  //   for (let i = 0; i < this.keywords.length; i++) {
-  //     let keyword = this.keywords[i]
-  //     let oneKeyword = yo`
-  //       <span class="article-one-keyword ${cStyle.overLetter}">
-  //           ${keyword}
-  //       </span>
-  //     `
-
-  //     keywordsTemplate.appendChild(oneKeyword)
-  //   }
-
-  //   // header
-  //   let articleTitle = yo`
-  //     <header class="article-header">
-  //       <div class="article-header-top">
-  //         <figure class="article-main-image">
-  //           <img src="${this.mainPicture.urlXX}">
-  //         </figure>
-  //         <div className="article-content-title-container">
-  //           <h1 class="article-content-title article-item ${cStyle.letter}">
-  //             <span style="background-color:rgba(${cStyle.colorRGB}, 0.85)" >
-  //               ${this.title}
-  //             </span>
-  //           </h1>
-  //           <div class="article-content-type-container">
-  //             <div class="article-content-type">
-  //               ${this.type}
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-
-  //       <div class="article-subtitle-container">
-  //         <div class="article-subtitle ${cStyle.letter}">
-  //           ${this.intro}
-  //           <div className="article-keywords-container ">
-  //             ${keywordsTemplate}
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </header>
-  //   `
-
-  //   articleContent.appendChild(articleTitle)
-
-  //   // Content constructor
-  //   for (let i = 0; i < this.content.length; i++) {
-  //     let form
-  //     let p = yo`
-  //     <div class="article-content-paragraph article-item ${cStyle.letter}">
-  //       <p>
-  //         ${this.content[i]}
-  //       </p>
-  //     </div>`
-
-  //     if (this.othersPictures[i]) {
-  //       switch (this.othersPictures[i].type) {
-  //         case 'image':
-  //           form = yo`
-  //             <figure class="article-content-picture article-item">
-  //               <div className="article-content-picture-container">
-  //                 <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
-  //               </div>
-  //               <figcaption class="${cStyle.letter}">${this.othersPictures[i].comment}</figcaption>
-  //             </figure>
-  //           `
-  //           break;
-
-  //         case 'image2':
-  //           form = yo`
-  //             <figure class="article-content-picture-xl article-item">
-  //               <img src="${this.othersPictures[i].url}" alt="${this.othersPictures[i].name}">
-  //               <figcaption class="${cStyle.letter}">${this.othersPictures[i].comment}</figcaption>
-  //             </figure>
-  //           `
-  //           break;
-
-  //         case 'quote':
-  //           form = yo`
-  //             <div class="article-content-quote article-item ${cStyle.letter}">
-  //               <p>
-  //                 <q>
-  //                   ${this.othersPictures[i].text}
-  //                 </q>
-  //               </p>
-  //             </div>
-  //           `
-  //           break;
-
-  //         default:
-  //           form = ''
-  //           break;
-  //       }
-
-  //       articleContent.appendChild(form)
-  //     }
-      
-  //     articleContent.appendChild(p)
-  //   }
-
-  //   // main template of open article
-  //   let template = yo`
-  //     <div class="article-content-wrapper ${cStyle.back}">
-  //       ${close}
-  //       <div class="article-content-info">
-  //         ${articleContent}
-  //       </div>
-  //       <footer class="article-content-footer ${cStyle.letter}">
-  //         ${this.endWord}
-  //       </footer>
-  //     </div>
-  //   `
-
-  //       // trigger to close
-
-  //   cb(template)
-  // }

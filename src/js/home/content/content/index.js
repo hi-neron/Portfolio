@@ -4,6 +4,9 @@ const yo = require('yo-yo')
 const _ = require('lodash')
 const empty = require('empty-element')
 
+// umbrella loader
+const umbrella = require('../../loader/umbrella')
+
 // loader caffee
 const caffeeLoader = require('./loader')
 
@@ -11,6 +14,11 @@ const caffeeLoader = require('./loader')
 let contentContainer = document.createElement('div')
 contentContainer.setAttribute('id', 'article-content')
 document.body.appendChild(contentContainer)
+
+// ventana de contenidos
+let articleCloser = document.createElement('div')
+articleCloser.setAttribute('id', 'article-closer')
+document.body.appendChild(articleCloser)
 
 // Open article
 const articleOpen = require('./document/document')
@@ -27,6 +35,22 @@ function articleMap (article) {
   article.cbFont()
 }
 
+// To web color
+function toColor (color) {
+  return color === 0? '#000000' : `#${color.toString(16)}`
+}
+
+// Hex color to rgb notation
+function toColorRGB (color) {
+  color = color.slice(1)
+  let r = parseInt(color.slice(0, 2), 16)
+  let g = parseInt(color.slice(2, 4), 16)
+  let b = parseInt(color.slice(4, 6), 16)
+  
+  let colorRGB = [r, g, b]
+
+  return colorRGB
+}
 // set articles grid and create an open article view
 class Article {
   constructor (data) {
@@ -60,6 +84,11 @@ class Article {
     // set colors theme
     this.colors = data.colors ? data.colors : [0xEAEAEA, 0x1E1E1E, 0xFF6F8C]
 
+    // colors
+    this.colors = this.colors.map((c) => {
+      return toColor(c)
+    })
+
     // view content
     this.viewContent = _.truncate(this.content, {
       'length': 100,
@@ -69,6 +98,8 @@ class Article {
     // pictures
     this.mainPicture = this.pictures.main
     this.othersPictures = this.pictures.others ? this.pictures.others : null
+
+ 
 
     this.templateViewGenerator()
   }
@@ -215,7 +246,9 @@ class Article {
   // Open modalwindow
   screenActivate () {
     if (!screen) {
-      screenSplashOpen(this.createContent())
+      // create close button
+      let close = this.closeCreator()
+      screenSplashOpen(this.createContent(), close)
       // ventana abierta
       screen = true
     } else {
@@ -229,31 +262,117 @@ class Article {
   createContent() {
     // crea la plantilla del item abierto
     this.createdArticle = new articleOpen(this)
-    
-    this.createdArticle.close.addEventListener('click', (e) => {
+
+    return this.createdArticle.container
+  }
+
+  closeCreator() {
+    // Close window
+    let close = document.createElement('div')
+    close.setAttribute('class', 'document-close')
+
+    let closeContainer = yo`
+      <div class="document-close-container">
+        <div class="document-close-text">
+          BACK
+        </div>
+      </div>
+    `
+
+    let closeColor = this.colors[2]
+    let letterColor = this.colors[0]
+
+    closeContainer.style.backgroundColor = closeColor
+    closeContainer.style.color = letterColor
+
+    close.appendChild(closeContainer)
+
+    close.addEventListener('click', (e) => {
       screenSplashClose()
     })
-    
-    return this.createdArticle.container
+
+    return close
   }
 }
 
 let ev = new CustomEvent('articleScreen')
 
-function screenSplashOpen(template) {
-  empty(contentContainer).appendChild(template)
-  contentContainer.classList.add('article-open')
-  // evento que: hace scroll al contenido, elimina la el overflow: hidden.
-  window.dispatchEvent(ev)
+history.pushState(null, null, location.href);
+
+window.onpopstate = function () {
+  if (screen) {
+    screenSplashClose()
+  }
+  history.go(1);
+};
+
+class MainLoader {
+  // loader window
+  constructor () {
+    this.loaderScreen = document.createElement('div')
+    this.loaderScreen.setAttribute('class', 'document-loader-container')
+    
+    let loaderScreenWrapper = document.createElement('div')
+    loaderScreenWrapper.setAttribute('class', 'document-loader-wrapper')
+
+    this.umbrella = umbrella('random')
+    loaderScreenWrapper.appendChild(this.umbrella)
+    this.loaderScreen.appendChild(loaderScreenWrapper)
+  }
+  
+  add (container, cb) {
+    container.appendChild(this.loaderScreen)
+    cb(container)
+  }
+
+  destroy () {
+    this.loaderScreen.style.opacity = 0
+    setTimeout(() => {
+      this.loaderScreen.style.display = 'none'
+    }, 300)
+  }
+}
+
+// Manage article window
+function screenSplashOpen(template, close) {
+  // This create a loader screen to article content
+  let mainLoader = new MainLoader()
+
+  empty(contentContainer)
+
+  mainLoader.add(contentContainer, (container) => {
+    container.classList.add('article-open')
+
+    setTimeout(() => {
+      window.dispatchEvent(ev)
+      // evento que: hace scroll al contenido, elimina el overflow: hidden.
+
+      setTimeout (() => {
+        // add close button to container
+        // add article to container
+        container.appendChild(template)
+
+        setTimeout(() => {
+          articleCloser.appendChild(close)
+          mainLoader.destroy()
+        }, 3000)
+      }, 600)
+    }, 200)
+  })
+
 }
 
 function screenSplashClose() {
   // let scrollTo = document.getElementById('main-content')
   // let pos = getPosition(scrollTo)
+
   empty(contentContainer)
   contentContainer.classList.remove('article-open')
+
+  // remove close button
+  empty(articleCloser)
   window.dispatchEvent(ev)
-  // window.scrollTo(0, pos.top);
+
   screen = false
 }
 

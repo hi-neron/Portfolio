@@ -44,7 +44,6 @@ page('/:tag?', create, loader, (ctx, next) => {
   // vars
   app = ctx.app
 
-  let introContainer = ctx.introContainer
   let footer = ctx.footer
   let bar = ctx.bar
   let cvi = ctx.cv
@@ -52,8 +51,7 @@ page('/:tag?', create, loader, (ctx, next) => {
 
   mainContent = ctx.mainContent
 
-  // get intro
-  document.onload = intro.init(introContainer, ctx)
+
   drawArticles(tag, ctx)
   
   // Bar
@@ -81,7 +79,7 @@ page('/:tag?', create, loader, (ctx, next) => {
       window.scrollTo(0, pos.top - 30)
     } else {
       app.classList.add('fixScroll')
-    } 
+    }
   })
 
   next()
@@ -122,30 +120,38 @@ function drawArticles (tag, ctx) {
     scroll(null, pos)
   }
 
-  content.getMainContent(tag, (e, r) => {
-    if (e) return new Error({message: 'An Error has ocurred'})
+  let introContainer = ctx.introContainer
 
-    contentDraw(overW, r, () => {
-      let main = r.main
-      let initialize = r.resizeEvents
-
-      imgLoaded.on('done', function (i) {
-        setTimeout(() => {
-          initialize()
-          msnry.layout()
-          // close loader
-          if (ctx) {
-            ctx.mainLoader.vanish()
-          }
-
+  // on load intro, start
+  document.onload = intro.init(introContainer, ctx, (r) => {
+    // on load content, start
+    content.getMainContent(tag, (e, r) => {
+      if (e) return new Error({message: 'An Error has ocurred'})
+      
+      // draw content content
+      contentDraw(overW, r, () => {
+        let initialize = r.resizeEvents
+        
+        // on images load, adjust grid and remove loader screen 
+        imgLoaded.on('done', function (i) {
           setTimeout(() => {
-            setNewWindowSize()
+            initialize()
             msnry.layout()
-          }, 200);
-        }, 1200);
+            // close loader
+            if (ctx) {
+              ctx.mainLoader.vanish()
+            }
+  
+            setTimeout(() => {
+              setNewWindowSize()
+              msnry.layout()
+            }, 200);
+          }, 1200);
+        })
       })
     })
   })
+
 }
 
 function setNewWindowSize () {

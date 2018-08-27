@@ -118,10 +118,10 @@ launcherButton.onclick = (ev) => {
     me.style.left = '30px'
     launcherButton.style.backgroundColor = mainColor
     document.body.style.overflowY = 'hidden'
-    
+
   } else {
     me.style.left = '4px'
-    document.body.style.overflowY = 'scroll'
+    document.body.style.removeProperty('overflow-y')
     launcherButton.style.backgroundColor = thirdColor
     parent.style.transform = 'translateX(-100%)'
   }

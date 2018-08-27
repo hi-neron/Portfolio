@@ -3,7 +3,7 @@ module.exports = [
     title: 'Historias de Cal',
     subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
     type: 'project',
-    colors: [0xebe9df, 0x993e33, 0x7ca1c2],
+    colors: [0xebe9df, 0x502B27, 0x2cc5ff],
     date: {
       year: '2011',
       color: 1

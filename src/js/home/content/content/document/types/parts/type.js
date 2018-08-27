@@ -55,10 +55,8 @@ class Image extends Type {
     let _this_ = this
     imagesLoader(this.container, (m) => {
       if (m.hasAnyBroken) return cb (m)
-      setTimeout(() => {
-        _this_.loaderContainer.remove()
-        cb (null, 'content loaded')
-      }, 400);
+      _this_.loaderContainer.remove()
+      cb (null, 'content loaded')
     })
   }
 
