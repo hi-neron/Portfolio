@@ -68,6 +68,7 @@ class Article {
     this.endWord = endWord
     this.open = false
     this.front = data.front
+    this.mainImageType = data.mainImageType
     
     // Creation date
 
@@ -212,11 +213,20 @@ class Article {
 
     let important = this.important ? 'grid-item-widthx2': ''
 
+    let video = yo`
+    <video class="images-to-load" autoplay loop>
+      <source src="${this.mainPicture.url}" type="video/mp4">
+    </video>`
+
+    let image = yo`<img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">`
+
+    this.img = this.mainImageType === 'video' ? video : image
+
     let template = yo`
       <article class="grid-item ${important}" title="${this.title}">
         <div class="article-content">
           ${over}
-          <img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
+          ${this.img}
           ${this.articleLoader}
           ${this.date}
         </div>
@@ -232,7 +242,7 @@ class Article {
         let data = o.getAttribute('data-keyword')
         return drawArticle(data)
       } else {
-        if (o.classList.contains('over-article-title') || o.classList.contains('over-article-subtitle')){
+        if (o.classList.contains('over-article-title') || o.classList.contains('over-article-subtitle') || o.classList.contains('over-article-titles')){
           _this.screenActivate()
         } else {
           return
@@ -304,6 +314,7 @@ window.onpopstate = function () {
     screenSplashClose()
   }
   history.go(1);
+  empty(articleCloser)
 };
 
 class MainLoader {
@@ -326,7 +337,8 @@ class MainLoader {
   }
 
   destroy () {
-    this.loaderScreen.style.opacity = 0
+    this.loaderScreen.style.transform = 'translateX(-100%)'
+
     setTimeout(() => {
       this.loaderScreen.style.display = 'none'
     }, 300)
@@ -342,35 +354,29 @@ function screenSplashOpen(template, close) {
 
   mainLoader.add(contentContainer, (container) => {
     container.classList.add('article-open')
-
-    setTimeout(() => {
-      window.dispatchEvent(ev)
-      // evento que: hace scroll al contenido, elimina el overflow: hidden.
-
-      setTimeout (() => {
-        // add close button to container
-        // add article to container
-        container.appendChild(template)
-
-        setTimeout(() => {
-          articleCloser.appendChild(close)
-          mainLoader.destroy()
-        }, 3000)
-      }, 600)
-    }, 200)
+    window.dispatchEvent(ev)
+    
+    setTimeout (() => {
+      // add close button to container
+      // add article to container
+      container.appendChild(template)
+      empty(articleCloser).appendChild(close)
+      
+      setTimeout(() => {
+        articleCloser.style.right = '-2px'
+        mainLoader.destroy()
+      }, 1000)
+    }, 500)
   })
 
 }
 
 function screenSplashClose() {
-  // let scrollTo = document.getElementById('main-content')
-  // let pos = getPosition(scrollTo)
-
   empty(contentContainer)
   contentContainer.classList.remove('article-open')
 
   // remove close button
-  empty(articleCloser)
+  articleCloser.style.removeProperty('right')
   window.dispatchEvent(ev)
 
   screen = false
@@ -389,6 +395,14 @@ function createTemplate (items, cb) {
   for (let i = 0; i < items.length; i++) {
     article = new Article(items[i])
     main.appendChild(article.smallView)
+
+    if (article.mainImageType === 'video') {
+      article.img.oncanplay = function() {
+        console.log('ready')
+        this.play()
+      }
+    }
+
     articlesList.push(article)
   }
 

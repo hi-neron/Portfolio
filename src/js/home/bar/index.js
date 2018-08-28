@@ -172,7 +172,7 @@ function barBehavior (mainContentP) {
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
   
-  if (vPosition > mainContentP.top - 150) {
+  if (vPosition > mainContentP.top - 450) {
     limit = true
     trigger.classList.add('view');
   } else {

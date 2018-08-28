@@ -107,7 +107,7 @@
       }
 
       .main-bar-list {
-        padding: 10px 10px 0px 10px;
+        padding: 8px 10px 0px 10px;
         
         .bar-link {
           text-transform: uppercase;
@@ -116,7 +116,7 @@
           text-decoration: none;
           font-size: 3.6rem;
           color: $items-colors;
-          line-height: rem;
+          line-height: 1.05em;
 
           -webkit-hyphens: auto;
           -moz-hyphens: auto;
@@ -136,7 +136,7 @@
       }
 
       .secondary-bar-list {
-        padding: 6px 10px 0 10px;
+        padding: 16px 10px 0 10px;
 
         .bar-link {
           -webkit-hyphens: auto;
@@ -159,7 +159,7 @@
           font-size: 1.1em;
           border: 1px solid transparent;
           margin-bottom: 8px;
-          border-bottom: 1px solid $items-colors;
+          // border-bottom: 1px solid $items-colors;
           padding: 3px 2px 0.35em 2px; 
           line-height: 0.68em;
 

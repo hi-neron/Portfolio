@@ -195,7 +195,6 @@ class Text extends Type {
     data.style = style
     data.size = q
 
-    console.log(data)
     super(data)
     this.subtype = data.subtype
     this.url = data.url

@@ -8,6 +8,7 @@ module.exports = [
       year: '2011',
       color: 1
     },
+    mainImageType: 'video',
     abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
     content: [
@@ -83,7 +84,7 @@ module.exports = [
     pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/sept/main.gif'
+        url: '/img/articles/sept/main.mp4'
       },
     },
   },
@@ -234,6 +235,7 @@ module.exports = [
       year: '2018', 
       color: 0
     },
+    mainImageType: 'video',
     colors: [0x000000, 0xffffff],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
@@ -242,7 +244,7 @@ module.exports = [
       pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/neuf/main.gif',
+        url: '/img/articles/neuf/main.mp4',
         urlXX: '/img/articles/neuf/main.png',
         comment: 'first coment main image',
       },
@@ -280,6 +282,7 @@ module.exports = [
       year: '2016',
       color: 1
     },
+    mainImageType: 'video',
     colors: [0x270944, 0xaefff8],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `Mariana hace uso de su cuerpo como una plastilina de kínder: sin mezquindad nos recuerda que la gente está muy delgada o es muy estúpida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo famélico en tiempos de selfies, óxido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aquí un eufemismo para nuestra pobreza: nuestra esclavitud. Me regaló un pin donde aparece usando un vestido de baño estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con pólvora de cañón con las que los tiranos españoles nos defendían de los piratas.
@@ -289,7 +292,7 @@ module.exports = [
       pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/four/main.gif',
+        url: '/img/articles/four/main.mp4',
         urlXX: '/img/articles/four/main.gif',
         comment: 'first coment main image',
       },

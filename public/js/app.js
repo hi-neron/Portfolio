@@ -51604,7 +51604,9 @@ page('/:tag?', create, loader, function (ctx, next) {
       var pos = getPosition(mainContent);
       app.classList.remove('fixScroll');
       // when article close, scroll to content position
-      window.scrollTo(0, pos.top - 30);
+      setTimeout(function () {
+        scroll(null, pos.top - 20);
+      }, 500);
     } else {
       app.classList.add('fixScroll');
     }
@@ -51631,7 +51633,7 @@ function contentDraw(w, r, cb) {
   cb();
 }
 
-// dibula los articulos 
+// dibula los articulos
 function drawArticles(tag, ctx) {
   tag = tag ? tag.toLowerCase() : '';
   var overW = document.createElement('div');
@@ -51644,11 +51646,13 @@ function drawArticles(tag, ctx) {
   // move!
 
   // si no hay un loader, entonces hace scroll
-  if (!ctx) {
-    scroll(null, pos);
-  }
+  var introContainer = null;
 
-  var introContainer = ctx.introContainer;
+  if (!ctx) {
+    scroll(null, pos - 20);
+  } else {
+    introContainer = ctx.introContainer;
+  }
 
   // on load intro, start
   document.onload = intro.init(introContainer, ctx, function (r) {
@@ -51740,7 +51744,7 @@ function scroll(e, pos) {
     direction = actualPosition - nextPosition;
     util = Math.abs(direction);
 
-    factor = util / 50;
+    factor = util / 20;
     add = direction >= 0 ? factor * -1 : factor;
     direction = Math.abs(direction);
 
@@ -51749,11 +51753,15 @@ function scroll(e, pos) {
 
   function scrollmove() {
     scrollA = false;
+    console.log(actualPosition, direction);
 
     if (direction <= 1) {
       scrollA = true;
     } else {
-      window.scrollTo(0, actualPosition += add);
+      window.scrollTo({
+        top: actualPosition += add,
+        behavior: 'smooth'
+      });
       direction -= factor;
       window.requestAnimationFrame(scrollmove);
     }
@@ -73574,9 +73582,11 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div className="article-d
     _templateObject4 = _taggedTemplateLiteral(['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    '], ['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    ']),
     _templateObject5 = _taggedTemplateLiteral(['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    '], ['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n          ', '\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          <img class="images-to-load" data-src="', '" src="', '" alt="', '">\n          ', '\n          ', '\n        </div>\n      </article>\n    ']),
-    _templateObject8 = _taggedTemplateLiteral(['\n      <div class="document-close-container">\n        <div class="document-close-text">\n          BACK\n        </div>\n      </div>\n    '], ['\n      <div class="document-close-container">\n        <div class="document-close-text">\n          BACK\n        </div>\n      </div>\n    ']),
-    _templateObject9 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
+    _templateObject7 = _taggedTemplateLiteral(['\n    <video class="images-to-load" autoplay loop>\n      <source src="', '" type="video/mp4">\n    </video>'], ['\n    <video class="images-to-load" autoplay loop>\n      <source src="', '" type="video/mp4">\n    </video>']),
+    _templateObject8 = _taggedTemplateLiteral(['<img class="images-to-load" data-src="', '" src="', '" alt="', '">'], ['<img class="images-to-load" data-src="', '" src="', '" alt="', '">']),
+    _templateObject9 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          ', '\n          ', '\n          ', '\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          ', '\n          ', '\n          ', '\n        </div>\n      </article>\n    ']),
+    _templateObject10 = _taggedTemplateLiteral(['\n      <div class="document-close-container">\n        <div class="document-close-text">\n          BACK\n        </div>\n      </div>\n    '], ['\n      <div class="document-close-container">\n        <div class="document-close-text">\n          BACK\n        </div>\n      </div>\n    ']),
+    _templateObject11 = _taggedTemplateLiteral(['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  '], ['\n    <div class="main-content-wrapper">\n      <div class="grid-sizer"></div>\n    </div>\n  ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -73653,6 +73663,7 @@ var Article = function () {
     this.endWord = endWord;
     this.open = false;
     this.front = data.front;
+    this.mainImageType = data.mainImageType;
 
     // Creation date
 
@@ -73768,7 +73779,13 @@ var Article = function () {
 
       var important = this.important ? 'grid-item-widthx2' : '';
 
-      var template = yo(_templateObject7, important, this.title, over, this.mainPicture.url, this.mainPicture.url, this.mainPicture.comment, this.articleLoader, this.date);
+      var video = yo(_templateObject7, this.mainPicture.url);
+
+      var image = yo(_templateObject8, this.mainPicture.url, this.mainPicture.url, this.mainPicture.comment);
+
+      this.img = this.mainImageType === 'video' ? video : image;
+
+      var template = yo(_templateObject9, important, this.title, over, this.img, this.articleLoader, this.date);
 
       var _this = this;
 
@@ -73779,7 +73796,7 @@ var Article = function () {
           var data = o.getAttribute('data-keyword');
           return drawArticle(data);
         } else {
-          if (o.classList.contains('over-article-title') || o.classList.contains('over-article-subtitle')) {
+          if (o.classList.contains('over-article-title') || o.classList.contains('over-article-subtitle') || o.classList.contains('over-article-titles')) {
             _this.screenActivate();
           } else {
             return;
@@ -73825,7 +73842,7 @@ var Article = function () {
       var close = document.createElement('div');
       close.setAttribute('class', 'document-close');
 
-      var closeContainer = yo(_templateObject8);
+      var closeContainer = yo(_templateObject10);
 
       var closeColor = this.colors[2];
       var letterColor = this.colors[0];
@@ -73855,6 +73872,7 @@ window.onpopstate = function () {
     screenSplashClose();
   }
   history.go(1);
+  empty(articleCloser);
 };
 
 var MainLoader = function () {
@@ -73884,7 +73902,8 @@ var MainLoader = function () {
     value: function destroy() {
       var _this3 = this;
 
-      this.loaderScreen.style.opacity = 0;
+      this.loaderScreen.style.transform = 'translateX(-100%)';
+
       setTimeout(function () {
         _this3.loaderScreen.style.display = 'none';
       }, 300);
@@ -73905,34 +73924,28 @@ function screenSplashOpen(template, close) {
 
   mainLoader.add(contentContainer, function (container) {
     container.classList.add('article-open');
+    window.dispatchEvent(ev);
 
     setTimeout(function () {
-      window.dispatchEvent(ev);
-      // evento que: hace scroll al contenido, elimina el overflow: hidden.
+      // add close button to container
+      // add article to container
+      container.appendChild(template);
+      empty(articleCloser).appendChild(close);
 
       setTimeout(function () {
-        // add close button to container
-        // add article to container
-        container.appendChild(template);
-
-        setTimeout(function () {
-          articleCloser.appendChild(close);
-          mainLoader.destroy();
-        }, 3000);
-      }, 600);
-    }, 200);
+        articleCloser.style.right = '-2px';
+        mainLoader.destroy();
+      }, 1000);
+    }, 500);
   });
 }
 
 function screenSplashClose() {
-  // let scrollTo = document.getElementById('main-content')
-  // let pos = getPosition(scrollTo)
-
   empty(contentContainer);
   contentContainer.classList.remove('article-open');
 
   // remove close button
-  empty(articleCloser);
+  articleCloser.style.removeProperty('right');
   window.dispatchEvent(ev);
 
   screen = false;
@@ -73942,11 +73955,19 @@ function createTemplate(items, cb) {
   var article = void 0;
   articlesList = [];
 
-  var main = yo(_templateObject9);
+  var main = yo(_templateObject11);
 
   for (var i = 0; i < items.length; i++) {
     article = new Article(items[i]);
     main.appendChild(article.smallView);
+
+    if (article.mainImageType === 'video') {
+      article.img.oncanplay = function () {
+        console.log('ready');
+        this.play();
+      };
+    }
+
     articlesList.push(article);
   }
 
@@ -73992,7 +74013,7 @@ function randomNum() {
 }
 
 function randomPhrase() {
-  var RANDOM_PHRASES = ['waiting for coffee time', 'surfing 20m waves', 'getting a tan'];
+  var RANDOM_PHRASES = ['waiting for coffee time', 'surfing 20m waves', 'writing in the sand'];
 
   var phraseIndex = randomNum(RANDOM_PHRASES.length);
 
@@ -78865,6 +78886,7 @@ module.exports = [{
     year: '2011',
     color: 1
   },
+  mainImageType: 'video',
   abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
   content: [{
@@ -78929,7 +78951,7 @@ module.exports = [{
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/sept/main.gif'
+      url: '/img/articles/sept/main.mp4'
     }
   }
 }, {
@@ -79057,6 +79079,7 @@ module.exports = [{
     year: '2018',
     color: 0
   },
+  mainImageType: 'video',
   colors: [0x000000, 0xffffff],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
@@ -79064,7 +79087,7 @@ module.exports = [{
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/neuf/main.gif',
+      url: '/img/articles/neuf/main.mp4',
       urlXX: '/img/articles/neuf/main.png',
       comment: 'first coment main image'
     },
@@ -79099,6 +79122,7 @@ module.exports = [{
     year: '2016',
     color: 1
   },
+  mainImageType: 'video',
   colors: [0x270944, 0xaefff8],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'Mariana hace uso de su cuerpo como una plastilina de k\xEDnder: sin mezquindad nos recuerda que la gente est\xE1 muy delgada o es muy est\xFApida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo fam\xE9lico en tiempos de selfies, \xF3xido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aqu\xED un eufemismo para nuestra pobreza: nuestra esclavitud. Me regal\xF3 un pin donde aparece usando un vestido de ba\xF1o estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con p\xF3lvora de ca\xF1\xF3n con las que los tiranos espa\xF1oles nos defend\xEDan de los piratas.\n    El punto crucial de esta exhibici\xF3n titulada \u201CEstaba perdido, pero estar perdido nunca se sinti\xF3 tan cabr\xF3n\u201D, y que es preciso leer con acento puertorrique\xF1o, era una fuente amarilla cuya construcci\xF3n fue hecha a cuatro manos con el tambi\xE9n boricua y m\xEDtico artista Radam\xE9s \u201CJuni" Figueroa, cuyo contenido el p\xFAblico se apresur\xF3 a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o \xE9xtasis en su estado puro: de ese que toman los j\xF3venes ansiosos en fiestas electr\xF3nicas que duran d\xEDas y no tienen ni pies, cabeza, ni fin.\n    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Hab\xEDa mucha confusi\xF3n pero sobre todo hab\xEDa mucha nada. Una semana despu\xE9s estar\xEDa en un avi\xF3n con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente m\xE1quina de sopor.',
@@ -79106,7 +79130,7 @@ module.exports = [{
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/four/main.gif',
+      url: '/img/articles/four/main.mp4',
       urlXX: '/img/articles/four/main.gif',
       comment: 'first coment main image'
     },
@@ -79471,7 +79495,7 @@ function barBehavior(mainContentP) {
   var app = document.getElementById('app');
   var bar = document.getElementById('main-bar');
 
-  if (vPosition > mainContentP.top - 150) {
+  if (vPosition > mainContentP.top - 450) {
     limit = true;
     trigger.classList.add('view');
   } else {
@@ -84861,10 +84885,14 @@ var scene = void 0,
 var getAssets = __webpack_require__(424);
 
 var init = function init(container, ctx, cb) {
-  getAssets(function (e, assets) {
-    intro(false, assets, container, ctx);
+  if (container) {
+    getAssets(function (e, assets) {
+      intro(false, assets, container, ctx);
+      cb(true);
+    });
+  } else {
     cb(true);
-  });
+  }
 };
 
 module.exports = {
@@ -103770,8 +103798,6 @@ var Text = function (_Type2) {
 
     data.style = style;
     data.size = q;
-
-    console.log(data);
 
     var _this2 = _possibleConstructorReturn(this, (Text.__proto__ || Object.getPrototypeOf(Text)).call(this, data));
 

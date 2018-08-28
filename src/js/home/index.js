@@ -76,7 +76,10 @@ page('/:tag?', create, loader, (ctx, next) => {
       let pos = getPosition(mainContent)
       app.classList.remove('fixScroll')
       // when article close, scroll to content position
-      window.scrollTo(0, pos.top - 30)
+      setTimeout(() => {
+        scroll(null, pos.top - 20)
+      }, 500)
+
     } else {
       app.classList.add('fixScroll')
     }
@@ -103,7 +106,7 @@ function contentDraw (w, r, cb) {
   cb()
 }
 
-// dibula los articulos 
+// dibula los articulos
 function drawArticles (tag, ctx) {
   tag = tag ? tag.toLowerCase(): ''
   let overW = document.createElement('div')
@@ -116,11 +119,14 @@ function drawArticles (tag, ctx) {
   // move!
 
   // si no hay un loader, entonces hace scroll
+  let introContainer = null
+
   if (!ctx) {
-    scroll(null, pos)
+    scroll(null, pos - 20)
+  } else {
+    introContainer = ctx.introContainer
   }
 
-  let introContainer = ctx.introContainer
 
   // on load intro, start
   document.onload = intro.init(introContainer, ctx, (r) => {
@@ -206,7 +212,7 @@ function scroll (e, pos) {
     direction = actualPosition - nextPosition
     util = Math.abs(direction)
 
-    factor = util / 50
+    factor = util / 20
     add = direction >= 0 ? factor * -1 : factor
     direction = Math.abs(direction)
     
@@ -215,11 +221,15 @@ function scroll (e, pos) {
   
   function scrollmove () {
     scrollA = false
+    console.log(actualPosition, direction)
     
     if (direction <= 1) {
       scrollA = true
     } else {
-      window.scrollTo(0, actualPosition += add)
+      window.scrollTo({
+        top: actualPosition += add,
+        behavior: 'smooth'
+      })
       direction -= factor
       window.requestAnimationFrame(scrollmove)
     }

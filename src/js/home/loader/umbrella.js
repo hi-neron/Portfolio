@@ -11,7 +11,7 @@ function randomPhrase () {
   const RANDOM_PHRASES = [
     'waiting for coffee time',
     'surfing 20m waves',
-    'getting a tan'
+    'writing in the sand'
   ]
 
   let phraseIndex = randomNum(RANDOM_PHRASES.length)
