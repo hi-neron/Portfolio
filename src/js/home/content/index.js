@@ -27,9 +27,15 @@ function getItems(tag, cb) {
   let result = []
   let ev = new CustomEvent('tagChange')
 
+  
   if (tag) {
     for (let i = 0; i < items.length; i++) {
-      if(_.indexOf(items[i].keywords, tag) != -1) {
+      
+      let keywords = items[i].keywords.toLowerCase()
+      keywords = keywords.split(', ')
+      let articleTags = keywords
+      
+      if(_.indexOf(articleTags, tag) != -1) {
         result.push(items[i])
       }
     }
@@ -39,18 +45,18 @@ function getItems(tag, cb) {
 
   if (result.length > 0) {
     items = result
-    ev.message = 'Keyword: '
+    ev.message = 'Palabra clave: '
   } else {
 
     if (tag) {
-      ev.message = 'Keyword '
-      ev.alert = 'not found:'
+      ev.message = 'palabra clave '
+      ev.alert = 'no encontrada:'
 
     } else {
-      ev.message = "Everything here,"
+      ev.message = "Todo aquí,"
     }
 
-    ev.tag = ev.message === 'Everything here,' ? " that's me." : tag
+    ev.tag = ev.message === 'todo aquí,' ? " es proyecto" : tag
     items = items
   }
 

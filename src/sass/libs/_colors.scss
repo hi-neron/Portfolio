@@ -5,13 +5,13 @@ $dat: #131618;
 $mainColor: #131618;
 $mainColor2: #17161a;
 $mainColor3: #1b1920;
-$mainColor4: #322934;
+$mainColor4: #2e2b2d;
 $mainColor5: #977ab3;
 $mainColor6: #2d3538;
 
-$secondaryColor: #FF4369;
-$secondaryColor2: #ff6f8c;
-$secondaryColor3: #ff9bbd;
+$secondaryColor: #ff7b6a;
+$secondaryColor2: #ff7b6a;
+$secondaryColor3: #ff7b6a;
 
 $skin: #ffc095;
 
@@ -33,7 +33,7 @@ $contentBackground: #EAEAEA;
 
 // ---->
 // BAR CONTENT
-$background-bar-color: $thirdColor4;
+$background-bar-color: $backgroundGray;
 $items-colors: $mainColor4;
 $items-colors-over: $secondaryColor;
 
@@ -53,7 +53,7 @@ $whiteOver: rgba($mainColor4, 0.999);
 $backgroundOverArticles: $whiteOver;
 
 // items
-$textColor: $thirdColor4;
+$textColor: $backgroundGray2;
 $bottomTextColor: $thirdColor4;
 $typeColor: $secondaryColor2;
 

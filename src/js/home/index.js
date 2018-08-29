@@ -29,7 +29,6 @@ const cvBehavior = require('./curriculum').curriculumBehavior
 
 // bar
 const barCreator = require('./bar').templateP
-const barBehavior = require('./bar').barBehavior
 let app, mainContent, msnry, imgLoaded, maxDistance, windowSize
 
 // loader
@@ -52,23 +51,11 @@ page('/:tag?', create, loader, (ctx, next) => {
 
   mainContent = ctx.mainContent
 
-  // get intro
-  document.onload = intro.init(introContainer, ctx)
   drawArticles(tag, ctx)
   
   // Bar
   barCreator((t) => {
     bar.appendChild(t)
-  })
-
-  cvCreator((t) => {
-    cvi.appendChild(t.cv)
-    document.body.appendChild(t.launcher)
-  })
-  
-  content.getFooter((e, r) => {
-    if (e) return console.log(new Error({message: 'An Error has ocurred'}))
-    footer.appendChild(r)
   })
 
   // ABRE EL ARTICULO: Lo dibuja cuando se abre
@@ -229,9 +216,6 @@ window.addEventListener('wheel', (e) => {
   // e.preventDefault()
   let mainContentPosition = getPosition(mainContent)
   scroll(e)
-  barBehavior(mainContentPosition)
-  cvBehavior(mainContentPosition)
-  introBehavior(mainContentPosition)
 }, {passive: true})
 
 window.addEventListener( 'resize', (e) => {

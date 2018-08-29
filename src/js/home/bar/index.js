@@ -2,7 +2,7 @@ const yo = require('yo-yo')
 const empty = require('empty-element')
 const _ = require('lodash')
 
-let limit = false
+let limit = true
 let opened = false
 let menuBar
 
@@ -41,6 +41,12 @@ function getTags () {
   let scoredTags = []
   for (let article in articles) {
     let articleTags = articles[article].keywords
+
+    let keywords = articleTags.toLowerCase()
+    keywords = keywords.split(', ')
+
+    articleTags = keywords
+
     for (let i = 0; i < articleTags.length; i++) {
       preTags.push(articleTags[i])
     }
@@ -99,9 +105,12 @@ function createTemplate() {
   
   // add main items
   for (let i = 0; i < MAINK.length; i++) {
+    let tagP = MAINK[i]
+    console.log(tagP)
+
     linkTemplate = yo`
-    <span class="bar-link" data-label="${MAINK[i]}">
-      ${MAINK[i]}
+    <span class="bar-link" data-label="${tagP}">
+      ${tagP}
     </span>
     `
     mainLinks.appendChild(linkTemplate)
@@ -109,9 +118,13 @@ function createTemplate() {
 
   // add main items
   for (let i = 0; i < SECONDK.length; i++) {
+    let tagPS = SECONDK[i]
+
+    console.log(tagPS)
+
     linkTemplate = yo`
-      <span class="bar-link" data-label="${SECONDK[i]}">
-        ${SECONDK[i]}
+      <span class="bar-link" data-label="${tagPS}">
+        ${tagPS}
       </span>
     `
     secondaryLinks.appendChild(linkTemplate)
@@ -130,6 +143,7 @@ function createTemplate() {
     const drawArticles = require('../').drawArticles
     // tag to search
     let myTag = e.target.getAttribute('data-label')
+    console.log(myTag)
     drawArticles(myTag)
   })
 
@@ -167,23 +181,6 @@ trigger.addEventListener('click', (e) => {
   }
 })
 
-function barBehavior (mainContentP) {
-  let vPosition = window.pageYOffset
-  let app = document.getElementById('app')
-  let bar = document.getElementById('main-bar')
-  
-  if (vPosition > mainContentP.top - 150) {
-    limit = true
-    trigger.classList.add('view');
-  } else {
-    limit = false
-    opened = false
-    trigger.classList.remove('view');
-    app.classList.remove('main-bar-open-app');
-    bar.classList.remove('main-bar-open-bar');
-  }
-}
-
 window.addEventListener('tagChange', (e) => {
   let newTag = e.tag
   let newMessage = e.message
@@ -199,6 +196,5 @@ function templateP (cb) {
 }
 
 module.exports = {
-  templateP,
-  barBehavior
+  templateP
 }

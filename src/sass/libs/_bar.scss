@@ -38,7 +38,7 @@
     #bar-trigger {
       color: $trigger-color;
       font-family: 'LMono';
-      opacity: 0;
+      opacity: 1;
       transition: all 0.25s ease-in;
       left: 369px; 
       bottom: 10%;
@@ -63,7 +63,7 @@
           &:before {
             font-family: 'fontello';
             font-size: 0,8rem;
-            content: '\e800';
+            content: '\e801';
           }
 
           display: inline;
@@ -108,21 +108,26 @@
 
       .main-bar-list {
         padding: 10px 10px 0px 10px;
-        
+
         .bar-link {
           text-transform: uppercase;
           font-family: 'eleb';
           -webkit-font-smoothing: antialiased;
           text-decoration: none;
-          font-size: 3.6rem;
+          font-size: 1.9rem;
           color: $items-colors;
-          line-height: rem;
+          line-height: 1.2em;
 
           -webkit-hyphens: auto;
           -moz-hyphens: auto;
           -ms-hyphens: auto;
           hyphens: auto;
-          -webkit-hyphenate-character: '⌁';
+          -webkit-hyphenate-character: '-';
+
+          &:after {
+            content: ',';
+            margin-left: -10px;
+          }
 
           &:hover {
             cursor: pointer;
@@ -148,7 +153,7 @@
           color: $items-colors;       
           font-family: 'LMono';
           font-variation-settings: 'wght' 400, 'wdth' 120;
-          letter-spacing: 0.2rem;
+          letter-spacing: 0.1rem;
           -webkit-font-smoothing: antialiased;              
           text-decoration: none;
           display: inline-block;
@@ -156,11 +161,10 @@
           
           text-transform: uppercase;
           margin-right: 9px;
-          font-size: 1.1em;
+          font-size: 0.9em;
           border: 1px solid transparent;
           margin-bottom: 8px;
-          border-bottom: 1px solid $items-colors;
-          padding: 3px 2px 0.35em 2px; 
+          padding: 3px 2px 0.2em 2px; 
           line-height: 0.68em;
 
           &:hover {

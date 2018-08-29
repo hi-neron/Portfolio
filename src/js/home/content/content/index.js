@@ -133,6 +133,11 @@ class Article {
     this.articleLoader.setAttribute('class', 'over-article-loader')
     this.articleLoader.appendChild(caffeeLoader())
 
+    let keywords = this.keywords.toLowerCase()
+    keywords = keywords.split(', ')
+
+    this.keywords = keywords
+
     this.keywordsContainer = yo`
       <div class="over-article-keywords">
       </div>
@@ -147,7 +152,7 @@ class Article {
       `
       this.keywordsContainer.appendChild(template)
     }
-    
+
     this.typeContainer = yo`
     <div class="over-article-type">
       <span>${this.type}</span>
@@ -159,9 +164,9 @@ class Article {
       <span className="over-article-title">
         ${this.title}
       </span>
-      <span className="over-article-subtitle">
+      <div className="over-article-subtitle">
         ${this.subtitle}
-      </span>
+      </div>
     </div>
     `
       
