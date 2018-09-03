@@ -214,7 +214,7 @@ class Article {
     let important = this.important ? 'grid-item-widthx2': ''
 
     let video = yo`
-    <video class="images-to-load" autoplay loop>
+    <video class="images-to-load" autoplay muted loop>
       <source src="${this.mainPicture.url}" type="video/mp4">
     </video>`
 
@@ -397,10 +397,16 @@ function createTemplate (items, cb) {
     main.appendChild(article.smallView)
 
     if (article.mainImageType === 'video') {
+      let promise = article.img.play()
+
+      promise.then( () => {
+        console.log('play')
+      }).catch(e => {
+        console.log(e)
+      })
       article.img.oncanplay = function() {
-        console.log('ready')
-        this.play()
       }
+
     }
 
     articlesList.push(article)

@@ -245,14 +245,21 @@ class Document {
     let abstract = document.createElement('div')
     abstract.setAttribute('class', 'document-project-abstract')
 
+    let arrow = yo`
+    <span className="document-project-abstract-arrow">
+      ⟶
+    </span>`
+
     let template = yo`
       <div className="document-project-abstract-container">
         <h3 className="document-project-abstract-content">
           ${this.abstract}
+          ${arrow}
         </h3>
       </div>
     `
 
+    arrow.style.color = `${this.colors[2]}`
     template.style.color = `${this.colors[1]} !important`
 
     abstract.appendChild(template)

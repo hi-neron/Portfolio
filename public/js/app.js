@@ -51970,23 +51970,23 @@ function world(debbug, assets, appContainer, ctx) {
 
     // assets
 
-    // ME
-    var meMaterial = new THREE.MeshBasicMaterial({
-      color: meColor,
-      skinning: true,
-      blending: THREE.NoBlending
+    // // ME
+    // let meMaterial = new THREE.MeshBasicMaterial({
+    //   color: meColor,
+    //   skinning: true,
+    //   blending: THREE.NoBlending
 
-    });
+    // })
 
-    var meGeometry = models.me;
+    // let meGeometry = models.me
 
-    me = new THREE.SkinnedMesh(meGeometry, meMaterial);
+    // me = new THREE.SkinnedMesh(meGeometry, meMaterial)
 
-    mixer = new THREE.AnimationMixer(me);
-    helloMove = mixer.clipAction('hello');
+    // mixer = new THREE.AnimationMixer(me)
+    // helloMove = mixer.clipAction('hello')
 
-    helloMove.clampWhenFinished = true;
-    helloMove.setEffectiveWeight(1);
+    // helloMove.clampWhenFinished = true
+    // helloMove.setEffectiveWeight(1)
 
     // TEAPOT
     // materials
@@ -52013,8 +52013,8 @@ function world(debbug, assets, appContainer, ctx) {
     teaBody.castShadow = true;
     teaBody.receiveShadow = true;
 
-    me.castShadow = true;
-    me.receiveShadow = true;
+    // me.castShadow = true
+    // me.receiveShadow = true
 
     teaPotWrapper = new THREE.Group();
     teaBody.position.x = -0.25;
@@ -52030,14 +52030,17 @@ function world(debbug, assets, appContainer, ctx) {
     lettersDD.position.z = -0.3;
     // teaPotWrapper.rotation.y = -0.4 * Math.PI
 
-    me.position.y = 4;
-    me.position.x = 1.9;
-    me.scale.y = 0.78;
-    me.scale.x = 0.78;
-    me.rotation.y = 0.7 * Math.PI;
+    // me.position.y = 4
+    // me.position.x = 1.9
+    // me.scale.y = 0.78
+    // me.scale.x = 0.78
+    // me.rotation.y = 0.7 * Math.PI
+
 
     // scene.add(name)
-    teaPotWrapper.add(me);
+
+    // person
+    // teaPotWrapper.add(me)
     teaPotWrapper.add(teaCap);
     teaPotWrapper.add(teaBody);
     teaPotWrapper.add(lettersDD);
@@ -52055,8 +52058,12 @@ function world(debbug, assets, appContainer, ctx) {
       addControls(control);
     }
 
-    render();
-    helloMove.play();
+    var pos = {
+      top: 500
+    };
+
+    introBehavior(pos);
+    // helloMove.play()
   });
 }
 
@@ -52247,7 +52254,7 @@ function render(ts) {
     }
 
     camera.lookAt(teaPotWrapper.position);
-    mixer.update(_delta);
+    // mixer.update(delta)
     renderer.render(scene, camera);
     runCounter += 1;
     animation = requestAnimationFrame(render);
@@ -73582,7 +73589,7 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div className="article-d
     _templateObject4 = _taggedTemplateLiteral(['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    '], ['\n    <div class="over-article-type">\n      <span>', '</span>\n    </div>\n    ']),
     _templateObject5 = _taggedTemplateLiteral(['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    '], ['\n    <div class="over-article-titles">\n      <span className="over-article-title">\n        ', '\n      </span>\n      <span className="over-article-subtitle">\n        ', '\n      </span>\n    </div>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    '], ['\n      <div class="over-article-container">\n        <div class="over-article-wrapper">\n          <div class="over-article-top">\n            ', '\n            ', '\n              <div class="over-article-bottom">\n                ', '\n              </div>\n            </div>\n        </div>\n      </div>\n    ']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    <video class="images-to-load" autoplay loop>\n      <source src="', '" type="video/mp4">\n    </video>'], ['\n    <video class="images-to-load" autoplay loop>\n      <source src="', '" type="video/mp4">\n    </video>']),
+    _templateObject7 = _taggedTemplateLiteral(['\n    <video class="images-to-load" autoplay muted loop>\n      <source src="', '" type="video/mp4">\n    </video>'], ['\n    <video class="images-to-load" autoplay muted loop>\n      <source src="', '" type="video/mp4">\n    </video>']),
     _templateObject8 = _taggedTemplateLiteral(['<img class="images-to-load" data-src="', '" src="', '" alt="', '">'], ['<img class="images-to-load" data-src="', '" src="', '" alt="', '">']),
     _templateObject9 = _taggedTemplateLiteral(['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          ', '\n          ', '\n          ', '\n        </div>\n      </article>\n    '], ['\n      <article class="grid-item ', '" title="', '">\n        <div class="article-content">\n          ', '\n          ', '\n          ', '\n          ', '\n        </div>\n      </article>\n    ']),
     _templateObject10 = _taggedTemplateLiteral(['\n      <div class="document-close-container">\n        <div class="document-close-text">\n          BACK\n        </div>\n      </div>\n    '], ['\n      <div class="document-close-container">\n        <div class="document-close-text">\n          BACK\n        </div>\n      </div>\n    ']),
@@ -73962,10 +73969,14 @@ function createTemplate(items, cb) {
     main.appendChild(article.smallView);
 
     if (article.mainImageType === 'video') {
-      article.img.oncanplay = function () {
-        console.log('ready');
-        this.play();
-      };
+      var promise = article.img.play();
+
+      promise.then(function () {
+        console.log('play');
+      }).catch(function (e) {
+        console.log(e);
+      });
+      article.img.oncanplay = function () {};
     }
 
     articlesList.push(article);
@@ -78877,81 +78888,190 @@ module.exports = socialCreator;
 "use strict";
 
 
+/**
+ * EXAMPLE
+  {
+    title: 'Historias de Cal',
+    subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
+    type: 'project',
+    colors: [0xebe9df, 0x502B27, 0x2cc5ff],
+    date: {
+      year: '2011',
+      color: 1
+    },
+    mainImageType: 'image',
+    abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
+    keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
+    content: [
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/player.gif',
+        superCaption: 'game animation',
+        caption: 'player walking animation (historias de cal)',
+        captionPos: 'top',
+        background: false
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/bird.gif',
+        superCaption: 'game animation',
+        caption: 'Bird intro (historias de cal)',
+        captionPos: 'bottom',
+        background: true
+      },
+      {
+        type: 'Text',
+        subtype: 'Short',
+        background: true,
+        text: 'el velóz murcielago indú alcanzó los apaches y se los puse, yendo a correr por toda la manzana donde vivía su madre'
+      },
+      {
+        type: 'Text',
+        subtype: 'Long',
+        background: false,
+        text: 'El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.'
+      },
+      {
+        type: 'Image',
+        subtype: 'Dual',
+        images: [
+          {
+            url: './img/articles/sept/main.gif',
+            captionPos: 'top',
+            background: true,
+            caption: 'First image'
+          },
+          {
+            url: './img/articles/sept/main.gif',
+            captionPos: 'bottom',
+            background: true,
+            caption: 'Decond image'
+          }
+        ]
+      },
+      {
+        type: 'Text',
+        subtype: 'Link:download',
+        background: false,
+        text: 'Este es un link',
+        caption: '56k',
+        url: './files/mifile.pdf'
+      },
+      {
+        type: 'Text',
+        subtype: 'Quote',
+        text: 'Lo mejor del mundo mundial',
+        data: 'new york times',
+        subdata: '1982',
+      },
+    ],
+    front: {
+      url: '/img/articles/sept/mainxl.png',
+      captionPos: 'bottom',
+      color: 1
+    },
+    pictures: {
+      main: {
+        name: 'hello World',
+        url: '/img/articles/sept/main.gif'
+      },
+    },
+  },
+ */
+
 module.exports = [{
   title: 'Historias de Cal',
   subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
   type: 'project',
-  colors: [0xebe9df, 0x502B27, 0x2cc5ff],
+  colors: [0xffeecf, 0x502B27, 0x2cc5ff],
   date: {
     year: '2011',
     color: 1
   },
-  mainImageType: 'video',
-  abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
+  mainImageType: 'image',
+  abstract: "... ¡Wroag! ¡Crack! El suelo de Popayán crujía, mientras la marea roja iba saqueando las calles de esquina a esquina. Perros, gatos, transeúntes-despistados; ladraban, maullaban, gritaban. No había remedio, lo que embestía el enjambre de ácaros, metro a metro, era arrastrado sin esfuerzo ni misericordia.",
   keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
   content: [{
     type: 'Image',
     subtype: 'Single:1',
-    url: './img/articles/sept/player.gif',
-    superCaption: 'game animation',
-    caption: 'player walking animation (historias de cal)',
-    captionPos: 'top',
-    background: false
+    url: './img/articles/sept/bird.gif'
   }, {
     type: 'Image',
     subtype: 'Single:1',
-    url: './img/articles/sept/bird.gif',
-    superCaption: 'game animation',
-    caption: 'Bird intro (historias de cal)',
-    captionPos: 'bottom',
-    background: true
+    url: './img/articles/sept/farol.png'
   }, {
-    type: 'Text',
-    subtype: 'Short',
-    background: true,
-    text: 'el velóz murcielago indú alcanzó los apaches y se los puse, yendo a correr por toda la manzana donde vivía su madre'
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/sept/woar.jpg',
+    superCaption: 'La gran nigüa',
+    caption: 'arte conceptual',
+    captionPos: 'bottom',
+    background: false
   }, {
     type: 'Text',
     subtype: 'Long',
     background: false,
-    text: 'El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.'
+    text: 'El enjambre funcionaba como una cinta transportadora, la mas nauseabunda que se haya visto jamas. Las zancas de nigüa, que eran tan diminutas como innumerables, se sincronizaban perfectamente para formar un poderoso oleaje, muy parecido al zigzagueo de una serpiente o una bandera que se agita con el viento.'
   }, {
     type: 'Image',
-    subtype: 'Dual',
-    images: [{
-      url: './img/articles/sept/main.gif',
-      captionPos: 'top',
-      background: true,
-      caption: 'First image'
-    }, {
-      url: './img/articles/sept/main.gif',
-      captionPos: 'bottom',
-      background: true,
-      caption: 'Decond image'
-    }]
+    subtype: 'Single:1',
+    url: './img/articles/sept/nigua.png',
+    caption: 'Pequeña nigüa',
+    captionPos: 'bottom'
   }, {
     type: 'Text',
-    subtype: 'Link:download',
+    subtype: 'Long',
     background: false,
-    text: 'Este es un link',
-    caption: '56k',
-    url: './files/mifile.pdf'
+    text: 'Todo lo que quedase atrapado en aquel torbellino de insectos, sin remedio, se escurría hasta al vestíbulo principal de la colmena. El hoyo negro, el parque de los gritos. Aguardaba ahí la gran nigua reina...'
   }, {
     type: 'Text',
-    subtype: 'Quote',
-    text: 'Lo mejor del mundo mundial',
-    data: 'new york times',
-    subdata: '1982'
+    subtype: 'short',
+    background: false,
+    text: 'Historias de Cal. Un videojuego educativo. Relata las aventuras de Francisco, un cuasi-adolescente que siempre ha vivido con sus abuelos en Popayán.'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/sept/player.gif',
+    superCaption: 'Francisco',
+    captionPos: 'bottom',
+    background: false
+  }, {
+    type: 'Text',
+    subtype: 'Long',
+    background: false,
+    text: 'Inesperadamente, una plaga de nigüas rojas se desata por toda la ciudad, la estupidez y el desconocimiento de las nuevas generaciones son la causa; Francisco que siempre escucho con atención las historias de su abuelo, lo sabe. Toma su mochila y asume la responsabilidad de combatirlas.'
+  }, {
+    type: 'Text',
+    subtype: 'Long',
+    background: false,
+    text: 'Es como empieza un viaje histórico, recorriendo los pasos mas emblemáticos de la ciudad, para dar con pistas de como, en antaño, se pudo combatir y triunfar contra esta terrible plaga.'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/sept/main.gif',
+    superCaption: 'Primer nivel',
+    caption: 'Gran nigüa',
+    captionPos: 'bottom',
+    background: true
+  }, {
+    type: 'Text',
+    subtype: 'Link',
+    background: false,
+    text: 'Historias de Popayán',
+    caption: 'Alcaldía de Popayan',
+    url: 'http://popayan.gov.co/zonainfantil/juego/'
   }],
   front: {
-    url: '/img/articles/sept/mainxl.png',
+    url: '/img/articles/sept/mainxl.jpg',
     captionPos: 'bottom',
     color: 1
   },
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/sept/main.mp4'
+      url: '/img/articles/sept/main.gif'
     }
   }
 }, {
@@ -78969,7 +79089,7 @@ module.exports = [{
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/one/main.svg',
+      url: '/img/articles/one/main-80.jpg',
       urlXX: '/img/articles/one/main_b.svg',
       comment: 'first coment main image'
     },
@@ -79010,7 +79130,7 @@ module.exports = [{
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/eight/main.png',
+      url: '/img/articles/eight/main.jpg',
       urlXX: '/img/articles/eight/main.png',
       comment: 'first coment main image'
     },
@@ -79122,7 +79242,7 @@ module.exports = [{
     year: '2016',
     color: 1
   },
-  mainImageType: 'video',
+  mainImageType: 'image',
   colors: [0x270944, 0xaefff8],
   intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
   content: 'Mariana hace uso de su cuerpo como una plastilina de k\xEDnder: sin mezquindad nos recuerda que la gente est\xE1 muy delgada o es muy est\xFApida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo fam\xE9lico en tiempos de selfies, \xF3xido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aqu\xED un eufemismo para nuestra pobreza: nuestra esclavitud. Me regal\xF3 un pin donde aparece usando un vestido de ba\xF1o estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con p\xF3lvora de ca\xF1\xF3n con las que los tiranos espa\xF1oles nos defend\xEDan de los piratas.\n    El punto crucial de esta exhibici\xF3n titulada \u201CEstaba perdido, pero estar perdido nunca se sinti\xF3 tan cabr\xF3n\u201D, y que es preciso leer con acento puertorrique\xF1o, era una fuente amarilla cuya construcci\xF3n fue hecha a cuatro manos con el tambi\xE9n boricua y m\xEDtico artista Radam\xE9s \u201CJuni" Figueroa, cuyo contenido el p\xFAblico se apresur\xF3 a beber como pueblo sediento del antiguo testamento. Se rumoraba que su agua estaba ligeramente envenenada con MDMA o \xE9xtasis en su estado puro: de ese que toman los j\xF3venes ansiosos en fiestas electr\xF3nicas que duran d\xEDas y no tienen ni pies, cabeza, ni fin.\n    Los tumultos de estudiantes, artista y visitantes ocasionales aglomerados tratando de probar un poco de la bebida prometida, fue como una bocanada de verdad y tristeza: Hab\xEDa mucha confusi\xF3n pero sobre todo hab\xEDa mucha nada. Una semana despu\xE9s estar\xEDa en un avi\xF3n con rumbo a Cartagena de Indias para asistir al FICCI, del que no vi casi nada, pero eso no importa mientras el ventilador gire como hipnotizador parsimonioso o como una eficiente m\xE1quina de sopor.',
@@ -79130,7 +79250,7 @@ module.exports = [{
   pictures: {
     main: {
       name: 'hello World',
-      url: '/img/articles/four/main.mp4',
+      url: '/img/articles/four/main.gif',
       urlXX: '/img/articles/four/main.gif',
       comment: 'first coment main image'
     },
@@ -96376,11 +96496,9 @@ class SMAASearchImageData {
 
 var THREE = __webpack_require__(2);
 var loader = new THREE.JSONLoader();
-var fontLoader = new THREE.FontLoader();
 var async = __webpack_require__(425);
 
 module.exports = function (cb) {
-
   async.waterfall([function (cb) {
     loader.load('/models/body.json', function (geometry) {
       if (geometry) {
@@ -96411,41 +96529,23 @@ module.exports = function (cb) {
       }
     });
   }, function (geometries, cb) {
-    loader.load('/models/me.json', function (geometry, materials) {
-      if (geometry) {
-        geometries.me = geometry;
-        geometries.me.materials = materials;
-        cb(null, geometries);
-      } else {
-        cb(new Error('not found geometry'));
-      }
-    });
-  }
-
-  // function(geometries, cb){
-  //   fontLoader.load('/fonts/square.json', (font) => {
-  //     if (font) {
-  //       let fonts = {
-  //         square: font
-  //       }
-  //       cb(null, geometries, fonts)
-  //     } else {
-  //       cb(new Error('not found geometry'))
-  //     }
-  //   })
-  // }
-
-  ], function (e, geometries, fonts) {
+    // legacy design
+    cb(null, geometries);
+    // loader.load('/models/me.json', (geometry, materials) => {
+    //   if (geometry) {
+    //     geometries.me = geometry
+    //     geometries.me.materials = materials
+    //   } else {
+    //     cb(new Error('not found geometry'))
+    //   }
+    // })
+  }], function (e, geometries, fonts) {
     var assets = {
       geometries: geometries,
       fonts: fonts
     };
     cb(e, assets);
   });
-
-  //   loader.load('/models/cap.json', (cap) => {
-  //     cb({body, cap})
-  //   })
 };
 
 /***/ }),
@@ -103248,7 +103348,8 @@ var _templateObject = _taggedTemplateLiteral(['\n      <div className="document-
     _templateObject2 = _taggedTemplateLiteral(['\n    <div className="document-project-front-top">\n      <div className="document-project-front-top-left">\n        <h1 className="document-project-front-title">\n          ', '\n        </h1>\n        ', '\n      </div>\n      <div className="document-project-front-top-right">\n        <h2 className="document-project-front-subtitle">\n          ', '\n        </h2>\n      </div>\n    </div>\n    '], ['\n    <div className="document-project-front-top">\n      <div className="document-project-front-top-left">\n        <h1 className="document-project-front-title">\n          ', '\n        </h1>\n        ', '\n      </div>\n      <div className="document-project-front-top-right">\n        <h2 className="document-project-front-subtitle">\n          ', '\n        </h2>\n      </div>\n    </div>\n    ']),
     _templateObject3 = _taggedTemplateLiteral(['\n      <div className="document-project-front-container">\n        ', '\n        <figure className="document-project-front-imageContainer">\n          <img src="', '" alt="" className="document-project-front-image"/>\n        </figure>\n      </div>\n    '], ['\n      <div className="document-project-front-container">\n        ', '\n        <figure className="document-project-front-imageContainer">\n          <img src="', '" alt="" className="document-project-front-image"/>\n        </figure>\n      </div>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n      <div className="front-loader">\n        ', '\n      </div>\n    '], ['\n      <div className="front-loader">\n        ', '\n      </div>\n    ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n        </h3>\n      </div>\n    '], ['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n        </h3>\n      </div>\n    ']);
+    _templateObject5 = _taggedTemplateLiteral(['\n    <span className="document-project-abstract-arrow">\n      \u27F6\n    </span>'], ['\n    <span className="document-project-abstract-arrow">\n      \u27F6\n    </span>']),
+    _templateObject6 = _taggedTemplateLiteral(['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n          ', '\n        </h3>\n      </div>\n    '], ['\n      <div className="document-project-abstract-container">\n        <h3 className="document-project-abstract-content">\n          ', '\n          ', '\n        </h3>\n      </div>\n    ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -103492,8 +103593,11 @@ var Document = function () {
       var abstract = document.createElement('div');
       abstract.setAttribute('class', 'document-project-abstract');
 
-      var template = yo(_templateObject5, this.abstract);
+      var arrow = yo(_templateObject5);
 
+      var template = yo(_templateObject6, this.abstract, arrow);
+
+      arrow.style.color = '' + this.colors[2];
       template.style.color = this.colors[1] + ' !important';
 
       abstract.appendChild(template);
@@ -103590,7 +103694,7 @@ var _templateObject = _taggedTemplateLiteral(['\n        <div className="project
     _templateObject2 = _taggedTemplateLiteral(['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      '], ['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      ']),
     _templateObject3 = _taggedTemplateLiteral(['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    '], ['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      '], ['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    '], ['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n        ', '\n      </figure>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    '], ['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['\n      <div className="project-', '">\n        ', '\n      </div>\n    '], ['\n      <div className="project-', '">\n        ', '\n      </div>\n    ']),
     _templateObject7 = _taggedTemplateLiteral(['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    '], ['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    ']),
     _templateObject8 = _taggedTemplateLiteral(['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    '], ['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    ']),
@@ -103749,30 +103853,27 @@ var Image = function (_Type) {
 
       var captions = this.getSingleCaptions();
 
-      // set styles
-      // this.captionPos
-      // this.backgroundLabel
-
       if (this.backgroundLabel) {
-        captions.style.backgroundColor = this.colors[0] + ' !important';
-        captions.style.color = this.colors[1] + ' !important';
+        captions.style.backgroundColor = '' + this.colors[1];
+        captions.style.color = '' + this.colors[0];
       }
 
       switch (this.captionPos) {
         case 'top':
-          captions.style.top = '16px';
+          captions.style.top = '1em';
           break;
         case 'bottom':
-          captions.style.bottom = '0px';
+          captions.style.bottom = '1em';
           break;
         default:
           captions.style.top = '16px';
           break;
       }
 
-      var template = yo(_templateObject5, this.url, captions);
+      var template = yo(_templateObject5, this.url);
 
       wrapper.appendChild(template);
+      wrapper.appendChild(captions);
       this.container.appendChild(this.loaderContainer);
       this.container.appendChild(wrapper);
     }

@@ -78,7 +78,6 @@
 
   .document {
     width: 100%;
-    padding-bottom: 50px;
     font-family: 'LMono';
     // height: 100%;
     // padding-bottom: 2rem;
@@ -90,7 +89,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-auto-flow: dense;
-  align-items: center;
+  align-items: stretch;
+  justify-items: stretch;
 
   .document-project-front {
     grid-column-end: span 3;
@@ -163,7 +163,10 @@
           }
         }
       }
+
       .document-project-front-imageContainer{
+        margin-bottom: -2px;
+
         .document-project-front-image{
           width: 100%;
         }
@@ -182,20 +185,20 @@
     position: relative;
     align-self: center;
     text-align: center;
-    grid-column-end: span 1;
+    grid-column-end: span 2;
     grid-row-end: span 1;
 
     .document-project-abstract-container {
       display: inline-block;
-      padding: 3em;
+      padding: 2em;
       text-align: left;
       
       .document-project-abstract-content {
-        padding: 40px 0;
+        padding: 10px 0;
         width: 100%;
         font-variation-settings: 'wght' 650, 'wdth' 85;
-        font-size: 14pt;
         line-height: 1.4em;
+        font-size: calc(1.1em + 4 * (100vw - 320px) / 1180);
       }
     }
   }
@@ -203,14 +206,21 @@
   .image-single-2 {
     grid-column-end: span 2;
     grid-row-end: span 1;
+    
+    .project-image-wrapper {
+      min-height: 250px;
 
+      .project-image {
+        width: 100%;
+      }
+    }
     .content-loader {
       width: 100%;
       height: 100%;
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 0;
+      z-index: -2;
     }
   }
 
@@ -251,7 +261,7 @@
     grid-row-end: span 1;
     text-align: left;
     line-height: 1.45em;
-    font-size: 1em;
+    font-size: calc(0.9em + 4 * (100vw - 320px) / 1180);
     font-variation-settings: 'wght' 500, 'wdth' 100;
   }
 
@@ -259,15 +269,32 @@
     grid-column-end: span 1;
     grid-row-end: span 1;
     text-align: left;
-    line-height: 1.4em;
-    font-size: 1.1em;
+    line-height: 1.45em;
+    font-size: calc(1em + 4 * (100vw - 320px) / 1180);
     font-variation-settings: 'wght' 650, 'wdth' 85;
+    align-self: center;
+    justify-self: center;
+
+    .project-text-wrapper {
+      .project-text {
+        padding: 0;
+        margin: 0% 10%;
+        width: 80%;
+      }
+    }
   }
 
   .text-quote {
     grid-column-end: span 2;
     grid-row-end: span 1;
     text-align: center;
+    font-variation-settings: 'wght' 650, 'wdth' 95;
+  }
+  .text-link {
+    grid-column-end: span 2;
+    grid-row-end: span 1;
+    text-align: center;
+    align-self: center;
     font-variation-settings: 'wght' 650, 'wdth' 95;
   }
 }
@@ -304,44 +331,56 @@
 }
 
 .project-image-wrapper {
-  position: relative;
   z-index: 1;
-
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-height: 350px;
+  
   .project-image {
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    
     .project-image-img{
-      display: inline-block;
+      width: 100%;
     }
 
-    .project-image-captions{
-      text-align: left;
-      position: absolute;
-      line-height: 1.1em;
-      padding: 3px 4px 3px 3px;
-      left: 50%;
-      transform: translateX(-50%);
-      transition: all 0.3s ease-in-out;
-      text-align: left;
+  }
+  .project-image-captions{
+    text-align: left;
+    position: absolute;
+    line-height: 1.1em;
+    padding: 5px 6px 5px 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+    text-align: left;
+    min-width: 100px;
 
-      .project-image-supercaption{
-        font-family: 'LMono';
-        margin-bottom: 0.2em;
-        font-size: 0.9em;
-        font-variation-settings: 'wght' 550, 'wdth' 95;
-      }
-      .project-image-caption{
-        font-family: 'LMono';
-        font-size: 0.8em;
-        font-variation-settings: 'wght' 350, 'wdth' 95;
-      }
-
+    .project-image-supercaption{
+      font-family: 'LMono';
+      margin-bottom: 0.2em;
+      font-size: 0.9em;
+      font-variation-settings: 'wght' 550, 'wdth' 95;
     }
+    .project-image-caption{
+      font-family: 'LMono';
+      font-size: 0.8em;
+      font-variation-settings: 'wght' 350, 'wdth' 95;
+    }
+
   }
 }
 
 .project-text-wrapper {
   width: 100%;
   height: 100%;
+  align-self: center;
 
   .project-text {
     padding: 3em;
@@ -350,7 +389,7 @@
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
-    -webkit-hyphenate-character: '⌁';
+    -webkit-hyphenate-character: '-';
   }
 
   .project-link {

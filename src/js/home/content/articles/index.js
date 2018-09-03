@@ -1,4 +1,5 @@
-module.exports = [
+/**
+ * EXAMPLE
   {
     title: 'Historias de Cal',
     subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
@@ -8,7 +9,7 @@ module.exports = [
       year: '2011',
       color: 1
     },
-    mainImageType: 'video',
+    mainImageType: 'image',
     abstract: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
     content: [
@@ -84,7 +85,117 @@ module.exports = [
     pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/sept/main.mp4'
+        url: '/img/articles/sept/main.gif'
+      },
+    },
+  },
+ */
+
+module.exports = [
+  {
+    title: 'Historias de Cal',
+    subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
+    type: 'project',
+    colors: [0xffeecf, 0x502B27, 0x2cc5ff],
+    date: {
+      year: '2011',
+      color: 1
+    },
+    mainImageType: 'image',
+    abstract: "... ¡Wroag! ¡Crack! El suelo de Popayán crujía, mientras la marea roja iba saqueando las calles de esquina a esquina. Perros, gatos, transeúntes-despistados; ladraban, maullaban, gritaban. No había remedio, lo que embestía el enjambre de ácaros, metro a metro, era arrastrado sin esfuerzo ni misericordia.",
+    keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
+    content: [
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/bird.gif'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/farol.png'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/sept/woar.jpg',
+        superCaption: 'La gran nigüa',
+        caption: 'arte conceptual',
+        captionPos: 'bottom',
+        background: false
+      },
+      {
+        type: 'Text',
+        subtype: 'Long',
+        background: false,
+        text: 'El enjambre funcionaba como una cinta transportadora, la mas nauseabunda que se haya visto jamas. Las zancas de nigüa, que eran tan diminutas como innumerables, se sincronizaban perfectamente para formar un poderoso oleaje, muy parecido al zigzagueo de una serpiente o una bandera que se agita con el viento.'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/nigua.png',
+        caption: 'Pequeña nigüa',
+        captionPos: 'bottom'
+      },
+      {
+        type: 'Text',
+        subtype: 'Long',
+        background: false,
+        text: 'Todo lo que quedase atrapado en aquel torbellino de insectos, sin remedio, se escurría hasta al vestíbulo principal de la colmena. El hoyo negro, el parque de los gritos. Aguardaba ahí la gran nigua reina...'
+      },
+      {
+        type: 'Text',
+        subtype: 'short',
+        background: false,
+        text: 'Historias de Cal. Un videojuego educativo. Relata las aventuras de Francisco, un cuasi-adolescente que siempre ha vivido con sus abuelos en Popayán.'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/sept/player.gif',
+        superCaption: 'Francisco',
+        captionPos: 'bottom',
+        background: false
+      },
+      {
+        type: 'Text',
+        subtype: 'Long',
+        background: false,
+        text: 'Inesperadamente, una plaga de nigüas rojas se desata por toda la ciudad, la estupidez y el desconocimiento de las nuevas generaciones son la causa; Francisco que siempre escucho con atención las historias de su abuelo, lo sabe. Toma su mochila y asume la responsabilidad de combatirlas.'
+      },
+      {
+        type: 'Text',
+        subtype: 'Long',
+        background: false,
+        text: 'Es como empieza un viaje histórico, recorriendo los pasos mas emblemáticos de la ciudad, para dar con pistas de como, en antaño, se pudo combatir y triunfar contra esta terrible plaga.'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/sept/main.gif',
+        superCaption: 'Primer nivel',
+        caption: 'Gran nigüa',
+        captionPos: 'bottom',
+        background: true
+      },
+      {
+        type: 'Text',
+        subtype: 'Link',
+        background: false,
+        text: 'Historias de Popayán',
+        caption: 'Alcaldía de Popayan',
+        url: 'http://popayan.gov.co/zonainfantil/juego/'
+      },
+    ],
+    front: {
+      url: '/img/articles/sept/mainxl.jpg',
+      captionPos: 'bottom',
+      color: 1
+    },
+    pictures: {
+      main: {
+        name: 'hello World',
+        url: '/img/articles/sept/main.gif'
       },
     },
   },
@@ -105,7 +216,7 @@ module.exports = [
     pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/one/main.svg',
+        url: '/img/articles/one/main-80.jpg',
         urlXX: '/img/articles/one/main_b.svg',
         comment: 'first coment main image',
       },
@@ -153,7 +264,7 @@ module.exports = [
       pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/eight/main.png',
+        url: '/img/articles/eight/main.jpg',
         urlXX: '/img/articles/eight/main.png',
         comment: 'first coment main image',
       },
@@ -282,7 +393,7 @@ module.exports = [
       year: '2016',
       color: 1
     },
-    mainImageType: 'video',
+    mainImageType: 'image',
     colors: [0x270944, 0xaefff8],
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
     content: `Mariana hace uso de su cuerpo como una plastilina de kínder: sin mezquindad nos recuerda que la gente está muy delgada o es muy estúpida, y con agudo sentido del humor reflexiona sobre los mecanismos simplistas con los que hemos construido perpetuando un idealismo famélico en tiempos de selfies, óxido y nada. Mariana nos advierte sobre el espejismo de modelo de revista de moda o estrella de Instagram que a su vez nos mira con desprecio, cara de culo, o en el mejor de los casos parece ignorarnos, mientras juzga nuestra fealdad que es aquí un eufemismo para nuestra pobreza: nuestra esclavitud. Me regaló un pin donde aparece usando un vestido de baño estampado con la bandera confederada gringa: esa misma que campea en la era Trump con sabor a cajita feliz mezclada con pólvora de cañón con las que los tiranos españoles nos defendían de los piratas.
@@ -292,7 +403,7 @@ module.exports = [
       pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/four/main.mp4',
+        url: '/img/articles/four/main.gif',
         urlXX: '/img/articles/four/main.gif',
         comment: 'first coment main image',
       },

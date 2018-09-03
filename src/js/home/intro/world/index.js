@@ -172,23 +172,23 @@ function world (debbug, assets, appContainer, ctx) {
    
     // assets
 
-    // ME
-    let meMaterial = new THREE.MeshBasicMaterial({
-      color: meColor,
-      skinning: true,
-      blending: THREE.NoBlending
+    // // ME
+    // let meMaterial = new THREE.MeshBasicMaterial({
+    //   color: meColor,
+    //   skinning: true,
+    //   blending: THREE.NoBlending
 
-    })
+    // })
 
-    let meGeometry = models.me
+    // let meGeometry = models.me
 
-    me = new THREE.SkinnedMesh(meGeometry, meMaterial)
+    // me = new THREE.SkinnedMesh(meGeometry, meMaterial)
 
-    mixer = new THREE.AnimationMixer(me)
-    helloMove = mixer.clipAction('hello')
+    // mixer = new THREE.AnimationMixer(me)
+    // helloMove = mixer.clipAction('hello')
 
-    helloMove.clampWhenFinished = true
-    helloMove.setEffectiveWeight(1)
+    // helloMove.clampWhenFinished = true
+    // helloMove.setEffectiveWeight(1)
 
     // TEAPOT
     // materials
@@ -216,8 +216,8 @@ function world (debbug, assets, appContainer, ctx) {
     teaBody.castShadow = true
     teaBody.receiveShadow = true
 
-    me.castShadow = true
-    me.receiveShadow = true
+    // me.castShadow = true
+    // me.receiveShadow = true
 
     teaPotWrapper = new THREE.Group()
     teaBody.position.x = -0.25
@@ -233,15 +233,17 @@ function world (debbug, assets, appContainer, ctx) {
     lettersDD.position.z = -0.3
     // teaPotWrapper.rotation.y = -0.4 * Math.PI
     
-    me.position.y = 4
-    me.position.x = 1.9
-    me.scale.y = 0.78
-    me.scale.x = 0.78
-    me.rotation.y = 0.7 * Math.PI
+    // me.position.y = 4
+    // me.position.x = 1.9
+    // me.scale.y = 0.78
+    // me.scale.x = 0.78
+    // me.rotation.y = 0.7 * Math.PI
 
     
     // scene.add(name)
-    teaPotWrapper.add(me)
+
+    // person
+    // teaPotWrapper.add(me)
     teaPotWrapper.add(teaCap)
     teaPotWrapper.add(teaBody)
     teaPotWrapper.add(lettersDD)
@@ -259,8 +261,12 @@ function world (debbug, assets, appContainer, ctx) {
       addControls(control)
     }
 
-    render ()
-    helloMove.play()
+    let pos = {
+      top: 500
+    }
+    
+    introBehavior(pos)
+    // helloMove.play()
 
   })
 }
@@ -455,7 +461,7 @@ function render (ts) {
     }
 
     camera.lookAt(teaPotWrapper.position)
-    mixer.update(delta)
+    // mixer.update(delta)
     renderer.render(scene, camera)
     runCounter += 1
     animation = requestAnimationFrame(render)

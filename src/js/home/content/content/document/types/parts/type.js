@@ -147,21 +147,17 @@ class Image extends Type {
 
     let captions = this.getSingleCaptions()
 
-    // set styles
-    // this.captionPos
-    // this.backgroundLabel
-
     if (this.backgroundLabel) {
-      captions.style.backgroundColor = `${this.colors[0]} !important`
-      captions.style.color = `${this.colors[1]} !important`
+      captions.style.backgroundColor = `${this.colors[1]}`
+      captions.style.color = `${this.colors[0]}`
     }
 
     switch (this.captionPos) {
       case 'top':
-        captions.style.top = '16px'
+        captions.style.top = '1em'
         break;
       case 'bottom':
-        captions.style.bottom = '0px'
+        captions.style.bottom = '1em'
         break;
       default:
         captions.style.top = '16px'
@@ -171,11 +167,11 @@ class Image extends Type {
     let template = yo`
       <figure className="project-image">
         <img src="${this.url}" alt="" className="project-image-img"/>
-        ${captions}
       </figure>
     `
 
     wrapper.appendChild(template)
+    wrapper.appendChild(captions)
     this.container.appendChild(this.loaderContainer)
     this.container.appendChild(wrapper)
   }

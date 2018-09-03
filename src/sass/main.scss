@@ -39,8 +39,9 @@ body {
   font-weight: 400;
   color: $mainColor4;
   overflow-x: hidden; 
-  background: #d2d2d2; /* Old browsers */  
+  background: #dadada; /* Old browsers */  
   text-rendering: geometricPrecision;
+  @extend %back1;
 }
 
 a {
