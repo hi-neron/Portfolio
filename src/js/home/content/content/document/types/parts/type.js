@@ -231,11 +231,17 @@ class Text extends Type {
     let wrapper = document.createElement('div')
     wrapper.setAttribute('class', 'project-text-wrapper')
 
-    let template = yo`
-      <div className="project-${this.type}">
-        ${this.text}
-      </div>
-    `
+    let text = yo`${this.text}`
+
+    // let template = yo`
+    //   <div className="project-${this.type}">
+    //   </div>
+    // `
+
+    let template = document.createElement('div')
+    template.setAttribute('class', `project-${this.type}`)
+
+    template.innerHTML = text
 
     this.setColor(wrapper)
 

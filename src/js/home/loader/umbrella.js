@@ -233,7 +233,8 @@ let umbrellaLoader = yo`
   })
 
   tBLine.set(balloon, {
-    y: -20
+    y: -20,
+    transformOrigin: "80px 60px"
   })
 
   tBLine.
@@ -241,7 +242,6 @@ let umbrellaLoader = yo`
       y : -3,
       scaleX: 1.2,
       scaleY: 0.8,
-      transformOrigin: "80px 60px"
     })
     .set(shadowB, {
       scale: 1.1,

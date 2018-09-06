@@ -40,7 +40,7 @@ let htmlName = yo`
         <span>Á</span>
         <span class="space">­</span>
         <span>N</span>
-        <span class="next-line">⌁</span>
+        <span class="next-line">-</span>
       </div>
       <div className="third-line">
         <span>C</span>

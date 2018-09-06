@@ -121,9 +121,12 @@
   top: 20vh;
   right: 0;
   z-index: 2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &:hover {
     .cv-launcher-button {
+
       background-color: $secondaryColor !important;
     }
   }

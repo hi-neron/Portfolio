@@ -88,9 +88,9 @@ class Document {
     // create template according to type
   }
   
-  createStyle (name, def = 1, custom) {
-    let backgroundColor = this.colors[0]
-    let letterColor = this.colors[def]
+  createStyle (name, letter = 1, background = 0, custom) {
+    let backgroundColor = this.colors[background]
+    let letterColor = this.colors[letter]
 
     letterColor = !letterColor ? this.colors[0]: letterColor
 
@@ -180,7 +180,7 @@ class Document {
     front.setAttribute('class', 'document-project-front')
 
     let styleName = 'front'
-    this.createStyle(styleName, 0)
+    this.createStyle(styleName, this.front.color, this.front.background)
 
     front.classList.add(`document-${styleName}-style`)
 
@@ -253,14 +253,18 @@ class Document {
     let template = yo`
       <div className="document-project-abstract-container">
         <h3 className="document-project-abstract-content">
-          ${this.abstract}
+          ${this.abstract.content}
           ${arrow}
         </h3>
       </div>
     `
 
+    let letterColor = this.abstract.color
+    let backColor = this.abstract.background
+
     arrow.style.color = `${this.colors[2]}`
-    template.style.color = `${this.colors[1]} !important`
+    template.style.color = `${this.colors[letterColor]}`
+    template.style.backgroundColor = `${this.colors[backColor]}`
 
     abstract.appendChild(template)
 

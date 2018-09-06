@@ -28,12 +28,12 @@
         width: 100%;
         margin-left: -10px;
         transform: translate(-50%, -50%);
-        letter-spacing: -0.12em;
+        letter-spacing: -0.09em;
         font-family: 'eleb';
         text-align: center;
         color: rgba($mainColor4, .87);
         font-size: calc(5vw + 9vh + 6vmin);
-        line-height: 1.05em;
+        line-height: 1.1em;
         text-shadow:  0 -2px 8px rgba(white, .15), 
                       0 -6px 8px rgba(#bde6db, .6), 
                       0 -3px 2px rgba($thirdColor3, .8), 
@@ -58,13 +58,14 @@
         
         .second-line {
           // letter-spacing: -0.04em;
-          margin-left: -0.7rem;
+          margin-left: -2rem;
           width: 110%;
           .space {
             display: inline-block;
-            // width: 0.7em;
+            width: 0.2em;
           }
           .next-line {
+            vertical-align: top;
             font-size: 1.4em;
           }
         }

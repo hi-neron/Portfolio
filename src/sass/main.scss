@@ -82,7 +82,7 @@ a {
 }
 
 .fixScroll {
-  // overflow: hidden;
-  // height: 0;
+  overflow: hidden;
+  height: 0;
   transform: translateX(-100%) !important;
 }

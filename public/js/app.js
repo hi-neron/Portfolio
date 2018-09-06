@@ -51796,7 +51796,7 @@ module.exports = { drawArticles: drawArticles, setNewWindowSize: setNewWindowSiz
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(['\n  <div className="my-name-container">\n    <div className="my-name">\n      <div className="first-line">\n        <span>J</span>\n        <span>O</span>\n        <span>S</span>\n        <span>E</span>\n      </div>\n      <div className="second-line">\n        <span>S</span>\n        <span>\xC1</span>\n        <span class="space">\xAD</span>\n        <span>N</span>\n        <span class="next-line">\u2301</span>\n      </div>\n      <div className="third-line">\n        <span>C</span>\n        <span>H</span>\n        <span>E</span>\n        <span>Z</span>\n      </div>\n    </div>\n  </div>'], ['\n  <div className="my-name-container">\n    <div className="my-name">\n      <div className="first-line">\n        <span>J</span>\n        <span>O</span>\n        <span>S</span>\n        <span>E</span>\n      </div>\n      <div className="second-line">\n        <span>S</span>\n        <span>\xC1</span>\n        <span class="space">\xAD</span>\n        <span>N</span>\n        <span class="next-line">\u2301</span>\n      </div>\n      <div className="third-line">\n        <span>C</span>\n        <span>H</span>\n        <span>E</span>\n        <span>Z</span>\n      </div>\n    </div>\n  </div>']);
+var _templateObject = _taggedTemplateLiteral(['\n  <div className="my-name-container">\n    <div className="my-name">\n      <div className="first-line">\n        <span>J</span>\n        <span>O</span>\n        <span>S</span>\n        <span>E</span>\n      </div>\n      <div className="second-line">\n        <span>S</span>\n        <span>\xC1</span>\n        <span class="space">\xAD</span>\n        <span>N</span>\n        <span class="next-line">-</span>\n      </div>\n      <div className="third-line">\n        <span>C</span>\n        <span>H</span>\n        <span>E</span>\n        <span>Z</span>\n      </div>\n    </div>\n  </div>'], ['\n  <div className="my-name-container">\n    <div className="my-name">\n      <div className="first-line">\n        <span>J</span>\n        <span>O</span>\n        <span>S</span>\n        <span>E</span>\n      </div>\n      <div className="second-line">\n        <span>S</span>\n        <span>\xC1</span>\n        <span class="space">\xAD</span>\n        <span>N</span>\n        <span class="next-line">-</span>\n      </div>\n      <div className="third-line">\n        <span>C</span>\n        <span>H</span>\n        <span>E</span>\n        <span>Z</span>\n      </div>\n    </div>\n  </div>']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -74056,14 +74056,14 @@ module.exports = function (message) {
   });
 
   tBLine.set(balloon, {
-    y: -20
+    y: -20,
+    transformOrigin: "80px 60px"
   });
 
   tBLine.set(balloon, {
     y: -3,
     scaleX: 1.2,
-    scaleY: 0.8,
-    transformOrigin: "80px 60px"
+    scaleY: 0.8
   }).set(shadowB, {
     scale: 1.1,
     transformOrigin: "-10px 0px",
@@ -78985,13 +78985,17 @@ module.exports = [{
   title: 'Historias de Cal',
   subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
   type: 'project',
-  colors: [0xffeecf, 0x502B27, 0x2cc5ff],
+  colors: [0xffeecf, 0x9c2819, 0x2cc5ff],
   date: {
-    year: '2011',
+    year: '2013',
     color: 1
   },
   mainImageType: 'image',
-  abstract: "... ¡Wroag! ¡Crack! El suelo de Popayán crujía, mientras la marea roja iba saqueando las calles de esquina a esquina. Perros, gatos, transeúntes-despistados; ladraban, maullaban, gritaban. No había remedio, lo que embestía el enjambre de ácaros, metro a metro, era arrastrado sin esfuerzo ni misericordia.",
+  abstract: {
+    content: "... ¡Wroag! ¡Crack! El suelo de Popayán crujía, mientras la marea roja iba saqueando las calles de esquina a esquina. Perros, gatos, transeúntes-despistados; ladraban, maullaban, gritaban. No había remedio, lo que embestía el enjambre de ácaros, metro a metro, era arrastrado sin esfuerzo ni misericordia.",
+    color: 1,
+    background: 0
+  },
   keywords: ['design', 'illustration', 'serious-game', 'ux-ui', 'history', 'web', 'characters'],
   content: [{
     type: 'Image',
@@ -79004,16 +79008,21 @@ module.exports = [{
   }, {
     type: 'Image',
     subtype: 'Single:2',
-    url: './img/articles/sept/woar.jpg',
+    url: './img/articles/sept/woar.png',
     superCaption: 'La gran nigüa',
     caption: 'arte conceptual',
     captionPos: 'bottom',
-    background: false
+    background: true
   }, {
     type: 'Text',
     subtype: 'Long',
     background: false,
-    text: 'El enjambre funcionaba como una cinta transportadora, la mas nauseabunda que se haya visto jamas. Las zancas de nigüa, que eran tan diminutas como innumerables, se sincronizaban perfectamente para formar un poderoso oleaje, muy parecido al zigzagueo de una serpiente o una bandera que se agita con el viento.'
+    text: 'El enjambre funcionaba como una cinta transportadora, la más nauseabunda que se haya visto jamás. Las zancas de nigüa, que eran tan diminutas como innumerables, se sincronizaban perfectamente para formar un poderoso oleaje, muy parecido al zigzagueo de una serpiente o una bandera que se agita con el viento.'
+  }, {
+    type: 'Text',
+    subtype: 'short',
+    background: true,
+    text: 'Historias de Cal. Un videojuego educativo. Relata las aventuras de Francisco, un cuasi-adolescente que siempre ha vivido con sus abuelos en Popayán-city.'
   }, {
     type: 'Image',
     subtype: 'Single:1',
@@ -79021,22 +79030,17 @@ module.exports = [{
     caption: 'Pequeña nigüa',
     captionPos: 'bottom'
   }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/sept/player.gif',
+    caption: 'Francisco',
+    captionPos: 'bottom',
+    background: false
+  }, {
     type: 'Text',
     subtype: 'Long',
     background: false,
     text: 'Todo lo que quedase atrapado en aquel torbellino de insectos, sin remedio, se escurría hasta al vestíbulo principal de la colmena. El hoyo negro, el parque de los gritos. Aguardaba ahí la gran nigua reina...'
-  }, {
-    type: 'Text',
-    subtype: 'short',
-    background: false,
-    text: 'Historias de Cal. Un videojuego educativo. Relata las aventuras de Francisco, un cuasi-adolescente que siempre ha vivido con sus abuelos en Popayán.'
-  }, {
-    type: 'Image',
-    subtype: 'Single:1',
-    url: './img/articles/sept/player.gif',
-    superCaption: 'Francisco',
-    captionPos: 'bottom',
-    background: false
   }, {
     type: 'Text',
     subtype: 'Long',
@@ -79046,27 +79050,39 @@ module.exports = [{
     type: 'Text',
     subtype: 'Long',
     background: false,
-    text: 'Es como empieza un viaje histórico, recorriendo los pasos mas emblemáticos de la ciudad, para dar con pistas de como, en antaño, se pudo combatir y triunfar contra esta terrible plaga.'
+    text: 'Es como empieza su viaje por la historia, recorriendo los lugares más emblemáticos de la ciudad, para dar con pistas de como, en antaño, se pudo combatir y triunfar contra esta terrible plaga.'
   }, {
     type: 'Image',
-    subtype: 'Single:2',
-    url: './img/articles/sept/main.gif',
-    superCaption: 'Primer nivel',
-    caption: 'Gran nigüa',
-    captionPos: 'bottom',
-    background: true
+    subtype: 'Single:1',
+    url: './img/articles/sept/hat.png'
   }, {
     type: 'Text',
     subtype: 'Link',
     background: false,
     text: 'Historias de Popayán',
-    caption: 'Alcaldía de Popayan',
+    caption: 'Link al juego',
     url: 'http://popayan.gov.co/zonainfantil/juego/'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/sept/main.gif',
+    superCaption: 'Nivel uno',
+    caption: 'Nigüa animada',
+    captionPos: 'bottom',
+    background: true
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/sept/pan.jpg',
+    superCaption: 'Francisco',
+    caption: 'Puente Humilladero',
+    captionPos: 'bottom',
+    background: true
   }],
   front: {
     url: '/img/articles/sept/mainxl.jpg',
     captionPos: 'bottom',
-    color: 1
+    color: 0
   },
   pictures: {
     main: {
@@ -79076,15 +79092,88 @@ module.exports = [{
   }
 }, {
   title: 'AUTÓMATA PROJECT',
-  subtitle: 'Un fanzine colectivo',
+  subtitle: 'Web-app, permite construir en tiempo real y en colectivo un fanzine',
   type: 'PROJECT',
   date: {
     year: '2017',
     color: 1
   },
-  colors: [0x7b7b79, 0xe5e7da],
-  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-  content: 'En 2015, la artista inglesa Clare Patey fund\xF3 el Museo de la Empat\xEDa para que hombres, mujeres y ni\xF1os salieran de su zona de confort, pensaran por un momento en los dem\xE1s, y se interesaran por mirar el mundo a trav\xE9s de los ojos del otro. Con proyectos participativos como \u2018Una milla en mis zapatos\u2019 y \u2018Mil y un libros\u2019 el museo invita a sus visitantes a descubrir c\xF3mo la empat\xEDa tiene el poder de cambiar sus relaciones interpersonales y de hacerles cuestionar sus prejuicios y valores.\n    El Museo de la Empat\xEDa \u2013administrado por la organizaci\xF3n de artistas Arts Admin\u2013 comenz\xF3 en Londres, pero ahora viaja por el mundo en una gigantesca caja de zapatos contando y recolectando historias.  Hablamos con Clare Patey sobre c\xF3mo caminar en los pasos de alguien m\xE1s.\n    Hace un par de a\xF1os el escritor Roman Krznaric, autor del libro Empat\xEDa: Por qu\xE9 importa y c\xF3mo conseguirla (Empathy: Why it matters and how to get it), me contact\xF3 porque quer\xEDa convertir parte de la teor\xEDa que desarrolla en su libro en algo que la gente pudiera hacer. Mi trabajo como artista se ha concentrado en la idea del museo como espacio cultural y Krznaric me pidi\xF3 que pensara en proyectos que pudi\xE9ramos convertir en algo que se llamara el Museo de la Empat\xEDa.',
+  abstract: {
+    content: 'Autómata además de fanzine, es una plataforma social y digital, que permite a una pequeña comunidad de diseñadores a través del trabajo colaborativo y co-creativo: construir, diseñar, experimentar, conectar y jugar en tiempo real con sus propias piezas visuales.',
+    color: 0,
+    background: 1
+  },
+  colors: [0xe6e6e6, 0x252525, 0xfc2f4f],
+  front: {
+    url: '/img/articles/one/main_b.svg',
+    captionPos: 'bottom',
+    color: 0,
+    background: 1
+  },
+  content: [{
+    type: 'Text',
+    subtype: 'long',
+    background: false,
+    text: '<p>Definir que es un <span class="document-bold">fanzine</span> no es tarea fácil, es demasiado abstracto. Se transforma en la medida en que un grupo de personas lo adopta y cuando esto ocurre, el contexto moldea un significado; la tecnología y su práctica, construyen soportes; y los participantes, contenidos.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/one/two.svg'
+  }, {
+    type: 'Text',
+    subtype: 'link:download',
+    caption: '(75mb)',
+    text: 'Documento proyecto',
+    url: 'img/articles/one/automata.pdf'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/one/hands.gif'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    background: false,
+    text: '<p>Es una pena, que la mayoría de propuestas que nos dejan las <span class="document-bold">culturas resilientes</span>, resultan antes de intrigantes, aterradoras para la sociedad, que se siente vulnerable frente al cambio, principal enemigo del status quo. La idea de someter a presión un sistema que ya se encuentra en perfecto equilibrio le es motivo de pánico; más para las partes dominantes de la ecuación, que ensimismadas, atacan con fuerza y sucesivamente cualquier intento de <span class="document-bold">sabotaje</span>.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    superCaption: ' Autómata ADN',
+    caption: 'Libertad, co-creación, juego',
+    captionPos: 'bottom',
+    background: true,
+    url: './img/articles/one/graph.jpg'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    background: false,
+    text: '<p> <span class="document-bold">¿Sabotaje? </span> Si, de un pequeño sector de la sociedad que ni es marginal —no todavía—, ni tan importante, pero que se ve atrapado en medio de una compleja estructura de control: la norma, la moral, la economía... etc. Un reducido fragmento de sociedad que rebosante en diversidad, juventud y decisión; se ve forzado a aparecer en escena asqueado por las mentiras, las clasificaciones y las injusticias de un sistema que se les vendió como perfecto y que nunca afectaron, ni siquiera les consultaron ¿Cómo? Sí cuando naces ya todo existe.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/one/phone1.gif'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/one/phone2.gif'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    background: false,
+    text: '<p>Queda entonces un único camino para esta banda de marginales: buscar o crear con sus propias manos, los canales o espacios sociales en los que dejar fluir sus ideas, <span class="document-line"> hacer ruido, mostrar su inconformismo, atacar la opresión</span> ... en pocas palabras practicar una verdadera libertad. Y es precisamente esto último, este ejercicio de buscar espacios alternativos en medio de la ausencia de recursos, la presión social, la persecución, la indiferencia, el rechazo; el campo de cultivo para que florezcan dinámicas alternativas de participación social. Justo aquí es donde surge <span class="document-bold document-line">Autómata.</span> </p>'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    background: false,
+    text: '<p> <span class="document-bold">Autómata</span> es mucho de muchas cosas: pretensión de libertad, un estado de resiliencia y un mirada desde la contracultura; la apropiación de elementos del videojuego, un supuesto del trabajo en co-creación, mi experiencia del trabajo con TIC’s puesto a contracorriente. </p><p>Puede conocer más de <span class="document-bold">Autómata</span> en el documento que aparece en esta pagina.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/one/phone3.gif'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/one/clise.jpg'
+  }],
   keywords: ['design', 'co-creation', 'dev', 'ux-ui', 'brand', 'digital', 'web', 'editorial', 'collective'],
   pictures: {
     main: {
@@ -79092,29 +79181,9 @@ module.exports = [{
       url: '/img/articles/one/main-80.jpg',
       urlXX: '/img/articles/one/main_b.svg',
       comment: 'first coment main image'
-    },
-    others: [{
-      name: 'pedrito paramo',
-      url: '/img/articles/one/two.svg',
-      comment: 'another image footer',
-      type: 'image'
-    }, {
-      name: 'pedrito paramo',
-      url: '/img/articles/one/three.gif',
-      comment: 'another image footer',
-      type: 'image'
-    }, {
-      name: 'pedrito paramo',
-      url: '/img/articles/one/four.gif',
-      comment: 'another image footer',
-      type: 'image'
-    }, {
-      name: 'pedrito paramo',
-      url: '/img/articles/one/five.gif',
-      comment: 'another image footer',
-      type: 'animation'
-    }]
+    }
   }
+
 }, {
   title: "That's Popayán!",
   subtitle: 'Icecreaming* my birth city.',
@@ -103461,11 +103530,12 @@ var Document = function () {
   _createClass(Document, [{
     key: 'createStyle',
     value: function createStyle(name) {
-      var def = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-      var custom = arguments[2];
+      var letter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+      var background = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      var custom = arguments[3];
 
-      var backgroundColor = this.colors[0];
-      var letterColor = this.colors[def];
+      var backgroundColor = this.colors[background];
+      var letterColor = this.colors[letter];
 
       letterColor = !letterColor ? this.colors[0] : letterColor;
 
@@ -103556,7 +103626,7 @@ var Document = function () {
       front.setAttribute('class', 'document-project-front');
 
       var styleName = 'front';
-      this.createStyle(styleName, 0);
+      this.createStyle(styleName, this.front.color, this.front.background);
 
       front.classList.add('document-' + styleName + '-style');
 
@@ -103595,10 +103665,14 @@ var Document = function () {
 
       var arrow = yo(_templateObject5);
 
-      var template = yo(_templateObject6, this.abstract, arrow);
+      var template = yo(_templateObject6, this.abstract.content, arrow);
+
+      var letterColor = this.abstract.color;
+      var backColor = this.abstract.background;
 
       arrow.style.color = '' + this.colors[2];
-      template.style.color = this.colors[1] + ' !important';
+      template.style.color = '' + this.colors[letterColor];
+      template.style.backgroundColor = '' + this.colors[backColor];
 
       abstract.appendChild(template);
 
@@ -103695,7 +103769,7 @@ var _templateObject = _taggedTemplateLiteral(['\n        <div className="project
     _templateObject3 = _taggedTemplateLiteral(['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    '], ['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      '], ['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      ']),
     _templateObject5 = _taggedTemplateLiteral(['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    '], ['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n      <div className="project-', '">\n        ', '\n      </div>\n    '], ['\n      <div className="project-', '">\n        ', '\n      </div>\n    ']),
+    _templateObject6 = _taggedTemplateLiteral(['', ''], ['', '']),
     _templateObject7 = _taggedTemplateLiteral(['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    '], ['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    ']),
     _templateObject8 = _taggedTemplateLiteral(['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    '], ['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    ']),
     _templateObject9 = _taggedTemplateLiteral(['\n      <div className="project-link">\n        ', '\n      </div>\n    '], ['\n      <div className="project-link">\n        ', '\n      </div>\n    ']),
@@ -103947,7 +104021,17 @@ var Text = function (_Type2) {
       var wrapper = document.createElement('div');
       wrapper.setAttribute('class', 'project-text-wrapper');
 
-      var template = yo(_templateObject6, this.type, this.text);
+      var text = yo(_templateObject6, this.text);
+
+      // let template = yo`
+      //   <div className="project-${this.type}">
+      //   </div>
+      // `
+
+      var template = document.createElement('div');
+      template.setAttribute('class', 'project-' + this.type);
+
+      template.innerHTML = text;
 
       this.setColor(wrapper);
 
