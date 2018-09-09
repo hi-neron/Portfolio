@@ -58,8 +58,11 @@
       }
       #umbrella {}
       #balloon {
+        
         #body-2 {
-          // transform-origin: 78px 42px;
+          // -webkit-transform-origin: 80px 15px !important;
+          // -moz-transform-origin: 50% 50% !important;
+          // transform-origin: 10px 30px !important;
           // animation: balloon .5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite alternate;
         }
         

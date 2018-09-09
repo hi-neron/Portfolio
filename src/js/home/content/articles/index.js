@@ -221,8 +221,8 @@ module.exports = [
     title: 'AUTÓMATA PROJECT',
     subtitle: 'Web-app, permite construir en tiempo real y en colectivo un fanzine',
     type: 'PROJECT',
-    date: { 
-      year: '2017', 
+    date: {
+      year: '2017',
       color: 1
     },
     abstract: {
@@ -239,22 +239,21 @@ module.exports = [
     },
     content: [
       {
-        type: 'Text',
-        subtype: 'long',
-        background: false,
-        text: '<p>Definir que es un <span class="document-bold">fanzine</span> no es tarea fácil, es demasiado abstracto. Se transforma en la medida en que un grupo de personas lo adopta y cuando esto ocurre, el contexto moldea un significado; la tecnología y su práctica, construyen soportes; y los participantes, contenidos.</p>',
-      },
-      {
         type: 'Image',
         subtype: 'Single:2',
         url: './img/articles/one/two.svg'
       },
       {
         type: 'Text',
-        subtype: 'link:download',
-        caption: '(75mb)',
-        text: 'Documento proyecto',
-        url: 'img/articles/one/automata.pdf'
+        subtype: 'long',
+        background: false,
+        text: '<p>Definir que es un <span class="document-bold">fanzine</span> no es tarea fácil, es demasiado abstracto. Se transforma en la medida en que un grupo de personas lo adopta y cuando esto ocurre, el contexto moldea un significado; la tecnología y su práctica, construyen soportes; y los participantes, contenidos.</p>',
+      },
+      {
+        type: 'Text',
+        subtype: 'short',
+        background: true,
+        text: '<p><span class="document-bold">Backend:</span> node.js, mongoDB y socket.io. <span class="document-bold">Front-end:</span> vanilla-js, lodash y pequeños modulos de npm: page, yo-yo, entre otros. <span class="document-bold">Herramientas de desarrollo: </span>git, gulp, webpack, babel...</p>',
       },
       {
         type: 'Image',
@@ -265,7 +264,7 @@ module.exports = [
         type: 'Text',
         subtype: 'long',
         background: false,
-        text: '<p>Es una pena, que la mayoría de propuestas que nos dejan las <span class="document-bold">culturas resilientes</span>, resultan antes de intrigantes, aterradoras para la sociedad, que se siente vulnerable frente al cambio, principal enemigo del status quo. La idea de someter a presión un sistema que ya se encuentra en perfecto equilibrio le es motivo de pánico; más para las partes dominantes de la ecuación, que ensimismadas, atacan con fuerza y sucesivamente cualquier intento de <span class="document-bold">sabotaje</span>.</p>',
+        text: '<p>Es una pena, que la mayoría de propuestas que nos dejan las <span class="document-bold">culturas resilientes</span>, resultan antes de intrigantes, aterradoras para la sociedad, que se siente vulnerable frente al cambio, principal enemigo del status quo. La idea de someter a presión un sistema que ya se encuentra en perfecto equilibrio le es motivo de pánico; más para las partes dominantes de la ecuación, que ensimismadas, atacan con fuerza y sucesivamente cualquier intento de <span class="document-bold document-line">sabotaje</span>.</p>',
       },
       {
         type: 'Image',
@@ -280,7 +279,7 @@ module.exports = [
         type: 'Text',
         subtype: 'long',
         background: false,
-        text: '<p> <span class="document-bold">¿Sabotaje? </span> Si, de un pequeño sector de la sociedad que ni es marginal —no todavía—, ni tan importante, pero que se ve atrapado en medio de una compleja estructura de control: la norma, la moral, la economía... etc. Un reducido fragmento de sociedad que rebosante en diversidad, juventud y decisión; se ve forzado a aparecer en escena asqueado por las mentiras, las clasificaciones y las injusticias de un sistema que se les vendió como perfecto y que nunca afectaron, ni siquiera les consultaron ¿Cómo? Sí cuando naces ya todo existe.</p>',
+        text: '<p> <span class="document-bold document-line">¿Sabotaje?</span> Si, de un pequeño sector de la sociedad que ni es marginal —no todavía—, ni tan importante, pero que se ve atrapado en medio de una compleja estructura de control: la norma, la moral, la economía... etc. Un reducido fragmento de sociedad que rebosante en diversidad, juventud y decisión; se ve forzado a aparecer en escena asqueado por las mentiras, las clasificaciones y las injusticias de un sistema que se les vendió como perfecto y que nunca afectaron, ni siquiera les consultaron ¿Cómo? Sí cuando naces ya todo existe.</p>',
       },
       {
         type: 'Image',
@@ -314,6 +313,18 @@ module.exports = [
         subtype: 'Single:2',
         url: './img/articles/one/clise.jpg',
       },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/one/intro.gif'
+      },
+      {
+        type: 'Text',
+        subtype: 'link:download',
+        caption: '(75mb)',
+        text: 'Documento proyecto',
+        url: 'img/articles/one/automata.pdf'
+      }
     ],
     keywords: ['design', 'co-creation' , 'dev', 'ux-ui', 'brand', 'digital', 'web', 'editorial', 'collective'],
     pictures: {
@@ -324,38 +335,118 @@ module.exports = [
         comment: 'first coment main image',
       }
     },
-    
+
   },
   {
-    title: "That's Popayán!",
-    subtitle: 'Icecreaming* my birth city.',
-    type: 'illustration',
-    date: { 
-      year: '2015', 
+    title: "Popayán",
+    subtitle: 'Ilustraciones del centro de la ciudad en colores aleatorios.',
+    type: 'Illustration',
+    date: {
+      year: '2015',
       color: 0
     },
-    colors: [0x000000, 0xffffff],
-    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    content: `El que Gran Salón México ofreció su primer encuentro en 2014, momento en el cual la ilustración pasaba de ser un simple servicio gráfico a entender como una manifestación artística con peso en la cultura visual. Cuatro años después, todavía se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustración contemporánea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres días para exhibir y vender sus obras, además de participar en conversatorios, talleres y revisiones de su portafolio.
-    Aunque los organizadores del evento tienen planeado realizar el Gran Salón México (GSM) en noviembre, tendrán, como antesala y con la convicción de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edición especial en un país distinto a México. En 2018 la exhibición se realizará en Colombia: obras de 18 ilustradores mexicanos podrán serán mostrados a artistas colombiano y al público local.`,
-    keywords: ['design', 'illustration', 'experimental', 'icecream'],
-      pictures: {
+    abstract: {
+      content: 'Popayán, lugar donde nací. Queda por el Cauca, que es Colombia pero al sur. Es una ciudad pequeña de muchas iglesias y muchos fieles (infieles pocos, pero muy bien supervisados). El atípico centro urbano, completamente blanco, le da cierta apariencia opulenta, como de lujo; de ahí el titulo de “la ciudad blanca de Colombia”.',
+      color: 1,
+      background: 0
+    },
+    colors: [0xb1e8c8, 0x2e2a38, 0xff6a9c],
+    front: {
+      url: '/img/articles/eight/main.jpg',
+      captionPos: 'bottom',
+      color: 1,
+      background: 0
+    },
+    content: [
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        complete: true,
+        url: './img/articles/eight/photo1.jpg',
+        captionPos: 'bottom',
+        caption: 'Iglesia San Francisco'
+      },
+      {
+        type: 'Text',
+        subtype: 'short',
+        background: true,
+        text: '<p>Existen dos tipos de popayanejos: los que no aguantan un segundo en una ciudad tan blanca, sosa, sin sabor.</p>'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/eight/house1.png',
+        captionPos: 'bottom',
+        caption: 'Museo arquidiocesano'
+      },
+      {
+        type: 'Text',
+        subtype: 'short',
+        background: true,
+        text: '<p> Y los que disfrutan plácidamente de este pedazo de edén, lleno de paz, tranquilidad, laxitud (de esto hasta el tope).</p>'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/eight/house3.png',
+        captionPos: 'bottom',
+        caption: 'Iglesia Santo Domingo'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/eight/vertical.png',
+        caption: 'Museo Francisco José de Caldas',
+        captionPos: 'bottom',
+        background: true
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        captionPos: 'bottom',
+        url: './img/articles/eight/two.png',
+        caption: 'Basilica Nuestra señora de la asunción'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        captionPos: 'bottom',
+        url: './img/articles/eight/house4.jpg',
+        caption: 'Iglesia San José'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        complete: true,
+        url: './img/articles/eight/photo2.jpg',
+        captionPos: 'bottom',
+        caption: 'Torre del reloj'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        captionPos: 'bottom',
+        url: './img/articles/eight/photo3.jpg',
+        caption: 'Nuestra señora de la asunción'
+      },
+    ],
+    pictures: {
       main: {
         name: 'hello World',
         url: '/img/articles/eight/main.jpg',
         urlXX: '/img/articles/eight/main.png',
         comment: 'first coment main image',
-      },
-      others: []
+      }
     },
+    keywords: ['design', 'illustration', 'experimental', 'icecream'],
   },
   {
     title: 'Inside the mouse king castle',
     subtitle: 'Imagen-Palabra 2017, exposure.',
     type: 'Illustration',
     intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    date: { 
-      year: '2017', 
+    date: {
+      year: '2017',
       color: 0
     },
     important: false,
@@ -397,8 +488,8 @@ module.exports = [
     title: 'Kids society',
     subtitle: 'A serious video game for children who do not respect the rules.',
     type: 'Project',
-    date: { 
-      year: '2016', 
+    date: {
+      year: '2016',
       color: 1
     },
     colors: [0xffd193, 0x161405],
@@ -420,8 +511,8 @@ module.exports = [
     title: 'Portfolio 2018',
     subtitle: 'Design / Illustration / Develop et Animation for this page.',
     type: 'project',
-    date: { 
-      year: '2018', 
+    date: {
+      year: '2018',
       color: 0
     },
     mainImageType: 'video',
@@ -444,8 +535,8 @@ module.exports = [
     title: 'Huele a caña!',
     subtitle: '(Smells like cane) A micro-project, I did it in two days.',
     type: 'micro-project',
-    date: { 
-      year: '2014', 
+    date: {
+      year: '2014',
       color: 1
     },
     colors: [0x000000, 0xffffff],
@@ -491,8 +582,8 @@ module.exports = [
   {
     title: 'Historias de Popayán',
     subtitle: '(Popayán stories) A videogame to know the forgotten history of Popayan city.',
-    date: { 
-      year: '2013', 
+    date: {
+      year: '2013',
       color: 0
     },
     type: 'project',

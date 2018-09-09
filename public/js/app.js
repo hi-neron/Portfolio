@@ -51669,7 +51669,7 @@ function drawArticles(tag, ctx) {
           setTimeout(function () {
             initialize();
             msnry.layout();
-            // close loader
+            // close loader when load finish
             if (ctx) {
               ctx.mainLoader.vanish();
             }
@@ -74002,10 +74002,10 @@ module.exports = {
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(['\n<g id="body">\n  <path class="cls-2" d="M24.88,25.74C16,35.21,6.05,39.36,2,36.29.3,35.05-.14,31.7,0,27.63.69,12.85,12.27.62,27.06,0c3-.12,5.44.25,6.64,1.45C37.8,5.57,33.79,16.26,24.88,25.74Z"/>\n  <path class="cls-1" d="M25,25.84C33.59,16.68,37.59,6.41,34.17,2,29.94-.89,20,3.81,11.41,12.94,3.05,21.83-1,31.75,1.66,36a2.87,2.87,0,0,0,.39.39C6.15,39.46,16.07,35.31,25,25.84Z"/>\n  <g>\n    <line class="cls-7" x1="30.67" y1="27.51" x2="41.84" y2="36.57"/>\n    <line class="cls-8" x1="12.01" y1="12.43" x2="30.77" y2="27.61"/>\n    <line class="cls-9" x1="19.99" y1="19.06" x2="20.09" y2="7.29"/>\n    <line class="cls-10" x1="19.99" y1="19.06" x2="25.02" y2="10.91"/>\n    <line class="cls-11" x1="19.91" y1="18.82" x2="6.9" y2="23.05"/>\n    <line class="cls-12" x1="20.04" y1="19.06" x2="11.09" y2="26.41"/>\n  </g>\n  <path class="cls-6" d="M1.6,28.38a17.63,17.63,0,0,1-.71-6.59A29.59,29.59,0,0,0,0,27.63c-.17,3.81.22,7,1.62,8.37C.55,34.26.6,31.56,1.6,28.38Z"/>\n  <line class="cls-13" x1="6.17" y1="8.09" x2="7.63" y2="9.22"/>\n  <path class="cls-14" d="M3.32,24.21c-2.15-8.7,4.31-15,4.31-15a19.17,19.17,0,0,1,16.25-6"/>\n  <line class="cls-13" x1="34.17" y1="2.03" x2="35.39" y2="2.29"/>\n  <line class="cls-13" x1="33.99" y1="12.37" x2="35.31" y2="12.66"/>\n  <line class="cls-13" x1="1.15" y1="34.31" x2="1.09" y2="36"/>\n  <line class="cls-13" x1="27.34" y1="23.16" x2="28.38" y2="23.91"/>\n  <line class="cls-13" x1="17.65" y1="32.32" x2="18.11" y2="33.12"/>\n  <line class="cls-15" x1="23.88" y1="3.24" x2="24.8" y2="3.27"/>\n  <line class="cls-15" x1="3.32" y1="24.21" x2="3.59" y2="25.11"/>\n  <line class="cls-14" x1="7.63" y1="9.22" x2="12.01" y2="12.43"/>\n  <line class="cls-15" x1="12.01" y1="12.43" x2="12.73" y2="12.97"/>\n</g>\n'], ['\n<g id="body">\n  <path class="cls-2" d="M24.88,25.74C16,35.21,6.05,39.36,2,36.29.3,35.05-.14,31.7,0,27.63.69,12.85,12.27.62,27.06,0c3-.12,5.44.25,6.64,1.45C37.8,5.57,33.79,16.26,24.88,25.74Z"/>\n  <path class="cls-1" d="M25,25.84C33.59,16.68,37.59,6.41,34.17,2,29.94-.89,20,3.81,11.41,12.94,3.05,21.83-1,31.75,1.66,36a2.87,2.87,0,0,0,.39.39C6.15,39.46,16.07,35.31,25,25.84Z"/>\n  <g>\n    <line class="cls-7" x1="30.67" y1="27.51" x2="41.84" y2="36.57"/>\n    <line class="cls-8" x1="12.01" y1="12.43" x2="30.77" y2="27.61"/>\n    <line class="cls-9" x1="19.99" y1="19.06" x2="20.09" y2="7.29"/>\n    <line class="cls-10" x1="19.99" y1="19.06" x2="25.02" y2="10.91"/>\n    <line class="cls-11" x1="19.91" y1="18.82" x2="6.9" y2="23.05"/>\n    <line class="cls-12" x1="20.04" y1="19.06" x2="11.09" y2="26.41"/>\n  </g>\n  <path class="cls-6" d="M1.6,28.38a17.63,17.63,0,0,1-.71-6.59A29.59,29.59,0,0,0,0,27.63c-.17,3.81.22,7,1.62,8.37C.55,34.26.6,31.56,1.6,28.38Z"/>\n  <line class="cls-13" x1="6.17" y1="8.09" x2="7.63" y2="9.22"/>\n  <path class="cls-14" d="M3.32,24.21c-2.15-8.7,4.31-15,4.31-15a19.17,19.17,0,0,1,16.25-6"/>\n  <line class="cls-13" x1="34.17" y1="2.03" x2="35.39" y2="2.29"/>\n  <line class="cls-13" x1="33.99" y1="12.37" x2="35.31" y2="12.66"/>\n  <line class="cls-13" x1="1.15" y1="34.31" x2="1.09" y2="36"/>\n  <line class="cls-13" x1="27.34" y1="23.16" x2="28.38" y2="23.91"/>\n  <line class="cls-13" x1="17.65" y1="32.32" x2="18.11" y2="33.12"/>\n  <line class="cls-15" x1="23.88" y1="3.24" x2="24.8" y2="3.27"/>\n  <line class="cls-15" x1="3.32" y1="24.21" x2="3.59" y2="25.11"/>\n  <line class="cls-14" x1="7.63" y1="9.22" x2="12.01" y2="12.43"/>\n  <line class="cls-15" x1="12.01" y1="12.43" x2="12.73" y2="12.97"/>\n</g>\n']),
+var _templateObject = _taggedTemplateLiteral(['\n  <g id="body">\n    <path class="cls-2" d="M24.88,25.74C16,35.21,6.05,39.36,2,36.29.3,35.05-.14,31.7,0,27.63.69,12.85,12.27.62,27.06,0c3-.12,5.44.25,6.64,1.45C37.8,5.57,33.79,16.26,24.88,25.74Z"/>\n    <path class="cls-1" d="M25,25.84C33.59,16.68,37.59,6.41,34.17,2,29.94-.89,20,3.81,11.41,12.94,3.05,21.83-1,31.75,1.66,36a2.87,2.87,0,0,0,.39.39C6.15,39.46,16.07,35.31,25,25.84Z"/>\n    <g>\n      <line class="cls-7" x1="30.67" y1="27.51" x2="41.84" y2="36.57"/>\n      <line class="cls-8" x1="12.01" y1="12.43" x2="30.77" y2="27.61"/>\n      <line class="cls-9" x1="19.99" y1="19.06" x2="20.09" y2="7.29"/>\n      <line class="cls-10" x1="19.99" y1="19.06" x2="25.02" y2="10.91"/>\n      <line class="cls-11" x1="19.91" y1="18.82" x2="6.9" y2="23.05"/>\n      <line class="cls-12" x1="20.04" y1="19.06" x2="11.09" y2="26.41"/>\n    </g>\n    <path class="cls-6" d="M1.6,28.38a17.63,17.63,0,0,1-.71-6.59A29.59,29.59,0,0,0,0,27.63c-.17,3.81.22,7,1.62,8.37C.55,34.26.6,31.56,1.6,28.38Z"/>\n    <line class="cls-13" x1="6.17" y1="8.09" x2="7.63" y2="9.22"/>\n    <path class="cls-14" d="M3.32,24.21c-2.15-8.7,4.31-15,4.31-15a19.17,19.17,0,0,1,16.25-6"/>\n    <line class="cls-13" x1="34.17" y1="2.03" x2="35.39" y2="2.29"/>\n    <line class="cls-13" x1="33.99" y1="12.37" x2="35.31" y2="12.66"/>\n    <line class="cls-13" x1="1.15" y1="34.31" x2="1.09" y2="36"/>\n    <line class="cls-13" x1="27.34" y1="23.16" x2="28.38" y2="23.91"/>\n    <line class="cls-13" x1="17.65" y1="32.32" x2="18.11" y2="33.12"/>\n    <line class="cls-15" x1="23.88" y1="3.24" x2="24.8" y2="3.27"/>\n    <line class="cls-15" x1="3.32" y1="24.21" x2="3.59" y2="25.11"/>\n    <line class="cls-14" x1="7.63" y1="9.22" x2="12.01" y2="12.43"/>\n    <line class="cls-15" x1="12.01" y1="12.43" x2="12.73" y2="12.97"/>\n  </g>\n'], ['\n  <g id="body">\n    <path class="cls-2" d="M24.88,25.74C16,35.21,6.05,39.36,2,36.29.3,35.05-.14,31.7,0,27.63.69,12.85,12.27.62,27.06,0c3-.12,5.44.25,6.64,1.45C37.8,5.57,33.79,16.26,24.88,25.74Z"/>\n    <path class="cls-1" d="M25,25.84C33.59,16.68,37.59,6.41,34.17,2,29.94-.89,20,3.81,11.41,12.94,3.05,21.83-1,31.75,1.66,36a2.87,2.87,0,0,0,.39.39C6.15,39.46,16.07,35.31,25,25.84Z"/>\n    <g>\n      <line class="cls-7" x1="30.67" y1="27.51" x2="41.84" y2="36.57"/>\n      <line class="cls-8" x1="12.01" y1="12.43" x2="30.77" y2="27.61"/>\n      <line class="cls-9" x1="19.99" y1="19.06" x2="20.09" y2="7.29"/>\n      <line class="cls-10" x1="19.99" y1="19.06" x2="25.02" y2="10.91"/>\n      <line class="cls-11" x1="19.91" y1="18.82" x2="6.9" y2="23.05"/>\n      <line class="cls-12" x1="20.04" y1="19.06" x2="11.09" y2="26.41"/>\n    </g>\n    <path class="cls-6" d="M1.6,28.38a17.63,17.63,0,0,1-.71-6.59A29.59,29.59,0,0,0,0,27.63c-.17,3.81.22,7,1.62,8.37C.55,34.26.6,31.56,1.6,28.38Z"/>\n    <line class="cls-13" x1="6.17" y1="8.09" x2="7.63" y2="9.22"/>\n    <path class="cls-14" d="M3.32,24.21c-2.15-8.7,4.31-15,4.31-15a19.17,19.17,0,0,1,16.25-6"/>\n    <line class="cls-13" x1="34.17" y1="2.03" x2="35.39" y2="2.29"/>\n    <line class="cls-13" x1="33.99" y1="12.37" x2="35.31" y2="12.66"/>\n    <line class="cls-13" x1="1.15" y1="34.31" x2="1.09" y2="36"/>\n    <line class="cls-13" x1="27.34" y1="23.16" x2="28.38" y2="23.91"/>\n    <line class="cls-13" x1="17.65" y1="32.32" x2="18.11" y2="33.12"/>\n    <line class="cls-15" x1="23.88" y1="3.24" x2="24.8" y2="3.27"/>\n    <line class="cls-15" x1="3.32" y1="24.21" x2="3.59" y2="25.11"/>\n    <line class="cls-14" x1="7.63" y1="9.22" x2="12.01" y2="12.43"/>\n    <line class="cls-15" x1="12.01" y1="12.43" x2="12.73" y2="12.97"/>\n  </g>\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n<path id="shadow" class="cls-6" d="M57,22c-5.23-1.94-21.14.17-35.53,4.7S-.34,36.46,4.89,38.39c4.89,1.8,19.11.08,32.71-3.85l4.15,2.26.18-.47-3.66-2c.72-.21,1.44-.43,2.15-.66C54.81,29.16,62.24,23.92,57,22Z"/>\n'], ['\n<path id="shadow" class="cls-6" d="M57,22c-5.23-1.94-21.14.17-35.53,4.7S-.34,36.46,4.89,38.39c4.89,1.8,19.11.08,32.71-3.85l4.15,2.26.18-.47-3.66-2c.72-.21,1.44-.43,2.15-.66C54.81,29.16,62.24,23.92,57,22Z"/>\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n<ellipse id="shadow-2" data-name="shadow" class="cls-6" cx="82.42" cy="38.32" rx="8.21" ry="2.44"/>\n'], ['\n<ellipse id="shadow-2" data-name="shadow" class="cls-6" cx="82.42" cy="38.32" rx="8.21" ry="2.44"/>\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n<g id="body-2" data-name="body">\n<circle class="cls-16" cx="78.42" cy="32.29" r="7.84"/>\n<path class="cls-16" d="M86.24,31.49a8,8,0,0,1,0,1.6,4.55,4.55,0,0,1-.1.66,4.09,4.09,0,0,1-.17.69,5.25,5.25,0,0,1-.22.67c-.08.22-.18.43-.28.64s-.17.34-.27.5a1.35,1.35,0,0,1-.14.22c-.09.15-.2.3-.3.45l0,0a6.12,6.12,0,0,1-.4.49l0,0a17.15,17.15,0,0,1,0-10.37c.15.17.3.35.44.54s.25.35.37.54l0,.07c.11.18.21.38.31.57s.2.42.28.64a5.25,5.25,0,0,1,.22.67,4.09,4.09,0,0,1,.17.69A4.55,4.55,0,0,1,86.24,31.49Z"/>\n<path class="cls-17" d="M82.79,25.77a6.71,6.71,0,0,1,1.52,1.34,17.15,17.15,0,0,0,0,10.37,7.55,7.55,0,0,1-1.53,1.34A19,19,0,0,1,82.79,25.77Z"/>\n<path class="cls-16" d="M82.79,25.76h0a19,19,0,0,0,0,13.05l-.08,0a7.47,7.47,0,0,1-1.18.64l-.69.26-.71.19a22,22,0,0,1,0-15.34l.71.19A8.46,8.46,0,0,1,82.79,25.76Z"/>\n<path class="cls-17" d="M78.41,24.43a8,8,0,0,1,1.71.19,22,22,0,0,0,0,15.34,8,8,0,0,1-1.71.19h-.24a23.81,23.81,0,0,1,0-15.7Z"/>\n<path class="cls-16" d="M77.18,24.54a8.06,8.06,0,0,1,1-.1,23.81,23.81,0,0,0,0,15.7,7.9,7.9,0,0,1-1-.1,4.06,4.06,0,0,1-.71-.15,6,6,0,0,1-.82-.25c-.25-.1-.51-.21-.76-.34a26.71,26.71,0,0,1,0-14l.37-.18.3-.12a6.29,6.29,0,0,1,.9-.28A4.06,4.06,0,0,1,77.18,24.54Z"/>\n<path class="cls-17" d="M74.89,39.3c.25.13.51.24.76.34a7.58,7.58,0,0,1-3.11-2.15,28.46,28.46,0,0,1,0-10.41,7.47,7.47,0,0,1,2.35-1.81A26.71,26.71,0,0,0,74.89,39.3Z"/>\n<path class="cls-16" d="M72.12,27.6c.14-.18.28-.35.43-.52a28.46,28.46,0,0,0,0,10.41c-.15-.17-.3-.35-.44-.54s-.27-.38-.39-.57-.23-.41-.34-.62-.2-.42-.28-.64-.16-.45-.23-.67a4.82,4.82,0,0,1-.15-.68,3.71,3.71,0,0,1-.11-.68,8,8,0,0,1,0-1.6,3.71,3.71,0,0,1,.11-.68,4.82,4.82,0,0,1,.15-.68,4.76,4.76,0,0,1,.21-.6.42.42,0,0,1,0-.12c.07-.19.16-.39.25-.58l0,0c.1-.21.22-.41.33-.6s.25-.38.37-.56Z"/>\n<path class="cls-18" d="M82.67,25.69A7.85,7.85,0,0,1,71.81,36.54,7.86,7.86,0,1,0,82.67,25.69Z"/>\n</g>\n'], ['\n<g id="body-2" data-name="body">\n<circle class="cls-16" cx="78.42" cy="32.29" r="7.84"/>\n<path class="cls-16" d="M86.24,31.49a8,8,0,0,1,0,1.6,4.55,4.55,0,0,1-.1.66,4.09,4.09,0,0,1-.17.69,5.25,5.25,0,0,1-.22.67c-.08.22-.18.43-.28.64s-.17.34-.27.5a1.35,1.35,0,0,1-.14.22c-.09.15-.2.3-.3.45l0,0a6.12,6.12,0,0,1-.4.49l0,0a17.15,17.15,0,0,1,0-10.37c.15.17.3.35.44.54s.25.35.37.54l0,.07c.11.18.21.38.31.57s.2.42.28.64a5.25,5.25,0,0,1,.22.67,4.09,4.09,0,0,1,.17.69A4.55,4.55,0,0,1,86.24,31.49Z"/>\n<path class="cls-17" d="M82.79,25.77a6.71,6.71,0,0,1,1.52,1.34,17.15,17.15,0,0,0,0,10.37,7.55,7.55,0,0,1-1.53,1.34A19,19,0,0,1,82.79,25.77Z"/>\n<path class="cls-16" d="M82.79,25.76h0a19,19,0,0,0,0,13.05l-.08,0a7.47,7.47,0,0,1-1.18.64l-.69.26-.71.19a22,22,0,0,1,0-15.34l.71.19A8.46,8.46,0,0,1,82.79,25.76Z"/>\n<path class="cls-17" d="M78.41,24.43a8,8,0,0,1,1.71.19,22,22,0,0,0,0,15.34,8,8,0,0,1-1.71.19h-.24a23.81,23.81,0,0,1,0-15.7Z"/>\n<path class="cls-16" d="M77.18,24.54a8.06,8.06,0,0,1,1-.1,23.81,23.81,0,0,0,0,15.7,7.9,7.9,0,0,1-1-.1,4.06,4.06,0,0,1-.71-.15,6,6,0,0,1-.82-.25c-.25-.1-.51-.21-.76-.34a26.71,26.71,0,0,1,0-14l.37-.18.3-.12a6.29,6.29,0,0,1,.9-.28A4.06,4.06,0,0,1,77.18,24.54Z"/>\n<path class="cls-17" d="M74.89,39.3c.25.13.51.24.76.34a7.58,7.58,0,0,1-3.11-2.15,28.46,28.46,0,0,1,0-10.41,7.47,7.47,0,0,1,2.35-1.81A26.71,26.71,0,0,0,74.89,39.3Z"/>\n<path class="cls-16" d="M72.12,27.6c.14-.18.28-.35.43-.52a28.46,28.46,0,0,0,0,10.41c-.15-.17-.3-.35-.44-.54s-.27-.38-.39-.57-.23-.41-.34-.62-.2-.42-.28-.64-.16-.45-.23-.67a4.82,4.82,0,0,1-.15-.68,3.71,3.71,0,0,1-.11-.68,8,8,0,0,1,0-1.6,3.71,3.71,0,0,1,.11-.68,4.82,4.82,0,0,1,.15-.68,4.76,4.76,0,0,1,.21-.6.42.42,0,0,1,0-.12c.07-.19.16-.39.25-.58l0,0c.1-.21.22-.41.33-.6s.25-.38.37-.56Z"/>\n<path class="cls-18" d="M82.67,25.69A7.85,7.85,0,0,1,71.81,36.54,7.86,7.86,0,1,0,82.67,25.69Z"/>\n</g>\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n<g id="body-2">\n  <circle class="cls-16" cx="78.42" cy="32.29" r="7.84"/>\n  <path class="cls-16" d="M86.24,31.49a8,8,0,0,1,0,1.6,4.55,4.55,0,0,1-.1.66,4.09,4.09,0,0,1-.17.69,5.25,5.25,0,0,1-.22.67c-.08.22-.18.43-.28.64s-.17.34-.27.5a1.35,1.35,0,0,1-.14.22c-.09.15-.2.3-.3.45l0,0a6.12,6.12,0,0,1-.4.49l0,0a17.15,17.15,0,0,1,0-10.37c.15.17.3.35.44.54s.25.35.37.54l0,.07c.11.18.21.38.31.57s.2.42.28.64a5.25,5.25,0,0,1,.22.67,4.09,4.09,0,0,1,.17.69A4.55,4.55,0,0,1,86.24,31.49Z"/>\n  <path class="cls-17" d="M82.79,25.77a6.71,6.71,0,0,1,1.52,1.34,17.15,17.15,0,0,0,0,10.37,7.55,7.55,0,0,1-1.53,1.34A19,19,0,0,1,82.79,25.77Z"/>\n  <path class="cls-16" d="M82.79,25.76h0a19,19,0,0,0,0,13.05l-.08,0a7.47,7.47,0,0,1-1.18.64l-.69.26-.71.19a22,22,0,0,1,0-15.34l.71.19A8.46,8.46,0,0,1,82.79,25.76Z"/>\n  <path class="cls-17" d="M78.41,24.43a8,8,0,0,1,1.71.19,22,22,0,0,0,0,15.34,8,8,0,0,1-1.71.19h-.24a23.81,23.81,0,0,1,0-15.7Z"/>\n  <path class="cls-16" d="M77.18,24.54a8.06,8.06,0,0,1,1-.1,23.81,23.81,0,0,0,0,15.7,7.9,7.9,0,0,1-1-.1,4.06,4.06,0,0,1-.71-.15,6,6,0,0,1-.82-.25c-.25-.1-.51-.21-.76-.34a26.71,26.71,0,0,1,0-14l.37-.18.3-.12a6.29,6.29,0,0,1,.9-.28A4.06,4.06,0,0,1,77.18,24.54Z"/>\n  <path class="cls-17" d="M74.89,39.3c.25.13.51.24.76.34a7.58,7.58,0,0,1-3.11-2.15,28.46,28.46,0,0,1,0-10.41,7.47,7.47,0,0,1,2.35-1.81A26.71,26.71,0,0,0,74.89,39.3Z"/>\n  <path class="cls-16" d="M72.12,27.6c.14-.18.28-.35.43-.52a28.46,28.46,0,0,0,0,10.41c-.15-.17-.3-.35-.44-.54s-.27-.38-.39-.57-.23-.41-.34-.62-.2-.42-.28-.64-.16-.45-.23-.67a4.82,4.82,0,0,1-.15-.68,3.71,3.71,0,0,1-.11-.68,8,8,0,0,1,0-1.6,3.71,3.71,0,0,1,.11-.68,4.82,4.82,0,0,1,.15-.68,4.76,4.76,0,0,1,.21-.6.42.42,0,0,1,0-.12c.07-.19.16-.39.25-.58l0,0c.1-.21.22-.41.33-.6s.25-.38.37-.56Z"/>\n  <path class="cls-18" d="M82.67,25.69A7.85,7.85,0,0,1,71.81,36.54,7.86,7.86,0,1,0,82.67,25.69Z"/>\n</g>\n'], ['\n<g id="body-2">\n  <circle class="cls-16" cx="78.42" cy="32.29" r="7.84"/>\n  <path class="cls-16" d="M86.24,31.49a8,8,0,0,1,0,1.6,4.55,4.55,0,0,1-.1.66,4.09,4.09,0,0,1-.17.69,5.25,5.25,0,0,1-.22.67c-.08.22-.18.43-.28.64s-.17.34-.27.5a1.35,1.35,0,0,1-.14.22c-.09.15-.2.3-.3.45l0,0a6.12,6.12,0,0,1-.4.49l0,0a17.15,17.15,0,0,1,0-10.37c.15.17.3.35.44.54s.25.35.37.54l0,.07c.11.18.21.38.31.57s.2.42.28.64a5.25,5.25,0,0,1,.22.67,4.09,4.09,0,0,1,.17.69A4.55,4.55,0,0,1,86.24,31.49Z"/>\n  <path class="cls-17" d="M82.79,25.77a6.71,6.71,0,0,1,1.52,1.34,17.15,17.15,0,0,0,0,10.37,7.55,7.55,0,0,1-1.53,1.34A19,19,0,0,1,82.79,25.77Z"/>\n  <path class="cls-16" d="M82.79,25.76h0a19,19,0,0,0,0,13.05l-.08,0a7.47,7.47,0,0,1-1.18.64l-.69.26-.71.19a22,22,0,0,1,0-15.34l.71.19A8.46,8.46,0,0,1,82.79,25.76Z"/>\n  <path class="cls-17" d="M78.41,24.43a8,8,0,0,1,1.71.19,22,22,0,0,0,0,15.34,8,8,0,0,1-1.71.19h-.24a23.81,23.81,0,0,1,0-15.7Z"/>\n  <path class="cls-16" d="M77.18,24.54a8.06,8.06,0,0,1,1-.1,23.81,23.81,0,0,0,0,15.7,7.9,7.9,0,0,1-1-.1,4.06,4.06,0,0,1-.71-.15,6,6,0,0,1-.82-.25c-.25-.1-.51-.21-.76-.34a26.71,26.71,0,0,1,0-14l.37-.18.3-.12a6.29,6.29,0,0,1,.9-.28A4.06,4.06,0,0,1,77.18,24.54Z"/>\n  <path class="cls-17" d="M74.89,39.3c.25.13.51.24.76.34a7.58,7.58,0,0,1-3.11-2.15,28.46,28.46,0,0,1,0-10.41,7.47,7.47,0,0,1,2.35-1.81A26.71,26.71,0,0,0,74.89,39.3Z"/>\n  <path class="cls-16" d="M72.12,27.6c.14-.18.28-.35.43-.52a28.46,28.46,0,0,0,0,10.41c-.15-.17-.3-.35-.44-.54s-.27-.38-.39-.57-.23-.41-.34-.62-.2-.42-.28-.64-.16-.45-.23-.67a4.82,4.82,0,0,1-.15-.68,3.71,3.71,0,0,1-.11-.68,8,8,0,0,1,0-1.6,3.71,3.71,0,0,1,.11-.68,4.82,4.82,0,0,1,.15-.68,4.76,4.76,0,0,1,.21-.6.42.42,0,0,1,0-.12c.07-.19.16-.39.25-.58l0,0c.1-.21.22-.41.33-.6s.25-.38.37-.56Z"/>\n  <path class="cls-18" d="M82.67,25.69A7.85,7.85,0,0,1,71.81,36.54,7.86,7.86,0,1,0,82.67,25.69Z"/>\n</g>\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100.56 46.4">\n<defs>\n  <style>\n    .cls-1, .cls-18, .cls-6 {\n      fill: #322934;\n    }\n\n    .cls-2 {\n      fill: #fc5067;\n    }\n\n    .cls-3 {\n      fill: #f3f3f6;\n    }\n\n    .cls-4 {\n      opacity: 0.15;\n      fill: url(#linear-gradient);\n    }\n\n    .cls-5 {\n      fill: #fc5067;\n    }\n\n    .cls-6 {\n      opacity: 0.45;\n    }\n\n    .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-7, .cls-8, .cls-9 {\n      fill: none;\n      stroke-miterlimit: 10;\n    }\n\n    .cls-7 {\n      stroke: #fff;\n      stroke-linecap: round;\n    }\n\n    .cls-7, .cls-8 {\n      stroke-width: 0.5px;\n    }\n\n    .cls-8 {\n      stroke: url(#linear-gradient-2);\n    }\n\n    .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-9 {\n      stroke-width: 0.25px;\n    }\n\n    .cls-9 {\n      stroke: url(#linear-gradient-3);\n    }\n\n    .cls-10 {\n      stroke: url(#linear-gradient-4);\n    }\n\n    .cls-11 {\n      stroke: url(#linear-gradient-5);\n    }\n\n    .cls-12 {\n      stroke: url(#linear-gradient-6);\n    }\n\n    .cls-13 {\n      stroke: #2e2e2e;\n    }\n\n    .cls-14 {\n      stroke: #fc5067;\n    }\n\n    .cls-15 {\n      stroke: #f6f6f8;\n    }\n\n    .cls-16 {\n      fill: #83ffda;\n    }\n\n    .cls-17 {\n      fill: #fff;\n    }\n\n    .cls-18 {\n      opacity: 0.25;\n    }\n  </style>\n  <linearGradient id="linear-gradient" x1="28.23" y1="43.27" x2="34.54" y2="43.27" gradientUnits="userSpaceOnUse">\n    <stop offset="0.01"/>\n    <stop offset="1" stop-color="#ff4d4d" stop-opacity="0"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-2" x1="12.24" y1="20.25" x2="31.12" y2="20.25" gradientTransform="matrix(1.01, 0, 0, 1, -0.53, -0.42)" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#626262"/>\n    <stop offset="0.44" stop-color="#696969"/>\n    <stop offset="1" stop-color="#797979"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-3" x1="20.04" y1="19.06" x2="20.04" y2="7.28" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#626262"/>\n    <stop offset="0.17" stop-color="#676767" stop-opacity="0.93"/>\n    <stop offset="0.4" stop-color="#757575" stop-opacity="0.75"/>\n    <stop offset="0.68" stop-color="#8d8d8d" stop-opacity="0.45"/>\n    <stop offset="0.98" stop-color="#adadad" stop-opacity="0.04"/>\n    <stop offset="1" stop-color="#b0b0b0" stop-opacity="0"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-4" x1="19.88" y1="14.98" x2="25.13" y2="14.98" xlink:href="#linear-gradient-3">\n  </linearGradient>\n  <linearGradient id="linear-gradient-5" x1="6.86" y1="20.94" x2="19.95" y2="20.94" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#b0b0b0" stop-opacity="0"/>\n    <stop offset="0.02" stop-color="#adadad" stop-opacity="0.04"/>\n    <stop offset="0.32" stop-color="#8d8d8d" stop-opacity="0.45"/>\n    <stop offset="0.6" stop-color="#757575" stop-opacity="0.75"/>\n    <stop offset="0.83" stop-color="#676767" stop-opacity="0.93"/>\n    <stop offset="1" stop-color="#626262"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-6" x1="11.01" y1="22.74" x2="20.12" y2="22.74" xlink:href="#linear-gradient-5">\n  </linearGradient>\n</defs>\n<title>main</title>\n<g id="scene">\n  <g id="towel">\n    <g>\n      <path class="cls-1" d="M53,46.4H30.74a1.16,1.16,0,0,1-.48-.11h0a2.39,2.39,0,0,0-1.53-.21l-1.58.32H17.53l-1-1.31,33.31-27.2L87.7,16.27Z"/>\n      <path class="cls-2" d="M52.61,46.18H32.22A3.13,3.13,0,0,1,31.13,46L29,45.26a2.08,2.08,0,0,0-2.25.6h0a.9.9,0,0,1-.69.32H17.61l-1.18-1.36L49.61,16.05h4.76a10.28,10.28,0,0,0,3.18.11l.92-.11H63.7l2.67-.1,1.53.1,2,.2,2-.25a9.38,9.38,0,0,1,1.41-.07l1.55,0,1.82.09H87.33Z"/>\n      <polygon class="cls-3" points="18.4 43.13 56.12 43.13 60.65 39.2 22.93 39.2 18.4 43.13"/>\n      <polygon class="cls-3" points="24.38 37.95 62.09 37.95 62.51 37.59 24.8 37.59 24.38 37.95"/>\n      <path class="cls-4" d="M28.23,45.15h.05a6.59,6.59,0,0,1,2.15.48c.57.24,1.17.48,1.26.49l2,0,.84-5.82Z"/>\n    </g>\n    <polygon id="corner" class="cls-5" points="17.61 46.18 16.84 43.79 16.43 44.83 17.61 46.18"/>\n  </g>\n  <g id="umbrella">\n    ', '\n    ', '\n  </g>\n  <g id="balloon">\n    ', '\n    ', '\n  </g>\n</g>\n</svg>\n'], ['\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100.56 46.4">\n<defs>\n  <style>\n    .cls-1, .cls-18, .cls-6 {\n      fill: #322934;\n    }\n\n    .cls-2 {\n      fill: #fc5067;\n    }\n\n    .cls-3 {\n      fill: #f3f3f6;\n    }\n\n    .cls-4 {\n      opacity: 0.15;\n      fill: url(#linear-gradient);\n    }\n\n    .cls-5 {\n      fill: #fc5067;\n    }\n\n    .cls-6 {\n      opacity: 0.45;\n    }\n\n    .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-7, .cls-8, .cls-9 {\n      fill: none;\n      stroke-miterlimit: 10;\n    }\n\n    .cls-7 {\n      stroke: #fff;\n      stroke-linecap: round;\n    }\n\n    .cls-7, .cls-8 {\n      stroke-width: 0.5px;\n    }\n\n    .cls-8 {\n      stroke: url(#linear-gradient-2);\n    }\n\n    .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-9 {\n      stroke-width: 0.25px;\n    }\n\n    .cls-9 {\n      stroke: url(#linear-gradient-3);\n    }\n\n    .cls-10 {\n      stroke: url(#linear-gradient-4);\n    }\n\n    .cls-11 {\n      stroke: url(#linear-gradient-5);\n    }\n\n    .cls-12 {\n      stroke: url(#linear-gradient-6);\n    }\n\n    .cls-13 {\n      stroke: #2e2e2e;\n    }\n\n    .cls-14 {\n      stroke: #fc5067;\n    }\n\n    .cls-15 {\n      stroke: #f6f6f8;\n    }\n\n    .cls-16 {\n      fill: #83ffda;\n    }\n\n    .cls-17 {\n      fill: #fff;\n    }\n\n    .cls-18 {\n      opacity: 0.25;\n    }\n  </style>\n  <linearGradient id="linear-gradient" x1="28.23" y1="43.27" x2="34.54" y2="43.27" gradientUnits="userSpaceOnUse">\n    <stop offset="0.01"/>\n    <stop offset="1" stop-color="#ff4d4d" stop-opacity="0"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-2" x1="12.24" y1="20.25" x2="31.12" y2="20.25" gradientTransform="matrix(1.01, 0, 0, 1, -0.53, -0.42)" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#626262"/>\n    <stop offset="0.44" stop-color="#696969"/>\n    <stop offset="1" stop-color="#797979"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-3" x1="20.04" y1="19.06" x2="20.04" y2="7.28" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#626262"/>\n    <stop offset="0.17" stop-color="#676767" stop-opacity="0.93"/>\n    <stop offset="0.4" stop-color="#757575" stop-opacity="0.75"/>\n    <stop offset="0.68" stop-color="#8d8d8d" stop-opacity="0.45"/>\n    <stop offset="0.98" stop-color="#adadad" stop-opacity="0.04"/>\n    <stop offset="1" stop-color="#b0b0b0" stop-opacity="0"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-4" x1="19.88" y1="14.98" x2="25.13" y2="14.98" xlink:href="#linear-gradient-3">\n  </linearGradient>\n  <linearGradient id="linear-gradient-5" x1="6.86" y1="20.94" x2="19.95" y2="20.94" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#b0b0b0" stop-opacity="0"/>\n    <stop offset="0.02" stop-color="#adadad" stop-opacity="0.04"/>\n    <stop offset="0.32" stop-color="#8d8d8d" stop-opacity="0.45"/>\n    <stop offset="0.6" stop-color="#757575" stop-opacity="0.75"/>\n    <stop offset="0.83" stop-color="#676767" stop-opacity="0.93"/>\n    <stop offset="1" stop-color="#626262"/>\n  </linearGradient>\n  <linearGradient id="linear-gradient-6" x1="11.01" y1="22.74" x2="20.12" y2="22.74" xlink:href="#linear-gradient-5">\n  </linearGradient>\n</defs>\n<title>main</title>\n<g id="scene">\n  <g id="towel">\n    <g>\n      <path class="cls-1" d="M53,46.4H30.74a1.16,1.16,0,0,1-.48-.11h0a2.39,2.39,0,0,0-1.53-.21l-1.58.32H17.53l-1-1.31,33.31-27.2L87.7,16.27Z"/>\n      <path class="cls-2" d="M52.61,46.18H32.22A3.13,3.13,0,0,1,31.13,46L29,45.26a2.08,2.08,0,0,0-2.25.6h0a.9.9,0,0,1-.69.32H17.61l-1.18-1.36L49.61,16.05h4.76a10.28,10.28,0,0,0,3.18.11l.92-.11H63.7l2.67-.1,1.53.1,2,.2,2-.25a9.38,9.38,0,0,1,1.41-.07l1.55,0,1.82.09H87.33Z"/>\n      <polygon class="cls-3" points="18.4 43.13 56.12 43.13 60.65 39.2 22.93 39.2 18.4 43.13"/>\n      <polygon class="cls-3" points="24.38 37.95 62.09 37.95 62.51 37.59 24.8 37.59 24.38 37.95"/>\n      <path class="cls-4" d="M28.23,45.15h.05a6.59,6.59,0,0,1,2.15.48c.57.24,1.17.48,1.26.49l2,0,.84-5.82Z"/>\n    </g>\n    <polygon id="corner" class="cls-5" points="17.61 46.18 16.84 43.79 16.43 44.83 17.61 46.18"/>\n  </g>\n  <g id="umbrella">\n    ', '\n    ', '\n  </g>\n  <g id="balloon">\n    ', '\n    ', '\n  </g>\n</g>\n</svg>\n']),
     _templateObject6 = _taggedTemplateLiteral(['\n  <div className="loader-message">\n    ', '\n  </div>\n  '], ['\n  <div className="loader-message">\n    ', '\n  </div>\n  ']);
 
@@ -74057,11 +74057,11 @@ module.exports = function (message) {
 
   tBLine.set(balloon, {
     y: -20,
-    transformOrigin: "80px 60px"
+    svgOrigin: '80% 35%'
   });
 
   tBLine.set(balloon, {
-    y: -3,
+    y: 3,
     scaleX: 1.2,
     scaleY: 0.8
   }).set(shadowB, {
@@ -74075,19 +74075,19 @@ module.exports = function (message) {
     scaleX: 0.9,
     ease: Sine.easeOut
   }).to(shadowB, 0.2, {
-    x: 12,
-    y: -7,
+    x: 9,
+    y: -6,
     scale: 0.7,
     ease: Sine.easeOut,
     opacity: 0.4
   }, "-=0.2").to(balloon, 0.3, {
-    y: -20,
+    y: -22,
     scaleY: 1,
     scaleX: 1,
     ease: Sine.easeOut
   }).to(shadowB, 0.3, {
-    x: 14,
-    y: -8,
+    x: 13,
+    y: -10,
     scale: 0.65,
     ease: Sine.easeOut,
     opacity: 0.35
@@ -79111,20 +79111,19 @@ module.exports = [{
     background: 1
   },
   content: [{
-    type: 'Text',
-    subtype: 'long',
-    background: false,
-    text: '<p>Definir que es un <span class="document-bold">fanzine</span> no es tarea fácil, es demasiado abstracto. Se transforma en la medida en que un grupo de personas lo adopta y cuando esto ocurre, el contexto moldea un significado; la tecnología y su práctica, construyen soportes; y los participantes, contenidos.</p>'
-  }, {
     type: 'Image',
     subtype: 'Single:2',
     url: './img/articles/one/two.svg'
   }, {
     type: 'Text',
-    subtype: 'link:download',
-    caption: '(75mb)',
-    text: 'Documento proyecto',
-    url: 'img/articles/one/automata.pdf'
+    subtype: 'long',
+    background: false,
+    text: '<p>Definir que es un <span class="document-bold">fanzine</span> no es tarea fácil, es demasiado abstracto. Se transforma en la medida en que un grupo de personas lo adopta y cuando esto ocurre, el contexto moldea un significado; la tecnología y su práctica, construyen soportes; y los participantes, contenidos.</p>'
+  }, {
+    type: 'Text',
+    subtype: 'short',
+    background: true,
+    text: '<p><span class="document-bold">Backend:</span> node.js, mongoDB y socket.io. <span class="document-bold">Front-end:</span> vanilla-js, lodash y pequeños modulos de npm: page, yo-yo, entre otros. <span class="document-bold">Herramientas de desarrollo: </span>git, gulp, webpack, babel...</p>'
   }, {
     type: 'Image',
     subtype: 'Single:1',
@@ -79133,7 +79132,7 @@ module.exports = [{
     type: 'Text',
     subtype: 'long',
     background: false,
-    text: '<p>Es una pena, que la mayoría de propuestas que nos dejan las <span class="document-bold">culturas resilientes</span>, resultan antes de intrigantes, aterradoras para la sociedad, que se siente vulnerable frente al cambio, principal enemigo del status quo. La idea de someter a presión un sistema que ya se encuentra en perfecto equilibrio le es motivo de pánico; más para las partes dominantes de la ecuación, que ensimismadas, atacan con fuerza y sucesivamente cualquier intento de <span class="document-bold">sabotaje</span>.</p>'
+    text: '<p>Es una pena, que la mayoría de propuestas que nos dejan las <span class="document-bold">culturas resilientes</span>, resultan antes de intrigantes, aterradoras para la sociedad, que se siente vulnerable frente al cambio, principal enemigo del status quo. La idea de someter a presión un sistema que ya se encuentra en perfecto equilibrio le es motivo de pánico; más para las partes dominantes de la ecuación, que ensimismadas, atacan con fuerza y sucesivamente cualquier intento de <span class="document-bold document-line">sabotaje</span>.</p>'
   }, {
     type: 'Image',
     subtype: 'Single:2',
@@ -79146,7 +79145,7 @@ module.exports = [{
     type: 'Text',
     subtype: 'long',
     background: false,
-    text: '<p> <span class="document-bold">¿Sabotaje? </span> Si, de un pequeño sector de la sociedad que ni es marginal —no todavía—, ni tan importante, pero que se ve atrapado en medio de una compleja estructura de control: la norma, la moral, la economía... etc. Un reducido fragmento de sociedad que rebosante en diversidad, juventud y decisión; se ve forzado a aparecer en escena asqueado por las mentiras, las clasificaciones y las injusticias de un sistema que se les vendió como perfecto y que nunca afectaron, ni siquiera les consultaron ¿Cómo? Sí cuando naces ya todo existe.</p>'
+    text: '<p> <span class="document-bold document-line">¿Sabotaje?</span> Si, de un pequeño sector de la sociedad que ni es marginal —no todavía—, ni tan importante, pero que se ve atrapado en medio de una compleja estructura de control: la norma, la moral, la economía... etc. Un reducido fragmento de sociedad que rebosante en diversidad, juventud y decisión; se ve forzado a aparecer en escena asqueado por las mentiras, las clasificaciones y las injusticias de un sistema que se les vendió como perfecto y que nunca afectaron, ni siquiera les consultaron ¿Cómo? Sí cuando naces ya todo existe.</p>'
   }, {
     type: 'Image',
     subtype: 'Single:1',
@@ -79173,6 +79172,16 @@ module.exports = [{
     type: 'Image',
     subtype: 'Single:2',
     url: './img/articles/one/clise.jpg'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/one/intro.gif'
+  }, {
+    type: 'Text',
+    subtype: 'link:download',
+    caption: '(75mb)',
+    text: 'Documento proyecto',
+    url: 'img/articles/one/automata.pdf'
   }],
   keywords: ['design', 'co-creation', 'dev', 'ux-ui', 'brand', 'digital', 'web', 'editorial', 'collective'],
   pictures: {
@@ -79185,26 +79194,96 @@ module.exports = [{
   }
 
 }, {
-  title: "That's Popayán!",
-  subtitle: 'Icecreaming* my birth city.',
-  type: 'illustration',
+  title: "Popayán",
+  subtitle: 'Ilustraciones del centro de la ciudad en colores aleatorios.',
+  type: 'Illustration',
   date: {
     year: '2015',
     color: 0
   },
-  colors: [0x000000, 0xffffff],
-  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-  content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
-  keywords: ['design', 'illustration', 'experimental', 'icecream'],
+  abstract: {
+    content: 'Popayán, lugar donde nací. Queda por el Cauca, que es Colombia pero al sur. Es una ciudad pequeña de muchas iglesias y muchos fieles (infieles pocos, pero muy bien supervisados). El atípico centro urbano, completamente blanco, le da cierta apariencia opulenta, como de lujo; de ahí el titulo de “la ciudad blanca de Colombia”.',
+    color: 1,
+    background: 0
+  },
+  colors: [0xb1e8c8, 0x2e2a38, 0xff6a9c],
+  front: {
+    url: '/img/articles/eight/main.jpg',
+    captionPos: 'bottom',
+    color: 1,
+    background: 0
+  },
+  content: [{
+    type: 'Image',
+    subtype: 'Single:1',
+    complete: true,
+    url: './img/articles/eight/photo1.jpg',
+    captionPos: 'bottom',
+    caption: 'Iglesia San Francisco'
+  }, {
+    type: 'Text',
+    subtype: 'short',
+    background: true,
+    text: '<p>Existen dos tipos de popayanejos: los que no aguantan un segundo en una ciudad tan blanca, sosa, sin sabor.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/eight/house1.png',
+    captionPos: 'bottom',
+    caption: 'Museo arquidiocesano'
+  }, {
+    type: 'Text',
+    subtype: 'short',
+    background: true,
+    text: '<p> Y los que disfrutan plácidamente de este pedazo de edén, lleno de paz, tranquilidad, laxitud (de esto hasta el tope).</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/eight/house3.png',
+    captionPos: 'bottom',
+    caption: 'Iglesia Santo Domingo'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/eight/vertical.png',
+    caption: 'Museo Francisco José de Caldas',
+    captionPos: 'bottom',
+    background: true
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    captionPos: 'bottom',
+    url: './img/articles/eight/two.png',
+    caption: 'Basilica Nuestra señora de la asunción'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    captionPos: 'bottom',
+    url: './img/articles/eight/house4.jpg',
+    caption: 'Iglesia San José'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    complete: true,
+    url: './img/articles/eight/photo2.jpg',
+    captionPos: 'bottom',
+    caption: 'Torre del reloj'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    captionPos: 'bottom',
+    url: './img/articles/eight/photo3.jpg',
+    caption: 'Nuestra señora de la asunción'
+  }],
   pictures: {
     main: {
       name: 'hello World',
       url: '/img/articles/eight/main.jpg',
       urlXX: '/img/articles/eight/main.png',
       comment: 'first coment main image'
-    },
-    others: []
-  }
+    }
+  },
+  keywords: ['design', 'illustration', 'experimental', 'icecream']
 }, {
   title: 'Inside the mouse king castle',
   subtitle: 'Imagen-Palabra 2017, exposure.',
@@ -103768,7 +103847,7 @@ var _templateObject = _taggedTemplateLiteral(['\n        <div className="project
     _templateObject2 = _taggedTemplateLiteral(['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      '], ['\n        <div className="project-image-supercaption">\n          ', '\n        </div>\n      ']),
     _templateObject3 = _taggedTemplateLiteral(['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    '], ['\n      <figcaption className="project-image-captions">\n        ', '\n        ', '\n      </figcaption>\n    ']),
     _templateObject4 = _taggedTemplateLiteral(['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      '], ['\n        <figure className="project-dual-image">\n          <img src="', '" alt="" className="project-image-img"/>\n          ', '\n        </figure>\n      ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    '], ['\n      <figure className="project-image">\n        <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    <figure className="project-image">\n      <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    '], ['\n    <figure className="project-image">\n      <img src="', '" alt="" className="project-image-img"/>\n      </figure>\n    ']),
     _templateObject6 = _taggedTemplateLiteral(['', ''], ['', '']),
     _templateObject7 = _taggedTemplateLiteral(['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    '], ['\n      <a href="', '" target="_blank">\n        ', '\n      </a>\n    ']),
     _templateObject8 = _taggedTemplateLiteral(['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    '], ['\n      <div className="link-container">\n        ', '\n        <p>\n          <i class="icon-', '"></i>\n          ', '\n          ', '\n        </p>\n      </div>\n    ']),
@@ -103837,7 +103916,7 @@ var Image = function (_Type) {
     _this.images = data.images;
     _this.captionPos = data.captionPos; // 'left:top'
     _this.backgroundLabel = data.background;
-
+    _this.complete = data.complete;
     // build template
     _this.subtype === 'Dual' ? _this.dualTemplateConstructor() : _this.singleTemplateConstructor();
     return _this;
@@ -103937,7 +104016,7 @@ var Image = function (_Type) {
           captions.style.top = '1em';
           break;
         case 'bottom':
-          captions.style.bottom = '1em';
+          captions.style.bottom = '1.3em';
           break;
         default:
           captions.style.top = '16px';
@@ -103945,6 +104024,11 @@ var Image = function (_Type) {
       }
 
       var template = yo(_templateObject5, this.url);
+
+      if (this.complete) {
+        template.classList.add('document-single-complete');
+        console.log(this.url);
+      }
 
       wrapper.appendChild(template);
       wrapper.appendChild(captions);
@@ -104023,17 +104107,12 @@ var Text = function (_Type2) {
 
       var text = yo(_templateObject6, this.text);
 
-      // let template = yo`
-      //   <div className="project-${this.type}">
-      //   </div>
-      // `
-
       var template = document.createElement('div');
       template.setAttribute('class', 'project-' + this.type);
 
       template.innerHTML = text;
 
-      this.setColor(wrapper);
+      this.setColor(this.container);
 
       wrapper.appendChild(template);
       this.container.appendChild(wrapper);

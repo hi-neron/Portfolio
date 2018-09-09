@@ -143,7 +143,7 @@ function drawArticles (tag, ctx) {
           setTimeout(() => {
             initialize()
             msnry.layout()
-            // close loader
+            // close loader when load finish
             if (ctx) {
               ctx.mainLoader.vanish()
             }

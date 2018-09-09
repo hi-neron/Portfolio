@@ -28,7 +28,7 @@
         width: 100%;
         margin-left: -10px;
         transform: translate(-50%, -50%);
-        letter-spacing: -0.09em;
+        letter-spacing: -0.1em;
         font-family: 'eleb';
         text-align: center;
         color: rgba($mainColor4, .87);
@@ -58,11 +58,11 @@
         
         .second-line {
           // letter-spacing: -0.04em;
-          margin-left: -2rem;
+          margin-left: -2.7rem;
           width: 110%;
           .space {
             display: inline-block;
-            width: 0.2em;
+            width: 0.12em;
           }
           .next-line {
             vertical-align: top;

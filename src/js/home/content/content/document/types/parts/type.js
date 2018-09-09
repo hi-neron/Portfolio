@@ -46,7 +46,7 @@ class Image extends Type {
     this.images = data.images
     this.captionPos = data.captionPos // 'left:top'
     this.backgroundLabel = data.background
-
+    this.complete = data.complete
     // build template
     this.subtype === 'Dual' ? this.dualTemplateConstructor() : this.singleTemplateConstructor()
   }
@@ -157,18 +157,24 @@ class Image extends Type {
         captions.style.top = '1em'
         break;
       case 'bottom':
-        captions.style.bottom = '1em'
+        captions.style.bottom = '1.3em'
         break;
       default:
         captions.style.top = '16px'
         break;
     }
-
+    
     let template = yo`
-      <figure className="project-image">
-        <img src="${this.url}" alt="" className="project-image-img"/>
+    <figure className="project-image">
+      <img src="${this.url}" alt="" className="project-image-img"/>
       </figure>
     `
+
+    if (this.complete) {
+      template.classList.add('document-single-complete')
+      console.log(this.url)
+    }
+
 
     wrapper.appendChild(template)
     wrapper.appendChild(captions)
@@ -233,17 +239,13 @@ class Text extends Type {
 
     let text = yo`${this.text}`
 
-    // let template = yo`
-    //   <div className="project-${this.type}">
-    //   </div>
-    // `
 
     let template = document.createElement('div')
     template.setAttribute('class', `project-${this.type}`)
 
     template.innerHTML = text
 
-    this.setColor(wrapper)
+    this.setColor(this.container)
 
     wrapper.appendChild(template)
     this.container.appendChild(wrapper)
