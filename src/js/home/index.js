@@ -221,7 +221,6 @@ function scroll (e, pos) {
   
   function scrollmove () {
     scrollA = false
-    console.log(actualPosition, direction)
     
     if (direction <= 1) {
       scrollA = true

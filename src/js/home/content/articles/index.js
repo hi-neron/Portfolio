@@ -94,7 +94,7 @@
 module.exports = [
   {
     title: 'Historias de Cal',
-    subtitle: 'A small web-game for city Hall of Popayán to teach children important topics about city.',
+    subtitle: 'Un pequeño videojuego para la alcaldía de Popayán. En el, Los niños aprenden sobre hechos históricos y culturales de la ciudad.',
     type: 'project',
     colors: [0xffeecf, 0x9c2819, 0x2cc5ff],
     date: {
@@ -253,7 +253,7 @@ module.exports = [
         type: 'Text',
         subtype: 'short',
         background: true,
-        text: '<p><span class="document-bold">Backend:</span> node.js, mongoDB y socket.io. <span class="document-bold">Front-end:</span> vanilla-js, lodash y pequeños modulos de npm: page, yo-yo, entre otros. <span class="document-bold">Herramientas de desarrollo: </span>git, gulp, webpack, babel...</p>',
+        text: '<p><span class="document-bold">Backend:</span> node.js, mongoDB y socket.io. <span class="document-bold">Front-end:</span> vanilla-js, lodash y pequeños modulos de npm. <span class="document-bold">Herramientas de desarrollo: </span>git, gulp, webpack, babel...</p>',
       },
       {
         type: 'Image',
@@ -346,7 +346,7 @@ module.exports = [
       color: 0
     },
     abstract: {
-      content: 'Popayán, lugar donde nací. Queda por el Cauca, que es Colombia pero al sur. Es una ciudad pequeña de muchas iglesias y muchos fieles (infieles pocos, pero muy bien supervisados). El atípico centro urbano, completamente blanco, le da cierta apariencia opulenta, como de lujo; de ahí el titulo de “la ciudad blanca de Colombia”.',
+      content: 'Popayán, lugar donde nací. Queda por el Cauca, que es Colombia pero al sur. Es una ciudad pequeña de muchas iglesias y muchos fieles, infieles pocos pero bien supervisados. El atípico centro urbano, completamente blanco, le da cierta apariencia opulenta, como de lujo; de ahí el titulo de “la ciudad blanca de Colombia”.',
       color: 1,
       background: 0
     },
@@ -363,6 +363,7 @@ module.exports = [
         subtype: 'Single:1',
         complete: true,
         url: './img/articles/eight/photo1.jpg',
+        background: true,
         captionPos: 'bottom',
         caption: 'Iglesia San Francisco'
       },
@@ -370,49 +371,25 @@ module.exports = [
         type: 'Text',
         subtype: 'short',
         background: true,
-        text: '<p>Existen dos tipos de popayanejos: los que no aguantan un segundo en una ciudad tan blanca, sosa, sin sabor.</p>'
+        text: '<p><span class="document-bold"> Existen dos tipos de popayanejos: </span> Los que abrumados de tanto blanco, se hastían de esta ciudad sosa, aburrida, sin color.</p>'
       },
       {
         type: 'Image',
         subtype: 'Single:2',
         url: './img/articles/eight/house1.png',
         captionPos: 'bottom',
-        caption: 'Museo arquidiocesano'
       },
       {
         type: 'Text',
         subtype: 'short',
         background: true,
-        text: '<p> Y los que disfrutan plácidamente de este pedazo de edén, lleno de paz, tranquilidad, laxitud (de esto hasta el tope).</p>'
+        text: '<p>Y los que disfrutan plácidamente de esta tajadita de edén, de excesiva tranquilidad, tan llena de paz, tan <span class="document-bold document-line">laxa</span>.</p>'
       },
       {
         type: 'Image',
         subtype: 'Single:2',
         url: './img/articles/eight/house3.png',
-        captionPos: 'bottom',
-        caption: 'Iglesia Santo Domingo'
-      },
-      {
-        type: 'Image',
-        subtype: 'Single:2',
-        url: './img/articles/eight/vertical.png',
-        caption: 'Museo Francisco José de Caldas',
-        captionPos: 'bottom',
-        background: true
-      },
-      {
-        type: 'Image',
-        subtype: 'Single:2',
-        captionPos: 'bottom',
-        url: './img/articles/eight/two.png',
-        caption: 'Basilica Nuestra señora de la asunción'
-      },
-      {
-        type: 'Image',
-        subtype: 'Single:2',
-        captionPos: 'bottom',
-        url: './img/articles/eight/house4.jpg',
-        caption: 'Iglesia San José'
+        captionPos: 'bottom'
       },
       {
         type: 'Image',
@@ -420,14 +397,38 @@ module.exports = [
         complete: true,
         url: './img/articles/eight/photo2.jpg',
         captionPos: 'bottom',
-        caption: 'Torre del reloj'
+        caption: 'Torre del reloj',
+        background: true
       },
       {
         type: 'Image',
         subtype: 'Single:2',
         captionPos: 'bottom',
+        url: './img/articles/eight/two.png',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        captionPos: 'bottom',
+        background: true,
         url: './img/articles/eight/photo3.jpg',
         caption: 'Nuestra señora de la asunción'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/eight/house4.jpg',
+      },
+      {
+        type: 'Text',
+        subtype: 'short',
+        background: true,
+        text: '<p>Hago parte de un grupo pequeño, uno residual: los que divagamos entre lo uno o lo otro, ambos o ninguno. Dejo esta serie de ilustraciones como testigo.</p>'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/eight/vertical.png'
       },
     ],
     pictures: {
@@ -441,19 +442,63 @@ module.exports = [
     keywords: ['design', 'illustration', 'experimental', 'icecream'],
   },
   {
-    title: 'Inside the mouse king castle',
-    subtitle: 'Imagen-Palabra 2017, exposure.',
+    title: 'En el refrigerador del rey rata',
+    subtitle: 'Ilustración para exposición: imagen-palabra 2017',
     type: 'Illustration',
-    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
+    abstract: {
+      content: 'Que decir del vector -me gusta-, sencillo de ejecutar, no necesita mayor herramienta -un ratón-, encaja perfectamente con el diseño UI. Esta es una colaboración para un gran amigo, y todo un recreo, Ilustrar es jugar para mi -siempre que no paguen por ello-. En “El refrigerador del rey rata” convergen varias historias, estan ocultas, la tarea que le queda al lector es encontrarlas.',
+      color: 1,
+      background: 0
+    },
     date: {
       year: '2017',
       color: 0
     },
     important: false,
-    colors: [0xd7edd6, 0x161405],
-    content: `Tiene un piercing en la oreja izquierda y dice “chévere” más veces de las que uno esperaría que una persona de 44 años lo dijera. Usa gafas solo a ratos; gafas rectangulares de sólido marco negro. Desde hace siete años (con un intermedio de dos en Colombia) vive en Jaffa, o como a él le gusta decir, “en territorio sin nombre”, con su esposa y sus tres hijos. Allá escribió la novela Tres ataúdes blancos, ganadora del premio Herralde en 2010 y finalista del Rómulo Gallegos en 2011. Salvo un libro infantil, después de eso, nada. Hasta ahora.
-    Antonio Ungar dice que es muy zanahorio y muy solitario. Que quizás sea por eso que no le salen bien los diálogos en sus libros, con personajes muy concentrados sobre sí, y que quizás sea esa la razón por la que el alcohol funciona como mecanismo de desahogo en sus personajes. Personajes que pueden aparecer en ciudades inglesas o colombianas con la misma naturalidad con que pueden aparecer en ciudades francesas o italianas. No hay una geografía definida en su literatura. Como en su vida. Ha vivido en Manchester, en la selva colombiana, en México D.F., en Barcelona, en Iowa y en Palestina. Se graduó de arquitectura y empezó una maestría en literatura comparada que nunca terminó porque le tocaba leer teoría y crítica literaria, pero nunca llegaba a los libros.
-    En enero de este año estuvo en Barcelona unos días presentando su más reciente novela. Una novela que no tiene nada que ver con la anterior: ni en tamaño, ni en tono, ni en tema. Luego de una semana en ruedas de prensa, cocteles, almuerzos con editores, cenas con cónsules, estaba frito.`,
+    colors: [0xe2e8db, 0x582a54, 0xc94957],
+    content: [
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/two/cheese1.png',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/two/top.jpg',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/two/bin.jpg',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/two/crown.png',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/two/cheese2.png',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/two/beer.png',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/two/body.jpg',
+      },
+    ],
+    front: {
+      url: '/img/articles/two/main_b.jpg',
+      captionPos: 'bottom',
+      color: 1,
+      background: 0
+    },
     keywords: ['illustration', 'challenge', 'expo', 'storytelling'],
     pictures: {
       main: {
@@ -461,50 +506,81 @@ module.exports = [
         url: '/img/articles/two/main.png',
         urlXX: '/img/articles/two/main_b.png',
         comment: 'first coment main image',
-      },
-      others: [
-        {
-          type: 'image',
-          name: 'hello World',
-          url: '/img/articles/two/two.png',
-          comment: 'did you know that information, say me the true, if you did not, we wil not have problems. relax with me boy ',
-        },
-        {
-          type: 'image2',
-          name: 'hello World',
-          url: '/img/articles/two/three.jpg'
-        },
-        {
-          type: 'quote',
-          text: `Una vez, al filo de una lúgubre media noche,
-          mientras débil y cansado, en tristes reflexiones embebido,
-          inclinado sobre un viejo y raro libro de olvidada ciencia,
-          cabeceando, casi dormido`,
-        }
-      ]
+      }
     },
   },
   {
     title: 'Kids society',
-    subtitle: 'A serious video game for children who do not respect the rules.',
+    subtitle: 'Un videojuego serio para niños que no respetan las reglas.',
     type: 'Project',
+    abstract: {
+      content: 'Nubarrones de gas somnífero atraviesan el mundo de norte a sur. El gas, que solo afecta a adultos, los deja tirados en el piso víctimas de un sueño profundo. Es el comienzo de una nueva era: ahora, son los niños de todo el planeta quienes diseñan la sociedad del futuro.',
+      color: 1,
+      background: 0
+    },
     date: {
       year: '2016',
       color: 1
     },
-    colors: [0xffd193, 0x161405],
-    intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-    content: `Dos películas presentes en ambos ciclos hicieron a Chaplin merecedor de premios Óscar: en 1929 fue galardonado por El Circo, y en 1973 por la banda sonora de Candilejas. Y, en 1972 ganó el  galardón honorífico de la Academia por su trayectoria cinematográfica El hombre transmitió en sus largometrajes una crítica constante a la sociedad en que vivía, a partir de personajes marginales o menospreciados. Sin embargo, su mensaje no fue desalentador: a través de la comedia logró balancear la crudeza de la realidad, de tal manera que a cada burla en pantalla lo acompañaba una reflexión y una mirada sarcástica y crítica para no sucumbir ante el sistema.
-    Rodrigo Torrijos, editor de cine y cultura de la revista Rolling Stone, dice que Chaplin no se puede catalogar como una figura vigente, sino eterna. “Es uno de los culpables de potenciar la máquina cinematográfica, hizo trascender el negocio de la estimulación a través de imágenes proyectadas en un muro, a un juego entre el poder, el cuerpo y la memoria. En Tiempos modernos metía la cabeza entre los engranajes de la automatización que podrían aniquilarlo; no disimulaba el miedo, pero salía del otro lado, no triunfante, pero al menos vivo, y con ese gesto solapado de resistencia, de desacato ante lo imaginado. Por eso está presente, porque se sigue burlando de lo establecido, nos sigue inspirando a desafiar el poder, al negocio del entretenimiento, a la dictadura del aburrimiento. Es eterno porque siempre estaremos del lado de los vagos que muerden el cuello de lo imposible” explica Torrijos.`,
+    colors: [0xf0efe6, 0x302f49, 0xff5900],
+    front: {
+      url: '/img/articles/three/logo.png',
+      captionPos: 'bottom',
+      color: 1,
+      background: 0
+    },
+    content: [
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/three/city.jpg',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/three/cars.png',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/three/lab.jpg',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/three/hand.gif',
+      },
+      {
+        type: 'Text',
+        subtype: 'short',
+        background: true,
+        text: '<p>No recuerdo como llegué, ni como me fui. Presupuesto apretado, metas ambiciosas, calendarios ingenuos. Empezamos seis y un par de meses después, estaba solo.</p>'
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        complete: true,
+        url: './img/articles/three/boy1.jpg',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:2',
+        url: './img/articles/three/boy2.jpg',
+      },
+      {
+        type: 'Image',
+        subtype: 'Single:1',
+        url: './img/articles/three/boom.gif',
+      },
+    ],
     keywords: ['design', 'ux-ui', 'videogame', 'brand', 'illustration'],
-      pictures: {
+    pictures: {
       main: {
         name: 'hello World',
         url: '/img/articles/three/main.png',
         urlXX: '/img/articles/three/main_b.png',
         comment: 'first coment main image',
       },
-      others: []
     },
   },
   {

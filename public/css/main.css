@@ -1174,7 +1174,7 @@ footer {
     grid-column-end: span 3; }
   .document-project .text-short {
     grid-column-end: span 3;
-    margin-bottom: 40px; }
+    padding: 20px 0px; }
   .document-project .text-link {
     grid-column-end: span 3;
     padding-bottom: 0px; }
