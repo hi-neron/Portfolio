@@ -115,8 +115,6 @@ function drawArticles (tag, ctx) {
 
   let pos = getPosition(mainContent)
   pos = pos.top
-  // move!
-  // move!
 
   // si no hay un loader, entonces hace scroll
   let introContainer = null
@@ -126,7 +124,6 @@ function drawArticles (tag, ctx) {
   } else {
     introContainer = ctx.introContainer
   }
-
 
   // on load intro, start
   document.onload = intro.init(introContainer, ctx, (r) => {

@@ -51642,8 +51642,6 @@ function drawArticles(tag, ctx) {
 
   var pos = getPosition(mainContent);
   pos = pos.top;
-  // move!
-  // move!
 
   // si no hay un loader, entonces hace scroll
   var introContainer = null;
@@ -79363,9 +79361,14 @@ module.exports = [{
     background: 0
   },
   content: [{
+    type: 'Text',
+    subtype: 'short',
+    background: true,
+    text: '<p>Mi trabajo aquí era construir una interfaz. <span class="document-bold">El problema:</span> presupuesto muy justo. <span class="document-bold">Solución: </span>Hora de dibujar.</p>'
+  }, {
     type: 'Image',
-    subtype: 'Single:2',
-    url: './img/articles/three/city.jpg'
+    subtype: 'Single:1',
+    url: './img/articles/three/group.png'
   }, {
     type: 'Image',
     subtype: 'Single:1',
@@ -79373,16 +79376,11 @@ module.exports = [{
   }, {
     type: 'Image',
     subtype: 'Single:2',
-    url: './img/articles/three/lab.jpg'
+    url: './img/articles/three/hand.gif'
   }, {
     type: 'Image',
     subtype: 'Single:2',
-    url: './img/articles/three/hand.gif'
-  }, {
-    type: 'Text',
-    subtype: 'short',
-    background: true,
-    text: '<p>No recuerdo como llegué, ni como me fui. Presupuesto apretado, metas ambiciosas, calendarios ingenuos. Empezamos seis y un par de meses después, estaba solo.</p>'
+    url: './img/articles/three/lab.jpg'
   }, {
     type: 'Image',
     subtype: 'Single:1',
@@ -79391,11 +79389,11 @@ module.exports = [{
   }, {
     type: 'Image',
     subtype: 'Single:2',
-    url: './img/articles/three/boy2.jpg'
+    url: './img/articles/three/city.jpg'
   }, {
     type: 'Image',
-    subtype: 'Single:1',
-    url: './img/articles/three/boom.gif'
+    subtype: 'Single:2',
+    url: './img/articles/three/boy2.jpg'
   }],
   keywords: ['design', 'ux-ui', 'videogame', 'brand', 'illustration'],
   pictures: {
@@ -79407,17 +79405,61 @@ module.exports = [{
     }
   }
 }, {
-  title: 'Portfolio 2018',
-  subtitle: 'Design / Illustration / Develop et Animation for this page.',
+  title: 'Portafolio',
+  subtitle: 'Diseño / Desarrollo',
   type: 'project',
   date: {
     year: '2018',
     color: 0
   },
   mainImageType: 'video',
-  colors: [0x000000, 0xffffff],
-  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-  content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
+  colors: [0x332934, 0xD0d0d0, 0xfd5576],
+  abstract: {
+    content: 'Mar, café diseño ilustración desarrollo. Todo esto, lo que hago y lo que me gusta, juntos; ese fue el origen de portafolio 2018. La idea, dejar un catalogo de proyectos propios y colectivos que considero interesantes y ricos visualmente. Fue minuciosamente optimizada para diferentes tamaños y resoluciones de pantalla. Respecto a la selección de color: nada que decir.',
+    color: 1,
+    background: 0
+  },
+  front: {
+    url: '/img/articles/neuf/main.png',
+    captionPos: 'bottom',
+    color: 0,
+    background: 1
+  },
+  content: [{
+    type: 'Image',
+    subtype: 'Single:1',
+    complete: true,
+    url: './img/articles/neuf/me.jpg'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/neuf/phone3.gif'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    text: '<p>Hay un especial cuidado en aquellos elementos que afectan la experiencia: la barra de búsqueda de artículos, los loaders de imágenes y de carga de pantalla, la personalización de contenidos, animaciones, etc, etc, etc.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/neuf/beach.png'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    complete: true,
+    url: './img/articles/neuf/me.gif'
+  }, {
+    type: 'Text',
+    subtype: 'short',
+    text: '<p><span class="document-bold">front-end: </span> vanilla-js, masonry, three.js, lodash. <span class="document-bold">Back-end: </span>Consume un archivo json :D <span class="document-bold">Tools: </span>Github, webpack, gulp, npm, blender, illustrator, photoshop y sketch.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/neuf/article.gif'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/neuf/computer2.gif'
+  }],
   keywords: ['design', 'illustration', 'ux-ui', 'web', 'dev', 'front-end', 'animation'],
   pictures: {
     main: {
@@ -79425,8 +79467,7 @@ module.exports = [{
       url: '/img/articles/neuf/main.mp4',
       urlXX: '/img/articles/neuf/main.png',
       comment: 'first coment main image'
-    },
-    others: []
+    }
   }
 }, {
   title: 'Huele a caña!',
