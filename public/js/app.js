@@ -79005,7 +79005,7 @@ module.exports = [{
   }, {
     type: 'Image',
     subtype: 'Single:2',
-    url: './img/articles/sept/woar.png',
+    url: './img/articles/sept/woar.jpg',
     superCaption: 'La gran nigüa',
     caption: 'arte conceptual',
     captionPos: 'bottom',
@@ -79344,6 +79344,12 @@ module.exports = [{
   title: 'Kids society',
   subtitle: 'Un videojuego serio para niños que no respetan las reglas.',
   type: 'Project',
+  front: {
+    url: '/img/articles/three/logo.png',
+    captionPos: 'bottom',
+    color: 1,
+    background: 0
+  },
   abstract: {
     content: 'Nubarrones de gas somnífero atraviesan el mundo de norte a sur. El gas, que solo afecta a adultos, los deja tirados en el piso víctimas de un sueño profundo. Es el comienzo de una nueva era: ahora, son los niños de todo el planeta quienes diseñan la sociedad del futuro.',
     color: 1,
@@ -79354,12 +79360,6 @@ module.exports = [{
     color: 1
   },
   colors: [0xf0efe6, 0x302f49, 0xff5900],
-  front: {
-    url: '/img/articles/three/logo.png',
-    captionPos: 'bottom',
-    color: 1,
-    background: 0
-  },
   content: [{
     type: 'Text',
     subtype: 'short',
@@ -79405,8 +79405,8 @@ module.exports = [{
     }
   }
 }, {
-  title: 'Portafolio',
-  subtitle: 'Diseño / Desarrollo',
+  title: 'Portafolio 2018',
+  subtitle: 'Diseño, Usabilidad, desarrollo',
   type: 'project',
   date: {
     year: '2018',
@@ -79415,7 +79415,7 @@ module.exports = [{
   mainImageType: 'video',
   colors: [0x332934, 0xD0d0d0, 0xfd5576],
   abstract: {
-    content: 'Mar, café diseño ilustración desarrollo. Todo esto, lo que hago y lo que me gusta, juntos; ese fue el origen de portafolio 2018. La idea, dejar un catalogo de proyectos propios y colectivos que considero interesantes y ricos visualmente. Fue minuciosamente optimizada para diferentes tamaños y resoluciones de pantalla. Respecto a la selección de color: nada que decir.',
+    content: 'Mar, café diseño ilustración desarrollo. Todo esto, lo que hago y lo que me gusta, juntos; ese fue el origen de portafolio 2018. La idea, dejar un catalogo de proyectos propios y colectivos que considero interesantes y ricos visualmente. Fue minuciosamente optimizada para diferentes tamaños y resoluciones de pantalla.',
     color: 1,
     background: 0
   },
@@ -79437,11 +79437,15 @@ module.exports = [{
   }, {
     type: 'Text',
     subtype: 'long',
-    text: '<p>Hay un especial cuidado en aquellos elementos que afectan la experiencia: la barra de búsqueda de artículos, los loaders de imágenes y de carga de pantalla, la personalización de contenidos, animaciones, etc, etc, etc.</p>'
+    text: '<p>Se tuvo especial cuidado en aquellos elementos que afectan la experiencia: la barra de búsqueda de artículos, los loaders de imágenes y de carga de pantalla, la personalización de contenidos, animaciones, etc, etc, etc.</p>'
   }, {
     type: 'Image',
     subtype: 'Single:2',
     url: './img/articles/neuf/beach.png'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/neuf/main.gif'
   }, {
     type: 'Image',
     subtype: 'Single:1',
@@ -79454,11 +79458,11 @@ module.exports = [{
   }, {
     type: 'Image',
     subtype: 'Single:2',
-    url: './img/articles/neuf/article.gif'
-  }, {
-    type: 'Image',
-    subtype: 'Single:2',
     url: './img/articles/neuf/computer2.gif'
+  }, {
+    type: 'Text',
+    subtype: 'short',
+    text: '<p>Sobre las fuentes tipograficas: dos, y una de ellas es una fuente variable. Existe una paleta de color primaria y otras secundarias, es decir, cambian en cada articulo.</p>'
   }],
   keywords: ['design', 'illustration', 'ux-ui', 'web', 'dev', 'front-end', 'animation'],
   pictures: {
@@ -79471,15 +79475,68 @@ module.exports = [{
   }
 }, {
   title: 'Huele a caña!',
-  subtitle: '(Smells like cane) A micro-project, I did it in two days.',
-  type: 'micro-project',
+  subtitle: 'Micro-proyecto. Lo interesante: se hizo en 1 día.',
+  type: 'Project',
   date: {
     year: '2014',
     color: 1
   },
-  colors: [0x000000, 0xffffff],
-  intro: "Para muchos lectores argentinos 'La sudestada' fue el cómic del año en 2015; una historia sencilla, sutil, una variación entre un policial sentimental en un marco costumbrista y melancólico. Ese aclamado libro puede leerse ahora en Colombia gracias a una nueva edición por parte del sello Cohete Cómics, de la editorial independiente Laguna libros.",
-  content: 'El que Gran Sal\xF3n M\xE9xico ofreci\xF3 su primer encuentro en 2014, momento en el cual la ilustraci\xF3n pasaba de ser un simple servicio gr\xE1fico a entender como una manifestaci\xF3n art\xEDstica con peso en la cultura visual. Cuatro a\xF1os despu\xE9s, todav\xEDa se caracteriza por ser una de las primeras ferias totalmente dedicadas a la  ilustraci\xF3n contempor\xE1nea en formato de cuadro y piezas coleccionables. Se trata de un encuentro anual en el que 35 ilustradores mexicanos y un invitado internacional se juntan durante tres d\xEDas para exhibir y vender sus obras, adem\xE1s de participar en conversatorios, talleres y revisiones de su portafolio.\n    Aunque los organizadores del evento tienen planeado realizar el Gran Sal\xF3n M\xE9xico (GSM) en noviembre, tendr\xE1n, como antesala y con la convicci\xF3n de afianzar los lazos entre ilustradores, editores, galeristas y promotores de distintas latitudes, una edici\xF3n especial en un pa\xEDs distinto a M\xE9xico. En 2018 la exhibici\xF3n se realizar\xE1 en Colombia: obras de 18 ilustradores mexicanos podr\xE1n ser\xE1n mostrados a artistas colombiano y al p\xFAblico local.',
+  colors: [0xe0e9be, 0x2b2722, 0xf1a80d],
+  front: {
+    url: '/img/articles/six/main_b.jpg',
+    captionPos: 'bottom',
+    color: 0,
+    background: 0
+  },
+  abstract: {
+    content: 'Un día cualquiera, llegó a América la caña de azúcar y se quedó para siempre. Desde ahí, su cultivo se ha expandido por todas las zonas cálidas del continente, endulzando cafés, pasteles, golosinas de muchas generaciones.',
+    color: 1,
+    background: 2
+  },
+  content: [{
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/six/sucre.png'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/six/julio.png'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    text: '<p>En la actualidad, el Valle del Cauca procesa grandes cantidades para extraer de ella azúcar y bio-combustibles.</p>'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    text: '<p>Julio, un caleño emprendedor ayuda en esa labor, y aunque lleva la caña en su corazón, la tarea no es fácil. </p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/six/animals.jpg'
+  }, {
+    type: 'Text',
+    subtype: 'short',
+    background: true,
+    text: '<p>El alambique</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:1',
+    url: './img/articles/six/alam.png',
+    superCaption: 'Alambique',
+    captionPos: 'bottom'
+  }, {
+    type: 'Text',
+    subtype: 'long',
+    text: '<p>Se enfrenta al ardiente <span class="document-bold">sol del valle</span>, enfermedades, o <span class="document-bold document-line">animales peligrosos</span> que pican muerden y envenenan.</p>'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/six/tablet.png'
+  }, {
+    type: 'Image',
+    subtype: 'Single:2',
+    url: './img/articles/six/tractor.jpg'
+  }],
   keywords: ['design', 'illustration', 'serious-game', 'challenge', 'ux-ui', 'history'],
   pictures: {
     main: {
