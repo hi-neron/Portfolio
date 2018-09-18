@@ -1,3 +1,5 @@
+const MinifyPlugin = require("babel-minify-webpack-plugin")
+
 module.exports = {
   entry : {
     async : ['babel-polyfill', './src/js']
@@ -13,5 +15,8 @@ module.exports = {
   },
   output: {
     filename: 'app.js'
-  }
+  },
+  plugins: [
+    new MinifyPlugin()
+  ]
 }

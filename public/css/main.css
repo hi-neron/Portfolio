@@ -330,31 +330,28 @@ svg:focus {
       min-height: 420px;
       max-width: 860px;
       max-height: 800px; }
-      #intro .intro-wrapper .my-name-container .my-name {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        margin-left: -10px;
-        transform: translate(-50%, -50%);
-        letter-spacing: -0.1em;
-        font-family: 'eleb';
-        text-align: center;
-        color: rgba(50, 41, 52, 0.87);
-        font-size: calc(5vw + 9vh + 6vmin);
-        line-height: 1.1em;
-        text-shadow: 0 -2px 8px rgba(255, 255, 255, 0.15), 0 -6px 8px rgba(189, 230, 219, 0.6), 0 -3px 2px rgba(202, 249, 255, 0.8), 0 4px 0px #ff7598, 0 -2px 2px rgba(255, 255, 255, 0.5), 0 7px 2px rgba(19, 22, 24, 0.2), 0 8px 8px rgba(255, 67, 105, 0.7), 0 20px 2px rgba(50, 41, 52, 0.3); }
-        #intro .intro-wrapper .my-name-container .my-name .name-line {
-          width: 100%; }
-        #intro .intro-wrapper .my-name-container .my-name .second-line {
-          margin-left: -2.7rem;
-          width: 110%; }
-          #intro .intro-wrapper .my-name-container .my-name .second-line .space {
-            display: inline-block;
-            width: 0.12em; }
-          #intro .intro-wrapper .my-name-container .my-name .second-line .next-line {
-            vertical-align: top;
-            font-size: 1.4em; }
+
+.my-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  margin-left: -10px;
+  transform: translate(-50%, -50%);
+  letter-spacing: -0.1em;
+  font-family: 'eleb';
+  text-align: center;
+  color: rgba(50, 41, 52, 0.87);
+  font-size: calc(5vw + 9vh + 6vmin);
+  line-height: 1.1em;
+  text-shadow: 0 -2px 8px rgba(255, 255, 255, 0.15), 0 -6px 8px rgba(189, 230, 219, 0.6), 0 -3px 2px rgba(202, 249, 255, 0.8), 0 4px 0px #ff7598, 0 -2px 2px rgba(255, 255, 255, 0.5), 0 7px 2px rgba(19, 22, 24, 0.2), 0 8px 8px rgba(255, 67, 105, 0.7), 0 20px 2px rgba(50, 41, 52, 0.3); }
+  .my-name .name-line {
+    width: 100%; }
+  .my-name .second-line .space {
+    display: inline-block; }
+  .my-name .second-line .next-line {
+    vertical-align: top;
+    font-size: 1.4em; }
 
 #main_title {
   position: absolute;
@@ -374,6 +371,28 @@ svg:focus {
     top: 120px;
     left: 50%;
     transform: translateX(0px); }
+
+#error-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #EAEAEA; }
+  #error-wrapper .error-container {
+    position: absolute;
+    top: 42%;
+    width: 100%;
+    height: 100px;
+    text-align: center; }
+    #error-wrapper .error-container .my-name {
+      width: 100%;
+      letter-spacing: 0.03em !important;
+      line-height: 0.8em; }
+      #error-wrapper .error-container .my-name .message {
+        font-size: 0.09em;
+        font-family: 'LMono';
+        letter-spacing: 0.05em !important;
+        text-shadow: none;
+        font-variation-settings: 'wght' 500, 'wdth' 110; }
 
 .to-show {
   display: none; }
@@ -410,10 +429,7 @@ svg:focus {
         margin-bottom: -4px;
         overflow: hidden; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content:hover .over-article-container {
-          transform: translateY(0);
-          left: 0px;
-          top: 0px;
-          border-radius: 0; }
+          display: block; }
         #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .article-date-container {
           position: absolute;
           bottom: 11px;
@@ -446,7 +462,7 @@ svg:focus {
           z-index: 2;
           transition: all 0.4s;
           transform-origin: 0 0;
-          transform: translateY(-100%); }
+          display: none; }
           #main-content .main-over-wrapper .main-content-wrapper .grid-item .article-content .over-article-container .over-article-wrapper {
             position: relative;
             height: 50%;
@@ -794,7 +810,7 @@ footer {
     border-radius: 2px;
     z-index: 11;
     width: 70px;
-    height: 16px;
+    height: 32px;
     padding: 4px;
     position: relative;
     box-shadow: 0 4px 0 rgba(50, 41, 52, 0.15); }
@@ -1350,13 +1366,14 @@ footer {
     #cv .cv-container .cv-teamwork {
       background-color: #322934;
       color: #f3f3f3;
-      -webkit-font-smoothing: antialiased !important; }
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale; }
     #cv .cv-container .cv-main {
       padding: 1rem;
       margin: 1rem 1rem 0 1rem;
-      font-size: calc(18px + 4 * (100vw - 320px) / 1180);
+      font-size: calc(17px + 4 * (100vw - 320px) / 1180);
       font-family: 'LMono';
-      font-variation-settings: 'wght' 800, 'wdth' 95;
+      font-variation-settings: 'wght' 700, 'wdth' 95;
       grid-column: 1 / 3;
       grid-row: 1 / 3; }
       #cv .cv-container .cv-main .cv-main-top .cv-main-top-left {
@@ -1393,6 +1410,7 @@ footer {
             font-variation-settings: 'wght' 1000, 'wdth' 55;
             font-size: 0.7rem; }
         #cv .cv-container .cv-main .cv-main-top .cv-main-top-right .cv-main-top-right-top .cv-main-top-right-secondTitle {
+          margin-bottom: 3px;
           font-family: 'LMono';
           font-variation-settings: 'wght' 1000, 'wdth' 75;
           font-size: 1.3rem; }
@@ -1401,6 +1419,7 @@ footer {
             font-size: 0.7rem;
             font-variation-settings: 'wght' 1000, 'wdth' 55; }
         #cv .cv-container .cv-main .cv-main-top .cv-main-top-right .cv-main-top-right-top .cv-main-top-right-info {
+          margin-bottom: 0px;
           font-size: 0.8em;
           font-variation-settings: 'wght' 600, 'wdth' 75;
           font-family: 'LMono'; }
@@ -1428,7 +1447,7 @@ footer {
           width: 100%;
           z-index: -1; }
       #cv .cv-container .cv-main .cv-main-bottom-bio {
-        line-height: 1.30em; }
+        line-height: 1.35em; }
         #cv .cv-container .cv-main .cv-main-bottom-bio .cv-main-bottom-bio-text p {
           margin-bottom: 1rem; }
         #cv .cv-container .cv-main .cv-main-bottom-bio .cv-main-bottom-bio-text .cv-bio-highlight {
@@ -1864,10 +1883,6 @@ footer {
   content: '\f32c'; }
 
 /* '' */
-body, #app {
-  background: url("/img/noise1.png"), linear-gradient(155deg, #dadada 0%, #dadada 20%, #908792 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
-
 html {
   height: 100%; }
 
@@ -1877,7 +1892,7 @@ body {
   font-weight: 400;
   color: #322934;
   overflow-x: hidden;
-  background: #dadada;
+  background: #dfdfdf;
   /* Old browsers */
   text-rendering: geometricPrecision; }
 

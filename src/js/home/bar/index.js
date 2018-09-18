@@ -36,7 +36,7 @@ let trigger = yo`
 `
 
 function getTags () {
-  const articles = require('../content/articles')
+  const articles = require('../contents/articles')
   let preTags = []
   let scoredTags = []
   for (let article in articles) {
@@ -167,12 +167,11 @@ trigger.addEventListener('click', (e) => {
   }
 })
 
-function barBehavior (mainContentP) {
-  let vPosition = window.pageYOffset
+function barBehavior (move) {
   let app = document.getElementById('app')
   let bar = document.getElementById('main-bar')
   
-  if (vPosition > mainContentP.top - 450) {
+  if (!move) {
     limit = true
     trigger.classList.add('view');
   } else {

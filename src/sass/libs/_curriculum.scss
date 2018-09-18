@@ -186,14 +186,15 @@
       background-color: $mainColor4;
       color: $gray;
       -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale;
     }
     
     .cv-main{
       padding: 1rem;
       margin: 1rem 1rem 0 1rem;
-      font-size: calc(18px + 4 * (100vw - 320px) / 1180);
+      font-size: calc(17px + 4 * (100vw - 320px) / 1180);
       font-family: 'LMono';
-      font-variation-settings: 'wght' 800, 'wdth' 95;
+      font-variation-settings: 'wght' 700, 'wdth' 95;
       grid-column: 1 / 3;
       grid-row: 1 / 3;
   
@@ -239,6 +240,7 @@
               }
             }
             .cv-main-top-right-secondTitle{
+              margin-bottom: 3px;
               font-family: 'LMono';
               font-variation-settings: 'wght' 1000, 'wdth' 75;
               font-size: 1.3rem;  
@@ -249,7 +251,7 @@
               }
             }
             .cv-main-top-right-info{
-              
+              margin-bottom: 0px;
               font-size: 0.8em;
               font-variation-settings: 'wght' 600, 'wdth' 75;
               font-family: 'LMono';
@@ -289,7 +291,7 @@
       }
   
       .cv-main-bottom-bio {
-        line-height: 1.30em;
+        line-height: 1.35em;
         .cv-main-bottom-bio-text {
           p {
             margin-bottom: 1rem;

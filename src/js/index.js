@@ -1,5 +1,3 @@
-'use strict'
-
 const page = require('page')
 document.computer = true
 

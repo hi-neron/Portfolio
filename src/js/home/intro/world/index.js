@@ -468,11 +468,8 @@ function render (ts) {
   }
 }
 
-function introBehavior (pos) {
-  let vPosition = window.pageYOffset
-  // when viewport 
-
-  if (vPosition > pos.top - 250) {
+function introBehavior (move) {
+  if (!move) {
     run = false
     runCounter = 0
   } else {

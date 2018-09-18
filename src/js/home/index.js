@@ -1,5 +1,3 @@
-'use strict'
-
 const page = require('page')
 
 // introduction
@@ -8,8 +6,8 @@ const introR = require('./intro/world').onWindowResize
 const introBehavior = require('./intro/world').introBehavior
 
 // contents
-const content = require('./content')
-const resizeEvents = require('./content/content').resizeEvents
+const content = require('./contents')
+const resizeEvents = require('./contents/content').resizeEvents
 
 // For grid
 const Masonry = require('masonry-layout')
@@ -32,10 +30,12 @@ const barCreator = require('./bar').templateP
 const barBehavior = require('./bar').barBehavior
 let app, mainContent, msnry, imgLoaded, maxDistance, windowSize
 
+let behaviors = false
 // loader
 const loader = require('./loader')
 
 // resize events
+let mainContentPosition
 
 
 let scrollA = true
@@ -128,18 +128,20 @@ function drawArticles (tag, ctx) {
   // on load intro, start
   document.onload = intro.init(introContainer, ctx, (r) => {
     // on load content, start
+    
     content.getMainContent(tag, (e, r) => {
       if (e) return new Error({message: 'An Error has ocurred'})
       
       // draw content content
       contentDraw(overW, r, () => {
         let initialize = r.resizeEvents
+        mainContentPosition = getPosition(mainContent)
         
         // on images load, adjust grid and remove loader screen 
         imgLoaded.on('done', function (i) {
           setTimeout(() => {
             initialize()
-            msnry.layout()
+            // msnry.layout()
             // close loader when load finish
             if (ctx) {
               ctx.mainLoader.vanish()
@@ -188,18 +190,7 @@ function scroll (e, pos) {
   let actualPosition, nextPosition, direction, add, factor, curve, util
   let move = 0
   if (e) {
-    // define velocidad positiva o negativa
-    // let r = 0
-    // let deltaY = e.deltaY
-    // if (deltaY > 0) {
-    //   r = 5
-    // } else if(deltaY < 0){
-    //   r = -5
-    // }
-
-    // speed += r
-
-    // console.log(deltaY, r, speed, intro)
+ 
   } else {
     // scroll to x pos
     actualPosition = window.pageYOffset
@@ -238,15 +229,25 @@ window.addEventListener('wheel', (e) => {
   if (!scrollA) {
     e.preventDefault
   }
-  // e.preventDefault()
-  let mainContentPosition = getPosition(mainContent)
-  scroll(e)
-  barBehavior(mainContentPosition)
-  cvBehavior(mainContentPosition)
-  introBehavior(mainContentPosition)
+
+  let vpos = window.pageYOffset
+
+  if (vpos > mainContentPosition.top - 250 && !behaviors) {
+    introBehavior(behaviors)
+    cvBehavior(behaviors)
+    barBehavior(behaviors)
+    behaviors = true 
+  } 
+  if (vpos < mainContentPosition.top - 250 && behaviors) {
+    introBehavior(behaviors)
+    cvBehavior(behaviors)
+    barBehavior(behaviors)
+    behaviors = false
+  } 
 }, {passive: true})
 
 window.addEventListener( 'resize', (e) => {
+  mainContentPosition = getPosition(mainContent)
   introR()
   resizeEvents()
   setNewWindowSize()

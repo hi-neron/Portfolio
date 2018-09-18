@@ -21,14 +21,6 @@
 @import "libs/font/fontello-codes";
 @import "libs/font/fontello-embedded";
 
-%back1 {
-  background: url('/img/noise1.png'), linear-gradient(155deg, 
-  #dadada 0%,
-  #dadada 20%,
-  #908792 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-}
-
 html {
   height: 100%;
 }
@@ -39,9 +31,8 @@ body {
   font-weight: 400;
   color: $mainColor4;
   overflow-x: hidden; 
-  background: #dadada; /* Old browsers */  
+  background: #dfdfdf; /* Old browsers */  
   text-rendering: geometricPrecision;
-  @extend %back1;
 }
 
 a {
@@ -56,7 +47,6 @@ a {
 }
 
 #app {
-  @extend %back1;
   position: absolute;
   -webkit-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 
   -moz-transition: all .25s cubic-bezier(0.765, 0.005, 0.365, 1.000); 

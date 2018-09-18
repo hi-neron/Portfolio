@@ -331,6 +331,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/one/main-80.jpg',
+        urlw: '/img/articles/one/main.webp',
         urlXX: '/img/articles/one/main_b.svg',
         comment: 'first coment main image',
       }
@@ -435,6 +436,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/eight/main.jpg',
+        urlw: '/img/articles/eight/main.webp',
         urlXX: '/img/articles/eight/main.png',
         comment: 'first coment main image',
       }
@@ -504,6 +506,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/two/main.png',
+        urlw: '/img/articles/two/main.webp',
         urlXX: '/img/articles/two/main_b.png',
         comment: 'first coment main image',
       }
@@ -578,6 +581,7 @@ module.exports = [
       main: {
         name: 'hello World',
         url: '/img/articles/three/main.png',
+        urlw: '/img/articles/three/main.webp',
         urlXX: '/img/articles/three/main_b.png',
         comment: 'first coment main image',
       },
@@ -591,7 +595,6 @@ module.exports = [
       year: '2018',
       color: 0
     },
-    mainImageType: 'video',
     colors: [0x332934, 0xD0d0d0, 0xfd5576],
     abstract: {
       content: 'Mar, café diseño ilustración desarrollo. Todo esto, lo que hago y lo que me gusta, juntos; ese fue el origen de portafolio 2018. La idea, dejar un catalogo de proyectos propios y colectivos que considero interesantes y ricos visualmente. Fue minuciosamente optimizada para diferentes tamaños y resoluciones de pantalla.',
@@ -657,7 +660,7 @@ module.exports = [
     pictures: {
       main: {
         name: 'hello World',
-        url: '/img/articles/neuf/main.mp4',
+        url: '/img/articles/neuf/main.gif',
         urlXX: '/img/articles/neuf/main.png',
         comment: 'first coment main image',
       }
@@ -744,6 +747,7 @@ module.exports = [
         name: 'hello World',
         url: '/img/articles/six/main.png',
         urlXX: '/img/articles/six/main.png',
+        urlw: '/img/articles/six/main.webp',
         comment: 'first coment main image',
       },
       others: []

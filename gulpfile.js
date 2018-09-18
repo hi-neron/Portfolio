@@ -21,14 +21,14 @@ gulp.task('browserSync', function () {
   gulp.watch('src/sass/**/*.scss', ['sass'])
   gulp.watch('src/**/**/*.js', ['js'])
   gulp.watch('src/img/**/*', ['images'])
-  gulp.watch('src/models/*', ['models'])
-})
+  gulp.watch('src/models/*', ['models'])})
+
 
 gulp.task('js', () => {
   gulp.src('./src/js/index.js')
-    .pipe(webpackStream(webpackConf), webpack)
-    .pipe(gulp.dest('./public/js'))
-    .pipe(browserSync.stream())
+  .pipe(webpackStream(webpackConf), webpack)
+  .pipe(gulp.dest('./public/js/'))
+  .pipe(browserSync.stream())
 })
 
 gulp.task('models', () => {
@@ -56,6 +56,7 @@ gulp.task('images', function () {
     .pipe(gulp.dest('./public/img'))
     .pipe(browserSync.stream())
 })
+
 
 gulp.task(
   'default',

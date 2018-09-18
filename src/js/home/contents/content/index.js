@@ -1,5 +1,3 @@
-'use strict'
-
 const yo = require('yo-yo')
 const _ = require('lodash')
 const empty = require('empty-element')
@@ -217,8 +215,15 @@ class Article {
     <video class="images-to-load" autoplay muted loop>
       <source src="${this.mainPicture.url}" type="video/mp4">
     </video>`
+    
+    let source = this.mainPicture.urlw ? this.newSourceCreate() : ''
 
-    let image = yo`<img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">`
+    let image = yo`
+      <picture>
+        ${source}
+        <img class="images-to-load" data-src="${this.mainPicture.url}" src="${this.mainPicture.url}" alt="${this.mainPicture.comment}">
+      </picture>
+    `
 
     this.img = this.mainImageType === 'video' ? video : image
 
@@ -254,6 +259,12 @@ class Article {
   }
 
   // Open modalwindow
+  newSourceCreate () {
+    let template = yo`
+      <source srcset="${this.mainPicture.urlw}" type="image/webp">
+    `
+    return template
+  }
   screenActivate () {
     if (!screen) {
       // create close button

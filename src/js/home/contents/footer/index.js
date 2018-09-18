@@ -7,7 +7,7 @@ module.exports = function (cb){
     <footer class="footer">
       <div class="footer-wrapper">
         <p class="footer-content-mail">
-        <a href="mailto:hola@josesan.ch" className="footer-mailto">hola@josesan.ch</a>
+        <a href="mailto:run@jose.run" className="footer-mailto">run@jose.run</a>
         </p>
         <p class="footer-content-socialButtons">
         ${socialButtons()}

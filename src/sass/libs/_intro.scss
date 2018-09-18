@@ -20,56 +20,55 @@
       min-height: 420px;
       max-width: 860px;
       max-height: 800px;
-      
-      .my-name {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        margin-left: -10px;
-        transform: translate(-50%, -50%);
-        letter-spacing: -0.1em;
-        font-family: 'eleb';
-        text-align: center;
-        color: rgba($mainColor4, .87);
-        font-size: calc(5vw + 9vh + 6vmin);
-        line-height: 1.1em;
-        text-shadow:  0 -2px 8px rgba(white, .15), 
-                      0 -6px 8px rgba(#bde6db, .6), 
-                      0 -3px 2px rgba($thirdColor3, .8), 
-                      0 4px 0px rgba(rgb(255, 117, 152), 1),
-                      0 -2px 2px rgba(white, .5), 
-                      0 7px 2px rgba($mainColor, .2),
-                      0 8px 8px rgba($secondaryColor, .7),
-                      0 20px 2px rgba($mainColor4, .3);
-        // text-shadow:  0 -2px 8px rgba(white, .15), 
-        //               0 -6px 8px rgba(#bde6db, .6), 
-        //               0 -3px 2px rgba($thirdColor3, .8), 
-        //               0 4px 0px rgba(rgb(255, 117, 152), 1),
-        //               0 7px 2px rgba($mainColor, .2),
-        //               0 8px 8px rgba($secondaryColor, .7),
-        //               0 -2px 2px rgba(white, .5), 
-        //               0 20px 4px rgba($mainColor4, .3);
+    }
+  }
+}
+
+.my-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  margin-left: -10px;
+  transform: translate(-50%, -50%);
+  letter-spacing: -0.1em;
+  font-family: 'eleb';
+  text-align: center;
+  color: rgba($mainColor4, .87);
+  font-size: calc(5vw + 9vh + 6vmin);
+  line-height: 1.1em;
+  text-shadow:  0 -2px 8px rgba(white, .15), 
+                0 -6px 8px rgba(#bde6db, .6), 
+                0 -3px 2px rgba($thirdColor3, .8), 
+                0 4px 0px rgba(rgb(255, 117, 152), 1),
+                0 -2px 2px rgba(white, .5), 
+                0 7px 2px rgba($mainColor, .2),
+                0 8px 8px rgba($secondaryColor, .7),
+                0 20px 2px rgba($mainColor4, .3);
+  // text-shadow:  0 -2px 8px rgba(white, .15), 
+  //               0 -6px 8px rgba(#bde6db, .6), 
+  //               0 -3px 2px rgba($thirdColor3, .8), 
+  //               0 4px 0px rgba(rgb(255, 117, 152), 1),
+  //               0 7px 2px rgba($mainColor, .2),
+  //               0 8px 8px rgba($secondaryColor, .7),
+  //               0 -2px 2px rgba(white, .5), 
+  //               0 20px 4px rgba($mainColor4, .3);
 
 
-        .name-line {
-          width: 100%;
-        }
-        
-        .second-line {
-          // letter-spacing: -0.04em;
-          margin-left: -2.7rem;
-          width: 110%;
-          .space {
-            display: inline-block;
-            width: 0.12em;
-          }
-          .next-line {
-            vertical-align: top;
-            font-size: 1.4em;
-          }
-        }
-      }
+  .name-line {
+    width: 100%;
+  }
+  
+  .second-line {
+    // letter-spacing: -0.04em;
+    // margin-left: -2.7rem;
+    .space {
+      display: inline-block;
+      // width: 0.05em;
+    }
+    .next-line {
+      vertical-align: top;
+      font-size: 1.4em;
     }
   }
 }
@@ -99,5 +98,34 @@
     top: 120px;
     left: 50%;
     transform: translateX(0px);
+  }
+}
+
+#error-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $contentBackground;
+
+  .error-container {
+    position: absolute;
+    top: 42%;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+
+    .my-name {
+      width: 100%;
+      letter-spacing: 0.03em !important;
+      line-height: 0.8em;
+      
+      .message {
+        font-size: 0.09em;
+        font-family: 'LMono';
+        letter-spacing: 0.05em !important;
+        text-shadow: none;
+        font-variation-settings: 'wght' 500, 'wdth' 110;
+      }
+    }
   }
 }

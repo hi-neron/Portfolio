@@ -128,10 +128,8 @@ launcherButton.onclick = (ev) => {
   curriculum =! curriculum
 }
 
-function curriculumBehavior (mainContentP) {
-  let vPosition = window.pageYOffset
-
-  if (vPosition > mainContentP.top - 150) {
+function curriculumBehavior (move) {
+  if (!move) {
     launcherButton.classList.add('curriculum-trigger-down')
   } else {
     launcherButton.classList.remove('curriculum-trigger-down')
@@ -163,8 +161,8 @@ function curriculumCreator (cb) {
             <div className="cv-main-top-right-info">
               Bogotá / Colombia 
             </div>
-            <a className="cv-main-top-right-mail" href="mailto:hola@josesan.ch">
-              hola@josesan.ch
+            <a className="cv-main-top-right-mail" href="mailto:run@jose.run">
+              run@jose.run
             </a>
           </div>
           <div className="cv-main-top-right-bottom">
